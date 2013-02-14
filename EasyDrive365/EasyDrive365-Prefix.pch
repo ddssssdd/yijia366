@@ -4,6 +4,8 @@
 
 #import <Availability.h>
 
+
+
 #ifndef __IPHONE_5_0
 #warning "This project uses features only available in iOS SDK 5.0 and later."
 #endif
@@ -12,3 +14,18 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
 #endif
+
+#ifndef __OPTIMIZE__
+# define NSLog(...) NSLog(__VA_ARGS__)
+#else
+# define NSLog(...) {}
+#endif
+
+
+
+#import <SystemConfiguration/SystemConfiguration.h>
+
+
+#define ServerUrl @"http://192.168.1.105/site/pm/"
+//#define ServerUrl @"http://192.168.1.112/site/pm/"
+
