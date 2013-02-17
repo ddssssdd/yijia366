@@ -55,7 +55,7 @@
                 [AppSettings sharedSettings].isLogin = TRUE;
                 [AppSettings sharedSettings].firstName = self.txtUsername.text;
                 [AppSettings sharedSettings].lastName = self.txtPassword.text;
-                [AppSettings sharedSettings].list =[NSMutableArray arrayWithArray: @[@"a",@"b"]];
+               
                 [[AppSettings sharedSettings] save];
                 [self.navigationController popToRootViewControllerAnimated:YES];
                 

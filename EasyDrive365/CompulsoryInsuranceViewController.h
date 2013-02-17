@@ -8,9 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CompulsoryInsuranceViewController : UIViewController
-@property (weak, nonatomic) IBOutlet UITextView *text1;
+@interface CompulsoryInsuranceViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UITextView *text2;
-@property (weak, nonatomic) IBOutlet UISegmentedControl *sc;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @end

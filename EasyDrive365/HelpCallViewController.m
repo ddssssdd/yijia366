@@ -55,7 +55,7 @@
 
 
 -(void)setup{
-    _url = [AppSettings sharedSettings].url_for_get_helpcalls;
+    _helper.url = [AppSettings sharedSettings].url_for_get_helpcalls;
 }
 -(void)processData:(id)json{
     

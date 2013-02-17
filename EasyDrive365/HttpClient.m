@@ -30,17 +30,19 @@
 -(void)request:(NSString *)path method:(NSString *)method parameter:(NSDictionary *)parameter block:(void (^)(id json))processJson{
     NSURL *url = [NSURL URLWithString:ServerUrl];
     AFHTTPClient *httpClient =[[AFHTTPClient alloc] initWithBaseURL:url];
-    //NSString *path =[NSString stringWithFormat:@"admin/get_content?tablename=%@",@"Person_Test"];
+    
     NSMutableURLRequest *request=[httpClient requestWithMethod:method  path:path parameters:parameter];
+   // NSLog(@"Request=%@",request.URL);
     AFHTTPRequestOperation *operation=[[AFHTTPRequestOperation alloc] initWithRequest:request];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"success");
+        //NSLog(@"success");
         NSError *error = nil;
         id jsonResult =[NSJSONSerialization JSONObjectWithData:operation.responseData options:NSJSONReadingMutableContainers error:&error];
+        NSLog(@"get Result=%@",jsonResult);
         processJson(jsonResult);
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"Access server error:%@",error);
+        NSLog(@"Access server error:%@,because %@",error,operation.request);
         
     }];
     NSOperationQueue *queue=[[NSOperationQueue alloc] init];

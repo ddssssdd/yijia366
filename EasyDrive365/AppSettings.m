@@ -53,8 +53,13 @@
     dispatch_once(&once,^{
         //_instance = [[AppSettings alloc] init];
         NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-        NSData *udObject =[userDefault objectForKey:NSStringFromClass([self class])];
-        _instance =[NSKeyedUnarchiver unarchiveObjectWithData:udObject];
+        NSData *userDefaultData =[userDefault objectForKey:NSStringFromClass([self class])];
+        if (userDefaultData){
+            _instance =[NSKeyedUnarchiver unarchiveObjectWithData:userDefaultData];
+        }else{
+            _instance =[[AppSettings alloc] init];
+        }
+        
     });
     return _instance;
 }
@@ -115,5 +120,13 @@
     return [NSString stringWithFormat:@"api/get_car_maintain_list?userid=%d",self.userid];
 }
 
-
+-(NSString *)url_for_post_maintain_record{
+    return [NSString stringWithFormat:@"api/add_maintain_record?userid=%d",self.userid];
+}
+-(NSString *)url_for_get_maintain_record{
+    return [NSString stringWithFormat:@"api/get_maintain_record?userid=%d",self.userid];
+}
+-(NSString *)url_getlatest{
+    return [NSString stringWithFormat:@"api/get_latest?userid=%d",self.userid];
+}
 @end

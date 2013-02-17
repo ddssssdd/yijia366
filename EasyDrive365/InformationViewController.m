@@ -68,7 +68,7 @@
 }
 
 -(void)setup{
-    _url = [AppSettings sharedSettings].url_for_get_news;
+    _helper.url = [AppSettings sharedSettings].url_for_get_news;
 }
 -(void)processData:(id)json{
     if (_list){

@@ -9,11 +9,13 @@
 #import <UIKit/UIKit.h>
 
 @interface NavigationCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UIImageView *image;
+
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
-@property (weak, nonatomic) IBOutlet UIButton *button;
+@property (nonatomic,copy) NSString *keyname;
 
 @property (nonatomic,copy) NSString *phone;
 
+
+-(void)getLatest;
 @end

@@ -7,6 +7,8 @@
 //
 
 #import "NavigationCell.h"
+#import "HttpClient.h"
+#import "AppSettings.h"
 
 @implementation NavigationCell
 
@@ -25,8 +27,37 @@
 
     // Configure the view for the selected state
 }
-- (IBAction)buttonPress {
+
+
+- (IBAction)makeCall:(id)sender {
+    
     NSLog(@"I am pressed,i will call:%@",self.phone);
+    if(self.phone){
+        NSString *phoneNumber = [@"tel://" stringByAppendingString:self.phone];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phoneNumber]];
+    }
+   
+    
+}
+
+-(void)getLatest{
+    NSString *url = [[AppSettings sharedSettings] url_getlatest];
+    //NSLog(@"url=%@",url);
+    [[HttpClient sharedHttp] post:url parameters:@{@"keyname":self.keyname} block:^(id json) {
+        if ([[AppSettings sharedSettings] isSuccess:json]){
+            
+            [[AppSettings sharedSettings] saveJsonWith:NSStringFromClass( [self class]) data:json];
+            [self processData:json];
+            
+        }else{
+            //get nothing from server;
+        }
+    }];
+    
+}
+-(void)processData:(id)json{
+    self.descriptionLabel.text=json[@"result"][@"latest"];
+    self.phone = json[@"result"][@"phone"];
 }
 
 @end

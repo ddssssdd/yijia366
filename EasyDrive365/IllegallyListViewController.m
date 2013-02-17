@@ -65,7 +65,7 @@
 }
 
 -(void)setup{
-    _url = [AppSettings sharedSettings].url_for_illegallys;
+    _helper.url = [AppSettings sharedSettings].url_for_illegallys;
 }
 -(void)processData:(id)json{
     if (_list){

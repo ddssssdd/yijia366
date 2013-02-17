@@ -42,7 +42,7 @@
 }
 
 -(void)setup{
-    _url = [AppSettings sharedSettings].url_for_rescue;
+    _helper.url = [AppSettings sharedSettings].url_for_rescue;
 }
 -(void)processData:(id)json{
     id result =[json objectForKey:@"result"];

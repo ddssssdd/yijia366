@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CarRegistrationViewController : UIViewController
+@interface CarRegistrationViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate>
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end

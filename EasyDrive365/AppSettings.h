@@ -36,4 +36,9 @@
 -(NSString *)url_for_illegallys;
 -(NSString *)url_for_insurance_list;
 -(NSString *)url_for_maintain_list;
+
+-(NSString *)url_for_post_maintain_record;
+-(NSString *)url_for_get_maintain_record;
+
+-(NSString *)url_getlatest;
 @end

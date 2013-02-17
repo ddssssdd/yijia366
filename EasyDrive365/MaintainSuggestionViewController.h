@@ -7,7 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NetViewController.h"
 
-@interface MaintainSuggestionViewController : UIViewController
+@interface MaintainSuggestionViewController : NetViewController
+@property (weak, nonatomic) IBOutlet UITextField *txtMax_ditance;
 
+@property (weak, nonatomic) IBOutlet UITextField *txtMax_time;
+@property (weak, nonatomic) IBOutlet UITextField *txtCurrent_distance;
+@property (weak, nonatomic) IBOutlet UITextField *txtPre_time;
+@property (weak, nonatomic) IBOutlet UITextField *txtPre_distance;
+@property (weak, nonatomic) IBOutlet UITextField *txtCurrent_time;
+@property (weak, nonatomic) IBOutlet UITextField *txtCurrent_miles;
 @end

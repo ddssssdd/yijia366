@@ -47,7 +47,7 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [self initView];
-   
+    [self.tableview reloadData];
 
 }
 -(void)initView
@@ -55,16 +55,16 @@
    
     self.toolBarLogin.hidden = [AppSettings sharedSettings].isLogin;
     self.menuView.hidden = ![AppSettings sharedSettings].isLogin;
-    self.title = [AppSettings sharedSettings].firstName;
+    //self.title = [AppSettings sharedSettings].firstName;
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refresh:)];
-    if ([[HttpClient sharedHttp] online]){
-        NSLog(@"online");
-    }else{
-        NSLog(@"offLine");
-    }
     
-    NSLog(@"local_data=%@",[AppSettings sharedSettings].local_data);
+    //[self.tableview reloadData];
+    
+    
+    
+    //NSLog(@"local_data=%@",[AppSettings sharedSettings].local_data);
+     
 }
 -(void)refresh:(id)sender
 {
@@ -117,13 +117,15 @@
     MenuItem *item = [[Menu sharedMenu].list objectAtIndex:indexPath.row];
     cell.titleLabel.text = item.title;
     cell.descriptionLabel.text = item.description;
-    cell.image.image =[UIImage imageNamed:item.imagePath];
+   // cell.image.image =[UIImage imageNamed:item.imagePath];
     cell.phone = item.phone;
+    cell.keyname = item.title;
+    [cell getLatest];
    return cell;
 }
 -(float)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 103;
+    return 80;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

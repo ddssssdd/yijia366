@@ -7,12 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HttpClientDelegate.h"
+#import "HttpHelper.h"
 
-@interface NetViewController : UIViewController{
-    NSString *_url;
+@interface NetViewController : UIViewController<HttpClientDelegate>{
+    HttpHelper *_helper;
 }
 -(void)setup;
--(void)loadData;
-
 -(void)processData:(id)json;
+
+
 @end
