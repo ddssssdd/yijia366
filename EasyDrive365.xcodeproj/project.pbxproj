@@ -20,6 +20,11 @@
 		E2296D4616B760EC00E332D9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2296D4516B760EC00E332D9 /* ViewController.m */; };
 		E2296D4E16B7625800E332D9 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2296D4D16B7625800E332D9 /* LoginViewController.m */; };
 		E2296D5116B7723F00E332D9 /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2296D5016B7723F00E332D9 /* SignupViewController.m */; };
+		E24A041C16CFBA4100B7A602 /* 02.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E24A041B16CFBA4100B7A602 /* 02.jpg */; };
+		E24A043716D0B40500B7A602 /* HttpHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = E24A043616D0B40500B7A602 /* HttpHelper.m */; };
+		E24A043A16D0E95100B7A602 /* DetailCompulsoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E24A043916D0E95100B7A602 /* DetailCompulsoryViewController.m */; };
+		E24A043E16D1074800B7A602 /* LicenseTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E24A043C16D1074700B7A602 /* LicenseTypeViewController.m */; };
+		E24A043F16D1074800B7A602 /* LicenseTypeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E24A043D16D1074800B7A602 /* LicenseTypeViewController.xib */; };
 		E2EE650516C293D300ED1C73 /* AppSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = E2EE650416C293D300ED1C73 /* AppSettings.m */; };
 		E2EE650F16C29C2F00ED1C73 /* NavigationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E2EE650E16C29C2F00ED1C73 /* NavigationCell.m */; };
 		E2EE651116C29D1600ED1C73 /* NavigationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2EE651016C29D1600ED1C73 /* NavigationCell.xib */; };
@@ -111,6 +116,15 @@
 		E2296D4D16B7625800E332D9 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		E2296D4F16B7723F00E332D9 /* SignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignupViewController.h; sourceTree = "<group>"; };
 		E2296D5016B7723F00E332D9 /* SignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignupViewController.m; sourceTree = "<group>"; };
+		E24A041B16CFBA4100B7A602 /* 02.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 02.jpg; sourceTree = "<group>"; };
+		E24A043416D0B33300B7A602 /* HttpClientDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpClientDelegate.h; sourceTree = "<group>"; };
+		E24A043516D0B40500B7A602 /* HttpHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpHelper.h; sourceTree = "<group>"; };
+		E24A043616D0B40500B7A602 /* HttpHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpHelper.m; sourceTree = "<group>"; };
+		E24A043816D0E95100B7A602 /* DetailCompulsoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailCompulsoryViewController.h; sourceTree = "<group>"; };
+		E24A043916D0E95100B7A602 /* DetailCompulsoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailCompulsoryViewController.m; sourceTree = "<group>"; };
+		E24A043B16D1074700B7A602 /* LicenseTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LicenseTypeViewController.h; sourceTree = "<group>"; };
+		E24A043C16D1074700B7A602 /* LicenseTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LicenseTypeViewController.m; sourceTree = "<group>"; };
+		E24A043D16D1074800B7A602 /* LicenseTypeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LicenseTypeViewController.xib; sourceTree = "<group>"; };
 		E2EE650316C293D300ED1C73 /* AppSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppSettings.h; sourceTree = "<group>"; };
 		E2EE650416C293D300ED1C73 /* AppSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppSettings.m; sourceTree = "<group>"; };
 		E2EE650D16C29C2F00ED1C73 /* NavigationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationCell.h; sourceTree = "<group>"; };
@@ -264,12 +278,12 @@
 		E2296D2F16B760EC00E332D9 /* EasyDrive365 */ = {
 			isa = PBXGroup;
 			children = (
+				E24A041916CFBA2600B7A602 /* Resources */,
 				E2EE658516C68DCE00ED1C73 /* Network */,
 				E2EE655D16C685E800ED1C73 /* Sync */,
 				E2EE655C16C685D400ED1C73 /* AFNetworking */,
 				E2EE654F16C6053E00ED1C73 /* Public Components */,
 				E2EE653916C5294A00ED1C73 /* Modules */,
-				E2EE651816C5006B00ED1C73 /* resources */,
 				E2EE650C16C29C0500ED1C73 /* Components */,
 				E2EE650716C293DD00ED1C73 /* settings */,
 				E2296D3816B760EC00E332D9 /* AppDelegate.h */,
@@ -300,6 +314,30 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		E24A041916CFBA2600B7A602 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E2EE651916C5007D00ED1C73 /* 01.png */,
+				E2EE651A16C5007D00ED1C73 /* 001.png */,
+				E2EE651B16C5007D00ED1C73 /* 02.png */,
+				E2EE651C16C5007D00ED1C73 /* 002.png */,
+				E2EE651D16C5007D00ED1C73 /* 03.png */,
+				E2EE651E16C5007D00ED1C73 /* 003.png */,
+				E2EE651F16C5007D00ED1C73 /* 04.png */,
+				E2EE652016C5007D00ED1C73 /* 004.png */,
+				E2EE652116C5007D00ED1C73 /* 05.png */,
+				E2EE652216C5007D00ED1C73 /* 005.png */,
+				E2EE652316C5007D00ED1C73 /* 06.png */,
+				E2EE652416C5007D00ED1C73 /* 006.png */,
+				E2EE652516C5007D00ED1C73 /* 07.png */,
+				E2EE652616C5007D00ED1C73 /* 007.png */,
+				E2EE652716C5007D00ED1C73 /* 08.png */,
+				E2EE652816C5007D00ED1C73 /* 008.png */,
+				E24A041B16CFBA4100B7A602 /* 02.jpg */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		E2EE650716C293DD00ED1C73 /* settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -321,29 +359,6 @@
 				E2EE651016C29D1600ED1C73 /* NavigationCell.xib */,
 			);
 			name = Components;
-			sourceTree = "<group>";
-		};
-		E2EE651816C5006B00ED1C73 /* resources */ = {
-			isa = PBXGroup;
-			children = (
-				E2EE651916C5007D00ED1C73 /* 01.png */,
-				E2EE651A16C5007D00ED1C73 /* 001.png */,
-				E2EE651B16C5007D00ED1C73 /* 02.png */,
-				E2EE651C16C5007D00ED1C73 /* 002.png */,
-				E2EE651D16C5007D00ED1C73 /* 03.png */,
-				E2EE651E16C5007D00ED1C73 /* 003.png */,
-				E2EE651F16C5007D00ED1C73 /* 04.png */,
-				E2EE652016C5007D00ED1C73 /* 004.png */,
-				E2EE652116C5007D00ED1C73 /* 05.png */,
-				E2EE652216C5007D00ED1C73 /* 005.png */,
-				E2EE652316C5007D00ED1C73 /* 06.png */,
-				E2EE652416C5007D00ED1C73 /* 006.png */,
-				E2EE652516C5007D00ED1C73 /* 07.png */,
-				E2EE652616C5007D00ED1C73 /* 007.png */,
-				E2EE652716C5007D00ED1C73 /* 08.png */,
-				E2EE652816C5007D00ED1C73 /* 008.png */,
-			);
-			name = resources;
 			sourceTree = "<group>";
 		};
 		E2EE653916C5294A00ED1C73 /* Modules */ = {
@@ -403,6 +418,11 @@
 				E2EE65E316CCA4C600ED1C73 /* MaintainRecordDetailViewController.h */,
 				E2EE65E416CCA4C600ED1C73 /* MaintainRecordDetailViewController.m */,
 				E2EE65E516CCA4C600ED1C73 /* MaintainRecordDetailViewController.xib */,
+				E24A043816D0E95100B7A602 /* DetailCompulsoryViewController.h */,
+				E24A043916D0E95100B7A602 /* DetailCompulsoryViewController.m */,
+				E24A043B16D1074700B7A602 /* LicenseTypeViewController.h */,
+				E24A043C16D1074700B7A602 /* LicenseTypeViewController.m */,
+				E24A043D16D1074800B7A602 /* LicenseTypeViewController.xib */,
 			);
 			name = "Public Components";
 			sourceTree = "<group>";
@@ -453,6 +473,9 @@
 				E2EE658716C68E0F00ED1C73 /* HttpClient.m */,
 				E2EE65E816CD099000ED1C73 /* NetViewController.h */,
 				E2EE65E916CD099000ED1C73 /* NetViewController.m */,
+				E24A043416D0B33300B7A602 /* HttpClientDelegate.h */,
+				E24A043516D0B40500B7A602 /* HttpHelper.h */,
+				E24A043616D0B40500B7A602 /* HttpHelper.m */,
 			);
 			name = Network;
 			sourceTree = "<group>";
@@ -545,6 +568,8 @@
 				E2EE65DD16CC9E4600ED1C73 /* InsuranceRecordsViewController.xib in Resources */,
 				E2EE65E216CCA13E00ED1C73 /* MaintainListViewController.xib in Resources */,
 				E2EE65E716CCA4C600ED1C73 /* MaintainRecordDetailViewController.xib in Resources */,
+				E24A041C16CFBA4100B7A602 /* 02.jpg in Resources */,
+				E24A043F16D1074800B7A602 /* LicenseTypeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -594,6 +619,9 @@
 				E2EE65E116CCA13E00ED1C73 /* MaintainListViewController.m in Sources */,
 				E2EE65E616CCA4C600ED1C73 /* MaintainRecordDetailViewController.m in Sources */,
 				E2EE65EA16CD099000ED1C73 /* NetViewController.m in Sources */,
+				E24A043716D0B40500B7A602 /* HttpHelper.m in Sources */,
+				E24A043A16D0E95100B7A602 /* DetailCompulsoryViewController.m in Sources */,
+				E24A043E16D1074800B7A602 /* LicenseTypeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -672,13 +700,15 @@
 		E2296D4A16B760EC00E332D9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer: sald wu (4G72AMYC65)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: sald wu (4G72AMYC65)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EasyDrive365/EasyDrive365-Prefix.pch";
 				INFOPLIST_FILE = "EasyDrive365/EasyDrive365-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "1C98CB0C-8357-468E-A7DC-229C616317C0";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "1C98CB0C-8357-468E-A7DC-229C616317C0";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -686,13 +716,15 @@
 		E2296D4B16B760EC00E332D9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer: sald wu (4G72AMYC65)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: sald wu (4G72AMYC65)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EasyDrive365/EasyDrive365-Prefix.pch";
 				INFOPLIST_FILE = "EasyDrive365/EasyDrive365-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "1C98CB0C-8357-468E-A7DC-229C616317C0";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "1C98CB0C-8357-468E-A7DC-229C616317C0";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
