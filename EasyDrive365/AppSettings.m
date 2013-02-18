@@ -129,4 +129,11 @@
 -(NSString *)url_getlatest{
     return [NSString stringWithFormat:@"api/get_latest?userid=%d",self.userid];
 }
+
+-(NSString *)url_get_driver_license{
+    return [NSString stringWithFormat:@"api/get_driver_license?userid=%d",self.userid];
+}
+-(NSString *)url_get_car_registration{
+    return [NSString stringWithFormat:@"api/get_car_registration?userid=%d",self.userid];
+}
 @end

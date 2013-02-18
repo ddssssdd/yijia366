@@ -38,8 +38,21 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(select:)];
 }
 -(void)select:(id)sender{
-       UIViewController *vc =[self.navigationController popViewControllerAnimated:YES];
-    NSLog(@"%@",vc);
+    NSMutableString *result=[[NSMutableString alloc] init];
+    for (UIView *v in [self.tableView subviews]) {
+        if ([v isKindOfClass:[UITableViewCell class]]){
+            UITableViewCell *cell = (UITableViewCell *)v;
+            if (cell.accessoryType==UITableViewCellAccessoryCheckmark){
+                [result appendString:@","];
+                [result appendString:cell.textLabel.text];
+            }
+        }
+    
+    }
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"driver_type" object:self userInfo:@{@"result":result}];
+    
+    [self.navigationController popViewControllerAnimated:YES];
+  
 }
 - (void)didReceiveMemoryWarning
 {

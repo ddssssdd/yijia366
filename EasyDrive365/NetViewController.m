@@ -19,11 +19,12 @@
 -(void)viewDidLoad{
     [super viewDidLoad];
     _helper =[[HttpHelper alloc] initWithTarget:self];
+    [_helper loadData];
     
 }
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    [_helper loadData];
+  
 }
 -(void)setup{
     

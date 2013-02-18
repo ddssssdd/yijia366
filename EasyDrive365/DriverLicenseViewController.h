@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface DriverLicenseViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>
+#import "NetViewController.h"
+@interface DriverLicenseViewController : NetViewController<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @end

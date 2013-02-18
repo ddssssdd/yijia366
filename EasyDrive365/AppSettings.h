@@ -41,4 +41,7 @@
 -(NSString *)url_for_get_maintain_record;
 
 -(NSString *)url_getlatest;
+
+-(NSString *)url_get_driver_license;
+-(NSString *)url_get_car_registration;
 @end
