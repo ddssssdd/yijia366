@@ -10,6 +10,7 @@
 #import "AppSettings.h"
 #import "HttpClient.h"
 #import "MaintainRecordDetailViewController.h"
+#import "ItemDetailCell.h"
 
 @interface MaintainListViewController (){
     NSMutableArray *_list;
@@ -83,21 +84,25 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    ItemDetailCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+        //cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+        NSArray *cells = [[NSBundle mainBundle] loadNibNamed:@"ItemDetailCell" owner:self.tableView options:nil];
+        cell =cells[0];
         cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
     }
     
     id item =[_list objectAtIndex:indexPath.row];
-   // NSLog(@"Item=%@",item);
-    cell.textLabel.text =[item objectForKey:@"date"];
-    //cell.detailTextLabel.text =[item objectForKey:@"company"];
-    cell.detailTextLabel.text =[item objectForKey:@"issue"];
+    cell.titleLabel.text = item[@"company"];
+    cell.detailLabel.text = item[@"issue"];
+    cell.dateLabel.text = item[@"date"];
+    cell.priceLabel.text= item[@"money"];
     
     return cell;
 }
-
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 70.0f;
+}
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath

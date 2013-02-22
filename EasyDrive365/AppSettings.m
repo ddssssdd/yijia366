@@ -136,4 +136,8 @@
 -(NSString *)url_get_car_registration{
     return [NSString stringWithFormat:@"api/get_car_registration?userid=%d",self.userid];
 }
+
+-(NSString *)url_get_suggestion_insurance{
+    return [NSString stringWithFormat:@"api/get_suggestion_of_insurance?userid=%d",self.userid];
+}
 @end

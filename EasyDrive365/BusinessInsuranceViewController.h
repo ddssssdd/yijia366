@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface BusinessInsuranceViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
+#import "NetViewController.h"
+@interface BusinessInsuranceViewController : NetViewController<UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
 
 @end

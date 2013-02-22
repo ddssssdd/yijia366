@@ -9,6 +9,7 @@
 #import "InsuranceRecordsViewController.h"
 #import "AppSettings.h"
 #import "HttpClient.h"
+#import "ItemDetailCell.h"
 
 @interface InsuranceRecordsViewController ()
 {
@@ -80,15 +81,24 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    ItemDetailCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:CellIdentifier];
+        //cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:CellIdentifier];
+        NSArray *cells =[[NSBundle mainBundle] loadNibNamed:@"ItemDetailCell" owner:self.tableView options:nil];
+        cell = [cells objectAtIndex:0];
     }
     id item =[_list objectAtIndex:indexPath.row];
-    cell.textLabel.text=[item objectForKey:@"address"];
-    cell.detailTextLabel.text=[item objectForKey:@"company"];
-    
+    NSLog(@"%@",item);
+    //cell.textLabel.text=[item objectForKey:@"address"];
+    //cell.detailTextLabel.text=[item objectForKey:@"company"];
+    cell.titleLabel.text = item[@"company"];
+    cell.detailLabel.text = item[@"address"];
+    cell.dateLabel.text = item[@"date"];
+    cell.priceLabel.text= item[@"money"];
     return cell;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 70.0f;
 }
 
 /*

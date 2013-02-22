@@ -44,4 +44,6 @@
 
 -(NSString *)url_get_driver_license;
 -(NSString *)url_get_car_registration;
+
+-(NSString *)url_get_suggestion_insurance;
 @end

@@ -8,9 +8,13 @@
 
 #import "BusinessInsuranceViewController.h"
 #import "BusinessInsuranceHeaderViewViewController.h"
-
+#import "InsuranceDetailCell.h"
+#import "InfoAndPhoneCallCell.h"
 @interface BusinessInsuranceViewController ()
-
+{
+    NSArray *_headers;
+    id result;
+}
 @end
 
 @implementation BusinessInsuranceViewController
@@ -30,6 +34,7 @@
     self.tableview.dataSource = self;
     self.tableview.delegate = self;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addInsurance)];
+    _headers=@[@"基本项目",@"合计"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -43,27 +48,66 @@
     [super viewDidUnload];
 }
 
+-(void)setup{
+    _helper.url=[_helper appSetttings].url_get_suggestion_insurance;
+}
+-(void)processData:(id)json{
+    result = json[@"result"];
+    [self.tableview reloadData];
+}
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 2;
+}
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return  3;
+    if (section==0){
+        return  result?[result[@"list"] count]:0;
+    }else{
+        return  1;
+    }
+    
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    UITableView *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
+        if (indexPath.section==0){
+            NSArray *cells =[[NSBundle mainBundle] loadNibNamed:@"InsuranceDetailCell" owner:self.tableview options:nil];
+            cell=[cells objectAtIndex:0];
+        }else{
+            NSArray *cells =[[NSBundle mainBundle] loadNibNamed:@"InfoAndPhoneCallCell" owner:self.tableview options:nil];
+            cell=[cells objectAtIndex:0];
+        }
     }
     
-    cell.textLabel.text = @"text";
-    cell.detailTextLabel.text = @"detail";
+    
+    if (indexPath.section==0){
+        if (result){
+            id item=[result[@"list"] objectAtIndex:indexPath.row];
+            ((InsuranceDetailCell *)cell).itemLabel.text=item[@"item"];
+            ((InsuranceDetailCell *)cell).field1.text= item[@"field1"];
+            ((InsuranceDetailCell *)cell).field2.text= item[@"field2"];
+        }
+        
+    }else{
+        if (result){
+            ((InfoAndPhoneCallCell *)cell).info.text = result[@"summary"];
+            ((InfoAndPhoneCallCell *)cell).phone = result[@"phone"];
+        }
+        
+    }
+    
     
     
     return cell;
     
 }
-
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+    return [_headers objectAtIndex:section];
+}
 -(void)addInsurance{
     BusinessInsuranceHeaderViewViewController *vc =[[BusinessInsuranceHeaderViewViewController alloc] initWithNibName:@"BusinessInsuranceHeaderViewViewController" bundle:nil];
     [self.navigationController pushViewController:vc animated:YES];
