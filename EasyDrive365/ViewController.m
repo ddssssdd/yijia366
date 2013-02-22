@@ -41,13 +41,15 @@
     [super viewDidLoad];
     self.tableview.delegate = self;
     self.tableview.dataSource = self;
+    [self initView];
+    [self.tableview reloadData];
     
     
 }
 -(void)viewDidAppear:(BOOL)animated
 {
-    [self initView];
-    [self.tableview reloadData];
+    [super viewDidAppear:animated];
+    
 
 }
 -(void)initView

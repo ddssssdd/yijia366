@@ -14,6 +14,7 @@
 {
     int _currentType;
     NSDictionary *_dict;
+    id _json;
 }
 
 @end
@@ -47,7 +48,9 @@
 
     NSInteger index = sender.selectedSegmentIndex;
     if (index!=_currentType){
-        [self loadData];
+        _currentType = index;
+        if (_json)
+            [self update_display];
     }
     
 }
@@ -77,10 +80,15 @@
     }];
 }
 -(void)processData:(id)json{
-    NSLog(@"%@",json);
-    _dict =json[@"result"];
-    [self.tableView reloadData];
     
+    _json = json;
+    [self update_display];
+}
+-(void)update_display{
+    NSString *type_name=[NSString stringWithFormat:@"type_%d",_currentType];
+    _dict =_json[@"result"][type_name];
+    NSLog(@"%@",_dict);
+    [self.tableView reloadData];
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return [_dict count];
