@@ -41,8 +41,10 @@
     [super viewDidLoad];
     self.tableview.delegate = self;
     self.tableview.dataSource = self;
-    [self initView];
+    
     [self.tableview reloadData];
+    
+    [[HttpClient sharedHttp] online];
     
     
 }
@@ -50,7 +52,7 @@
 {
     [super viewDidAppear:animated];
     
-
+    [self initView];
 }
 -(void)initView
 {

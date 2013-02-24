@@ -52,10 +52,12 @@
             if (status && [status isEqualToString:@"success"]){
                 //success login
                 //{"status":"success","result":[{"id":"2","username":"2","password":"1"}]}
+                NSLog(@"%@",json);
                 [AppSettings sharedSettings].isLogin = TRUE;
                 [AppSettings sharedSettings].firstName = self.txtUsername.text;
                 [AppSettings sharedSettings].lastName = self.txtPassword.text;
-                [AppSettings sharedSettings].userid = 1;
+                NSNumber *userid=[[json objectForKey:@"result"][0] objectForKey:@"id"];
+                [AppSettings sharedSettings].userid =  [userid intValue];
                 [[AppSettings sharedSettings] save];
                 [self.navigationController popToRootViewControllerAnimated:YES];
                 

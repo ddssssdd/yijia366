@@ -21,16 +21,19 @@
     return self;
 }
 -(void)loadData{
-    /* test offline
-     id json= [[AppSettings sharedSettings] loadJsonBy:NSStringFromClass([self class])];
-     [self.delegate processData:json];
-     return;
-     */
+    
     [self.delegate setup];
     //not setup _url;
     if (!_url){
         return;
     }
+    // test offline
+    if (![HttpClient sharedHttp].isInternet){
+        id json= [[AppSettings sharedSettings] loadJsonBy:NSStringFromClass([self.delegate class])];
+        [self.delegate processData:json];
+        return;
+    }
+    
     [[HttpClient sharedHttp] get:_url block:^(id json) {
         if ([[AppSettings sharedSettings] isSuccess:json]){
             

@@ -13,6 +13,7 @@
 @synthesize lastName=_lastName;
 @synthesize isLogin = _isLogin;
 @synthesize userid=_userid;
+@synthesize deviceToken=_deviceToken;
 @synthesize list = _list;
 @synthesize latest_news =_latest_news;
 @synthesize local_data =_local_data;
@@ -29,7 +30,7 @@
         _list =[aDecoder decodeObjectForKey:@"list"];
         _latest_news =[aDecoder decodeObjectForKey:@"latest_news"];
         _local_data =[aDecoder decodeObjectForKey:@"local_data"];
-        
+        _deviceToken =[aDecoder decodeObjectForKey:@"device_token"];
     }
     return self;
 }
@@ -42,6 +43,7 @@
     [aCoder encodeObject:_list forKey:@"list"];
     [aCoder encodeObject:_latest_news forKey:@"latest_news"];
     [aCoder encodeObject:_local_data forKey:@"local_data"];
+    [aCoder encodeObject:_deviceToken forKey:@"device_token"];
 }
 
 
@@ -92,6 +94,13 @@
     }
 }
 
+
+-(void)setDeviceToken:(NSString *)deviceToken{
+  
+    _deviceToken=[[deviceToken stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]] stringByReplacingOccurrencesOfString:@" " withString:@""];
+    NSLog(@"deviceToken=%@",_deviceToken);
+}
+
 //http process
 -(BOOL)isSuccess:(id)json
 {
@@ -139,5 +148,10 @@
 
 -(NSString *)url_get_suggestion_insurance{
     return [NSString stringWithFormat:@"api/get_suggestion_of_insurance?userid=%d",self.userid];
+}
+
+-(NSString *)udid{
+    UIDevice *device =[UIDevice currentDevice];
+    return [NSString stringWithFormat:@"%@", device.identifierForVendor];
 }
 @end

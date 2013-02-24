@@ -41,12 +41,18 @@
 }
 
 -(void)getLatest{
+    NSString *keyname=[NSString stringWithFormat:@"%@_%@",NSStringFromClass([self class]),self.keyname];
+    if (![HttpClient sharedHttp].isInternet){
+        id json=[[AppSettings sharedSettings] loadJsonBy:keyname];
+        [self processData:json];
+        return;
+    }
     NSString *url = [[AppSettings sharedSettings] url_getlatest];
     //NSLog(@"url=%@",url);
     [[HttpClient sharedHttp] post:url parameters:@{@"keyname":self.keyname} block:^(id json) {
         if ([[AppSettings sharedSettings] isSuccess:json]){
             
-            [[AppSettings sharedSettings] saveJsonWith:NSStringFromClass( [self class]) data:json];
+            [[AppSettings sharedSettings] saveJsonWith:keyname data:json];
             [self processData:json];
             
         }else{

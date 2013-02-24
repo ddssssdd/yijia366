@@ -10,7 +10,7 @@
 #import "NetViewController.h"
 
 @interface HelpCallViewController : NetViewController<UITableViewDataSource,UITableViewDelegate>
-@property (weak, nonatomic) IBOutlet UILabel *lblCompay;
+
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
 
 @end

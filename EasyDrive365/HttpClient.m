@@ -9,7 +9,7 @@
 #import "HttpClient.h"
 #import "AFNetworking.h"
 #import "AFHTTPClient.h"
-
+#import "Reachability.h"
 
 @implementation HttpClient
 
@@ -22,10 +22,41 @@
     });
     return instnace;
 }
--(BOOL)online{
+-(void)online{
+    //Reachability *reach = [Reachability reachabilityWithHostname:@"www.google.com"];
+    Reachability *reach = [Reachability reachabilityWithHostname:@"www.baidu.com"];
+    reach.reachableBlock = ^(Reachability *reach){
+        NSLog(@"Internet");
+        self.isInternet = YES;
+    };
+    reach.unreachableBlock=^(Reachability *reach){
+        NSLog(@"no internet");
+        self.isInternet = NO;
+    };
+    [reach startNotifier];
+    /*
+    AFHTTPClient *client =[AFHTTPClient clientWithBaseURL:[NSURL URLWithString:@"http://www.baidu.com"]];
+    [client setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+        if (status==AFNetworkReachabilityStatusNotReachable){
+            //not reachable
+            NSLog(@"no internet");
+        }else{
+            //reachable
+            NSLog(@"internet");
+        };
+        if (status==AFNetworkReachabilityStatusReachableViaWiFi){
+            // on wifi;
+            NSLog(@"wifi");
+        }
+    }];
+     */
+    
+    /*
     AFHTTPClient *httpClient =[[AFHTTPClient alloc] init];
+    
     NSLog(@"network status=%d",httpClient.networkReachabilityStatus);
     return httpClient.networkReachabilityStatus==AFNetworkReachabilityStatusReachableViaWWAN || httpClient.networkReachabilityStatus==AFNetworkReachabilityStatusReachableViaWiFi;
+     */
 }
 -(void)request:(NSString *)path method:(NSString *)method parameter:(NSDictionary *)parameter block:(void (^)(id json))processJson{
     NSURL *url = [NSURL URLWithString:ServerUrl];
@@ -38,7 +69,7 @@
         //NSLog(@"success");
         NSError *error = nil;
         id jsonResult =[NSJSONSerialization JSONObjectWithData:operation.responseData options:NSJSONReadingMutableContainers error:&error];
-        NSLog(@"get Result=%@",jsonResult);
+        //NSLog(@"get Result=%@",jsonResult);
         processJson(jsonResult);
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {

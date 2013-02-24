@@ -14,6 +14,7 @@
 @property (nonatomic,retain) NSString *lastName;
 @property (nonatomic) BOOL isLogin;
 @property (nonatomic) int userid;
+@property (nonatomic,retain) NSString *deviceToken;
 
 @property (nonatomic,retain) NSMutableDictionary *local_data;
 @property (nonatomic,retain) NSMutableArray *list;
@@ -46,4 +47,7 @@
 -(NSString *)url_get_car_registration;
 
 -(NSString *)url_get_suggestion_insurance;
+
+-(NSString *)udid;
+
 @end

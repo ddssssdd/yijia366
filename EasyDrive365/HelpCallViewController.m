@@ -7,6 +7,7 @@
 //
 
 #import "HelpCallViewController.h"
+#import "HelpHeaderView.h"
 
 #import "AppSettings.h"
 
@@ -34,6 +35,7 @@
     [super viewDidLoad];
     self.tableview.delegate = self;
     self.tableview.dataSource = self;
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Phone" style:UIBarButtonSystemItemAction target:self action:@selector(makeCall:)];
     
 }
 
@@ -44,15 +46,15 @@
 }
 
 - (void)viewDidUnload {
-    [self setLblCompay:nil];
+   
     [self setTableview:nil];
     [super viewDidUnload];
 }
 
-- (IBAction)makeCall:(id)sender {
-    
-}
 
+-(void)makeCall:(id)sender{
+    NSLog(@"call");
+}
 
 -(void)setup{
     _helper.url = [AppSettings sharedSettings].url_for_get_helpcalls;
@@ -76,7 +78,7 @@
     [self updateData];
 }
 -(void)updateData{
-    self.lblCompay.text =_company;
+    
     [self.tableview reloadData];
 }
 
@@ -94,5 +96,16 @@
     cell.detailTextLabel.text =[NSString stringWithFormat:@"%@$",[item objectForKey:@"price"]];
     cell.textLabel.text =[item objectForKey:@"description"];
     return cell;
+}
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    
+    HelpHeaderView *header = [[[NSBundle mainBundle] loadNibNamed:@"HelpHeaderView" owner:nil options:nil] objectAtIndex:0];
+    header.titleLabel.text= _company;
+    header.detailLabel.text= _phone;
+    header.backgroundColor =self.tableview.backgroundColor;
+    return header;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 80;
 }
 @end

@@ -8,10 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
-@interface HttpClient : NSObject
+@interface HttpClient : NSObject{
+    
+}
+@property (nonatomic) BOOL isInternet;
 +(HttpClient *)sharedHttp;
 
--(BOOL)online;
+-(void)online;
 -(void)get:(NSString *)path  block:(void (^)(id json))processJson;
 -(void)post:(NSString *)path parameters:(NSDictionary *)parameters block:(void (^)(id json))processJson;
 
