@@ -47,6 +47,10 @@
 -(NSString *)url_get_car_registration;
 
 -(NSString *)url_get_suggestion_insurance;
+-(NSString *)url_get_license_type;
+
+-(NSString *)url_get_business_insurance;
+-(NSString *)url_get_count_of_suggestions;
 
 -(NSString *)udid;
 

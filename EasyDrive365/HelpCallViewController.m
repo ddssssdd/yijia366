@@ -8,6 +8,7 @@
 
 #import "HelpCallViewController.h"
 #import "HelpHeaderView.h"
+#import "ItemDetailCell.h"
 
 #import "AppSettings.h"
 
@@ -62,7 +63,7 @@
 -(void)processData:(id)json{
     
     id result =[json objectForKey:@"result"];
-    
+    NSLog(@"%@",result);
     _company = [result objectForKey:@"company_name"];
     _phone =[result objectForKey:@"phone"];
     
@@ -88,15 +89,23 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *cellIdentitifier=@"Cell";
-    UITableViewCell *cell=[self.tableview dequeueReusableCellWithIdentifier:cellIdentitifier];
+    ItemDetailCell *cell=[self.tableview dequeueReusableCellWithIdentifier:cellIdentitifier];
     if (cell==nil){
-        cell =[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentitifier];
+        //cell =[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentitifier];
+        cell = [[[NSBundle mainBundle] loadNibNamed:@"ItemDetailCell" owner:nil options:nil] objectAtIndex:0];
     }
+
     id item = [_list objectAtIndex:indexPath.row];
-    cell.detailTextLabel.text =[NSString stringWithFormat:@"%@$",[item objectForKey:@"price"]];
-    cell.textLabel.text =[item objectForKey:@"description"];
+    cell.titleLabel.text =[NSString stringWithFormat:@"%@",[item objectForKey:@"name"]];
+    cell.detailLabel.text =[item objectForKey:@"description"];
+    //cell.priceLabel.text= [NSString stringWithFormat:@"%@",item[@"price"]];
+    cell.dateLabel.text = [NSString stringWithFormat:@"%@",item[@"standprice"]];
     return cell;
 }
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 70.0f;
+}
+/*
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     
     HelpHeaderView *header = [[[NSBundle mainBundle] loadNibNamed:@"HelpHeaderView" owner:nil options:nil] objectAtIndex:0];
@@ -105,7 +114,12 @@
     header.backgroundColor =self.tableview.backgroundColor;
     return header;
 }
+ 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 80;
+}
+ */
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+    return _company;
 }
 @end

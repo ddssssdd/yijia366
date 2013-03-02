@@ -29,6 +29,7 @@
 #import "InsuranceRecordsViewController.h"
 #import "MaintainListViewController.h"
 #import "BrowserViewController.h"
+#import "BusinessInsViewController.h"
 
 @interface ViewController ()
 
@@ -58,9 +59,8 @@
 {
    
     self.toolBarLogin.hidden = [AppSettings sharedSettings].isLogin;
-    self.menuView.hidden = ![AppSettings sharedSettings].isLogin;
-    //self.title = [AppSettings sharedSettings].firstName;
-    
+    self.tableview.hidden = ![AppSettings sharedSettings].isLogin;
+    [AppSettings sharedSettings].userid = 65;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refresh:)];
     
     //[self.tableview reloadData];
@@ -88,7 +88,7 @@
 - (void)viewDidUnload {
     [self setToolBarLogin:nil];
 
-    [self setMenuView:nil];
+   
     [self setTableview:nil];
     [super viewDidUnload];
 }
@@ -129,7 +129,7 @@
 }
 -(float)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 80;
+    return 50;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -181,7 +181,7 @@
     }
     
     if ([item.name isEqualToString:@"009"]){
-        BusinessInsuranceViewController *vc = [[BusinessInsuranceViewController alloc] initWithNibName:@"BusinessInsuranceViewController" bundle:nil];
+        BusinessInsViewController *vc = [[BusinessInsViewController alloc] initWithNibName:@"BusinessInsViewController" bundle:nil];
         vc.title = item.title;
         [self.navigationController pushViewController:vc animated:YES];
         

@@ -10,6 +10,8 @@
 #import "NetViewController.h"
 
 @interface MaintainSuggestionViewController : NetViewController
+@property (weak, nonatomic) IBOutlet UITextField *txtAva_miles;
+
 @property (weak, nonatomic) IBOutlet UITextField *txtMax_ditance;
 
 @property (weak, nonatomic) IBOutlet UITextField *txtMax_time;

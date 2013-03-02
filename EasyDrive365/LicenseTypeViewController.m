@@ -9,7 +9,7 @@
 #import "LicenseTypeViewController.h"
 
 @interface LicenseTypeViewController (){
-    NSArray *_list;
+    id _list;
 }
 
 @end
@@ -21,6 +21,7 @@
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
+        
     }
     return self;
 }
@@ -28,8 +29,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.title =@"驾照类型";
     
-    _list =@[@"A1",@"A2",@"B1",@"B2"];
+    //_list =@[@"A1",@"A2",@"B1",@"B2"];
 
     // Uncomment the following line to preserve selection between presentations.
      self.clearsSelectionOnViewWillAppear = NO;
@@ -79,10 +81,11 @@
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
-    
-    cell.textLabel.text = [_list objectAtIndex:indexPath.row];
+    id item=[_list objectAtIndex:indexPath.row];
+    cell.textLabel.text = item[@"code"];
+    cell.detailTextLabel.text =item[@"code"];//[NSString stringWithFormat:@"年审间隔：%@年",item[@"years"]];
     cell.accessoryType = UITableViewCellAccessoryNone;
     return cell;
 }
@@ -136,6 +139,15 @@
     }else{
         cell.accessoryType = UITableViewCellAccessoryNone;
     }
+}
+
+-(void)setup{
+    _helper.url=[_helper appSetttings].url_get_license_type;
+}
+-(void)processData:(id)json{
+    NSLog(@"%@",json);
+    _list = json[@"result"];
+    [self.tableView reloadData];
 }
 
 @end

@@ -9,6 +9,7 @@
 #import "IllegallyListViewController.h"
 #import "HttpClient.h"
 #import "AppSettings.h"
+#import "RecordCell.h"
 @interface IllegallyListViewController ()
 {
     NSMutableArray *_list;
@@ -22,6 +23,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        self.title =@"违章记录";
     }
     return self;
 }
@@ -52,16 +54,24 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *cellIdentitifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentitifier];
+    RecordCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentitifier];
     if (cell == nil){
-        cell= [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentitifier];
+        //cell= [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentitifier];
+        cell =[[[NSBundle mainBundle] loadNibNamed:@"RecordCell" owner:nil options:nil] objectAtIndex:0];
         
     }
     id item = [_list objectAtIndex:indexPath.row];
     
-    cell.textLabel.text=[item objectForKey:@"date"];
-    cell.detailTextLabel.text=[item objectForKey:@"address"];
+    cell.titleLabel.text=[item objectForKey:@"Address"];
+    cell.descriptionLabel.text=[item objectForKey:@"Reason"];
+    cell.dateLabel.text = item[@"OccurTime"];
+    cell.pointLabel.text= item[@"Mark"];
+    cell.moneyLabel.text = item[@"Fine"];
     return cell;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 70.0f;
 }
 
 -(void)setup{
@@ -74,6 +84,7 @@
         _list =[[NSMutableArray alloc] init];
     }
     [_list addObjectsFromArray:[json objectForKey:@"result"]];
+    NSLog(@"%@",_list);
     [self.tableview reloadData];
 }
 @end

@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NetTableViewController.h"
 
-
-@interface LicenseTypeViewController : UITableViewController
+@interface LicenseTypeViewController : NetTableViewController
 
 
 

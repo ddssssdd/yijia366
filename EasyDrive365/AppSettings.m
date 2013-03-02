@@ -150,6 +150,19 @@
     return [NSString stringWithFormat:@"api/get_suggestion_of_insurance?userid=%d",self.userid];
 }
 
+-(NSString *)url_get_license_type{
+    return @"api/get_license_type";
+}
+
+
+-(NSString *)url_get_business_insurance{
+    return [NSString stringWithFormat:@"api/get_Policys?userid=%d",self.userid];
+}
+
+-(NSString *)url_get_count_of_suggestions{
+    return [NSString stringWithFormat:@"api/get_count_of_suggestion?userid=%d",self.userid];
+}
+
 -(NSString *)udid{
     UIDevice *device =[UIDevice currentDevice];
     return [NSString stringWithFormat:@"%@", device.identifierForVendor];

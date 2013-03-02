@@ -98,6 +98,7 @@
 
 -(void)initData{
     _sections=@[@"基本信息",@"计分情况",@"提醒"];
+    /*
     _items=@[@[ @{@"name":@"证件号码",@"key":@"license_id",@"mode":@"add",@"description":@"",@"vcname":@""},
                 @{@"name":@"姓名",@"key":@"driver_name",@"mode":@"add",@"description":@"",@"vcname":@""},
                 @{@"name":@"准驾车型",@"key":@"driver_type",@"mode":@"add",@"description":@"",@"vcname":@"LicenseTypeViewController"},
@@ -106,6 +107,18 @@
                 @{@"name":@"计分到期日",@"key":@"score_end_date",@"mode":@"",@"description":@"",@"vcname":@""},
                 @{@"name":@"计分情况",@"key":@"score",@"mode":@"",@"description":@"",@"vcname":@""}],
              @[@{@"name":@"提醒日期",@"key":@"alert_date",@"mode":@"",@"description":@"",@"vcname":@""}]];
+    */
+    _items=@[@[ @{@"name":@"证件号码",@"key":@"number",@"mode":@"add",@"description":@"",@"vcname":@""},
+    @{@"name":@"姓名",@"key":@"name",@"mode":@"add",@"description":@"",@"vcname":@""},
+    @{@"name":@"准驾车型",@"key":@"car_type",@"mode":@"add",@"description":@"",@"vcname":@"LicenseTypeViewController"},
+    @{@"name":@"初领日期",@"key":@"init_date",@"mode":@"add",@"description":@"",@"vcname":@"DatePickerViewController"}],
+    @[ 
+    @{@"name":@"开始日期",@"key":@"start_date",@"mode":@"",@"description":@"",@"vcname":@""},
+    @{@"name":@"结束日期",@"key":@"end_date",@"mode":@"",@"description":@"",@"vcname":@""},
+    @{@"name":@"计分情况",@"key":@"mark",@"mode":@"",@"description":@"",@"vcname":@""}],
+    @[@{@"name":@"积分到期日",@"key":@"mark_end_date",@"mode":@"",@"description":@"",@"vcname":@""},
+    @{@"name":@"年审日期",@"key":@"check_date",@"mode":@"",@"description":@"",@"vcname":@""},
+    @{@"name":@"换证日期",@"key":@"renew_date",@"mode":@"",@"description":@"",@"vcname":@""}]];
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return [_sections count];
@@ -195,10 +208,13 @@
 }
 -(void)processData:(id)json{
     id list = json[@"result"];
+    /* old code
     if ([list isKindOfClass:[NSArray class]] && [list count]>0){
         result =[list objectAtIndex:0];
-        //NSLog(@"%@ is %@",result,[result class]);
+        
     }
+     */
+    result =list;
     [self.tableView reloadData];
 }
 

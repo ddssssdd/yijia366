@@ -33,7 +33,8 @@
     @"max_time":self.txtMax_time.text,
     @"current_distance":self.txtCurrent_distance.text,
     @"prev_date":self.txtPre_time.text,
-    @"prev_distance":self.txtPre_distance.text};
+    @"prev_distance":self.txtPre_distance.text,
+    @"average_mileage":self.txtAva_miles.text};
 
     [[_helper httpClient] post:[_helper appSetttings].url_for_post_maintain_record parameters:parameter block:^(id json) {
         if ([[_helper appSetttings] isSuccess:json]){
@@ -53,6 +54,7 @@
     self.txtPre_distance.text = [NSString stringWithFormat:@"%@", [result objectForKey:@"prev_distance"]];
     self.txtCurrent_time.text = [NSString stringWithFormat:@"%@", [result objectForKey:@"current_date"]];
     self.txtCurrent_miles.text = [NSString stringWithFormat:@"%@", [result objectForKey:@"current_miles"]];
+    self.txtAva_miles.text =[NSString stringWithFormat:@"%@", [result objectForKey:@"average_mileage"]];
 }
 - (void)didReceiveMemoryWarning
 {
@@ -68,6 +70,7 @@
     [self setTxtPre_distance:nil];
     [self setTxtCurrent_time:nil];
     [self setTxtCurrent_miles:nil];
+    [self setTxtAva_miles:nil];
     [super viewDidUnload];
 }
 @end

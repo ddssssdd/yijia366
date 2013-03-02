@@ -12,6 +12,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
+@property (weak, nonatomic) IBOutlet UILabel *dataLabel;
 @property (nonatomic,copy) NSString *keyname;
 
 @property (nonatomic,copy) NSString *phone;

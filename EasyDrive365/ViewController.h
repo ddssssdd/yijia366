@@ -10,7 +10,7 @@
 
 @interface ViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UIToolbar *toolBarLogin;
-@property (weak, nonatomic) IBOutlet UIView *menuView;
+
 
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
 
