@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "PickupData.h"
 @interface DatePickerViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
 @property (nonatomic,copy) NSString *keyname;
+@property (nonatomic,weak) id<PickupData> delegate;
 @end

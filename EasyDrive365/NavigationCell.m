@@ -62,8 +62,11 @@
     
 }
 -(void)processData:(id)json{
+    NSLog(@"%@",json);
+    /*
     self.descriptionLabel.text=json[@"result"][@"latest"];
     self.phone = json[@"result"][@"phone"];
+     */
 }
 
 @end

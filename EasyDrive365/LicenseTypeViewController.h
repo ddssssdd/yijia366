@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "NetTableViewController.h"
+#import "PickupData.h"
 
 @interface LicenseTypeViewController : NetTableViewController
 
-
+@property (nonatomic,weak) id<PickupData> delegate;
 
 @end

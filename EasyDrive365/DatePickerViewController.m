@@ -34,6 +34,11 @@
     
     NSString *date_value=[formatter stringFromDate:self.datePicker.date];
     [[NSNotificationCenter defaultCenter] postNotificationName:self.keyname object:self userInfo:@{@"result":date_value}];
+    
+    if (self.delegate){
+        [self.delegate setValueByKey:date_value key:self.keyname];
+    }
+    
     [self.navigationController popViewControllerAnimated:YES];
     
 }

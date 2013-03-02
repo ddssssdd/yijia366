@@ -1,26 +1,25 @@
 //
-//  CarRegistrationViewController.m
+//  MaintanViewController.m
 //  EasyDrive365
 //
-//  Created by Fu Steven on 2/10/13.
+//  Created by Fu Steven on 3/2/13.
 //  Copyright (c) 2013 Fu Steven. All rights reserved.
 //
 
-#import "CarRegistrationViewController.h"
-#import "IllegallyListViewController.h"
-#import "DatePickerViewController.h"
+#import "MaintanViewController.h"
 #import "DisplayTextCell.h"
+#import "DatePickerViewController.h"
 
-@interface CarRegistrationViewController (){
+@interface MaintanViewController (){
     NSArray *_sections;
     NSArray *_items;
-   
-    NSMutableDictionary* result;
+    
+    NSMutableDictionary* _result;
 }
 
 @end
 
-@implementation CarRegistrationViewController
+@implementation MaintanViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -31,21 +30,26 @@
     return self;
 }
 -(void)initData{
-    _sections=@[@"基本信息",@"违章信息"];
-    _items=@[@[ @{@"name":@"车牌号",@"key":@"plate_no",@"mode":@"add",@"description":@"",@"vcname":@""},
-    @{@"name":@"车辆类型",@"key":@"car_type",@"mode":@"add",@"description":@"",@"vcname":@""},
-    @{@"name":@"类型名称",@"key":@"car_typename",@"mode":@"add",@"description":@"",@"vcname":@""},
-    @{@"name":@"品牌",@"key":@"brand",@"mode":@"add",@"description":@"",@"vcname":@""},
-    @{@"name":@"型号",@"key":@"model",@"mode":@"add",@"description":@"",@"vcname":@""},
-    @{@"name":@"发动机号",@"key":@"engine_no",@"mode":@"add",@"description":@"",@"vcname":@""},
-    @{@"name":@"VIN",@"key":@"vin",@"mode":@"add",@"description":@"",@"vcname":@""},
-    @{@"name":@"初登日期",@"key":@"registration_date",@"mode":@"add",@"description":@"",@"vcname":@"DatePickerViewController"},
-    @{@"name":@"发证日期",@"key":@"issue_date",@"mode":@"add",@"description":@"",@"vcname":@""},],
-    @[ @{@"name":@"未处理次数",@"key":@"untreated_number",@"mode":@"",@"description":@"",@"vcname":@""},
-    @{@"name":@"未处理记分",@"key":@"untreated_mark",@"mode":@"",@"description":@"",@"vcname":@""},
-    @{@"name":@"未处理罚款",@"key":@"untreated_fine",@"mode":@"",@"description":@"",@"vcname":@""},
-    @{@"name":@"违章查询",@"description":@"",@"vcname":@"IllegallyListViewController"}]
-  ];
+    _sections=@[@"基本信息",@"保养建议"];
+    _items=@[@[ @{@"name":@"每日平均行程",@"key":@"average_mileage",@"mode":@"add",@"description":@"",@"vcname":@""},
+    @{@"name":@"最大保养里程",@"key":@"max_distance",@"mode":@"add",@"description":@"",@"vcname":@""},
+    @{@"name":@"最大保养间隔",@"key":@"max_time",@"mode":@"add",@"description":@"",@"vcname":@""},
+    @{@"name":@"当前里程",@"key":@"current_distance",@"mode":@"add",@"description":@"",@"vcname":@""},
+    @{@"name":@"前次保养时间",@"key":@"prev_date",@"mode":@"add",@"description":@"",@"vcname":@"DatePickerViewController"},
+    @{@"name":@"前次保养里程",@"key":@"prev_distance",@"mode":@"add",@"description":@"",@"vcname":@""}],
+    @[ @{@"name":@"本次保养时间",@"key":@"current_date",@"mode":@"",@"description":@"",@"vcname":@""},
+    @{@"name":@"本次保养里程",@"key":@"current_miles",@"mode":@"",@"description":@"",@"vcname":@""}]
+    ];
+    /*
+    self.txtMax_ditance.text = [NSString stringWithFormat:@"%@", [result objectForKey:@"max_distance"]];
+    self.txtMax_time.text = [NSString stringWithFormat:@"%@", [result objectForKey:@"max_time"]];
+    self.txtCurrent_distance.text = [NSString stringWithFormat:@"%@", [result objectForKey:@"current_distance"]];
+    self.txtPre_time.text = [NSString stringWithFormat:@"%@", [result objectForKey:@"prev_date"]];
+    self.txtPre_distance.text = [NSString stringWithFormat:@"%@", [result objectForKey:@"prev_distance"]];
+    self.txtCurrent_time.text = [NSString stringWithFormat:@"%@", [result objectForKey:@"current_date"]];
+    self.txtCurrent_miles.text = [NSString stringWithFormat:@"%@", [result objectForKey:@"current_miles"]];
+    self.txtAva_miles.text =[NSString stringWithFormat:@"%@", [result objectForKey:@"average_mileage"]];
+     */
 }
 
 - (void)viewDidLoad
@@ -56,7 +60,7 @@
     self.tableView.dataSource = self; self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(edit:)];
     
     
-   
+    
     
 }
 
@@ -70,11 +74,9 @@
 {
     NSLog(@"%@",paramters);
     
-    NSString *url =[NSString stringWithFormat:@"api/add_car_registration?user_id=%d",[_helper appSetttings].userid];
-   
-    [[_helper httpClient] post:url parameters:paramters block:^(id json) {
+    [[_helper httpClient] post:[_helper appSetttings].url_for_post_maintain_record parameters:paramters block:^(id json) {
         if ([[_helper appSetttings] isSuccess:json]){
-            [self processData:json];
+            NSLog(@"return=%@",json);
         }
     }];
 }
@@ -82,23 +84,22 @@
     return @[@"基本信息"];
 }
 -(NSArray *)getItems{
-    return @[@[ @{@"name":@"车牌号",@"key":@"car_license_no",@"mode":@"add",@"description":@"",@"vcname":@""},
-    @{@"name":@"发动机号",@"key":@"car_id",@"mode":@"add",@"description":@"",@"vcname":@""},
-    @{@"name":@"VIN",@"key":@"vin",@"mode":@"add",@"description":@"",@"vcname":@""},
-   ]];
+    return @[@[ @{@"name":@"每日平均行程",@"key":@"average_mileage",@"mode":@"add",@"description":@"",@"vcname":@""},
+    @{@"name":@"最大保养里程",@"key":@"max_distance",@"mode":@"add",@"description":@"",@"vcname":@""},
+    @{@"name":@"最大保养间隔",@"key":@"max_time",@"mode":@"add",@"description":@"",@"vcname":@""},
+    @{@"name":@"当前里程",@"key":@"current_distance",@"mode":@"add",@"description":@"",@"vcname":@""},
+    @{@"name":@"前次保养时间",@"key":@"prev_date",@"mode":@"add",@"description":@"",@"vcname":@"DatePickerViewController"},
+    @{@"name":@"前次保养里程",@"key":@"prev_distance",@"mode":@"add",@"description":@"",@"vcname":@""}]];
 }
 -(NSDictionary *)getInitData{
-    return @{@"car_license_no":result[@"plate_no"],@"car_id":result[@"engine_no"],@"vin":result[@"vin"]};
+    return @{@"average_mileage":_result[@"average_mileage"],@"max_distance":_result[@"max_distance"],@"max_time":_result[@"max_time"],@"current_distance":_result[@"current_distance"]};
 }
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-- (IBAction)get_illegally:(id)sender {
-    IllegallyListViewController *vc =[[IllegallyListViewController alloc] initWithNibName:@"IllegallyListViewController" bundle:nil];
-    [self.navigationController pushViewController:vc animated:YES];
-}
+
 
 - (void)viewDidUnload {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -123,14 +124,14 @@
         NSArray *cells =[[NSBundle mainBundle] loadNibNamed:@"DisplayTextCell" owner:self.tableView options:nil];
         cell =[cells objectAtIndex:0];
         
-
+        
     }
     id item =[[_items objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
-    NSString *value =[result objectForKey:item[@"key"]];
+    NSString *value =[_result objectForKey:item[@"key"]];
     NSLog(@"key=%@",item[@"key"]);
     cell.keyLabel.text = item[@"name"];
     cell.valueLabel.text = [NSString stringWithFormat:@"%@",value];
-
+    
     
     if (![item[@"vcname"] isEqualToString:@""]){
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -154,27 +155,19 @@
             vc.keyname = @"init_date";
             [self.navigationController pushViewController:vc animated:YES];
         }else{
-            IllegallyListViewController *vc =[[IllegallyListViewController alloc] initWithNibName:@"IllegallyListViewController" bundle:nil];
-            [self.navigationController pushViewController:vc animated:YES];
+            
         }
     }
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 40;
 }
-
 -(void)setup{
-    _helper.url =[[_helper appSetttings] url_get_car_registration];
+    _helper.url =[_helper appSetttings].url_for_get_maintain_record;
 }
 -(void)processData:(id)json{
-    NSLog(@"%@",json);
-    id list = json[@"result"];
-    if ([list isKindOfClass:[NSArray class]] && [list count]>0){
-        result =[list objectAtIndex:0];
-        //NSLog(@"%@ is %@",result,[result class]);
-    }else{
-        result=list;
-    }
+    _result=[json objectForKey:@"result"];
     [self.tableView reloadData];
+    
 }
 @end

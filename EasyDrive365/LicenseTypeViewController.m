@@ -51,8 +51,12 @@
         }
     
     }
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"driver_type" object:self userInfo:@{@"result":result}];
+
     
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"car_type" object:self userInfo:@{@"result":result}];
+    if (self.delegate){
+        [self.delegate setValueByKey:[result substringFromIndex:1] key:@"car_type"];
+    }
     [self.navigationController popViewControllerAnimated:YES];
   
 }

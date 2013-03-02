@@ -1,8 +1,8 @@
 //
-//  CarRegistrationViewController.h
+//  MaintanViewController.h
 //  EasyDrive365
 //
-//  Created by Fu Steven on 2/10/13.
+//  Created by Fu Steven on 3/2/13.
 //  Copyright (c) 2013 Fu Steven. All rights reserved.
 //
 
@@ -10,7 +10,7 @@
 #import "NetViewController.h"
 #import "EditInTableViewController.h"
 
-@interface CarRegistrationViewController : NetViewController<UITableViewDataSource,UITableViewDelegate,EditDataDelegate>
+@interface MaintanViewController :  NetViewController<UITableViewDataSource,UITableViewDelegate,EditDataDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end

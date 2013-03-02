@@ -31,6 +31,10 @@
 #import "BrowserViewController.h"
 #import "BusinessInsViewController.h"
 
+
+//new
+#import "MaintanViewController.h"
+
 @interface ViewController ()
 
 @end
@@ -124,7 +128,7 @@
    // cell.image.image =[UIImage imageNamed:item.imagePath];
     cell.phone = item.phone;
     cell.keyname = item.title;
-    [cell getLatest];
+    //[cell getLatest];
    return cell;
 }
 -(float)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -153,7 +157,8 @@
     }
     
     if ([item.name isEqualToString:@"004"]){
-        MaintainSuggestionViewController *vc =[[MaintainSuggestionViewController alloc] initWithNibName:@"MaintainSuggestionViewController" bundle:nil];
+        //MaintainSuggestionViewController *vc =[[MaintainSuggestionViewController alloc] initWithNibName:@"MaintainSuggestionViewController" bundle:nil];
+        MaintanViewController *vc = [[MaintanViewController alloc] initWithNibName:@"MaintanViewController" bundle:nil];
         vc.title = item.title;
         [self.navigationController pushViewController:vc animated:YES];
     }
