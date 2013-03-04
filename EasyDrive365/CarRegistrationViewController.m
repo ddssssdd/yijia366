@@ -173,7 +173,7 @@
         result =[list objectAtIndex:0];
         //NSLog(@"%@ is %@",result,[result class]);
     }else{
-        result=list;
+        result=list[@"data"];
     }
     [self.tableView reloadData];
 }

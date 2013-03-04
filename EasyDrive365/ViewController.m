@@ -125,10 +125,10 @@
     MenuItem *item = [[Menu sharedMenu].list objectAtIndex:indexPath.row];
     cell.titleLabel.text = item.title;
     cell.descriptionLabel.text = item.description;
-   // cell.image.image =[UIImage imageNamed:item.imagePath];
+    //cell.imageView.image =[UIImage imageNamed:item.imagePath];
     cell.phone = item.phone;
-    cell.keyname = item.title;
-    //[cell getLatest];
+    cell.keyname = item.name;
+    [cell getLatest];
    return cell;
 }
 -(float)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -140,71 +140,71 @@
 {
     MenuItem *item = [[Menu sharedMenu].list objectAtIndex:indexPath.row];
     NSLog(@"Select %@",item.title);
-    if ([item.name isEqualToString:@"001"]){
+    if ([item.name isEqualToString:@"01"]){
         InformationViewController *vc = [[InformationViewController alloc] initWithNibName:@"InformationViewController" bundle:nil];
         vc.title = item.title;
         [self.navigationController pushViewController:vc animated:YES];
     }
-    if ([item.name isEqualToString:@"002"]){
+    if ([item.name isEqualToString:@"02"]){
         HelpCallViewController *vc = [[HelpCallViewController alloc] initWithNibName:@"HelpCallViewController" bundle:nil];
         vc.title = item.title;
         [self.navigationController pushViewController:vc animated:YES];
     }
-    if ([item.name isEqualToString:@"003"]){
+    if ([item.name isEqualToString:@"03"]){
         AccidentRescueViewController *vc = [[AccidentRescueViewController alloc] initWithNibName:@"AccidentRescueViewController" bundle:nil];
         vc.title = item.title;
         [self.navigationController pushViewController:vc animated:YES];
     }
     
-    if ([item.name isEqualToString:@"004"]){
+    if ([item.name isEqualToString:@"04"]){
         //MaintainSuggestionViewController *vc =[[MaintainSuggestionViewController alloc] initWithNibName:@"MaintainSuggestionViewController" bundle:nil];
         MaintanViewController *vc = [[MaintanViewController alloc] initWithNibName:@"MaintanViewController" bundle:nil];
         vc.title = item.title;
         [self.navigationController pushViewController:vc animated:YES];
     }
-    if ([item.name isEqualToString:@"005"]){
+    if ([item.name isEqualToString:@"05"]){
         DriverLicenseViewController *vc =[[DriverLicenseViewController alloc] initWithNibName:@"DriverLicenseViewController" bundle:nil];
         vc.title = item.title;
         [self.navigationController pushViewController:vc animated:YES];
     }
-    if ([item.name isEqualToString:@"006"]){
+    if ([item.name isEqualToString:@"06"]){
         CarRegistrationViewController *vc =[[CarRegistrationViewController alloc] initWithNibName:@"CarRegistrationViewController" bundle:nil];
         vc.title = item.title;
         [self.navigationController pushViewController:vc animated:YES];
     }
-    if ([item.name isEqualToString:@"007"]){
+    if ([item.name isEqualToString:@"07"]){
         TaxForCarShipViewController *vc = [[TaxForCarShipViewController alloc] initWithNibName:@"TaxForCarShipViewController" bundle:nil];
         vc.title = item.title;
         [self.navigationController pushViewController:vc animated:YES];
 
     }
-    if ([item.name isEqualToString:@"008"]){
+    if ([item.name isEqualToString:@"08"]){
         CompulsoryInsuranceViewController *vc = [[CompulsoryInsuranceViewController alloc] initWithNibName:@"CompulsoryInsuranceViewController" bundle:nil];
         vc.title = item.title;
         [self.navigationController pushViewController:vc animated:YES];
         
     }
     
-    if ([item.name isEqualToString:@"009"]){
+    if ([item.name isEqualToString:@"09"]){
         BusinessInsViewController *vc = [[BusinessInsViewController alloc] initWithNibName:@"BusinessInsViewController" bundle:nil];
         vc.title = item.title;
         [self.navigationController pushViewController:vc animated:YES];
         
     }
-    if ([item.name isEqualToString:@"010"]){
+    if ([item.name isEqualToString:@"10"]){
         InsuranceRecordsViewController *vc = [[InsuranceRecordsViewController alloc] initWithNibName:@"InsuranceRecordsViewController" bundle:nil];
         vc.title = item.title;
         [self.navigationController pushViewController:vc animated:YES];
         
     }
 
-    if ([item.name isEqualToString:@"011"]){
+    if ([item.name isEqualToString:@"11"]){
         MaintainListViewController *vc = [[MaintainListViewController alloc] initWithNibName:@"MaintainListViewController" bundle:nil];
         vc.title = item.title;
         [self.navigationController pushViewController:vc animated:YES];
         
     }
-    if ([item.name isEqualToString:@"000"]){
+    if ([item.name isEqualToString:@"00"]){
         BrowserViewController *vc = [[BrowserViewController alloc] initWithNibName:@"BrowserViewController" bundle:nil];
         
         [self.navigationController pushViewController:vc animated:YES];

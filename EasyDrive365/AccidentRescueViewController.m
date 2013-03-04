@@ -45,7 +45,7 @@
     _helper.url = [AppSettings sharedSettings].url_for_rescue;
 }
 -(void)processData:(id)json{
-    id result =[json objectForKey:@"result"];
+    id result =[json objectForKey:@"result"][@"data"];
     _shop_name =[result objectForKey:@"shop_name"];
     _address =[result objectForKey:@"address"];
     _phone =[result objectForKey:@"phone"];

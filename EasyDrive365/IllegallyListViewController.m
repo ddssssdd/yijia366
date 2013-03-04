@@ -83,7 +83,7 @@
     }else{
         _list =[[NSMutableArray alloc] init];
     }
-    [_list addObjectsFromArray:[json objectForKey:@"result"]];
+    [_list addObjectsFromArray:[json objectForKey:@"result"][@"data"]];
     NSLog(@"%@",_list);
     [self.tableview reloadData];
 }

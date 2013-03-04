@@ -166,7 +166,7 @@
     _helper.url =[_helper appSetttings].url_for_get_maintain_record;
 }
 -(void)processData:(id)json{
-    _result=[json objectForKey:@"result"];
+    _result=[json objectForKey:@"result"][@"data"];
     [self.tableView reloadData];
     
 }

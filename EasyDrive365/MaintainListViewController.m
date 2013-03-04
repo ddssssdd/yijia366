@@ -49,7 +49,7 @@
             }else{
                 _list =[[NSMutableArray alloc] init];
             }
-            [_list addObjectsFromArray:[json objectForKey:@"result"]];
+            [_list addObjectsFromArray:[json objectForKey:@"result"][@"data"]];
             [self updateData];
             
         }else{

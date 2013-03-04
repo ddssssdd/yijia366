@@ -47,15 +47,16 @@
         [self processData:json];
         return;
     }
-    NSString *url = [[AppSettings sharedSettings] url_getlatest];
-    //NSLog(@"url=%@",url);
-    [[HttpClient sharedHttp] post:url parameters:@{@"keyname":self.keyname} block:^(id json) {
+    NSString *url = [[AppSettings sharedSettings] url_getlatest:self.keyname];
+    NSLog(@"url=%@",url);
+    [[HttpClient sharedHttp] get:url block:^(id json) {
         if ([[AppSettings sharedSettings] isSuccess:json]){
             
             [[AppSettings sharedSettings] saveJsonWith:keyname data:json];
             [self processData:json];
             
         }else{
+            NSLog(@"%@",json);
             //get nothing from server;
         }
     }];
@@ -63,10 +64,10 @@
 }
 -(void)processData:(id)json{
     NSLog(@"%@",json);
-    /*
+    
     self.descriptionLabel.text=json[@"result"][@"latest"];
     self.phone = json[@"result"][@"phone"];
-     */
+    
 }
 
 @end

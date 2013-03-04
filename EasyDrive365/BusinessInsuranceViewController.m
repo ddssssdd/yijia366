@@ -52,7 +52,7 @@
     _helper.url=[_helper appSetttings].url_get_suggestion_insurance;
 }
 -(void)processData:(id)json{
-    result = json[@"result"];
+    result = json[@"result"][@"data"];
     [self.tableview reloadData];
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{

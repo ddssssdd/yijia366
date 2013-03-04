@@ -86,7 +86,7 @@
 }
 -(void)update_display{
     NSString *type_name=[NSString stringWithFormat:@"type_%d",_currentType];
-    _dict =_json[@"result"][type_name];
+    _dict =_json[@"result"][@"data"][type_name];
     NSLog(@"%@",_dict);
     [self.tableView reloadData];
 }

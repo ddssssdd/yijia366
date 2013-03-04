@@ -10,7 +10,10 @@
 
 
 
-@interface NetViewController ()
+@interface NetViewController (){
+    NSString *_company;
+    NSString *_phhone;
+}
 
 @end
 

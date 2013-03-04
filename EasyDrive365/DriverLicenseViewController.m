@@ -110,7 +110,7 @@
     id item =[[_items objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
     NSString *value =[result objectForKey:item[@"key"]];
     cell.keyLabel.text = item[@"name"];
-    cell.valueLabel.text = value;
+    cell.valueLabel.text =[NSString stringWithFormat:@"%@",value];
     return cell;
     /*
     [cell setValueByKey:item[@"key"] value:value];
@@ -152,7 +152,7 @@
         
     }
      */
-    result =list;
+    result =list[@"data"];
     [self.tableView reloadData];
 }
 

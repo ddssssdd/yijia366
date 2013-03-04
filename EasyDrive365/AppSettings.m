@@ -130,13 +130,13 @@
 }
 
 -(NSString *)url_for_post_maintain_record{
-    return [NSString stringWithFormat:@"api/add_maintain_record?userid=%d",self.userid];
+    return [NSString stringWithFormat:@"api/add_maintain_record?user_id=%d",self.userid];
 }
 -(NSString *)url_for_get_maintain_record{
     return [NSString stringWithFormat:@"api/get_maintain_record?userid=%d",self.userid];
 }
--(NSString *)url_getlatest{
-    return [NSString stringWithFormat:@"api/get_latest?userid=%d",self.userid];
+-(NSString *)url_getlatest:(NSString *)keyname{
+    return [NSString stringWithFormat:@"api/get_latest?userid=%d&keyname=%@",self.userid,keyname];
 }
 
 -(NSString *)url_get_driver_license{

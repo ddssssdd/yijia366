@@ -64,10 +64,10 @@
     
     id result =[json objectForKey:@"result"];
     NSLog(@"%@",result);
-    _company = [result objectForKey:@"company_name"];
+    _company = [result objectForKey:@"company"];
     _phone =[result objectForKey:@"phone"];
     
-    id list = [[json objectForKey:@"result"] objectForKey:@"list"];
+    id list = [[json objectForKey:@"result"] objectForKey:@"data"];
     if (_list){
         [_list removeAllObjects];
     }else{

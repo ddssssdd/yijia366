@@ -71,12 +71,13 @@
     _helper.url = [AppSettings sharedSettings].url_for_get_news;
 }
 -(void)processData:(id)json{
+    NSLog(@"%@",json);
     if (_list){
         [_list removeAllObjects];
     }else{
         _list =[[NSMutableArray alloc] init];
     }
-    [_list addObjectsFromArray:[json objectForKey:@"result"]];
+    [_list addObjectsFromArray:[json objectForKey:@"result"][@"data"]];
     
     [self.tableView reloadData];
 }

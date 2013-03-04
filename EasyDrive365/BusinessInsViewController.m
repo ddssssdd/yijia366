@@ -64,14 +64,15 @@
 }
 -(void)processData:(id)json{
     NSLog(@"%@",json[@"result"]);
-    id result = json[@"result"];
+    id result = json[@"result"][@"data"];
     _curr=[self parseData:result key:@"curr"];
-    NSNumber *total = json[@"result"][@"renew"][@"total"];
+    NSNumber *total = result[@"renew"][@"total"];
     if ([total intValue]>0){
         _renew=[self parseData:result key:@"renew"];
     }else{
         _renew=nil;
     }
+    NSLog(@"%@",_list);
     [self.tableView reloadData];
     
     
@@ -171,22 +172,24 @@
 }
 
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+    id dict;
     if (section==0){
-        InsuranceFooterView *fv = [[[NSBundle mainBundle] loadNibNamed:@"InsuranceFooterView" owner:nil options:nil] objectAtIndex:0];
-        fv.backgroundColor = [self.tableView backgroundColor];
-        fv.summaryLabel.text=[NSString stringWithFormat:@"%@",_curr[@"total"]];
-        fv.companyLabel.text=@"平安保险";
-        fv.noLabel.text=@"ADS9232749878989SDFSDF";
-        fv.dateLabel.text=@"2012-10-21 至 2013-10-20 止";
-        return fv;
+        dict = _curr;
+    }else{
+        dict = _renew;
+        
         
     }
-    return nil;
+    InsuranceFooterView *fv = [[[NSBundle mainBundle] loadNibNamed:@"InsuranceFooterView" owner:nil options:nil] objectAtIndex:0];
+    fv.backgroundColor = [self.tableView backgroundColor];
+    fv.summaryLabel.text=[NSString stringWithFormat:@"%@",dict[@"total"]];
+    fv.companyLabel.text=[NSString stringWithFormat:@"%@",dict[@"company"]];//@"平安保险";
+    fv.noLabel.text=[NSString stringWithFormat:@"%@",dict[@"po"]];//@"ADS9232749878989SDFSDF";
+    fv.dateLabel.text=[NSString stringWithFormat:@"%@",dict[@"valid"]];//@"2012-10-21 至 2013-10-20 止";
+    return fv;
+
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-    if (section==0){
-        return 200;
-    }
-    return 0;
+    return 200;
 }
 @end
