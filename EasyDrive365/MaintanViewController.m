@@ -73,8 +73,9 @@
 -(void)saveData:(NSDictionary *)paramters
 {
     NSLog(@"%@",paramters);
-    
-    [[_helper httpClient] post:[_helper appSetttings].url_for_post_maintain_record parameters:paramters block:^(id json) {
+    NSString *url = [NSString stringWithFormat:@"api/add_maintain_record?user_id=%d&max_distance=%@&max_time=%@&prev_date=%@&prev_distance=%@&average_mileage=%@",[_helper appSetttings].userid,paramters[@"max_distance"],paramters[@"max_distance"],paramters[@"prev_date"],paramters[@"prev_distance"],paramters[@"average_mileage"]];
+    [[_helper httpClient] get:url block:^(id json) {
+        NSLog(@"%@",json);
         if ([[_helper appSetttings] isSuccess:json]){
             NSLog(@"return=%@",json);
         }
@@ -92,7 +93,7 @@
     @{@"name":@"前次保养里程",@"key":@"prev_distance",@"mode":@"add",@"description":@"",@"vcname":@""}]];
 }
 -(NSDictionary *)getInitData{
-    return @{@"average_mileage":_result[@"average_mileage"],@"max_distance":_result[@"max_distance"],@"max_time":_result[@"max_time"],@"current_distance":_result[@"current_distance"]};
+    return @{@"average_mileage":_result[@"average_mileage"],@"max_distance":_result[@"max_distance"],@"max_time":_result[@"max_time"],@"current_distance":_result[@"current_distance"],@"prev_date":_result[@"prev_date"],@"prev_distance":_result[@"prev_distance"]};
 }
 - (void)didReceiveMemoryWarning
 {

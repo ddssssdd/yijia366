@@ -70,9 +70,10 @@
 {
     NSLog(@"%@",paramters);
     
-    NSString *url =[NSString stringWithFormat:@"api/add_car_registration?user_id=%d",[_helper appSetttings].userid];
-   
-    [[_helper httpClient] post:url parameters:paramters block:^(id json) {
+    NSString *url =[NSString stringWithFormat:@"api/add_car_registration?user_id=%d&car_id=%@&vin=%@&init_date=%@engine_no=%@",[_helper appSetttings].userid,paramters[@"car_license_no"],paramters[@"vin"],paramters[@"init_date"],paramters[@"car_id"]];
+    NSLog(@"%@",url);
+    [[_helper httpClient] get:url  block:^(id json) {
+        NSLog(@"%@",json);
         if ([[_helper appSetttings] isSuccess:json]){
             [self processData:json];
         }
@@ -85,10 +86,11 @@
     return @[@[ @{@"name":@"车牌号",@"key":@"car_license_no",@"mode":@"add",@"description":@"",@"vcname":@""},
     @{@"name":@"发动机号",@"key":@"car_id",@"mode":@"add",@"description":@"",@"vcname":@""},
     @{@"name":@"VIN",@"key":@"vin",@"mode":@"add",@"description":@"",@"vcname":@""},
+    @{@"name":@"初登日期",@"key":@"init_date",@"mode":@"add",@"description":@"",@"vcname":@"DatePickerViewController"},
    ]];
 }
 -(NSDictionary *)getInitData{
-    return @{@"car_license_no":result[@"plate_no"],@"car_id":result[@"engine_no"],@"vin":result[@"vin"]};
+    return @{@"car_license_no":result[@"plate_no"],@"car_id":result[@"engine_no"],@"vin":result[@"vin"],@"init_date":result[@"registration_date"]};
 }
 - (void)didReceiveMemoryWarning
 {

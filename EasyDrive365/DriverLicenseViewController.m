@@ -9,7 +9,7 @@
 #import "DriverLicenseViewController.h"
 
 #import "DisplayTextCell.h"
-#import "AddDriverLicenseViewController.h"
+
 
 @interface DriverLicenseViewController (){
     NSArray *_sections;
@@ -40,19 +40,28 @@
     return @[@"基本信息"];
 }
 -(NSArray *)getItems{
-    return @[@[ @{@"name":@"证件号码",@"key":@"number",@"mode":@"add",@"description":@"",@"vcname":@""},
+    return @[@[ @{@"name":@"证件号码",@"key":@"license_id",@"mode":@"add",@"description":@"",@"vcname":@""},
     @{@"name":@"姓名",@"key":@"name",@"mode":@"add",@"description":@"",@"vcname":@""},
-    @{@"name":@"准驾车型",@"key":@"car_type",@"mode":@"add",@"description":@"",@"vcname":@"LicenseTypeViewController"},
+    @{@"name":@"准驾车型",@"key":@"type",@"mode":@"add",@"description":@"",@"vcname":@"LicenseTypeViewController"},
     @{@"name":@"初领日期",@"key":@"init_date",@"mode":@"add",@"description":@"",@"vcname":@"DatePickerViewController"}]];
 }
 -(NSDictionary *)getInitData{
-    return @{@"number":@"370299",@"name":@"test",@"init_date":@"1999-01-01",@"car_type":@"A"};
+    return @{@"license_id":result[@"number"],@"name":result[@"name"],@"init_date":result[@"init_date"],@"type":result[@"car_type"]};
 }
 -(void)saveData:(NSDictionary *)paramters{
     NSLog(@"%@",paramters);
+    NSString *url =[NSString stringWithFormat:@"api/add_driver_license?user_id=%d&name=%@&license_id=%@&type=%@&init_date=%@",[AppSettings sharedSettings].userid,paramters[@"name"],paramters[@"license_id"],paramters[@"type"],paramters[@"init_date"]];
+    NSLog(@"%@",url);
+    [[HttpClient sharedHttp] get:url  block:^(id json) {
+        NSLog(@"%@",json);
+        if ([[AppSettings sharedSettings] isSuccess:json]){
+            //nothing;
+        }
+    }];
+
 }
 -(void)edit_license:(id)sender{
-    AddDriverLicenseViewController *vc = [[AddDriverLicenseViewController alloc] initWithDelegate:self];
+    EditInTableViewController *vc = [[EditInTableViewController alloc] initWithDelegate:self];
     [self.navigationController pushViewController:vc animated:YES];
     
 }

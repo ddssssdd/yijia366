@@ -10,6 +10,7 @@
 #import "EditTextCell.h"
 #import "DatePickerViewController.h"
 #import "LicenseTypeViewController.h"
+#import "AppSettings.h"
 
 @interface EditInTableViewController (){
     id _sections;
@@ -71,6 +72,7 @@
         }
         
     }
+    [_result setObject:[NSString stringWithFormat:@"%d", [AppSettings sharedSettings].userid] forKey:@"user_id"];
     [self.delegate saveData:_result];
     
     

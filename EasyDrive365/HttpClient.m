@@ -81,10 +81,10 @@
 }
 -(void)get:(NSString *)path block:(void (^)(id json))processJson
 {
-    [self request:path method:@"GET" parameter:nil block:processJson];
+    [self request:[path stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] method:@"GET" parameter:nil block:processJson];
 }
 -(void)post:(NSString *)path parameters:(NSDictionary *)parameters block:(void (^)(id json))processJson
 {
-    [self request:path method:@"POST" parameter:parameters block:processJson];
+    [self request:[path stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] method:@"POST" parameter:parameters block:processJson];
 }
 @end
