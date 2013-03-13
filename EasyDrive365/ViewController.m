@@ -35,6 +35,11 @@
 //new
 #import "MaintanViewController.h"
 
+
+//test
+#import "LoginTableViewController.h"
+#import "SignUpTableViewController.h"
+
 @interface ViewController ()
 
 @end
@@ -44,6 +49,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    
+    
     self.tableview.delegate = self;
     self.tableview.dataSource = self;
     
@@ -52,20 +60,25 @@
     [[HttpClient sharedHttp] online];
     
     
+    
 }
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
     [self initView];
+    
 }
 -(void)initView
 {
+    
    
-    self.toolBarLogin.hidden = [AppSettings sharedSettings].isLogin;
+    //[self.navigationController setToolbarHidden:[AppSettings sharedSettings].isLogin];
+    //self.toolBarLogin.hidden = [AppSettings sharedSettings].isLogin;
+    [self.navigationController setNavigationBarHidden:![AppSettings sharedSettings].isLogin];
+    
     self.tableview.hidden = ![AppSettings sharedSettings].isLogin;
     [AppSettings sharedSettings].userid = 65;
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refresh:)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"注销" style:UIBarButtonSystemItemAction target:self action:@selector(refresh:)];
     
     //[self.tableview reloadData];
     
@@ -76,12 +89,11 @@
 }
 -(void)refresh:(id)sender
 {
-   /*
-    NSString *path =[NSString stringWithFormat:@"admin/get_content?tablename=%@",@"Person_Test"];
-    
-    [[HttpClient sharedHttp] get:path];
-    */
-    [self logout];
+    //LoginTableViewController *vc = [[LoginTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
+    //SignUpTableViewController *vc =[[SignUpTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
+    //[self.navigationController pushViewController:vc animated:YES];
+
+   [self logout];
 }
 - (void)didReceiveMemoryWarning
 {
@@ -90,10 +102,11 @@
 }
 
 - (void)viewDidUnload {
-    [self setToolBarLogin:nil];
+    //[self setToolBarLogin:nil];
 
    
     [self setTableview:nil];
+    [self setImage:nil];
     [super viewDidUnload];
 }
 - (IBAction)logout {
@@ -118,17 +131,28 @@
        // cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"NavigationCell"  owner:self options:nil];
         cell =[nib objectAtIndex:0];
+        //[cell getLatest];
+        MenuItem *item = [[Menu sharedMenu].list objectAtIndex:indexPath.row];
+        cell.titleLabel.text = item.title;
+        cell.descriptionLabel.text = item.description;
+        //cell.imageView.image =[UIImage imageNamed:item.imagePath];
+        cell.phone = item.phone;
+        cell.keyname = item.name;
+        cell.dataLabel.text=@"";
+        [cell getLatest];
     }
     
     
-   
+   /*
     MenuItem *item = [[Menu sharedMenu].list objectAtIndex:indexPath.row];
     cell.titleLabel.text = item.title;
     cell.descriptionLabel.text = item.description;
     //cell.imageView.image =[UIImage imageNamed:item.imagePath];
     cell.phone = item.phone;
     cell.keyname = item.name;
+    cell.dataLabel.text=@"";
     [cell getLatest];
+    */
    return cell;
 }
 -(float)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -211,5 +235,16 @@
         [vc go:@"http://www.baidu.com/"];
     }
 
+}
+- (IBAction)loginAction:(id)sender {
+    LoginTableViewController *vc = [[LoginTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
+    //SignUpTableViewController *vc =[[SignUpTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
+    [self.navigationController pushViewController:vc animated:YES];
+    
+}
+- (IBAction)signupAction:(id)sender {
+    //LoginTableViewController *vc = [[LoginTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
+    SignUpTableViewController *vc =[[SignUpTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 @end

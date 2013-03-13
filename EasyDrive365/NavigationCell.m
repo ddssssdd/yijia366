@@ -41,6 +41,12 @@
 }
 
 -(void)getLatest{
+    if (![AppSettings sharedSettings].isLogin)
+        return;
+    if (!self.keyname){
+        return;
+    }
+    
     NSString *keyname=[NSString stringWithFormat:@"%@_%@",NSStringFromClass([self class]),self.keyname];
     if (![HttpClient sharedHttp].isInternet){
         id json=[[AppSettings sharedSettings] loadJsonBy:keyname];
@@ -51,7 +57,9 @@
     NSLog(@"url=%@",url);
     [[HttpClient sharedHttp] get:url block:^(id json) {
         if ([[AppSettings sharedSettings] isSuccess:json]){
-            
+            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+            [formatter setDateFormat:@"MM-dd"];
+            json[@"result"][@"updated_time"]=[formatter stringFromDate:[NSDate date]];
             [[AppSettings sharedSettings] saveJsonWith:keyname data:json];
             [self processData:json];
             
@@ -68,6 +76,14 @@
     self.descriptionLabel.text=json[@"result"][@"latest"];
     self.phone = json[@"result"][@"phone"];
     
+
+    self.dataLabel.text =  [NSString stringWithFormat:@"最后更新:%@", json[@"result"][@"updated_time"]  ];
+}
+-(void)setKeyname:(NSString *)keyname{
+    _keyname = keyname;
+    NSString *key=[NSString stringWithFormat:@"%@_%@",NSStringFromClass([self class]),keyname];
+    id json=[[AppSettings sharedSettings] loadJsonBy:key];
+    [self processData:json];
 }
 
 @end

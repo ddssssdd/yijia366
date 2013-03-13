@@ -141,7 +141,7 @@
         cell.nameLabel.text = @"";
         cell.item1Label.text= @"保额";
         cell.item2Label.text =@"保费";
-        cell.item3Label.text = @"不计免赔保费";
+        cell.item3Label.text = @"不计免赔";
         
     }else{
         id item=[[_list objectAtIndex:indexPath.section] objectAtIndex:indexPath.row-1];
@@ -190,6 +190,6 @@
 
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-    return 200;
+    return 140;
 }
 @end

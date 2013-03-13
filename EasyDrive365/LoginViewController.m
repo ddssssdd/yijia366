@@ -56,7 +56,8 @@
                 [AppSettings sharedSettings].isLogin = TRUE;
                 [AppSettings sharedSettings].firstName = self.txtUsername.text;
                 [AppSettings sharedSettings].lastName = self.txtPassword.text;
-                NSNumber *userid=[[json objectForKey:@"result"][0] objectForKey:@"id"];
+                //NSNumber *userid=[[json objectForKey:@"result"][0] objectForKey:@"id"];
+                NSNumber *userid=[[json objectForKey:@"result"] objectForKey:@"id"];
                 [AppSettings sharedSettings].userid =  [userid intValue];
                 [[AppSettings sharedSettings] save];
                 [self.navigationController popToRootViewControllerAnimated:YES];

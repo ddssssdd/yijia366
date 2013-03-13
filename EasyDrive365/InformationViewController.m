@@ -9,6 +9,8 @@
 #import "InformationViewController.h"
 
 #import "AppSettings.h"
+#import "InformationCell.h"
+#import "BrowserViewController.h"
 
 
 @interface InformationViewController (){
@@ -55,18 +57,30 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *cellIdentitifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentitifier];
+    InformationCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentitifier];
     if (cell == nil){
-        cell= [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentitifier];
-        
+        //cell= [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentitifier];
+        cell =[[[NSBundle mainBundle] loadNibNamed:@"InformationCell" owner:nil options:nil] objectAtIndex:0];
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     id item = [_list objectAtIndex:indexPath.row];
     
-    cell.textLabel.text=[item objectForKey:@"title"];
-    cell.detailTextLabel.text=[item objectForKey:@"description"];
+    cell.titleLabel.text=[NSString stringWithFormat:@"%@",[item objectForKey:@"fmt_createDate"]];
+    cell.detailLabel.text=[NSString stringWithFormat:@"%@",[item objectForKey:@"description"]];
     return cell;
 }
-
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 80.0f;
+}
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    id item = [_list objectAtIndex:indexPath.row];
+    NSString *action = item[@"action"];
+    [[[UIAlertView alloc] initWithTitle:@"action" message:action delegate:self cancelButtonTitle:nil otherButtonTitles:@"go" , nil] show ];
+    
+    BrowserViewController *vc = [[BrowserViewController alloc] initWithNibName:@"BrowserViewController" bundle:nil];
+    [self.navigationController pushViewController:vc animated:YES];
+    [vc go:@"http://www.baidu.com"];
+}
 -(void)setup{
     _helper.url = [AppSettings sharedSettings].url_for_get_news;
 }
@@ -78,7 +92,8 @@
         _list =[[NSMutableArray alloc] init];
     }
     [_list addObjectsFromArray:[json objectForKey:@"result"][@"data"]];
-    
+    _phone =json[@"result"][@"phone"];
+    _company =json[@"result"][@"company"];
     [self.tableView reloadData];
 }
 @end

@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface TaxForCarShipViewController : UITableViewController
+#import "NetTableViewController.h"
+@interface TaxForCarShipViewController : NetTableViewController
 
 @end

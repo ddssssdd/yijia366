@@ -30,26 +30,17 @@
     return self;
 }
 -(void)initData{
-    _sections=@[@"基本信息",@"保养建议"];
-    _items=@[@[ @{@"name":@"每日平均行程",@"key":@"average_mileage",@"mode":@"add",@"description":@"",@"vcname":@""},
-    @{@"name":@"最大保养里程",@"key":@"max_distance",@"mode":@"add",@"description":@"",@"vcname":@""},
-    @{@"name":@"最大保养间隔",@"key":@"max_time",@"mode":@"add",@"description":@"",@"vcname":@""},
-    @{@"name":@"当前里程",@"key":@"current_distance",@"mode":@"add",@"description":@"",@"vcname":@""},
-    @{@"name":@"前次保养时间",@"key":@"prev_date",@"mode":@"add",@"description":@"",@"vcname":@"DatePickerViewController"},
-    @{@"name":@"前次保养里程",@"key":@"prev_distance",@"mode":@"add",@"description":@"",@"vcname":@""}],
-    @[ @{@"name":@"本次保养时间",@"key":@"current_date",@"mode":@"",@"description":@"",@"vcname":@""},
-    @{@"name":@"本次保养里程",@"key":@"current_miles",@"mode":@"",@"description":@"",@"vcname":@""}]
+    _sections=@[@"保养建议",@"基本信息"];
+    _items=@[
+    @[ @{@"name":@"本次保养时间",@"key":@"current_date",@"mode":@"",@"description":@"",@"vcname":@"",@"unit":@""},
+    @{@"name":@"本次保养里程",@"key":@"current_miles",@"mode":@"",@"description":@"",@"vcname":@"",@"unit":@""}],
+    @[ @{@"name":@"每日平均行程",@"key":@"average_mileage",@"mode":@"add",@"description":@"",@"vcname":@"",@"unit":@"公里/天"},
+    @{@"name":@"最大保养里程",@"key":@"max_distance",@"mode":@"add",@"description":@"",@"vcname":@"",@"unit":@"公里"},
+    @{@"name":@"最大保养间隔",@"key":@"max_time",@"mode":@"add",@"description":@"",@"vcname":@"",@"unit":@"月"},
+    @{@"name":@"前次保养时间",@"key":@"prev_date",@"mode":@"add",@"description":@"",@"vcname":@"",@"unit":@""},
+    @{@"name":@"前次保养里程",@"key":@"prev_distance",@"mode":@"add",@"description":@"",@"vcname":@"",@"unit":@"公里"}]
     ];
-    /*
-    self.txtMax_ditance.text = [NSString stringWithFormat:@"%@", [result objectForKey:@"max_distance"]];
-    self.txtMax_time.text = [NSString stringWithFormat:@"%@", [result objectForKey:@"max_time"]];
-    self.txtCurrent_distance.text = [NSString stringWithFormat:@"%@", [result objectForKey:@"current_distance"]];
-    self.txtPre_time.text = [NSString stringWithFormat:@"%@", [result objectForKey:@"prev_date"]];
-    self.txtPre_distance.text = [NSString stringWithFormat:@"%@", [result objectForKey:@"prev_distance"]];
-    self.txtCurrent_time.text = [NSString stringWithFormat:@"%@", [result objectForKey:@"current_date"]];
-    self.txtCurrent_miles.text = [NSString stringWithFormat:@"%@", [result objectForKey:@"current_miles"]];
-    self.txtAva_miles.text =[NSString stringWithFormat:@"%@", [result objectForKey:@"average_mileage"]];
-     */
+   
 }
 
 - (void)viewDidLoad
@@ -57,7 +48,7 @@
     [super viewDidLoad];
     [self initData];
     self.tableView.delegate = self;
-    self.tableView.dataSource = self; self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(edit:)];
+    self.tableView.dataSource = self; self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"设置" style:UIBarButtonItemStylePlain target:self action:@selector(edit:)];
     
     
     
@@ -66,14 +57,20 @@
 
 
 -(void)edit:(id)sender{
-    EditInTableViewController *vc = [[EditInTableViewController alloc] initWithDelegate:self];
+    EditTableViewController *vc = [[EditTableViewController alloc] initWithDelegate:self];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
 -(void)saveData:(NSDictionary *)paramters
 {
     NSLog(@"%@",paramters);
-    NSString *url = [NSString stringWithFormat:@"api/add_maintain_record?user_id=%d&max_distance=%@&max_time=%@&prev_date=%@&prev_distance=%@&average_mileage=%@",[_helper appSetttings].userid,paramters[@"max_distance"],paramters[@"max_distance"],paramters[@"prev_date"],paramters[@"prev_distance"],paramters[@"average_mileage"]];
+    NSString *url = [NSString stringWithFormat:@"api/add_maintain_record?user_id=%d&max_distance=%@&max_time=%@&prev_date=%@&prev_distance=%@&average_mileage=%@",
+                     [_helper appSetttings].userid,
+                     paramters[@"max_distance"],
+                     paramters[@"max_time"],
+                     paramters[@"prev_date"],
+                     paramters[@"prev_distance"],
+                     paramters[@"average_mileage"]];
     [[_helper httpClient] get:url block:^(id json) {
         NSLog(@"%@",json);
         if ([[_helper appSetttings] isSuccess:json]){
@@ -88,12 +85,11 @@
     return @[@[ @{@"name":@"每日平均行程",@"key":@"average_mileage",@"mode":@"add",@"description":@"",@"vcname":@""},
     @{@"name":@"最大保养里程",@"key":@"max_distance",@"mode":@"add",@"description":@"",@"vcname":@""},
     @{@"name":@"最大保养间隔",@"key":@"max_time",@"mode":@"add",@"description":@"",@"vcname":@""},
-    @{@"name":@"当前里程",@"key":@"current_distance",@"mode":@"add",@"description":@"",@"vcname":@""},
     @{@"name":@"前次保养时间",@"key":@"prev_date",@"mode":@"add",@"description":@"",@"vcname":@"DatePickerViewController"},
     @{@"name":@"前次保养里程",@"key":@"prev_distance",@"mode":@"add",@"description":@"",@"vcname":@""}]];
 }
 -(NSDictionary *)getInitData{
-    return @{@"average_mileage":_result[@"average_mileage"],@"max_distance":_result[@"max_distance"],@"max_time":_result[@"max_time"],@"current_distance":_result[@"current_distance"],@"prev_date":_result[@"prev_date"],@"prev_distance":_result[@"prev_distance"]};
+    return @{@"average_mileage":_result[@"average_mileage"],@"max_distance":_result[@"max_distance"],@"max_time":_result[@"max_time"],@"prev_date":_result[@"prev_date"],@"prev_distance":_result[@"prev_distance"]};
 }
 - (void)didReceiveMemoryWarning
 {
@@ -131,7 +127,7 @@
     NSString *value =[_result objectForKey:item[@"key"]];
     NSLog(@"key=%@",item[@"key"]);
     cell.keyLabel.text = item[@"name"];
-    cell.valueLabel.text = [NSString stringWithFormat:@"%@",value];
+    cell.valueLabel.text = [NSString stringWithFormat:@"%@%@",value,item[@"unit"]];
     
     
     if (![item[@"vcname"] isEqualToString:@""]){

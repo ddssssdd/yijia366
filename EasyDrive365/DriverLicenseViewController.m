@@ -31,7 +31,7 @@
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.tableView.contentInset=UIEdgeInsetsMake(0, 0, 216, 0);
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(edit_license:)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"设置" style:UIBarButtonItemStylePlain target:self action:@selector(edit_license:)];
     _isEditing = NO;
     
     
@@ -42,15 +42,15 @@
 -(NSArray *)getItems{
     return @[@[ @{@"name":@"证件号码",@"key":@"license_id",@"mode":@"add",@"description":@"",@"vcname":@""},
     @{@"name":@"姓名",@"key":@"name",@"mode":@"add",@"description":@"",@"vcname":@""},
-    @{@"name":@"准驾车型",@"key":@"type",@"mode":@"add",@"description":@"",@"vcname":@"LicenseTypeViewController"},
+    @{@"name":@"准驾车型",@"key":@"car_type",@"mode":@"add",@"description":@"",@"vcname":@"LicenseTypeViewController"},
     @{@"name":@"初领日期",@"key":@"init_date",@"mode":@"add",@"description":@"",@"vcname":@"DatePickerViewController"}]];
 }
 -(NSDictionary *)getInitData{
-    return @{@"license_id":result[@"number"],@"name":result[@"name"],@"init_date":result[@"init_date"],@"type":result[@"car_type"]};
+    return @{@"license_id":result[@"number"],@"name":result[@"name"],@"init_date":result[@"init_date"],@"car_type":result[@"car_type"]};
 }
 -(void)saveData:(NSDictionary *)paramters{
     NSLog(@"%@",paramters);
-    NSString *url =[NSString stringWithFormat:@"api/add_driver_license?user_id=%d&name=%@&license_id=%@&type=%@&init_date=%@",[AppSettings sharedSettings].userid,paramters[@"name"],paramters[@"license_id"],paramters[@"type"],paramters[@"init_date"]];
+    NSString *url =[NSString stringWithFormat:@"api/add_driver_license?user_id=%d&name=%@&license_id=%@&type=%@&init_date=%@",[AppSettings sharedSettings].userid,paramters[@"name"],paramters[@"license_id"],paramters[@"car_type"],paramters[@"init_date"]];
     NSLog(@"%@",url);
     [[HttpClient sharedHttp] get:url  block:^(id json) {
         NSLog(@"%@",json);
@@ -61,7 +61,7 @@
 
 }
 -(void)edit_license:(id)sender{
-    EditInTableViewController *vc = [[EditInTableViewController alloc] initWithDelegate:self];
+    EditTableViewController *vc = [[EditTableViewController alloc] initWithDelegate:self];
     [self.navigationController pushViewController:vc animated:YES];
     
 }
@@ -81,19 +81,23 @@
 }
 
 -(void)initData{
-    _sections=@[@"基本信息",@"计分情况",@"提醒"];
+    _sections=@[@"提醒",@"计分情况",@"基本信息"];
     
-    _items=@[@[ @{@"name":@"证件号码",@"key":@"number",@"mode":@"add",@"description":@"",@"vcname":@""},
-    @{@"name":@"姓名",@"key":@"name",@"mode":@"add",@"description":@"",@"vcname":@""},
-    @{@"name":@"准驾车型",@"key":@"car_type",@"mode":@"add",@"description":@"",@"vcname":@"LicenseTypeViewController"},
-    @{@"name":@"初领日期",@"key":@"init_date",@"mode":@"add",@"description":@"",@"vcname":@"DatePickerViewController"}],
-    @[ 
+    _items=@[
+    
+    
+    @[@{@"name":@"积分到期日",@"key":@"mark_end_date",@"mode":@"",@"description":@"",@"vcname":@""},
+    @{@"name":@"年审日期",@"key":@"check_date",@"mode":@"",@"description":@"",@"vcname":@""},
+    @{@"name":@"换证日期",@"key":@"renew_date",@"mode":@"",@"description":@"",@"vcname":@""}],
+    @[
     @{@"name":@"开始日期",@"key":@"start_date",@"mode":@"",@"description":@"",@"vcname":@""},
     @{@"name":@"结束日期",@"key":@"end_date",@"mode":@"",@"description":@"",@"vcname":@""},
     @{@"name":@"计分情况",@"key":@"mark",@"mode":@"",@"description":@"",@"vcname":@""}],
-    @[@{@"name":@"积分到期日",@"key":@"mark_end_date",@"mode":@"",@"description":@"",@"vcname":@""},
-    @{@"name":@"年审日期",@"key":@"check_date",@"mode":@"",@"description":@"",@"vcname":@""},
-    @{@"name":@"换证日期",@"key":@"renew_date",@"mode":@"",@"description":@"",@"vcname":@""}]];
+    @[ @{@"name":@"证件号码",@"key":@"number",@"mode":@"add",@"description":@"",@"vcname":@""},
+    @{@"name":@"姓名",@"key":@"name",@"mode":@"add",@"description":@"",@"vcname":@""},
+    @{@"name":@"准驾车型",@"key":@"car_type",@"mode":@"add",@"description":@"",@"vcname":@"LicenseTypeViewController"},
+    @{@"name":@"初领日期",@"key":@"init_date",@"mode":@"add",@"description":@"",@"vcname":@"DatePickerViewController"}]
+    ];
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return [_sections count];

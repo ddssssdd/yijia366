@@ -7,6 +7,7 @@
 //
 
 #import "AppSettings.h"
+#import "HttpClient.h"
 
 @implementation AppSettings
 @synthesize firstName=_firstName;
@@ -99,8 +100,25 @@
   
     _deviceToken=[[deviceToken stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]] stringByReplacingOccurrencesOfString:@" " withString:@""];
     NSLog(@"deviceToken=%@",_deviceToken);
+    [self register_device_token];
 }
-
+-(void)register_device_token
+{
+    if (self.userid && self.userid>0 && _deviceToken){
+        HttpClient *http = [HttpClient sharedHttp];
+        NSString *url = [NSString stringWithFormat:@"pushapi/add_device?userid=%d&device_token=%@&udid=%@",self.userid,_deviceToken,[self udid]];
+        [http get:url block:^(id json) {
+            NSLog(@"%@",json);
+        }];
+    }
+}
+-(void)login:(NSString *)username userid:(int)userid{
+    self.userid = userid;
+    self.firstName = username;
+    self.isLogin = YES;
+    [self save];
+    [self register_device_token];
+}
 //http process
 -(BOOL)isSuccess:(id)json
 {

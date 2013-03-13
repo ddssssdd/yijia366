@@ -14,7 +14,7 @@
 {
     NSString *_shop_name;
     NSString *_address;
-    NSString *_phone;
+    NSString *_shop_phone;
     NSString *_description;
 }
 @end
@@ -33,7 +33,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.navigationItem.rightBarButtonItem =[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(makeCall)];
+    //self.navigationItem.rightBarButtonItem =[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(makeCall)];
     
 }
 -(void)makeCall
@@ -45,10 +45,13 @@
     _helper.url = [AppSettings sharedSettings].url_for_rescue;
 }
 -(void)processData:(id)json{
+    _company = [json[@"result"] objectForKey:@"company"];
+    _phone =[json[@"result"] objectForKey:@"phone"];
+    
     id result =[json objectForKey:@"result"][@"data"];
     _shop_name =[result objectForKey:@"shop_name"];
     _address =[result objectForKey:@"address"];
-    _phone =[result objectForKey:@"phone"];
+    _shop_phone =[result objectForKey:@"phone"];
     _description =[result objectForKey:@"description"];
     
     

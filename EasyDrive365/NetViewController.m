@@ -11,8 +11,7 @@
 
 
 @interface NetViewController (){
-    NSString *_company;
-    NSString *_phhone;
+   
 }
 
 @end
@@ -22,7 +21,17 @@
 -(void)viewDidLoad{
     [super viewDidLoad];
     _helper =[[HttpHelper alloc] initWithTarget:self];
+    [_helper restoreData];
     [_helper loadData];
+    /*
+    UIButton *back = [UIButton buttonWithType:UIButtonTypeCustom];
+    [back setTitle:@"客服" forState:UIControlStateNormal];
+    [back setFrame:CGRectMake(0, 0, 100, 32)];
+    [back setBackgroundColor:[UIColor greenColor]];
+    UIBarButtonItem *backButtonItem = [[UIBarButtonItem alloc] initWithCustomView:back];
+    self.navigationItem.rightBarButtonItem = backButtonItem;
+    */
+    self.navigationItem.rightBarButtonItem =[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"phone_s.png"] style:UIBarButtonItemStylePlain target:self action:@selector(makePhone:)];
     
 }
 -(void)viewDidAppear:(BOOL)animated{
@@ -34,6 +43,12 @@
 }
 -(void)processData:(id)json{
     
+}
+-(void)makePhone:(id)sender{
+    if (_phone && ![_phone isEqualToString:@""]){
+        NSString *phoneNumber = [@"tel://" stringByAppendingString:_phone];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phoneNumber]];
+    }
 }
 
 @end

@@ -31,20 +31,21 @@
     return self;
 }
 -(void)initData{
-    _sections=@[@"基本信息",@"违章信息"];
-    _items=@[@[ @{@"name":@"车牌号",@"key":@"plate_no",@"mode":@"add",@"description":@"",@"vcname":@""},
+    _sections=@[@"违章信息",@"基本信息"];
+    _items=@[
+    @[ @{@"name":@"未处理次数",@"key":@"untreated_number",@"mode":@"",@"description":@"",@"vcname":@""},
+    @{@"name":@"未处理记分",@"key":@"untreated_mark",@"mode":@"",@"description":@"",@"vcname":@""},
+    @{@"name":@"未处理罚款",@"key":@"untreated_fine",@"mode":@"",@"description":@"",@"vcname":@""},
+    @{@"name":@"违章查询",@"key":@"",@"description":@"",@"vcname":@"IllegallyListViewController"}],
+    @[ @{@"name":@"车牌号",@"key":@"plate_no",@"mode":@"add",@"description":@"",@"vcname":@""},
     @{@"name":@"车辆类型",@"key":@"car_type",@"mode":@"add",@"description":@"",@"vcname":@""},
     @{@"name":@"类型名称",@"key":@"car_typename",@"mode":@"add",@"description":@"",@"vcname":@""},
     @{@"name":@"品牌",@"key":@"brand",@"mode":@"add",@"description":@"",@"vcname":@""},
     @{@"name":@"型号",@"key":@"model",@"mode":@"add",@"description":@"",@"vcname":@""},
     @{@"name":@"发动机号",@"key":@"engine_no",@"mode":@"add",@"description":@"",@"vcname":@""},
     @{@"name":@"VIN",@"key":@"vin",@"mode":@"add",@"description":@"",@"vcname":@""},
-    @{@"name":@"初登日期",@"key":@"registration_date",@"mode":@"add",@"description":@"",@"vcname":@"DatePickerViewController"},
-    @{@"name":@"发证日期",@"key":@"issue_date",@"mode":@"add",@"description":@"",@"vcname":@""},],
-    @[ @{@"name":@"未处理次数",@"key":@"untreated_number",@"mode":@"",@"description":@"",@"vcname":@""},
-    @{@"name":@"未处理记分",@"key":@"untreated_mark",@"mode":@"",@"description":@"",@"vcname":@""},
-    @{@"name":@"未处理罚款",@"key":@"untreated_fine",@"mode":@"",@"description":@"",@"vcname":@""},
-    @{@"name":@"违章查询",@"description":@"",@"vcname":@"IllegallyListViewController"}]
+    @{@"name":@"初登日期",@"key":@"registration_date",@"mode":@"add",@"description":@"",@"vcname":@""},
+    @{@"name":@"发证日期",@"key":@"issue_date",@"mode":@"add",@"description":@"",@"vcname":@""},]
   ];
 }
 
@@ -53,7 +54,7 @@
     [super viewDidLoad];
     [self initData];
     self.tableView.delegate = self;
-    self.tableView.dataSource = self; self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(edit:)];
+    self.tableView.dataSource = self; self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]  initWithTitle:@"设置" style:UIBarButtonItemStylePlain target:self action:@selector(edit:)];
     
     
    
@@ -62,7 +63,7 @@
 
 
 -(void)edit:(id)sender{
-    EditInTableViewController *vc = [[EditInTableViewController alloc] initWithDelegate:self];
+    EditTableViewController *vc = [[EditTableViewController alloc] initWithDelegate:self];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -70,7 +71,7 @@
 {
     NSLog(@"%@",paramters);
     
-    NSString *url =[NSString stringWithFormat:@"api/add_car_registration?user_id=%d&car_id=%@&vin=%@&init_date=%@engine_no=%@",[_helper appSetttings].userid,paramters[@"car_license_no"],paramters[@"vin"],paramters[@"init_date"],paramters[@"car_id"]];
+    NSString *url =[NSString stringWithFormat:@"api/add_car_registration?user_id=%d&car_id=%@&vin=%@&init_date=%@&engine_no=%@",[_helper appSetttings].userid,paramters[@"car_id"],paramters[@"vin"],paramters[@"init_date"],paramters[@"engine_no"]];
     NSLog(@"%@",url);
     [[_helper httpClient] get:url  block:^(id json) {
         NSLog(@"%@",json);
@@ -83,14 +84,14 @@
     return @[@"基本信息"];
 }
 -(NSArray *)getItems{
-    return @[@[ @{@"name":@"车牌号",@"key":@"car_license_no",@"mode":@"add",@"description":@"",@"vcname":@""},
-    @{@"name":@"发动机号",@"key":@"car_id",@"mode":@"add",@"description":@"",@"vcname":@""},
+    return @[@[ @{@"name":@"车牌号",@"key":@"car_id",@"mode":@"add",@"description":@"",@"vcname":@""},
+    @{@"name":@"发动机号",@"key":@"engine_no",@"mode":@"add",@"description":@"",@"vcname":@""},
     @{@"name":@"VIN",@"key":@"vin",@"mode":@"add",@"description":@"",@"vcname":@""},
     @{@"name":@"初登日期",@"key":@"init_date",@"mode":@"add",@"description":@"",@"vcname":@"DatePickerViewController"},
    ]];
 }
 -(NSDictionary *)getInitData{
-    return @{@"car_license_no":result[@"plate_no"],@"car_id":result[@"engine_no"],@"vin":result[@"vin"],@"init_date":result[@"registration_date"]};
+    return @{@"car_id":result[@"plate_no"],@"engine_no":result[@"engine_no"],@"vin":result[@"vin"],@"init_date":result[@"registration_date"]};
 }
 - (void)didReceiveMemoryWarning
 {
@@ -128,10 +129,16 @@
 
     }
     id item =[[_items objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
-    NSString *value =[result objectForKey:item[@"key"]];
-    NSLog(@"key=%@",item[@"key"]);
+    
+   
     cell.keyLabel.text = item[@"name"];
-    cell.valueLabel.text = [NSString stringWithFormat:@"%@",value];
+    if (![item[@"key"] isEqualToString:@""]){
+        NSString *value =[result objectForKey:item[@"key"]];
+        cell.valueLabel.text = [NSString stringWithFormat:@"%@",value];
+    }else{
+        cell.valueLabel.text=@"";
+    }
+    
 
     
     if (![item[@"vcname"] isEqualToString:@""]){
@@ -147,6 +154,11 @@
     
     return cell;
 }
+-(void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath{
+    IllegallyListViewController *vc =[[IllegallyListViewController alloc] initWithNibName:@"IllegallyListViewController" bundle:nil];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     id item =[[_items objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
     NSString *vcname=item[@"vcname"];

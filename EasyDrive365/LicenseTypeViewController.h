@@ -13,5 +13,5 @@
 @interface LicenseTypeViewController : NetTableViewController
 
 @property (nonatomic,weak) id<PickupData> delegate;
-
+@property (nonatomic,strong) NSString *value;
 @end

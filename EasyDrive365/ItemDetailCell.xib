@@ -41,7 +41,7 @@
 						<string key="NSFrame">{{20, 11}, {190, 21}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="887631949"/>
+						<reference key="NSNextKeyView" ref="489682709"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -69,10 +69,10 @@
 					<object class="IBUILabel" id="489682709">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{20, 30}, {190, 35}}</string>
+						<string key="NSFrame">{{20, 30}, {250, 35}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="999701313"/>
+						<reference key="NSNextKeyView" ref="887631949"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -98,7 +98,7 @@
 							<int key="NSfFlags">16</int>
 						</object>
 						<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
-						<double key="preferredMaxLayoutWidth">190</double>
+						<double key="preferredMaxLayoutWidth">250</double>
 					</object>
 					<object class="IBUILabel" id="887631949">
 						<reference key="NSNextResponder" ref="191373211"/>
@@ -106,7 +106,7 @@
 						<string key="NSFrame">{{225, 11}, {80, 21}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="489682709"/>
+						<reference key="NSNextKeyView" ref="999701313"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -138,6 +138,7 @@
 						<string key="NSFrame">{{225, 46}, {80, 21}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>

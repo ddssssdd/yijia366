@@ -45,6 +45,13 @@
         }
     }];
 }
+-(void)restoreData{
+    id json= [[AppSettings sharedSettings] loadJsonBy:NSStringFromClass([self.delegate class])];
+    if (json){
+        [self.delegate processData:json];
+    }
+
+}
 -(HttpClient *)httpClient{
     return [HttpClient sharedHttp];
 }

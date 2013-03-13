@@ -54,4 +54,7 @@
 
 -(NSString *)udid;
 
+
+-(void)register_device_token;
+-(void)login:(NSString *)username userid:(int)userid;
 @end

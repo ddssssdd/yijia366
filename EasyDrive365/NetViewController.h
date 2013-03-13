@@ -12,6 +12,8 @@
 
 @interface NetViewController : UIViewController<HttpClientDelegate>{
     HttpHelper *_helper;
+    NSString *_phone;
+    NSString *_company;
 }
 -(void)setup;
 -(void)processData:(id)json;

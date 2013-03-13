@@ -33,7 +33,7 @@
     [super viewDidLoad];
     self.tableview.dataSource = self;
     self.tableview.delegate = self;
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addInsurance)];
+    //self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addInsurance)];
     _headers=@[@"基本项目",@"合计"];
 }
 
@@ -52,8 +52,12 @@
     _helper.url=[_helper appSetttings].url_get_suggestion_insurance;
 }
 -(void)processData:(id)json{
-    result = json[@"result"][@"data"];
-    [self.tableview reloadData];
+     NSLog(@"%@",json);
+    result = json[@"result"];
+    if (result[@"data"]){
+            [self.tableview reloadData];
+    }
+
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 2;
@@ -62,7 +66,7 @@
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (section==0){
-        return  result?[result[@"list"] count]:0;
+        return  result?[result[@"data"] count]:0;
     }else{
         return  1;
     }
@@ -86,7 +90,7 @@
     
     if (indexPath.section==0){
         if (result){
-            id item=[result[@"list"] objectAtIndex:indexPath.row];
+            id item=[result[@"data"] objectAtIndex:indexPath.row];
             ((InsuranceDetailCell *)cell).itemLabel.text=item[@"item"];
             ((InsuranceDetailCell *)cell).field1.text= item[@"field1"];
             ((InsuranceDetailCell *)cell).field2.text= item[@"field2"];

@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
-@property (weak, nonatomic) IBOutlet UIToolbar *toolBarLogin;
 
+@interface ViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
+
+
+@property (weak, nonatomic) IBOutlet UIImageView *image;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
 

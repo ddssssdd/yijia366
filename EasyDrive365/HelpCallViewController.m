@@ -14,8 +14,7 @@
 
 @interface HelpCallViewController (){
     NSMutableArray *_list;
-    NSString *_company;
-    NSString *_phone;
+   
 }
 
 @end
@@ -36,7 +35,7 @@
     [super viewDidLoad];
     self.tableview.delegate = self;
     self.tableview.dataSource = self;
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Phone" style:UIBarButtonSystemItemAction target:self action:@selector(makeCall:)];
+    //self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Phone" style:UIBarButtonSystemItemAction target:self action:@selector(makeCall:)];
     
 }
 
@@ -53,9 +52,6 @@
 }
 
 
--(void)makeCall:(id)sender{
-    NSLog(@"call");
-}
 
 -(void)setup{
     _helper.url = [AppSettings sharedSettings].url_for_get_helpcalls;
@@ -99,7 +95,7 @@
     cell.titleLabel.text =[NSString stringWithFormat:@"%@",[item objectForKey:@"name"]];
     cell.detailLabel.text =[item objectForKey:@"description"];
     //cell.priceLabel.text= [NSString stringWithFormat:@"%@",item[@"price"]];
-    cell.dateLabel.text = [NSString stringWithFormat:@"%@",item[@"standprice"]];
+    cell.dateLabel.text = [NSString stringWithFormat:@"%@",item[@"price"]];
     return cell;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{

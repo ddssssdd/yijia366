@@ -12,4 +12,5 @@
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
 @property (nonatomic,copy) NSString *keyname;
 @property (nonatomic,weak) id<PickupData> delegate;
+@property (nonatomic,strong) NSString *value;
 @end

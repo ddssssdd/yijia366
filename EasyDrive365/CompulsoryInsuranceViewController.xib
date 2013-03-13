@@ -50,9 +50,9 @@
 						<int key="IBNumberOfSegments">3</int>
 						<int key="IBSelectedSegmentIndex">0</int>
 						<array key="IBSegmentTitles">
-							<string>保险责任限额</string>
-							<string>浮动因素及比率</string>
 							<string>基础费率</string>
+							<string>保险责任额</string>
+							<string>浮动因素及比率</string>
 						</array>
 						<array class="NSMutableArray" key="IBSegmentWidths">
 							<real value="0.0"/>
@@ -94,6 +94,7 @@
 						<int key="IBUIStyle">1</int>
 						<int key="IBUISeparatorStyle">1</int>
 						<int key="IBUISectionIndexMinimumDisplayRowCount">0</int>
+						<bool key="IBUIAllowsSelection">NO</bool>
 						<bool key="IBUIShowsSelectionImmediatelyOnTouchBegin">YES</bool>
 						<float key="IBUIRowHeight">44</float>
 						<float key="IBUISectionHeaderHeight">10</float>
@@ -208,7 +209,7 @@
 				<string key="-2.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="1.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="4.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<integer value="0" key="4.IUISegmentedControlInspectorSelectedSegmentMetadataKey"/>
+				<integer value="2" key="4.IUISegmentedControlInspectorSelectedSegmentMetadataKey"/>
 				<string key="67.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 			</dictionary>
 			<dictionary class="NSMutableDictionary" key="unlocalizedProperties"/>

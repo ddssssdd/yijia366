@@ -1,0 +1,34 @@
+//
+// Prefix header for all source files of the 'EasyDrive365' target in the 'EasyDrive365' project
+//
+
+#import <Availability.h>
+
+
+
+#ifndef __IPHONE_5_0
+#warning "This project uses features only available in iOS SDK 5.0 and later."
+#endif
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+#endif
+
+#ifndef __OPTIMIZE__
+# define NSLog(...) NSLog(__VA_ARGS__)
+#else
+# define NSLog(...) {}
+#endif
+
+
+
+#import <SystemConfiguration/SystemConfiguration.h>
+
+#define HostURL @"192.168.1.105"
+
+//#define ServerUrl @"http://192.168.0.102/site/pm/"
+//#define ServerUrl @"http://192.168.1.105/site/pm/"
+#define ServerUrl @"http://124.135.63.250:21000/pm/"
+
+

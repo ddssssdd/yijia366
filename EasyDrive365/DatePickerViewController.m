@@ -22,11 +22,19 @@
     }
     return self;
 }
-
+-(void)setValue:(NSString *)value{
+   
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd"];
+    NSDate *d =  [formatter dateFromString:value];
+    //NSLog(@"%@",d);
+    [self.datePicker setDate:d];
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(selectDate:)];
+    //[self.datePicker setTimeZone:[NSTimeZone timeZoneWithName:@"GMT"]];
 }
 -(void)selectDate:(id)sender{
     NSDateFormatter *formatter=[[NSDateFormatter alloc] init];

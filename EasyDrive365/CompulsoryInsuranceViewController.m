@@ -9,6 +9,7 @@
 #import "CompulsoryInsuranceViewController.h"
 #import "HttpClient.h"
 #import "AppSettings.h"
+#import "InfoAndPriceCell.h"
 
 @interface CompulsoryInsuranceViewController ()
 {
@@ -67,6 +68,12 @@
 }
 -(void)loadData{
     NSString *data_key = [NSString stringWithFormat:@"%@_type_%d",NSStringFromClass([self class]),_currentType];
+    
+    
+    id json = [[AppSettings sharedSettings] loadJsonBy:data_key];
+    if (json){
+        [self processData:json];
+    }
     NSString *_url =[NSString stringWithFormat:@"api/get_compulsory_details?typeid=%d",_currentType];
     [[HttpClient sharedHttp] get:_url block:^(id json) {
         if ([[AppSettings sharedSettings] isSuccess:json]){
@@ -99,15 +106,16 @@
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *CellIdentifier = @"CellIdentifier";
-    UITableViewCell *cell=nil;
+    InfoAndPriceCell *cell=nil;
     cell =[self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell==nil){
-        cell =[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
+        //cell =[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
+        cell =[[[NSBundle mainBundle] loadNibNamed:@"InfoAndPriceCell" owner:nil options:nil] objectAtIndex: 0];
     }
     id key=[[_dict allKeys] objectAtIndex:indexPath.section];
     id item =[[_dict objectForKey:key] objectAtIndex:indexPath.row];
-    cell.textLabel.text=item[@"name"];
-    cell.detailTextLabel.text=item[@"price"];
+    cell.titleLabel.text=item[@"name"];
+    cell.detailLabel.text=item[@"price"];
     return cell;
 }
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{

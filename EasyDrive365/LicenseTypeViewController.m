@@ -10,6 +10,7 @@
 
 @interface LicenseTypeViewController (){
     id _list;
+    NSString *_filter;
 }
 
 @end
@@ -25,7 +26,36 @@
     }
     return self;
 }
+-(void)setValue:(NSString *)value{
+    _filter = value;
+    if (_list){
+        [self setupFilter];
+    }
+    
 
+}
+-(void)setupCellAccessory:(UITableViewCell *)cell{
+    if (_filter){
+        NSRange range =[_filter rangeOfString:cell.textLabel.text];
+        if (range.length>0){
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        }else{
+            cell.accessoryType =UITableViewCellAccessoryNone;
+        }
+    }else{
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
+    
+}
+-(void)setupFilter{
+    for (UIView *v in [self.tableView subviews]) {
+        if ([v isKindOfClass:[UITableViewCell class]]){
+            UITableViewCell *cell = (UITableViewCell *)v;
+            [self setupCellAccessory:cell];
+        }
+        
+    }
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -89,8 +119,9 @@
     }
     id item=[_list objectAtIndex:indexPath.row];
     cell.textLabel.text = item[@"code"];
-    cell.detailTextLabel.text =item[@"code"];//[NSString stringWithFormat:@"年审间隔：%@年",item[@"years"]];
-    cell.accessoryType = UITableViewCellAccessoryNone;
+    cell.detailTextLabel.text =item[@"name"];//[NSString stringWithFormat:@"年审间隔：%@年",item[@"years"]];
+    //cell.accessoryType = UITableViewCellAccessoryNone;
+    [self setupCellAccessory:cell];
     return cell;
 }
 
@@ -152,6 +183,9 @@
     NSLog(@"%@",json);
     _list = json[@"result"];
     [self.tableView reloadData];
+    if (_filter){
+        [self setupFilter];
+    }
 }
 
 @end
