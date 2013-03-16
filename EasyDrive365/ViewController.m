@@ -39,8 +39,11 @@
 //test
 #import "LoginTableViewController.h"
 #import "SignUpTableViewController.h"
+#import "WelcomeViewController.h"
 
-@interface ViewController ()
+@interface ViewController (){
+    NSMutableArray *_list;
+}
 
 @end
 
@@ -55,17 +58,45 @@
     self.tableview.delegate = self;
     self.tableview.dataSource = self;
     
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    [refreshControl addTarget:self action:@selector(handleRefresh:) forControlEvents:UIControlEventValueChanged];
+    [self.tableview addSubview:refreshControl];
+    
     [self.tableview reloadData];
+    [self get_latest];
     
     [[HttpClient sharedHttp] online];
     
     
     
 }
+-(void)get_latest
+{
+    for (UIView *v in [self.tableview subviews]) {
+        if ([v isKindOfClass:[NavigationCell class]]){
+            NavigationCell *cell = (NavigationCell *)v;
+            [cell getLatest];
+        }
+        
+    }
+}
+-(void)handleRefresh:(UIRefreshControl *)sender{
+    NSLog(@"i need to refresh! %@",[sender class]);
+    [self get_latest];
+    [sender endRefreshing];
+}
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [self initView];
+    
+    BOOL islogin = [AppSettings sharedSettings].isLogin;
+    if (islogin){
+        [self initView];
+    }else{
+        WelcomeViewController *vc = [[WelcomeViewController alloc] initWithNibName:@"WelcomeViewController" bundle:nil];
+        [self.navigationController pushViewController:vc animated:NO];
+        
+    }
     
 }
 -(void)initView
@@ -77,14 +108,10 @@
     [self.navigationController setNavigationBarHidden:![AppSettings sharedSettings].isLogin];
     
     self.tableview.hidden = ![AppSettings sharedSettings].isLogin;
-    [AppSettings sharedSettings].userid = 65;
+    //[AppSettings sharedSettings].userid = 65;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"注销" style:UIBarButtonSystemItemAction target:self action:@selector(refresh:)];
     
-    //[self.tableview reloadData];
     
-    
-    
-    //NSLog(@"local_data=%@",[AppSettings sharedSettings].local_data);
      
 }
 -(void)refresh:(id)sender
@@ -106,13 +133,15 @@
 
    
     [self setTableview:nil];
-    [self setImage:nil];
+   
     [super viewDidUnload];
 }
 - (IBAction)logout {
     [AppSettings sharedSettings].isLogin = FALSE;
     [[AppSettings sharedSettings] save];
-    [self initView];
+    //[self initView];
+    WelcomeViewController *vc = [[WelcomeViewController alloc] initWithNibName:@"WelcomeViewController" bundle:nil];
+    [self.navigationController pushViewController:vc animated:NO];
 }
 
 
@@ -138,8 +167,8 @@
         //cell.imageView.image =[UIImage imageNamed:item.imagePath];
         cell.phone = item.phone;
         cell.keyname = item.name;
-        cell.dataLabel.text=@"";
-        [cell getLatest];
+        //cell.dataLabel.text=@"";
+        //[cell getLatest];
     }
     
     
