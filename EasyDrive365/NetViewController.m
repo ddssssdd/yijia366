@@ -21,28 +21,11 @@
 
 -(void)viewDidLoad{
     [super viewDidLoad];
+    
     _helper =[[HttpHelper alloc] initWithTarget:self];
     [_helper restoreData];
     [_helper loadData];
-    /*
-    UIButton *back = [UIButton buttonWithType:UIButtonTypeCustom];
-    [back setTitle:@"客服" forState:UIControlStateNormal];
-    [back setFrame:CGRectMake(0, 0, 100, 32)];
-    [back setBackgroundColor:[UIColor greenColor]];
-    UIBarButtonItem *backButtonItem = [[UIBarButtonItem alloc] initWithCustomView:back];
-    self.navigationItem.rightBarButtonItem = backButtonItem;
-     */
     
-    
-    /*
-    self.navigationItem.rightBarButtonItem =[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"phone_s.png"] style:UIBarButtonItemStylePlain target:self action:@selector(makePhone:)];
-    */
-    /*
-    NVUIGradientButton *button = [[NVUIGradientButton alloc] initWithFrame:CGRectMake(0, 0, 100, 32)];
-    button.text=@"咨询客服";
-    UIBarButtonItem *baritem =[[UIBarButtonItem alloc] initWithCustomView:button];
-    self.navigationItem.rightBarButtonItem = baritem;
-     */
 }
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
@@ -60,5 +43,36 @@
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phoneNumber]];
     }
 }
+-(void)setupTableView:(UITableView *)tableView{
+    if (_refreshHeaderView==nil){
+        EGORefreshTableHeaderView *view =[[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f-tableView.bounds.size.height, self.view.frame.size.width, tableView.bounds.size.height)];
+        view.delegate = self;
+        [tableView addSubview:view];
+        _refreshHeaderView = view;
+        
+    }
+    [_refreshHeaderView refreshLastUpdatedDate];
+}
+-(void)endRefresh:(UITableView *)tableView{
+    _reloading = NO;
+    [_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:tableView];
+}
+#pragma mark UIScrollViewDelegate
 
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    [_refreshHeaderView egoRefreshScrollViewDidScroll:scrollView];
+}
+-(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+    [_refreshHeaderView egoRefreshScrollViewDidEndDragging:scrollView];
+}
+#pragma mark EGORefreshTableHeaderViewDelegate
+-(void)egoRefreshTableHeaderDidTriggerRefresh:(EGORefreshTableHeaderView *)view{
+    [_helper loadData];
+}
+-(BOOL)egoRefreshTableHeaderDataSourceIsLoading:(EGORefreshTableHeaderView *)view{
+    return _reloading;
+}
+-(NSDate *)egoRefreshTableHeaderDataSourceLastUpdated:(EGORefreshTableHeaderView *)view{
+    return [NSDate date];
+}
 @end

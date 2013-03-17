@@ -9,14 +9,19 @@
 #import <UIKit/UIKit.h>
 #import "HttpClientDelegate.h"
 #import "HttpHelper.h"
+#import "EGORefreshTableHeaderView.h"
 
-@interface NetViewController : UIViewController<HttpClientDelegate>{
+@interface NetViewController : UIViewController<HttpClientDelegate,UIScrollViewDelegate,EGORefreshTableHeaderDelegate>{
     HttpHelper *_helper;
     NSString *_phone;
     NSString *_company;
+    EGORefreshTableHeaderView *_refreshHeaderView;
+    BOOL _reloading;
 }
 -(void)setup;
 -(void)processData:(id)json;
+-(void)setupTableView:(UITableView *)tableView;
+-(void)endRefresh:(UITableView *)tableView;
 
 
 @end

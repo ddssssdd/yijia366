@@ -37,7 +37,7 @@
     [super viewDidLoad];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
-
+    [self setupTableView:self.tableView];
     
 }
 
@@ -126,5 +126,8 @@
     _phone =json[@"result"][@"phone"];
     _company =json[@"result"][@"company"];
     [self.tableView reloadData];
+    [self endRefresh:self.tableView];
 }
+
+
 @end

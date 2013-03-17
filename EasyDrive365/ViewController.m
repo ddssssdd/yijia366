@@ -16,6 +16,7 @@
 
 @interface ViewController (){
     NSMutableArray *_list;
+    RefreshHelper *_helper;
 }
 
 @end
@@ -30,25 +31,37 @@
     
     self.tableview.delegate = self;
     self.tableview.dataSource = self;
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"注销" style:UIBarButtonSystemItemAction target:self action:@selector(refresh:)];
     
+    _helper =[[RefreshHelper alloc] initWithDelegate:self];
+    [_helper setupTableView:self.tableview parentView:self.view];
+    
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"注销" style:UIBarButtonSystemItemAction target:self action:@selector(refresh:)];
+    /*
     
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
     refreshControl.attributedTitle =[[NSAttributedString alloc] initWithString:@"下拉刷新"];
     [refreshControl addTarget:self action:@selector(handleRefresh:) forControlEvents:UIControlEventValueChanged];
     [self.tableview addSubview:refreshControl];
-    
+    */
     [self.tableview reloadData];
     [self get_latest];
     
     [[HttpClient sharedHttp] online];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getNews:) name:@"NavigationCell_01" object:nil];
     
-    
+}
+-(void)getNews:(NSNotification *)noti{
+    [_helper endRefresh:self.tableview];
+}
+-(void)loadData{
+    [self get_latest];
 }
 -(void)get_latest
 {
     [[AppSettings sharedSettings] get_latest];
+    
 }
 -(void)handleRefresh:(UIRefreshControl *)sender{
     NSLog(@"i need to refresh! %@",[sender class]);
@@ -158,6 +171,15 @@
     [[Menu sharedMenu] pushToController:self.navigationController key:item.name title:item.title url:nil];
    
 
+}
+
+#pragma mark UIScrollViewDelegate
+
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    [_helper.refreshHeaderView egoRefreshScrollViewDidScroll:scrollView];
+}
+-(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+    [_helper.refreshHeaderView egoRefreshScrollViewDidEndDragging:scrollView];
 }
 
 @end

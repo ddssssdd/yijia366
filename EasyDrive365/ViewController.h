@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RefreshHelper.h"
 
-
-@interface ViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
+@interface ViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate,  RefreshHelperDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
 

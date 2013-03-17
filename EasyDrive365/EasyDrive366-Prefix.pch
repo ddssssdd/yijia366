@@ -31,4 +31,6 @@
 //#define ServerUrl @"http://192.168.1.105/site/pm/"
 #define ServerUrl @"http://124.135.63.250:21000/pm/"
 
+#define AppTitle @"易驾366"
+
 
