@@ -12,4 +12,6 @@
 
 @property (nonatomic,retain) NSArray *list;
 +(Menu *)sharedMenu;
+-(NSString *)getTitleByKey:(NSString *)key;
+-(void)pushToController:(UINavigationController *)controller key:(NSString *)key  title:(NSString *)title   url:(NSString *)url;
 @end

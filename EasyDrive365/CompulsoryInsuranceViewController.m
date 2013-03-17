@@ -34,6 +34,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.segmentedControl.backgroundColor = self.tableView.backgroundColor;
     _currentType =0;
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -64,17 +65,18 @@
 
 - (void)viewDidUnload {
      [self setTableView:nil];
+    [self setSegmentedControl:nil];
     [super viewDidUnload];
 }
 -(void)loadData{
-    NSString *data_key = [NSString stringWithFormat:@"%@_type_%d",NSStringFromClass([self class]),_currentType];
+    NSString *data_key = [NSString stringWithFormat:@"%@",NSStringFromClass([self class])];
     
     
     id json = [[AppSettings sharedSettings] loadJsonBy:data_key];
     if (json){
         [self processData:json];
     }
-    NSString *_url =[NSString stringWithFormat:@"api/get_compulsory_details?typeid=%d",_currentType];
+    NSString *_url =[NSString stringWithFormat:@"api/get_compulsory_details?userid=%d",[AppSettings sharedSettings].userid];
     [[HttpClient sharedHttp] get:_url block:^(id json) {
         if ([[AppSettings sharedSettings] isSuccess:json]){
             
@@ -89,6 +91,7 @@
 -(void)processData:(id)json{
     
     _json = json;
+   
     [self update_display];
 }
 -(void)update_display{

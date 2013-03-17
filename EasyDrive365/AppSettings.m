@@ -8,6 +8,16 @@
 
 #import "AppSettings.h"
 #import "HttpClient.h"
+@implementation Information
+-(void)setDataFromJsonWithKey:(id)json key:(NSString *)key{
+    if (json[@"result"]){
+        self.company = json[@"result"][@"company"];
+        self.phone =json[@"result"][@"phone"];
+        self.latest =json[@"result"][@"latest"];
+        self.updateTime =json[@"result"][@"updated_time"];
+    }
+}
+@end
 
 @implementation AppSettings
 @synthesize firstName=_firstName;
@@ -32,6 +42,8 @@
         _latest_news =[aDecoder decodeObjectForKey:@"latest_news"];
         _local_data =[aDecoder decodeObjectForKey:@"local_data"];
         _deviceToken =[aDecoder decodeObjectForKey:@"device_token"];
+        _dict = [[NSMutableDictionary  alloc] init];
+        [self init_latest];
     }
     return self;
 }
@@ -47,7 +59,14 @@
     [aCoder encodeObject:_deviceToken forKey:@"device_token"];
 }
 
-
+-(id)init{
+    self = [super init];
+    if (self){
+        _dict = [[NSMutableDictionary  alloc] init];
+        [self init_latest];
+    }
+    return self;
+}
 
 +(AppSettings *)sharedSettings
 {
@@ -83,16 +102,19 @@
         
     }
     id item =@{@"date" : [NSDate date],@"data":data};
-    [_local_data setObject:item forKey:className];
+    [_local_data setObject:item forKey:[self jsonKey:className]];
     [self save];
 
 }
 -(id)loadJsonBy:(NSString *)className{
     if (_local_data){
-        return [[_local_data objectForKey:className] objectForKey:@"data"];
+        return [[_local_data objectForKey:[self jsonKey:className]] objectForKey:@"data"];
     }else{
         return nil;
     }
+}
+-(NSString *)jsonKey:(NSString *)className{
+    return [NSString stringWithFormat:@"%@_by_%d",className,self.userid];
 }
 
 
@@ -183,6 +205,66 @@
 
 -(NSString *)udid{
     UIDevice *device =[UIDevice currentDevice];
-    return [NSString stringWithFormat:@"%@", device.identifierForVendor];
+    //return [NSString stringWithFormat:@"%@", device.identifierForVendor];
+    NSString *ident = nil;
+    if ([device respondsToSelector:@selector(identifierForVendor)]) {
+        ident = [device.identifierForVendor UUIDString];
+    } else {
+        ident = device.uniqueIdentifier;
+    }
+    return ident;
+}
+
+-(void)makeCall:(NSString *)phone{
+    if (phone){
+        NSString *phoneNumber = [@"tel://" stringByAppendingString:phone];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phoneNumber]];
+    }
+}
+
+
+-(void)init_latest{
+    for(int i=0;i<11;i++){
+        NSString *key = [NSString stringWithFormat:@"%02d",i];
+        Information *infor = [[Information alloc] init];
+        id json = [self loadJsonBy:[NSString stringWithFormat:@"NavigationCell_%@",key]];
+        NSLog(@"%@",json);
+        if (json){
+            [infor setDataFromJsonWithKey:json key:key];
+        }
+        [_dict setObject:infor forKey:key];
+    }
+}
+-(void)get_latest{
+    for(int i=0;i<11;i++){
+        NSString *keyname = [NSString stringWithFormat:@"%02d",i];
+        [self get_latest_by_key:keyname];
+    }
+}
+-(void)get_latest_by_key:(NSString *)keyname{
+    NSString *url = [self url_getlatest:keyname];
+    [[HttpClient sharedHttp] get:url block:^(id json) {
+        if ([[AppSettings sharedSettings] isSuccess:json]){
+            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+            [formatter setDateFormat:@"MM-dd"];
+            json[@"result"][@"updated_time"]=[formatter stringFromDate:[NSDate date]];
+           // NSLog(@"%@",keyname);
+            [[AppSettings sharedSettings] saveJsonWith:[NSString stringWithFormat:@"NavigationCell_%@",keyname]data:json];
+            Information *infor =[_dict objectForKey:keyname];
+            if (!infor){
+                infor =[[Information alloc] init];
+            }
+            [infor setDataFromJsonWithKey:json key:keyname];
+            [[NSNotificationCenter defaultCenter] postNotificationName:[NSString stringWithFormat:@"NavigationCell_%@",keyname] object:infor];
+            
+        }else{
+            NSLog(@"%@",json);
+            //get nothing from server;
+        }
+    }];
+}
+-(Information *)getInformationByKey:(NSString *)key{
+    //NSLog(@"%@",_dict);
+    return [_dict objectForKey:key];
 }
 @end

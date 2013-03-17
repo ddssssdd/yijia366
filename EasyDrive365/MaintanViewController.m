@@ -9,6 +9,7 @@
 #import "MaintanViewController.h"
 #import "DisplayTextCell.h"
 #import "DatePickerViewController.h"
+#import "PhoneView.h"
 
 @interface MaintanViewController (){
     NSArray *_sections;
@@ -32,13 +33,13 @@
 -(void)initData{
     _sections=@[@"保养建议",@"基本信息"];
     _items=@[
-    @[ @{@"name":@"本次保养时间",@"key":@"current_date",@"mode":@"",@"description":@"",@"vcname":@"",@"unit":@""},
-    @{@"name":@"本次保养里程",@"key":@"current_miles",@"mode":@"",@"description":@"",@"vcname":@"",@"unit":@""}],
+    @[ @{@"name":@"下次保养时间",@"key":@"current_date",@"mode":@"",@"description":@"",@"vcname":@"",@"unit":@""},
+    @{@"name":@"下次保养里程",@"key":@"current_miles",@"mode":@"",@"description":@"",@"vcname":@"",@"unit":@""}],
     @[ @{@"name":@"每日平均行程",@"key":@"average_mileage",@"mode":@"add",@"description":@"",@"vcname":@"",@"unit":@"公里/天"},
     @{@"name":@"最大保养里程",@"key":@"max_distance",@"mode":@"add",@"description":@"",@"vcname":@"",@"unit":@"公里"},
-    @{@"name":@"最大保养间隔",@"key":@"max_time",@"mode":@"add",@"description":@"",@"vcname":@"",@"unit":@"月"},
-    @{@"name":@"前次保养时间",@"key":@"prev_date",@"mode":@"add",@"description":@"",@"vcname":@"",@"unit":@""},
-    @{@"name":@"前次保养里程",@"key":@"prev_distance",@"mode":@"add",@"description":@"",@"vcname":@"",@"unit":@"公里"}]
+    @{@"name":@"最大保养间隔",@"key":@"max_time",@"mode":@"add",@"description":@"",@"vcname":@"",@"unit":@"个月"},
+    @{@"name":@"上次保养时间",@"key":@"prev_date",@"mode":@"add",@"description":@"",@"vcname":@"",@"unit":@""},
+    @{@"name":@"上次保养里程",@"key":@"prev_distance",@"mode":@"add",@"description":@"",@"vcname":@"",@"unit":@"公里"}]
     ];
    
 }
@@ -72,21 +73,26 @@
                      paramters[@"prev_distance"],
                      paramters[@"average_mileage"]];
     [[_helper httpClient] get:url block:^(id json) {
-        NSLog(@"%@",json);
+       
         if ([[_helper appSetttings] isSuccess:json]){
-            NSLog(@"return=%@",json);
+            
+            [self processData:json];
         }
     }];
 }
+-(int)textFieldCount{
+    return 5;
+}
+
 -(NSArray *)getSections{
     return @[@"基本信息"];
 }
 -(NSArray *)getItems{
-    return @[@[ @{@"name":@"每日平均行程",@"key":@"average_mileage",@"mode":@"add",@"description":@"",@"vcname":@""},
-    @{@"name":@"最大保养里程",@"key":@"max_distance",@"mode":@"add",@"description":@"",@"vcname":@""},
-    @{@"name":@"最大保养间隔",@"key":@"max_time",@"mode":@"add",@"description":@"",@"vcname":@""},
-    @{@"name":@"前次保养时间",@"key":@"prev_date",@"mode":@"add",@"description":@"",@"vcname":@"DatePickerViewController"},
-    @{@"name":@"前次保养里程",@"key":@"prev_distance",@"mode":@"add",@"description":@"",@"vcname":@""}]];
+    return @[@[ @{@"name":@"每日平均行程",@"key":@"average_mileage",@"mode":@"number",@"description":@"",@"vcname":@""},
+    @{@"name":@"最大保养里程",@"key":@"max_distance",@"mode":@"number",@"description":@"",@"vcname":@""},
+    @{@"name":@"最大保养间隔",@"key":@"max_time",@"mode":@"number",@"description":@"",@"vcname":@""},
+    @{@"name":@"上次保养时间",@"key":@"prev_date",@"mode":@"number",@"description":@"",@"vcname":@"DatePickerViewController"},
+    @{@"name":@"上次保养里程",@"key":@"prev_distance",@"mode":@"number",@"description":@"",@"vcname":@""}]];
 }
 -(NSDictionary *)getInitData{
     return @{@"average_mileage":_result[@"average_mileage"],@"max_distance":_result[@"max_distance"],@"max_time":_result[@"max_time"],@"prev_date":_result[@"prev_date"],@"prev_distance":_result[@"prev_distance"]};
@@ -127,7 +133,9 @@
     NSString *value =[_result objectForKey:item[@"key"]];
     NSLog(@"key=%@",item[@"key"]);
     cell.keyLabel.text = item[@"name"];
-    cell.valueLabel.text = [NSString stringWithFormat:@"%@%@",value,item[@"unit"]];
+    if (value && ![value isKindOfClass:[NSNull class]] ){
+        cell.valueLabel.text = [NSString stringWithFormat:@"%@%@",value,item[@"unit"]];
+    }
     
     
     if (![item[@"vcname"] isEqualToString:@""]){
@@ -159,11 +167,49 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 40;
 }
+
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    if (section==0){
+        PhoneView *phoneView = [[[NSBundle mainBundle] loadNibNamed:@"PhoneView" owner:nil options:nil] objectAtIndex:0];
+        [phoneView initWithPhone:_company phone:_phone];
+        phoneView.backgroundColor = tableView.backgroundColor;
+        return phoneView;
+    }else{
+        return nil;
+    }
+    
+}
+
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    if (section==0){
+        return 80;
+    }else{
+        return 44;
+    }
+}
+
 -(void)setup{
     _helper.url =[_helper appSetttings].url_for_get_maintain_record;
 }
 -(void)processData:(id)json{
-    _result=[json objectForKey:@"result"][@"data"];
+    _company = json[@"result"][@"company"];
+    _phone = json[@"result"][@"phone"];
+    id temp=[json objectForKey:@"result"][@"data"];
+    
+    NSLog(@"%@",temp);
+    NSEnumerator *enumerator =[temp keyEnumerator];
+    id key;
+    _result = [[NSMutableDictionary alloc] init];
+    while ((key=[enumerator nextObject])) {
+        id value = [temp objectForKey:key];
+        if ([value isKindOfClass:[NSNull class]]){
+            [_result setObject:@"" forKey:key];
+            
+        }else{
+            [_result setObject:value?value:@"" forKey:key];
+        }
+    }
     [self.tableView reloadData];
     
 }

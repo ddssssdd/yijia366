@@ -7,7 +7,7 @@
 //
 
 #import "DriverLicenseViewController.h"
-
+#import "PhoneView.h"
 #import "DisplayTextCell.h"
 
 
@@ -36,6 +36,9 @@
     
     
 }
+-(int)textFieldCount{
+    return 4;
+}
 -(NSArray *)getSections{
     return @[@"基本信息"];
 }
@@ -46,6 +49,13 @@
     @{@"name":@"初领日期",@"key":@"init_date",@"mode":@"add",@"description":@"",@"vcname":@"DatePickerViewController"}]];
 }
 -(NSDictionary *)getInitData{
+    if (!result){
+        result = [[NSMutableDictionary alloc] init];
+        [result setObject:@"" forKey:@"name"];
+        [result setObject:@"" forKey:@"init_date"];
+        [result setObject:@"C1" forKey:@"car_type"];
+        [result setObject:@"" forKey:@"number"];
+    }
     return @{@"license_id":result[@"number"],@"name":result[@"name"],@"init_date":result[@"init_date"],@"car_type":result[@"car_type"]};
 }
 -(void)saveData:(NSDictionary *)paramters{
@@ -55,7 +65,7 @@
     [[HttpClient sharedHttp] get:url  block:^(id json) {
         NSLog(@"%@",json);
         if ([[AppSettings sharedSettings] isSuccess:json]){
-            //nothing;
+            [self processData:json];
         }
     }];
 
@@ -86,17 +96,17 @@
     _items=@[
     
     
-    @[@{@"name":@"积分到期日",@"key":@"mark_end_date",@"mode":@"",@"description":@"",@"vcname":@""},
+    @[
     @{@"name":@"年审日期",@"key":@"check_date",@"mode":@"",@"description":@"",@"vcname":@""},
     @{@"name":@"换证日期",@"key":@"renew_date",@"mode":@"",@"description":@"",@"vcname":@""}],
-    @[
-    @{@"name":@"开始日期",@"key":@"start_date",@"mode":@"",@"description":@"",@"vcname":@""},
-    @{@"name":@"结束日期",@"key":@"end_date",@"mode":@"",@"description":@"",@"vcname":@""},
+    @[@{@"name":@"计分到期日",@"key":@"mark_end_date",@"mode":@"",@"description":@"",@"vcname":@""},
+    
     @{@"name":@"计分情况",@"key":@"mark",@"mode":@"",@"description":@"",@"vcname":@""}],
     @[ @{@"name":@"证件号码",@"key":@"number",@"mode":@"add",@"description":@"",@"vcname":@""},
     @{@"name":@"姓名",@"key":@"name",@"mode":@"add",@"description":@"",@"vcname":@""},
     @{@"name":@"准驾车型",@"key":@"car_type",@"mode":@"add",@"description":@"",@"vcname":@"LicenseTypeViewController"},
-    @{@"name":@"初领日期",@"key":@"init_date",@"mode":@"add",@"description":@"",@"vcname":@"DatePickerViewController"}]
+    @{@"name":@"初领日期",@"key":@"init_date",@"mode":@"add",@"description":@"",@"vcname":@"DatePickerViewController"},
+    @{@"name":@"有效期限",@"key":@"end_date",@"mode":@"",@"description":@"",@"vcname":@""}]
     ];
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -123,7 +133,9 @@
     id item =[[_items objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
     NSString *value =[result objectForKey:item[@"key"]];
     cell.keyLabel.text = item[@"name"];
-    cell.valueLabel.text =[NSString stringWithFormat:@"%@",value];
+    if (value){
+        cell.valueLabel.text =[NSString stringWithFormat:@"%@",value];
+    }
     return cell;
     /*
     [cell setValueByKey:item[@"key"] value:value];
@@ -152,7 +164,22 @@
     return 44;
 }
 
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    if (section==0){
+        PhoneView *phoneView = [[[NSBundle mainBundle] loadNibNamed:@"PhoneView" owner:nil options:nil] objectAtIndex:0];
+        [phoneView initWithPhone:_company phone:_phone];
+        phoneView.backgroundColor = tableView.backgroundColor;
+        return phoneView;
+    }else{
+        return nil;
+    }
+    
+}
 
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 80;
+}
 -(void)setup{
     _helper.url =[[_helper appSetttings] url_get_driver_license];
 }
@@ -166,6 +193,8 @@
     }
      */
     result =list[@"data"];
+    _company = list[@"company"];
+    _phone =list[@"phone"];
     [self.tableView reloadData];
 }
 

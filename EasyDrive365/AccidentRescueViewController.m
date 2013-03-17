@@ -33,7 +33,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    //self.navigationItem.rightBarButtonItem =[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(makeCall)];
+    self.phoneButton.text=@"咨询电话";
     
 }
 -(void)makeCall
@@ -74,6 +74,7 @@
     [self setLblAddress:nil];
     [self setTextDescription:nil];
     [self setLblPhone:nil];
+    [self setPhoneButton:nil];
     [super viewDidUnload];
 }
 - (IBAction)phoneCall:(id)sender {

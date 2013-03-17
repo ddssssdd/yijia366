@@ -49,6 +49,7 @@
     
     NSString *keyname=[NSString stringWithFormat:@"%@_%@",NSStringFromClass([self class]),self.keyname];
     if (![HttpClient sharedHttp].isInternet){
+        NSLog(@"%@",keyname);
         id json=[[AppSettings sharedSettings] loadJsonBy:keyname];
         [self processData:json];
         return;
@@ -60,6 +61,7 @@
             NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
             [formatter setDateFormat:@"MM-dd"];
             json[@"result"][@"updated_time"]=[formatter stringFromDate:[NSDate date]];
+            NSLog(@"%@",keyname);
             [[AppSettings sharedSettings] saveJsonWith:keyname data:json];
             [self processData:json];
             
@@ -81,9 +83,28 @@
 }
 -(void)setKeyname:(NSString *)keyname{
     _keyname = keyname;
+    /* old way
     NSString *key=[NSString stringWithFormat:@"%@_%@",NSStringFromClass([self class]),keyname];
     id json=[[AppSettings sharedSettings] loadJsonBy:key];
     [self processData:json];
+     */
+    Information *infor =[[AppSettings sharedSettings] getInformationByKey:keyname];
+    if (infor){
+        self.descriptionLabel.text = infor.latest;
+        self.dataLabel.text = infor.updateTime;
+        self.phone = infor.phone;
+        
+    }
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateData:) name:[NSString stringWithFormat:@"%@_%@",NSStringFromClass([self class]),_keyname] object:nil];
 }
-
+-(void)updateData:(NSNotification *)noti{
+    Information *infor =[noti object];
+    self.descriptionLabel.text = infor.latest;
+    self.dataLabel.text = infor.updateTime;
+    self.phone = infor.phone;
+}
+-(void)empty{
+    
+}
 @end

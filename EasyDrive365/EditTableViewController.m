@@ -15,7 +15,9 @@
 @interface EditTableViewController (){
     id _sections;
     id _items;
+    
     NSMutableDictionary *_result;
+    int _textFieldCount;
 }
 
 @end
@@ -74,8 +76,8 @@
     [_result setObject:[NSString stringWithFormat:@"%d", [AppSettings sharedSettings].userid] forKey:@"user_id"];
     [self.delegate saveData:_result];
     
-    
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
+    //[self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 
@@ -85,6 +87,7 @@
     _sections =[self.delegate getSections];
     _items =[self.delegate getItems];
     _result =[NSMutableDictionary dictionaryWithDictionary:[self.delegate getInitData]];
+    _textFieldCount = [self.delegate textFieldCount];
     
     
 }
@@ -107,6 +110,7 @@
         cell =[cells objectAtIndex:0];
         
         cell.valueText.delegate = self;
+        
     }
 
     id item =[[_items objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
@@ -115,7 +119,10 @@
     cell.valueText.placeholder = item[@"name"];
     cell.valueText.text = [NSString stringWithFormat:@"%@",value];
     cell.key = item[@"key"];
-    //cell.valueLabel.text = value;
+    cell.valueText.tag = indexPath.row;
+    if ([item[@"mode"] isEqual:@"number"]){
+        cell.valueText.keyboardType = UIKeyboardTypeDecimalPad;
+    }
     if (![item[@"vcname"] isEqualToString:@""]){
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         
@@ -135,13 +142,23 @@
     id item =[[_items objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
     NSString *vcname=item[@"vcname"];
     if (![vcname isEqualToString:@""]){
+        for (UIView *v in [self.tableView subviews]) {
+            if ([v isKindOfClass:[EditTextCell class]]){
+                EditTextCell *cell = (EditTextCell *)v;
+                [_result setObject:cell.valueText.text forKey:cell.key];
+            }
+            
+        }
         if ([vcname isEqualToString:@"DatePickerViewController"]){
             DatePickerViewController *vc = [[DatePickerViewController alloc] initWithNibName:@"DatePickerViewController" bundle:nil];
             vc.keyname = item[@"key"];//@"init_date";
             vc.delegate = self;
             
             [self.navigationController pushViewController:vc animated:YES];
-            vc.value = value;
+            if (value && ![value isEqualToString:@""])
+            {
+                vc.value = value;
+            }
         }else{
             LicenseTypeViewController *vc = [[LicenseTypeViewController alloc] initWithNibName:vcname bundle:nil];
             vc.delegate = self;
@@ -151,13 +168,33 @@
         }
         
     }
+    [self performSelector:@selector(delectCell:) withObject:nil afterDelay:0.2];
+}
+-(void)delectCell:(id)sender{
+    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 44;
 }
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
     [textField resignFirstResponder];
+    if (textField.tag==_textFieldCount-1){
+        [self save:nil];
+    }else{
+        [self setResponser:textField.tag+1];
+    }
     return YES;
+}
+-(void)setResponser:(int)tag{
+    for (UIView *v in [self.tableView subviews]) {
+        if ([v isKindOfClass:[EditTextCell class]]){
+            EditTextCell *cell = (EditTextCell *)v;
+            if (cell.valueText.tag==tag){
+                [cell.valueText becomeFirstResponder];
+            }
+        }
+        
+    }
 }
 -(BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
     /*

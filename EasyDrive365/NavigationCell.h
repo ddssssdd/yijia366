@@ -19,4 +19,5 @@
 
 
 -(void)getLatest;
+-(void)empty;
 @end

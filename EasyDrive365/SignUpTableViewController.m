@@ -60,10 +60,10 @@
             NSString *status =[json objectForKey:@"status"];
             if (status && [status isEqualToString:@"success"]){
                 
-                //NSNumber *userid=[[json objectForKey:@"result"] objectForKey:@"id"];
+                NSNumber *userid=[[json objectForKey:@"result"] objectForKey:@"id"];
                 
-                //[[AppSettings sharedSettings] login:username userid:[userid intValue]];
-                [[AppSettings sharedSettings] login:username userid:65];
+                [[AppSettings sharedSettings] login:username userid:[userid intValue]];
+                //[[AppSettings sharedSettings] login:username userid:65];
                 
                 [self.navigationController popToRootViewControllerAnimated:YES];
             }else{

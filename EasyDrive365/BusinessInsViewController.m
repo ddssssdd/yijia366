@@ -114,7 +114,7 @@
     return [_list count];
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return [[_list objectAtIndex:section] count]+1;
+    return [[_list objectAtIndex:section] count];
     /*if (section==1 || section==3){
         return [[_list objectAtIndex:section] count]+1;
     }else{
@@ -136,6 +136,7 @@
     if (cell==nil){
         cell=[[[NSBundle mainBundle] loadNibNamed:@"Insurance4ColumnsCell" owner:nil options:nil] objectAtIndex:0];
     }
+    /*
     if (indexPath.row==0){
         
         cell.nameLabel.text = @"";
@@ -144,13 +145,18 @@
         cell.item3Label.text = @"不计免赔";
         
     }else{
-        id item=[[_list objectAtIndex:indexPath.section] objectAtIndex:indexPath.row-1];
+        id item=[[_list objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
         cell.nameLabel.text = item[@"InsuName"];
         cell.item1Label.text= [NSString stringWithFormat:@"%@",item[@"Amount"]];
         cell.item2Label.text =[NSString stringWithFormat:@"%@",item[@"Fee"]];
         cell.item3Label.text = [NSString stringWithFormat:@"%@",item[@"DeductibleFee"]];
     }
-    
+    */
+    id item=[[_list objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+    cell.nameLabel.text = item[@"InsuName"];
+    cell.item1Label.text= [NSString stringWithFormat:@"%@",item[@"Amount"]];
+    cell.item2Label.text =[NSString stringWithFormat:@"%@",item[@"Fee"]];
+    cell.item3Label.text = [NSString stringWithFormat:@"%@",item[@"DeductibleFee"]];
     return cell;
 }
 

@@ -13,6 +13,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [[AppSettings sharedSettings] get_latest];
+    
     [[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge|UIRemoteNotificationTypeSound|UIRemoteNotificationTypeAlert)];
     if (launchOptions!=nil){
@@ -22,7 +24,23 @@
             [self addMessageFromRemoteNotification:dictionary];
         }
     }
+    
+    //[self setup_display];
+    
+    
     return YES;
+}
+-(void)setup_display{
+    UIImage *gradientImage44 = [[UIImage imageNamed:@"surf_gradient_textured_44"]
+                                resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
+    UIImage *gradientImage32 = [[UIImage imageNamed:@"surf_gradient_textured_32"]
+                                resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
+    
+    // Set the background image for *all* UINavigationBars
+    [[UINavigationBar appearance] setBackgroundImage:gradientImage44
+                                       forBarMetrics:UIBarMetricsDefault];
+    [[UINavigationBar appearance] setBackgroundImage:gradientImage32
+                                       forBarMetrics:UIBarMetricsLandscapePhone];
 }
 							
 - (void)applicationWillResignActive:(UIApplication *)application
@@ -40,10 +58,12 @@
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
+    
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
 }
 

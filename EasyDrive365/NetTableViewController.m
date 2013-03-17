@@ -32,7 +32,9 @@
     _helper = [[HttpHelper alloc] initWithTarget:self];
     [_helper restoreData];
     [_helper loadData];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"phone_s.png"] style:UIBarButtonItemStylePlain target:self action:@selector(makePhone:)];
+    /*
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"phone_Blue.png"] style:UIBarButtonItemStylePlain target:self action:@selector(makePhone:)];
+     */
 }
 
 - (void)didReceiveMemoryWarning

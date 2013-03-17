@@ -34,7 +34,9 @@
         return;
     }
     
+    
     [[HttpClient sharedHttp] get:_url block:^(id json) {
+       
         if ([[AppSettings sharedSettings] isSuccess:json]){
             
             [[AppSettings sharedSettings] saveJsonWith:NSStringFromClass( [self.delegate class]) data:json];
@@ -52,6 +54,7 @@
     }
 
 }
+
 -(HttpClient *)httpClient{
     return [HttpClient sharedHttp];
 }

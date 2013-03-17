@@ -48,12 +48,18 @@
     
 }
 -(void)setupFilter{
-    for (UIView *v in [self.tableView subviews]) {
-        if ([v isKindOfClass:[UITableViewCell class]]){
-            UITableViewCell *cell = (UITableViewCell *)v;
-            [self setupCellAccessory:cell];
+    
+    for(id item in _list){
+        if (_filter){
+            NSRange range = [_filter rangeOfString:item[@"code"]];
+            if (range.length>0){
+                [item setObject:@"yes" forKey:@"checked"];
+            }else{
+                [item setObject:@"no" forKey:@"checked"];
+            }
+        }else{
+            [item setObject:@"no" forKey:@"checked"];
         }
-        
     }
 }
 - (void)viewDidLoad
@@ -61,16 +67,14 @@
     [super viewDidLoad];
     self.title =@"驾照类型";
     
-    //_list =@[@"A1",@"A2",@"B1",@"B2"];
-
-    // Uncomment the following line to preserve selection between presentations.
      self.clearsSelectionOnViewWillAppear = NO;
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(select:)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"保存" style:UIBarButtonItemStylePlain target:self action:@selector(select:)];
 }
 -(void)select:(id)sender{
     NSMutableString *result=[[NSMutableString alloc] init];
+    /*
     for (UIView *v in [self.tableView subviews]) {
         if ([v isKindOfClass:[UITableViewCell class]]){
             UITableViewCell *cell = (UITableViewCell *)v;
@@ -80,6 +84,13 @@
             }
         }
     
+    }
+     */
+    for(id item in _list){
+        if ([item[@"checked"] isEqual:@"yes"]){
+            [result appendString:@","];
+            [result appendString:item[@"code"]];
+        }
     }
 
     
@@ -121,7 +132,12 @@
     cell.textLabel.text = item[@"code"];
     cell.detailTextLabel.text =item[@"name"];//[NSString stringWithFormat:@"年审间隔：%@年",item[@"years"]];
     //cell.accessoryType = UITableViewCellAccessoryNone;
-    [self setupCellAccessory:cell];
+    if ([item[@"checked"] isEqual:@"yes"]){
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    }else{
+        cell.accessoryType =UITableViewCellAccessoryNone;
+    }
+    //[self setupCellAccessory:cell];
     return cell;
 }
 
@@ -168,11 +184,14 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    id item=[_list objectAtIndex:indexPath.row];
     UITableViewCell *cell =[self.tableView cellForRowAtIndexPath:indexPath];
     if (cell.accessoryType == UITableViewCellAccessoryNone){
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        item[@"checked"]=@"yes";
     }else{
         cell.accessoryType = UITableViewCellAccessoryNone;
+        item[@"checked"]=@"no";
     }
 }
 
@@ -182,10 +201,11 @@
 -(void)processData:(id)json{
     NSLog(@"%@",json);
     _list = json[@"result"];
+    
+    
+    [self setupFilter];
+    
     [self.tableView reloadData];
-    if (_filter){
-        [self setupFilter];
-    }
 }
 
 @end

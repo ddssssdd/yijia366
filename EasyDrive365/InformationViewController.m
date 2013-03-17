@@ -11,6 +11,8 @@
 #import "AppSettings.h"
 #import "InformationCell.h"
 #import "BrowserViewController.h"
+#import "PhoneView.h"
+#import "Menu.h"
 
 
 @interface InformationViewController (){
@@ -74,13 +76,42 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     id item = [_list objectAtIndex:indexPath.row];
+    /*
     NSString *action = item[@"action"];
-    [[[UIAlertView alloc] initWithTitle:@"action" message:action delegate:self cancelButtonTitle:nil otherButtonTitles:@"go" , nil] show ];
     
-    BrowserViewController *vc = [[BrowserViewController alloc] initWithNibName:@"BrowserViewController" bundle:nil];
-    [self.navigationController pushViewController:vc animated:YES];
-    [vc go:@"http://www.baidu.com"];
+    [[[UIAlertView alloc] initWithTitle:@"action" message:action delegate:self cancelButtonTitle:nil otherButtonTitles:@"go" , nil] show ];
+    */
+    
+    NSLog(@"%@",item);
+    NSString *action =item[@"action"];
+    NSString *url = item[@"url"];
+    if ([action isEqualToString:@"01"]){
+        return;
+    }
+    if (url && ![url isEqualToString:@""]){
+        action=@"00";
+    }
+    NSString *title = [[Menu sharedMenu] getTitleByKey:action];
+    [[Menu sharedMenu] pushToController:self.navigationController key:action title:title url:url];
 }
+
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    if (section==0){
+        PhoneView *phoneView = [[[NSBundle mainBundle] loadNibNamed:@"PhoneView" owner:nil options:nil] objectAtIndex:0];
+        [phoneView initWithPhone:_company phone:_phone];
+        phoneView.backgroundColor = tableView.backgroundColor;
+        return phoneView;
+    }else{
+        return nil;
+    }
+    
+}
+
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 80;
+}
+
 -(void)setup{
     _helper.url = [AppSettings sharedSettings].url_for_get_news;
 }

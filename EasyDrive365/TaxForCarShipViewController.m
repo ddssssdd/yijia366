@@ -114,13 +114,30 @@
     _listItems =[[NSMutableArray alloc] init];
     _listRemarks =[[NSMutableArray alloc] init];
     NSMutableDictionary *result = json[@"result"][@"data"];
-    NSEnumerator *enumerator= [result keyEnumerator];
-    id key;
-    while (key=[enumerator nextObject]) {
+    NSArray *allKeys =[result allKeys];
+    
+    NSArray *newList =[allKeys sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+        NSString *s1 = obj1;
+        NSString *s2 = obj2;
+        return [s1 compare:s2];
+    }];
+    for(int i=0;i<[newList count];i++){
+        NSString *key =[newList objectAtIndex:i];
         [_listType addObject:key];
         [_listItems addObject:result[key][@"list"]];
         [_listRemarks addObject:result[key][@"marks"]];
     }
+    /*
+    NSEnumerator *enumerator= [result keyEnumerator];
+    id key;
+    while (key=[enumerator nextObject]) {
+        NSLog(@"%@",key);
+        [_listType addObject:key];
+        [_listItems addObject:result[key][@"list"]];
+        [_listRemarks addObject:result[key][@"marks"]];
+    }
+     */
+    [self.tableView reloadData];
     
 }
 @end

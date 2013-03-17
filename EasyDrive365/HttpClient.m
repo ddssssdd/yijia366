@@ -10,6 +10,7 @@
 #import "AFNetworking.h"
 #import "AFHTTPClient.h"
 #import "Reachability.h"
+#import "SVProgressHUD.h"
 
 @implementation HttpClient
 
@@ -59,6 +60,8 @@
      */
 }
 -(void)request:(NSString *)path method:(NSString *)method parameter:(NSDictionary *)parameter block:(void (^)(id json))processJson{
+    [SVProgressHUD show];
+    
     NSURL *url = [NSURL URLWithString:ServerUrl];
     AFHTTPClient *httpClient =[[AFHTTPClient alloc] initWithBaseURL:url];
     
@@ -66,14 +69,20 @@
    // NSLog(@"Request=%@",request.URL);
     AFHTTPRequestOperation *operation=[[AFHTTPRequestOperation alloc] initWithRequest:request];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        //NSLog(@"success");
+        
         NSError *error = nil;
         id jsonResult =[NSJSONSerialization JSONObjectWithData:operation.responseData options:NSJSONReadingMutableContainers error:&error];
         //NSLog(@"get Result=%@",jsonResult);
         processJson(jsonResult);
+        if (![[jsonResult objectForKey:@"status"] isEqualToString:@"success"]){
+            [SVProgressHUD dismissWithSuccess:@"暂时没有数据，请更新行驶证和驾驶证之后再试！" afterDelay:3];
+        }else{
+            [SVProgressHUD dismiss];
+        }
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Access server error:%@,because %@",error,operation.request);
+        [SVProgressHUD dismissWithError:@"无法连接服务器，请稍后再试!" afterDelay:3];
         
     }];
     NSOperationQueue *queue=[[NSOperationQueue alloc] init];

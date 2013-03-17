@@ -10,8 +10,10 @@
 #import "IllegallyListViewController.h"
 #import "DatePickerViewController.h"
 #import "DisplayTextCell.h"
+#import "PhoneView.h"
+#import "OneButtonCell.h"
 
-@interface CarRegistrationViewController (){
+@interface CarRegistrationViewController ()<OneButtonCellDelegate>{
     NSArray *_sections;
     NSArray *_items;
    
@@ -31,21 +33,22 @@
     return self;
 }
 -(void)initData{
-    _sections=@[@"违章信息",@"基本信息"];
+    _sections=@[@"提醒",@"违章信息",@"基本信息"];
     _items=@[
+    @[@{@"name":@"年审日期",@"key":@"check_date",@"mode":@"",@"description":@"",@"vcname":@""}],
     @[ @{@"name":@"未处理次数",@"key":@"untreated_number",@"mode":@"",@"description":@"",@"vcname":@""},
     @{@"name":@"未处理记分",@"key":@"untreated_mark",@"mode":@"",@"description":@"",@"vcname":@""},
     @{@"name":@"未处理罚款",@"key":@"untreated_fine",@"mode":@"",@"description":@"",@"vcname":@""},
     @{@"name":@"违章查询",@"key":@"",@"description":@"",@"vcname":@"IllegallyListViewController"}],
     @[ @{@"name":@"车牌号",@"key":@"plate_no",@"mode":@"add",@"description":@"",@"vcname":@""},
-    @{@"name":@"车辆类型",@"key":@"car_type",@"mode":@"add",@"description":@"",@"vcname":@""},
-    @{@"name":@"类型名称",@"key":@"car_typename",@"mode":@"add",@"description":@"",@"vcname":@""},
+    
+    @{@"name":@"车辆类型",@"key":@"car_typename",@"mode":@"add",@"description":@"",@"vcname":@""},
     @{@"name":@"品牌",@"key":@"brand",@"mode":@"add",@"description":@"",@"vcname":@""},
     @{@"name":@"型号",@"key":@"model",@"mode":@"add",@"description":@"",@"vcname":@""},
     @{@"name":@"发动机号",@"key":@"engine_no",@"mode":@"add",@"description":@"",@"vcname":@""},
     @{@"name":@"VIN",@"key":@"vin",@"mode":@"add",@"description":@"",@"vcname":@""},
     @{@"name":@"初登日期",@"key":@"registration_date",@"mode":@"add",@"description":@"",@"vcname":@""},
-    @{@"name":@"发证日期",@"key":@"issue_date",@"mode":@"add",@"description":@"",@"vcname":@""},]
+    ]
   ];
 }
 
@@ -80,6 +83,9 @@
         }
     }];
 }
+-(int)textFieldCount{
+    return 4;
+}
 -(NSArray *)getSections{
     return @[@"基本信息"];
 }
@@ -91,6 +97,13 @@
    ]];
 }
 -(NSDictionary *)getInitData{
+    if (!result){
+        result =[[NSMutableDictionary alloc] init];
+        [result setObject:@"" forKey:@"plate_no"];
+        [result setObject:@"" forKey:@"engine_no"];
+        [result setObject:@"" forKey:@"vin"];
+        [result setObject:@"" forKey:@"registration_date"];
+    }
     return @{@"car_id":result[@"plate_no"],@"engine_no":result[@"engine_no"],@"vin":result[@"vin"],@"init_date":result[@"registration_date"]};
 }
 - (void)didReceiveMemoryWarning
@@ -119,62 +132,63 @@
     return [_sections objectAtIndex:section];
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    static NSString *CellIdentifier = @"CellIdentifier";
-    DisplayTextCell *cell=nil;
-    cell =[self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell==nil){
-        NSArray *cells =[[NSBundle mainBundle] loadNibNamed:@"DisplayTextCell" owner:self.tableView options:nil];
-        cell =[cells objectAtIndex:0];
-        
-
-    }
+    
     id item =[[_items objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
-    
-   
-    cell.keyLabel.text = item[@"name"];
-    if (![item[@"key"] isEqualToString:@""]){
-        NSString *value =[result objectForKey:item[@"key"]];
-        cell.valueLabel.text = [NSString stringWithFormat:@"%@",value];
-    }else{
-        cell.valueLabel.text=@"";
-    }
-    
-
     
     if (![item[@"vcname"] isEqualToString:@""]){
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        OneButtonCell *cell =[[[NSBundle mainBundle] loadNibNamed:@"OneButtonCell" owner:tableView options:nil] objectAtIndex:0];
+        cell.button.text=item[@"name"];
+        cell.delegate=self;
+        return cell;
         
     }else{
-        cell.accessoryType = UITableViewCellAccessoryNone;
+        DisplayTextCell *cell=nil;
+        NSArray *cells =[[NSBundle mainBundle] loadNibNamed:@"DisplayTextCell" owner:self.tableView options:nil];
+        cell =[cells objectAtIndex:0];
+        cell.keyLabel.text = item[@"name"];
+        if (![item[@"key"] isEqualToString:@""]){
+            NSString *value =[result objectForKey:item[@"key"]];
+            if (value){
+                cell.valueLabel.text = [NSString stringWithFormat:@"%@",value];
+            }
+        }else{
+            cell.valueLabel.text=@"";
+        }
+        cell.tag = indexPath.row;
+        cell.valueLabel.tag = indexPath.row;
+        return cell;
     }
     
-    cell.tag = indexPath.row;
-    cell.valueLabel.tag = indexPath.row;
     
     
-    return cell;
-}
--(void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath{
-    IllegallyListViewController *vc =[[IllegallyListViewController alloc] initWithNibName:@"IllegallyListViewController" bundle:nil];
-    [self.navigationController pushViewController:vc animated:YES];
 }
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    id item =[[_items objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
-    NSString *vcname=item[@"vcname"];
-    if (![vcname isEqualToString:@""]){
-        if ([vcname isEqualToString:@"DatePickerViewController"]){
-            DatePickerViewController *vc = [[DatePickerViewController alloc] initWithNibName:@"DatePickerViewController" bundle:nil];
-            vc.keyname = @"init_date";
-            [self.navigationController pushViewController:vc animated:YES];
-        }else{
-            IllegallyListViewController *vc =[[IllegallyListViewController alloc] initWithNibName:@"IllegallyListViewController" bundle:nil];
-            [self.navigationController pushViewController:vc animated:YES];
-        }
-    }
-}
+
+
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 40;
+    return 44;
+}
+
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    if (section==0){
+        PhoneView *phoneView = [[[NSBundle mainBundle] loadNibNamed:@"PhoneView" owner:nil options:nil] objectAtIndex:0];
+        [phoneView initWithPhone:_company phone:_phone];
+        phoneView.backgroundColor = tableView.backgroundColor;
+        phoneView.phoneButton.text=@"预约年审";
+        return phoneView;
+    }else{
+        return nil;
+    }
+    
+}
+
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    if (section==0){
+        return 80;
+    }else{
+        return 44;
+    }
 }
 
 -(void)setup{
@@ -182,6 +196,8 @@
 }
 -(void)processData:(id)json{
     NSLog(@"%@",json);
+    _company = json[@"result"][@"company"];
+    _phone = json[@"result"][@"phone"];
     id list = json[@"result"];
     if ([list isKindOfClass:[NSArray class]] && [list count]>0){
         result =[list objectAtIndex:0];
@@ -190,5 +206,9 @@
         result=list[@"data"];
     }
     [self.tableView reloadData];
+}
+-(void)buttonPress:(id)sender{
+    IllegallyListViewController *vc =[[IllegallyListViewController alloc] initWithNibName:@"IllegallyListViewController" bundle:nil];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 @end

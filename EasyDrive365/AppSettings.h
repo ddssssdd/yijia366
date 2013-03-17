@@ -7,8 +7,20 @@
 //
 
 #import <Foundation/Foundation.h>
+@interface Information:NSObject
+@property (nonatomic,strong) NSString *key;
+@property (nonatomic,strong) NSString *company;
+@property (nonatomic,strong) NSString *phone;
+@property (nonatomic,strong) NSString *latest;
 
-@interface AppSettings : NSObject<NSCoding>
+@property (nonatomic,strong) NSString *updateTime;
+-(void)setDataFromJsonWithKey:(id)json key:(NSString *)key;
+
+@end
+
+@interface AppSettings : NSObject<NSCoding>{
+    NSMutableDictionary *_dict;
+}
 
 @property (nonatomic,retain) NSString *firstName;
 @property (nonatomic,retain) NSString *lastName;
@@ -57,4 +69,7 @@
 
 -(void)register_device_token;
 -(void)login:(NSString *)username userid:(int)userid;
+-(void)makeCall:(NSString *)phone;
+-(void)get_latest;
+-(Information *)getInformationByKey:(NSString *)key;
 @end

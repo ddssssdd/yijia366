@@ -9,7 +9,7 @@
 #import "HelpCallViewController.h"
 #import "HelpHeaderView.h"
 #import "ItemDetailCell.h"
-
+#import "PhoneView.h"
 #import "AppSettings.h"
 
 @interface HelpCallViewController (){
@@ -69,10 +69,14 @@
     }else{
         _list =[[NSMutableArray alloc] init];
     }
-    [_list addObjectsFromArray:list];
+    if ([list isKindOfClass:[NSArray class]]){
+        [_list addObjectsFromArray:list];
+        [self updateData];
+    }
     
     
-    [self updateData];
+    
+    
 }
 -(void)updateData{
     
@@ -100,6 +104,22 @@
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 70.0f;
+}
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    if (section==0){
+        PhoneView *phoneView = [[[NSBundle mainBundle] loadNibNamed:@"PhoneView" owner:nil options:nil] objectAtIndex:0];
+        [phoneView initWithPhone:_company phone:_phone];
+        phoneView.backgroundColor = tableView.backgroundColor;
+        return phoneView;
+    }else{
+        return nil;
+    }
+    
+}
+
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 80;
 }
 /*
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
