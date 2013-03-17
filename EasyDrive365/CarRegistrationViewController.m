@@ -84,7 +84,7 @@
     }];
 }
 -(int)textFieldCount{
-    return 4;
+    return 3;
 }
 -(NSArray *)getSections{
     return @[@"基本信息"];
@@ -187,7 +187,7 @@
     if (section==0){
         return 80;
     }else{
-        return 44;
+        return 22;
     }
 }
 

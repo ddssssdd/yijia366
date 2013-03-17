@@ -171,6 +171,12 @@
     [self done];
 }
 
-
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    [self performSelector:@selector(delectCell:) withObject:nil afterDelay:0.2];
+}
+-(void)delectCell:(id)sender{
+    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+}
 
 @end

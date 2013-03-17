@@ -81,7 +81,7 @@
     }];
 }
 -(int)textFieldCount{
-    return 5;
+    return 4;
 }
 
 -(NSArray *)getSections{

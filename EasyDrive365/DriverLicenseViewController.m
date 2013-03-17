@@ -37,7 +37,7 @@
     
 }
 -(int)textFieldCount{
-    return 4;
+    return 2;
 }
 -(NSArray *)getSections{
     return @[@"基本信息"];
@@ -178,7 +178,10 @@
 
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 80;
+    if (section==0)
+        return 80;
+    else
+        return 22;
 }
 -(void)setup{
     _helper.url =[[_helper appSetttings] url_get_driver_license];

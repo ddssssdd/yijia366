@@ -125,9 +125,17 @@
     }
     if (![item[@"vcname"] isEqualToString:@""]){
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        cell.valueText.enabled = NO;
+        cell.valueText.borderStyle =UITextBorderStyleNone;
         
     }else{
         cell.accessoryType = UITableViewCellAccessoryNone;
+        cell.valueText.enabled = YES;
+        if (indexPath.row==_textFieldCount-1){
+            cell.valueText.returnKeyType=UIReturnKeyGo;
+        }else{
+            cell.valueText.returnKeyType = UIReturnKeyNext;
+        }
     }
     
     cell.tag = indexPath.row;
