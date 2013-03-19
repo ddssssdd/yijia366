@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "NVUIGradientButton.h"
 
-@interface PhoneView : UIView
+@interface PhoneView : UIView<UIActionSheetDelegate>
 @property (weak, nonatomic) IBOutlet NVUIGradientButton *phoneButton;
 @property (strong,nonatomic) NSString *text;
 @property (strong,nonatomic) NSString *phone;

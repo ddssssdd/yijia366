@@ -11,7 +11,7 @@
 #import "HttpHelper.h"
 #import "EGORefreshTableHeaderView.h"
 
-@interface NetViewController : UIViewController<HttpClientDelegate,UIScrollViewDelegate,EGORefreshTableHeaderDelegate>{
+@interface NetViewController : UIViewController<HttpClientDelegate,UIScrollViewDelegate,EGORefreshTableHeaderDelegate,UIActionSheetDelegate>{
     HttpHelper *_helper;
     NSString *_phone;
     NSString *_company;

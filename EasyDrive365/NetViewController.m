@@ -39,6 +39,15 @@
 }
 -(void)makePhone:(id)sender{
     if (_phone && ![_phone isEqualToString:@""]){
+        UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:[NSString stringWithFormat:@"请确定您要打电话到--%@",_phone ] otherButtonTitles:nil];
+        [sheet showInView:self.view];
+        
+    }
+    
+    
+}
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex==0){
         NSString *phoneNumber = [@"tel://" stringByAppendingString:_phone];
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phoneNumber]];
     }

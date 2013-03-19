@@ -33,13 +33,21 @@
     
     NSLog(@"I am pressed,i will call:%@",self.phone);
     if(self.phone){
-        NSString *phoneNumber = [@"tel://" stringByAppendingString:self.phone];
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phoneNumber]];
+       // NSString *phoneNumber = [@"tel://" stringByAppendingString:self.phone];
+       // [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phoneNumber]];
+        UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:[NSString stringWithFormat:@"请确定您要打电话到--%@",self.phone ] otherButtonTitles:nil];
+        [sheet showInView:self];
+        
     }
    
     
 }
-
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex==0){
+        NSString *phoneNumber = [@"tel://" stringByAppendingString:self.phone];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phoneNumber]];
+    }
+}
 -(void)getLatest{
     if (![AppSettings sharedSettings].isLogin)
         return;

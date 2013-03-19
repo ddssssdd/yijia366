@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NavigationCell : UITableViewCell
+@interface NavigationCell : UITableViewCell<UIActionSheetDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;

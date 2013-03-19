@@ -33,6 +33,13 @@
     self.text = text;
     self.phone = phone;
     self.phoneButton.text = @"咨询电话";
+    
+    self.phoneButton.textColor = [UIColor whiteColor];
+	self.phoneButton.textShadowColor = [UIColor darkGrayColor];
+	self.phoneButton.tintColor = [UIColor colorWithRed:0   green:1.0 blue:0 alpha:1];
+	self.phoneButton.highlightedTintColor = [UIColor colorWithRed:(CGFloat)190/255 green:0 blue:0 alpha:1];
+	
+    
     /*
     self.phoneButton.textColor = [UIColor whiteColor];
 	self.phoneButton.textShadowColor = [UIColor darkGrayColor];
@@ -42,7 +49,19 @@
      */
 }
 - (IBAction)makeCall:(id)sender {
-    [[AppSettings sharedSettings] makeCall:self.phone];
+    if (self.phone){
+        UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:[NSString stringWithFormat:@"请确定您要打电话到--%@",self.phone ] otherButtonTitles:nil];
+        [sheet showInView:self];
+    
+}
+
+
+}
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex==0){
+        NSString *phoneNumber = [@"tel://" stringByAppendingString:self.phone];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phoneNumber]];
+    }
 }
 
 @end
