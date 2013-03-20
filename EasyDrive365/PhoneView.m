@@ -32,10 +32,11 @@
 -(void)initWithPhone:(NSString *)text phone:(NSString *)phone{
     self.text = text;
     self.phone = phone;
-    self.phoneButton.text = @"咨询电话";
+    self.phoneButton.text =[NSString stringWithFormat:@"拨号：%@",phone];
     
     self.phoneButton.textColor = [UIColor whiteColor];
 	self.phoneButton.textShadowColor = [UIColor darkGrayColor];
+
 	self.phoneButton.tintColor = [UIColor colorWithRed:0   green:1.0 blue:0 alpha:1];
 	self.phoneButton.highlightedTintColor = [UIColor colorWithRed:(CGFloat)190/255 green:0 blue:0 alpha:1];
 	

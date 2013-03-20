@@ -12,6 +12,8 @@
 
 @interface NetTableViewController : UITableViewController<HttpClientDelegate>{
     HttpHelper *_helper;
+    NSString *_company;
+    NSString *_phone;
 }
 -(void)setup;
 -(void)processData:(id)json;

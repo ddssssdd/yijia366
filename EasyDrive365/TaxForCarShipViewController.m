@@ -7,7 +7,7 @@
 //
 
 #import "TaxForCarShipViewController.h"
-
+#import "PhoneView.h"
 
 
 @interface TaxForCarShipViewController (){
@@ -103,13 +103,33 @@
     
     return cell;
 }
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    if (section==0){
+        PhoneView *phoneView = [[[NSBundle mainBundle] loadNibNamed:@"PhoneView" owner:nil options:nil] objectAtIndex:0];
+        [phoneView initWithPhone:_company phone:_phone];
+        phoneView.backgroundColor = tableView.backgroundColor;
+        return phoneView;
+    }else{
+        return nil;
+    }
+    
+}
 
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    if (section==0)
+        return 80;
+    else
+        return 22;
+}
 
 -(void)setup{
     _helper.url=@"api/get_taxforcarship";
 }
 -(void)processData:(id)json{
     NSLog(@"%@",json);
+    _company = json[@"result"][@"company"];
+    _phone = json[@"result"][@"phone"];
     _listType = [[NSMutableArray alloc] init];
     _listItems =[[NSMutableArray alloc] init];
     _listRemarks =[[NSMutableArray alloc] init];

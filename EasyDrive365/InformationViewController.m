@@ -85,12 +85,13 @@
     NSLog(@"%@",item);
     NSString *action =item[@"action"];
     NSString *url = item[@"url"];
-    if ([action isEqualToString:@"01"]){
-        return;
-    }
     if (url && ![url isEqualToString:@""]){
         action=@"00";
     }
+    if ([action isEqualToString:@"01"]){
+        return;
+    }
+    
     NSString *title = [[Menu sharedMenu] getTitleByKey:action];
     [[Menu sharedMenu] pushToController:self.navigationController key:action title:title url:url];
 }

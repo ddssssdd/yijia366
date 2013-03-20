@@ -15,6 +15,6 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *lblAddress;
 @property (weak, nonatomic) IBOutlet UITextView *textDescription;
-@property (weak, nonatomic) IBOutlet UILabel *lblPhone;
+
 @property (weak, nonatomic) IBOutlet NVUIGradientButton *phoneButton;
 @end

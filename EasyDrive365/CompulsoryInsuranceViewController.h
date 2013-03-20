@@ -7,9 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NVUIGradientButton.h"
 
-@interface CompulsoryInsuranceViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
+@interface CompulsoryInsuranceViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>{
+    NSString *_company;
+    NSString *_phone;
+}
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
+@property (weak, nonatomic) IBOutlet NVUIGradientButton *phoneButton;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @end

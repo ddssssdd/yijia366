@@ -10,10 +10,13 @@
 #import "AppSettings.h"
 #import "HttpClient.h"
 #import "ItemDetailCell.h"
+#import "PhoneView.h"
 
 @interface InsuranceRecordsViewController ()
 {
     NSMutableArray *_list;
+    NSString *_company;
+    NSString *_phone;
 }
 @end
 
@@ -42,6 +45,9 @@
 -(void)loadData{
     [[HttpClient sharedHttp] get:[AppSettings sharedSettings].url_for_insurance_list block:^(id json) {
         if ([[AppSettings sharedSettings] isSuccess:json]){
+            _company = json[@"result"][@"company"];
+            _phone = json[@"result"][@"phone"];
+            
             if (_list){
                 [_list removeAllObjects];
             }else{
@@ -151,6 +157,25 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
+}
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    if (section==0){
+        PhoneView *phoneView = [[[NSBundle mainBundle] loadNibNamed:@"PhoneView" owner:nil options:nil] objectAtIndex:0];
+        [phoneView initWithPhone:_company phone:_phone];
+        phoneView.backgroundColor = tableView.backgroundColor;
+        return phoneView;
+    }else{
+        return nil;
+    }
+    
+}
+
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    if (section==0)
+        return 80;
+    else
+        return 22;
 }
 
 @end

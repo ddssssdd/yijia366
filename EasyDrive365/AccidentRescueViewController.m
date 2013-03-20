@@ -33,8 +33,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.phoneButton.text=@"咨询电话";
+    self.phoneButton.text=@"";
+    self.phoneButton.textColor=[UIColor whiteColor];
+    self.phoneButton.textShadowColor = [UIColor darkGrayColor];
     
+	self.phoneButton.tintColor = [UIColor colorWithRed:0   green:1.0 blue:0 alpha:1];
+	self.phoneButton.highlightedTintColor = [UIColor colorWithRed:(CGFloat)190/255 green:0 blue:0 alpha:1];
 }
 -(void)makeCall
 {
@@ -60,8 +64,9 @@
 -(void)updateData{
     self.lblShopName.text = _shop_name;
     self.lblAddress.text =_address;
-    self.lblPhone.text = _phone;
+    //self.lblPhone.text = _phone;
     self.textDescription.text =_description;
+    self.phoneButton.text=[NSString stringWithFormat:@"拨号：%@",_shop_phone];
 }
 - (void)didReceiveMemoryWarning
 {
@@ -73,7 +78,7 @@
     [self setLblShopName:nil];
     [self setLblAddress:nil];
     [self setTextDescription:nil];
-    [self setLblPhone:nil];
+    //[self setLblPhone:nil];
     [self setPhoneButton:nil];
     [super viewDidUnload];
 }

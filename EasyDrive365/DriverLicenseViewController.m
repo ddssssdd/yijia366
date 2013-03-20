@@ -43,7 +43,7 @@
     return @[@"基本信息"];
 }
 -(NSArray *)getItems{
-    return @[@[ @{@"name":@"证件号码",@"key":@"license_id",@"mode":@"add",@"description":@"",@"vcname":@""},
+    return @[@[ @{@"name":@"证件号码",@"key":@"license_id",@"mode":@"number",@"description":@"",@"vcname":@""},
     @{@"name":@"姓名",@"key":@"name",@"mode":@"add",@"description":@"",@"vcname":@""},
     @{@"name":@"准驾车型",@"key":@"car_type",@"mode":@"add",@"description":@"",@"vcname":@"LicenseTypeViewController"},
     @{@"name":@"初领日期",@"key":@"init_date",@"mode":@"add",@"description":@"",@"vcname":@"DatePickerViewController"}]];

@@ -20,6 +20,12 @@
 		E202E15316E23CFC00FDBD34 /* MaintanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E202E15116E23CFB00FDBD34 /* MaintanViewController.m */; };
 		E202E15416E23CFC00FDBD34 /* MaintanViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E202E15216E23CFB00FDBD34 /* MaintanViewController.xib */; };
 		E202E15616E2F22A00FDBD34 /* phone_s.png in Resources */ = {isa = PBXBuildFile; fileRef = E202E15516E2F22A00FDBD34 /* phone_s.png */; };
+		E212279416FA068200B494E0 /* 0083.png in Resources */ = {isa = PBXBuildFile; fileRef = E212279216FA068100B494E0 /* 0083.png */; };
+		E212279516FA068200B494E0 /* 0083@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E212279316FA068200B494E0 /* 0083@2x.png */; };
+		E212279916FA069B00B494E0 /* 0051.png in Resources */ = {isa = PBXBuildFile; fileRef = E212279716FA069B00B494E0 /* 0051.png */; };
+		E212279A16FA069B00B494E0 /* 0051@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E212279816FA069B00B494E0 /* 0051@2x.png */; };
+		E212279D16FA06D200B494E0 /* 0228.png in Resources */ = {isa = PBXBuildFile; fileRef = E212279B16FA06D200B494E0 /* 0228.png */; };
+		E212279E16FA06D200B494E0 /* 0228@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E212279C16FA06D200B494E0 /* 0228@2x.png */; };
 		E2296D2A16B760EC00E332D9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2296D2916B760EC00E332D9 /* UIKit.framework */; };
 		E2296D2C16B760EC00E332D9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2296D2B16B760EC00E332D9 /* Foundation.framework */; };
 		E2296D2E16B760EC00E332D9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2296D2D16B760EC00E332D9 /* CoreGraphics.framework */; };
@@ -37,6 +43,8 @@
 		E24A043F16D1074800B7A602 /* LicenseTypeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E24A043D16D1074800B7A602 /* LicenseTypeViewController.xib */; };
 		E24A047E16D270DA00B7A602 /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E24A047C16D270DA00B7A602 /* DatePickerViewController.m */; };
 		E24A047F16D270DA00B7A602 /* DatePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E24A047D16D270DA00B7A602 /* DatePickerViewController.xib */; };
+		E25AF0B116F9FED900E79057 /* CIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E25AF0AF16F9FED800E79057 /* CIViewController.m */; };
+		E25AF0B216F9FED900E79057 /* CIViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E25AF0B016F9FED900E79057 /* CIViewController.xib */; };
 		E25D74BD16DE368D008307C7 /* NetTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E25D74BC16DE368D008307C7 /* NetTableViewController.m */; };
 		E26460D416EF64D80050BDA4 /* InfoAndPriceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E26460D316EF64D80050BDA4 /* InfoAndPriceCell.m */; };
 		E26460D716EF64EF0050BDA4 /* InfoAndPriceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E26460D616EF64EF0050BDA4 /* InfoAndPriceCell.xib */; };
@@ -172,6 +180,12 @@
 		E202E15116E23CFB00FDBD34 /* MaintanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaintanViewController.m; sourceTree = "<group>"; };
 		E202E15216E23CFB00FDBD34 /* MaintanViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MaintanViewController.xib; sourceTree = "<group>"; };
 		E202E15516E2F22A00FDBD34 /* phone_s.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = phone_s.png; sourceTree = "<group>"; };
+		E212279216FA068100B494E0 /* 0083.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 0083.png; sourceTree = "<group>"; };
+		E212279316FA068200B494E0 /* 0083@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "0083@2x.png"; sourceTree = "<group>"; };
+		E212279716FA069B00B494E0 /* 0051.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 0051.png; sourceTree = "<group>"; };
+		E212279816FA069B00B494E0 /* 0051@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "0051@2x.png"; sourceTree = "<group>"; };
+		E212279B16FA06D200B494E0 /* 0228.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 0228.png; sourceTree = "<group>"; };
+		E212279C16FA06D200B494E0 /* 0228@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "0228@2x.png"; sourceTree = "<group>"; };
 		E2296D2516B760EC00E332D9 /* EasyDrive366.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyDrive366.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2296D2916B760EC00E332D9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E2296D2B16B760EC00E332D9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -201,6 +215,9 @@
 		E24A047B16D270DA00B7A602 /* DatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerViewController.h; sourceTree = "<group>"; };
 		E24A047C16D270DA00B7A602 /* DatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerViewController.m; sourceTree = "<group>"; };
 		E24A047D16D270DA00B7A602 /* DatePickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DatePickerViewController.xib; sourceTree = "<group>"; };
+		E25AF0AE16F9FED800E79057 /* CIViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIViewController.h; sourceTree = "<group>"; };
+		E25AF0AF16F9FED800E79057 /* CIViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIViewController.m; sourceTree = "<group>"; };
+		E25AF0B016F9FED900E79057 /* CIViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CIViewController.xib; sourceTree = "<group>"; };
 		E25D74BB16DE368D008307C7 /* NetTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetTableViewController.h; sourceTree = "<group>"; };
 		E25D74BC16DE368D008307C7 /* NetTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetTableViewController.m; sourceTree = "<group>"; };
 		E26460D216EF64D70050BDA4 /* InfoAndPriceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoAndPriceCell.h; sourceTree = "<group>"; };
@@ -473,6 +490,12 @@
 		E24A041916CFBA2600B7A602 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E212279B16FA06D200B494E0 /* 0228.png */,
+				E212279C16FA06D200B494E0 /* 0228@2x.png */,
+				E212279716FA069B00B494E0 /* 0051.png */,
+				E212279816FA069B00B494E0 /* 0051@2x.png */,
+				E212279216FA068100B494E0 /* 0083.png */,
+				E212279316FA068200B494E0 /* 0083@2x.png */,
 				E2F287FB16F58E5C00DAE1B8 /* EGORefreshTableHeader */,
 				E2903BE716F424D300A93CBF /* phone_Blue.png */,
 				E2903BE816F424D300A93CBF /* phone_s Green.png */,
@@ -617,6 +640,9 @@
 				E26460E016F094DD0050BDA4 /* WelcomeViewController.h */,
 				E26460E116F094DE0050BDA4 /* WelcomeViewController.m */,
 				E26460E216F094DE0050BDA4 /* WelcomeViewController.xib */,
+				E25AF0AE16F9FED800E79057 /* CIViewController.h */,
+				E25AF0AF16F9FED800E79057 /* CIViewController.m */,
+				E25AF0B016F9FED900E79057 /* CIViewController.xib */,
 			);
 			name = Modules;
 			sourceTree = "<group>";
@@ -838,6 +864,13 @@
 				E2903BE616F4213E00A93CBF /* arrow.png in Resources */,
 				E2903BE916F424D300A93CBF /* phone_Blue.png in Resources */,
 				E2903BEA16F424D300A93CBF /* phone_s Green.png in Resources */,
+				E25AF0B216F9FED900E79057 /* CIViewController.xib in Resources */,
+				E212279416FA068200B494E0 /* 0083.png in Resources */,
+				E212279516FA068200B494E0 /* 0083@2x.png in Resources */,
+				E212279916FA069B00B494E0 /* 0051.png in Resources */,
+				E212279A16FA069B00B494E0 /* 0051@2x.png in Resources */,
+				E212279D16FA06D200B494E0 /* 0228.png in Resources */,
+				E212279E16FA06D200B494E0 /* 0228@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -926,6 +959,7 @@
 				E26460FC16F1F96D0050BDA4 /* NVUIGradientButton.m in Sources */,
 				E2903BDD16F41C8500A93CBF /* PhoneView.m in Sources */,
 				E2F2881416F5948100DAE1B8 /* RefreshHelper.m in Sources */,
+				E25AF0B116F9FED900E79057 /* CIViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

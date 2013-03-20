@@ -13,6 +13,7 @@
 #import "InsuranceFooterView.h"
 #import "HttpClient.h"
 #import "AppSettings.h"
+#import "PhoneView.h"
 
 
 @interface BusinessInsViewController (){
@@ -63,6 +64,8 @@
     _helper.url=[_helper appSetttings].url_get_business_insurance;
 }
 -(void)processData:(id)json{
+    _company = json[@"result"][@"company"];
+    _phone = json[@"result"][@"phone"];
     NSLog(@"%@",json[@"result"]);
     id result = json[@"result"][@"data"];
     _curr=[self parseData:result key:@"curr"];
@@ -197,5 +200,24 @@
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     return 140;
+}
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    if (section==0){
+        PhoneView *phoneView = [[[NSBundle mainBundle] loadNibNamed:@"PhoneView" owner:nil options:nil] objectAtIndex:0];
+        [phoneView initWithPhone:_company phone:_phone];
+        phoneView.backgroundColor = tableView.backgroundColor;
+        return phoneView;
+    }else{
+        return nil;
+    }
+    
+}
+
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    if (section==0)
+        return 80;
+    else
+        return 22;
 }
 @end

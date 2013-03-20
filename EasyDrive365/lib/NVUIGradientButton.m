@@ -64,7 +64,7 @@
 	_titleLabel.textAlignment = UITextAlignmentCenter;
 	_titleLabel.lineBreakMode = UILineBreakModeMiddleTruncation;
 	_titleLabel.numberOfLines = 0;
-	_titleLabel.font = [UIFont boldSystemFontOfSize:15.0];
+	_titleLabel.font = [UIFont boldSystemFontOfSize:18.0];
 	_titleLabel.minimumFontSize = 12.0;
 	_titleLabel.shadowOffset = CGSizeMake(0, -1);
 	

@@ -23,6 +23,8 @@
 #import "BusinessInsViewController.h"
 #import "MaintanViewController.h"
 
+#import "CIViewController.h"
+
 @implementation Menu
 @synthesize list = _list;
 +(Menu *)sharedMenu
@@ -53,7 +55,7 @@
             [[MenuItem alloc] initWithName:@"08" title:@"交强险" description:defaultInfo imagePath:@"0008.png" phone:defaultPhone],
             [[MenuItem alloc] initWithName:@"09" title:@"商业险" description:defaultInfo imagePath:@"0009.png" phone:defaultPhone],
             [[MenuItem alloc] initWithName:@"10" title:@"理赔记录" description:defaultInfo imagePath:@"0010.png" phone:defaultPhone],
-            /*[[MenuItem alloc] initWithName:@"11" title:@"维修记录" description:defaultInfo imagePath:@"0011.png" phone:defaultPhone],*/
+            //[[MenuItem alloc] initWithName:@"11" title:@"维修记录" description:defaultInfo imagePath:@"0011.png" phone:defaultPhone],
             nil];
     }
     return self;
@@ -107,7 +109,8 @@
         
     }
     if ([key isEqualToString:@"08"]){
-        CompulsoryInsuranceViewController *vc = [[CompulsoryInsuranceViewController alloc] initWithNibName:@"CompulsoryInsuranceViewController" bundle:nil];
+        //CompulsoryInsuranceViewController *vc = [[CompulsoryInsuranceViewController alloc] initWithNibName:@"CompulsoryInsuranceViewController" bundle:nil];
+        CIViewController *vc = [[CIViewController alloc] initWithNibName:@"CIViewController" bundle:nil];
         vc.title = title;
         [controller pushViewController:vc animated:YES];
         
@@ -127,13 +130,15 @@
     }
     /*
     if ([key isEqualToString:@"11"]){
-        MaintainListViewController *vc = [[MaintainListViewController alloc] initWithNibName:@"MaintainListViewController" bundle:nil];
+//        MaintainListViewController *vc = [[MaintainListViewController alloc] initWithNibName:@"MaintainListViewController" bundle:nil];
+        CIViewController *vc = [[CIViewController alloc] initWithNibName:@"CIViewController" bundle:nil];
         vc.title = title;
         [controller pushViewController:vc animated:YES];
         
     }
      */
-    if ([key isEqualToString:@""] && url){
+     
+    if ([key isEqualToString:@"00"] && url){
         BrowserViewController *vc = [[BrowserViewController alloc] initWithNibName:@"BrowserViewController" bundle:nil];
         vc.title = title;
         [controller pushViewController:vc animated:YES];

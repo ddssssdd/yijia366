@@ -1,18 +1,15 @@
 //
-//  CompulsoryInsuranceViewController.m
-//  EasyDrive365
+//  CIViewController.m
+//  EasyDrive366
 //
-//  Created by Fu Steven on 2/14/13.
+//  Created by Fu Steven on 3/20/13.
 //  Copyright (c) 2013 Fu Steven. All rights reserved.
 //
 
-#import "CompulsoryInsuranceViewController.h"
-#import "HttpClient.h"
-#import "AppSettings.h"
+#import "CIViewController.h"
 #import "InfoAndPriceCell.h"
 
-@interface CompulsoryInsuranceViewController ()
-{
+@interface CIViewController (){
     int _currentType;
     NSDictionary *_dict;
     NSMutableArray *_list;
@@ -21,7 +18,7 @@
 
 @end
 
-@implementation CompulsoryInsuranceViewController
+@implementation CIViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -35,28 +32,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.segmentedControl.backgroundColor = self.tableView.backgroundColor;
-    _currentType =0;
-    self.tableView.delegate = self;
+    self.tableView.delegate=self;
     self.tableView.dataSource = self;
-    //self.view.backgroundColor = self.tableView.backgroundColor;
-    [self loadData];
-}
--(void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
+    self.tabbar.delegate = self;
     
-   
-}
-- (IBAction)segmentedSelectChanged:(UISegmentedControl *)sender {
-
-    NSInteger index = sender.selectedSegmentIndex;
-    if (index!=_currentType){
-        _currentType = index;
-        if (_json)
-            [self update_display];
-    }
-    
+    UITabBarItem *item1=[[UITabBarItem alloc] initWithTitle:@"基础费率" image:[UIImage imageNamed:@"0083.png"] tag:0];
+    [self.tabbar setItems:@[item1,
+     [[UITabBarItem alloc] initWithTitle:@"保险责任" image:[UIImage imageNamed:@"0051.png"] tag:1],
+     [[UITabBarItem alloc] initWithTitle:@"浮动因素" image:[UIImage imageNamed:@"0228.png"] tag:2]]];
+    [self.tabbar setSelectedItem:item1];
 }
 
 - (void)didReceiveMemoryWarning
@@ -66,36 +50,25 @@
 }
 
 - (void)viewDidUnload {
-     [self setTableView:nil];
-    [self setSegmentedControl:nil];
-    [self setPhoneButton:nil];
+    [self setTabbar:nil];
+    [self setTableView:nil];
     [super viewDidUnload];
 }
--(void)loadData{
-    NSString *data_key = [NSString stringWithFormat:@"%@",NSStringFromClass([self class])];
-    
-    
-    id json = [[AppSettings sharedSettings] loadJsonBy:data_key];
-    if (json){
-        [self processData:json];
-    }
-    NSString *_url =[NSString stringWithFormat:@"api/get_compulsory_details?userid=%d",[AppSettings sharedSettings].userid];
-    [[HttpClient sharedHttp] get:_url block:^(id json) {
-        if ([[AppSettings sharedSettings] isSuccess:json]){
-            
-            [[AppSettings sharedSettings] saveJsonWith:data_key data:json];
-            [self processData:json];
-            
-        }else{
-            //get nothing from server;
-        }
-    }];
+-(void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item{
+    _currentType = item.tag;
+    [self update_display];
+}
+
+-(void)setup{
+    _helper.url =[NSString stringWithFormat:@"api/get_compulsory_details?userid=%d",[_helper appSetttings].userid];
 }
 -(void)processData:(id)json{
     _company = json[@"result"][@"company"];
     _phone = json[@"result"][@"phone"];
     _json = json;
-   
+    
+    
+    
     [self update_display];
 }
 -(void)update_display{
@@ -112,14 +85,6 @@
         return [s1 compare:s2];
     }];
     [_list addObjectsFromArray:newList];
-    
-    NSLog(@"%@",_list);
-    self.phoneButton.text=[NSString stringWithFormat:@"拨号：%@",_phone];
-    self.phoneButton.textColor=[UIColor whiteColor];
-    self.phoneButton.textShadowColor = [UIColor darkGrayColor];
-    
-	self.phoneButton.tintColor = [UIColor colorWithRed:0   green:1.0 blue:0 alpha:1];
-	self.phoneButton.highlightedTintColor = [UIColor colorWithRed:(CGFloat)190/255 green:0 blue:0 alpha:1];
     [self.tableView reloadData];
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -147,6 +112,6 @@
 }
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
     return [_list objectAtIndex:section];
-
+    
 }
 @end
