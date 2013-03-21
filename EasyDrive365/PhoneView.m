@@ -37,7 +37,7 @@
     self.phoneButton.textColor = [UIColor whiteColor];
 	self.phoneButton.textShadowColor = [UIColor darkGrayColor];
 
-	self.phoneButton.tintColor = [UIColor colorWithRed:0   green:1.0 blue:0 alpha:1];
+	self.phoneButton.tintColor = [UIColor colorWithRed:0   green:80.0/255.0 blue:0 alpha:1];
 	self.phoneButton.highlightedTintColor = [UIColor colorWithRed:(CGFloat)190/255 green:0 blue:0 alpha:1];
 	
     
