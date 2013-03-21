@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "-[DriverLicenseViewController processData:]:DriverLicenseViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "result[@&quot;license_id&quot;]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[AddDriverLicenseViewController listen_driver_type:]:AddDriverLicenseViewController.m">
+      </ContextState>
+      <ContextState
+         contextName = "__28-[LoginViewController login]_block_invoke_0:LoginViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "[json class]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "__22-[HttpHelper loadData]_block_invoke_0:HttpHelper.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[AddDriverLicenseViewController setValueByKey:key:]:AddDriverLicenseViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "_result">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>
