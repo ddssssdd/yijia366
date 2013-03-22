@@ -7,7 +7,7 @@
 //
 
 #import "BusinessInsuranceViewController.h"
-#import "BusinessInsuranceHeaderViewViewController.h"
+
 #import "InsuranceDetailCell.h"
 #import "InfoAndPhoneCallCell.h"
 @interface BusinessInsuranceViewController ()
@@ -112,10 +112,6 @@
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
     return [_headers objectAtIndex:section];
 }
--(void)addInsurance{
-    BusinessInsuranceHeaderViewViewController *vc =[[BusinessInsuranceHeaderViewViewController alloc] initWithNibName:@"BusinessInsuranceHeaderViewViewController" bundle:nil];
-    [self.navigationController pushViewController:vc animated:YES];
-    
-}
+
 
 @end

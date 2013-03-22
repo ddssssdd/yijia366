@@ -102,7 +102,6 @@
 		E2EE651716C2A62500ED1C73 /* Menu.m in Sources */ = {isa = PBXBuildFile; fileRef = E2EE651616C2A62500ED1C73 /* Menu.m */; };
 		E2EE653D16C529A100ED1C73 /* InformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2EE653B16C529A100ED1C73 /* InformationViewController.m */; };
 		E2EE653E16C529A100ED1C73 /* InformationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2EE653C16C529A100ED1C73 /* InformationViewController.xib */; };
-		E2EE655316C6055D00ED1C73 /* PullRefreshTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2EE655216C6055D00ED1C73 /* PullRefreshTableViewController.m */; };
 		E2EE657116C685F300ED1C73 /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = E2EE655F16C685F300ED1C73 /* AFHTTPClient.m */; };
 		E2EE657216C685F300ED1C73 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = E2EE656116C685F300ED1C73 /* AFHTTPRequestOperation.m */; };
 		E2EE657316C685F300ED1C73 /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = E2EE656316C685F300ED1C73 /* AFImageRequestOperation.m */; };
@@ -135,8 +134,6 @@
 		E2EE65CE16CC89B400ED1C73 /* CompulsoryInsuranceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2EE65CC16CC89B400ED1C73 /* CompulsoryInsuranceViewController.xib */; };
 		E2EE65D216CC915500ED1C73 /* BusinessInsuranceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2EE65D016CC915300ED1C73 /* BusinessInsuranceViewController.m */; };
 		E2EE65D316CC915500ED1C73 /* BusinessInsuranceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2EE65D116CC915500ED1C73 /* BusinessInsuranceViewController.xib */; };
-		E2EE65D716CC92B400ED1C73 /* BusinessInsuranceHeaderViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2EE65D516CC92B400ED1C73 /* BusinessInsuranceHeaderViewViewController.m */; };
-		E2EE65D816CC92B400ED1C73 /* BusinessInsuranceHeaderViewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2EE65D616CC92B400ED1C73 /* BusinessInsuranceHeaderViewViewController.xib */; };
 		E2EE65DC16CC9E4600ED1C73 /* InsuranceRecordsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2EE65DA16CC9E4400ED1C73 /* InsuranceRecordsViewController.m */; };
 		E2EE65DD16CC9E4600ED1C73 /* InsuranceRecordsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2EE65DB16CC9E4600ED1C73 /* InsuranceRecordsViewController.xib */; };
 		E2EE65E116CCA13E00ED1C73 /* MaintainListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2EE65DF16CCA13A00ED1C73 /* MaintainListViewController.m */; };
@@ -299,8 +296,6 @@
 		E2EE653A16C529A100ED1C73 /* InformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InformationViewController.h; sourceTree = "<group>"; };
 		E2EE653B16C529A100ED1C73 /* InformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InformationViewController.m; sourceTree = "<group>"; };
 		E2EE653C16C529A100ED1C73 /* InformationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InformationViewController.xib; sourceTree = "<group>"; };
-		E2EE655116C6055D00ED1C73 /* PullRefreshTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PullRefreshTableViewController.h; sourceTree = "<group>"; };
-		E2EE655216C6055D00ED1C73 /* PullRefreshTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PullRefreshTableViewController.m; sourceTree = "<group>"; };
 		E2EE655E16C685F300ED1C73 /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
 		E2EE655F16C685F300ED1C73 /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPClient.m; sourceTree = "<group>"; };
 		E2EE656016C685F300ED1C73 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -356,9 +351,6 @@
 		E2EE65CF16CC915300ED1C73 /* BusinessInsuranceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessInsuranceViewController.h; sourceTree = "<group>"; };
 		E2EE65D016CC915300ED1C73 /* BusinessInsuranceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessInsuranceViewController.m; sourceTree = "<group>"; };
 		E2EE65D116CC915500ED1C73 /* BusinessInsuranceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BusinessInsuranceViewController.xib; sourceTree = "<group>"; };
-		E2EE65D416CC92B400ED1C73 /* BusinessInsuranceHeaderViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessInsuranceHeaderViewViewController.h; sourceTree = "<group>"; };
-		E2EE65D516CC92B400ED1C73 /* BusinessInsuranceHeaderViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessInsuranceHeaderViewViewController.m; sourceTree = "<group>"; };
-		E2EE65D616CC92B400ED1C73 /* BusinessInsuranceHeaderViewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BusinessInsuranceHeaderViewViewController.xib; sourceTree = "<group>"; };
 		E2EE65D916CC9E4300ED1C73 /* InsuranceRecordsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InsuranceRecordsViewController.h; sourceTree = "<group>"; };
 		E2EE65DA16CC9E4400ED1C73 /* InsuranceRecordsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InsuranceRecordsViewController.m; sourceTree = "<group>"; };
 		E2EE65DB16CC9E4600ED1C73 /* InsuranceRecordsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InsuranceRecordsViewController.xib; sourceTree = "<group>"; };
@@ -436,6 +428,7 @@
 		E2296D2F16B760EC00E332D9 /* EasyDrive366 */ = {
 			isa = PBXGroup;
 			children = (
+				E29462FD16FC8B000090371C /* removable */,
 				E24A041916CFBA2600B7A602 /* Resources */,
 				E2EE658516C68DCE00ED1C73 /* Network */,
 				E2EE655D16C685E800ED1C73 /* Sync */,
@@ -450,10 +443,6 @@
 				E2296D4416B760EC00E332D9 /* ViewController.h */,
 				E2296D4516B760EC00E332D9 /* ViewController.m */,
 				E2296D3016B760EC00E332D9 /* Supporting Files */,
-				E2296D4C16B7625800E332D9 /* LoginViewController.h */,
-				E2296D4D16B7625800E332D9 /* LoginViewController.m */,
-				E2296D4F16B7723F00E332D9 /* SignupViewController.h */,
-				E2296D5016B7723F00E332D9 /* SignupViewController.m */,
 			);
 			name = EasyDrive366;
 			path = EasyDrive365;
@@ -526,6 +515,26 @@
 			path = lib;
 			sourceTree = "<group>";
 		};
+		E29462FD16FC8B000090371C /* removable */ = {
+			isa = PBXGroup;
+			children = (
+				E2296D4C16B7625800E332D9 /* LoginViewController.h */,
+				E26CCFAA16DA0D1300A35DA1 /* HelpHeaderView.h */,
+				E26CCFAB16DA0D1300A35DA1 /* HelpHeaderView.m */,
+				E26CCFAD16DA0D2800A35DA1 /* HelpHeaderView.xib */,
+				E2296D4D16B7625800E332D9 /* LoginViewController.m */,
+				E2EE65CA16CC89B300ED1C73 /* CompulsoryInsuranceViewController.h */,
+				E2EE65CB16CC89B300ED1C73 /* CompulsoryInsuranceViewController.m */,
+				E2EE65CC16CC89B400ED1C73 /* CompulsoryInsuranceViewController.xib */,
+				E2EE65CF16CC915300ED1C73 /* BusinessInsuranceViewController.h */,
+				E2EE65D016CC915300ED1C73 /* BusinessInsuranceViewController.m */,
+				E2EE65D116CC915500ED1C73 /* BusinessInsuranceViewController.xib */,
+				E2296D4F16B7723F00E332D9 /* SignupViewController.h */,
+				E2296D5016B7723F00E332D9 /* SignupViewController.m */,
+			);
+			name = removable;
+			sourceTree = "<group>";
+		};
 		E2EE650716C293DD00ED1C73 /* settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -554,9 +563,6 @@
 				E26CCF9B16D7B41600A35DA1 /* InfoAndPhoneCallCell.h */,
 				E26CCF9C16D7B41600A35DA1 /* InfoAndPhoneCallCell.m */,
 				E26CCF9E16D7B42D00A35DA1 /* InfoAndPhoneCallCell.xib */,
-				E26CCFAA16DA0D1300A35DA1 /* HelpHeaderView.h */,
-				E26CCFAB16DA0D1300A35DA1 /* HelpHeaderView.m */,
-				E26CCFAD16DA0D2800A35DA1 /* HelpHeaderView.xib */,
 				E202E12616E0D7B400FDBD34 /* Insurance4ColumnsCell.h */,
 				E202E12716E0D7B400FDBD34 /* Insurance4ColumnsCell.m */,
 				E202E12A16E0D7D100FDBD34 /* Insurance4ColumnsCell.xib */,
@@ -615,12 +621,6 @@
 				E2EE65BC16CC7F2400ED1C73 /* TaxForCarShipViewController.h */,
 				E2EE65BD16CC7F2400ED1C73 /* TaxForCarShipViewController.m */,
 				E2EE65BE16CC7F2400ED1C73 /* TaxForCarShipViewController.xib */,
-				E2EE65CA16CC89B300ED1C73 /* CompulsoryInsuranceViewController.h */,
-				E2EE65CB16CC89B300ED1C73 /* CompulsoryInsuranceViewController.m */,
-				E2EE65CC16CC89B400ED1C73 /* CompulsoryInsuranceViewController.xib */,
-				E2EE65CF16CC915300ED1C73 /* BusinessInsuranceViewController.h */,
-				E2EE65D016CC915300ED1C73 /* BusinessInsuranceViewController.m */,
-				E2EE65D116CC915500ED1C73 /* BusinessInsuranceViewController.xib */,
 				E2EE65D916CC9E4300ED1C73 /* InsuranceRecordsViewController.h */,
 				E2EE65DA16CC9E4400ED1C73 /* InsuranceRecordsViewController.m */,
 				E2EE65DB16CC9E4600ED1C73 /* InsuranceRecordsViewController.xib */,
@@ -650,14 +650,9 @@
 		E2EE654F16C6053E00ED1C73 /* Public Components */ = {
 			isa = PBXGroup;
 			children = (
-				E2EE655116C6055D00ED1C73 /* PullRefreshTableViewController.h */,
-				E2EE655216C6055D00ED1C73 /* PullRefreshTableViewController.m */,
 				E2EE65A716C7F56400ED1C73 /* BrowserViewController.h */,
 				E2EE65A816C7F56400ED1C73 /* BrowserViewController.m */,
 				E2EE65A916C7F56400ED1C73 /* BrowserViewController.xib */,
-				E2EE65D416CC92B400ED1C73 /* BusinessInsuranceHeaderViewViewController.h */,
-				E2EE65D516CC92B400ED1C73 /* BusinessInsuranceHeaderViewViewController.m */,
-				E2EE65D616CC92B400ED1C73 /* BusinessInsuranceHeaderViewViewController.xib */,
 				E2EE65E316CCA4C600ED1C73 /* MaintainRecordDetailViewController.h */,
 				E2EE65E416CCA4C600ED1C73 /* MaintainRecordDetailViewController.m */,
 				E2EE65E516CCA4C600ED1C73 /* MaintainRecordDetailViewController.xib */,
@@ -820,7 +815,6 @@
 				E2EE65C016CC7F2400ED1C73 /* TaxForCarShipViewController.xib in Resources */,
 				E2EE65CE16CC89B400ED1C73 /* CompulsoryInsuranceViewController.xib in Resources */,
 				E2EE65D316CC915500ED1C73 /* BusinessInsuranceViewController.xib in Resources */,
-				E2EE65D816CC92B400ED1C73 /* BusinessInsuranceHeaderViewViewController.xib in Resources */,
 				E2EE65DD16CC9E4600ED1C73 /* InsuranceRecordsViewController.xib in Resources */,
 				E2EE65E216CCA13E00ED1C73 /* MaintainListViewController.xib in Resources */,
 				E2EE65E716CCA4C600ED1C73 /* MaintainRecordDetailViewController.xib in Resources */,
@@ -901,7 +895,6 @@
 				E2EE651416C2A59400ED1C73 /* MenuItem.m in Sources */,
 				E2EE651716C2A62500ED1C73 /* Menu.m in Sources */,
 				E2EE653D16C529A100ED1C73 /* InformationViewController.m in Sources */,
-				E2EE655316C6055D00ED1C73 /* PullRefreshTableViewController.m in Sources */,
 				E2EE657116C685F300ED1C73 /* AFHTTPClient.m in Sources */,
 				E2EE657216C685F300ED1C73 /* AFHTTPRequestOperation.m in Sources */,
 				E2EE657316C685F300ED1C73 /* AFImageRequestOperation.m in Sources */,
@@ -924,7 +917,6 @@
 				E2EE65BF16CC7F2400ED1C73 /* TaxForCarShipViewController.m in Sources */,
 				E2EE65CD16CC89B400ED1C73 /* CompulsoryInsuranceViewController.m in Sources */,
 				E2EE65D216CC915500ED1C73 /* BusinessInsuranceViewController.m in Sources */,
-				E2EE65D716CC92B400ED1C73 /* BusinessInsuranceHeaderViewViewController.m in Sources */,
 				E2EE65DC16CC9E4600ED1C73 /* InsuranceRecordsViewController.m in Sources */,
 				E2EE65E116CCA13E00ED1C73 /* MaintainListViewController.m in Sources */,
 				E2EE65E616CCA4C600ED1C73 /* MaintainRecordDetailViewController.m in Sources */,
