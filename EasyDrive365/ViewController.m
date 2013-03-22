@@ -36,7 +36,7 @@
     [_helper setupTableView:self.tableview parentView:self.view];
     
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"注销" style:UIBarButtonSystemItemAction target:self action:@selector(refresh:)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"注销" style:UIBarButtonSystemItemAction target:self action:@selector(settingsButtonPress:)];
     /*
     
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
@@ -77,13 +77,27 @@
         WelcomeViewController *vc = [[WelcomeViewController alloc] initWithNibName:@"WelcomeViewController" bundle:nil];
         [self.navigationController pushViewController:vc animated:NO];
         
+    }else{
+        if ([AppSettings sharedSettings].isNeedRefresh){
+            [[AppSettings sharedSettings] get_latest];
+        }
     }
+    
     
 }
 
--(void)refresh:(id)sender
+-(void)settingsButtonPress:(id)sender
 {
-    [self logout];
+    
+    
+    UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:[NSString stringWithFormat:@"注销【%@】",[AppSettings sharedSettings].firstName] otherButtonTitles:nil];
+    [sheet showInView:self.view];
+
+}
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex==0){
+        [self logout];
+    }
 }
 - (void)didReceiveMemoryWarning
 {

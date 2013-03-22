@@ -31,6 +31,7 @@
 @property (nonatomic,retain) NSMutableDictionary *local_data;
 @property (nonatomic,retain) NSMutableArray *list;
 @property (nonatomic,retain) id latest_news;
+@property (nonatomic) BOOL isNeedRefresh;
 
 +(AppSettings *)sharedSettings;
 

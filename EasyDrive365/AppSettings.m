@@ -140,6 +140,7 @@
     self.isLogin = YES;
     [self save];
     [self register_device_token];
+    self.isNeedRefresh=YES;
 }
 //http process
 -(BOOL)isSuccess:(id)json
@@ -236,6 +237,7 @@
     }
 }
 -(void)get_latest{
+    self.isNeedRefresh= NO;
     for(int i=0;i<11;i++){
         NSString *keyname = [NSString stringWithFormat:@"%02d",i];
         [self get_latest_by_key:keyname];
