@@ -124,7 +124,7 @@
 }
 
 -(void)setup{
-    _helper.url=@"api/get_taxforcarship";
+    _helper.url=[NSString stringWithFormat:@"api/get_taxforcarship?userid=%d",[_helper appSetttings].userid];
 }
 -(void)processData:(id)json{
     NSLog(@"%@",json);

@@ -10,6 +10,7 @@
 #import "HttpClient.h"
 #import "AppSettings.h"
 #import "InfoAndPriceCell.h"
+#import "PhoneView.h"
 
 @interface CompulsoryInsuranceViewController ()
 {
@@ -148,5 +149,23 @@
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
     return [_list objectAtIndex:section];
 
+}
+-(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+    if (section==0 && _currentType==0){
+        PhoneView *phoneView = [[[NSBundle mainBundle] loadNibNamed:@"PhoneView" owner:nil options:nil] objectAtIndex:0];
+        [phoneView initWithPhone:_company phone:_phone];
+        phoneView.backgroundColor = tableView.backgroundColor;
+        return phoneView;
+        
+    }else{
+        return nil;
+    }
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    if (section==0){
+        return 80;
+    }else{
+        return 22;
+    }
 }
 @end

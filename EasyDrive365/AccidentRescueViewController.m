@@ -40,10 +40,7 @@
 	self.phoneButton.tintColor = [UIColor colorWithRed:0   green:80.0/255.0 blue:0 alpha:1];
 	self.phoneButton.highlightedTintColor = [UIColor colorWithRed:(CGFloat)190/255 green:0 blue:0 alpha:1];
 }
--(void)makeCall
-{
 
-}
 
 -(void)setup{
     _helper.url = [AppSettings sharedSettings].url_for_rescue;
@@ -83,5 +80,20 @@
     [super viewDidUnload];
 }
 - (IBAction)phoneCall:(id)sender {
+    if(_shop_phone){
+        
+        UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:[NSString stringWithFormat:@"拨号：%@",_shop_phone ],nil];
+        [sheet showInView:self.view];
+        
+    }
+    
+    
 }
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex==0){
+        NSString *phoneNumber = [@"tel://" stringByAppendingString:_shop_phone];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phoneNumber]];
+    }
+}
+
 @end

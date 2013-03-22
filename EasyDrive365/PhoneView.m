@@ -51,7 +51,7 @@
 }
 - (IBAction)makeCall:(id)sender {
     if (self.phone){
-        UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:[NSString stringWithFormat:@"请确定您要打电话到--%@",self.phone ] otherButtonTitles:nil];
+        UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:[NSString stringWithFormat:@"拨号：%@",self.phone ],nil];
         [sheet showInView:self];
     
 }

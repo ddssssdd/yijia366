@@ -10,7 +10,7 @@
 #import "NetViewController.h"
 #import "NVUIGradientButton.h"
 
-@interface AccidentRescueViewController : NetViewController
+@interface AccidentRescueViewController : NetViewController<UIActionSheetDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *lblShopName;
 
 @property (weak, nonatomic) IBOutlet UILabel *lblAddress;
