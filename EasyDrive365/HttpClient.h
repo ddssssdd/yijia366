@@ -12,6 +12,7 @@
     
 }
 @property (nonatomic) BOOL isInternet;
+
 +(HttpClient *)sharedHttp;
 
 -(void)online;

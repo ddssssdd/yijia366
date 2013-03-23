@@ -75,7 +75,11 @@
         //NSLog(@"get Result=%@",jsonResult);
         processJson(jsonResult);
         if (![[jsonResult objectForKey:@"status"] isEqualToString:@"success"]){
-            [SVProgressHUD dismissWithSuccess:@"暂时没有数据，请更新行驶证和驾驶证之后再试！" afterDelay:3];
+            NSString *message = @"发生异常，请稍后再试.";
+            if ([[jsonResult allKeys] containsObject:@"message"]){
+                message = [jsonResult objectForKey:@"message"];
+            }
+            [SVProgressHUD dismissWithSuccess:message afterDelay:3];
         }else{
             [SVProgressHUD dismiss];
         }

@@ -64,7 +64,7 @@
                 
             }else{
                 //self.txtUsername.text = [json objectForKey:@"message"];
-                [[[UIAlertView alloc] initWithTitle:@"提示" message:[json objectForKey:@"message"] delegate:self cancelButtonTitle:nil otherButtonTitles:@"继续", nil] show];
+                //[[[UIAlertView alloc] initWithTitle:@"提示" message:[json objectForKey:@"message"] delegate:self cancelButtonTitle:nil otherButtonTitles:@"继续", nil] show];
             }
         }
     }];
