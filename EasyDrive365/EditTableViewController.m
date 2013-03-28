@@ -121,7 +121,7 @@
     cell.key = item[@"key"];
     cell.valueText.tag = indexPath.row;
     if ([item[@"mode"] isEqual:@"number"]){
-        cell.valueText.keyboardType = UIKeyboardTypeDecimalPad;
+        cell.valueText.keyboardType = UIKeyboardTypeNumberPad;
     }
     if (![item[@"vcname"] isEqualToString:@""]){
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;

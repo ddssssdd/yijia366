@@ -99,10 +99,15 @@
 -(NSDictionary *)getInitData{
     if (!result){
         result =[[NSMutableDictionary alloc] init];
-        [result setObject:@"" forKey:@"plate_no"];
+        [result setObject:@"鲁B" forKey:@"plate_no"];
         [result setObject:@"" forKey:@"engine_no"];
         [result setObject:@"" forKey:@"vin"];
         [result setObject:@"" forKey:@"registration_date"];
+    }else{
+        NSString *plate_no = result[@"plate_no"];
+        if ([plate_no isEqualToString:@""]){
+            [result setObject:@"鲁B" forKey:@"plate_no"];
+        }
     }
     return @{@"car_id":result[@"plate_no"],@"engine_no":result[@"engine_no"],@"vin":result[@"vin"],@"init_date":result[@"registration_date"]};
 }
