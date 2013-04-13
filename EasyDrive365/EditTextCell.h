@@ -16,5 +16,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *valueText;
 @property (strong,nonatomic) NSString *key;
 
+@property (weak, nonatomic) IBOutlet UILabel *lblUnit;
 
+-(void)setUnit:(NSString *)unit;
 @end

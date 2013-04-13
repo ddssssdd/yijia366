@@ -34,7 +34,7 @@
     _sections=@[@"保养建议",@"基本信息"];
     _items=@[
     @[ @{@"name":@"下次保养时间",@"key":@"current_date",@"mode":@"",@"description":@"",@"vcname":@"",@"unit":@""},
-    @{@"name":@"下次保养里程",@"key":@"current_miles",@"mode":@"",@"description":@"",@"vcname":@"",@"unit":@""}],
+    @{@"name":@"下次保养里程",@"key":@"current_miles",@"mode":@"",@"description":@"",@"vcname":@"",@"unit":@"公里"}],
     @[ @{@"name":@"每日平均行程",@"key":@"average_mileage",@"mode":@"add",@"description":@"",@"vcname":@"",@"unit":@"公里/天"},
     @{@"name":@"最大保养里程",@"key":@"max_distance",@"mode":@"add",@"description":@"",@"vcname":@"",@"unit":@"公里"},
     @{@"name":@"最大保养间隔",@"key":@"max_time",@"mode":@"add",@"description":@"",@"vcname":@"",@"unit":@"个月"},
@@ -62,7 +62,7 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
--(void)saveData:(NSDictionary *)paramters
+-(BOOL)saveData:(NSDictionary *)paramters
 {
     NSLog(@"%@",paramters);
     NSString *url = [NSString stringWithFormat:@"api/add_maintain_record?user_id=%d&max_distance=%@&max_time=%@&prev_date=%@&prev_distance=%@&average_mileage=%@",
@@ -79,6 +79,7 @@
             [self processData:json];
         }
     }];
+    return YES;
 }
 -(int)textFieldCount{
     return 4;
@@ -88,11 +89,11 @@
     return @[@"基本信息"];
 }
 -(NSArray *)getItems{
-    return @[@[ @{@"name":@"每日平均行程",@"key":@"average_mileage",@"mode":@"number",@"description":@"",@"vcname":@""},
-    @{@"name":@"最大保养里程",@"key":@"max_distance",@"mode":@"number",@"description":@"",@"vcname":@""},
-    @{@"name":@"最大保养间隔",@"key":@"max_time",@"mode":@"number",@"description":@"",@"vcname":@""},
-    @{@"name":@"上次保养时间",@"key":@"prev_date",@"mode":@"number",@"description":@"",@"vcname":@"DatePickerViewController"},
-    @{@"name":@"上次保养里程",@"key":@"prev_distance",@"mode":@"number",@"description":@"",@"vcname":@""}]];
+    return @[@[ @{@"name":@"每日平均行程",@"key":@"average_mileage",@"mode":@"number",@"description":@"",@"vcname":@"",@"unit":@"公里"},
+    @{@"name":@"最大保养里程",@"key":@"max_distance",@"mode":@"number",@"description":@"",@"vcname":@"",@"unit":@"公里"},
+    @{@"name":@"最大保养间隔",@"key":@"max_time",@"mode":@"number",@"description":@"",@"vcname":@"",@"unit":@"个月"},
+    @{@"name":@"上次保养时间",@"key":@"prev_date",@"mode":@"number",@"description":@"",@"vcname":@"DatePickerViewController",@"unit":@""},
+    @{@"name":@"上次保养里程",@"key":@"prev_distance",@"mode":@"number",@"description":@"",@"vcname":@"",@"unit":@"公里"}]];
 }
 -(NSDictionary *)getInitData{
     return @{@"average_mileage":_result[@"average_mileage"],@"max_distance":_result[@"max_distance"],@"max_time":_result[@"max_time"],@"prev_date":_result[@"prev_date"],@"prev_distance":_result[@"prev_distance"]};

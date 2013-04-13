@@ -27,9 +27,18 @@
 }
 - (IBAction)makeCall:(id)sender {
     if(self.phone){
+        
+        UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:[NSString stringWithFormat:@"拨号：%@",self.phone ],nil];
+        [sheet showInView:self];
+        
+    }
+    
+    
+}
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex==0){
         NSString *phoneNumber = [@"tel://" stringByAppendingString:self.phone];
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phoneNumber]];
     }
 }
-
 @end

@@ -43,7 +43,7 @@
     return @[@"基本信息"];
 }
 -(NSArray *)getItems{
-    return @[@[ @{@"name":@"证件号码",@"key":@"license_id",@"mode":@"number",@"description":@"",@"vcname":@""},
+    return @[@[ @{@"name":@"证件号码",@"key":@"license_id",@"mode":@"",@"description":@"",@"vcname":@""},
     @{@"name":@"姓名",@"key":@"name",@"mode":@"add",@"description":@"",@"vcname":@""},
     @{@"name":@"准驾车型",@"key":@"car_type",@"mode":@"add",@"description":@"",@"vcname":@"LicenseTypeViewController"},
     @{@"name":@"初领日期",@"key":@"init_date",@"mode":@"add",@"description":@"",@"vcname":@"DatePickerViewController"}]];
@@ -58,8 +58,21 @@
     }
     return @{@"license_id":result[@"number"],@"name":result[@"name"],@"init_date":result[@"init_date"],@"car_type":result[@"car_type"]};
 }
--(void)saveData:(NSDictionary *)paramters{
-    NSLog(@"%@",paramters);
+-(BOOL)saveData:(NSDictionary *)paramters{
+    NSString *license_id = paramters[@"license_id"];
+    if ([license_id length]!=18){
+        [[[UIAlertView alloc] initWithTitle:@"易驾366" message:@"身份证号码必须18位" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil] show];
+        return NO;
+    }
+    NSString *temp =[license_id stringByTrimmingCharactersInSet:[NSCharacterSet decimalDigitCharacterSet]];
+    NSLog(@"%@=%d",temp,[temp length]);
+    if (([temp length]==0) || (([temp length]==1) && ([license_id hasSuffix:@"X"]))){
+            
+        
+    }else{
+        [[[UIAlertView alloc] initWithTitle:@"易驾366" message:@"身份证号码必须18位,只有最后一位允许是X" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil] show];
+        return NO;
+    }
     NSString *url =[NSString stringWithFormat:@"api/add_driver_license?user_id=%d&name=%@&license_id=%@&type=%@&init_date=%@",[AppSettings sharedSettings].userid,paramters[@"name"],paramters[@"license_id"],paramters[@"car_type"],paramters[@"init_date"]];
     NSLog(@"%@",url);
     [[HttpClient sharedHttp] get:url  block:^(id json) {
@@ -68,6 +81,7 @@
             [self processData:json];
         }
     }];
+    return YES;
 
 }
 -(void)edit_license:(id)sender{

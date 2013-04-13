@@ -27,4 +27,10 @@
 }
 
 
+-(void)setUnit:(NSString *)unit{
+    CGRect old_frame= self.valueText.frame;
+    self.valueText.frame = CGRectMake(old_frame.origin.x, old_frame.origin.y, old_frame.size.width-90, old_frame.size.height);
+    self.lblUnit.text = unit;
+}
+
 @end

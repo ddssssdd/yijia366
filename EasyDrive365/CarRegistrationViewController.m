@@ -70,7 +70,7 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
--(void)saveData:(NSDictionary *)paramters
+-(BOOL)saveData:(NSDictionary *)paramters
 {
     NSLog(@"%@",paramters);
     
@@ -82,6 +82,7 @@
             [self processData:json];
         }
     }];
+    return YES;
 }
 -(int)textFieldCount{
     return 3;

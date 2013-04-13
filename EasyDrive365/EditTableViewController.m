@@ -69,15 +69,18 @@
     for (UIView *v in [self.tableView subviews]) {
         if ([v isKindOfClass:[EditTextCell class]]){
             EditTextCell *cell = (EditTextCell *)v;
-            [_result setObject:cell.valueText.text forKey:cell.key];
+            NSString *value = [cell.valueText.text uppercaseString];
+            [_result setObject:value  forKey:cell.key];
         }
         
     }
     [_result setObject:[NSString stringWithFormat:@"%d", [AppSettings sharedSettings].userid] forKey:@"user_id"];
-    [self.delegate saveData:_result];
+    if ([self.delegate saveData:_result]){
+         [self.navigationController popViewControllerAnimated:YES];
+    }
     
-    [self.navigationController popViewControllerAnimated:YES];
-    //[self.navigationController popToRootViewControllerAnimated:YES];
+   
+    
 }
 
 
@@ -85,7 +88,16 @@
 -(void)initData{
     
     _sections =[self.delegate getSections];
-    _items =[self.delegate getItems];
+    id temp =[self.delegate getItems];
+    _items = [[NSMutableArray alloc] initWithCapacity:[temp count]];
+    for (id list in temp) {
+        NSMutableArray *tempList = [[NSMutableArray alloc] initWithCapacity:[list count]];
+        for (id item in list) {
+         
+            [tempList addObject:[[NSMutableDictionary alloc] initWithDictionary:item]];
+        }
+        [_items addObject:tempList];
+    }
     _result =[NSMutableDictionary dictionaryWithDictionary:[self.delegate getInitData]];
     _textFieldCount = [self.delegate textFieldCount];
     
@@ -102,18 +114,29 @@
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *CellIdentifier = @"CellIdentifier";
-    
+    id item =[[_items objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+    NSLog(@"%@",item);
     EditTextCell *cell =nil;
     cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil){
-        NSArray *cells =[[NSBundle mainBundle] loadNibNamed:@"EditTextCell" owner:self.tableView options:nil];
-        cell =[cells objectAtIndex:0];
-        
-        cell.valueText.delegate = self;
+        id temp =item[@"description"];
+        if ([temp isKindOfClass:[EditTextCell class]]){
+            cell = item[@"description"];
+        }else{
+            NSArray *cells =[[NSBundle mainBundle] loadNibNamed:@"EditTextCell" owner:self.tableView options:nil];
+            cell =[cells objectAtIndex:0];
+            
+            cell.valueText.delegate = self;
+            item[@"description"]=cell;
+           // [item setObject:cell forKey:@"edit_text_cell"];
+            if (item[@"unit"]){
+                [cell setUnit:item[@"unit"]];
+            }
+        }
         
     }
 
-    id item =[[_items objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+    
     NSString *value =[_result objectForKey:item[@"key"]];
     cell.keyLabel.text = item[@"name"];
     cell.valueText.placeholder = item[@"name"];

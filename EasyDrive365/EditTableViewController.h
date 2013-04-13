@@ -12,7 +12,7 @@
 -(NSArray *)getSections;
 -(NSArray *)getItems;
 -(NSDictionary *)getInitData;
--(void)saveData:(NSDictionary *)paramters;
+-(BOOL)saveData:(NSDictionary *)paramters;
 -(int)textFieldCount;
 
 @end

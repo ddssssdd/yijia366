@@ -49,8 +49,9 @@
             [[MenuItem alloc] initWithName:@"02" title:@"紧急救助" description:defaultInfo imagePath:@"0002.png" phone:defaultPhone],
             [[MenuItem alloc] initWithName:@"03" title:@"事故救援" description:defaultInfo imagePath:@"0003.png" phone:defaultPhone],
             [[MenuItem alloc] initWithName:@"04" title:@"保养建议" description:defaultInfo imagePath:@"0004.png" phone:defaultPhone],
+               [[MenuItem alloc] initWithName:@"06" title:@"我的车辆" description:defaultInfo imagePath:@"0006.png" phone:defaultPhone],
                [[MenuItem alloc] initWithName:@"05" title:@"驾驶证" description:defaultInfo imagePath:@"0005.png" phone:defaultPhone],
-            [[MenuItem alloc] initWithName:@"06" title:@"行驶证" description:defaultInfo imagePath:@"0006.png" phone:defaultPhone],
+            
             [[MenuItem alloc] initWithName:@"07" title:@"车船税" description:defaultInfo imagePath:@"0007.png" phone:defaultPhone],
             [[MenuItem alloc] initWithName:@"08" title:@"交强险" description:defaultInfo imagePath:@"0008.png" phone:defaultPhone],
             [[MenuItem alloc] initWithName:@"09" title:@"商业险" description:defaultInfo imagePath:@"0009.png" phone:defaultPhone],

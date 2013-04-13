@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface InfoAndPhoneCallCell : UITableViewCell
+@interface InfoAndPhoneCallCell : UITableViewCell<UIActionSheetDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *info;
 @property (copy,nonatomic) NSString *phone;

@@ -114,6 +114,7 @@
         aCell.key = item[@"key"];
         aCell.valueText.delegate = self;
         aCell.valueText.tag = indexPath.row;
+        aCell.valueText.autocapitalizationType = UITextAutocapitalizationTypeNone;
         if ([item[@"ispassword"] isEqualToString:@"yes"]){
             aCell.valueText.secureTextEntry=YES;
         }else{
