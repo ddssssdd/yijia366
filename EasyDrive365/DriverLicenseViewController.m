@@ -111,7 +111,7 @@
     
     
     @[
-    @{@"name":@"年审日期",@"key":@"check_date",@"mode":@"",@"description":@"",@"vcname":@""},
+    @{@"name":@"体检日期",@"key":@"check_date",@"mode":@"",@"description":@"",@"vcname":@""},
     @{@"name":@"换证日期",@"key":@"renew_date",@"mode":@"",@"description":@"",@"vcname":@""}],
     @[@{@"name":@"计分到期日",@"key":@"mark_end_date",@"mode":@"",@"description":@"",@"vcname":@""},
     
