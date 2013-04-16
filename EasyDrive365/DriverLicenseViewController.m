@@ -33,6 +33,7 @@
     self.tableView.contentInset=UIEdgeInsetsMake(0, 0, 216, 0);
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"设置" style:UIBarButtonItemStylePlain target:self action:@selector(edit_license:)];
     _isEditing = NO;
+    [self setupTableView:self.tableView];
     
     
 }
@@ -213,6 +214,7 @@
     _company = list[@"company"];
     _phone =list[@"phone"];
     [self.tableView reloadData];
+    [self endRefresh:self.tableView];
 }
 
 @end

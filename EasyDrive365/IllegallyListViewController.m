@@ -33,6 +33,7 @@
     [super viewDidLoad];
     self.tableview.dataSource = self;
     self.tableview.delegate = self;
+    [self setupTableView:self.tableview];
     
 }
 
@@ -86,5 +87,6 @@
     [_list addObjectsFromArray:[json objectForKey:@"result"][@"data"]];
     NSLog(@"%@",_list);
     [self.tableview reloadData];
+    [self endRefresh:self.tableview];
 }
 @end

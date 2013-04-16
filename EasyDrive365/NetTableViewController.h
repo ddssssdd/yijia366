@@ -9,11 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "HttpHelper.h"
 #import "HttpClientDelegate.h"
+#import "RefreshHelper.h"
 
-@interface NetTableViewController : UITableViewController<HttpClientDelegate>{
+@interface NetTableViewController : UITableViewController<HttpClientDelegate,RefreshHelperDelegate,UIScrollViewDelegate>{
     HttpHelper *_helper;
     NSString *_company;
     NSString *_phone;
+    RefreshHelper *_refreshHelper;
 }
 -(void)setup;
 -(void)processData:(id)json;

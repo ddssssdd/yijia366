@@ -50,7 +50,7 @@
     [self initData];
     self.tableView.delegate = self;
     self.tableView.dataSource = self; self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"设置" style:UIBarButtonItemStylePlain target:self action:@selector(edit:)];
-    
+    [self setupTableView:self.tableView];
     
     
     
@@ -212,6 +212,6 @@
         }
     }
     [self.tableView reloadData];
-    
+    [self endRefresh:self.tableView];
 }
 @end

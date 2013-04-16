@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface InsuranceRecordsViewController : UITableViewController
+#import "NetTableViewController.h"
+@interface InsuranceRecordsViewController : NetTableViewController
 
 @end

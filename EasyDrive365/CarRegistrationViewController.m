@@ -60,7 +60,7 @@
     self.tableView.dataSource = self; self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]  initWithTitle:@"设置" style:UIBarButtonItemStylePlain target:self action:@selector(edit:)];
     
     
-   
+    [self setupTableView:self.tableView];
     
 }
 
@@ -212,6 +212,7 @@
         result=list[@"data"];
     }
     [self.tableView reloadData];
+    [self endRefresh:self.tableView];
 }
 -(void)buttonPress:(id)sender{
     IllegallyListViewController *vc =[[IllegallyListViewController alloc] initWithNibName:@"IllegallyListViewController" bundle:nil];

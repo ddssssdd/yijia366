@@ -35,32 +35,28 @@
 {
     [super viewDidLoad];
 
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    [self loadData];
+    
+    //[self loadData];
 }
--(void)loadData{
-    [[HttpClient sharedHttp] get:[AppSettings sharedSettings].url_for_insurance_list block:^(id json) {
-        if ([[AppSettings sharedSettings] isSuccess:json]){
-            _company = json[@"result"][@"company"];
-            _phone = json[@"result"][@"phone"];
-            
-            if (_list){
-                [_list removeAllObjects];
-            }else{
-                _list =[[NSMutableArray alloc] init];
-            }
-            [_list addObjectsFromArray:[json objectForKey:@"result"][@"data"]];
-            [self updateData];
-            
-        }else{
-            //get nothing from server;
-        }
-    }];
+-(void)setup{
+    _helper.url = [AppSettings sharedSettings].url_for_insurance_list ;
+    
 }
+-(void)processData:(id)json{
+    _company = json[@"result"][@"company"];
+    _phone = json[@"result"][@"phone"];
+    
+    if (_list){
+        [_list removeAllObjects];
+    }else{
+        _list =[[NSMutableArray alloc] init];
+    }
+    [_list addObjectsFromArray:[json objectForKey:@"result"][@"data"]];
+    [self updateData];
+
+    [_refreshHelper endRefresh:self.tableView];
+}
+
 -(void)updateData{
     [self.tableView reloadData];
 }

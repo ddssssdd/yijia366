@@ -58,6 +58,7 @@
             //get nothing from server;
         }
     }];
+    [self setupTableView:self.tableView];
     
 }
 -(void)setup{
@@ -77,7 +78,7 @@
     }
     NSLog(@"%@",_list);
     [self.tableView reloadData];
-    
+    [self endRefresh:self.tableView];
     
 }
 -(id)parseData:(id)result key:(NSString *)key{

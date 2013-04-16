@@ -27,7 +27,8 @@
 {
     [super viewDidLoad];
 
-    // Uncomment the following line to preserve selection between presentations.
+    _refreshHelper = [[RefreshHelper alloc] initWithDelegate:self];
+    [_refreshHelper setupTableView:self.tableView parentView:self.view];
      self.clearsSelectionOnViewWillAppear = NO;
     _helper = [[HttpHelper alloc] initWithTarget:self];
     [_helper restoreData];
@@ -35,6 +36,7 @@
     /*
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"phone_Blue.png"] style:UIBarButtonItemStylePlain target:self action:@selector(makePhone:)];
      */
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -52,5 +54,17 @@
 }
 -(void)makePhone:(id)sender{
     
+}
+-(void)loadData{
+    [_helper loadData];
+}
+
+#pragma mark UIScrollViewDelegate
+
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    [_refreshHelper.refreshHeaderView egoRefreshScrollViewDidScroll:scrollView];
+}
+-(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+    [_refreshHelper.refreshHeaderView egoRefreshScrollViewDidEndDragging:scrollView];
 }
 @end

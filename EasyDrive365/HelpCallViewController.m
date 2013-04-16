@@ -36,7 +36,7 @@
     self.tableview.delegate = self;
     self.tableview.dataSource = self;
     //self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Phone" style:UIBarButtonSystemItemAction target:self action:@selector(makeCall:)];
-    
+    [self setupTableView:self.tableview];
 }
 
 - (void)didReceiveMemoryWarning
@@ -74,7 +74,7 @@
         [self updateData];
     }
     
-    
+    [self endRefresh:self.tableview];
     
     
 }

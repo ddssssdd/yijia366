@@ -42,6 +42,7 @@
      [[UITabBarItem alloc] initWithTitle:@"保险责任" image:[UIImage imageNamed:@"0051.png"] tag:1],
      [[UITabBarItem alloc] initWithTitle:@"浮动因素" image:[UIImage imageNamed:@"0228.png"] tag:2]]];
     [self.tabbar setSelectedItem:item1];
+    [self setupTableView:self.tableView];
 }
 
 - (void)didReceiveMemoryWarning
@@ -71,6 +72,7 @@
     
     
     [self update_display];
+    [self endRefresh:self.tableView];
 }
 -(void)update_display{
     NSString *type_name=[NSString stringWithFormat:@"type_%d",_currentType];

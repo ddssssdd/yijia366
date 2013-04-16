@@ -33,32 +33,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    /*
-    _listType =@[@"乘用车",@"商用车",@"挂车",@"其他车辆",@"摩托车"];
-    _listItems = [NSArray arrayWithObjects:
-                  @[
-                  @{@"price" : @"240元",@"unit":@"每辆",@"description":@"1.0升（含）以下的"},
-                  @{@"price" : @"360元",@"unit":@"每辆",@"description":@"1.0升以上至1.6升（含）的"},
-                  @{@"price" : @"420元",@"unit":@"每辆",@"description":@"1.6升以上至2.0升（含）的"},
-                  @{@"price" : @"900元",@"unit":@"每辆",@"description":@"2.0升以上至2.5升（含）的"},
-                  @{@"price" : @"1800元",@"unit":@"每辆",@"description":@"2.5升以上至3.0升（含）的"},
-                  @{@"price" : @"3000元",@"unit":@"每辆",@"description":@"3.0升以上至4.0升（含）的"},
-                  @{@"price" : @"4500元",@"unit":@"每辆",@"description":@"4.0升以上"}],
-                  @[
-                  @{@"price" : @"720元",@"unit":@"每辆",@"description":@"大型客车"},
-                  @{@"price" : @"600元",@"unit":@"每辆",@"description":@"中型客车"},
-                  @{@"price" : @"72元",@"unit":@"整备质量每吨",@"description":@"货车"}],
-                  @[
-                  @{@"price" : @"36元",@"unit":@"整备质量每吨",@"description":@"挂车"}],
-                  @[@{@"price" : @"72元",@"unit":@"整备质量每吨",@"description":@"专用作业车"},
-                  @{@"price" : @"72元",@"unit":@"整备质量每吨",@"description":@"轮式专用机械车"}],
-                  @[
-                  @{@"price" : @"60元",@"unit":@"每辆",@"description":@"摩托车"}],
-                  nil];
-    //增加了_listRemarks
-    _listRemarks =
-    @[@"核定载客人数9人（含）以下;按发动机汽缸容量(排气量)分档〕",@"大型客车核定载客人数20人（含）以上，包括电车;中型客车核定载客人数9人以上，20人以下，包括电车;货车包括半挂牵引车、三轮汽车和低速载货汽车等",@"挂车无备注",@"不包括拖拉机",@"摩托车无说明"];
-    */
+    
     
 }
 
@@ -160,6 +135,6 @@
     }
      */
     [self.tableView reloadData];
-    
+    [_refreshHelper endRefresh:self.tableView];
 }
 @end
