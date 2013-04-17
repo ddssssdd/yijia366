@@ -65,6 +65,7 @@
     _helper.url=[_helper appSetttings].url_get_business_insurance;
 }
 -(void)processData:(id)json{
+    [_list removeAllObjects];
     _company = json[@"result"][@"company"];
     _phone = json[@"result"][@"phone"];
     NSLog(@"%@",json[@"result"]);
