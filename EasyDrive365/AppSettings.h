@@ -73,4 +73,7 @@
 -(void)makeCall:(NSString *)phone;
 -(void)get_latest;
 -(Information *)getInformationByKey:(NSString *)key;
+
+-(void)add_login:(NSString *)username password:(NSString *)password rememberPassword:(NSString *)rememberPassword;
+-(NSMutableArray *)get_logins;
 @end

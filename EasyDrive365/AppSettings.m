@@ -272,4 +272,28 @@
     //NSLog(@"%@",_dict);
     return [_dict objectForKey:key];
 }
+
+-(void)add_login:(NSString *)username password:(NSString *)password rememberPassword:(NSString *)rememberPassword{
+    if (!_list){
+        _list = [[NSMutableArray alloc] init];
+    }
+    
+    for (id item in _list) {
+        NSString *uname =item[@"username"];
+        if ([uname isEqualToString:username]){
+            [_list removeObject:item];
+            break;
+        }
+    }
+    id item = @{@"username":username,@"password":password,@"remember":rememberPassword};
+    [_list addObject:item];
+    NSLog(@"%@",_list);
+    [self save];
+}
+-(NSMutableArray *)get_logins{
+    if (!_list){
+        _list = [[NSMutableArray alloc] init];
+    }
+    return _list;
+}
 @end

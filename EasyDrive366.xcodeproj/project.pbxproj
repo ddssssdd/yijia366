@@ -37,6 +37,12 @@
 		E2296D4616B760EC00E332D9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2296D4516B760EC00E332D9 /* ViewController.m */; };
 		E2296D4E16B7625800E332D9 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2296D4D16B7625800E332D9 /* LoginViewController.m */; };
 		E2296D5116B7723F00E332D9 /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2296D5016B7723F00E332D9 /* SignupViewController.m */; };
+		E23BA0E017215E770049D2CB /* SwitchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E23BA0DF17215E770049D2CB /* SwitchCell.m */; };
+		E23BA0E317215E910049D2CB /* SwitchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E23BA0E217215E910049D2CB /* SwitchCell.xib */; };
+		E23BA0E617216B600049D2CB /* ChooseNextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E23BA0E517216B600049D2CB /* ChooseNextCell.m */; };
+		E23BA0E817216B780049D2CB /* ChooseNextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E23BA0E717216B780049D2CB /* ChooseNextCell.xib */; };
+		E23BA0EC172170460049D2CB /* ChooseUserController.m in Sources */ = {isa = PBXBuildFile; fileRef = E23BA0EA172170450049D2CB /* ChooseUserController.m */; };
+		E23BA0ED172170460049D2CB /* ChooseUserController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E23BA0EB172170450049D2CB /* ChooseUserController.xib */; };
 		E24A043716D0B40500B7A602 /* HttpHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = E24A043616D0B40500B7A602 /* HttpHelper.m */; };
 		E24A043A16D0E95100B7A602 /* DetailCompulsoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E24A043916D0E95100B7A602 /* DetailCompulsoryViewController.m */; };
 		E24A043E16D1074800B7A602 /* LicenseTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E24A043C16D1074700B7A602 /* LicenseTypeViewController.m */; };
@@ -199,6 +205,15 @@
 		E2296D4D16B7625800E332D9 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		E2296D4F16B7723F00E332D9 /* SignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignupViewController.h; sourceTree = "<group>"; };
 		E2296D5016B7723F00E332D9 /* SignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignupViewController.m; sourceTree = "<group>"; };
+		E23BA0DE17215E770049D2CB /* SwitchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwitchCell.h; sourceTree = "<group>"; };
+		E23BA0DF17215E770049D2CB /* SwitchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwitchCell.m; sourceTree = "<group>"; };
+		E23BA0E217215E910049D2CB /* SwitchCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SwitchCell.xib; sourceTree = "<group>"; };
+		E23BA0E417216B600049D2CB /* ChooseNextCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseNextCell.h; sourceTree = "<group>"; };
+		E23BA0E517216B600049D2CB /* ChooseNextCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseNextCell.m; sourceTree = "<group>"; };
+		E23BA0E717216B780049D2CB /* ChooseNextCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChooseNextCell.xib; sourceTree = "<group>"; };
+		E23BA0E9172170450049D2CB /* ChooseUserController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseUserController.h; sourceTree = "<group>"; };
+		E23BA0EA172170450049D2CB /* ChooseUserController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseUserController.m; sourceTree = "<group>"; };
+		E23BA0EB172170450049D2CB /* ChooseUserController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChooseUserController.xib; sourceTree = "<group>"; };
 		E24A043416D0B33300B7A602 /* HttpClientDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpClientDelegate.h; sourceTree = "<group>"; };
 		E24A043516D0B40500B7A602 /* HttpHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpHelper.h; sourceTree = "<group>"; };
 		E24A043616D0B40500B7A602 /* HttpHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpHelper.m; sourceTree = "<group>"; };
@@ -587,6 +602,12 @@
 				E2903BDB16F41C8500A93CBF /* PhoneView.h */,
 				E2903BDC16F41C8500A93CBF /* PhoneView.m */,
 				E2903BDF16F41C9800A93CBF /* PhoneView.xib */,
+				E23BA0DE17215E770049D2CB /* SwitchCell.h */,
+				E23BA0DF17215E770049D2CB /* SwitchCell.m */,
+				E23BA0E217215E910049D2CB /* SwitchCell.xib */,
+				E23BA0E417216B600049D2CB /* ChooseNextCell.h */,
+				E23BA0E517216B600049D2CB /* ChooseNextCell.m */,
+				E23BA0E717216B780049D2CB /* ChooseNextCell.xib */,
 			);
 			name = Components;
 			sourceTree = "<group>";
@@ -664,6 +685,9 @@
 				E2B057E516E79370003F89F7 /* EditTableViewController.xib */,
 				E2C1626416EA23F100B0E9EC /* CustomEditTableViewController.h */,
 				E2C1626516EA23F100B0E9EC /* CustomEditTableViewController.m */,
+				E23BA0E9172170450049D2CB /* ChooseUserController.h */,
+				E23BA0EA172170450049D2CB /* ChooseUserController.m */,
+				E23BA0EB172170450049D2CB /* ChooseUserController.xib */,
 			);
 			name = "Public Components";
 			sourceTree = "<group>";
@@ -857,6 +881,9 @@
 				E212279A16FA069B00B494E0 /* 0051@2x.png in Resources */,
 				E212279D16FA06D200B494E0 /* 0228.png in Resources */,
 				E212279E16FA06D200B494E0 /* 0228@2x.png in Resources */,
+				E23BA0E317215E910049D2CB /* SwitchCell.xib in Resources */,
+				E23BA0E817216B780049D2CB /* ChooseNextCell.xib in Resources */,
+				E23BA0ED172170460049D2CB /* ChooseUserController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -944,6 +971,9 @@
 				E2903BDD16F41C8500A93CBF /* PhoneView.m in Sources */,
 				E2F2881416F5948100DAE1B8 /* RefreshHelper.m in Sources */,
 				E25AF0B116F9FED900E79057 /* CIViewController.m in Sources */,
+				E23BA0E017215E770049D2CB /* SwitchCell.m in Sources */,
+				E23BA0E617216B600049D2CB /* ChooseNextCell.m in Sources */,
+				E23BA0EC172170460049D2CB /* ChooseUserController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,8 +10,10 @@
 #import "IntroduceCell.h"
 #import "EditTextCell.h"
 #import "OneButtonCell.h"
+#import "SwitchCell.h"
+#import "ChooseNextCell.h"
 
-@interface CustomEditTableViewController ()<UITextFieldDelegate,OneButtonCellDelegate>{
+@interface CustomEditTableViewController ()<UITextFieldDelegate,SwitchCellDelegate,OneButtonCellDelegate>{
     
     int textfield_count;
 }
@@ -89,7 +91,8 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (cell==nil){
-        NSString *cellCalssName = [_list objectAtIndex:indexPath.section][@"cell"];
+        NSString *cellCalssName = [[_list objectAtIndex:indexPath.section][@"list"] objectAtIndex:indexPath.row][@"cell"];
+        NSLog(@"%@",cellCalssName);
         if ([cellCalssName isEqualToString:@"default"]){
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         }else{
@@ -102,16 +105,17 @@
     return cell;
 }
 -(void)setupCell:(UITableViewCell *)cell indexPath:(NSIndexPath *)indexPath{
-    NSString *cellCalssName = [_list objectAtIndex:indexPath.section][@"cell"];
+    NSString *cellCalssName = [[_list objectAtIndex:indexPath.section][@"list"] objectAtIndex:indexPath.row][@"cell"];
     
     if ([cellCalssName isEqualToString:@"EditTextCell"]){
         textfield_count = [[_list objectAtIndex:indexPath.section][@"count"] intValue];
         NSArray *items = [_list objectAtIndex:indexPath.section][@"list"];
         id item = [items objectAtIndex:indexPath.row];
-        NSLog(@"%@",item);
+        //NSLog(@"%@",item);
         EditTextCell *aCell =(EditTextCell *)cell;
         aCell.keyLabel.text = item[@"label"];
         aCell.key = item[@"key"];
+        aCell.valueText.text = item[@"value"];
         aCell.valueText.delegate = self;
         aCell.valueText.tag = indexPath.row;
         aCell.valueText.autocapitalizationType = UITextAutocapitalizationTypeNone;
@@ -128,8 +132,28 @@
     }else if ([cellCalssName isEqualToString:@"OneButtonCell"]){
         OneButtonCell *aCell =(OneButtonCell *)cell;
         aCell.delegate = self;
+    }else if ([cellCalssName isEqualToString:@"SwitchCell"]){
+        NSArray *items = [_list objectAtIndex:indexPath.section][@"list"];
+        id item = [items objectAtIndex:indexPath.row];
+        NSLog(@"%@",item);
+        SwitchCell *aCell = (SwitchCell *)cell;
+        aCell.lblTitle.text = item[@"label"];
+        aCell.delegate = self;
+        aCell.targetObject = item;
+        [aCell.switchResult setOn:[@"1" isEqualToString:item[@"value"]]];
+        
+        
+    }else if ([cellCalssName isEqualToString:@"ChooseNextCell"]){
+        NSArray *items = [_list objectAtIndex:indexPath.section][@"list"];
+        id item = [items objectAtIndex:indexPath.row];
+        ChooseNextCell *aCell = (ChooseNextCell *)cell;
+        aCell.lblTitle.text = item[@"label"];
+        //cell.accessoryType = UITableViewCellAccessoryCheckmark;
     }
     
+}
+-(BOOL)textFieldShouldEndEditing:(UITextField *)textField{
+    return YES;
 }
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
     [textField resignFirstResponder];
@@ -158,6 +182,9 @@
         if ([v isKindOfClass:[EditTextCell class]]){
             EditTextCell *cell = (EditTextCell *)v;
             [_result setObject:cell.valueText.text forKey:cell.key];
+        }else if ([v isKindOfClass:[SwitchCell class]]){
+            SwitchCell *cell = (SwitchCell *)v;
+            [_result setObject:cell.targetObject[@"value"] forKey:cell.targetObject[@"key"]];
         }
         
     }
@@ -178,6 +205,13 @@
 }
 -(void)delectCell:(id)sender{
     [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+}
+
+-(void)switchChanged:(UISwitch *)aSwitch cell:(SwitchCell *)cell{
+    if (cell.targetObject){
+        NSLog(@"%@",cell.targetObject);
+        cell.targetObject[@"value"] = aSwitch.on?@"1":@"0";
+    }
 }
 
 @end

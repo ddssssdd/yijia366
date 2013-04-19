@@ -21,13 +21,13 @@
 
 -(void)initData{
     id items=@[
-    @{@"key" :@"username",@"label":@"用户名：",@"default":@"",@"placeholder":@"",@"ispassword":@"no" },
-    @{@"key" :@"password",@"label":@"密码：",@"default":@"",@"placeholder":@"",@"ispassword":@"yes" },
-    @{@"key" :@"repassword",@"label":@"再输一遍：",@"default":@"",@"placeholder":@"",@"ispassword":@"yes" }
+    [[NSMutableDictionary alloc] initWithDictionary:@{@"key" :@"username",@"label":@"用户名：",@"default":@"",@"placeholder":@"",@"ispassword":@"no",@"cell":@"EditTextCell",@"value":@"" }],
+    [[NSMutableDictionary alloc] initWithDictionary:@{@"key" :@"password",@"label":@"密码：",@"default":@"",@"placeholder":@"",@"ispassword":@"yes",@"cell":@"EditTextCell",@"value":@"" }],
+    [[NSMutableDictionary alloc] initWithDictionary:@{@"key" :@"repassword",@"label":@"再输一遍：",@"default":@"",@"placeholder":@"",@"ispassword":@"yes",@"cell":@"EditTextCell",@"value":@"" }]
     ];
     _list=[NSMutableArray arrayWithArray: @[
-           @{@"count" : @1,@"cell":@"IntroduceCell",@"list":@[],@"height":@100.0f},
-           @{@"count" : @3,@"cell":@"EditTextCell",@"list":items,@"height":@44.0f},
+           @{@"count" : @1,@"list":@[@{@"cell":@"IntroduceCell"}],@"height":@100.0f},
+           @{@"count" : @3,@"list":items,@"height":@44.0f},
            //@{@"count" : @1,@"cell":@"OneButtonCell",@"list":@[],@"height":@44.0f}
            ]];
 }
