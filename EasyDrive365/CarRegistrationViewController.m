@@ -12,12 +12,72 @@
 #import "DisplayTextCell.h"
 #import "PhoneView.h"
 #import "OneButtonCell.h"
+#import "HttpClient.h"
 
-@interface CarRegistrationViewController ()<OneButtonCellDelegate>{
+
+@implementation EditCarReigsterationDataSource
+
+-(id)initWithData:(id)data{
+    self = [super init];
+    if (self){
+        _result = data;
+    }
+    return self;
+}
+
+-(BOOL)saveData:(NSDictionary *)paramters
+{
+    NSLog(@"%@",paramters);
+    
+    NSString *url =[NSString stringWithFormat:@"api/add_car_registration?user_id=%d&car_id=%@&vin=%@&init_date=%@&engine_no=%@",[AppSettings sharedSettings].userid,paramters[@"car_id"],paramters[@"vin"],paramters[@"init_date"],paramters[@"engine_no"]];
+    NSLog(@"%@",url);
+    [[HttpClient sharedHttp] get:url  block:^(id json) {
+        NSLog(@"%@",json);
+        if ([[AppSettings sharedSettings] isSuccess:json]){
+            //[self processData:json];
+            if (self.delegate){
+                [self.delegate processSaveResult:json];
+            }
+        }
+    }];
+    return YES;
+}
+-(int)textFieldCount{
+    return 3;
+}
+-(NSArray *)getSections{
+    return @[@"基本信息"];
+}
+-(NSArray *)getItems{
+    return @[@[ @{@"name":@"车牌号",@"key":@"car_id",@"mode":@"add",@"description":@"",@"vcname":@""},
+    @{@"name":@"发动机号",@"key":@"engine_no",@"mode":@"add",@"description":@"",@"vcname":@""},
+    @{@"name":@"VIN",@"key":@"vin",@"mode":@"add",@"description":@"",@"vcname":@""},
+    @{@"name":@"初登日期",@"key":@"init_date",@"mode":@"add",@"description":@"",@"vcname":@"DatePickerViewController"},
+    ]];
+}
+-(NSDictionary *)getInitData{
+    if (!_result){
+        _result =[[NSMutableDictionary alloc] init];
+        [_result setObject:@"鲁B" forKey:@"plate_no"];
+        [_result setObject:@"" forKey:@"engine_no"];
+        [_result setObject:@"" forKey:@"vin"];
+        [_result setObject:@"" forKey:@"registration_date"];
+    }else{
+        NSString *plate_no = _result[@"plate_no"];
+        if ([plate_no isEqualToString:@""]){
+            [_result setObject:@"鲁B" forKey:@"plate_no"];
+        }
+    }
+    return @{@"car_id":_result[@"plate_no"],@"engine_no":_result[@"engine_no"],@"vin":_result[@"vin"],@"init_date":_result[@"registration_date"]};
+}
+@end
+
+@interface CarRegistrationViewController ()<OneButtonCellDelegate,EditDataSourceDelegate>{
     NSArray *_sections;
     NSArray *_items;
    
     NSMutableDictionary* result;
+    EditCarReigsterationDataSource *_datasource;
 }
 
 @end
@@ -61,57 +121,18 @@
     
     
     [self setupTableView:self.tableView];
-    
+    _datasource =[[EditCarReigsterationDataSource alloc] initWithData:result];
 }
 
 
 -(void)edit:(id)sender{
-    EditTableViewController *vc = [[EditTableViewController alloc] initWithDelegate:self];
+    EditTableViewController *vc = [[EditTableViewController alloc] initWithDelegate:_datasource];
     [self.navigationController pushViewController:vc animated:YES];
 }
+-(void)processSaveResult:(id)json{
+    [self processData:json];
+}
 
--(BOOL)saveData:(NSDictionary *)paramters
-{
-    NSLog(@"%@",paramters);
-    
-    NSString *url =[NSString stringWithFormat:@"api/add_car_registration?user_id=%d&car_id=%@&vin=%@&init_date=%@&engine_no=%@",[_helper appSetttings].userid,paramters[@"car_id"],paramters[@"vin"],paramters[@"init_date"],paramters[@"engine_no"]];
-    NSLog(@"%@",url);
-    [[_helper httpClient] get:url  block:^(id json) {
-        NSLog(@"%@",json);
-        if ([[_helper appSetttings] isSuccess:json]){
-            [self processData:json];
-        }
-    }];
-    return YES;
-}
--(int)textFieldCount{
-    return 3;
-}
--(NSArray *)getSections{
-    return @[@"基本信息"];
-}
--(NSArray *)getItems{
-    return @[@[ @{@"name":@"车牌号",@"key":@"car_id",@"mode":@"add",@"description":@"",@"vcname":@""},
-    @{@"name":@"发动机号",@"key":@"engine_no",@"mode":@"add",@"description":@"",@"vcname":@""},
-    @{@"name":@"VIN",@"key":@"vin",@"mode":@"add",@"description":@"",@"vcname":@""},
-    @{@"name":@"初登日期",@"key":@"init_date",@"mode":@"add",@"description":@"",@"vcname":@"DatePickerViewController"},
-   ]];
-}
--(NSDictionary *)getInitData{
-    if (!result){
-        result =[[NSMutableDictionary alloc] init];
-        [result setObject:@"鲁B" forKey:@"plate_no"];
-        [result setObject:@"" forKey:@"engine_no"];
-        [result setObject:@"" forKey:@"vin"];
-        [result setObject:@"" forKey:@"registration_date"];
-    }else{
-        NSString *plate_no = result[@"plate_no"];
-        if ([plate_no isEqualToString:@""]){
-            [result setObject:@"鲁B" forKey:@"plate_no"];
-        }
-    }
-    return @{@"car_id":result[@"plate_no"],@"engine_no":result[@"engine_no"],@"vin":result[@"vin"],@"init_date":result[@"registration_date"]};
-}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -211,6 +232,7 @@
     }else{
         result=list[@"data"];
     }
+    [[AppSettings sharedSettings] saveJsonWith:@"car_data" data:result];
     [self.tableView reloadData];
     [self endRefresh:self.tableView];
 }

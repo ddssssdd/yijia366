@@ -97,6 +97,7 @@
 		E2C1626316EA1C5400B0E9EC /* OneButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2C1626216EA1C5300B0E9EC /* OneButtonCell.xib */; };
 		E2C1626616EA23F100B0E9EC /* CustomEditTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2C1626516EA23F100B0E9EC /* CustomEditTableViewController.m */; };
 		E2C1626916EA2D8100B0E9EC /* SignUpTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2C1626816EA2D8100B0E9EC /* SignUpTableViewController.m */; };
+		E2DBBE9B1722BE2500493DD9 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2DBBE9A1722BE2500493DD9 /* SettingsViewController.m */; };
 		E2EBCED616EE13C900E918C5 /* InformationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E2EBCED516EE13C800E918C5 /* InformationCell.m */; };
 		E2EBCED916EE13DC00E918C5 /* InformationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2EBCED816EE13DC00E918C5 /* InformationCell.xib */; };
 		E2EE650516C293D300ED1C73 /* AppSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = E2EE650416C293D300ED1C73 /* AppSettings.m */; };
@@ -292,6 +293,8 @@
 		E2C1626516EA23F100B0E9EC /* CustomEditTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomEditTableViewController.m; sourceTree = "<group>"; };
 		E2C1626716EA2D8100B0E9EC /* SignUpTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpTableViewController.h; sourceTree = "<group>"; };
 		E2C1626816EA2D8100B0E9EC /* SignUpTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpTableViewController.m; sourceTree = "<group>"; };
+		E2DBBE991722BE2500493DD9 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		E2DBBE9A1722BE2500493DD9 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		E2EBCED416EE13C800E918C5 /* InformationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InformationCell.h; sourceTree = "<group>"; };
 		E2EBCED516EE13C800E918C5 /* InformationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InformationCell.m; sourceTree = "<group>"; };
 		E2EBCED816EE13DC00E918C5 /* InformationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InformationCell.xib; sourceTree = "<group>"; };
@@ -658,6 +661,8 @@
 				E25AF0AE16F9FED800E79057 /* CIViewController.h */,
 				E25AF0AF16F9FED800E79057 /* CIViewController.m */,
 				E25AF0B016F9FED900E79057 /* CIViewController.xib */,
+				E2DBBE991722BE2500493DD9 /* SettingsViewController.h */,
+				E2DBBE9A1722BE2500493DD9 /* SettingsViewController.m */,
 			);
 			name = Modules;
 			sourceTree = "<group>";
@@ -974,6 +979,7 @@
 				E23BA0E017215E770049D2CB /* SwitchCell.m in Sources */,
 				E23BA0E617216B600049D2CB /* ChooseNextCell.m in Sources */,
 				E23BA0EC172170460049D2CB /* ChooseUserController.m in Sources */,
+				E2DBBE9B1722BE2500493DD9 /* SettingsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

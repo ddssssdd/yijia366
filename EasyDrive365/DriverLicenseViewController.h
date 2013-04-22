@@ -9,7 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "NetViewController.h"
 #import "EditTableViewController.h"
-@interface DriverLicenseViewController : NetViewController<UITableViewDelegate,UITableViewDataSource,EditDataDelegate>
+
+@interface EditDriverLicenseDataSource:NSObject<EditDataDelegate>
+-(id)initWithData:(id)data;
+@property (nonatomic,strong) id result;
+@property (nonatomic,weak) id<EditDataSourceDelegate> delegate;
+@end
+
+
+@interface DriverLicenseViewController : NetViewController<UITableViewDelegate,UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @end

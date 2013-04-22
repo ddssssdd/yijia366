@@ -10,12 +10,74 @@
 #import "PhoneView.h"
 #import "DisplayTextCell.h"
 
+@implementation EditDriverLicenseDataSource
 
-@interface DriverLicenseViewController (){
+-(id)initWithData:(id)data{
+    self = [super init];
+    if (self){
+        _result = data;
+    }
+    return self;
+}
+-(int)textFieldCount{
+    return 2;
+}
+-(NSArray *)getSections{
+    return @[@"基本信息"];
+}
+-(NSArray *)getItems{
+    return @[@[ @{@"name":@"证件号码",@"key":@"license_id",@"mode":@"",@"description":@"",@"vcname":@""},
+    @{@"name":@"姓名",@"key":@"name",@"mode":@"add",@"description":@"",@"vcname":@""},
+    @{@"name":@"准驾车型",@"key":@"car_type",@"mode":@"add",@"description":@"",@"vcname":@"LicenseTypeViewController"},
+    @{@"name":@"初领日期",@"key":@"init_date",@"mode":@"add",@"description":@"",@"vcname":@"DatePickerViewController"}]];
+}
+-(NSDictionary *)getInitData{
+    if (!_result){
+        _result = [[NSMutableDictionary alloc] init];
+        [_result setObject:@"" forKey:@"name"];
+        [_result setObject:@"" forKey:@"init_date"];
+        [_result setObject:@"C1" forKey:@"car_type"];
+        [_result setObject:@"" forKey:@"number"];
+    }
+    return @{@"license_id":_result[@"number"],@"name":_result[@"name"],@"init_date":_result[@"init_date"],@"car_type":_result[@"car_type"]};
+}
+-(BOOL)saveData:(NSDictionary *)paramters{
+    NSString *license_id = paramters[@"license_id"];
+    if ([license_id length]!=18){
+        [[[UIAlertView alloc] initWithTitle:@"易驾366" message:@"身份证号码必须18位" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil] show];
+        return NO;
+    }
+    NSString *temp =[license_id stringByTrimmingCharactersInSet:[NSCharacterSet decimalDigitCharacterSet]];
+    NSLog(@"%@=%d",temp,[temp length]);
+    if (([temp length]==0) || (([temp length]==1) && ([license_id hasSuffix:@"X"]))){
+        
+        
+    }else{
+        [[[UIAlertView alloc] initWithTitle:@"易驾366" message:@"身份证号码必须18位,只有最后一位允许是X" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil] show];
+        return NO;
+    }
+    NSString *url =[NSString stringWithFormat:@"api/add_driver_license?user_id=%d&name=%@&license_id=%@&type=%@&init_date=%@",[AppSettings sharedSettings].userid,paramters[@"name"],paramters[@"license_id"],paramters[@"car_type"],paramters[@"init_date"]];
+    NSLog(@"%@",url);
+    [[HttpClient sharedHttp] get:url  block:^(id json) {
+        NSLog(@"%@",json);
+        if ([[AppSettings sharedSettings] isSuccess:json]){
+            //[self processData:json];
+            if (self.delegate){
+                [self.delegate processSaveResult:json];
+            }
+        }
+    }];
+    return YES;
+    
+}
+
+@end
+@interface DriverLicenseViewController ()<EditDataSourceDelegate>{
     NSArray *_sections;
     NSArray *_items;
     BOOL _isEditing;
     NSMutableDictionary* result;
+    EditDriverLicenseDataSource *_datasource;
 }
 
 @end
@@ -34,59 +96,11 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"设置" style:UIBarButtonItemStylePlain target:self action:@selector(edit_license:)];
     _isEditing = NO;
     [self setupTableView:self.tableView];
+    _datasource = [[EditDriverLicenseDataSource alloc] initWithData:result];
     
-    
-}
--(int)textFieldCount{
-    return 2;
-}
--(NSArray *)getSections{
-    return @[@"基本信息"];
-}
--(NSArray *)getItems{
-    return @[@[ @{@"name":@"证件号码",@"key":@"license_id",@"mode":@"",@"description":@"",@"vcname":@""},
-    @{@"name":@"姓名",@"key":@"name",@"mode":@"add",@"description":@"",@"vcname":@""},
-    @{@"name":@"准驾车型",@"key":@"car_type",@"mode":@"add",@"description":@"",@"vcname":@"LicenseTypeViewController"},
-    @{@"name":@"初领日期",@"key":@"init_date",@"mode":@"add",@"description":@"",@"vcname":@"DatePickerViewController"}]];
-}
--(NSDictionary *)getInitData{
-    if (!result){
-        result = [[NSMutableDictionary alloc] init];
-        [result setObject:@"" forKey:@"name"];
-        [result setObject:@"" forKey:@"init_date"];
-        [result setObject:@"C1" forKey:@"car_type"];
-        [result setObject:@"" forKey:@"number"];
-    }
-    return @{@"license_id":result[@"number"],@"name":result[@"name"],@"init_date":result[@"init_date"],@"car_type":result[@"car_type"]};
-}
--(BOOL)saveData:(NSDictionary *)paramters{
-    NSString *license_id = paramters[@"license_id"];
-    if ([license_id length]!=18){
-        [[[UIAlertView alloc] initWithTitle:@"易驾366" message:@"身份证号码必须18位" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil] show];
-        return NO;
-    }
-    NSString *temp =[license_id stringByTrimmingCharactersInSet:[NSCharacterSet decimalDigitCharacterSet]];
-    NSLog(@"%@=%d",temp,[temp length]);
-    if (([temp length]==0) || (([temp length]==1) && ([license_id hasSuffix:@"X"]))){
-            
-        
-    }else{
-        [[[UIAlertView alloc] initWithTitle:@"易驾366" message:@"身份证号码必须18位,只有最后一位允许是X" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil] show];
-        return NO;
-    }
-    NSString *url =[NSString stringWithFormat:@"api/add_driver_license?user_id=%d&name=%@&license_id=%@&type=%@&init_date=%@",[AppSettings sharedSettings].userid,paramters[@"name"],paramters[@"license_id"],paramters[@"car_type"],paramters[@"init_date"]];
-    NSLog(@"%@",url);
-    [[HttpClient sharedHttp] get:url  block:^(id json) {
-        NSLog(@"%@",json);
-        if ([[AppSettings sharedSettings] isSuccess:json]){
-            [self processData:json];
-        }
-    }];
-    return YES;
-
 }
 -(void)edit_license:(id)sender{
-    EditTableViewController *vc = [[EditTableViewController alloc] initWithDelegate:self];
+    EditTableViewController *vc = [[EditTableViewController alloc] initWithDelegate:_datasource];
     [self.navigationController pushViewController:vc animated:YES];
     
 }
@@ -104,7 +118,9 @@
     [self setTableView:nil];
     [super viewDidUnload];
 }
-
+-(void)processSaveResult:(id)json{
+    [self processData:json];
+}
 -(void)initData{
     _sections=@[@"提醒",@"计分情况",@"基本信息"];
     
@@ -213,6 +229,7 @@
     result =list[@"data"];
     _company = list[@"company"];
     _phone =list[@"phone"];
+    [[AppSettings sharedSettings] saveJsonWith:@"license_data" data:result];
     [self.tableView reloadData];
     [self endRefresh:self.tableView];
 }

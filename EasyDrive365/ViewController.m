@@ -13,7 +13,7 @@
 #import "Menu.h"
 #import "MenuItem.h"
 #import "WelcomeViewController.h"
-
+#import "SettingsViewController.h"
 @interface ViewController (){
     NSMutableArray *_list;
     RefreshHelper *_helper;
@@ -50,6 +50,7 @@
     [[HttpClient sharedHttp] online];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getNews:) name:@"NavigationCell_01" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(logout) name:@"logout" object:nil];
     
 }
 -(void)getNews:(NSNotification *)noti{
@@ -88,10 +89,15 @@
 
 -(void)settingsButtonPress:(id)sender
 {
-    
+    /*
     
     UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:[NSString stringWithFormat:@"注销【%@】",[AppSettings sharedSettings].firstName] otherButtonTitles:nil];
     [sheet showInView:self.view];
+    
+    */
+    SettingsViewController *vc = [[SettingsViewController alloc] initWithStyle:UITableViewStyleGrouped];
+    [self.navigationController pushViewController:vc animated:YES];
+    
 
 }
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
@@ -107,7 +113,7 @@
 
 - (void)viewDidUnload {
    
-
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
    
     [self setTableview:nil];
    

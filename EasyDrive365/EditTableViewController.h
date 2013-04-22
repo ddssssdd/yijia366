@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "PickupData.h"
+
+@protocol EditDataSourceDelegate<NSObject>
+-(void)processSaveResult:(id)json;
+@end
+
+
 @protocol EditDataDelegate <NSObject>
 -(NSArray *)getSections;
 -(NSArray *)getItems;

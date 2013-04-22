@@ -8,11 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import "NVUIGradientButton.h"
+@class OneButtonCell;
+
 @protocol OneButtonCellDelegate<NSObject>
--(void)buttonPress:(id)sender;
+-(void)buttonPress:(OneButtonCell *)sender;
+
 @end;
 @interface OneButtonCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet NVUIGradientButton *button;
 @property (nonatomic,weak) id<OneButtonCellDelegate> delegate;
+@property (weak,nonatomic) id targetObject;
 
+-(void)setupButtonWithType:(int)type;
 @end

@@ -10,7 +10,12 @@
 #import "NetViewController.h"
 #import "EditTableViewController.h"
 
-@interface MaintanViewController :  NetViewController<UITableViewDataSource,UITableViewDelegate,EditDataDelegate>
+@interface EditMaintainDataSource:NSObject <EditDataDelegate>
+@property (weak,nonatomic) id<EditDataSourceDelegate> delegate;
+-(id)initWithData:(id)data;
+@end
+
+@interface MaintanViewController :  NetViewController<UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end

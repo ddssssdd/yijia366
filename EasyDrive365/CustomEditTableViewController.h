@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+@class OneButtonCell;
+@class SwitchCell;
 
 @interface CustomEditTableViewController : UITableViewController{
     NSMutableArray *_list;
@@ -16,4 +18,9 @@
 -(void)initData;
 -(void)setupCell:(UITableViewCell *)cell indexPath:(NSIndexPath *)indexPath;
 -(void)processSaving:(NSMutableDictionary *)parameters;
+
+
+-(void)buttonPress:(OneButtonCell *)sender;
+-(void)switchChanged:(UISwitch *)aSwitch cell:(SwitchCell *)cell;
+
 @end

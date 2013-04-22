@@ -14,7 +14,7 @@
 #import "ChooseNextCell.h"
 
 @interface CustomEditTableViewController ()<UITextFieldDelegate,SwitchCellDelegate,OneButtonCellDelegate>{
-    
+    UITextField *_lastTextField;
     int textfield_count;
 }
 
@@ -38,6 +38,9 @@
 {
     [self init_setup];
     [super viewDidLoad];
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapOn:)];
+    tapGesture.cancelsTouchesInView = NO;
+    [self.view addGestureRecognizer:tapGesture];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -106,11 +109,11 @@
 }
 -(void)setupCell:(UITableViewCell *)cell indexPath:(NSIndexPath *)indexPath{
     NSString *cellCalssName = [[_list objectAtIndex:indexPath.section][@"list"] objectAtIndex:indexPath.row][@"cell"];
-    
+    NSArray *items = [_list objectAtIndex:indexPath.section][@"list"];
+    id item = [items objectAtIndex:indexPath.row];
     if ([cellCalssName isEqualToString:@"EditTextCell"]){
         textfield_count = [[_list objectAtIndex:indexPath.section][@"count"] intValue];
-        NSArray *items = [_list objectAtIndex:indexPath.section][@"list"];
-        id item = [items objectAtIndex:indexPath.row];
+        
         //NSLog(@"%@",item);
         EditTextCell *aCell =(EditTextCell *)cell;
         aCell.keyLabel.text = item[@"label"];
@@ -118,6 +121,7 @@
         aCell.valueText.text = item[@"value"];
         aCell.valueText.delegate = self;
         aCell.valueText.tag = indexPath.row;
+        aCell.valueText.placeholder = item[@"placeholder"];
         aCell.valueText.autocapitalizationType = UITextAutocapitalizationTypeNone;
         if ([item[@"ispassword"] isEqualToString:@"yes"]){
             aCell.valueText.secureTextEntry=YES;
@@ -131,10 +135,14 @@
         }
     }else if ([cellCalssName isEqualToString:@"OneButtonCell"]){
         OneButtonCell *aCell =(OneButtonCell *)cell;
+        aCell.button.text = item[@"label"];
         aCell.delegate = self;
+        aCell.targetObject = item;
+        if ([@"0" isEqualToString:item[@"default"]]){
+            [aCell setupButtonWithType:0];
+        }
     }else if ([cellCalssName isEqualToString:@"SwitchCell"]){
-        NSArray *items = [_list objectAtIndex:indexPath.section][@"list"];
-        id item = [items objectAtIndex:indexPath.row];
+        
         NSLog(@"%@",item);
         SwitchCell *aCell = (SwitchCell *)cell;
         aCell.lblTitle.text = item[@"label"];
@@ -144,13 +152,21 @@
         
         
     }else if ([cellCalssName isEqualToString:@"ChooseNextCell"]){
-        NSArray *items = [_list objectAtIndex:indexPath.section][@"list"];
-        id item = [items objectAtIndex:indexPath.row];
+       
         ChooseNextCell *aCell = (ChooseNextCell *)cell;
         aCell.lblTitle.text = item[@"label"];
         //cell.accessoryType = UITableViewCellAccessoryCheckmark;
     }
     
+}
+-(void)tapOn:(UITapGestureRecognizer *)recognizer{
+    if (_lastTextField){
+        [_lastTextField resignFirstResponder];
+    }
+}
+-(BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+    _lastTextField =textField;
+    return YES;
 }
 -(BOOL)textFieldShouldEndEditing:(UITextField *)textField{
     return YES;
@@ -195,8 +211,9 @@
 -(void)processSaving:(NSMutableDictionary *)parameters{
     
 }
--(void)buttonPress:(id)sender{
-    [self done];
+-(void)buttonPress:(OneButtonCell *)sender{
+    NSLog(@"%@",sender);
+    
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{

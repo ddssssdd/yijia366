@@ -10,11 +10,72 @@
 #import "DisplayTextCell.h"
 #import "DatePickerViewController.h"
 #import "PhoneView.h"
+#import "AppSettings.h"
+#import "HttpClient.h"
+@interface EditMaintainDataSource(){
+    id _result;
+    
+}
+@end
+@implementation EditMaintainDataSource
+-(id)initWithData:(id)data{
+    self =[super init];
+    if (self){
+        _result = data;
+    }
+    return self;
+}
+-(BOOL)saveData:(NSDictionary *)paramters
+{
+    NSLog(@"%@",paramters);
+    NSString *url = [NSString stringWithFormat:@"api/add_maintain_record?user_id=%d&max_distance=%@&max_time=%@&prev_date=%@&prev_distance=%@&average_mileage=%@",
+                     [AppSettings sharedSettings].userid,
+                     paramters[@"max_distance"],
+                     paramters[@"max_time"],
+                     paramters[@"prev_date"],
+                     paramters[@"prev_distance"],
+                     paramters[@"average_mileage"]];
+    [[HttpClient sharedHttp] get:url block:^(id json) {
+        
+        if ([[AppSettings sharedSettings] isSuccess:json]){
+            
+            //[self processData:json];
+            if (self.delegate){
+                [self.delegate processSaveResult:json];
+            }
+        }
+    }];
+    return YES;
+}
+-(int)textFieldCount{
+    return 4;
+}
 
-@interface MaintanViewController (){
+-(NSArray *)getSections{
+    return @[@"基本信息"];
+}
+-(NSArray *)getItems{
+    return @[@[ @{@"name":@"每日平均行程",@"key":@"average_mileage",@"mode":@"number",@"description":@"",@"vcname":@"",@"unit":@"公里"},
+    @{@"name":@"最大保养里程",@"key":@"max_distance",@"mode":@"number",@"description":@"",@"vcname":@"",@"unit":@"公里"},
+    @{@"name":@"最大保养间隔",@"key":@"max_time",@"mode":@"number",@"description":@"",@"vcname":@"",@"unit":@"个月"},
+    @{@"name":@"上次保养时间",@"key":@"prev_date",@"mode":@"number",@"description":@"",@"vcname":@"DatePickerViewController",@"unit":@""},
+    @{@"name":@"上次保养里程",@"key":@"prev_distance",@"mode":@"number",@"description":@"",@"vcname":@"",@"unit":@"公里"}]];
+}
+-(NSDictionary *)getInitData{
+    if (!_result){
+        return [[NSMutableDictionary alloc] initWithDictionary:@{@"average_mileage":@"60",@"max_distance":@"0",@"max_time":@"6",@"prev_date":@"",@"prev_distance":@"0"}];
+    }else{
+        return @{@"average_mileage":_result[@"average_mileage"],@"max_distance":_result[@"max_distance"],@"max_time":_result[@"max_time"],@"prev_date":_result[@"prev_date"],@"prev_distance":_result[@"prev_distance"]};
+    }
+}
+
+
+@end
+
+@interface MaintanViewController ()<EditDataSourceDelegate>{
     NSArray *_sections;
     NSArray *_items;
-    
+    EditMaintainDataSource *datasource;
     NSMutableDictionary* _result;
 }
 
@@ -29,6 +90,10 @@
         // Custom initialization
     }
     return self;
+}
+
+-(void)processSaveResult:(id)json{
+    [self processData:json];
 }
 -(void)initData{
     _sections=@[@"保养建议",@"基本信息"];
@@ -51,53 +116,20 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self; self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"设置" style:UIBarButtonItemStylePlain target:self action:@selector(edit:)];
     [self setupTableView:self.tableView];
-    
+    datasource= [[EditMaintainDataSource alloc] initWithData:_result];
+    datasource.delegate = self;
     
     
 }
 
 
 -(void)edit:(id)sender{
-    EditTableViewController *vc = [[EditTableViewController alloc] initWithDelegate:self];
+     
+    EditTableViewController *vc = [[EditTableViewController alloc] initWithDelegate:datasource];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
--(BOOL)saveData:(NSDictionary *)paramters
-{
-    NSLog(@"%@",paramters);
-    NSString *url = [NSString stringWithFormat:@"api/add_maintain_record?user_id=%d&max_distance=%@&max_time=%@&prev_date=%@&prev_distance=%@&average_mileage=%@",
-                     [_helper appSetttings].userid,
-                     paramters[@"max_distance"],
-                     paramters[@"max_time"],
-                     paramters[@"prev_date"],
-                     paramters[@"prev_distance"],
-                     paramters[@"average_mileage"]];
-    [[_helper httpClient] get:url block:^(id json) {
-       
-        if ([[_helper appSetttings] isSuccess:json]){
-            
-            [self processData:json];
-        }
-    }];
-    return YES;
-}
--(int)textFieldCount{
-    return 4;
-}
 
--(NSArray *)getSections{
-    return @[@"基本信息"];
-}
--(NSArray *)getItems{
-    return @[@[ @{@"name":@"每日平均行程",@"key":@"average_mileage",@"mode":@"number",@"description":@"",@"vcname":@"",@"unit":@"公里"},
-    @{@"name":@"最大保养里程",@"key":@"max_distance",@"mode":@"number",@"description":@"",@"vcname":@"",@"unit":@"公里"},
-    @{@"name":@"最大保养间隔",@"key":@"max_time",@"mode":@"number",@"description":@"",@"vcname":@"",@"unit":@"个月"},
-    @{@"name":@"上次保养时间",@"key":@"prev_date",@"mode":@"number",@"description":@"",@"vcname":@"DatePickerViewController",@"unit":@""},
-    @{@"name":@"上次保养里程",@"key":@"prev_distance",@"mode":@"number",@"description":@"",@"vcname":@"",@"unit":@"公里"}]];
-}
--(NSDictionary *)getInitData{
-    return @{@"average_mileage":_result[@"average_mileage"],@"max_distance":_result[@"max_distance"],@"max_time":_result[@"max_time"],@"prev_date":_result[@"prev_date"],@"prev_distance":_result[@"prev_distance"]};
-}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -211,6 +243,7 @@
             [_result setObject:value?value:@"" forKey:key];
         }
     }
+    [[AppSettings sharedSettings] saveJsonWith:@"maintain_data" data:_result];
     [self.tableView reloadData];
     [self endRefresh:self.tableView];
 }

@@ -27,8 +27,15 @@
 }
 - (IBAction)buttonPress:(id)sender {
     if (self.delegate){
-        [self.delegate buttonPress:sender];
+        [self.delegate buttonPress:self];
     }
 }
-
+-(void)setupButtonWithType:(int)type{
+    if (type==0){
+        self.button.textColor = [UIColor whiteColor];
+        self.button.textShadowColor = [UIColor darkGrayColor];
+        self.button.tintColor = [UIColor colorWithRed:(CGFloat)120/255 green:0 blue:0 alpha:1];
+        self.button.highlightedTintColor = [UIColor colorWithRed:(CGFloat)190/255 green:0 blue:0 alpha:1];
+    }
+}
 @end
