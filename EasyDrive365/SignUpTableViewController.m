@@ -21,7 +21,7 @@
 
 -(void)initData{
     id items=@[
-    [[NSMutableDictionary alloc] initWithDictionary:@{@"key" :@"username",@"label":@"用户名：",@"default":@"",@"placeholder":@"",@"ispassword":@"no",@"cell":@"EditTextCell",@"value":@"" }],
+    [[NSMutableDictionary alloc] initWithDictionary:@{@"key" :@"username",@"label":@"用户名：",@"default":@"",@"placeholder":@"手机号/车牌号",@"ispassword":@"no",@"cell":@"EditTextCell",@"value":@"" }],
     [[NSMutableDictionary alloc] initWithDictionary:@{@"key" :@"password",@"label":@"密码：",@"default":@"",@"placeholder":@"",@"ispassword":@"yes",@"cell":@"EditTextCell",@"value":@"" }],
     [[NSMutableDictionary alloc] initWithDictionary:@{@"key" :@"repassword",@"label":@"再输一遍：",@"default":@"",@"placeholder":@"",@"ispassword":@"yes",@"cell":@"EditTextCell",@"value":@"" }]
     ];

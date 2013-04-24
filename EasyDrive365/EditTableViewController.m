@@ -100,6 +100,7 @@
     }
     _result =[NSMutableDictionary dictionaryWithDictionary:[self.delegate getInitData]];
     _textFieldCount = [self.delegate textFieldCount];
+    NSLog(@"%@",_result);
     
     
 }

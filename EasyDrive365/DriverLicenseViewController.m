@@ -97,9 +97,11 @@
     _isEditing = NO;
     [self setupTableView:self.tableView];
     _datasource = [[EditDriverLicenseDataSource alloc] initWithData:result];
+    _datasource.delegate = self;
     
 }
 -(void)edit_license:(id)sender{
+    _datasource.result = result;
     EditTableViewController *vc = [[EditTableViewController alloc] initWithDelegate:_datasource];
     [self.navigationController pushViewController:vc animated:YES];
     

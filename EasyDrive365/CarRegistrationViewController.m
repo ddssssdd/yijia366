@@ -122,10 +122,12 @@
     
     [self setupTableView:self.tableView];
     _datasource =[[EditCarReigsterationDataSource alloc] initWithData:result];
+    _datasource.delegate = self;
 }
 
 
 -(void)edit:(id)sender{
+    _datasource.result = result;
     EditTableViewController *vc = [[EditTableViewController alloc] initWithDelegate:_datasource];
     [self.navigationController pushViewController:vc animated:YES];
 }

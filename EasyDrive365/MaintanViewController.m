@@ -13,7 +13,7 @@
 #import "AppSettings.h"
 #import "HttpClient.h"
 @interface EditMaintainDataSource(){
-    id _result;
+   
     
 }
 @end
@@ -124,7 +124,7 @@
 
 
 -(void)edit:(id)sender{
-     
+    datasource.result = _result;
     EditTableViewController *vc = [[EditTableViewController alloc] initWithDelegate:datasource];
     [self.navigationController pushViewController:vc animated:YES];
 }

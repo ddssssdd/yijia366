@@ -12,6 +12,7 @@
 
 @interface EditMaintainDataSource:NSObject <EditDataDelegate>
 @property (weak,nonatomic) id<EditDataSourceDelegate> delegate;
+@property (nonatomic) id result;
 -(id)initWithData:(id)data;
 @end
 

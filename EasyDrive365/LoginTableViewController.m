@@ -61,7 +61,7 @@
              @{@"key" :@"username",
                @"label":@"用户名：",
                @"default":@"",
-               @"placeholder":@"",
+               @"placeholder":@"手机号/车牌号",
                @"ispassword":@"no",
                 @"value":_username,
              @"cell":@"EditTextCell"  }],
