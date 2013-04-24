@@ -23,7 +23,7 @@
     [super viewDidLoad];
     
     _helper =[[HttpHelper alloc] initWithTarget:self];
-    [_helper restoreData];
+    //[_helper restoreData];
     [_helper loadData];
     
 }
