@@ -65,6 +65,8 @@
 -(NSString *)url_get_business_insurance;
 -(NSString *)url_get_count_of_suggestions;
 
+-(NSString *)url_change_password:(NSString *)newPassword;
+
 -(NSString *)udid;
 
 

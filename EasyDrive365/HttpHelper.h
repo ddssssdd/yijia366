@@ -22,6 +22,7 @@
 
 
 -(void)loadData;
+-(void)loadData:(int)reload;
 -(void)restoreData;
 -(HttpClient *)httpClient;
 -(AppSettings *)appSetttings;

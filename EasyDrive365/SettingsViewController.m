@@ -12,6 +12,8 @@
 #import "MaintanViewController.h"
 #import "DriverLicenseViewController.h"
 #import "CarRegistrationViewController.h"
+#import "HttpClient.h"
+#import "AppSettings.h"
 
 @interface SettingsViewController (){
     EditMaintainDataSource *_maintainDatasource;
@@ -99,10 +101,11 @@
                                    @"placeholder":
                                    @"",@"value":@"",
                                    @"cell":@"ChooseNextCell" }]];
+    ;
     id items3= @[
     [[NSMutableDictionary alloc] initWithDictionary:
      @{@"key" :@"logout",
-     @"label":@"注销",
+     @"label":[NSString stringWithFormat:@"注销--%@",[AppSettings sharedSettings].firstName],
      @"default":@"0",
      @"placeholder":
      @"",@"value":@"",
@@ -120,17 +123,22 @@
 -(void)processSaving:(NSMutableDictionary *)parameters{
     NSLog(@"%@",parameters);
     
-    NSString *username=[parameters objectForKey:@"username"];
-    if([@"" isEqualToString:username]){
-        [[[UIAlertView alloc] initWithTitle:@"提示" message:@"用户名称不能为空！" delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定", nil] show];
-        return;
-    }
+    
     NSString *password = [parameters objectForKey:@"password"];
     if([@"" isEqualToString:password]){
         [[[UIAlertView alloc] initWithTitle:@"提示" message:@"请输入有效密码" delegate:self cancelButtonTitle:nil otherButtonTitles:@"继续", nil] show];
         return;
     }
-   
+    NSString *repassword=[parameters objectForKey:@"repassword"];
+    if(![password isEqualToString:repassword]){
+        [[[UIAlertView alloc] initWithTitle:@"提示" message:@"密码不匹配，请重新输入" delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定", nil] show];
+        return;
+    }
+    
+    [[HttpClient sharedHttp] get:[[AppSettings sharedSettings] url_change_password:password]  block:^(id json) {
+        //
+        [[[UIAlertView alloc] initWithTitle:@"提示" message:@"密码修改成功！" delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定", nil] show];
+    }];
     
    
     
@@ -163,7 +171,7 @@
     
     }else if ([@"reset_password" isEqualToString:item[@"key"]]){
         //reset password;
-        
+        [self done];
     }
 }
 

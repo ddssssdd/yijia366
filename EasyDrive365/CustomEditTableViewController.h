@@ -22,5 +22,6 @@
 
 -(void)buttonPress:(OneButtonCell *)sender;
 -(void)switchChanged:(UISwitch *)aSwitch cell:(SwitchCell *)cell;
+-(void)done;
 
 @end

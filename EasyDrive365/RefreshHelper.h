@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "EGORefreshTableHeaderView.h"
 @protocol RefreshHelperDelegate<NSObject>
--(void)loadData;
+-(void)loadData:(int)reload;
 @end;
 
 @interface RefreshHelper : NSObject<UIScrollViewDelegate,EGORefreshTableHeaderDelegate>{

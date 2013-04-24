@@ -76,7 +76,8 @@
 }
 #pragma mark EGORefreshTableHeaderViewDelegate
 -(void)egoRefreshTableHeaderDidTriggerRefresh:(EGORefreshTableHeaderView *)view{
-    [_helper loadData];
+    
+    [_helper loadData:1];
 }
 -(BOOL)egoRefreshTableHeaderDataSourceIsLoading:(EGORefreshTableHeaderView *)view{
     return _reloading;

@@ -34,7 +34,7 @@
 
 #pragma mark EGORefreshTableHeaderViewDelegate
 -(void)egoRefreshTableHeaderDidTriggerRefresh:(EGORefreshTableHeaderView *)view{
-    [self.delegate loadData];
+    [self.delegate loadData:1];
 }
 -(BOOL)egoRefreshTableHeaderDataSourceIsLoading:(EGORefreshTableHeaderView *)view{
     return _reloading;

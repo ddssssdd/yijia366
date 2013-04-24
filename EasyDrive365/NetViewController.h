@@ -17,6 +17,7 @@
     NSString *_company;
     EGORefreshTableHeaderView *_refreshHeaderView;
     BOOL _reloading;
+   
 }
 -(void)setup;
 -(void)processData:(id)json;

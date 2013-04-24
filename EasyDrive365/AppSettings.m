@@ -204,6 +204,10 @@
     return [NSString stringWithFormat:@"api/get_count_of_suggestion?userid=%d",self.userid];
 }
 
+-(NSString *)url_change_password:(NSString *)newPassword{
+    return [NSString stringWithFormat:@"api/r_u_p?userid=%d&pwd=%@",self.userid,newPassword];
+}
+
 -(NSString *)udid{
     UIDevice *device =[UIDevice currentDevice];
     //return [NSString stringWithFormat:@"%@", device.identifierForVendor];

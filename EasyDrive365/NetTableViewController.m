@@ -55,8 +55,8 @@
 -(void)makePhone:(id)sender{
     
 }
--(void)loadData{
-    [_helper loadData];
+-(void)loadData:(int)reload{
+    [_helper loadData:reload];
 }
 
 #pragma mark UIScrollViewDelegate

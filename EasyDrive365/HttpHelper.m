@@ -21,12 +21,16 @@
     return self;
 }
 -(void)loadData{
+    [self loadData:0];
+}
+-(void)loadData:(int)reload{
     
     [self.delegate setup];
     //not setup _url;
     if (!_url){
         return;
     }
+    
     // test offline
     if (![HttpClient sharedHttp].isInternet){
         id json= [[AppSettings sharedSettings] loadJsonBy:NSStringFromClass([self.delegate class])];
@@ -34,8 +38,9 @@
         return;
     }
     
-    
-    [[HttpClient sharedHttp] get:_url block:^(id json) {
+    NSString *url = [NSString stringWithFormat:@"%@&reload=%d",_url,reload];
+    NSLog(@"Reload url=%@",url);
+    [[HttpClient sharedHttp] get:url block:^(id json) {
        
         if ([[AppSettings sharedSettings] isSuccess:json]){
             

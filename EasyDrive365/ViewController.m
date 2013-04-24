@@ -36,7 +36,7 @@
     [_helper setupTableView:self.tableview parentView:self.view];
     
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"注销" style:UIBarButtonSystemItemAction target:self action:@selector(settingsButtonPress:)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"设置" style:UIBarButtonSystemItemAction target:self action:@selector(settingsButtonPress:)];
     /*
     
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
@@ -56,7 +56,7 @@
 -(void)getNews:(NSNotification *)noti{
     [_helper endRefresh:self.tableview];
 }
--(void)loadData{
+-(void)loadData:(int)reload{
     [self get_latest];
 }
 -(void)get_latest
