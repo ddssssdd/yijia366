@@ -149,19 +149,82 @@
     
     if (indexPath.section==2){
         if (indexPath.row==0){
+            /*
             EditTableViewController *vc = [[EditTableViewController alloc] initWithDelegate:_maintainDatasource];
             [self.navigationController pushViewController:vc animated:YES];
+             */
+            [self open_maintain_setup];
         }else if (indexPath.row==1){
+            /*
             EditTableViewController *vc =[[EditTableViewController alloc] initWithDelegate:_driverDatasource];
             [self.navigationController pushViewController:vc animated:YES];
+             */
+            [self open_driver_setup];
         }else if (indexPath.row==2){
+            /*
             EditTableViewController *vc =[[EditTableViewController alloc] initWithDelegate:_carDatasource];
             [self.navigationController pushViewController:vc animated:YES];
+             */
+            [self open_car_setup];
         }
        
     }
     NSLog(@"%@",indexPath);
     [super tableView:tableView didSelectRowAtIndexPath:indexPath];
+}
+-(void)open_maintain_setup{
+    NSString *url =[[AppSettings sharedSettings] url_for_get_maintain_record];
+    [[HttpClient sharedHttp] get:url block:^(id json) {
+        if ([[AppSettings sharedSettings] isSuccess:json]){
+            id temp=[json objectForKey:@"result"][@"data"];
+            
+            NSLog(@"%@",temp);
+            NSEnumerator *enumerator =[temp keyEnumerator];
+            id key;
+            id result = [[NSMutableDictionary alloc] init];
+            while ((key=[enumerator nextObject])) {
+                id value = [temp objectForKey:key];
+                if ([value isKindOfClass:[NSNull class]]){
+                    [result setObject:@"" forKey:key];
+                    
+                }else{
+                    [result setObject:value?value:@"" forKey:key];
+                }
+            }
+            _maintainDatasource = [[EditMaintainDataSource alloc] initWithData:result];
+            EditTableViewController *vc = [[EditTableViewController alloc] initWithDelegate:_maintainDatasource];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+       
+    }];
+}
+-(void)open_driver_setup{
+    NSString *url =[[AppSettings sharedSettings] url_get_driver_license];
+    [[HttpClient sharedHttp] get:url block:^(id json) {
+        if ([[AppSettings sharedSettings] isSuccess:json]){
+            id result=[json objectForKey:@"result"][@"data"];
+            
+            
+            _driverDatasource = [[EditDriverLicenseDataSource alloc] initWithData:result];
+            EditTableViewController *vc = [[EditTableViewController alloc] initWithDelegate:_driverDatasource];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+        
+    }];
+}
+-(void)open_car_setup{
+    NSString *url =[[AppSettings sharedSettings] url_get_car_registration];
+    [[HttpClient sharedHttp] get:url block:^(id json) {
+        if ([[AppSettings sharedSettings] isSuccess:json]){
+            id result=[json objectForKey:@"result"][@"data"];
+            
+            
+            _carDatasource = [[EditCarReigsterationDataSource alloc] initWithData:result];
+            EditTableViewController *vc = [[EditTableViewController alloc] initWithDelegate:_carDatasource];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+        
+    }];
 }
 -(void)buttonPress:(OneButtonCell *)sender{
     id item= [sender targetObject];
