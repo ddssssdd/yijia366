@@ -242,4 +242,7 @@
     IllegallyListViewController *vc =[[IllegallyListViewController alloc] initWithNibName:@"IllegallyListViewController" bundle:nil];
     [self.navigationController pushViewController:vc animated:YES];
 }
+-(void)responseError:(id)json{
+    [self endRefresh:self.tableView];
+}
 @end

@@ -67,4 +67,7 @@
 -(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
     [_refreshHelper.refreshHeaderView egoRefreshScrollViewDidEndDragging:scrollView];
 }
+-(void)responseError:(id)json{
+    [_refreshHelper endRefresh:self.tableView];
+}
 @end

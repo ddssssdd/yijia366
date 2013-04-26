@@ -20,6 +20,7 @@
     NSMutableArray *_list;
     id _curr;
     id _renew;
+    NSMutableArray *_sectionHeaders;
 }
 
 @end
@@ -44,6 +45,7 @@
     self.tableView.dataSource = self;
     
     _list = [[NSMutableArray alloc] init];
+    _sectionHeaders =[[NSMutableArray alloc] init];
     [[HttpClient sharedHttp] get:[AppSettings sharedSettings].url_get_count_of_suggestions block:^(id json) {
         if ([[AppSettings sharedSettings] isSuccess:json]){
             
@@ -82,6 +84,9 @@
     [self endRefresh:self.tableView];
     
 }
+-(void)responseError:(id)json{
+    [self endRefresh:self.tableView];
+}
 -(id)parseData:(id)result key:(NSString *)key{
     id curr = result[key];
     /*
@@ -98,6 +103,7 @@
     
     //[_list addObject:sum];
     [_list addObject:items];
+    [_sectionHeaders addObject:curr[@"title"]];
     return curr;
 }
 -(void)parseData_old:(id)result key:(NSString *)key{
@@ -128,11 +134,14 @@
      */
 }
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+    /*
     if (section==0){
         return @"当前保单";
     }else {
         return @"新续保单";
     }
+     */
+    return [_sectionHeaders objectAtIndex:section];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{

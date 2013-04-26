@@ -97,7 +97,7 @@
         NSString *cellCalssName = [[_list objectAtIndex:indexPath.section][@"list"] objectAtIndex:indexPath.row][@"cell"];
         NSLog(@"%@",cellCalssName);
         if ([cellCalssName isEqualToString:@"default"]){
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
         }else{
             cell= [[[NSBundle mainBundle] loadNibNamed:cellCalssName owner:nil options:nil] objectAtIndex:0];
         }
@@ -156,6 +156,9 @@
         ChooseNextCell *aCell = (ChooseNextCell *)cell;
         aCell.lblTitle.text = item[@"label"];
         //cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    }else if ([cellCalssName isEqualToString:@"default"]){
+        cell.textLabel.text = item[@"label"];
+        cell.detailTextLabel.text = item[@"value"];
     }
     
 }

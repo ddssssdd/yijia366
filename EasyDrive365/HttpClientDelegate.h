@@ -14,6 +14,7 @@
 -(void)setup;
 
 -(void)processData:(id)json;
+-(void)responseError:(id)json;
 
 
 @end

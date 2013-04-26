@@ -129,6 +129,8 @@
     [self.tableView reloadData];
     [self endRefresh:self.tableView];
 }
-
+-(void)responseError:(id)json{
+    [self endRefresh:self.tableView];
+}
 
 @end

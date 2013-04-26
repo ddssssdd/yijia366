@@ -78,6 +78,9 @@
     
     
 }
+-(void)responseError:(id)json{
+    [self endRefresh:self.tableview];
+}
 -(void)updateData{
     
     [self.tableview reloadData];

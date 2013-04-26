@@ -26,6 +26,9 @@
 		E212279A16FA069B00B494E0 /* 0051@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E212279816FA069B00B494E0 /* 0051@2x.png */; };
 		E212279D16FA06D200B494E0 /* 0228.png in Resources */ = {isa = PBXBuildFile; fileRef = E212279B16FA06D200B494E0 /* 0228.png */; };
 		E212279E16FA06D200B494E0 /* 0228@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E212279C16FA06D200B494E0 /* 0228@2x.png */; };
+		E223549C172A8F8E00DDC015 /* ButtonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E223549A172A8F8E00DDC015 /* ButtonViewController.m */; };
+		E223549D172A8F8E00DDC015 /* ButtonViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E223549B172A8F8E00DDC015 /* ButtonViewController.xib */; };
+		E22354A1172A945D00DDC015 /* ResetPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E22354A0172A945D00DDC015 /* ResetPasswordViewController.m */; };
 		E2296D2A16B760EC00E332D9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2296D2916B760EC00E332D9 /* UIKit.framework */; };
 		E2296D2C16B760EC00E332D9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2296D2B16B760EC00E332D9 /* Foundation.framework */; };
 		E2296D2E16B760EC00E332D9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2296D2D16B760EC00E332D9 /* CoreGraphics.framework */; };
@@ -188,6 +191,11 @@
 		E212279816FA069B00B494E0 /* 0051@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "0051@2x.png"; sourceTree = "<group>"; };
 		E212279B16FA06D200B494E0 /* 0228.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 0228.png; sourceTree = "<group>"; };
 		E212279C16FA06D200B494E0 /* 0228@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "0228@2x.png"; sourceTree = "<group>"; };
+		E2235499172A8F8E00DDC015 /* ButtonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ButtonViewController.h; sourceTree = "<group>"; };
+		E223549A172A8F8E00DDC015 /* ButtonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ButtonViewController.m; sourceTree = "<group>"; };
+		E223549B172A8F8E00DDC015 /* ButtonViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ButtonViewController.xib; sourceTree = "<group>"; };
+		E223549F172A945D00DDC015 /* ResetPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResetPasswordViewController.h; sourceTree = "<group>"; };
+		E22354A0172A945D00DDC015 /* ResetPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResetPasswordViewController.m; sourceTree = "<group>"; };
 		E2296D2516B760EC00E332D9 /* EasyDrive366.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyDrive366.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2296D2916B760EC00E332D9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E2296D2B16B760EC00E332D9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -611,6 +619,9 @@
 				E23BA0E417216B600049D2CB /* ChooseNextCell.h */,
 				E23BA0E517216B600049D2CB /* ChooseNextCell.m */,
 				E23BA0E717216B780049D2CB /* ChooseNextCell.xib */,
+				E2235499172A8F8E00DDC015 /* ButtonViewController.h */,
+				E223549A172A8F8E00DDC015 /* ButtonViewController.m */,
+				E223549B172A8F8E00DDC015 /* ButtonViewController.xib */,
 			);
 			name = Components;
 			sourceTree = "<group>";
@@ -663,6 +674,8 @@
 				E25AF0B016F9FED900E79057 /* CIViewController.xib */,
 				E2DBBE991722BE2500493DD9 /* SettingsViewController.h */,
 				E2DBBE9A1722BE2500493DD9 /* SettingsViewController.m */,
+				E223549F172A945D00DDC015 /* ResetPasswordViewController.h */,
+				E22354A0172A945D00DDC015 /* ResetPasswordViewController.m */,
 			);
 			name = Modules;
 			sourceTree = "<group>";
@@ -889,6 +902,7 @@
 				E23BA0E317215E910049D2CB /* SwitchCell.xib in Resources */,
 				E23BA0E817216B780049D2CB /* ChooseNextCell.xib in Resources */,
 				E23BA0ED172170460049D2CB /* ChooseUserController.xib in Resources */,
+				E223549D172A8F8E00DDC015 /* ButtonViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -980,6 +994,8 @@
 				E23BA0E617216B600049D2CB /* ChooseNextCell.m in Sources */,
 				E23BA0EC172170460049D2CB /* ChooseUserController.m in Sources */,
 				E2DBBE9B1722BE2500493DD9 /* SettingsViewController.m in Sources */,
+				E223549C172A8F8E00DDC015 /* ButtonViewController.m in Sources */,
+				E22354A1172A945D00DDC015 /* ResetPasswordViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

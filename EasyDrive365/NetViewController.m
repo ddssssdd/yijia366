@@ -85,4 +85,7 @@
 -(NSDate *)egoRefreshTableHeaderDataSourceLastUpdated:(EGORefreshTableHeaderView *)view{
     return [NSDate date];
 }
+-(void)responseError:(id)json{
+    
+}
 @end

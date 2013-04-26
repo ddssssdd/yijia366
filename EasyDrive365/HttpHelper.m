@@ -49,6 +49,7 @@
             
         }else{
             //get nothing from server;
+            [self.delegate responseError:json];
         }
     }];
 }

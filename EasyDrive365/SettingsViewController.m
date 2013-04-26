@@ -14,11 +14,14 @@
 #import "CarRegistrationViewController.h"
 #import "HttpClient.h"
 #import "AppSettings.h"
+#import "ButtonViewController.h"
+#import "ResetPasswordViewController.h"
 
-@interface SettingsViewController (){
+@interface SettingsViewController ()<ButtonViewControllerDelegate>{
     EditMaintainDataSource *_maintainDatasource;
     EditDriverLicenseDataSource *_driverDatasource;
     EditCarReigsterationDataSource *_carDatasource;
+    ButtonViewController *logoutView;
 }
 
 @end
@@ -38,6 +41,7 @@
 {
     [super viewDidLoad];
     self.navigationItem.rightBarButtonItem = nil;
+    self.title = @"设置";
     
     _maintainDatasource = [[EditMaintainDataSource alloc] initWithData: [[AppSettings sharedSettings] loadJsonBy:@"maintain_data"]];
     
@@ -55,28 +59,13 @@
 -(void)initData{
     id items=@[
     [[NSMutableDictionary alloc] initWithDictionary:
-     @{@"key" :@"password",
-     @"label":@"新密码：",
+     @{@"key" :@"version",
+     @"label":@"版本号",
      @"default":@"",
-     @"placeholder":@"新密码",
-     @"ispassword":@"yes",
-     @"value":@"",
-     @"cell":@"EditTextCell"  }],
-    [[NSMutableDictionary alloc] initWithDictionary:
-     @{@"key" :@"repassword",
-     @"label":@"再输一遍：",
-     @"default":@"",
-     @"placeholder":@"再输一遍",
-     @"ispassword":@"yes",
-     @"value":@"",
-     @"cell":@"EditTextCell"  }],
-    [[NSMutableDictionary alloc] initWithDictionary:
-     @{@"key" :@"reset_password",
-     @"label":@"重设密码",
-     @"default":@"",
-     @"placeholder":
-     @"",@"value":@"",
-     @"cell":@"OneButtonCell" }]
+     @"placeholder":@"",
+     @"ispassword":@"",
+     @"value":@"V1.01",
+     @"cell":@"default"  }]
     
     ];
     id items2=@[
@@ -104,17 +93,18 @@
     ;
     id items3= @[
     [[NSMutableDictionary alloc] initWithDictionary:
-     @{@"key" :@"logout",
-     @"label":[NSString stringWithFormat:@"注销--%@",[AppSettings sharedSettings].firstName],
-     @"default":@"0",
+     @{@"key" :@"car_register",
+     @"label":@"重设密码",
+     @"default":@"",
      @"placeholder":
      @"",@"value":@"",
-     @"cell":@"OneButtonCell" }]];
+     @"cell":@"ChooseNextCell" }]];
     _list=[NSMutableArray arrayWithArray: @[
            @{@"count" : @1,@"list":@[@{@"cell":@"IntroduceCell"}],@"height":@100.0f,@"header":@"",@"footer":@""},
-           @{@"count" : @3,@"list":items,@"height":@44.0f,@"header":@"重设密码",@"footer":@""},
+           
            @{@"count" : @3,@"list":items2,@"height":@44.0f,@"header":@"我的车辆",@"footer":@""},
            @{@"count" : @1,@"list":items3,@"height":@44.0f,@"header":@"",@"footer":@""},
+           @{@"count" : @1,@"list":items,@"height":@44.0f,@"header":@"",@"footer":@""},
            ]];
 }
 -(void)setupCell:(UITableViewCell *)cell indexPath:(NSIndexPath *)indexPath{
@@ -147,27 +137,20 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    if (indexPath.section==2){
+    if (indexPath.section==1){
         if (indexPath.row==0){
-            /*
-            EditTableViewController *vc = [[EditTableViewController alloc] initWithDelegate:_maintainDatasource];
-            [self.navigationController pushViewController:vc animated:YES];
-             */
             [self open_maintain_setup];
         }else if (indexPath.row==1){
-            /*
-            EditTableViewController *vc =[[EditTableViewController alloc] initWithDelegate:_driverDatasource];
-            [self.navigationController pushViewController:vc animated:YES];
-             */
             [self open_driver_setup];
         }else if (indexPath.row==2){
-            /*
-            EditTableViewController *vc =[[EditTableViewController alloc] initWithDelegate:_carDatasource];
-            [self.navigationController pushViewController:vc animated:YES];
-             */
             [self open_car_setup];
         }
        
+    }else if (indexPath.section==2){
+        if (indexPath.row==0){
+            ResetPasswordViewController *vc = [[ResetPasswordViewController alloc] initWithStyle:UITableViewStyleGrouped];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
     }
     NSLog(@"%@",indexPath);
     [super tableView:tableView didSelectRowAtIndexPath:indexPath];
@@ -237,5 +220,30 @@
         [self done];
     }
 }
-
+-(void)buttonPressed:(NVUIGradientButton *)button{
+    [self.navigationController popViewControllerAnimated:NO];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"logout" object:nil];
+}
+-(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+    if (section==3){
+        if (!logoutView){
+            logoutView = [[ButtonViewController alloc] initWithNibName:@"ButtonViewController" bundle:nil];
+            NSLog(@"%@",logoutView.button);
+            logoutView.buttonText=[NSString stringWithFormat:@"注销--%@",[AppSettings sharedSettings].firstName];
+            logoutView.delegate = self;
+            logoutView.buttonType =1;
+        }
+        return logoutView.view;
+    }else{
+        return nil;
+    }
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    if (section==3){
+        return 80;
+    }else{
+        return 22;
+    }
+    
+}
 @end
