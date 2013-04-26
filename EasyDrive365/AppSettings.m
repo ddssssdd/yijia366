@@ -204,8 +204,8 @@
     return [NSString stringWithFormat:@"api/get_count_of_suggestion?userid=%d",self.userid];
 }
 
--(NSString *)url_change_password:(NSString *)newPassword{
-    return [NSString stringWithFormat:@"api/r_u_p?userid=%d&pwd=%@",self.userid,newPassword];
+-(NSString *)url_change_password:(NSString *)newPassword  oldPassword:(NSString *)oldPassword{
+    return [NSString stringWithFormat:@"api/reset_user_pwd?userid=%d&oldpwd=%@&newpwd=%@",self.userid,oldPassword,newPassword];
 }
 
 -(NSString *)udid{

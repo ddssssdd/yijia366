@@ -95,9 +95,14 @@
         return;
     }
     
-    [[HttpClient sharedHttp] get:[[AppSettings sharedSettings] url_change_password:password]  block:^(id json) {
-        //
-        [[[UIAlertView alloc] initWithTitle:@"提示" message:@"密码修改成功！" delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定", nil] show];
+    [[HttpClient sharedHttp] get:[[AppSettings sharedSettings] url_change_password:password oldPassword:oldpassword]  block:^(id json) {
+        if ([[AppSettings sharedSettings] isSuccess:json]){
+            [[[UIAlertView alloc] initWithTitle:@"提示" message:@"密码修改成功！" delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定", nil] show];
+            [self.navigationController popViewControllerAnimated:YES];
+        }else{
+            //[[[UIAlertView alloc] initWithTitle:@"提示" message:json[@"message"] delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定", nil] show];
+        }
+     
     }];
     
     

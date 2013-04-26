@@ -3021,19 +3021,6 @@
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "EasyDrive365/SettingsViewController.m"
-         timestampString = "388667707.943807"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "216"
-         endingLineNumber = "216"
-         landmarkName = "-buttonPress:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
          filePath = "EasyDrive365/MaintanViewController.m"
          timestampString = "388159100.597385"
          startingColumnNumber = "9223372036854775807"
@@ -3054,19 +3041,6 @@
          startingLineNumber = "30"
          endingLineNumber = "30"
          landmarkName = "-saveData:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "EasyDrive365/SettingsViewController.m"
-         timestampString = "388667707.943807"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "114"
-         endingLineNumber = "114"
-         landmarkName = "-processSaving:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -3152,11 +3126,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "EasyDrive365/SettingsViewController.m"
-         timestampString = "388667707.943807"
+         timestampString = "388677305.053136"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "181"
-         endingLineNumber = "181"
+         startingLineNumber = "159"
+         endingLineNumber = "159"
          landmarkName = "-open_maintain_setup"
          landmarkType = "5">
       </FileBreakpoint>
@@ -3165,11 +3139,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "EasyDrive365/SettingsViewController.m"
-         timestampString = "388667707.943807"
+         timestampString = "388677305.053136"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "160"
-         endingLineNumber = "160"
+         startingLineNumber = "138"
+         endingLineNumber = "138"
          landmarkName = "-open_maintain_setup"
          landmarkType = "5">
       </FileBreakpoint>
@@ -3178,11 +3152,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "EasyDrive365/SettingsViewController.m"
-         timestampString = "388667707.943807"
+         timestampString = "388677305.053136"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "164"
-         endingLineNumber = "164"
+         startingLineNumber = "142"
+         endingLineNumber = "142"
          landmarkName = "-open_maintain_setup"
          landmarkType = "5">
       </FileBreakpoint>
@@ -3191,11 +3165,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "EasyDrive365/SettingsViewController.m"
-         timestampString = "388667707.943807"
+         timestampString = "388677305.053136"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "191"
-         endingLineNumber = "191"
+         startingLineNumber = "169"
+         endingLineNumber = "169"
          landmarkName = "-open_driver_setup"
          landmarkType = "5">
       </FileBreakpoint>
@@ -3204,11 +3178,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "EasyDrive365/SettingsViewController.m"
-         timestampString = "388667707.943807"
+         timestampString = "388677305.053136"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "205"
-         endingLineNumber = "205"
+         startingLineNumber = "183"
+         endingLineNumber = "183"
          landmarkName = "-open_car_setup"
          landmarkType = "5">
       </FileBreakpoint>
@@ -3230,11 +3204,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "EasyDrive365/SettingsViewController.m"
-         timestampString = "388667707.943807"
+         timestampString = "388677305.053136"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "232"
-         endingLineNumber = "232"
+         startingLineNumber = "200"
+         endingLineNumber = "200"
          landmarkName = "-tableView:viewForFooterInSection:"
          landmarkType = "5">
       </FileBreakpoint>

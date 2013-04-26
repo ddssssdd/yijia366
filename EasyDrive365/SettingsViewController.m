@@ -110,29 +110,7 @@
 -(void)setupCell:(UITableViewCell *)cell indexPath:(NSIndexPath *)indexPath{
     [super setupCell:cell indexPath:indexPath];
 }
--(void)processSaving:(NSMutableDictionary *)parameters{
-    NSLog(@"%@",parameters);
-    
-    
-    NSString *password = [parameters objectForKey:@"password"];
-    if([@"" isEqualToString:password]){
-        [[[UIAlertView alloc] initWithTitle:@"提示" message:@"请输入有效密码" delegate:self cancelButtonTitle:nil otherButtonTitles:@"继续", nil] show];
-        return;
-    }
-    NSString *repassword=[parameters objectForKey:@"repassword"];
-    if(![password isEqualToString:repassword]){
-        [[[UIAlertView alloc] initWithTitle:@"提示" message:@"密码不匹配，请重新输入" delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定", nil] show];
-        return;
-    }
-    
-    [[HttpClient sharedHttp] get:[[AppSettings sharedSettings] url_change_password:password]  block:^(id json) {
-        //
-        [[[UIAlertView alloc] initWithTitle:@"提示" message:@"密码修改成功！" delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定", nil] show];
-    }];
-    
-   
-    
-}
+
 
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -209,17 +187,7 @@
         
     }];
 }
--(void)buttonPress:(OneButtonCell *)sender{
-    id item= [sender targetObject];
-    if ([@"logout" isEqualToString:item[@"key"]]){
-        [self.navigationController popViewControllerAnimated:NO];
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"logout" object:nil];
-    
-    }else if ([@"reset_password" isEqualToString:item[@"key"]]){
-        //reset password;
-        [self done];
-    }
-}
+
 -(void)buttonPressed:(NVUIGradientButton *)button{
     [self.navigationController popViewControllerAnimated:NO];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"logout" object:nil];
