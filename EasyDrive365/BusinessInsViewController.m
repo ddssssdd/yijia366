@@ -51,7 +51,7 @@
             
             NSNumber *count = json[@"result"];
             if ([count intValue]>0){
-                self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"建议" style:UIBarButtonSystemItemAction target:self action:@selector(suggestBusiness:)];
+                self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"报价" style:UIBarButtonSystemItemAction target:self action:@selector(suggestBusiness:)];
             }else{
                 
             }

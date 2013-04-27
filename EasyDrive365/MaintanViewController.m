@@ -28,6 +28,12 @@
 -(BOOL)saveData:(NSDictionary *)paramters
 {
     NSLog(@"%@",paramters);
+    int max_time =[paramters[@"max_time"] intValue];
+    if (!(max_time>0 && max_time<=24)){
+        [[[UIAlertView alloc] initWithTitle:@"易驾366" message:@"最长保养间隔应该为1-24个月，请正确输入。" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil] show];
+        return NO;
+    }
+    
     NSString *url = [NSString stringWithFormat:@"api/add_maintain_record?user_id=%d&max_distance=%@&max_time=%@&prev_date=%@&prev_distance=%@&average_mileage=%@",
                      [AppSettings sharedSettings].userid,
                      paramters[@"max_distance"],
