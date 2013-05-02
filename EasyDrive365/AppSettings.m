@@ -7,7 +7,9 @@
 //
 
 #import "AppSettings.h"
-#import "HttpClient.h"
+
+
+
 @implementation Information
 -(void)setDataFromJsonWithKey:(id)json key:(NSString *)key{
     if (json[@"result"]){
@@ -29,6 +31,7 @@
 @synthesize latest_news =_latest_news;
 @synthesize local_data =_local_data;
 
+
 -(id)initWithCoder:(NSCoder *)aDecoder
 {
     self =[super init];
@@ -43,6 +46,7 @@
         _local_data =[aDecoder decodeObjectForKey:@"local_data"];
         _deviceToken =[aDecoder decodeObjectForKey:@"device_token"];
         _dict = [[NSMutableDictionary  alloc] init];
+
         [self init_latest];
     }
     return self;
@@ -57,6 +61,7 @@
     [aCoder encodeObject:_latest_news forKey:@"latest_news"];
     [aCoder encodeObject:_local_data forKey:@"local_data"];
     [aCoder encodeObject:_deviceToken forKey:@"device_token"];
+
 }
 
 -(id)init{
@@ -87,7 +92,9 @@
 }
 
 
-
+-(HttpClient *)http{
+    return [HttpClient sharedHttp];
+}
 - (void)save{
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     NSData *udObject = [NSKeyedArchiver archivedDataWithRootObject:self];
@@ -300,4 +307,43 @@
     }
     return _list;
 }
+-(void)check_update:(BOOL)inSettings{
+    if (_isCancelUpdate){
+        return;
+    }
+    NSString *url = [NSString stringWithFormat:@"api/get_ver?ver=%@",AppVersion];
+    [self.http get:url block:^(id json) {
+        if ([self isSuccess:json]){
+
+            NSString *oldVersion = [NSString stringWithFormat:@"%@",AppVersion];
+            _version= json[@"result"];
+            if (![oldVersion isEqual:_version[@"ver"]]){
+                NSString *msg = _version[@"msg"];
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:AppTitle message:msg delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"更新", nil];
+                [alertView show];
+            }else{
+                if (inSettings){
+                    NSString *msg = _version[@"msg"];
+                    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:AppTitle message:msg delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
+                    [alertView show];
+                }
+                
+            }
+            
+        }
+    }];
+}
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    NSLog(@"%d",buttonIndex);
+    if (buttonIndex==1){
+        
+        NSString *url = _version[@"ios"];
+        
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
+       
+    }else {
+        _isCancelUpdate  = YES;
+    }
+}
+
 @end

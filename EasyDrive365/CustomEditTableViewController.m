@@ -123,10 +123,13 @@
         aCell.valueText.tag = indexPath.row;
         aCell.valueText.placeholder = item[@"placeholder"];
         aCell.valueText.autocapitalizationType = UITextAutocapitalizationTypeNone;
+        aCell.valueText.secureTextEntry =NO;
         if ([item[@"ispassword"] isEqualToString:@"yes"]){
             aCell.valueText.secureTextEntry=YES;
+        }else if ([item[@"ispassword"] isEqualToString:@"number"]){
+            aCell.valueText.keyboardType = UIKeyboardTypeNumberPad;
         }else{
-            aCell.valueText.secureTextEntry =NO;
+            
         }
         if (indexPath.row <textfield_count-1){
             aCell.valueText.returnKeyType = UIReturnKeyNext;
@@ -138,6 +141,7 @@
         aCell.button.text = item[@"label"];
         aCell.delegate = self;
         aCell.targetObject = item;
+        aCell.tag =indexPath.row;
         if ([@"0" isEqualToString:item[@"default"]]){
             [aCell setupButtonWithType:0];
         }
@@ -155,6 +159,7 @@
        
         ChooseNextCell *aCell = (ChooseNextCell *)cell;
         aCell.lblTitle.text = item[@"label"];
+        aCell.lblDescription.text = item[@"value"];
         //cell.accessoryType = UITableViewCellAccessoryCheckmark;
     }else if ([cellCalssName isEqualToString:@"default"]){
         cell.textLabel.text = item[@"label"];
@@ -174,6 +179,7 @@
 -(BOOL)textFieldShouldEndEditing:(UITextField *)textField{
     return YES;
 }
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
     [textField resignFirstResponder];
    

@@ -7,6 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "HttpClient.h"
+
+
 @interface Information:NSObject
 @property (nonatomic,strong) NSString *key;
 @property (nonatomic,strong) NSString *company;
@@ -18,7 +21,7 @@
 
 @end
 
-@interface AppSettings : NSObject<NSCoding>{
+@interface AppSettings : NSObject<NSCoding,UIAlertViewDelegate>{
     NSMutableDictionary *_dict;
 }
 
@@ -32,6 +35,9 @@
 @property (nonatomic,retain) NSMutableArray *list;
 @property (nonatomic,retain) id latest_news;
 @property (nonatomic) BOOL isNeedRefresh;
+@property (nonatomic) BOOL isCancelUpdate;
+@property (nonatomic) id version;
+@property (nonatomic,weak) HttpClient *http;
 
 +(AppSettings *)sharedSettings;
 
@@ -78,4 +84,7 @@
 
 -(void)add_login:(NSString *)username password:(NSString *)password rememberPassword:(NSString *)rememberPassword;
 -(NSMutableArray *)get_logins;
+
+-(void)check_update:(BOOL)inSettings;
+
 @end

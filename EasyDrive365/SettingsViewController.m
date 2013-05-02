@@ -16,12 +16,16 @@
 #import "AppSettings.h"
 #import "ButtonViewController.h"
 #import "ResetPasswordViewController.h"
+#import "BindCellPhoneViewController.h"
 
 @interface SettingsViewController ()<ButtonViewControllerDelegate>{
     EditMaintainDataSource *_maintainDatasource;
     EditDriverLicenseDataSource *_driverDatasource;
     EditCarReigsterationDataSource *_carDatasource;
     ButtonViewController *logoutView;
+    NSString *_phone;
+    NSString *_phoneStatus;
+    int isbind;
 }
 
 @end
@@ -48,8 +52,13 @@
     _driverDatasource =[[EditDriverLicenseDataSource alloc] initWithData:[[AppSettings sharedSettings] loadJsonBy:@"license_data"]];
     
     _carDatasource =[[EditCarReigsterationDataSource alloc] initWithData:[[AppSettings sharedSettings] loadJsonBy:@"car_data"]];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(initData) name:@"Update_settings" object:nil];
 }
-
+-(void)viewDidUnload{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [super viewDidUnload];
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -57,6 +66,25 @@
 }
 
 -(void)initData{
+    NSString *url = [NSString stringWithFormat:@"api/get_user_phone?userid=%d",[AppSettings sharedSettings].userid];
+     _phoneStatus = @"绑定手机";
+    _phone = @"";
+    [[AppSettings sharedSettings].http get:url block:^(id json) {
+        if ([[AppSettings sharedSettings] isSuccess:json]){
+            _phone=json[@"result"][@"phone"];
+            isbind = 1;
+            if ([json[@"result"][@"status"] isEqual:@"02"]){
+                _phoneStatus = @"解除绑定";
+                isbind = 0;
+        
+            }            
+        }
+        [self init_dataSource];
+    }];
+    
+    
+}
+-(void)init_dataSource{
     id items=@[
     [[NSMutableDictionary alloc] initWithDictionary:
      @{@"key" :@"version",
@@ -64,32 +92,32 @@
      @"default":@"",
      @"placeholder":@"",
      @"ispassword":@"",
-     @"value":@"V1.01",
-     @"cell":@"default"  }]
+     @"value":[NSString stringWithFormat:@"V%@",AppVersion],
+     @"cell":@"ChooseNextCell"  }]
     
     ];
     id items2=@[
     [[NSMutableDictionary alloc] initWithDictionary:
      @{@"key" :@"maintain",
-        @"label":@"保养设置",
-        @"default":@"",
-        @"placeholder":@"",
-        @"value":@"",
-        @"cell":@"ChooseNextCell" }],
+     @"label":@"保养设置",
+     @"default":@"",
+     @"placeholder":@"",
+     @"value":@"",
+     @"cell":@"ChooseNextCell" }],
     [[NSMutableDictionary alloc] initWithDictionary:
-        @{@"key" :@"driver",
-        @"label":@"驾驶证",
-        @"default":@"",
-        @"placeholder":
-        @"",@"value":@"",
-        @"cell":@"ChooseNextCell" }],
+     @{@"key" :@"driver",
+     @"label":@"驾驶证",
+     @"default":@"",
+     @"placeholder":
+     @"",@"value":@"",
+     @"cell":@"ChooseNextCell" }],
     [[NSMutableDictionary alloc] initWithDictionary:
-                                   @{@"key" :@"car_register",
-                                   @"label":@"我的车辆",
-                                   @"default":@"",
-                                   @"placeholder":
-                                   @"",@"value":@"",
-                                   @"cell":@"ChooseNextCell" }]];
+     @{@"key" :@"car_register",
+     @"label":@"我的车辆",
+     @"default":@"",
+     @"placeholder":
+     @"",@"value":@"",
+     @"cell":@"ChooseNextCell" }]];
     ;
     id items3= @[
     [[NSMutableDictionary alloc] initWithDictionary:
@@ -98,14 +126,23 @@
      @"default":@"",
      @"placeholder":
      @"",@"value":@"",
-     @"cell":@"ChooseNextCell" }]];
+     @"cell":@"ChooseNextCell" }],
+    [[NSMutableDictionary alloc] initWithDictionary:
+     @{@"key" :@"cellphone",
+     @"label":_phoneStatus,
+     @"default":@"",
+     @"placeholder":@"",
+     @"ispassword":@"",
+     @"value":_phone,
+     @"cell":@"ChooseNextCell"  }]];
     _list=[NSMutableArray arrayWithArray: @[
            @{@"count" : @1,@"list":@[@{@"cell":@"IntroduceCell"}],@"height":@100.0f,@"header":@"",@"footer":@""},
            
            @{@"count" : @3,@"list":items2,@"height":@44.0f,@"header":@"我的车辆",@"footer":@""},
-           @{@"count" : @1,@"list":items3,@"height":@44.0f,@"header":@"",@"footer":@""},
+           @{@"count" : @2,@"list":items3,@"height":@44.0f,@"header":@"",@"footer":@""},
            @{@"count" : @1,@"list":items,@"height":@44.0f,@"header":@"",@"footer":@""},
            ]];
+    [self.tableView reloadData];
 }
 -(void)setupCell:(UITableViewCell *)cell indexPath:(NSIndexPath *)indexPath{
     [super setupCell:cell indexPath:indexPath];
@@ -128,6 +165,16 @@
         if (indexPath.row==0){
             ResetPasswordViewController *vc = [[ResetPasswordViewController alloc] initWithStyle:UITableViewStyleGrouped];
             [self.navigationController pushViewController:vc animated:YES];
+        }else if (indexPath.row==1){
+            BindCellPhoneViewController *vc =[[BindCellPhoneViewController alloc] initWithStyle:UITableViewStyleGrouped];
+            vc.isbind = isbind;
+            vc.phone = _phone;
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+    }else if (indexPath.section==3){
+        if (indexPath.row==0){
+            [AppSettings sharedSettings].isCancelUpdate = NO;
+            [[AppSettings sharedSettings] check_update:YES];
         }
     }
     NSLog(@"%@",indexPath);
