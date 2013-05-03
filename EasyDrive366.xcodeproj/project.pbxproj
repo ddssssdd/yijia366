@@ -47,6 +47,8 @@
 		E23BA0EC172170460049D2CB /* ChooseUserController.m in Sources */ = {isa = PBXBuildFile; fileRef = E23BA0EA172170450049D2CB /* ChooseUserController.m */; };
 		E23BA0ED172170460049D2CB /* ChooseUserController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E23BA0EB172170450049D2CB /* ChooseUserController.xib */; };
 		E241CE9A17328EA400B1441D /* BindCellPhoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E241CE9917328EA400B1441D /* BindCellPhoneViewController.m */; };
+		E241CECC1733EB4600B1441D /* TextViewFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = E241CECB1733EB4600B1441D /* TextViewFooter.m */; };
+		E241CECF1733EB6900B1441D /* TextViewFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = E241CECE1733EB6900B1441D /* TextViewFooter.xib */; };
 		E24A043716D0B40500B7A602 /* HttpHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = E24A043616D0B40500B7A602 /* HttpHelper.m */; };
 		E24A043A16D0E95100B7A602 /* DetailCompulsoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E24A043916D0E95100B7A602 /* DetailCompulsoryViewController.m */; };
 		E24A043E16D1074800B7A602 /* LicenseTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E24A043C16D1074700B7A602 /* LicenseTypeViewController.m */; };
@@ -226,6 +228,9 @@
 		E23BA0EB172170450049D2CB /* ChooseUserController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChooseUserController.xib; sourceTree = "<group>"; };
 		E241CE9817328EA400B1441D /* BindCellPhoneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BindCellPhoneViewController.h; sourceTree = "<group>"; };
 		E241CE9917328EA400B1441D /* BindCellPhoneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BindCellPhoneViewController.m; sourceTree = "<group>"; };
+		E241CECA1733EB4600B1441D /* TextViewFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextViewFooter.h; sourceTree = "<group>"; };
+		E241CECB1733EB4600B1441D /* TextViewFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextViewFooter.m; sourceTree = "<group>"; };
+		E241CECE1733EB6900B1441D /* TextViewFooter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextViewFooter.xib; sourceTree = "<group>"; };
 		E24A043416D0B33300B7A602 /* HttpClientDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpClientDelegate.h; sourceTree = "<group>"; };
 		E24A043516D0B40500B7A602 /* HttpHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpHelper.h; sourceTree = "<group>"; };
 		E24A043616D0B40500B7A602 /* HttpHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpHelper.m; sourceTree = "<group>"; };
@@ -711,6 +716,9 @@
 				E23BA0E9172170450049D2CB /* ChooseUserController.h */,
 				E23BA0EA172170450049D2CB /* ChooseUserController.m */,
 				E23BA0EB172170450049D2CB /* ChooseUserController.xib */,
+				E241CECA1733EB4600B1441D /* TextViewFooter.h */,
+				E241CECB1733EB4600B1441D /* TextViewFooter.m */,
+				E241CECE1733EB6900B1441D /* TextViewFooter.xib */,
 			);
 			name = "Public Components";
 			sourceTree = "<group>";
@@ -908,6 +916,7 @@
 				E23BA0E817216B780049D2CB /* ChooseNextCell.xib in Resources */,
 				E23BA0ED172170460049D2CB /* ChooseUserController.xib in Resources */,
 				E223549D172A8F8E00DDC015 /* ButtonViewController.xib in Resources */,
+				E241CECF1733EB6900B1441D /* TextViewFooter.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1002,6 +1011,7 @@
 				E223549C172A8F8E00DDC015 /* ButtonViewController.m in Sources */,
 				E22354A1172A945D00DDC015 /* ResetPasswordViewController.m in Sources */,
 				E241CE9A17328EA400B1441D /* BindCellPhoneViewController.m in Sources */,
+				E241CECC1733EB4600B1441D /* TextViewFooter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -23,8 +23,12 @@
     [super viewDidLoad];
     
     _helper =[[HttpHelper alloc] initWithTarget:self];
-    //[_helper restoreData];
-    [_helper loadData];
+    if (_reloadDirectly){
+        [_helper loadData:1];
+    }else{
+        [_helper loadData];
+    }
+
     
 }
 -(void)viewDidAppear:(BOOL)animated{

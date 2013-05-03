@@ -10,6 +10,7 @@
 #import "AppSettings.h"
 #import "HttpClient.h"
 #import "OneButtonCell.h"
+#import "TextViewFooter.h"
 
 @interface BindCellPhoneViewController (){
     NSTimer *_timer;
@@ -54,6 +55,7 @@
     }];
 }
 -(void)init_datasource{
+   
     id items=@[
     [[NSMutableDictionary alloc] initWithDictionary:
      @{@"key" :@"cellphone",
@@ -62,7 +64,8 @@
      @"placeholder":@"请输入您的手机号码",
      @"ispassword":@"number",
      @"value":self.phone,
-     @"cell":@"EditTextCell"  }],
+     @"cell":@"EditTextCell",
+     @"disable":@"0"}],
     [[NSMutableDictionary alloc] initWithDictionary:
      @{@"key" :@"get_code",
      @"label":@"获取验证码",
@@ -97,40 +100,16 @@
            ]];
     [self.tableView reloadData];
 }
--(void)processSaving:(NSMutableDictionary *)parameters{
-    NSLog(@"%@",parameters);
-    NSString *oldpassword = [parameters objectForKey:@"oldpassword"];
-    if([@"" isEqualToString:oldpassword]){
-        [[[UIAlertView alloc] initWithTitle:@"提示" message:@"请输入原密码" delegate:self cancelButtonTitle:nil otherButtonTitles:@"继续", nil] show];
-        return;
-    }
-    
-    NSString *password = [parameters objectForKey:@"password"];
-    if([@"" isEqualToString:password]){
-        [[[UIAlertView alloc] initWithTitle:@"提示" message:@"请输入有效密码" delegate:self cancelButtonTitle:nil otherButtonTitles:@"继续", nil] show];
-        return;
-    }
-    NSString *repassword=[parameters objectForKey:@"repassword"];
-    if(![password isEqualToString:repassword]){
-        [[[UIAlertView alloc] initWithTitle:@"提示" message:@"密码不匹配，请重新输入" delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定", nil] show];
-        return;
-    }
-    
-    [[HttpClient sharedHttp] get:[[AppSettings sharedSettings] url_change_password:password oldPassword:oldpassword]  block:^(id json) {
-        if ([[AppSettings sharedSettings] isSuccess:json]){
-            [[[UIAlertView alloc] initWithTitle:@"提示" message:@"密码修改成功！" delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定", nil] show];
-            [self.navigationController popViewControllerAnimated:YES];
-        }else{
-            //[[[UIAlertView alloc] initWithTitle:@"提示" message:json[@"message"] delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定", nil] show];
-        }
-        
-    }];
-    
-    
-    
+/*
+-(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+    TextViewFooter *view = [[[NSBundle mainBundle] loadNibNamed:@"TextViewFooter" owner:nil options:nil] objectAtIndex:0];
+    view.textview.text = _ad;
+    return view;
 }
-
-
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return 200;
+}
+*/
 
 -(NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section{
     return _ad;
@@ -152,6 +131,7 @@
             if ([[AppSettings sharedSettings] isSuccess:json]){
                 _currentCell = sender;
                 counter=60;
+                _currentCell.button.enabled = NO;
             }else{
                 //[[[UIAlertView alloc] initWithTitle:AppTitle message:json[@"message"] delegate:self cancelButtonTitle:@"取消" otherButtonTitles: nil] show];
             }
@@ -179,10 +159,11 @@
 }
 -(void)downCount{
     if (_currentCell){
-        _currentCell.button.text = [NSString stringWithFormat:@"重新获取验证码(%d)",counter];
+        _currentCell.button.disabledText = [NSString stringWithFormat:@"重新获取验证码(%d)",counter];
+    
         counter--;
         if (counter<=0){
-            
+            _currentCell.button.enabled = YES;
             _currentCell.button.text =@"获取验证码";
             _currentCell = nil;
         }

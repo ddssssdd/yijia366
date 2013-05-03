@@ -136,6 +136,10 @@
         }else{
             aCell.valueText.returnKeyType = UIReturnKeyGo;
         }
+        id input_disable = item[@"disable"];
+        if (input_disable){
+            aCell.valueText.enabled = NO;
+        }
     }else if ([cellCalssName isEqualToString:@"OneButtonCell"]){
         OneButtonCell *aCell =(OneButtonCell *)cell;
         aCell.button.text = item[@"label"];

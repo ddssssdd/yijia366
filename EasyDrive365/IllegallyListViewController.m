@@ -30,6 +30,7 @@
 
 - (void)viewDidLoad
 {
+    _reloadDirectly = YES;
     [super viewDidLoad];
     self.tableview.dataSource = self;
     self.tableview.delegate = self;
@@ -76,6 +77,7 @@
 }
 
 -(void)setup{
+    
     _helper.url = [AppSettings sharedSettings].url_for_illegallys;
 }
 -(void)processData:(id)json{

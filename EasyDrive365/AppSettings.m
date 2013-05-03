@@ -199,7 +199,7 @@
 }
 
 -(NSString *)url_get_license_type{
-    return @"api/get_license_type";
+    return @"api/get_license_type?userid=1";
 }
 
 

@@ -47,11 +47,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "EasyDrive365/IllegallyListViewController.m"
-         timestampString = "387812704.738633"
+         timestampString = "389276725.575226"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "64"
-         endingLineNumber = "64"
+         startingLineNumber = "65"
+         endingLineNumber = "65"
          landmarkName = "-tableView:cellForRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -957,11 +957,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "EasyDrive365/IllegallyListViewController.m"
-         timestampString = "387812704.738633"
+         timestampString = "389276725.575226"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "88"
-         endingLineNumber = "88"
+         startingLineNumber = "90"
+         endingLineNumber = "90"
          landmarkName = "-processData:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1475,11 +1475,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "EasyDrive365/CustomEditTableViewController.m"
-         timestampString = "389193038.315503"
+         timestampString = "389278015.352538"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "215"
-         endingLineNumber = "215"
+         startingLineNumber = "219"
+         endingLineNumber = "219"
          landmarkName = "-done"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1488,11 +1488,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "EasyDrive365/CustomEditTableViewController.m"
-         timestampString = "389193038.315503"
+         timestampString = "389278015.352538"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "185"
-         endingLineNumber = "185"
+         startingLineNumber = "189"
+         endingLineNumber = "189"
          landmarkName = "-textFieldShouldReturn:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1839,11 +1839,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "EasyDrive365/NetViewController.m"
-         timestampString = "385193099.81369"
+         timestampString = "389276725.575226"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "41"
-         endingLineNumber = "41"
+         startingLineNumber = "45"
+         endingLineNumber = "45"
          landmarkName = "-makePhone:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -2801,11 +2801,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "EasyDrive365/CustomEditTableViewController.m"
-         timestampString = "389193038.315503"
+         timestampString = "389278015.352538"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "179"
-         endingLineNumber = "179"
+         startingLineNumber = "183"
+         endingLineNumber = "183"
          landmarkName = "-textFieldShouldEndEditing:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -2853,11 +2853,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "EasyDrive365/CustomEditTableViewController.m"
-         timestampString = "389193038.315503"
+         timestampString = "389278015.352538"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "237"
-         endingLineNumber = "237"
+         startingLineNumber = "241"
+         endingLineNumber = "241"
          landmarkName = "-switchChanged:cell:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -2957,11 +2957,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "EasyDrive365/CustomEditTableViewController.m"
-         timestampString = "389193038.315503"
+         timestampString = "389278015.352538"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "150"
-         endingLineNumber = "150"
+         startingLineNumber = "154"
+         endingLineNumber = "154"
          landmarkName = "-setupCell:indexPath:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -2996,11 +2996,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "EasyDrive365/CustomEditTableViewController.m"
-         timestampString = "389193038.315503"
+         timestampString = "389278015.352538"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "176"
-         endingLineNumber = "176"
+         startingLineNumber = "180"
+         endingLineNumber = "180"
          landmarkName = "-textFieldShouldBeginEditing:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -3009,11 +3009,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "EasyDrive365/CustomEditTableViewController.m"
-         timestampString = "389193038.315503"
+         timestampString = "389278015.352538"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "225"
-         endingLineNumber = "225"
+         startingLineNumber = "229"
+         endingLineNumber = "229"
          landmarkName = "-buttonPress:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -3282,11 +3282,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "EasyDrive365/BindCellPhoneViewController.m"
-         timestampString = "389195585.514014"
+         timestampString = "389278999.0108"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "178"
-         endingLineNumber = "178"
+         startingLineNumber = "158"
+         endingLineNumber = "158"
          landmarkName = "-buttonPress:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -3308,11 +3308,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "EasyDrive365/BindCellPhoneViewController.m"
-         timestampString = "389195585.514014"
+         timestampString = "389278999.0108"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "192"
-         endingLineNumber = "192"
+         startingLineNumber = "173"
+         endingLineNumber = "173"
          landmarkName = "-downCount"
          landmarkType = "5">
       </FileBreakpoint>
@@ -3321,11 +3321,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "EasyDrive365/BindCellPhoneViewController.m"
-         timestampString = "389193038.315503"
+         timestampString = "389278999.0108"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "140"
-         endingLineNumber = "140"
+         startingLineNumber = "119"
+         endingLineNumber = "119"
          landmarkName = "-buttonPress:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -3334,11 +3334,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "EasyDrive365/BindCellPhoneViewController.m"
-         timestampString = "389193494.263367"
+         timestampString = "389278999.0108"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "139"
-         endingLineNumber = "139"
+         startingLineNumber = "118"
+         endingLineNumber = "118"
          landmarkName = "-buttonPress:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -3347,11 +3347,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "EasyDrive365/BindCellPhoneViewController.m"
-         timestampString = "389193535.864653"
+         timestampString = "389278999.0108"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "141"
-         endingLineNumber = "141"
+         startingLineNumber = "120"
+         endingLineNumber = "120"
          landmarkName = "-buttonPress:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -3360,11 +3360,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "EasyDrive365/BindCellPhoneViewController.m"
-         timestampString = "389194211.076464"
+         timestampString = "389278999.0108"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "151"
-         endingLineNumber = "151"
+         startingLineNumber = "130"
+         endingLineNumber = "130"
          landmarkName = "-buttonPress:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -3386,11 +3386,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "EasyDrive365/BindCellPhoneViewController.m"
-         timestampString = "389194714.188725"
+         timestampString = "389278999.0108"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "161"
-         endingLineNumber = "161"
+         startingLineNumber = "141"
+         endingLineNumber = "141"
          landmarkName = "-buttonPress:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -3399,11 +3399,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "EasyDrive365/BindCellPhoneViewController.m"
-         timestampString = "389195385.249122"
+         timestampString = "389278999.0108"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "171"
-         endingLineNumber = "171"
+         startingLineNumber = "151"
+         endingLineNumber = "151"
          landmarkName = "-buttonPress:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -3431,6 +3431,71 @@
          startingLineNumber = "318"
          endingLineNumber = "318"
          landmarkName = "-check_update:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "EasyDrive365/AppSettings.m"
+         timestampString = "389276341.75536"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "202"
+         endingLineNumber = "202"
+         landmarkName = "-url_get_license_type"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "EasyDrive365/IllegallyListViewController.m"
+         timestampString = "389276725.575226"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "81"
+         endingLineNumber = "81"
+         landmarkName = "-setup"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "EasyDrive365/NetViewController.m"
+         timestampString = "389276704.017973"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "26"
+         endingLineNumber = "26"
+         landmarkName = "-viewDidLoad"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "EasyDrive365/NetViewController.m"
+         timestampString = "389276835.589071"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "27"
+         endingLineNumber = "27"
+         landmarkName = "-viewDidLoad"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "EasyDrive365/TaxForCarShipViewController.m"
+         timestampString = "389278280.231951"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "63"
+         endingLineNumber = "63"
+         landmarkName = "-tableView:titleForFooterInSection:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

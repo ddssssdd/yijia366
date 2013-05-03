@@ -17,6 +17,7 @@
     NSString *_company;
     EGORefreshTableHeaderView *_refreshHeaderView;
     BOOL _reloading;
+    BOOL _reloadDirectly;
    
 }
 -(void)setup;
