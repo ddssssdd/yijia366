@@ -60,12 +60,12 @@
     [[NSMutableDictionary alloc] initWithDictionary:
      @{@"key" :@"cellphone",
      @"label":@"手机号码：",
+     self.isbind==0?@"disable":@"enable":@"1",
      @"default":@"",
      @"placeholder":@"请输入您的手机号码",
      @"ispassword":@"number",
      @"value":self.phone,
-     @"cell":@"EditTextCell",
-     @"disable":@"0"}],
+     @"cell":@"EditTextCell"}],
     [[NSMutableDictionary alloc] initWithDictionary:
      @{@"key" :@"get_code",
      @"label":@"获取验证码",

@@ -1046,7 +1046,8 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: nanxi su";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: nanxi su";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1061,7 +1062,10 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "E738FB5A-BFFA-426F-8BF1-D78470045177";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E738FB5A-BFFA-426F-8BF1-D78470045177";
 				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Debug;
 		};
@@ -1074,14 +1078,18 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: nanxi su";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: nanxi su";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "E738FB5A-BFFA-426F-8BF1-D78470045177";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E738FB5A-BFFA-426F-8BF1-D78470045177";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1090,15 +1098,15 @@
 		E2296D4A16B760EC00E332D9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: sald wu (4G72AMYC65)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: sald wu (4G72AMYC65)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: nanxi su";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: nanxi su";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EasyDrive365/EasyDrive366-Prefix.pch";
 				INFOPLIST_FILE = "EasyDrive365/EasyDrive366-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = EasyDrive366;
-				PROVISIONING_PROFILE = "B58ABB21-491C-4134-9786-4F20EF5A2F86";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B58ABB21-491C-4134-9786-4F20EF5A2F86";
+				PROVISIONING_PROFILE = "E738FB5A-BFFA-426F-8BF1-D78470045177";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E738FB5A-BFFA-426F-8BF1-D78470045177";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1107,15 +1115,15 @@
 		E2296D4B16B760EC00E332D9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: sald wu (4G72AMYC65)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: sald wu (4G72AMYC65)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: nanxi su";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: nanxi su";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EasyDrive365/EasyDrive366-Prefix.pch";
 				INFOPLIST_FILE = "EasyDrive365/EasyDrive366-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = EasyDrive366;
-				PROVISIONING_PROFILE = "B58ABB21-491C-4134-9786-4F20EF5A2F86";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B58ABB21-491C-4134-9786-4F20EF5A2F86";
+				PROVISIONING_PROFILE = "E738FB5A-BFFA-426F-8BF1-D78470045177";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E738FB5A-BFFA-426F-8BF1-D78470045177";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
