@@ -30,7 +30,7 @@
 
 - (void)viewDidLoad
 {
-    _reloadDirectly = YES;
+    _reloadDirectly = NO;
     [super viewDidLoad];
     self.tableview.dataSource = self;
     self.tableview.delegate = self;
