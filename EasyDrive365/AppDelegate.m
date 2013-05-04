@@ -86,5 +86,6 @@
 }
 -(void)addMessageFromRemoteNotification:(NSDictionary *)payload{
     NSLog(@"received notificaiton:%@",payload);
+    [UIApplication sharedApplication].applicationIconBadgeNumber=0;
 }
 @end
