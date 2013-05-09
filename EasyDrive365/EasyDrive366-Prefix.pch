@@ -38,4 +38,4 @@
 
 #define AppTitle @"易驾366"
 #define AppVersion @"1.01"
-
+#define APPLATEST_COUNT 12

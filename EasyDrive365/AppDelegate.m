@@ -13,7 +13,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [[AppSettings sharedSettings] get_latest];
+    //[[AppSettings sharedSettings] get_latest];
     
     [[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge|UIRemoteNotificationTypeSound|UIRemoteNotificationTypeAlert)];

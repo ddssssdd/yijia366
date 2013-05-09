@@ -162,6 +162,16 @@
 {
     return [NSString stringWithFormat:@"api/get_helps?userid=%d",self.userid];
 }
+-(NSString *)url_for_get_check_helpcalls
+{
+    return [NSString stringWithFormat:@"api/get_check_helps?userid=%d",self.userid];
+}
+-(NSString *)url_for_get_vender:(NSString *)code{
+    return [NSString stringWithFormat:@"api/get_help_service?userid=%d&code=%@",self.userid,code];
+}
+-(NSString *)url_for_get_note:(NSString *)code{
+    return [NSString stringWithFormat:@"api/get_help_note?userid=%d&code=%@",self.userid,code];
+}
 -(NSString *)url_for_rescue{
     return [NSString stringWithFormat:@"api/get_rescues?userid=%d",self.userid];
 }
@@ -236,11 +246,11 @@
 
 
 -(void)init_latest{
-    for(int i=0;i<11;i++){
+    for(int i=1;i<APPLATEST_COUNT;i++){
         NSString *key = [NSString stringWithFormat:@"%02d",i];
         Information *infor = [[Information alloc] init];
         id json = [self loadJsonBy:[NSString stringWithFormat:@"NavigationCell_%@",key]];
-        NSLog(@"%@",json);
+        //NSLog(@"%@",json);
         if (json){
             [infor setDataFromJsonWithKey:json key:key];
         }
@@ -252,7 +262,7 @@
         return;
     }
     self.isNeedRefresh= NO;
-    for(int i=0;i<11;i++){
+    for(int i=1;i<=APPLATEST_COUNT;i++){
         NSString *keyname = [NSString stringWithFormat:@"%02d",i];
         [self get_latest_by_key:keyname];
     }

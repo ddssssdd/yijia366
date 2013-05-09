@@ -24,7 +24,7 @@
 #import "MaintanViewController.h"
 
 #import "CIViewController.h"
-
+#import "CarHelpViewController.h"
 @implementation Menu
 @synthesize list = _list;
 +(Menu *)sharedMenu
@@ -49,6 +49,8 @@
             [[MenuItem alloc] initWithName:@"02" title:@"紧急救助" description:defaultInfo imagePath:@"0002.png" phone:defaultPhone],
             [[MenuItem alloc] initWithName:@"03" title:@"事故救援" description:defaultInfo imagePath:@"0003.png" phone:defaultPhone],
             [[MenuItem alloc] initWithName:@"04" title:@"保养建议" description:defaultInfo imagePath:@"0004.png" phone:defaultPhone],
+            [[MenuItem alloc] initWithName:@"12" title:@"车务服务" description:defaultInfo imagePath:@"0004.png" phone:defaultPhone],
+               
                [[MenuItem alloc] initWithName:@"06" title:@"我的车辆" description:defaultInfo imagePath:@"0006.png" phone:defaultPhone],
                [[MenuItem alloc] initWithName:@"05" title:@"驾驶证" description:defaultInfo imagePath:@"0005.png" phone:defaultPhone],
             
@@ -125,6 +127,12 @@
     }
     if ([key isEqualToString:@"10"]){
         InsuranceRecordsViewController *vc = [[InsuranceRecordsViewController alloc] initWithNibName:@"InsuranceRecordsViewController" bundle:nil];
+        vc.title = title;
+        [controller pushViewController:vc animated:YES];
+        
+    }
+    if ([key isEqualToString:@"12"]){
+        CarHelpViewController *vc = [[CarHelpViewController alloc] initWithNibName:@"CarHelpViewController" bundle:nil];
         vc.title = title;
         [controller pushViewController:vc animated:YES];
         

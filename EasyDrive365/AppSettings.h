@@ -52,6 +52,12 @@
 -(BOOL)isSuccess:(id)json;
 -(NSString *)url_for_get_news;
 -(NSString *)url_for_get_helpcalls;
+
+-(NSString *)url_for_get_check_helpcalls;
+-(NSString *)url_for_get_vender:(NSString *)code;
+-(NSString *)url_for_get_note:(NSString *)code;
+
+
 -(NSString *)url_for_rescue;
 -(NSString *)url_for_illegallys;
 -(NSString *)url_for_insurance_list;
