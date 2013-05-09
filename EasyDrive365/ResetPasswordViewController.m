@@ -11,6 +11,7 @@
 #import "AppSettings.h"
 #import "OneButtonCell.h"
 #import "ButtonViewController.h"
+#import "SVProgressHUD.h"
 
 @interface ResetPasswordViewController ()<ButtonViewControllerDelegate>{
     ButtonViewController *_resetController;
@@ -34,6 +35,7 @@
     [super viewDidLoad];
 	self.navigationItem.rightBarButtonItem = nil;
     self.title = @"重设密码";
+    
 }
 
 - (void)didReceiveMemoryWarning

@@ -17,8 +17,9 @@
 #import "ButtonViewController.h"
 #import "ResetPasswordViewController.h"
 #import "BindCellPhoneViewController.h"
+#import "SVProgressHUD.h"
 
-@interface SettingsViewController ()<ButtonViewControllerDelegate>{
+@interface SettingsViewController ()<ButtonViewControllerDelegate,UIAlertViewDelegate>{
     EditMaintainDataSource *_maintainDatasource;
     EditDriverLicenseDataSource *_driverDatasource;
     EditCarReigsterationDataSource *_carDatasource;
@@ -134,12 +135,19 @@
      @"placeholder":@"",
      @"ispassword":@"",
      @"value":_phone,
-     @"cell":@"ChooseNextCell"  }]];
+     @"cell":@"ChooseNextCell"  }],
+    [[NSMutableDictionary alloc] initWithDictionary:
+     @{@"key" :@"reset_password",
+     @"label":@"找回密码",
+     @"default":@"",
+     @"placeholder":
+     @"",@"value":@"",
+     @"cell":@"ChooseNextCell" }]];
     _list=[NSMutableArray arrayWithArray: @[
            @{@"count" : @1,@"list":@[@{@"cell":@"IntroduceCell"}],@"height":@100.0f,@"header":@"",@"footer":@""},
            
            @{@"count" : @3,@"list":items2,@"height":@44.0f,@"header":@"我的车辆",@"footer":@""},
-           @{@"count" : @2,@"list":items3,@"height":@44.0f,@"header":@"",@"footer":@""},
+           @{@"count" : @3,@"list":items3,@"height":@44.0f,@"header":@"",@"footer":@""},
            @{@"count" : @1,@"list":items,@"height":@44.0f,@"header":@"",@"footer":@""},
            ]];
     [self.tableView reloadData];
@@ -170,6 +178,16 @@
             vc.isbind = isbind;
             vc.phone = _phone;
             [self.navigationController pushViewController:vc animated:YES];
+        }else if (indexPath.row==2){
+            if (isbind==1){
+                //unbind cellphone
+                UIAlertView *alertView =[[UIAlertView alloc] initWithTitle:AppTitle message:@"找回密码操作需要绑定手机，请先绑定手机。" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+                [alertView show];
+            }else{
+                UIAlertView *alertView =[[UIAlertView alloc] initWithTitle:AppTitle message:@"找回密码操作将向您绑定手机发送随机初始密码（短信免费），请确认要找回密码？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+                [alertView show];
+                
+            }
         }
     }else if (indexPath.section==3){
         if (indexPath.row==0){
@@ -180,6 +198,35 @@
     NSLog(@"%@",indexPath);
     [super tableView:tableView didSelectRowAtIndexPath:indexPath];
 }
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (isbind==1){
+        //unbind cellphone
+        if (buttonIndex==1){
+            BindCellPhoneViewController *vc =[[BindCellPhoneViewController alloc] initWithStyle:UITableViewStyleGrouped];
+            vc.isbind = isbind;
+            vc.phone = _phone;
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+    }else{
+        if (buttonIndex==1){
+            NSString *url = [NSString stringWithFormat:@"api/sms_reset_pwd?userid=%d",[AppSettings sharedSettings].userid];
+            [[HttpClient sharedHttp] get:url block:^(id json) {
+                NSLog(@"%@",json);
+                if ([[AppSettings sharedSettings] isSuccess:json]){
+                    [[[UIAlertView alloc] initWithTitle:AppTitle message:json[@"result"] delegate:nil cancelButtonTitle:@"取消" otherButtonTitles: nil] show];
+                    
+                    ResetPasswordViewController *vc = [[ResetPasswordViewController alloc] initWithStyle:UITableViewStyleGrouped];
+                   
+                    [self.navigationController pushViewController:vc animated:YES];
+                    
+                }else{
+                
+                }
+            }];
+        }
+    }
+}
+
 -(void)open_maintain_setup{
     NSString *url =[[AppSettings sharedSettings] url_for_get_maintain_record];
     [[HttpClient sharedHttp] get:url block:^(id json) {

@@ -51,8 +51,13 @@
 -(void)chooseUser:(NSNotification *)notification{
     NSLog(@"%@",notification.object);
     [self setupLoginUser:notification.object];
-    [self initData];
-    [self.tableView reloadData];
+    if ([_remember isEqualToString:@"1"]){
+        [self login:_username password:_password remember:_remember];
+    }else{
+        [self initData];
+        [self.tableView reloadData];
+    }
+    
 }
 
 -(void)initData{

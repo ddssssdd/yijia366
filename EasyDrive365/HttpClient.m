@@ -81,7 +81,14 @@
             }
             [SVProgressHUD dismissWithSuccess:message afterDelay:3];
         }else{
-            [SVProgressHUD dismiss];
+            id alertMsg = jsonResult[@"alertmsg"];
+            if (alertMsg && ![alertMsg isKindOfClass:[NSNull class]] && ![alertMsg isEqualToString:@""]){
+                [SVProgressHUD dismissWithSuccess:alertMsg afterDelay:3];
+            }else{
+                [SVProgressHUD dismiss];
+            }
+        
+            
         }
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
