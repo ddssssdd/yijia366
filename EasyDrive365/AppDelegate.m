@@ -65,6 +65,7 @@
 {
     
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    [UIApplication sharedApplication].applicationIconBadgeNumber=0;
     [[AppSettings sharedSettings] check_update:NO];
 }
 
@@ -86,6 +87,6 @@
 }
 -(void)addMessageFromRemoteNotification:(NSDictionary *)payload{
     NSLog(@"received notificaiton:%@",payload);
-    [UIApplication sharedApplication].applicationIconBadgeNumber=0;
+    
 }
 @end

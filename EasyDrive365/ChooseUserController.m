@@ -98,14 +98,26 @@
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     cell.accessoryType = UITableViewCellAccessoryCheckmark;
     _selected_user = user;
+    NSLog(@"%@",user);
     
 }
 -(void)choose{
     if (_selected_user){
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"Choose_user" object:_selected_user];
+        if ([_selected_user[@"remember"] intValue]==1){
+            [[AppSettings sharedSettings] login:_selected_user[@"username"] password:_selected_user[@"password"] remember:_selected_user[@"remember"] callback:^(BOOL loginSuccess) {
+                [self.navigationController popToRootViewControllerAnimated:YES];
+            }];
+        }else{
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"Choose_user" object:_selected_user];
+            [self.navigationController popViewControllerAnimated:YES];
+        }
         
+        
+        
+    }else{
+        [self.navigationController popViewControllerAnimated:YES];
     }
-    [self.navigationController popViewControllerAnimated:YES];
+    
 }
 
 @end

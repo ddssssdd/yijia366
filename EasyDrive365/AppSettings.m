@@ -355,5 +355,28 @@
         _isCancelUpdate  = YES;
     }
 }
-
+- (void)login:(NSString *)username password:(NSString *)password remember:(NSString *)remember callback:(void (^)(BOOL loginSuccess))callback{
+    //[self doLogin];
+    NSString *path  =[NSString stringWithFormat:@"api/login?username=%@&password=%@",username,password];
+    NSLog(@"%@",path);
+    [[HttpClient sharedHttp] get:path block:^(id json) {
+        if (json){
+            NSString *status =[json objectForKey:@"status"];
+            if (status && [status isEqualToString:@"success"]){
+                //success login
+                
+                NSNumber *userid=[[json objectForKey:@"result"] objectForKey:@"id"];
+                
+                [self login:username userid:[userid intValue]];
+                [self add_login:username password:password rememberPassword:remember];
+                //[self.navigationController popToRootViewControllerAnimated:YES];
+                if (callback){
+                    callback(YES);
+                }
+                
+            }
+        }
+    }];
+    
+}
 @end

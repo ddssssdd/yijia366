@@ -92,5 +92,5 @@
 -(NSMutableArray *)get_logins;
 
 -(void)check_update:(BOOL)inSettings;
-
+-(void)login:(NSString *)username password:(NSString *)password remember:(NSString *)remember callback:(void (^)(BOOL loginSuccess))callback;
 @end

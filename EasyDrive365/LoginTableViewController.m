@@ -108,8 +108,10 @@
     }
     NSString *remember = [parameters objectForKey:@"remember"];
     
-    [self login:username password:password remember:remember];
-
+    //[self login:username password:password remember:remember];
+    [[AppSettings sharedSettings] login:username password:password remember:remember callback:^(BOOL loginSuccess) {
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }];
 }
 
 - (void)login:(NSString *)username password:(NSString *)password remember:(NSString *)remember {

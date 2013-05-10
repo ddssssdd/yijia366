@@ -645,11 +645,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "EasyDrive365/AppDelegate.m"
-         timestampString = "389183538.685419"
+         timestampString = "389876399.414309"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "76"
-         endingLineNumber = "76"
+         startingLineNumber = "77"
+         endingLineNumber = "77"
          landmarkName = "-application:didRegisterForRemoteNotificationsWithDeviceToken:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -658,11 +658,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "EasyDrive365/AppDelegate.m"
-         timestampString = "389183538.685419"
+         timestampString = "389876399.414309"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "79"
-         endingLineNumber = "79"
+         startingLineNumber = "80"
+         endingLineNumber = "80"
          landmarkName = "-application:didFailToRegisterForRemoteNotificationsWithError:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -671,11 +671,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "EasyDrive365/AppDelegate.m"
-         timestampString = "389183538.685419"
+         timestampString = "389876399.414309"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "88"
-         endingLineNumber = "88"
+         startingLineNumber = "89"
+         endingLineNumber = "89"
          landmarkName = "-addMessageFromRemoteNotification:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1787,11 +1787,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "EasyDrive365/LoginTableViewController.m"
-         timestampString = "389795442.54247"
+         timestampString = "389877325.151232"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "119"
-         endingLineNumber = "119"
+         startingLineNumber = "121"
+         endingLineNumber = "121"
          landmarkName = "-login:password:remember:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -2866,11 +2866,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "EasyDrive365/LoginTableViewController.m"
-         timestampString = "389795442.54247"
+         timestampString = "389877325.151232"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "140"
-         endingLineNumber = "140"
+         startingLineNumber = "142"
+         endingLineNumber = "142"
          landmarkName = "-tableView:didSelectRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -2879,11 +2879,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "EasyDrive365/LoginTableViewController.m"
-         timestampString = "389795442.54247"
+         timestampString = "389877325.151232"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "139"
-         endingLineNumber = "139"
+         startingLineNumber = "141"
+         endingLineNumber = "141"
          landmarkName = "-tableView:didSelectRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -3834,6 +3834,19 @@
          startingLineNumber = "53"
          endingLineNumber = "53"
          landmarkName = "-viewDidLoad"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "EasyDrive365/AppDelegate.m"
+         timestampString = "389876412.747955"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "68"
+         endingLineNumber = "68"
+         landmarkName = "-applicationDidBecomeActive:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
