@@ -226,8 +226,9 @@
 }
 
 -(NSString *)udid{
+    /*
     UIDevice *device =[UIDevice currentDevice];
-    //return [NSString stringWithFormat:@"%@", device.identifierForVendor];
+    
     NSString *ident = nil;
     if ([device respondsToSelector:@selector(identifierForVendor)]) {
         ident = [device.identifierForVendor UUIDString];
@@ -235,6 +236,8 @@
         ident = device.uniqueIdentifier;
     }
     return ident;
+     */
+    return @"";
 }
 
 -(void)makeCall:(NSString *)phone{
