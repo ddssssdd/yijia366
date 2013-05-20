@@ -11,6 +11,7 @@
 #import "ItemDetailCell.h"
 #import "PhoneView.h"
 #import "AppSettings.h"
+#import "CarHelpTabController.h"
 
 @interface HelpCallViewController (){
     NSMutableArray *_list;
@@ -140,5 +141,12 @@
  */
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
     return _company;
+}
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    CarHelpTabController *vc = [[CarHelpTabController alloc] init];
+    //ServiceNoteViewController *vc =[[ServiceNoteViewController alloc] initWithNibName:@"ServiceNoteViewController" bundle:nil];
+    id item = [_list objectAtIndex:indexPath.row];
+    vc.code = item[@"Code"];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 @end

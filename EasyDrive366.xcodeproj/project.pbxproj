@@ -88,6 +88,8 @@
 		E26CCF9F16D7B42D00A35DA1 /* InfoAndPhoneCallCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E26CCF9E16D7B42D00A35DA1 /* InfoAndPhoneCallCell.xib */; };
 		E26CCFAC16DA0D1300A35DA1 /* HelpHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = E26CCFAB16DA0D1300A35DA1 /* HelpHeaderView.m */; };
 		E26CCFAE16DA0D2800A35DA1 /* HelpHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E26CCFAD16DA0D2800A35DA1 /* HelpHeaderView.xib */; };
+		E2771F90174A321B0056E6F7 /* FeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2771F8E174A321B0056E6F7 /* FeedbackViewController.m */; };
+		E2771F91174A321B0056E6F7 /* FeedbackViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2771F8F174A321B0056E6F7 /* FeedbackViewController.xib */; };
 		E2903BA916F36B9F00A93CBF /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = E2903BA016F36B9F00A93CBF /* Icon-72.png */; };
 		E2903BAA16F36B9F00A93CBF /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = E2903BA116F36B9F00A93CBF /* Icon-Small-50.png */; };
 		E2903BAB16F36B9F00A93CBF /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = E2903BA216F36B9F00A93CBF /* Icon-Small.png */; };
@@ -305,6 +307,9 @@
 		E26CCFAA16DA0D1300A35DA1 /* HelpHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpHeaderView.h; sourceTree = "<group>"; };
 		E26CCFAB16DA0D1300A35DA1 /* HelpHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpHeaderView.m; sourceTree = "<group>"; };
 		E26CCFAD16DA0D2800A35DA1 /* HelpHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HelpHeaderView.xib; sourceTree = "<group>"; };
+		E2771F8D174A321B0056E6F7 /* FeedbackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedbackViewController.h; sourceTree = "<group>"; };
+		E2771F8E174A321B0056E6F7 /* FeedbackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedbackViewController.m; sourceTree = "<group>"; };
+		E2771F8F174A321B0056E6F7 /* FeedbackViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedbackViewController.xib; sourceTree = "<group>"; };
 		E2903BA016F36B9F00A93CBF /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
 		E2903BA116F36B9F00A93CBF /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50.png"; sourceTree = "<group>"; };
 		E2903BA216F36B9F00A93CBF /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small.png"; sourceTree = "<group>"; };
@@ -749,6 +754,9 @@
 				E22354A0172A945D00DDC015 /* ResetPasswordViewController.m */,
 				E241CE9817328EA400B1441D /* BindCellPhoneViewController.h */,
 				E241CE9917328EA400B1441D /* BindCellPhoneViewController.m */,
+				E2771F8D174A321B0056E6F7 /* FeedbackViewController.h */,
+				E2771F8E174A321B0056E6F7 /* FeedbackViewController.m */,
+				E2771F8F174A321B0056E6F7 /* FeedbackViewController.xib */,
 			);
 			name = Modules;
 			sourceTree = "<group>";
@@ -990,6 +998,7 @@
 				E241CF05173BF3E600B1441D /* 0177@2x.png in Resources */,
 				E241CF08173BF42300B1441D /* 0052.png in Resources */,
 				E241CF09173BF42300B1441D /* 0052@2x.png in Resources */,
+				E2771F91174A321B0056E6F7 /* FeedbackViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1090,6 +1099,7 @@
 				E241CEEC173BE7E700B1441D /* ServiceNoteViewController.m in Sources */,
 				E241CEF6173BEA9E00B1441D /* IncomingViewController.m in Sources */,
 				E241CEFD173BEE2D00B1441D /* CarHelpTabController.m in Sources */,
+				E2771F90174A321B0056E6F7 /* FeedbackViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1176,15 +1186,15 @@
 		E2296D4A16B760EC00E332D9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: nanxi su";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: nanxi su";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EasyDrive365/EasyDrive366-Prefix.pch";
 				INFOPLIST_FILE = "EasyDrive365/EasyDrive366-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = EasyDrive366;
-				PROVISIONING_PROFILE = "E738FB5A-BFFA-426F-8BF1-D78470045177";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E738FB5A-BFFA-426F-8BF1-D78470045177";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1193,15 +1203,15 @@
 		E2296D4B16B760EC00E332D9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: nanxi su";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: nanxi su";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EasyDrive365/EasyDrive366-Prefix.pch";
 				INFOPLIST_FILE = "EasyDrive365/EasyDrive366-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = EasyDrive366;
-				PROVISIONING_PROFILE = "E738FB5A-BFFA-426F-8BF1-D78470045177";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E738FB5A-BFFA-426F-8BF1-D78470045177";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};

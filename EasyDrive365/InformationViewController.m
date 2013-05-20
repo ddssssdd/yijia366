@@ -38,7 +38,11 @@
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     [self setupTableView:self.tableView];
+    self.navigationItem.rightBarButtonItem =[[UIBarButtonItem alloc] initWithTitle:@"删除" style:UIBarButtonSystemItemTrash target:self action:@selector(deleteInformation)];
     
+}
+-(void)deleteInformation{
+    self.tableView.editing = YES;
 }
 
 - (void)didReceiveMemoryWarning
@@ -133,4 +137,16 @@
     [self endRefresh:self.tableView];
 }
 
+
+-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (editingStyle==UITableViewCellEditingStyleDelete){
+        NSString *url = [NSString stringWithFormat:@"api/del_news?userid=%d&newsid=%@",[AppSettings sharedSettings].userid,@"1"];
+        [[AppSettings sharedSettings].http get:url block:^(id json) {
+            UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+            [cell removeFromSuperview];
+        }];
+        
+        
+    }
+}
 @end

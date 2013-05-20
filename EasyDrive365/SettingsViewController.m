@@ -18,6 +18,7 @@
 #import "ResetPasswordViewController.h"
 #import "BindCellPhoneViewController.h"
 #import "SVProgressHUD.h"
+#import "FeedbackViewController.h"
 
 @interface SettingsViewController ()<ButtonViewControllerDelegate,UIAlertViewDelegate>{
     EditMaintainDataSource *_maintainDatasource;
@@ -88,6 +89,14 @@
 -(void)init_dataSource{
     id items=@[
     [[NSMutableDictionary alloc] initWithDictionary:
+     @{@"key" :@"feedback",
+     @"label":@"意见反馈",
+     @"default":@"",
+     @"placeholder":@"",
+     @"ispassword":@"",
+     @"value":@"",
+     @"cell":@"ChooseNextCell"  }],
+    [[NSMutableDictionary alloc] initWithDictionary:
      @{@"key" :@"version",
      @"label":@"版本号",
      @"default":@"",
@@ -148,7 +157,7 @@
            
            @{@"count" : @3,@"list":items2,@"height":@44.0f,@"header":@"我的车辆",@"footer":@""},
            @{@"count" : @3,@"list":items3,@"height":@44.0f,@"header":@"",@"footer":@""},
-           @{@"count" : @1,@"list":items,@"height":@44.0f,@"header":@"",@"footer":@""},
+           @{@"count" : @2,@"list":items,@"height":@44.0f,@"header":@"",@"footer":@""},
            ]];
     [self.tableView reloadData];
 }
@@ -190,9 +199,17 @@
             }
         }
     }else if (indexPath.section==3){
-        if (indexPath.row==0){
+        if (indexPath.row==1){
             [AppSettings sharedSettings].isCancelUpdate = NO;
             [[AppSettings sharedSettings] check_update:YES];
+        }else if (indexPath.row==0){
+            FeedbackViewController *vc = [[FeedbackViewController alloc] initWithNibName:@"FeedbackViewController" bundle:nil];
+            vc.btnOK.text = @"确定";
+            vc.title = @"意见反馈";
+            if (isbind==0){
+                vc.txtCommunication.text =_phone;
+            }
+            [self.navigationController pushViewController:vc animated:YES];
         }
     }
     NSLog(@"%@",indexPath);
