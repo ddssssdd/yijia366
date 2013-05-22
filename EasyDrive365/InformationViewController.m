@@ -140,8 +140,10 @@
 
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
     if (editingStyle==UITableViewCellEditingStyleDelete){
-        NSString *url = [NSString stringWithFormat:@"api/del_news?userid=%d&newsid=%@",[AppSettings sharedSettings].userid,@"1"];
+        id item = [_list objectAtIndex:indexPath.row];
+        NSString *url = [NSString stringWithFormat:@"api/del_news?userid=%d&newsid=%@",[AppSettings sharedSettings].userid,item[@"id"]];
         [[AppSettings sharedSettings].http get:url block:^(id json) {
+            NSLog(@"%@",json);
             UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
             [cell removeFromSuperview];
         }];

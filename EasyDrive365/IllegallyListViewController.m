@@ -10,6 +10,7 @@
 #import "HttpClient.h"
 #import "AppSettings.h"
 #import "RecordCell.h"
+#import "IllegallyDetailViewController.h"
 @interface IllegallyListViewController ()
 {
     NSMutableArray *_list;
@@ -93,5 +94,30 @@
 }
 -(void)responseError:(id)json{
     [self endRefresh:self.tableview];
+}
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    id item =[_list objectAtIndex:indexPath.row];
+    NSString *url = [NSString stringWithFormat:@"api/get_illegally?userid=%d&id=%@",
+                     [AppSettings sharedSettings].userid,
+                     item[@"id"]];
+    [[AppSettings sharedSettings].http get:url block:^(id json) {
+        if ([[AppSettings sharedSettings] isSuccess:json]){
+            NSLog(@"%@",json);
+            NSString *address = json[@"result"][@"data"][@"Address"];
+            if (![address isEqualToString:@""]){
+                IllegallyDetailViewController *vc = [[IllegallyDetailViewController alloc] initWithNibName:@"IllegallyDetailViewController" bundle:nil];
+                [self.navigationController pushViewController:vc animated:YES];
+                vc.lblAddress.text = address;
+                vc.lblContent.text = json[@"result"][@"data"][@"Reason"];
+                vc.lblTitle.text=[NSString stringWithFormat:@"%@ 罚款%@扣%@",
+                                  json[@"result"][@"data"][@"OccurTime"],
+                                  json[@"result"][@"data"][@"Fine"],
+                                  json[@"result"][@"data"][@"Mark"]];
+            }
+        }
+        
+        
+    }];
+    
 }
 @end

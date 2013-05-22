@@ -70,6 +70,8 @@
 		E24A043F16D1074800B7A602 /* LicenseTypeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E24A043D16D1074800B7A602 /* LicenseTypeViewController.xib */; };
 		E24A047E16D270DA00B7A602 /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E24A047C16D270DA00B7A602 /* DatePickerViewController.m */; };
 		E24A047F16D270DA00B7A602 /* DatePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E24A047D16D270DA00B7A602 /* DatePickerViewController.xib */; };
+		E254410E174D078E0015A84C /* IllegallyDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E254410C174D078E0015A84C /* IllegallyDetailViewController.m */; };
+		E254410F174D078E0015A84C /* IllegallyDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E254410D174D078E0015A84C /* IllegallyDetailViewController.xib */; };
 		E25AF0B116F9FED900E79057 /* CIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E25AF0AF16F9FED800E79057 /* CIViewController.m */; };
 		E25AF0B216F9FED900E79057 /* CIViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E25AF0B016F9FED900E79057 /* CIViewController.xib */; };
 		E25D74BD16DE368D008307C7 /* NetTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E25D74BC16DE368D008307C7 /* NetTableViewController.m */; };
@@ -279,6 +281,9 @@
 		E24A047B16D270DA00B7A602 /* DatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerViewController.h; sourceTree = "<group>"; };
 		E24A047C16D270DA00B7A602 /* DatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerViewController.m; sourceTree = "<group>"; };
 		E24A047D16D270DA00B7A602 /* DatePickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DatePickerViewController.xib; sourceTree = "<group>"; };
+		E254410B174D078E0015A84C /* IllegallyDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IllegallyDetailViewController.h; sourceTree = "<group>"; };
+		E254410C174D078E0015A84C /* IllegallyDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IllegallyDetailViewController.m; sourceTree = "<group>"; };
+		E254410D174D078E0015A84C /* IllegallyDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IllegallyDetailViewController.xib; sourceTree = "<group>"; };
 		E25AF0AE16F9FED800E79057 /* CIViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIViewController.h; sourceTree = "<group>"; };
 		E25AF0AF16F9FED800E79057 /* CIViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIViewController.m; sourceTree = "<group>"; };
 		E25AF0B016F9FED900E79057 /* CIViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CIViewController.xib; sourceTree = "<group>"; };
@@ -757,6 +762,9 @@
 				E2771F8D174A321B0056E6F7 /* FeedbackViewController.h */,
 				E2771F8E174A321B0056E6F7 /* FeedbackViewController.m */,
 				E2771F8F174A321B0056E6F7 /* FeedbackViewController.xib */,
+				E254410B174D078E0015A84C /* IllegallyDetailViewController.h */,
+				E254410C174D078E0015A84C /* IllegallyDetailViewController.m */,
+				E254410D174D078E0015A84C /* IllegallyDetailViewController.xib */,
 			);
 			name = Modules;
 			sourceTree = "<group>";
@@ -999,6 +1007,7 @@
 				E241CF08173BF42300B1441D /* 0052.png in Resources */,
 				E241CF09173BF42300B1441D /* 0052@2x.png in Resources */,
 				E2771F91174A321B0056E6F7 /* FeedbackViewController.xib in Resources */,
+				E254410F174D078E0015A84C /* IllegallyDetailViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1100,6 +1109,7 @@
 				E241CEF6173BEA9E00B1441D /* IncomingViewController.m in Sources */,
 				E241CEFD173BEE2D00B1441D /* CarHelpTabController.m in Sources */,
 				E2771F90174A321B0056E6F7 /* FeedbackViewController.m in Sources */,
+				E254410E174D078E0015A84C /* IllegallyDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
