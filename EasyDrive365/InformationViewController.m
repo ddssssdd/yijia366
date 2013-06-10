@@ -14,6 +14,7 @@
 #import "PhoneView.h"
 #import "Menu.h"
 
+#import "InfromationDetailViewController.h"
 
 @interface InformationViewController (){
     NSMutableArray *_list;
@@ -93,6 +94,10 @@
         action=@"00";
     }
     if ([action isEqualToString:@"01"]){
+        
+        InfromationDetailViewController *vc = [[InfromationDetailViewController alloc] initWithNibName:@"InfromationDetailViewController" bundle:nil];
+        [self.navigationController pushViewController:vc animated:YES];
+        [vc loadInformation:item[@"id"]];
         return;
     }
     

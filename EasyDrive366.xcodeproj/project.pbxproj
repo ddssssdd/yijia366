@@ -90,6 +90,12 @@
 		E26CCF9F16D7B42D00A35DA1 /* InfoAndPhoneCallCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E26CCF9E16D7B42D00A35DA1 /* InfoAndPhoneCallCell.xib */; };
 		E26CCFAC16DA0D1300A35DA1 /* HelpHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = E26CCFAB16DA0D1300A35DA1 /* HelpHeaderView.m */; };
 		E26CCFAE16DA0D2800A35DA1 /* HelpHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E26CCFAD16DA0D2800A35DA1 /* HelpHeaderView.xib */; };
+		E271A3EC17658235001E4D54 /* ArticleCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E271A3EA17658235001E4D54 /* ArticleCommentViewController.m */; };
+		E271A3ED17658235001E4D54 /* ArticleCommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E271A3EB17658235001E4D54 /* ArticleCommentViewController.xib */; };
+		E271A3F217658545001E4D54 /* AddCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E271A3F017658545001E4D54 /* AddCommentViewController.m */; };
+		E271A3F317658545001E4D54 /* AddCommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E271A3F117658545001E4D54 /* AddCommentViewController.xib */; };
+		E271A3F717658B7C001E4D54 /* CommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E271A3F617658B7C001E4D54 /* CommentCell.m */; };
+		E271A3F917658B8E001E4D54 /* CommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E271A3F817658B8E001E4D54 /* CommentCell.xib */; };
 		E2771F90174A321B0056E6F7 /* FeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2771F8E174A321B0056E6F7 /* FeedbackViewController.m */; };
 		E2771F91174A321B0056E6F7 /* FeedbackViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2771F8F174A321B0056E6F7 /* FeedbackViewController.xib */; };
 		E2903BA916F36B9F00A93CBF /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = E2903BA016F36B9F00A93CBF /* Icon-72.png */; };
@@ -115,6 +121,10 @@
 		E29B09ED16DB9134002449DE /* BusinessInsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E29B09EB16DB9134002449DE /* BusinessInsViewController.xib */; };
 		E2B057E616E79370003F89F7 /* EditTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2B057E416E79370003F89F7 /* EditTableViewController.m */; };
 		E2B057E716E79370003F89F7 /* EditTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2B057E516E79370003F89F7 /* EditTableViewController.xib */; };
+		E2B489F91761FAC300B8947D /* InfromationDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2B489F71761FAC300B8947D /* InfromationDetailViewController.m */; };
+		E2B489FA1761FAC300B8947D /* InfromationDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2B489F81761FAC300B8947D /* InfromationDetailViewController.xib */; };
+		E2B489FE176576A400B8947D /* ArticleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2B489FC176576A300B8947D /* ArticleViewController.m */; };
+		E2B489FF176576A400B8947D /* ArticleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2B489FD176576A300B8947D /* ArticleViewController.xib */; };
 		E2C1625816EA127500B0E9EC /* LoginTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2C1625716EA127500B0E9EC /* LoginTableViewController.m */; };
 		E2C1625C16EA161700B0E9EC /* IntroduceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E2C1625B16EA161700B0E9EC /* IntroduceCell.m */; };
 		E2C1625E16EA163000B0E9EC /* IntroduceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2C1625D16EA163000B0E9EC /* IntroduceCell.xib */; };
@@ -312,6 +322,15 @@
 		E26CCFAA16DA0D1300A35DA1 /* HelpHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpHeaderView.h; sourceTree = "<group>"; };
 		E26CCFAB16DA0D1300A35DA1 /* HelpHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpHeaderView.m; sourceTree = "<group>"; };
 		E26CCFAD16DA0D2800A35DA1 /* HelpHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HelpHeaderView.xib; sourceTree = "<group>"; };
+		E271A3E917658235001E4D54 /* ArticleCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleCommentViewController.h; sourceTree = "<group>"; };
+		E271A3EA17658235001E4D54 /* ArticleCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleCommentViewController.m; sourceTree = "<group>"; };
+		E271A3EB17658235001E4D54 /* ArticleCommentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ArticleCommentViewController.xib; sourceTree = "<group>"; };
+		E271A3EF17658545001E4D54 /* AddCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddCommentViewController.h; sourceTree = "<group>"; };
+		E271A3F017658545001E4D54 /* AddCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddCommentViewController.m; sourceTree = "<group>"; };
+		E271A3F117658545001E4D54 /* AddCommentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddCommentViewController.xib; sourceTree = "<group>"; };
+		E271A3F517658B7C001E4D54 /* CommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentCell.h; sourceTree = "<group>"; };
+		E271A3F617658B7C001E4D54 /* CommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentCell.m; sourceTree = "<group>"; };
+		E271A3F817658B8E001E4D54 /* CommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentCell.xib; sourceTree = "<group>"; };
 		E2771F8D174A321B0056E6F7 /* FeedbackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedbackViewController.h; sourceTree = "<group>"; };
 		E2771F8E174A321B0056E6F7 /* FeedbackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedbackViewController.m; sourceTree = "<group>"; };
 		E2771F8F174A321B0056E6F7 /* FeedbackViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedbackViewController.xib; sourceTree = "<group>"; };
@@ -342,6 +361,12 @@
 		E2B057E316E79370003F89F7 /* EditTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditTableViewController.h; sourceTree = "<group>"; };
 		E2B057E416E79370003F89F7 /* EditTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditTableViewController.m; sourceTree = "<group>"; };
 		E2B057E516E79370003F89F7 /* EditTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditTableViewController.xib; sourceTree = "<group>"; };
+		E2B489F61761FAC300B8947D /* InfromationDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfromationDetailViewController.h; sourceTree = "<group>"; };
+		E2B489F71761FAC300B8947D /* InfromationDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfromationDetailViewController.m; sourceTree = "<group>"; };
+		E2B489F81761FAC300B8947D /* InfromationDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfromationDetailViewController.xib; sourceTree = "<group>"; };
+		E2B489FB176576A300B8947D /* ArticleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleViewController.h; sourceTree = "<group>"; };
+		E2B489FC176576A300B8947D /* ArticleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleViewController.m; sourceTree = "<group>"; };
+		E2B489FD176576A300B8947D /* ArticleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ArticleViewController.xib; sourceTree = "<group>"; };
 		E2C1625616EA127500B0E9EC /* LoginTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginTableViewController.h; sourceTree = "<group>"; };
 		E2C1625716EA127500B0E9EC /* LoginTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginTableViewController.m; sourceTree = "<group>"; };
 		E2C1625A16EA161700B0E9EC /* IntroduceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntroduceCell.h; sourceTree = "<group>"; };
@@ -552,6 +577,7 @@
 		E241CEDD173BE00400B1441D /* CarHelp */ = {
 			isa = PBXGroup;
 			children = (
+				E271A3F417658B55001E4D54 /* components */,
 				E241CEDF173BE02B00B1441D /* CarHelpViewController.h */,
 				E241CEE0173BE02B00B1441D /* CarHelpViewController.m */,
 				E241CEE1173BE02B00B1441D /* CarHelpViewController.xib */,
@@ -566,6 +592,15 @@
 				E241CEF5173BEA9C00B1441D /* IncomingViewController.xib */,
 				E241CEFB173BEE2B00B1441D /* CarHelpTabController.h */,
 				E241CEFC173BEE2C00B1441D /* CarHelpTabController.m */,
+				E2B489FB176576A300B8947D /* ArticleViewController.h */,
+				E2B489FC176576A300B8947D /* ArticleViewController.m */,
+				E2B489FD176576A300B8947D /* ArticleViewController.xib */,
+				E271A3E917658235001E4D54 /* ArticleCommentViewController.h */,
+				E271A3EA17658235001E4D54 /* ArticleCommentViewController.m */,
+				E271A3EB17658235001E4D54 /* ArticleCommentViewController.xib */,
+				E271A3EF17658545001E4D54 /* AddCommentViewController.h */,
+				E271A3F017658545001E4D54 /* AddCommentViewController.m */,
+				E271A3F117658545001E4D54 /* AddCommentViewController.xib */,
 			);
 			name = CarHelp;
 			sourceTree = "<group>";
@@ -615,6 +650,16 @@
 			path = lib;
 			sourceTree = "<group>";
 		};
+		E271A3F417658B55001E4D54 /* components */ = {
+			isa = PBXGroup;
+			children = (
+				E271A3F517658B7C001E4D54 /* CommentCell.h */,
+				E271A3F617658B7C001E4D54 /* CommentCell.m */,
+				E271A3F817658B8E001E4D54 /* CommentCell.xib */,
+			);
+			name = components;
+			sourceTree = "<group>";
+		};
 		E29462FD16FC8B000090371C /* removable */ = {
 			isa = PBXGroup;
 			children = (
@@ -633,6 +678,19 @@
 				E2296D5016B7723F00E332D9 /* SignupViewController.m */,
 			);
 			name = removable;
+			sourceTree = "<group>";
+		};
+		E2B489F41761F7CA00B8947D /* information */ = {
+			isa = PBXGroup;
+			children = (
+				E2EE653A16C529A100ED1C73 /* InformationViewController.h */,
+				E2EE653B16C529A100ED1C73 /* InformationViewController.m */,
+				E2EE653C16C529A100ED1C73 /* InformationViewController.xib */,
+				E2B489F61761FAC300B8947D /* InfromationDetailViewController.h */,
+				E2B489F71761FAC300B8947D /* InfromationDetailViewController.m */,
+				E2B489F81761FAC300B8947D /* InfromationDetailViewController.xib */,
+			);
+			name = information;
 			sourceTree = "<group>";
 		};
 		E2EE650716C293DD00ED1C73 /* settings */ = {
@@ -709,10 +767,8 @@
 		E2EE653916C5294A00ED1C73 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				E2B489F41761F7CA00B8947D /* information */,
 				E241CEDD173BE00400B1441D /* CarHelp */,
-				E2EE653A16C529A100ED1C73 /* InformationViewController.h */,
-				E2EE653B16C529A100ED1C73 /* InformationViewController.m */,
-				E2EE653C16C529A100ED1C73 /* InformationViewController.xib */,
 				E2EE658916C7C72100ED1C73 /* HelpCallViewController.h */,
 				E2EE658A16C7C72100ED1C73 /* HelpCallViewController.m */,
 				E2EE658B16C7C72100ED1C73 /* HelpCallViewController.xib */,
@@ -1008,6 +1064,11 @@
 				E241CF09173BF42300B1441D /* 0052@2x.png in Resources */,
 				E2771F91174A321B0056E6F7 /* FeedbackViewController.xib in Resources */,
 				E254410F174D078E0015A84C /* IllegallyDetailViewController.xib in Resources */,
+				E2B489FA1761FAC300B8947D /* InfromationDetailViewController.xib in Resources */,
+				E2B489FF176576A400B8947D /* ArticleViewController.xib in Resources */,
+				E271A3ED17658235001E4D54 /* ArticleCommentViewController.xib in Resources */,
+				E271A3F317658545001E4D54 /* AddCommentViewController.xib in Resources */,
+				E271A3F917658B8E001E4D54 /* CommentCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1110,6 +1171,11 @@
 				E241CEFD173BEE2D00B1441D /* CarHelpTabController.m in Sources */,
 				E2771F90174A321B0056E6F7 /* FeedbackViewController.m in Sources */,
 				E254410E174D078E0015A84C /* IllegallyDetailViewController.m in Sources */,
+				E2B489F91761FAC300B8947D /* InfromationDetailViewController.m in Sources */,
+				E2B489FE176576A400B8947D /* ArticleViewController.m in Sources */,
+				E271A3EC17658235001E4D54 /* ArticleCommentViewController.m in Sources */,
+				E271A3F217658545001E4D54 /* AddCommentViewController.m in Sources */,
+				E271A3F717658B7C001E4D54 /* CommentCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

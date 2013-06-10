@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface IncomingViewController : UIViewController
-
+#import "NetViewController.h"
+@interface IncomingViewController : NetViewController<UITableViewDataSource,UITableViewDelegate>
+@property (nonatomic,retain) NSString *code;
+@property (nonatomic,retain) NSString *pageId;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @end

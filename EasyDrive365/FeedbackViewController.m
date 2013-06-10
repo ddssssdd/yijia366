@@ -9,6 +9,7 @@
 #import "FeedbackViewController.h"
 #import "HttpClient.h"
 #import "AppSettings.h"
+#import <QuartzCore/QuartzCore.h>
 @interface FeedbackViewController ()<UITextViewDelegate,UIAlertViewDelegate>
 
 @end
@@ -32,6 +33,8 @@
     [self textViewDidChange:self.txtfeedback];
     self.btnOK.text = @"确定";
     [self.txtfeedback becomeFirstResponder];
+    self.txtfeedback.layer.borderWidth = 2.0f;
+    self.txtfeedback.layer.borderColor = [[UIColor grayColor] CGColor];
 }
 
 -(void)textViewDidChange:(UITextView *)textView{

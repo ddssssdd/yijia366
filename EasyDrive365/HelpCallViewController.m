@@ -147,6 +147,7 @@
     //ServiceNoteViewController *vc =[[ServiceNoteViewController alloc] initWithNibName:@"ServiceNoteViewController" bundle:nil];
     id item = [_list objectAtIndex:indexPath.row];
     vc.code = item[@"Code"];
+    vc.pageId = @"02";
     [self.navigationController pushViewController:vc animated:YES];
 }
 @end

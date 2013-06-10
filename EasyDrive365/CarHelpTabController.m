@@ -10,7 +10,7 @@
 #import "VendorViewController.h"
 #import "ServiceNoteViewController.h"
 #import "IncomingViewController.h"
-
+#import "ArticleViewController.h"
 @interface CarHelpTabController (){
     UITabBarController *_tabController;
     VendorViewController *_venderController;
@@ -47,16 +47,30 @@
     _incomingController =[[IncomingViewController alloc] initWithNibName:@"IncomingViewController" bundle:nil];
     _incomingController.tabBarItem =[[UITabBarItem alloc] initWithTitle:@"易驾百科" image:[UIImage imageNamed:@"0177.png"] tag:3];
     _incomingController.title = @"易驾百科";
+    _incomingController.code = self.code;
+    _incomingController.pageId = self.pageId;
     _tabController =[[UITabBarController alloc] init];
-    _tabController.viewControllers=@[_venderController,_noteController,_incomingController];
+    _tabController.viewControllers=@[_venderController,_noteController,
+        _incomingController];
     _tabController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     [self.view addSubview:_tabController.view];
+    self.title = @"详细信息";
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotoArticle:) name:OPEN_ARTICLE object:nil];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+-(void)gotoArticle:(NSNotification *)notification{
+    id item = notification.userInfo;
+    ArticleViewController *vc =[[ArticleViewController alloc] initWithNibName:@"ArticleViewController" bundle:nil];
+   
+    
+    [self.navigationController pushViewController:vc animated:YES];
+    
+    [vc goto:item ];
 }
 
 @end

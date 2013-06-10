@@ -10,4 +10,5 @@
 
 @interface CarHelpTabController : UIViewController
 @property (nonatomic) NSString *code;
+@property (nonatomic) NSString *pageId;
 @end

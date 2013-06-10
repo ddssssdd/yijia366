@@ -37,5 +37,7 @@
 
 
 #define AppTitle @"易驾366"
-#define AppVersion @"1.02"
+#define AppVersion @"1.03"
 #define APPLATEST_COUNT 12
+#define DELETE_INFORMATION @"delete information"
+#define OPEN_ARTICLE @"Open article"
