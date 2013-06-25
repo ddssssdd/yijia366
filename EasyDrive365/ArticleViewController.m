@@ -29,7 +29,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"评论" style:UIBarButtonSystemItemFastForward target:self action:@selector(gotoShare)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"查看评论" style:UIBarButtonSystemItemFastForward target:self action:@selector(gotoShare)];
 }
 
 - (void)didReceiveMemoryWarning

@@ -33,7 +33,7 @@
     [super viewDidLoad];
     [self setupTableView:self.tableView];
     self.title = @"用户评论";
-    self.navigationItem.rightBarButtonItem =[[UIBarButtonItem alloc] initWithTitle:@"评论" style:UIBarButtonSystemItemAdd target:self action:@selector(add_comment)];
+    self.navigationItem.rightBarButtonItem =[[UIBarButtonItem alloc] initWithTitle:@"发表评论" style:UIBarButtonSystemItemAdd target:self action:@selector(add_comment)];
 }
 
 - (void)didReceiveMemoryWarning

@@ -206,10 +206,11 @@
             FeedbackViewController *vc = [[FeedbackViewController alloc] initWithNibName:@"FeedbackViewController" bundle:nil];
             vc.btnOK.text = @"确定";
             vc.title = @"意见反馈";
+           
+            [self.navigationController pushViewController:vc animated:YES];
             if (isbind==0){
                 vc.txtCommunication.text =_phone;
             }
-            [self.navigationController pushViewController:vc animated:YES];
         }
     }
     NSLog(@"%@",indexPath);

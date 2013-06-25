@@ -32,9 +32,10 @@
     
     [self textViewDidChange:self.txtfeedback];
     self.btnOK.text = @"确定";
-    [self.txtfeedback becomeFirstResponder];
+    //[self.txtfeedback becomeFirstResponder];
     self.txtfeedback.layer.borderWidth = 2.0f;
     self.txtfeedback.layer.borderColor = [[UIColor grayColor] CGColor];
+
 }
 
 -(void)textViewDidChange:(UITextView *)textView{
@@ -42,13 +43,11 @@
     self.lblCount.text= [NSString stringWithFormat:@"还可以输入%d个字",count];
     if (textView.text.length>=200){
         [textView resignFirstResponder];
-        [self.txtCommunication becomeFirstResponder];
+
     
     }
 }
--(BOOL)textViewShouldEndEditing:(UITextView *)textView{
-    return textView.text.length>=200;
-}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
