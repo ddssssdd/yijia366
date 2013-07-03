@@ -18,6 +18,7 @@
 
 @interface InformationViewController (){
     NSMutableArray *_list;
+    BOOL _isDeleting;
 }
 
 @end
@@ -39,11 +40,22 @@
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     [self setupTableView:self.tableView];
+    _isDeleting = NO;
     self.navigationItem.rightBarButtonItem =[[UIBarButtonItem alloc] initWithTitle:@"删除" style:UIBarButtonSystemItemTrash target:self action:@selector(deleteInformation)];
     
 }
 -(void)deleteInformation{
-    self.tableView.editing = YES;
+    _isDeleting= !_isDeleting;
+    if (_isDeleting){
+        self.tableView.editing = YES;
+        self.navigationItem.rightBarButtonItem.title=@"完成";
+    }else{
+        self.tableView.editing = NO;
+        self.navigationItem.rightBarButtonItem.title=@"删除";
+        [self.tableView reloadData];
+        
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -151,9 +163,14 @@
             NSLog(@"%@",json);
             UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
             [cell removeFromSuperview];
+            [_list removeObject:item];
         }];
         
         
     }
+}
+
+-(NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return @"删除";
 }
 @end
