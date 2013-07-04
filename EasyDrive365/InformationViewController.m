@@ -164,6 +164,7 @@
             UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
             [cell removeFromSuperview];
             [_list removeObject:item];
+            [self.tableView reloadData];
         }];
         
         
