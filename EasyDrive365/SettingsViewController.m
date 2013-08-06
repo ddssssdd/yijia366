@@ -19,6 +19,8 @@
 #import "BindCellPhoneViewController.h"
 #import "SVProgressHUD.h"
 #import "FeedbackViewController.h"
+#import "ActivateViewController.h"
+#import "ShowActivateViewController.h"
 
 @interface SettingsViewController ()<ButtonViewControllerDelegate,UIAlertViewDelegate>{
     EditMaintainDataSource *_maintainDatasource;
@@ -83,24 +85,34 @@
         
             }            
         }
-        [self init_dataSource];
+        [self loadActivateStatus];
     }];
-    url = [NSString stringWithFormat:@"api/had_activate_code?userid=%d",[AppSettings sharedSettings].userid];
+    
+    
+    
+}
+-(void)loadActivateStatus{
+    NSString *url = [NSString stringWithFormat:@"api/had_activate_code?userid=%d",[AppSettings sharedSettings].userid];
     _isActive = NO;
     _isLoadingActive = YES;
     [[AppSettings sharedSettings].http get:url block:^(id json) {
+        NSLog(@"%@",json);
         if ([[AppSettings sharedSettings] isSuccess:json]){
-            id item = [[_list objectAtIndex:3] objectAtIndex:2];
-            item[@"value"]=@"已经激活";
+            if (_list){
+                id item = [[_list objectAtIndex:3] objectAtIndex:2];
+                item[@"value"]=@"已经激活";
+                [self.tableView reloadData];
+            }
+            
+            
             _isActive = YES;
         }else{
             
         }
         _isLoadingActive = NO;
+        [self init_dataSource];
         
     }];
-    
-    
 }
 -(void)init_dataSource{
     id items=@[
@@ -126,7 +138,7 @@
      @"default":@"",
      @"placeholder":@"",
      @"ispassword":@"",
-     @"value":@"激活",
+     @"value":_isActive?@"已经激活": @"激活",
      @"cell":@"ChooseNextCell"  }]
     
     ];
@@ -239,7 +251,13 @@
             if (_isLoadingActive){
                 return;
             }else{
-                NSLog(@"active");
+                if (_isActive){
+                    ShowActivateViewController *vc = [[ShowActivateViewController alloc] initWithNibName:@"ShowActivateViewController" bundle:nil];
+                    [self.navigationController pushViewController:vc animated:YES];
+                }else{
+                    ActivateViewController *vc = [[ActivateViewController alloc] initWithNibName:@"ActivateViewController" bundle:nil];
+                    [self.navigationController pushViewController:vc animated:YES];
+                }
             }
         }
     }
