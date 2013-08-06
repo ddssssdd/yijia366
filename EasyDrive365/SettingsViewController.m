@@ -28,6 +28,8 @@
     NSString *_phone;
     NSString *_phoneStatus;
     int isbind;
+    BOOL _isActive;
+    BOOL _isLoadingActive;
 }
 
 @end
@@ -83,6 +85,20 @@
         }
         [self init_dataSource];
     }];
+    url = [NSString stringWithFormat:@"api/had_activate_code?userid=%d",[AppSettings sharedSettings].userid];
+    _isActive = NO;
+    _isLoadingActive = YES;
+    [[AppSettings sharedSettings].http get:url block:^(id json) {
+        if ([[AppSettings sharedSettings] isSuccess:json]){
+            id item = [[_list objectAtIndex:3] objectAtIndex:2];
+            item[@"value"]=@"已经激活";
+            _isActive = YES;
+        }else{
+            
+        }
+        _isLoadingActive = NO;
+        
+    }];
     
     
 }
@@ -103,6 +119,14 @@
      @"placeholder":@"",
      @"ispassword":@"",
      @"value":[NSString stringWithFormat:@"V%@",AppVersion],
+     @"cell":@"ChooseNextCell"  }],
+    [[NSMutableDictionary alloc] initWithDictionary:
+     @{@"key" :@"active_code",
+     @"label":@"账户认证",
+     @"default":@"",
+     @"placeholder":@"",
+     @"ispassword":@"",
+     @"value":@"激活",
      @"cell":@"ChooseNextCell"  }]
     
     ];
@@ -157,7 +181,7 @@
            
            @{@"count" : @3,@"list":items2,@"height":@44.0f,@"header":@"我的车辆",@"footer":@""},
            @{@"count" : @3,@"list":items3,@"height":@44.0f,@"header":@"",@"footer":@""},
-           @{@"count" : @2,@"list":items,@"height":@44.0f,@"header":@"",@"footer":@""},
+           @{@"count" : @3,@"list":items,@"height":@44.0f,@"header":@"",@"footer":@""},
            ]];
     [self.tableView reloadData];
 }
@@ -210,6 +234,12 @@
             [self.navigationController pushViewController:vc animated:YES];
             if (isbind==0){
                 vc.txtCommunication.text =_phone;
+            }
+        }else if (indexPath.row==2){
+            if (_isLoadingActive){
+                return;
+            }else{
+                NSLog(@"active");
             }
         }
     }
