@@ -102,6 +102,9 @@
 		E27A7D5617B12A81009895E6 /* ActivateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E27A7D5417B12A81009895E6 /* ActivateViewController.xib */; };
 		E27A7D5A17B12D75009895E6 /* ShowActivateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E27A7D5817B12D75009895E6 /* ShowActivateViewController.m */; };
 		E27A7D5B17B12D75009895E6 /* ShowActivateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E27A7D5917B12D75009895E6 /* ShowActivateViewController.xib */; };
+		E27A7D5F17B13DBE009895E6 /* SignupStep1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E27A7D5E17B13DBE009895E6 /* SignupStep1ViewController.m */; };
+		E27A7D6217B14081009895E6 /* SignupStep2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E27A7D6117B14081009895E6 /* SignupStep2ViewController.m */; };
+		E27A7D6517B14091009895E6 /* SignupStep3ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E27A7D6417B14091009895E6 /* SignupStep3ViewController.m */; };
 		E2903BA916F36B9F00A93CBF /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = E2903BA016F36B9F00A93CBF /* Icon-72.png */; };
 		E2903BAA16F36B9F00A93CBF /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = E2903BA116F36B9F00A93CBF /* Icon-Small-50.png */; };
 		E2903BAB16F36B9F00A93CBF /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = E2903BA216F36B9F00A93CBF /* Icon-Small.png */; };
@@ -344,6 +347,12 @@
 		E27A7D5717B12D75009895E6 /* ShowActivateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowActivateViewController.h; sourceTree = "<group>"; };
 		E27A7D5817B12D75009895E6 /* ShowActivateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowActivateViewController.m; sourceTree = "<group>"; };
 		E27A7D5917B12D75009895E6 /* ShowActivateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShowActivateViewController.xib; sourceTree = "<group>"; };
+		E27A7D5D17B13DBE009895E6 /* SignupStep1ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignupStep1ViewController.h; sourceTree = "<group>"; };
+		E27A7D5E17B13DBE009895E6 /* SignupStep1ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignupStep1ViewController.m; sourceTree = "<group>"; };
+		E27A7D6017B14081009895E6 /* SignupStep2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignupStep2ViewController.h; sourceTree = "<group>"; };
+		E27A7D6117B14081009895E6 /* SignupStep2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignupStep2ViewController.m; sourceTree = "<group>"; };
+		E27A7D6317B14091009895E6 /* SignupStep3ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignupStep3ViewController.h; sourceTree = "<group>"; };
+		E27A7D6417B14091009895E6 /* SignupStep3ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignupStep3ViewController.m; sourceTree = "<group>"; };
 		E2903BA016F36B9F00A93CBF /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
 		E2903BA116F36B9F00A93CBF /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50.png"; sourceTree = "<group>"; };
 		E2903BA216F36B9F00A93CBF /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small.png"; sourceTree = "<group>"; };
@@ -683,6 +692,26 @@
 			name = Activate;
 			sourceTree = "<group>";
 		};
+		E27A7D5C17B139A7009895E6 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				E2C1625616EA127500B0E9EC /* LoginTableViewController.h */,
+				E2C1625716EA127500B0E9EC /* LoginTableViewController.m */,
+				E2C1626716EA2D8100B0E9EC /* SignUpTableViewController.h */,
+				E2C1626816EA2D8100B0E9EC /* SignUpTableViewController.m */,
+				E26460E016F094DD0050BDA4 /* WelcomeViewController.h */,
+				E26460E116F094DE0050BDA4 /* WelcomeViewController.m */,
+				E26460E216F094DE0050BDA4 /* WelcomeViewController.xib */,
+				E27A7D5D17B13DBE009895E6 /* SignupStep1ViewController.h */,
+				E27A7D5E17B13DBE009895E6 /* SignupStep1ViewController.m */,
+				E27A7D6017B14081009895E6 /* SignupStep2ViewController.h */,
+				E27A7D6117B14081009895E6 /* SignupStep2ViewController.m */,
+				E27A7D6317B14091009895E6 /* SignupStep3ViewController.h */,
+				E27A7D6417B14091009895E6 /* SignupStep3ViewController.m */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
 		E29462FD16FC8B000090371C /* removable */ = {
 			isa = PBXGroup;
 			children = (
@@ -790,6 +819,7 @@
 		E2EE653916C5294A00ED1C73 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				E27A7D5C17B139A7009895E6 /* Login */,
 				E27A7D5117B12A5B009895E6 /* Activate */,
 				E2B489F41761F7CA00B8947D /* information */,
 				E241CEDD173BE00400B1441D /* CarHelp */,
@@ -823,13 +853,6 @@
 				E202E15016E23CFA00FDBD34 /* MaintanViewController.h */,
 				E202E15116E23CFB00FDBD34 /* MaintanViewController.m */,
 				E202E15216E23CFB00FDBD34 /* MaintanViewController.xib */,
-				E2C1625616EA127500B0E9EC /* LoginTableViewController.h */,
-				E2C1625716EA127500B0E9EC /* LoginTableViewController.m */,
-				E2C1626716EA2D8100B0E9EC /* SignUpTableViewController.h */,
-				E2C1626816EA2D8100B0E9EC /* SignUpTableViewController.m */,
-				E26460E016F094DD0050BDA4 /* WelcomeViewController.h */,
-				E26460E116F094DE0050BDA4 /* WelcomeViewController.m */,
-				E26460E216F094DE0050BDA4 /* WelcomeViewController.xib */,
 				E25AF0AE16F9FED800E79057 /* CIViewController.h */,
 				E25AF0AF16F9FED800E79057 /* CIViewController.m */,
 				E25AF0B016F9FED900E79057 /* CIViewController.xib */,
@@ -1204,6 +1227,9 @@
 				E271A3F717658B7C001E4D54 /* CommentCell.m in Sources */,
 				E27A7D5517B12A81009895E6 /* ActivateViewController.m in Sources */,
 				E27A7D5A17B12D75009895E6 /* ShowActivateViewController.m in Sources */,
+				E27A7D5F17B13DBE009895E6 /* SignupStep1ViewController.m in Sources */,
+				E27A7D6217B14081009895E6 /* SignupStep2ViewController.m in Sources */,
+				E27A7D6517B14091009895E6 /* SignupStep3ViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

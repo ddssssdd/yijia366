@@ -261,9 +261,11 @@
     }
 }
 -(void)get_latest{
+    /*
     if (!self.isLogin){
         return;
     }
+     */
     self.isNeedRefresh= NO;
     for(int i=1;i<=APPLATEST_COUNT;i++){
         NSString *keyname = [NSString stringWithFormat:@"%02d",i];

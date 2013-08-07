@@ -32,6 +32,7 @@
     self.lblNo.text = @"";
     self.lblTime.text = @"";
     self.lblTo.text = @"";
+    /*
     NSString *url =[NSString stringWithFormat:@"api/get_activate_code?userid=%d",[AppSettings sharedSettings].userid];
     [[AppSettings sharedSettings].http get:url block:^(id json) {
         if ([[AppSettings sharedSettings] isSuccess:json]){
@@ -41,6 +42,7 @@
             self.lblTo.text = json[@"result"][@"valid_date"];
         }
     }];
+     */
 }
 
 - (void)didReceiveMemoryWarning

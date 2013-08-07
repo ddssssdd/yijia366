@@ -31,7 +31,11 @@
     NSString *_phoneStatus;
     int isbind;
     BOOL _isActive;
-    BOOL _isLoadingActive;
+    
+    NSString *_number;
+    NSString *_code;
+    NSString *_activate_date;
+    NSString *_valid_date;
 }
 
 @end
@@ -77,6 +81,11 @@
     _phone = @"";
     [[AppSettings sharedSettings].http get:url block:^(id json) {
         if ([[AppSettings sharedSettings] isSuccess:json]){
+            _number= json[@"result"][@"number"];
+            _code = json[@"result"][@"code"];
+            _activate_date =json[@"result"][@"activate_date"];
+            _valid_date =json[@"result"][@"valid_date"];
+            _isActive = ![_code isEqual:@""];
             _phone=json[@"result"][@"phone"];
             isbind = 1;
             if ([json[@"result"][@"status"] isEqual:@"02"]){
@@ -85,7 +94,7 @@
         
             }            
         }
-        [self loadActivateStatus];
+        [self init_dataSource];
     }];
     
     
@@ -94,7 +103,7 @@
 -(void)loadActivateStatus{
     NSString *url = [NSString stringWithFormat:@"api/had_activate_code?userid=%d",[AppSettings sharedSettings].userid];
     _isActive = NO;
-    _isLoadingActive = YES;
+
     [[AppSettings sharedSettings].http get:url block:^(id json) {
         NSLog(@"%@",json);
         if ([[AppSettings sharedSettings] isSuccess:json]){
@@ -109,7 +118,7 @@
         }else{
             
         }
-        _isLoadingActive = NO;
+        
         [self init_dataSource];
         
     }];
@@ -248,21 +257,21 @@
                 vc.txtCommunication.text =_phone;
             }
         }else if (indexPath.row==2){
-            if (_isLoadingActive){
-                return;
+            if (_isActive){
+                ShowActivateViewController *vc = [[ShowActivateViewController alloc] initWithNibName:@"ShowActivateViewController" bundle:nil];
+                [self.navigationController pushViewController:vc animated:YES];
+                vc.lblNo.text = _number;
+                vc.lblCode.text = _code;
+                vc.lblTime.text = _activate_date;
+                vc.lblTo.text =_valid_date;
             }else{
-                if (_isActive){
-                    ShowActivateViewController *vc = [[ShowActivateViewController alloc] initWithNibName:@"ShowActivateViewController" bundle:nil];
-                    [self.navigationController pushViewController:vc animated:YES];
-                }else{
-                    ActivateViewController *vc = [[ActivateViewController alloc] initWithNibName:@"ActivateViewController" bundle:nil];
-                    [self.navigationController pushViewController:vc animated:YES];
-                }
+                ActivateViewController *vc = [[ActivateViewController alloc] initWithNibName:@"ActivateViewController" bundle:nil];
+                [self.navigationController pushViewController:vc animated:YES];
             }
         }
     }
     NSLog(@"%@",indexPath);
-    [super tableView:tableView didSelectRowAtIndexPath:indexPath];
+    //[super tableView:tableView didSelectRowAtIndexPath:indexPath];
 }
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (isbind==1){

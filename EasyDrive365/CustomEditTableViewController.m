@@ -12,8 +12,11 @@
 #import "OneButtonCell.h"
 #import "SwitchCell.h"
 #import "ChooseNextCell.h"
+#import "DatePickerViewController.h"
+#import "LicenseTypeViewController.h"
+#import "PickupData.h"
 
-@interface CustomEditTableViewController ()<UITextFieldDelegate,SwitchCellDelegate,OneButtonCellDelegate>{
+@interface CustomEditTableViewController ()<UITextFieldDelegate,SwitchCellDelegate,OneButtonCellDelegate,PickupData>{
     UITextField *_lastTextField;
     int textfield_count;
 }
@@ -171,6 +174,42 @@
     }
     
 }
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    id item  = [[_list objectAtIndex:indexPath.section][@"list"] objectAtIndex:indexPath.row];
+    if ([item[@"cell"] isEqualToString:@"ChooseNextCell"]){
+        NSString *vcname = item[@"placeholder"];
+        NSString *value = item[@"value"];
+        if ([vcname isEqualToString:@"DatePickerViewController"]){
+            DatePickerViewController *vc = [[DatePickerViewController alloc] initWithNibName:@"DatePickerViewController" bundle:nil];
+            vc.keyname = item[@"key"];//@"init_date";
+            vc.delegate = self;
+            
+            [self.navigationController pushViewController:vc animated:YES];
+            if (value && ![value isEqualToString:@""])
+            {
+                vc.value = value;
+            }
+        }else{
+            LicenseTypeViewController *vc = [[LicenseTypeViewController alloc] initWithNibName:@"LicenseTypeViewController" bundle:nil];
+            vc.delegate = self;
+            
+            [self.navigationController pushViewController:vc animated:YES];
+            vc.value = value;
+        }
+    }
+    [self performSelector:@selector(delectCell:) withObject:nil afterDelay:0.2];
+}
+-(void)setValueByKey:(NSString *)value key:(NSString *)key{
+
+    for (id tempList in _list) {
+        for (id item in tempList[@"list"]) {
+            if ([item[@"key"] isEqual:key]){
+                item[@"value"]=value;
+            }
+        }
+    }
+    [self.tableView reloadData];
+}
 -(void)tapOn:(UITapGestureRecognizer *)recognizer{
     if (_lastTextField){
         [_lastTextField resignFirstResponder];
@@ -229,10 +268,7 @@
     
 }
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    [self performSelector:@selector(delectCell:) withObject:nil afterDelay:0.2];
-}
+
 -(void)delectCell:(id)sender{
     [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
 }

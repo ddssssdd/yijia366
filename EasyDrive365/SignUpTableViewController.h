@@ -9,5 +9,5 @@
 #import "CustomEditTableViewController.h"
 
 @interface SignUpTableViewController : CustomEditTableViewController
-
+@property (nonatomic) NSString *username;
 @end

@@ -74,6 +74,7 @@
     [super viewDidAppear:animated];
     
     BOOL islogin = [AppSettings sharedSettings].isLogin;
+    /*
     if (!islogin){
         WelcomeViewController *vc = [[WelcomeViewController alloc] initWithNibName:@"WelcomeViewController" bundle:nil];
         [self.navigationController pushViewController:vc animated:NO];
@@ -83,12 +84,29 @@
             [[AppSettings sharedSettings] get_latest];
         }
     }
+     */
+    if (!islogin){
+        [AppSettings sharedSettings].userid=-1;
+        self.navigationItem.rightBarButtonItem.title = @"登录";
+        
+    }else{
+        self.navigationItem.rightBarButtonItem.title = @"设置";
+    }
+    if ([AppSettings sharedSettings].isNeedRefresh){
+        [[AppSettings sharedSettings] get_latest];
+    }
     
     
 }
 
 -(void)settingsButtonPress:(id)sender
 {
+    BOOL islogin = [AppSettings sharedSettings].isLogin;
+    if (!islogin){
+        WelcomeViewController *vc = [[WelcomeViewController alloc] initWithNibName:@"WelcomeViewController" bundle:nil];
+        [self.navigationController pushViewController:vc animated:NO];
+        return;
+    }
     /*
     
     UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:[NSString stringWithFormat:@"注销【%@】",[AppSettings sharedSettings].firstName] otherButtonTitles:nil];

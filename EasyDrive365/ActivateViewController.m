@@ -9,7 +9,12 @@
 #import "ActivateViewController.h"
 #import "AppSettings.h"
 #import "ShowActivateViewController.h"
-@interface ActivateViewController ()
+@interface ActivateViewController (){
+    NSString *_number;
+    NSString *_code;
+    NSString *_activate_date;
+    NSString *_valid_date;
+}
 
 @end
 
@@ -52,8 +57,18 @@
     [[AppSettings sharedSettings].http get:url block:^(id json) {
         if ([[AppSettings sharedSettings] isSuccess:json]){
             //go to next window;
+            _number= json[@"result"][@"number"];
+            _code = json[@"result"][@"code"];
+            _activate_date =json[@"result"][@"activate_date"];
+            _valid_date =json[@"result"][@"valid_date"];
+
             ShowActivateViewController *vc =[[ShowActivateViewController alloc] initWithNibName:@"ShowActivateViewController" bundle:nil];
             [self.navigationController pushViewController:vc animated:YES];
+            vc.lblNo.text = _number;
+            vc.lblCode.text = _code;
+            vc.lblTime.text = _activate_date;
+            vc.lblTo.text =_valid_date;
+            [[NSNotificationCenter defaultCenter] postNotificationName:SETTINGS_CHANGE object:nil];
         }
     }];
 }

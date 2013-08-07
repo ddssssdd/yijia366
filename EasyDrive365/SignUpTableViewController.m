@@ -21,7 +21,7 @@
 
 -(void)initData{
     id items=@[
-    [[NSMutableDictionary alloc] initWithDictionary:@{@"key" :@"username",@"label":@"用户名：",@"default":@"",@"placeholder":@"手机号/车牌号",@"ispassword":@"no",@"cell":@"EditTextCell",@"value":@"" }],
+               [[NSMutableDictionary alloc] initWithDictionary:@{@"key" :@"username",@"label":@"用户名：",@"default":@"",@"placeholder":@"手机号/车牌号",@"ispassword":@"no",@"cell":@"EditTextCell",@"value":self.username?self.username:@"" }],
     [[NSMutableDictionary alloc] initWithDictionary:@{@"key" :@"password",@"label":@"密码：",@"default":@"",@"placeholder":@"",@"ispassword":@"yes",@"cell":@"EditTextCell",@"value":@"" }],
     [[NSMutableDictionary alloc] initWithDictionary:@{@"key" :@"repassword",@"label":@"再输一遍：",@"default":@"",@"placeholder":@"",@"ispassword":@"yes",@"cell":@"EditTextCell",@"value":@"" }]
     ];
@@ -63,6 +63,7 @@
                 NSNumber *userid=[[json objectForKey:@"result"] objectForKey:@"id"];
                 
                 [[AppSettings sharedSettings] login:username userid:[userid intValue]];
+                [[AppSettings sharedSettings] add_login:username password:password rememberPassword:@"1"];
                 //[[AppSettings sharedSettings] login:username userid:65];
                 
                 [self.navigationController popToRootViewControllerAnimated:YES];

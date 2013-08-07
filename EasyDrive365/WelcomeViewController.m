@@ -9,6 +9,7 @@
 #import "WelcomeViewController.h"
 #import "LoginTableViewController.h"
 #import "SignUpTableViewController.h"
+#import "SignupStep1ViewController.h"
 
 
 @interface WelcomeViewController ()
@@ -48,8 +49,11 @@
 }
 
 - (IBAction)signup:(id)sender {
-    SignUpTableViewController *vc =[[SignUpTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
+    
+    //SignUpTableViewController *vc =[[SignUpTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
+    SignupStep1ViewController *vc = [[SignupStep1ViewController alloc] initWithStyle:UITableViewStyleGrouped];
     [self.navigationController pushViewController:vc animated:YES];
+     
 }
 - (void)viewDidUnload {
     [self setLoginBtn:nil];
