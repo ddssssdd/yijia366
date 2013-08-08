@@ -139,10 +139,12 @@
 }
 - (IBAction)logout {
     [AppSettings sharedSettings].isLogin = FALSE;
+    [AppSettings sharedSettings].userid = -1;
     [[AppSettings sharedSettings] save];
- 
+    /*
     WelcomeViewController *vc = [[WelcomeViewController alloc] initWithNibName:@"WelcomeViewController" bundle:nil];
     [self.navigationController pushViewController:vc animated:NO];
+     */
 }
 
 

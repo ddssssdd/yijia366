@@ -20,8 +20,8 @@
 }
 -(void)initData{
     id items=@[
-               [[NSMutableDictionary alloc] initWithDictionary:@{@"key" :@"car_id",@"label":@"车牌号：",@"default":@"",@"placeholder":@"鲁B366YJ",@"ispassword":@"no",@"cell":@"EditTextCell",@"value":@"" }],
-               [[NSMutableDictionary alloc] initWithDictionary:@{@"key" :@"id_no",@"label":@"身份证号：",@"default":@"",@"placeholder":@"",@"ispassword":@"no",@"cell":@"EditTextCell",@"value":@"" }]
+               [[NSMutableDictionary alloc] initWithDictionary:@{@"key" :@"car_id",@"label":@"车牌号：",@"default":@"",@"placeholder":@"鲁B366YJ",@"ispassword":@"capital",@"cell":@"EditTextCell",@"value":@"鲁" }],
+               [[NSMutableDictionary alloc] initWithDictionary:@{@"key" :@"id_no",@"label":@"身份证号：",@"default":@"",@"placeholder":@"",@"ispassword":@"capital",@"cell":@"EditTextCell",@"value":@"" }]
                ];
     _list=[NSMutableArray arrayWithArray: @[
            @{@"count" : @1,@"list":@[@{@"cell":@"IntroduceCell"}],@"height":@100.0f},
@@ -41,22 +41,26 @@
     }
     NSString *license_id = [parameters objectForKey:@"id_no"];
     if([@"" isEqualToString:license_id]){
+        /*
         [[[UIAlertView alloc] initWithTitle:@"提示" message:@"身份证号码不能为空！" delegate:self cancelButtonTitle:nil otherButtonTitles:@"继续", nil] show];
         return;
-    }
-    if ([license_id length]!=18){
-        [[[UIAlertView alloc] initWithTitle:@"易驾366" message:@"身份证号码必须18位" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil] show];
-        return;
-    }
-    NSString *temp =[license_id stringByTrimmingCharactersInSet:[NSCharacterSet decimalDigitCharacterSet]];
-    NSLog(@"%@=%d",temp,[temp length]);
-    if (([temp length]==0) || (([temp length]==1) && ([license_id hasSuffix:@"X"]))){
-        
-        
+         */
     }else{
-        [[[UIAlertView alloc] initWithTitle:@"易驾366" message:@"身份证号码必须18位,只有最后一位允许是X" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil] show];
-        return;
+        if ([license_id length]!=18){
+            [[[UIAlertView alloc] initWithTitle:@"易驾366" message:@"身份证号码必须18位" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil] show];
+            return;
+        }
+        NSString *temp =[license_id stringByTrimmingCharactersInSet:[NSCharacterSet decimalDigitCharacterSet]];
+        NSLog(@"%@=%d",temp,[temp length]);
+        if (([temp length]==0) || (([temp length]==1) && ([license_id hasSuffix:@"X"]))){
+            
+            
+        }else{
+            [[[UIAlertView alloc] initWithTitle:@"易驾366" message:@"身份证号码必须18位,只有最后一位允许是X" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil] show];
+            return;
+        }
     }
+    
    
     /*
     SignupStep2ViewController *vc = [[SignupStep2ViewController alloc] initWithStyle:UITableViewStyleGrouped];

@@ -131,8 +131,9 @@
             aCell.valueText.secureTextEntry=YES;
         }else if ([item[@"ispassword"] isEqualToString:@"number"]){
             aCell.valueText.keyboardType = UIKeyboardTypeNumberPad;
-        }else{
-            
+        }else if ([item[@"ispassword"] isEqualToString:@"capital"]){
+            aCell.valueText.keyboardType = UIKeyboardAppearanceDefault;
+            aCell.valueText.autocapitalizationType = UITextAutocapitalizationTypeAllCharacters;
         }
         if (indexPath.row <textfield_count-1){
             aCell.valueText.returnKeyType = UIReturnKeyNext;
