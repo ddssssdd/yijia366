@@ -92,7 +92,9 @@
             [result appendString:item[@"code"]];
         }
     }
-
+    if ([result isEqualToString:@""]){
+        [result appendString:@",C1"];
+    }
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"car_type" object:self userInfo:@{@"result":result}];
     if (self.delegate){

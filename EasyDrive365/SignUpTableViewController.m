@@ -9,7 +9,7 @@
 #import "SignUpTableViewController.h"
 #import "HttpClient.h"
 #import "AppSettings.h"
-
+NSString *inform4=@"用户注册第4步共4步";
 @interface SignUpTableViewController ()
 
 @end
@@ -18,8 +18,11 @@
 -(void)init_setup{
     _saveButtonName = @"注册";
 }
-
+-(void)backTo{
+    [self.navigationController popViewControllerAnimated:YES];
+}
 -(void)initData{
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"上一步" style:UIBarButtonSystemItemAction target:self action:@selector(backTo)];
     id items=@[
                [[NSMutableDictionary alloc] initWithDictionary:@{@"key" :@"username",@"label":@"用户名：",@"default":@"",@"placeholder":@"手机号/车牌号",@"ispassword":@"no",@"cell":@"EditTextCell",@"value":self.username?self.username:@"" }],
     [[NSMutableDictionary alloc] initWithDictionary:@{@"key" :@"password",@"label":@"密码：",@"default":@"",@"placeholder":@"",@"ispassword":@"yes",@"cell":@"EditTextCell",@"value":@"" }],
@@ -52,7 +55,8 @@
         return;
     }
   
-    NSString *path =[NSString stringWithFormat:@"api/signup?username=%@&password=%@",username,password];
+    //NSString *path =[NSString stringWithFormat:@"api/signup?username=%@&password=%@",username,password];
+    NSString *path =[NSString stringWithFormat:@"api/initstep4?userid=%d&username=%@&password=%@",[AppSettings sharedSettings].userid, username,password];
    
     [[HttpClient sharedHttp] get:path block:^(id json) {
         NSLog(@"%@",json);
@@ -74,5 +78,11 @@
         }
     }];
 }
-
+-(NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section{
+    if (section==1){
+        return inform4;
+    }else{
+        return  Nil;
+    }
+}
 @end

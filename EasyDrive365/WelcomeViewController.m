@@ -30,11 +30,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = AppTitle;
-    [self.navigationItem setBackBarButtonItem:nil];
-    self.navigationItem.hidesBackButton=YES;
+    self.title = @"登录和注册";
+    //[self.navigationItem setBackBarButtonItem:nil];
+    //self.navigationItem.hidesBackButton=YES;
     self.loginBtn.text = @"登录";
     self.signupBtn.text =@"注册";
+    
 }
 
 - (void)didReceiveMemoryWarning

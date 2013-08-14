@@ -10,6 +10,8 @@
 #import "HttpClient.h"
 #import "AppSettings.h"
 #import "SignupStep2ViewController.h"
+
+NSString *inform1=@"用户注册第1步共4步";
 @interface SignupStep1ViewController ()
 
 @end
@@ -17,8 +19,13 @@
 @implementation SignupStep1ViewController
 -(void)init_setup{
     _saveButtonName = @"下一步";
+    
+}
+-(void)backTo{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 -(void)initData{
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"登录和注册" style:UIBarButtonSystemItemAction target:self action:@selector(backTo)];
     id items=@[
                [[NSMutableDictionary alloc] initWithDictionary:@{@"key" :@"car_id",@"label":@"车牌号：",@"default":@"",@"placeholder":@"鲁B366YJ",@"ispassword":@"capital",@"cell":@"EditTextCell",@"value":@"鲁" }],
                [[NSMutableDictionary alloc] initWithDictionary:@{@"key" :@"id_no",@"label":@"身份证号：",@"default":@"",@"placeholder":@"",@"ispassword":@"capital",@"cell":@"EditTextCell",@"value":@"" }]
@@ -28,6 +35,14 @@
            @{@"count" : @2,@"list":items,@"height":@44.0f},
            //@{@"count" : @1,@"cell":@"OneButtonCell",@"list":@[],@"height":@44.0f}
            ]];
+}
+
+-(NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section{
+    if (section==1){
+        return inform1;
+    }else{
+        return  Nil;
+    }
 }
 -(void)setupCell:(UITableViewCell *)cell indexPath:(NSIndexPath *)indexPath{
     [super setupCell:cell indexPath:indexPath];

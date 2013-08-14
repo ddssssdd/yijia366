@@ -10,7 +10,7 @@
 #import "HttpClient.h"
 #import "AppSettings.h"
 #import "SignupStep3ViewController.h"
-
+NSString *inform2=@"用户注册第2步共4步";
 @interface SignupStep2ViewController ()
 
 @end
@@ -19,7 +19,11 @@
 -(void)init_setup{
     _saveButtonName = @"下一步";
 }
+-(void)backTo{
+    [self.navigationController popViewControllerAnimated:YES];
+}
 -(void)initData{
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"上一步" style:UIBarButtonSystemItemAction target:self action:@selector(backTo)];
     id items=@[
                [[NSMutableDictionary alloc] initWithDictionary:@{@"key" :@"vin",@"label":@"VIN：",@"default":@"",@"placeholder":@"VIN",@"ispassword":@"capital",@"cell":@"EditTextCell",@"value":self.vin }],
                [[NSMutableDictionary alloc] initWithDictionary:@{@"key" :@"engine_no",@"label":@"发动机号：",@"default":@"",@"placeholder":@"",@"ispassword":@"capital",@"cell":@"EditTextCell",@"value":self.engine_no }],
@@ -71,5 +75,12 @@
             [self.navigationController pushViewController:vc animated:YES];
         }
     }];
+}
+-(NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section{
+    if (section==1){
+        return inform2;
+    }else{
+        return  Nil;
+    }
 }
 @end
