@@ -326,7 +326,7 @@
     if (_isCancelUpdate){
         return;
     }
-    NSString *url = [NSString stringWithFormat:@"api/get_ver?ver=%@&device=iphone",AppVersion];
+    NSString *url = [NSString stringWithFormat:@"api/get_ver?ver=%@&device=iphone&userid=%d",AppVersion,self.userid];
     [self.http get:url block:^(id json) {
         if ([self isSuccess:json]){
 

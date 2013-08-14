@@ -21,6 +21,7 @@
 #import "FeedbackViewController.h"
 #import "ActivateViewController.h"
 #import "ShowActivateViewController.h"
+#import "ShowActivateTableController.h"
 
 @interface SettingsViewController ()<ButtonViewControllerDelegate,UIAlertViewDelegate>{
     EditMaintainDataSource *_maintainDatasource;
@@ -36,6 +37,7 @@
     NSString *_code;
     NSString *_activate_date;
     NSString *_valid_date;
+    id contents;
 }
 
 @end
@@ -81,10 +83,14 @@
     _phone = @"";
     [[AppSettings sharedSettings].http get:url block:^(id json) {
         if ([[AppSettings sharedSettings] isSuccess:json]){
+            NSLog(@"%@",json);
             _number= json[@"result"][@"number"];
             _code = json[@"result"][@"code"];
             _activate_date =json[@"result"][@"activate_date"];
             _valid_date =json[@"result"][@"valid_date"];
+            if (json[@"result"][@"contents"]){
+                contents = json[@"result"][@"contents"];
+            }
             _isActive = ![_code isEqual:@""];
             _phone=json[@"result"][@"phone"];
             isbind = 1;
@@ -258,12 +264,15 @@
             }
         }else if (indexPath.row==2){
             if (_isActive){
-                ShowActivateViewController *vc = [[ShowActivateViewController alloc] initWithNibName:@"ShowActivateViewController" bundle:nil];
+                /*ShowActivateViewController *vc = [[ShowActivateViewController alloc] initWithNibName:@"ShowActivateViewController" bundle:nil];
                 [self.navigationController pushViewController:vc animated:YES];
                 vc.lblNo.text = _number;
                 vc.lblCode.text = _code;
                 vc.lblTime.text = _activate_date;
-                vc.lblTo.text =_valid_date;
+                vc.lblTo.text =_valid_date;*/
+                ShowActivateTableController *vc =[[ShowActivateTableController alloc] initWithStyle:UITableViewStyleGrouped];
+                [vc setData:_number code:_code activate_date:_activate_date valid_date:_valid_date contents:contents];
+                [self.navigationController pushViewController:vc animated:YES];
             }else{
                 ActivateViewController *vc = [[ActivateViewController alloc] initWithNibName:@"ActivateViewController" bundle:nil];
                 [self.navigationController pushViewController:vc animated:YES];

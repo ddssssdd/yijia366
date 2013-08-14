@@ -143,6 +143,6 @@
         [self.navigationController pushViewController:vc animated:YES];
     }
     NSLog(@"%@",indexPath);
-    [super tableView:tableView didSelectRowAtIndexPath:indexPath];
+    //[super tableView:tableView didSelectRowAtIndexPath:indexPath];
 }
 @end

@@ -9,6 +9,7 @@
 #import "ActivateViewController.h"
 #import "AppSettings.h"
 #import "ShowActivateViewController.h"
+#import "ShowActivateTableController.h"
 @interface ActivateViewController (){
     NSString *_number;
     NSString *_code;
@@ -61,13 +62,19 @@
             _code = json[@"result"][@"code"];
             _activate_date =json[@"result"][@"activate_date"];
             _valid_date =json[@"result"][@"valid_date"];
-
+            /*
             ShowActivateViewController *vc =[[ShowActivateViewController alloc] initWithNibName:@"ShowActivateViewController" bundle:nil];
             [self.navigationController pushViewController:vc animated:YES];
             vc.lblNo.text = _number;
             vc.lblCode.text = _code;
             vc.lblTime.text = _activate_date;
             vc.lblTo.text =_valid_date;
+            */
+            ShowActivateTableController *vc =[[ShowActivateTableController alloc] initWithStyle:UITableViewStyleGrouped];
+            [vc setData:_number code:_code activate_date:_activate_date valid_date:_valid_date contents:json[@"result"][@"contents"]];
+            [self.navigationController pushViewController:vc animated:YES];
+
+            
             [[NSNotificationCenter defaultCenter] postNotificationName:SETTINGS_CHANGE object:nil];
         }
     }];

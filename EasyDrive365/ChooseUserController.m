@@ -99,7 +99,7 @@
     cell.accessoryType = UITableViewCellAccessoryCheckmark;
     _selected_user = user;
     NSLog(@"%@",user);
-    
+    [self choose];
 }
 -(void)choose{
     if (_selected_user){

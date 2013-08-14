@@ -26,6 +26,7 @@
 		E212279A16FA069B00B494E0 /* 0051@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E212279816FA069B00B494E0 /* 0051@2x.png */; };
 		E212279D16FA06D200B494E0 /* 0228.png in Resources */ = {isa = PBXBuildFile; fileRef = E212279B16FA06D200B494E0 /* 0228.png */; };
 		E212279E16FA06D200B494E0 /* 0228@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E212279C16FA06D200B494E0 /* 0228@2x.png */; };
+		E223299B17BBD4F3000035B1 /* ShowActivateTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = E223299A17BBD4F3000035B1 /* ShowActivateTableController.m */; };
 		E223549C172A8F8E00DDC015 /* ButtonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E223549A172A8F8E00DDC015 /* ButtonViewController.m */; };
 		E223549D172A8F8E00DDC015 /* ButtonViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E223549B172A8F8E00DDC015 /* ButtonViewController.xib */; };
 		E22354A1172A945D00DDC015 /* ResetPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E22354A0172A945D00DDC015 /* ResetPasswordViewController.m */; };
@@ -230,6 +231,8 @@
 		E212279816FA069B00B494E0 /* 0051@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "0051@2x.png"; sourceTree = "<group>"; };
 		E212279B16FA06D200B494E0 /* 0228.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 0228.png; sourceTree = "<group>"; };
 		E212279C16FA06D200B494E0 /* 0228@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "0228@2x.png"; sourceTree = "<group>"; };
+		E223299917BBD4F3000035B1 /* ShowActivateTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowActivateTableController.h; sourceTree = "<group>"; };
+		E223299A17BBD4F3000035B1 /* ShowActivateTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowActivateTableController.m; sourceTree = "<group>"; };
 		E2235499172A8F8E00DDC015 /* ButtonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ButtonViewController.h; sourceTree = "<group>"; };
 		E223549A172A8F8E00DDC015 /* ButtonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ButtonViewController.m; sourceTree = "<group>"; };
 		E223549B172A8F8E00DDC015 /* ButtonViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ButtonViewController.xib; sourceTree = "<group>"; };
@@ -688,6 +691,8 @@
 				E27A7D5717B12D75009895E6 /* ShowActivateViewController.h */,
 				E27A7D5817B12D75009895E6 /* ShowActivateViewController.m */,
 				E27A7D5917B12D75009895E6 /* ShowActivateViewController.xib */,
+				E223299917BBD4F3000035B1 /* ShowActivateTableController.h */,
+				E223299A17BBD4F3000035B1 /* ShowActivateTableController.m */,
 			);
 			name = Activate;
 			sourceTree = "<group>";
@@ -1230,6 +1235,7 @@
 				E27A7D5F17B13DBE009895E6 /* SignupStep1ViewController.m in Sources */,
 				E27A7D6217B14081009895E6 /* SignupStep2ViewController.m in Sources */,
 				E27A7D6517B14091009895E6 /* SignupStep3ViewController.m in Sources */,
+				E223299B17BBD4F3000035B1 /* ShowActivateTableController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
