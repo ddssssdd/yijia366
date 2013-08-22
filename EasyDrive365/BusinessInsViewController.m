@@ -20,6 +20,7 @@
     NSMutableArray *_list;
     id _curr;
     id _renew;
+    id _price;
     NSMutableArray *_sectionHeaders;
 }
 
@@ -39,6 +40,7 @@
 - (void)viewDidLoad
 {
     _curr = nil;
+    _price = nil;
     _renew = nil;
     [super viewDidLoad];
     self.tableView.delegate = self;
@@ -78,6 +80,14 @@
         _renew=[self parseData:result key:@"renew"];
     }else{
         _renew=nil;
+    }
+    if (result[@"pricelist"]){
+        total =result[@"pricelist"][@"total"];
+        if ([total intValue]>0){
+            _price=[self parseData:result key:@"pricelist"];
+        }else{
+            _price = nil;
+        }
     }
     NSLog(@"%@",_list);
     [self.tableView reloadData];
