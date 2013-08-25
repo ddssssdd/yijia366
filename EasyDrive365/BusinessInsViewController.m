@@ -205,10 +205,12 @@
     id dict;
     if (section==0){
         dict = _curr;
-    }else{
+    }else if (section==1){
         dict = _renew;
         
         
+    }else{
+        dict = _price;
     }
     InsuranceFooterView *fv = [[[NSBundle mainBundle] loadNibNamed:@"InsuranceFooterView" owner:nil options:nil] objectAtIndex:0];
     fv.backgroundColor = [self.tableView backgroundColor];
