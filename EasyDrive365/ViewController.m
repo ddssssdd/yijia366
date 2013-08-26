@@ -14,6 +14,8 @@
 #import "MenuItem.h"
 #import "WelcomeViewController.h"
 #import "SettingsViewController.h"
+#import "ShowLocationViewController.h"
+
 @interface ViewController (){
     NSMutableArray *_list;
     RefreshHelper *_helper;
@@ -101,21 +103,20 @@
 
 -(void)settingsButtonPress:(id)sender
 {
+    ShowLocationViewController *vc = [[ShowLocationViewController alloc] initWithNibName:@"ShowLocationViewController" bundle:nil];
+    [self.navigationController pushViewController:vc animated:YES];
+    
+    /*
     BOOL islogin = [AppSettings sharedSettings].isLogin;
     if (!islogin){
         WelcomeViewController *vc = [[WelcomeViewController alloc] initWithNibName:@"WelcomeViewController" bundle:nil];
         [self.navigationController pushViewController:vc animated:NO];
         return;
     }
-    /*
-    
-    UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:[NSString stringWithFormat:@"注销【%@】",[AppSettings sharedSettings].firstName] otherButtonTitles:nil];
-    [sheet showInView:self.view];
-    
-    */
+   
     SettingsViewController *vc = [[SettingsViewController alloc] initWithStyle:UITableViewStyleGrouped];
     [self.navigationController pushViewController:vc animated:YES];
-    
+    */
 
 }
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
