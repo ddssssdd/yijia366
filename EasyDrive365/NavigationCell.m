@@ -9,6 +9,7 @@
 #import "NavigationCell.h"
 #import "HttpClient.h"
 #import "AppSettings.h"
+#import "ShowLocationViewController.h"
 
 @implementation NavigationCell
 
@@ -33,7 +34,7 @@
     
     if(self.phone){
       
-        UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:[NSString stringWithFormat:@"拨号：%@",self.phone ],nil];
+        UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:[NSString stringWithFormat:@"拨号：%@",self.phone ],@"地图",nil];
         [sheet showInView:self];
         
     }
@@ -44,6 +45,10 @@
     if (buttonIndex==0){
         NSString *phoneNumber = [@"tel://" stringByAppendingString:self.phone];
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phoneNumber]];
+    }else if (buttonIndex==1){
+        ShowLocationViewController *vc = [[ShowLocationViewController alloc] initWithNibName:@"ShowLocationViewController" bundle:nil];
+        [self.rootController pushViewController:vc animated:YES];
+        
     }
 }
 -(void)getLatest{

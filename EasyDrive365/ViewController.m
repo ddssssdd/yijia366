@@ -103,10 +103,7 @@
 
 -(void)settingsButtonPress:(id)sender
 {
-    ShowLocationViewController *vc = [[ShowLocationViewController alloc] initWithNibName:@"ShowLocationViewController" bundle:nil];
-    [self.navigationController pushViewController:vc animated:YES];
-    
-    /*
+   
     BOOL islogin = [AppSettings sharedSettings].isLogin;
     if (!islogin){
         WelcomeViewController *vc = [[WelcomeViewController alloc] initWithNibName:@"WelcomeViewController" bundle:nil];
@@ -116,7 +113,7 @@
    
     SettingsViewController *vc = [[SettingsViewController alloc] initWithStyle:UITableViewStyleGrouped];
     [self.navigationController pushViewController:vc animated:YES];
-    */
+    
 
 }
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
@@ -192,6 +189,7 @@
         MenuItem *item = [[Menu sharedMenu].list objectAtIndex:indexPath.row];
         ((NavigationCell *)cell).titleLabel.text = item.title;
         ((NavigationCell *)cell).keyname = item.name;
+        cell.rootController = self.navigationController;
         return cell;
         
     }

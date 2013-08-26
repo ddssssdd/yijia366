@@ -16,6 +16,7 @@
 @property (nonatomic,copy) NSString *keyname;
 
 @property (nonatomic,copy) NSString *phone;
+@property (nonatomic) UINavigationController *rootController;
 
 
 -(void)getLatest;

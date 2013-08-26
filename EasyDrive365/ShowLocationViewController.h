@@ -10,4 +10,7 @@
 
 @interface ShowLocationViewController : UIViewController
 
+-(void)goLocation:(CGFloat)latitude longtitude:(CGFloat)longtitude;
+-(void)showMineLocation:(CGFloat)latitude longtitude:(CGFloat)longtitude;
+
 @end
