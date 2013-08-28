@@ -10,14 +10,15 @@
 #import "HttpClient.h"
 #import "AppSettings.h"
 #import "SignUpTableViewController.h"
-NSString *inform3=@"用户注册第3步共4步";
+#import "SettingsViewController.h"
+NSString *inform3=@"设置向导第3步共3步";
 @interface SignupStep3ViewController ()
 
 @end
 
 @implementation SignupStep3ViewController
 -(void)init_setup{
-    _saveButtonName = @"下一步";
+    _saveButtonName = @"完成";
 }
 -(void)backTo{
     [self.navigationController popViewControllerAnimated:YES];
@@ -30,10 +31,11 @@ NSString *inform3=@"用户注册第3步共4步";
                [[NSMutableDictionary alloc] initWithDictionary:@{@"key" :@"init_date",@"label":@"初登日期：",@"default":@"",@"placeholder":@"DatePickerViewController",@"ispassword":@"no",@"cell":@"ChooseNextCell",@"value":self.car_init_date }]
                ];
     _list=[NSMutableArray arrayWithArray: @[
-           @{@"count" : @1,@"list":@[@{@"cell":@"IntroduceCell"}],@"height":@100.0f},
+           /*@{@"count" : @1,@"list":@[@{@"cell":@"IntroduceCell"}],@"height":@100.0f},*/
            @{@"count" : @3,@"list":items,@"height":@44.0f},
            //@{@"count" : @1,@"cell":@"OneButtonCell",@"list":@[],@"height":@44.0f}
            ]];
+    self.title = @"设置向导";
 }
 -(void)setupCell:(UITableViewCell *)cell indexPath:(NSIndexPath *)indexPath{
     [super setupCell:cell indexPath:indexPath];
@@ -61,22 +63,33 @@ NSString *inform3=@"用户注册第3步共4步";
     }
    
      */
-    NSString *path =[NSString stringWithFormat:@"api/initstep3?userid=%d&name=%@&type=%@&init_date=%@",[AppSettings sharedSettings].userid,name,car_type,init_date];
+    NSString *path =[NSString stringWithFormat:@"api/wizardstep3?userid=%d&name=%@&type=%@&init_date=%@",[AppSettings sharedSettings].userid,name,car_type,init_date];
     
     [[HttpClient sharedHttp] get:path block:^(id json) {
         NSLog(@"%@",json);
         if ([[AppSettings sharedSettings] isSuccess:json]){
+            /*
             SignUpTableViewController *vc =[[SignUpTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
             vc.username =json[@"result"][@"username"];
             [self.navigationController pushViewController:vc animated:YES];
+             */
+            [self gotoSettings];
         }
     }];
 }
 -(NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section{
-    if (section==1){
+    if (section==0){
         return inform3;
     }else{
         return  Nil;
     }
+}
+-(void)gotoSettings{
+    
+    [self.navigationController popToViewController:[[self.navigationController viewControllers] objectAtIndex:1]  animated:YES];
+    
+    //[self.navigationController popToRootViewControllerAnimated:YES];
+    
+    //[[[[[self.navigationController popViewControllerAnimated:NO] navigationController] popViewControllerAnimated:NO] navigationController ] popViewControllerAnimated:NO];
 }
 @end

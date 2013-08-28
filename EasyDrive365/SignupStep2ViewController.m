@@ -10,7 +10,7 @@
 #import "HttpClient.h"
 #import "AppSettings.h"
 #import "SignupStep3ViewController.h"
-NSString *inform2=@"用户注册第2步共4步";
+NSString *inform2=@"设置向导第2步共3步";
 @interface SignupStep2ViewController ()
 
 @end
@@ -30,10 +30,11 @@ NSString *inform2=@"用户注册第2步共4步";
                [[NSMutableDictionary alloc] initWithDictionary:@{@"key" :@"registration_date",@"label":@"初登日期：",@"default":@"",@"placeholder":@"DatePickerViewController",@"ispassword":@"no",@"cell":@"ChooseNextCell",@"value":self.registration_date }]
                ];
     _list=[NSMutableArray arrayWithArray: @[
-           @{@"count" : @1,@"list":@[@{@"cell":@"IntroduceCell"}],@"height":@100.0f},
+           /*@{@"count" : @1,@"list":@[@{@"cell":@"IntroduceCell"}],@"height":@100.0f},*/
            @{@"count" : @3,@"list":items,@"height":@44.0f},
            //@{@"count" : @1,@"cell":@"OneButtonCell",@"list":@[],@"height":@44.0f}
            ]];
+    self.title = @"设置向导";
 }
 -(void)setupCell:(UITableViewCell *)cell indexPath:(NSIndexPath *)indexPath{
     [super setupCell:cell indexPath:indexPath];
@@ -62,7 +63,7 @@ NSString *inform2=@"用户注册第2步共4步";
     }
     
     */
-    NSString *path =[NSString stringWithFormat:@"api/initstep2?userid=%d&vin=%@&engine_no=%@&registration_date=%@",[AppSettings sharedSettings].userid,vin,engine_no,registration_date];
+    NSString *path =[NSString stringWithFormat:@"api/wizardstep2?userid=%d&vin=%@&engine_no=%@&registration_date=%@",[AppSettings sharedSettings].userid,vin,engine_no,registration_date];
     
     [[HttpClient sharedHttp] get:path block:^(id json) {
         NSLog(@"%@",json);
@@ -77,7 +78,7 @@ NSString *inform2=@"用户注册第2步共4步";
     }];
 }
 -(NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section{
-    if (section==1){
+    if (section==0){
         return inform2;
     }else{
         return  Nil;

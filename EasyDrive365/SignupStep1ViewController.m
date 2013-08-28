@@ -11,7 +11,7 @@
 #import "AppSettings.h"
 #import "SignupStep2ViewController.h"
 
-NSString *inform1=@"用户注册第1步共4步";
+NSString *inform1=@"设置向导第1步共3步";
 @interface SignupStep1ViewController ()
 
 @end
@@ -25,20 +25,21 @@ NSString *inform1=@"用户注册第1步共4步";
     [self.navigationController popViewControllerAnimated:YES];
 }
 -(void)initData{
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"登录和注册" style:UIBarButtonSystemItemAction target:self action:@selector(backTo)];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"设置" style:UIBarButtonSystemItemAction target:self action:@selector(backTo)];
     id items=@[
                [[NSMutableDictionary alloc] initWithDictionary:@{@"key" :@"car_id",@"label":@"车牌号：",@"default":@"",@"placeholder":@"鲁B366YJ",@"ispassword":@"capital",@"cell":@"EditTextCell",@"value":@"鲁" }],
                [[NSMutableDictionary alloc] initWithDictionary:@{@"key" :@"id_no",@"label":@"身份证号：",@"default":@"",@"placeholder":@"",@"ispassword":@"capital",@"cell":@"EditTextCell",@"value":@"" }]
                ];
     _list=[NSMutableArray arrayWithArray: @[
-           @{@"count" : @1,@"list":@[@{@"cell":@"IntroduceCell"}],@"height":@100.0f},
+           /*@{@"count" : @1,@"list":@[@{@"cell":@"IntroduceCell"}],@"height":@100.0f},*/
            @{@"count" : @2,@"list":items,@"height":@44.0f},
            //@{@"count" : @1,@"cell":@"OneButtonCell",@"list":@[],@"height":@44.0f}
            ]];
+    self.title = @"设置向导";
 }
 
 -(NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section{
-    if (section==1){
+    if (section==0){
         return inform1;
     }else{
         return  Nil;
@@ -86,7 +87,7 @@ NSString *inform1=@"用户注册第1步共4步";
     return;
     */
     
-    NSString *path =[NSString stringWithFormat:@"api/initstep1?userid=-1&car_id=%@&license_id=%@",car_id,license_id];
+    NSString *path =[NSString stringWithFormat:@"api/wizardstep1?userid=%d&car_id=%@&license_id=%@",[AppSettings sharedSettings].userid, car_id,license_id];
     
     [[HttpClient sharedHttp] get:path block:^(id json) {
         NSLog(@"%@",json);

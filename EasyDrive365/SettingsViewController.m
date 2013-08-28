@@ -22,7 +22,7 @@
 #import "ActivateViewController.h"
 #import "ShowActivateViewController.h"
 #import "ShowActivateTableController.h"
-
+#import "SignupStep1ViewController.h"
 @interface SettingsViewController ()<ButtonViewControllerDelegate,UIAlertViewDelegate>{
     EditMaintainDataSource *_maintainDatasource;
     EditDriverLicenseDataSource *_driverDatasource;
@@ -166,6 +166,14 @@
      @"value":@"",
      @"cell":@"ChooseNextCell" }],
     [[NSMutableDictionary alloc] initWithDictionary:
+     @{@"key" :@"setup",
+     @"label":@"设置向导",
+     @"default":@"",
+     @"placeholder":
+     @"",@"value":@"",
+     @"cell":@"ChooseNextCell" }]
+    /*
+    [[NSMutableDictionary alloc] initWithDictionary:
      @{@"key" :@"driver",
      @"label":@"驾驶证",
      @"default":@"",
@@ -178,7 +186,7 @@
      @"default":@"",
      @"placeholder":
      @"",@"value":@"",
-     @"cell":@"ChooseNextCell" }]];
+     @"cell":@"ChooseNextCell" }]*/];
     ;
     id items3= @[
     [[NSMutableDictionary alloc] initWithDictionary:
@@ -204,9 +212,9 @@
      @"",@"value":@"",
      @"cell":@"ChooseNextCell" }]];
     _list=[NSMutableArray arrayWithArray: @[
-           @{@"count" : @1,@"list":@[@{@"cell":@"IntroduceCell"}],@"height":@100.0f,@"header":@"",@"footer":@""},
+           /*@{@"count" : @1,@"list":@[@{@"cell":@"IntroduceCell"}],@"height":@100.0f,@"header":@"",@"footer":@""},*/
            
-           @{@"count" : @3,@"list":items2,@"height":@44.0f,@"header":@"我的车辆",@"footer":@""},
+           @{@"count" : @2,@"list":items2,@"height":@44.0f,@"header":@"我的车辆",@"footer":@""},
            @{@"count" : @3,@"list":items3,@"height":@44.0f,@"header":@"",@"footer":@""},
            @{@"count" : @3,@"list":items,@"height":@44.0f,@"header":@"",@"footer":@""},
            ]];
@@ -220,16 +228,17 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    if (indexPath.section==1){
+    if (indexPath.section==0){
         if (indexPath.row==0){
             [self open_maintain_setup];
         }else if (indexPath.row==1){
-            [self open_driver_setup];
+            //[self open_driver_setup];
+            [self register_step];
         }else if (indexPath.row==2){
             [self open_car_setup];
         }
        
-    }else if (indexPath.section==2){
+    }else if (indexPath.section==1){
         if (indexPath.row==0){
             ResetPasswordViewController *vc = [[ResetPasswordViewController alloc] initWithStyle:UITableViewStyleGrouped];
             [self.navigationController pushViewController:vc animated:YES];
@@ -249,7 +258,7 @@
                 
             }
         }
-    }else if (indexPath.section==3){
+    }else if (indexPath.section==2){
         if (indexPath.row==1){
             [AppSettings sharedSettings].isCancelUpdate = NO;
             [[AppSettings sharedSettings] check_update:YES];
@@ -351,6 +360,10 @@
         
     }];
 }
+-(void)register_step{
+    SignupStep1ViewController *vc = [[SignupStep1ViewController alloc] initWithStyle:UITableViewStyleGrouped];
+    [self.navigationController pushViewController:vc animated:YES];
+}
 -(void)open_car_setup{
     NSString *url =[[AppSettings sharedSettings] url_get_car_registration];
     [[HttpClient sharedHttp] get:url block:^(id json) {
@@ -371,7 +384,7 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:@"logout" object:nil];
 }
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
-    if (section==3){
+    if (section==2){
         if (!logoutView){
             logoutView = [[ButtonViewController alloc] initWithNibName:@"ButtonViewController" bundle:nil];
             NSLog(@"%@",logoutView.button);
@@ -385,7 +398,7 @@
     }
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-    if (section==3){
+    if (section==2){
         return 80;
     }else{
         return 22;
