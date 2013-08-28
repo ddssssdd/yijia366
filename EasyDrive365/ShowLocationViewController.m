@@ -9,12 +9,15 @@
 #import "ShowLocationViewController.h"
 #import "BMapKit.h"
 #import "AppSettings.h"
+#import "ShowDetailViewController.h"
 @interface ShowLocationViewController ()<BMKMapViewDelegate>{
     BMKMapView *_mapView;
     BMKPointAnnotation* pointAnnotation;
     CGFloat _lat;
     CGFloat _long;
+    NSMutableArray *_list;
     BOOL _hasLocation;
+    id _item;
 }
 
 @end
@@ -35,6 +38,10 @@
     [super viewDidLoad];
      _mapView= [[BMKMapView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
     self.view = _mapView;
+    //self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(gotoNext)];
+}
+-(void)gotoNext{
+    
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -51,8 +58,10 @@
 }
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
+    _mapView.showsUserLocation = NO;
     [_mapView viewWillDisappear];
     _mapView.delegate =nil;
+    
 }
 - (void)didReceiveMemoryWarning
 {
@@ -64,7 +73,7 @@
 }
 -(void)mapView:(BMKMapView *)mapView didUpdateUserLocation:(BMKUserLocation *)userLocation{
     if (userLocation != nil) {
-		NSLog(@"%f %f", userLocation.location.coordinate.latitude, userLocation.location.coordinate.longitude);
+		//NSLog(@"%f %f", userLocation.location.coordinate.latitude, userLocation.location.coordinate.longitude);
         if (!_hasLocation){
             _hasLocation = !_hasLocation;
             [self showMineLocation:userLocation.location.coordinate.latitude longtitude:userLocation.location.coordinate.longitude];
@@ -75,7 +84,16 @@
     NSLog(@"Stop locate.");
 }
 -(void)mapView:(BMKMapView *)mapView annotationViewForBubble:(BMKAnnotationView *)view{
-    NSLog(@"pao");
+    for (id item in _list ){
+        if ([view.annotation isEqual:item[@"point"]]){
+            ShowDetailViewController *vc = [[ShowDetailViewController alloc] initWithNibName:@"ShowDetailViewController" bundle:nil];
+            [self.navigationController pushViewController:vc animated:YES];
+            [vc loadData:item[@"item"]];
+            vc.target = [view.annotation coordinate];
+            _item = item[@"item"];
+        }
+    }
+    
 }
 
 -(void)goLocation:(CGFloat)latitude longtitude:(CGFloat)longtitude{
@@ -88,13 +106,14 @@
     pointAnnotation.coordinate = coor;
     pointAnnotation.title = @"test";
     pointAnnotation.subtitle = @"Detail information";
+    
 
     [_mapView addAnnotation:pointAnnotation];
    
     [_mapView setCenterCoordinate:coor animated:YES];
 
 }
--(void)createPin:(CGFloat)latitude longtitude:(CGFloat)longtitude title:(NSString *)title description:(NSString *)description{
+-(void)createPin:(CGFloat)latitude longtitude:(CGFloat)longtitude title:(NSString *)title description:(NSString *)description item:(id)item{
     BMKPointAnnotation *annotation = [[BMKPointAnnotation alloc]init];
     CLLocationCoordinate2D coor;
     coor.latitude = latitude;
@@ -103,6 +122,7 @@
     annotation.title = title;
     annotation.subtitle = description;
     [_mapView addAnnotation:annotation];
+    [_list addObject:@{@"item":item,@"point":annotation}];
 }
 -(void)showMineLocation:(CGFloat)latitude longtitude:(CGFloat)longtitude{
     CLLocationCoordinate2D coor;
@@ -114,8 +134,13 @@
     NSString *url =[NSString stringWithFormat:@"api/get_position?userid=%d&x=%f&y=%f&type=09",[AppSettings sharedSettings].userid,longtitude,latitude];
     [[AppSettings sharedSettings].http get:url block:^(id json) {
         if ([[AppSettings sharedSettings] isSuccess:json]){
+            if (_list){
+                [_list removeAllObjects];
+            }else{
+                _list = [[NSMutableArray alloc] init];
+            }
             for (id item  in json[@"result"]) {
-                [self createPin:[item[@"y"] floatValue] longtitude:[item[@"x"] floatValue] title:item[@"name"] description:item[@"description"]];
+                [self createPin:[item[@"y"] floatValue] longtitude:[item[@"x"] floatValue] title:item[@"name"] description:item[@"description"] item:item];
             }
         }
     }];

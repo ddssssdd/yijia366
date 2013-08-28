@@ -82,6 +82,10 @@
 		E2611B7F17CB7C4F00E92897 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2611B7E17CB7C4F00E92897 /* OpenGLES.framework */; };
 		E2611B8417CB7CC500E92897 /* ShowLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2611B8217CB7CC500E92897 /* ShowLocationViewController.m */; };
 		E2611B8517CB7CC500E92897 /* ShowLocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2611B8317CB7CC500E92897 /* ShowLocationViewController.xib */; };
+		E2611B8917CCE27A00E92897 /* ShowDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2611B8717CCE27A00E92897 /* ShowDetailViewController.m */; };
+		E2611B8A17CCE27A00E92897 /* ShowDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2611B8817CCE27A00E92897 /* ShowDetailViewController.xib */; };
+		E2611B8E17CE090F00E92897 /* NavigationViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = E2611B8C17CE090E00E92897 /* NavigationViewController.mm */; };
+		E2611B8F17CE090F00E92897 /* NavigationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2611B8D17CE090F00E92897 /* NavigationViewController.xib */; };
 		E26460D416EF64D80050BDA4 /* InfoAndPriceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E26460D316EF64D80050BDA4 /* InfoAndPriceCell.m */; };
 		E26460D716EF64EF0050BDA4 /* InfoAndPriceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E26460D616EF64EF0050BDA4 /* InfoAndPriceCell.xib */; };
 		E26460E316F094DE0050BDA4 /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E26460E116F094DE0050BDA4 /* WelcomeViewController.m */; };
@@ -351,6 +355,12 @@
 		E2611B8117CB7CC500E92897 /* ShowLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowLocationViewController.h; sourceTree = "<group>"; };
 		E2611B8217CB7CC500E92897 /* ShowLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowLocationViewController.m; sourceTree = "<group>"; };
 		E2611B8317CB7CC500E92897 /* ShowLocationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShowLocationViewController.xib; sourceTree = "<group>"; };
+		E2611B8617CCE27A00E92897 /* ShowDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowDetailViewController.h; sourceTree = "<group>"; };
+		E2611B8717CCE27A00E92897 /* ShowDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowDetailViewController.m; sourceTree = "<group>"; };
+		E2611B8817CCE27A00E92897 /* ShowDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShowDetailViewController.xib; sourceTree = "<group>"; };
+		E2611B8B17CE090E00E92897 /* NavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationViewController.h; sourceTree = "<group>"; };
+		E2611B8C17CE090E00E92897 /* NavigationViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = NavigationViewController.mm; sourceTree = "<group>"; };
+		E2611B8D17CE090F00E92897 /* NavigationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NavigationViewController.xib; sourceTree = "<group>"; };
 		E26460D216EF64D70050BDA4 /* InfoAndPriceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoAndPriceCell.h; sourceTree = "<group>"; };
 		E26460D316EF64D80050BDA4 /* InfoAndPriceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoAndPriceCell.m; sourceTree = "<group>"; };
 		E26460D616EF64EF0050BDA4 /* InfoAndPriceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfoAndPriceCell.xib; sourceTree = "<group>"; };
@@ -565,8 +575,6 @@
 		E2296D1A16B760EC00E332D9 = {
 			isa = PBXGroup;
 			children = (
-				E2611B7E17CB7C4F00E92897 /* OpenGLES.framework */,
-				E2611B7C17CB7C4200E92897 /* CoreLocation.framework */,
 				E2296D2F16B760EC00E332D9 /* EasyDrive366 */,
 				E2296D2816B760EC00E332D9 /* Frameworks */,
 				E2296D2616B760EC00E332D9 /* Products */,
@@ -585,6 +593,8 @@
 			isa = PBXGroup;
 			children = (
 				E2611B5917CB7BF600E92897 /* libbaidumapapi.a */,
+				E2611B7E17CB7C4F00E92897 /* OpenGLES.framework */,
+				E2611B7C17CB7C4200E92897 /* CoreLocation.framework */,
 				E2F2881016F593B300DAE1B8 /* QuartzCore.framework */,
 				E2EE65EF16CD117600ED1C73 /* SystemConfiguration.framework */,
 				E2EE658316C6863D00ED1C73 /* CoreData.framework */,
@@ -752,6 +762,12 @@
 				E2611B8117CB7CC500E92897 /* ShowLocationViewController.h */,
 				E2611B8217CB7CC500E92897 /* ShowLocationViewController.m */,
 				E2611B8317CB7CC500E92897 /* ShowLocationViewController.xib */,
+				E2611B8617CCE27A00E92897 /* ShowDetailViewController.h */,
+				E2611B8717CCE27A00E92897 /* ShowDetailViewController.m */,
+				E2611B8817CCE27A00E92897 /* ShowDetailViewController.xib */,
+				E2611B8B17CE090E00E92897 /* NavigationViewController.h */,
+				E2611B8C17CE090E00E92897 /* NavigationViewController.mm */,
+				E2611B8D17CE090F00E92897 /* NavigationViewController.xib */,
 			);
 			name = map;
 			sourceTree = "<group>";
@@ -1230,6 +1246,8 @@
 				E27A7D5B17B12D75009895E6 /* ShowActivateViewController.xib in Resources */,
 				E2611B7B17CB7C2000E92897 /* mapapi.bundle in Resources */,
 				E2611B8517CB7CC500E92897 /* ShowLocationViewController.xib in Resources */,
+				E2611B8A17CCE27A00E92897 /* ShowDetailViewController.xib in Resources */,
+				E2611B8F17CE090F00E92897 /* NavigationViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1344,6 +1362,8 @@
 				E27A7D6517B14091009895E6 /* SignupStep3ViewController.m in Sources */,
 				E223299B17BBD4F3000035B1 /* ShowActivateTableController.m in Sources */,
 				E2611B8417CB7CC500E92897 /* ShowLocationViewController.m in Sources */,
+				E2611B8917CCE27A00E92897 /* ShowDetailViewController.m in Sources */,
+				E2611B8E17CE090F00E92897 /* NavigationViewController.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1440,6 +1460,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
 				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = EasyDrive366;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -1461,6 +1482,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
 				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = EasyDrive366;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";

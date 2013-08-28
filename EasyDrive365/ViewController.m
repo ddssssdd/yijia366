@@ -14,7 +14,7 @@
 #import "MenuItem.h"
 #import "WelcomeViewController.h"
 #import "SettingsViewController.h"
-#import "ShowLocationViewController.h"
+
 
 @interface ViewController (){
     NSMutableArray *_list;
@@ -103,7 +103,7 @@
 
 -(void)settingsButtonPress:(id)sender
 {
-   
+    
     BOOL islogin = [AppSettings sharedSettings].isLogin;
     if (!islogin){
         WelcomeViewController *vc = [[WelcomeViewController alloc] initWithNibName:@"WelcomeViewController" bundle:nil];
