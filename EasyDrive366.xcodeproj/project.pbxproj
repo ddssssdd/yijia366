@@ -76,6 +76,7 @@
 		E25AF0B116F9FED900E79057 /* CIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E25AF0AF16F9FED800E79057 /* CIViewController.m */; };
 		E25AF0B216F9FED900E79057 /* CIViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E25AF0B016F9FED900E79057 /* CIViewController.xib */; };
 		E25D74BD16DE368D008307C7 /* NetTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E25D74BC16DE368D008307C7 /* NetTableViewController.m */; };
+		E2611B9217CF345600E92897 /* NewActivateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2611B9117CF345500E92897 /* NewActivateViewController.m */; };
 		E26460D416EF64D80050BDA4 /* InfoAndPriceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E26460D316EF64D80050BDA4 /* InfoAndPriceCell.m */; };
 		E26460D716EF64EF0050BDA4 /* InfoAndPriceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E26460D616EF64EF0050BDA4 /* InfoAndPriceCell.xib */; };
 		E26460E316F094DE0050BDA4 /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E26460E116F094DE0050BDA4 /* WelcomeViewController.m */; };
@@ -309,6 +310,8 @@
 		E25AF0B016F9FED900E79057 /* CIViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CIViewController.xib; sourceTree = "<group>"; };
 		E25D74BB16DE368D008307C7 /* NetTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetTableViewController.h; sourceTree = "<group>"; };
 		E25D74BC16DE368D008307C7 /* NetTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetTableViewController.m; sourceTree = "<group>"; };
+		E2611B9017CF345400E92897 /* NewActivateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewActivateViewController.h; sourceTree = "<group>"; };
+		E2611B9117CF345500E92897 /* NewActivateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewActivateViewController.m; sourceTree = "<group>"; };
 		E26460D216EF64D70050BDA4 /* InfoAndPriceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoAndPriceCell.h; sourceTree = "<group>"; };
 		E26460D316EF64D80050BDA4 /* InfoAndPriceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoAndPriceCell.m; sourceTree = "<group>"; };
 		E26460D616EF64EF0050BDA4 /* InfoAndPriceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfoAndPriceCell.xib; sourceTree = "<group>"; };
@@ -693,6 +696,8 @@
 				E27A7D5917B12D75009895E6 /* ShowActivateViewController.xib */,
 				E223299917BBD4F3000035B1 /* ShowActivateTableController.h */,
 				E223299A17BBD4F3000035B1 /* ShowActivateTableController.m */,
+				E2611B9017CF345400E92897 /* NewActivateViewController.h */,
+				E2611B9117CF345500E92897 /* NewActivateViewController.m */,
 			);
 			name = Activate;
 			sourceTree = "<group>";
@@ -1236,6 +1241,7 @@
 				E27A7D6217B14081009895E6 /* SignupStep2ViewController.m in Sources */,
 				E27A7D6517B14091009895E6 /* SignupStep3ViewController.m in Sources */,
 				E223299B17BBD4F3000035B1 /* ShowActivateTableController.m in Sources */,
+				E2611B9217CF345600E92897 /* NewActivateViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

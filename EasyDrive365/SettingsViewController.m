@@ -23,6 +23,7 @@
 #import "ShowActivateViewController.h"
 #import "ShowActivateTableController.h"
 #import "SignupStep1ViewController.h"
+#import "NewActivateViewController.h"
 @interface SettingsViewController ()<ButtonViewControllerDelegate,UIAlertViewDelegate>{
     EditMaintainDataSource *_maintainDatasource;
     EditDriverLicenseDataSource *_driverDatasource;
@@ -149,11 +150,11 @@
      @"cell":@"ChooseNextCell"  }],
     [[NSMutableDictionary alloc] initWithDictionary:
      @{@"key" :@"active_code",
-     @"label":@"账户认证",
+     @"label":@"我的卡卷",
      @"default":@"",
      @"placeholder":@"",
      @"ispassword":@"",
-     @"value":_isActive?@"已经激活": @"激活",
+     @"value":@"",//_isActive?@"已经激活": @"激活",
      @"cell":@"ChooseNextCell"  }]
     
     ];
@@ -272,13 +273,11 @@
                 vc.txtCommunication.text =_phone;
             }
         }else if (indexPath.row==2){
+            NewActivateViewController *vc =[[NewActivateViewController alloc] initWithStyle:UITableViewStyleGrouped];
+            [self.navigationController pushViewController:vc animated:YES];
+            /*
             if (_isActive){
-                /*ShowActivateViewController *vc = [[ShowActivateViewController alloc] initWithNibName:@"ShowActivateViewController" bundle:nil];
-                [self.navigationController pushViewController:vc animated:YES];
-                vc.lblNo.text = _number;
-                vc.lblCode.text = _code;
-                vc.lblTime.text = _activate_date;
-                vc.lblTo.text =_valid_date;*/
+               
                 ShowActivateTableController *vc =[[ShowActivateTableController alloc] initWithStyle:UITableViewStyleGrouped];
                 [vc setData:_number code:_code activate_date:_activate_date valid_date:_valid_date contents:contents];
                 [self.navigationController pushViewController:vc animated:YES];
@@ -286,6 +285,7 @@
                 ActivateViewController *vc = [[ActivateViewController alloc] initWithNibName:@"ActivateViewController" bundle:nil];
                 [self.navigationController pushViewController:vc animated:YES];
             }
+             */
         }
     }
     NSLog(@"%@",indexPath);
