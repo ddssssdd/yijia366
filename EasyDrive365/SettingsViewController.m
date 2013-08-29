@@ -150,7 +150,7 @@
      @"cell":@"ChooseNextCell"  }],
     [[NSMutableDictionary alloc] initWithDictionary:
      @{@"key" :@"active_code",
-     @"label":@"我的卡卷",
+     @"label":@"我的卡券",
      @"default":@"",
      @"placeholder":@"",
      @"ispassword":@"",

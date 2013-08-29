@@ -77,6 +77,8 @@
 		E25AF0B216F9FED900E79057 /* CIViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E25AF0B016F9FED900E79057 /* CIViewController.xib */; };
 		E25D74BD16DE368D008307C7 /* NetTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E25D74BC16DE368D008307C7 /* NetTableViewController.m */; };
 		E2611B9217CF345600E92897 /* NewActivateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2611B9117CF345500E92897 /* NewActivateViewController.m */; };
+		E2611B9517CF534100E92897 /* ActivateHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = E2611B9417CF534000E92897 /* ActivateHeader.m */; };
+		E2611B9717CF535900E92897 /* ActivateHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2611B9617CF535800E92897 /* ActivateHeader.xib */; };
 		E26460D416EF64D80050BDA4 /* InfoAndPriceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E26460D316EF64D80050BDA4 /* InfoAndPriceCell.m */; };
 		E26460D716EF64EF0050BDA4 /* InfoAndPriceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E26460D616EF64EF0050BDA4 /* InfoAndPriceCell.xib */; };
 		E26460E316F094DE0050BDA4 /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E26460E116F094DE0050BDA4 /* WelcomeViewController.m */; };
@@ -312,6 +314,9 @@
 		E25D74BC16DE368D008307C7 /* NetTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetTableViewController.m; sourceTree = "<group>"; };
 		E2611B9017CF345400E92897 /* NewActivateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewActivateViewController.h; sourceTree = "<group>"; };
 		E2611B9117CF345500E92897 /* NewActivateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewActivateViewController.m; sourceTree = "<group>"; };
+		E2611B9317CF533F00E92897 /* ActivateHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivateHeader.h; sourceTree = "<group>"; };
+		E2611B9417CF534000E92897 /* ActivateHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivateHeader.m; sourceTree = "<group>"; };
+		E2611B9617CF535800E92897 /* ActivateHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivateHeader.xib; sourceTree = "<group>"; };
 		E26460D216EF64D70050BDA4 /* InfoAndPriceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoAndPriceCell.h; sourceTree = "<group>"; };
 		E26460D316EF64D80050BDA4 /* InfoAndPriceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoAndPriceCell.m; sourceTree = "<group>"; };
 		E26460D616EF64EF0050BDA4 /* InfoAndPriceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfoAndPriceCell.xib; sourceTree = "<group>"; };
@@ -698,6 +703,9 @@
 				E223299A17BBD4F3000035B1 /* ShowActivateTableController.m */,
 				E2611B9017CF345400E92897 /* NewActivateViewController.h */,
 				E2611B9117CF345500E92897 /* NewActivateViewController.m */,
+				E2611B9317CF533F00E92897 /* ActivateHeader.h */,
+				E2611B9417CF534000E92897 /* ActivateHeader.m */,
+				E2611B9617CF535800E92897 /* ActivateHeader.xib */,
 			);
 			name = Activate;
 			sourceTree = "<group>";
@@ -1128,6 +1136,7 @@
 				E271A3F917658B8E001E4D54 /* CommentCell.xib in Resources */,
 				E27A7D5617B12A81009895E6 /* ActivateViewController.xib in Resources */,
 				E27A7D5B17B12D75009895E6 /* ShowActivateViewController.xib in Resources */,
+				E2611B9717CF535900E92897 /* ActivateHeader.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1242,6 +1251,7 @@
 				E27A7D6517B14091009895E6 /* SignupStep3ViewController.m in Sources */,
 				E223299B17BBD4F3000035B1 /* ShowActivateTableController.m in Sources */,
 				E2611B9217CF345600E92897 /* NewActivateViewController.m in Sources */,
+				E2611B9517CF534100E92897 /* ActivateHeader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

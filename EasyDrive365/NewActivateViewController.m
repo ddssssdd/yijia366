@@ -9,10 +9,12 @@
 #import "NewActivateViewController.h"
 #import "AppSettings.h"
 #import "NVUIGradientButton.h"
+#import "ActivateHeader.h"
 
-@interface NewActivateViewController (){
+@interface NewActivateViewController ()<ActivateHeaderDelegate,UIAlertViewDelegate>{
     id _list;
-    UIView *_headerView;
+    ActivateHeader *_headerView;
+    NSString *_code;
 }
 
 @end
@@ -31,7 +33,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title =@"激活账户";
+    self.title =@"我的卡券";
 
     [self loadData];
 }
@@ -71,7 +73,7 @@
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     if (section==0){
-        return 128;
+        return 140;
     }else{
         return 22.0;
     }
@@ -87,6 +89,12 @@
     }
 }
 -(void)createHeaderView{
+    _headerView = [[[NSBundle mainBundle] loadNibNamed:@"ActivateHeader" owner:nil options:nil] objectAtIndex:0];
+    _headerView.delegate = self;
+    _headerView.btnOK.text = @"激活服务卡";
+    //_headerView.btnOK.style = NVUIGradientButtonStyleBlackOpaque;
+    _headerView.backgroundColor = [UIColor clearColor];
+    /*
     _headerView=[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 80)];
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, 10, 280, 21)];
     label.backgroundColor =[UIColor clearColor];
@@ -101,11 +109,25 @@
     
     [button addTarget:self action:@selector(buttonPress) forControlEvents:UIControlEventTouchUpInside];
     [_headerView addSubview:button];
+     */
 }
--(void)buttonPress{
-    NSLog(@"button press");
+-(void)buttonPressed:(NSString *)code{
+    NSLog(@"button press:%@",code);
+    if (![code isEqualToString:@""]){
+        _code = code;
+        [[[UIAlertView alloc] initWithTitle:AppTitle message:[NSString stringWithFormat:@"确定要激活【%@】",code] delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"激活" , nil] show ];
+    }
 }
-
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex==1){
+        NSString *url = [NSString stringWithFormat:@"api/add_activate_code_list?userid=%d&code=%@",[AppSettings sharedSettings].userid,_code];
+        [[AppSettings sharedSettings].http get:url block:^(id json) {
+            if ([[AppSettings sharedSettings] isSuccess:json]){
+                [self processData:json[@"result"]];
+            }
+        }];
+    }
+}
 -(void)loadData{
     //_list =@[@[@{@"title":@"a",@"detail":@"b"}],@[@{@"title":@"a",@"detail":@"b"}]];
     
@@ -128,9 +150,10 @@
         id list1=@[@{@"title":@"卡号",@"detail":item[@"number"]},
                    @{@"title":@"激活码",@"detail":item[@"code"]},
                    @{@"title":@"激活日期",@"detail":item[@"activate_date"]},
-                   @{@"title":@"有效期至",@"detail":item[@"valid_date"]}];
-        [_list addObject:list1];
-        NSMutableArray *list2 =[[NSMutableArray alloc] initWithCapacity:[item[@"contents"] count]];
+                   @{@"title":@"有效期至",@"detail":item[@"valid_date"]},
+                   @{@"title":@"服务项目:",@"detail":@""}];
+
+        NSMutableArray *list2 =[[NSMutableArray alloc] initWithArray:list1 copyItems:YES];
         for (id item2  in item[@"contents"]) {
             [list2 addObject:@{@"title":item2[@"name"],@"detail":[NSString stringWithFormat:@"%@次",item2[@"count"]]}];
         }

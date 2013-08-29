@@ -66,7 +66,7 @@
     AFHTTPClient *httpClient =[[AFHTTPClient alloc] initWithBaseURL:url];
     
     NSMutableURLRequest *request=[httpClient requestWithMethod:method  path:path parameters:parameter];
-   // NSLog(@"Request=%@",request.URL);
+    NSLog(@"Request=%@",request.URL);
     AFHTTPRequestOperation *operation=[[AFHTTPRequestOperation alloc] initWithRequest:request];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         
