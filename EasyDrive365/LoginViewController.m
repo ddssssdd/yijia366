@@ -70,7 +70,7 @@
     
 }
 -(void)doLogin{
-    NSURL *url = [NSURL URLWithString:ServerUrl];
+    NSURL *url = [NSURL URLWithString:SERVERURL];
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
     
     NSString *path  =[NSString stringWithFormat:@"api/login?username=%@&password=%@",self.txtUsername.text,self.txtPassword.text];

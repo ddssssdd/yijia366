@@ -62,11 +62,11 @@
 -(void)request:(NSString *)path method:(NSString *)method parameter:(NSDictionary *)parameter block:(void (^)(id json))processJson{
     [SVProgressHUD show];
     
-    NSURL *url = [NSURL URLWithString:ServerUrl];
+    NSURL *url = [NSURL URLWithString:SERVERURL];
     AFHTTPClient *httpClient =[[AFHTTPClient alloc] initWithBaseURL:url];
     
     NSMutableURLRequest *request=[httpClient requestWithMethod:method  path:path parameters:parameter];
-   // NSLog(@"Request=%@",request.URL);
+    NSLog(@"Request=%@",request.URL);
     AFHTTPRequestOperation *operation=[[AFHTTPRequestOperation alloc] initWithRequest:request];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         
