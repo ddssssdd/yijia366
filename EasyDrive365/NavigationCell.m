@@ -10,6 +10,7 @@
 #import "HttpClient.h"
 #import "AppSettings.h"
 #import "ShowLocationViewController.h"
+#import "TakePhotoViewController.h"
 
 @implementation NavigationCell
 
@@ -49,8 +50,9 @@
         ShowLocationViewController *vc = [[ShowLocationViewController alloc] initWithNibName:@"ShowLocationViewController" bundle:nil];
         [self.rootController pushViewController:vc animated:YES];
         
-    }else if (buttonIndex==1){
-        
+    }else if (buttonIndex==2){
+        TakePhotoViewController *vc =[[TakePhotoViewController alloc] initWithNibName:@"TakePhotoViewController" bundle:nil];
+        [self.rootController pushViewController:vc animated:YES];
     }
 }
 -(void)getLatest{

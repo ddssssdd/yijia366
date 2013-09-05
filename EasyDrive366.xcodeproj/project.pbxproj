@@ -154,6 +154,8 @@
 		E2C1626616EA23F100B0E9EC /* CustomEditTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2C1626516EA23F100B0E9EC /* CustomEditTableViewController.m */; };
 		E2C1626916EA2D8100B0E9EC /* SignUpTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2C1626816EA2D8100B0E9EC /* SignUpTableViewController.m */; };
 		E2DBBE9B1722BE2500493DD9 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2DBBE9A1722BE2500493DD9 /* SettingsViewController.m */; };
+		E2E6647C17D895CF00AC85BA /* TakePhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E6647A17D895CF00AC85BA /* TakePhotoViewController.m */; };
+		E2E6647D17D895CF00AC85BA /* TakePhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2E6647B17D895CF00AC85BA /* TakePhotoViewController.xib */; };
 		E2EBCED616EE13C900E918C5 /* InformationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E2EBCED516EE13C800E918C5 /* InformationCell.m */; };
 		E2EBCED916EE13DC00E918C5 /* InformationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2EBCED816EE13DC00E918C5 /* InformationCell.xib */; };
 		E2EE650516C293D300ED1C73 /* AppSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = E2EE650416C293D300ED1C73 /* AppSettings.m */; };
@@ -463,6 +465,9 @@
 		E2C1626816EA2D8100B0E9EC /* SignUpTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpTableViewController.m; sourceTree = "<group>"; };
 		E2DBBE991722BE2500493DD9 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		E2DBBE9A1722BE2500493DD9 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		E2E6647917D895CF00AC85BA /* TakePhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TakePhotoViewController.h; sourceTree = "<group>"; };
+		E2E6647A17D895CF00AC85BA /* TakePhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TakePhotoViewController.m; sourceTree = "<group>"; };
+		E2E6647B17D895CF00AC85BA /* TakePhotoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TakePhotoViewController.xib; sourceTree = "<group>"; };
 		E2EBCED416EE13C800E918C5 /* InformationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InformationCell.h; sourceTree = "<group>"; };
 		E2EBCED516EE13C800E918C5 /* InformationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InformationCell.m; sourceTree = "<group>"; };
 		E2EBCED816EE13DC00E918C5 /* InformationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InformationCell.xib; sourceTree = "<group>"; };
@@ -883,6 +888,16 @@
 			name = information;
 			sourceTree = "<group>";
 		};
+		E2E6647817D895AC00AC85BA /* Photo */ = {
+			isa = PBXGroup;
+			children = (
+				E2E6647917D895CF00AC85BA /* TakePhotoViewController.h */,
+				E2E6647A17D895CF00AC85BA /* TakePhotoViewController.m */,
+				E2E6647B17D895CF00AC85BA /* TakePhotoViewController.xib */,
+			);
+			name = Photo;
+			sourceTree = "<group>";
+		};
 		E2EE650716C293DD00ED1C73 /* settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -957,6 +972,7 @@
 		E2EE653916C5294A00ED1C73 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				E2E6647817D895AC00AC85BA /* Photo */,
 				E2611B8017CB7C9500E92897 /* map */,
 				E27A7D5C17B139A7009895E6 /* Login */,
 				E27A7D5117B12A5B009895E6 /* Activate */,
@@ -1262,6 +1278,7 @@
 				E2611B8A17CCE27A00E92897 /* ShowDetailViewController.xib in Resources */,
 				E2611B8F17CE090F00E92897 /* NavigationViewController.xib in Resources */,
 				E2611B9717CF535900E92897 /* ActivateHeader.xib in Resources */,
+				E2E6647D17D895CF00AC85BA /* TakePhotoViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1380,6 +1397,7 @@
 				E2611B8E17CE090F00E92897 /* NavigationViewController.mm in Sources */,
 				E2611B9217CF345600E92897 /* NewActivateViewController.m in Sources */,
 				E2611B9517CF534100E92897 /* ActivateHeader.m in Sources */,
+				E2E6647C17D895CF00AC85BA /* TakePhotoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
