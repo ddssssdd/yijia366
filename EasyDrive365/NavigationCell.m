@@ -34,7 +34,7 @@
     
     if(self.phone){
       
-        UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:[NSString stringWithFormat:@"拨号：%@",self.phone ],@"地图",nil];
+        UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:[NSString stringWithFormat:@"拨号：%@",self.phone ],@"地图",@"拍照上传",nil];
         [sheet showInView:self];
         
     }
@@ -48,6 +48,8 @@
     }else if (buttonIndex==1){
         ShowLocationViewController *vc = [[ShowLocationViewController alloc] initWithNibName:@"ShowLocationViewController" bundle:nil];
         [self.rootController pushViewController:vc animated:YES];
+        
+    }else if (buttonIndex==1){
         
     }
 }
