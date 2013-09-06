@@ -53,7 +53,24 @@
     _mapView.showsUserLocation = YES;
     
     
+    //test use
+    /*
+    if (_list){
+        [_list removeAllObjects];
+    }else{
+        _list = [[NSMutableArray alloc] init];
+    }
+    id temp = @{@"code": @"C100000001",
+                 @"name": @"金都花园",
+                 @"address": @"东海西路37号",
+                 @"phone": @"18605320000",
+                 @"description": @"我的名字叫做jinduhuayuan建于好多年以前 这是第二行数据",
+                 @"x": @"120.394318",
+                 @"y": @"36.070357"};
+
+    [self createPin:36.070357 longtitude:120.394318 title:@"aa" description:@"bb" item:temp];
     
+    */
     
 }
 -(void)viewWillDisappear:(BOOL)animated{
