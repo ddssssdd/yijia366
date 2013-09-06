@@ -144,8 +144,8 @@
         NSString *filename = [NSString stringWithFormat:@"upload.png"];
         [formData appendPartWithFileData:imageData name:@"userfile" fileName:filename mimeType:@"image/png"];
         [formData appendPartWithFormData:[[NSString stringWithFormat:@"%d",[AppSettings sharedSettings].userid] dataUsingEncoding:NSUTF8StringEncoding]  name:@"userid"];
-        [formData appendPartWithFormData:[[NSString stringWithFormat:@"%f",self.latitude] dataUsingEncoding:NSUTF8StringEncoding]  name:@"x"];
-        [formData appendPartWithFormData:[[NSString stringWithFormat:@"%f",self.longtitude] dataUsingEncoding:NSUTF8StringEncoding]  name:@"y"];
+        [formData appendPartWithFormData:[[NSString stringWithFormat:@"%f",self.latitude] dataUsingEncoding:NSUTF8StringEncoding]  name:@"y"];
+        [formData appendPartWithFormData:[[NSString stringWithFormat:@"%f",self.longtitude] dataUsingEncoding:NSUTF8StringEncoding]  name:@"x"];
         [formData appendPartWithFormData:[[NSString stringWithFormat:@"iphone"] dataUsingEncoding:NSUTF8StringEncoding]  name:@"from"];
         
         
