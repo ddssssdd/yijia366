@@ -11,6 +11,7 @@
 #import "AppSettings.h"
 #import "ShowLocationViewController.h"
 #import "TakePhotoViewController.h"
+#import "QRCodeShowViewController.h"
 
 @implementation NavigationCell
 
@@ -35,7 +36,7 @@
     
     if(self.phone){
       
-        UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:[NSString stringWithFormat:@"拨号：%@",self.phone ],@"地图",@"拍照上传",nil];
+        UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:[NSString stringWithFormat:@"拨号：%@",self.phone ],@"地图",@"拍照上传",@"二维码",nil];
         [sheet showInView:self];
         
     }
@@ -52,6 +53,9 @@
         
     }else if (buttonIndex==2){
         TakePhotoViewController *vc =[[TakePhotoViewController alloc] initWithNibName:@"TakePhotoViewController" bundle:nil];
+        [self.rootController pushViewController:vc animated:YES];
+    }else if (buttonIndex==3){
+        QRCodeShowViewController *vc =[[QRCodeShowViewController alloc] initWithNibName:@"QRCodeShowViewController" bundle:nil];
         [self.rootController pushViewController:vc animated:YES];
     }
 }

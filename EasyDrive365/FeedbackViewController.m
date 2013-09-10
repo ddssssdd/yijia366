@@ -35,6 +35,7 @@
     //[self.txtfeedback becomeFirstResponder];
     self.txtfeedback.layer.borderWidth = 2.0f;
     self.txtfeedback.layer.borderColor = [[UIColor grayColor] CGColor];
+    [self.txtfeedback becomeFirstResponder];
 
 }
 

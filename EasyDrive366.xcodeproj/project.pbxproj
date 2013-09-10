@@ -156,6 +156,17 @@
 		E2DBBE9B1722BE2500493DD9 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2DBBE9A1722BE2500493DD9 /* SettingsViewController.m */; };
 		E2E6647C17D895CF00AC85BA /* TakePhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E6647A17D895CF00AC85BA /* TakePhotoViewController.m */; };
 		E2E6647D17D895CF00AC85BA /* TakePhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2E6647B17D895CF00AC85BA /* TakePhotoViewController.xib */; };
+		E2E6689117DF664800AC85BA /* bitstream.c in Sources */ = {isa = PBXBuildFile; fileRef = E2E6688117DF664800AC85BA /* bitstream.c */; };
+		E2E6689217DF664800AC85BA /* mask.c in Sources */ = {isa = PBXBuildFile; fileRef = E2E6688317DF664800AC85BA /* mask.c */; };
+		E2E6689317DF664800AC85BA /* QRCodeGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E6688617DF664800AC85BA /* QRCodeGenerator.m */; };
+		E2E6689417DF664800AC85BA /* qrencode.c in Sources */ = {isa = PBXBuildFile; fileRef = E2E6688717DF664800AC85BA /* qrencode.c */; };
+		E2E6689517DF664800AC85BA /* qrinput.c in Sources */ = {isa = PBXBuildFile; fileRef = E2E6688917DF664800AC85BA /* qrinput.c */; };
+		E2E6689617DF664800AC85BA /* qrspec.c in Sources */ = {isa = PBXBuildFile; fileRef = E2E6688B17DF664800AC85BA /* qrspec.c */; };
+		E2E6689717DF664800AC85BA /* rscode.c in Sources */ = {isa = PBXBuildFile; fileRef = E2E6688D17DF664800AC85BA /* rscode.c */; };
+		E2E6689817DF664800AC85BA /* split.c in Sources */ = {isa = PBXBuildFile; fileRef = E2E6688F17DF664800AC85BA /* split.c */; };
+		E2E6689D17DF668200AC85BA /* QRCodeShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E6689B17DF668200AC85BA /* QRCodeShowViewController.m */; };
+		E2E6689E17DF668200AC85BA /* QRCodeShowViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2E6689C17DF668200AC85BA /* QRCodeShowViewController.xib */; };
+		E2E668A117DF6C1800AC85BA /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E668A017DF6C1800AC85BA /* TPKeyboardAvoidingScrollView.m */; };
 		E2EBCED616EE13C900E918C5 /* InformationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E2EBCED516EE13C800E918C5 /* InformationCell.m */; };
 		E2EBCED916EE13DC00E918C5 /* InformationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2EBCED816EE13DC00E918C5 /* InformationCell.xib */; };
 		E2EE650516C293D300ED1C73 /* AppSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = E2EE650416C293D300ED1C73 /* AppSettings.m */; };
@@ -468,6 +479,27 @@
 		E2E6647917D895CF00AC85BA /* TakePhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TakePhotoViewController.h; sourceTree = "<group>"; };
 		E2E6647A17D895CF00AC85BA /* TakePhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TakePhotoViewController.m; sourceTree = "<group>"; };
 		E2E6647B17D895CF00AC85BA /* TakePhotoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TakePhotoViewController.xib; sourceTree = "<group>"; };
+		E2E6688117DF664800AC85BA /* bitstream.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = bitstream.c; sourceTree = "<group>"; };
+		E2E6688217DF664800AC85BA /* bitstream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bitstream.h; sourceTree = "<group>"; };
+		E2E6688317DF664800AC85BA /* mask.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mask.c; sourceTree = "<group>"; };
+		E2E6688417DF664800AC85BA /* mask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mask.h; sourceTree = "<group>"; };
+		E2E6688517DF664800AC85BA /* QRCodeGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeGenerator.h; sourceTree = "<group>"; };
+		E2E6688617DF664800AC85BA /* QRCodeGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeGenerator.m; sourceTree = "<group>"; };
+		E2E6688717DF664800AC85BA /* qrencode.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = qrencode.c; sourceTree = "<group>"; };
+		E2E6688817DF664800AC85BA /* qrencode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = qrencode.h; sourceTree = "<group>"; };
+		E2E6688917DF664800AC85BA /* qrinput.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = qrinput.c; sourceTree = "<group>"; };
+		E2E6688A17DF664800AC85BA /* qrinput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = qrinput.h; sourceTree = "<group>"; };
+		E2E6688B17DF664800AC85BA /* qrspec.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = qrspec.c; sourceTree = "<group>"; };
+		E2E6688C17DF664800AC85BA /* qrspec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = qrspec.h; sourceTree = "<group>"; };
+		E2E6688D17DF664800AC85BA /* rscode.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = rscode.c; sourceTree = "<group>"; };
+		E2E6688E17DF664800AC85BA /* rscode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rscode.h; sourceTree = "<group>"; };
+		E2E6688F17DF664800AC85BA /* split.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = split.c; sourceTree = "<group>"; };
+		E2E6689017DF664800AC85BA /* split.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = split.h; sourceTree = "<group>"; };
+		E2E6689A17DF668200AC85BA /* QRCodeShowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeShowViewController.h; sourceTree = "<group>"; };
+		E2E6689B17DF668200AC85BA /* QRCodeShowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeShowViewController.m; sourceTree = "<group>"; };
+		E2E6689C17DF668200AC85BA /* QRCodeShowViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QRCodeShowViewController.xib; sourceTree = "<group>"; };
+		E2E6689F17DF6C1800AC85BA /* TPKeyboardAvoidingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingScrollView.h; sourceTree = "<group>"; };
+		E2E668A017DF6C1800AC85BA /* TPKeyboardAvoidingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingScrollView.m; sourceTree = "<group>"; };
 		E2EBCED416EE13C800E918C5 /* InformationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InformationCell.h; sourceTree = "<group>"; };
 		E2EBCED516EE13C800E918C5 /* InformationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InformationCell.m; sourceTree = "<group>"; };
 		E2EBCED816EE13DC00E918C5 /* InformationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InformationCell.xib; sourceTree = "<group>"; };
@@ -621,6 +653,7 @@
 		E2296D2F16B760EC00E332D9 /* EasyDrive366 */ = {
 			isa = PBXGroup;
 			children = (
+				E2E6688017DF664800AC85BA /* libqrencode */,
 				E2611B5B17CB7C0400E92897 /* baidumap */,
 				E29462FD16FC8B000090371C /* removable */,
 				E24A041916CFBA2600B7A602 /* Resources */,
@@ -720,6 +753,8 @@
 				E26460F916F1F96D0050BDA4 /* NVUIButton */,
 				E26460EE16F1F4CE0050BDA4 /* SVProgressHUD */,
 				E202E15516E2F22A00FDBD34 /* phone_s.png */,
+				E2E6689F17DF6C1800AC85BA /* TPKeyboardAvoidingScrollView.h */,
+				E2E668A017DF6C1800AC85BA /* TPKeyboardAvoidingScrollView.m */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -898,6 +933,39 @@
 			name = Photo;
 			sourceTree = "<group>";
 		};
+		E2E6688017DF664800AC85BA /* libqrencode */ = {
+			isa = PBXGroup;
+			children = (
+				E2E6688117DF664800AC85BA /* bitstream.c */,
+				E2E6688217DF664800AC85BA /* bitstream.h */,
+				E2E6688317DF664800AC85BA /* mask.c */,
+				E2E6688417DF664800AC85BA /* mask.h */,
+				E2E6688517DF664800AC85BA /* QRCodeGenerator.h */,
+				E2E6688617DF664800AC85BA /* QRCodeGenerator.m */,
+				E2E6688717DF664800AC85BA /* qrencode.c */,
+				E2E6688817DF664800AC85BA /* qrencode.h */,
+				E2E6688917DF664800AC85BA /* qrinput.c */,
+				E2E6688A17DF664800AC85BA /* qrinput.h */,
+				E2E6688B17DF664800AC85BA /* qrspec.c */,
+				E2E6688C17DF664800AC85BA /* qrspec.h */,
+				E2E6688D17DF664800AC85BA /* rscode.c */,
+				E2E6688E17DF664800AC85BA /* rscode.h */,
+				E2E6688F17DF664800AC85BA /* split.c */,
+				E2E6689017DF664800AC85BA /* split.h */,
+			);
+			path = libqrencode;
+			sourceTree = "<group>";
+		};
+		E2E6689917DF665F00AC85BA /* barcode */ = {
+			isa = PBXGroup;
+			children = (
+				E2E6689A17DF668200AC85BA /* QRCodeShowViewController.h */,
+				E2E6689B17DF668200AC85BA /* QRCodeShowViewController.m */,
+				E2E6689C17DF668200AC85BA /* QRCodeShowViewController.xib */,
+			);
+			name = barcode;
+			sourceTree = "<group>";
+		};
 		E2EE650716C293DD00ED1C73 /* settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -972,6 +1040,7 @@
 		E2EE653916C5294A00ED1C73 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				E2E6689917DF665F00AC85BA /* barcode */,
 				E2E6647817D895AC00AC85BA /* Photo */,
 				E2611B8017CB7C9500E92897 /* map */,
 				E27A7D5C17B139A7009895E6 /* Login */,
@@ -1279,6 +1348,7 @@
 				E2611B8F17CE090F00E92897 /* NavigationViewController.xib in Resources */,
 				E2611B9717CF535900E92897 /* ActivateHeader.xib in Resources */,
 				E2E6647D17D895CF00AC85BA /* TakePhotoViewController.xib in Resources */,
+				E2E6689E17DF668200AC85BA /* QRCodeShowViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1398,6 +1468,16 @@
 				E2611B9217CF345600E92897 /* NewActivateViewController.m in Sources */,
 				E2611B9517CF534100E92897 /* ActivateHeader.m in Sources */,
 				E2E6647C17D895CF00AC85BA /* TakePhotoViewController.m in Sources */,
+				E2E6689117DF664800AC85BA /* bitstream.c in Sources */,
+				E2E6689217DF664800AC85BA /* mask.c in Sources */,
+				E2E6689317DF664800AC85BA /* QRCodeGenerator.m in Sources */,
+				E2E6689417DF664800AC85BA /* qrencode.c in Sources */,
+				E2E6689517DF664800AC85BA /* qrinput.c in Sources */,
+				E2E6689617DF664800AC85BA /* qrspec.c in Sources */,
+				E2E6689717DF664800AC85BA /* rscode.c in Sources */,
+				E2E6689817DF664800AC85BA /* split.c in Sources */,
+				E2E6689D17DF668200AC85BA /* QRCodeShowViewController.m in Sources */,
+				E2E668A117DF6C1800AC85BA /* TPKeyboardAvoidingScrollView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
