@@ -10,6 +10,7 @@
 #import "AFNetworkActivityIndicatorManager.h"
 #import "AppSettings.h"
 #import "BMapKit.h"
+#import "ViewController.h"
 @interface AppDelegate(){
     BMKMapManager *_mapManager;
 }
@@ -37,7 +38,12 @@
     }
     
     //[self setup_display];
-    
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    // Override point for customization after application launch.
+    self.viewController = [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];
+    self.navigationController = [[UINavigationController alloc] initWithRootViewController:self.viewController];
+    self.window.rootViewController = self.navigationController;
+    [self.window makeKeyAndVisible];
     
     return YES;
 }

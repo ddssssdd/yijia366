@@ -10,7 +10,11 @@
 
 @interface ShowLocationViewController : UIViewController
 
+@property (nonatomic) Boolean isFull;
+
 -(void)goLocation:(CGFloat)latitude longtitude:(CGFloat)longtitude;
 -(void)showMineLocation:(CGFloat)latitude longtitude:(CGFloat)longtitude;
+
+-(void)showShop:(id)list;
 
 @end

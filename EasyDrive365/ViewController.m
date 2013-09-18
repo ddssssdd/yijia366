@@ -14,9 +14,10 @@
 #import "MenuItem.h"
 #import "WelcomeViewController.h"
 #import "SettingsViewController.h"
+#import "ShowLocationViewController.h"
 
 
-@interface ViewController (){
+@interface ViewController ()<UITabBarDelegate>{
     NSMutableArray *_list;
     RefreshHelper *_helper;
 }
@@ -29,7 +30,7 @@
 {
     [super viewDidLoad];
     
-    
+    self.title = AppTitle;
     
     self.tableview.delegate = self;
     self.tableview.dataSource = self;
@@ -54,6 +55,23 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getNews:) name:@"NavigationCell_01" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(logout) name:@"logout" object:nil];
     
+    self.tabBar.delegate = self;
+    
+    UITabBarItem *item1=[[UITabBarItem alloc] initWithTitle:@"地图" image:[UIImage imageNamed:@"0087.png"] tag:0];
+    UITabBarItem *item3 = [[UITabBarItem alloc] initWithTitle:@"帮助" image:[UIImage imageNamed:@"0085.png"] tag:2];
+    [self.tabBar setItems:@[item1,
+     [[UITabBarItem alloc] initWithTitle:@"易驾百科" image:[UIImage imageNamed:@"0017.png"] tag:1],
+     item3]];
+    [self.tabBar setSelectedItem:nil];
+    
+}
+-(void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item{
+    NSLog(@"%@",item);
+    if (item.tag==0){
+        ShowLocationViewController *vc = [[ShowLocationViewController alloc] initWithNibName:@"ShowLocationViewController" bundle:nil];
+        vc.isFull = YES;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
 }
 -(void)getNews:(NSNotification *)noti{
     [_helper endRefresh:self.tableview];
@@ -133,6 +151,7 @@
    
     [self setTableview:nil];
    
+    [self setTabBar:nil];
     [super viewDidUnload];
 }
 - (IBAction)logout {

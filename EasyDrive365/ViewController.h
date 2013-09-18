@@ -13,4 +13,6 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
 
+@property (weak, nonatomic) IBOutlet UITabBar *tabBar;
+
 @end

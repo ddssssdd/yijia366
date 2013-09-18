@@ -10,6 +10,7 @@
 #import "BMapKit.h"
 #import "AppSettings.h"
 #import "ShowDetailViewController.h"
+#import "SearchShopController.h"
 @interface ShowLocationViewController ()<BMKMapViewDelegate>{
     BMKMapView *_mapView;
     BMKPointAnnotation* pointAnnotation;
@@ -35,13 +36,18 @@
 
 - (void)viewDidLoad
 {
+    self.title = @"附近服务商户";
     [super viewDidLoad];
      _mapView= [[BMKMapView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
     self.view = _mapView;
     //self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(gotoNext)];
+    if (self.isFull){
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"搜索" style:UIBarButtonSystemItemAction target:self action:@selector(searchShop)];
+    }
 }
--(void)gotoNext{
-    
+-(void)searchShop{
+    SearchShopController *vc = [[SearchShopController alloc] initWithStyle:UITableViewStyleGrouped];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -93,7 +99,9 @@
 		//NSLog(@"%f %f", userLocation.location.coordinate.latitude, userLocation.location.coordinate.longitude);
         if (!_hasLocation){
             _hasLocation = !_hasLocation;
-            [self showMineLocation:userLocation.location.coordinate.latitude longtitude:userLocation.location.coordinate.longitude];
+            if (self.isFull){
+                [self showMineLocation:userLocation.location.coordinate.latitude longtitude:userLocation.location.coordinate.longitude];
+            }
         }
 	}
 }
@@ -141,6 +149,24 @@
     [_mapView addAnnotation:annotation];
     [_list addObject:@{@"item":item,@"point":annotation}];
 }
+-(void)showShop:(id)list{
+    BOOL isfirst = YES;
+    if (_list){
+        [_list removeAllObjects];
+    }else{
+        _list = [[NSMutableArray alloc] init];
+    }
+    for (id item  in list) {
+        [self createPin:[item[@"y"] floatValue] longtitude:[item[@"x"] floatValue] title:item[@"name"] description:item[@"phone"] item:item];
+        if (isfirst){
+            isfirst = NO;
+            CLLocationCoordinate2D coor;
+            coor.latitude = [item[@"y"] floatValue];
+            coor.longitude = [item[@"x"] floatValue];
+            [_mapView setCenterCoordinate:coor];
+        }
+    }
+}
 -(void)showMineLocation:(CGFloat)latitude longtitude:(CGFloat)longtitude{
     CLLocationCoordinate2D coor;
     coor.latitude = latitude;
@@ -157,7 +183,7 @@
                 _list = [[NSMutableArray alloc] init];
             }
             for (id item  in json[@"result"]) {
-                [self createPin:[item[@"y"] floatValue] longtitude:[item[@"x"] floatValue] title:item[@"name"] description:item[@"description"] item:item];
+                [self createPin:[item[@"y"] floatValue] longtitude:[item[@"x"] floatValue] title:item[@"name"] description:item[@"phone"] item:item];
             }
         }
     }];

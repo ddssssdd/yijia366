@@ -60,11 +60,13 @@
     self.lblAddress.text=data[@"address"];
     self.lblDescription.text=data[@"description"];
     self.lblName.text = data[@"name"];
-    }
+    self.title = self.lblName.text;
+}
 - (IBAction)buttonNavPressed:(id)sender {
     NavigationViewController *controller = [[NavigationViewController alloc] initWithNibName:@"NavigationViewController" bundle:nil];
     [self.navigationController pushViewController:controller animated:YES];
     controller.target = self.target;
+    controller.title = self.lblName.text;
 }
 
 @end
