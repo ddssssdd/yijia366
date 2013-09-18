@@ -26,15 +26,23 @@ NSString *inform1=@"设置向导第1步共3步";
 }
 -(void)initData{
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"设置" style:UIBarButtonSystemItemAction target:self action:@selector(backTo)];
-    id items=@[
-               [[NSMutableDictionary alloc] initWithDictionary:@{@"key" :@"car_id",@"label":@"车牌号：",@"default":@"",@"placeholder":@"鲁B366YJ",@"ispassword":@"capital",@"cell":@"EditTextCell",@"value":@"鲁" }],
-               [[NSMutableDictionary alloc] initWithDictionary:@{@"key" :@"id_no",@"label":@"身份证号：",@"default":@"",@"placeholder":@"",@"ispassword":@"capital",@"cell":@"EditTextCell",@"value":@"" }]
-               ];
-    _list=[NSMutableArray arrayWithArray: @[
-           /*@{@"count" : @1,@"list":@[@{@"cell":@"IntroduceCell"}],@"height":@100.0f},*/
-           @{@"count" : @2,@"list":items,@"height":@44.0f},
-           //@{@"count" : @1,@"cell":@"OneButtonCell",@"list":@[],@"height":@44.0f}
-           ]];
+    
+    NSString *url = [NSString stringWithFormat:@"api/wizardstep0?userid=%d",[AppSettings sharedSettings].userid];
+    [[AppSettings sharedSettings].http get:url block:^(id json) {
+        id items=@[
+                   [[NSMutableDictionary alloc] initWithDictionary:@{@"key" :@"car_id",@"label":@"车牌号：",@"default":@"",@"placeholder":@"鲁B366YJ",@"ispassword":@"capital",@"cell":@"EditTextCell",@"value":json[@"result"][@"car_id"] }],
+                   
+                   [[NSMutableDictionary alloc] initWithDictionary:@{@"key" :@"vin",@"label":@"VIN后四位：",@"default":@"",@"placeholder":@"",@"ispassword":@"capital",@"cell":@"EditTextCell",@"value":json[@"result"][@"vin"] }],
+                   [[NSMutableDictionary alloc] initWithDictionary:@{@"key" :@"id_no",@"label":@"身份证号：",@"default":@"",@"placeholder":@"",@"ispassword":@"capital",@"cell":@"EditTextCell",@"value":json[@"result"][@"license_id"] }]
+                   ];
+        _list=[NSMutableArray arrayWithArray: @[
+               /*@{@"count" : @1,@"list":@[@{@"cell":@"IntroduceCell"}],@"height":@100.0f},*/
+               @{@"count" : @3,@"list":items,@"height":@44.0f},
+               //@{@"count" : @1,@"cell":@"OneButtonCell",@"list":@[],@"height":@44.0f}
+               ]];
+        [self.tableView reloadData];
+    }];
+    
     self.title = @"设置向导";
 }
 
@@ -54,6 +62,12 @@ NSString *inform1=@"设置向导第1步共3步";
     if([@"" isEqualToString:car_id]){
         [[[UIAlertView alloc] initWithTitle:AppTitle message:@"车牌号码不能为空！" delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定", nil] show];
         return;
+    }
+    NSString *vin=[parameters objectForKey:@"vin"];
+    if([@"" isEqualToString:car_id]){
+       /* [[[UIAlertView alloc] initWithTitle:AppTitle message:@"车牌号码不能为空！" delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定", nil] show];
+        return;
+        */
     }
     NSString *license_id = [parameters objectForKey:@"id_no"];
     if([@"" isEqualToString:license_id]){
@@ -87,7 +101,7 @@ NSString *inform1=@"设置向导第1步共3步";
     return;
     */
     
-    NSString *path =[NSString stringWithFormat:@"api/wizardstep1?userid=%d&car_id=%@&license_id=%@",[AppSettings sharedSettings].userid, car_id,license_id];
+    NSString *path =[NSString stringWithFormat:@"api/wizardstep1?userid=%d&car_id=%@&license_id=%@&vin=%@",[AppSettings sharedSettings].userid, car_id,license_id,vin];
     
     [[HttpClient sharedHttp] get:path block:^(id json) {
         NSLog(@"%@",json);

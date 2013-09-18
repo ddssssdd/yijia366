@@ -47,7 +47,7 @@
         NSString *defaultPhone=@"";
         _list=[NSArray arrayWithObjects:[[MenuItem alloc] initWithName:@"01" title:@"最新信息" description:defaultInfo imagePath:@"0001.png" phone:defaultPhone],
             [[MenuItem alloc] initWithName:@"02" title:@"紧急救助" description:defaultInfo imagePath:@"0002.png" phone:defaultPhone],
-            [[MenuItem alloc] initWithName:@"03" title:@"事故救援" description:defaultInfo imagePath:@"0003.png" phone:defaultPhone],
+            /*[[MenuItem alloc] initWithName:@"03" title:@"事故救援" description:defaultInfo imagePath:@"0003.png" phone:defaultPhone],*/
             [[MenuItem alloc] initWithName:@"04" title:@"保养建议" description:defaultInfo imagePath:@"0004.png" phone:defaultPhone],
             [[MenuItem alloc] initWithName:@"12" title:@"车务服务" description:defaultInfo imagePath:@"0004.png" phone:defaultPhone],
                
