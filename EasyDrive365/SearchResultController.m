@@ -85,6 +85,11 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    id item = [_list objectAtIndex:indexPath.row];
+    ShowLocationViewController *vc = [[ShowLocationViewController alloc] initWithNibName:@"ShowLocationViewController" bundle:nil];
+    vc.isFull = NO;
+    [self.navigationController pushViewController:vc animated:YES];
+    [vc showSingleShop:item];
     
 }
 

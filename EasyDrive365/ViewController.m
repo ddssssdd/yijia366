@@ -58,10 +58,11 @@
     self.tabBar.delegate = self;
     
     UITabBarItem *item1=[[UITabBarItem alloc] initWithTitle:@"地图" image:[UIImage imageNamed:@"0087.png"] tag:0];
-    UITabBarItem *item3 = [[UITabBarItem alloc] initWithTitle:@"帮助" image:[UIImage imageNamed:@"0085.png"] tag:2];
-    [self.tabBar setItems:@[item1,
-     [[UITabBarItem alloc] initWithTitle:@"易驾百科" image:[UIImage imageNamed:@"0017.png"] tag:1],
-     item3]];
+    //UITabBarItem *item2 =[[UITabBarItem alloc] initWithTitle:@"易驾百科" image:[UIImage imageNamed:@"0017.png"] tag:1];
+    //UITabBarItem *item3 = [[UITabBarItem alloc] initWithTitle:@"帮助" image:[UIImage imageNamed:@"0085.png"] tag:2];
+    [self.tabBar setItems:@[item1/*,
+     item2,
+     item3*/]];
     [self.tabBar setSelectedItem:nil];
     
 }

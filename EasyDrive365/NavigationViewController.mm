@@ -88,7 +88,7 @@
 {
     [super viewDidLoad];
     _search = [[BMKSearch alloc] init];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Ways" style:UIBarButtonItemStyleDone target:self action:@selector(checkWaypoints)];
+    //self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Ways" style:UIBarButtonItemStyleDone target:self action:@selector(checkWaypoints)];
 }
 
 - (void)didReceiveMemoryWarning

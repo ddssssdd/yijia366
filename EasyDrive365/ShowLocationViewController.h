@@ -16,5 +16,6 @@
 -(void)showMineLocation:(CGFloat)latitude longtitude:(CGFloat)longtitude;
 
 -(void)showShop:(id)list;
+-(void)showSingleShop:(id)shop;
 
 @end

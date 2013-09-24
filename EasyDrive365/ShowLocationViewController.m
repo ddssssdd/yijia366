@@ -146,7 +146,9 @@
     annotation.coordinate = coor;
     annotation.title = title;
     annotation.subtitle = description;
+
     [_mapView addAnnotation:annotation];
+    
     [_list addObject:@{@"item":item,@"point":annotation}];
 }
 -(void)showShop:(id)list{
@@ -166,6 +168,21 @@
             [_mapView setCenterCoordinate:coor];
         }
     }
+}
+-(void)showSingleShop:(id)item{
+    
+    if (_list){
+        [_list removeAllObjects];
+    }else{
+        _list = [[NSMutableArray alloc] init];
+    }
+    [self createPin:[item[@"y"] floatValue] longtitude:[item[@"x"] floatValue] title:item[@"name"] description:item[@"phone"] item:item];
+    CLLocationCoordinate2D coor;
+    coor.latitude = [item[@"y"] floatValue];
+    coor.longitude = [item[@"x"] floatValue];
+    [_mapView setCenterCoordinate:coor];
+    self.title = item[@"name"];
+
 }
 -(void)showMineLocation:(CGFloat)latitude longtitude:(CGFloat)longtitude{
     CLLocationCoordinate2D coor;
