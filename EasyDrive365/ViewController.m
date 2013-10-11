@@ -30,6 +30,9 @@
 {
     [super viewDidLoad];
     
+    if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    
     self.title = AppTitle;
     
     self.tableview.delegate = self;

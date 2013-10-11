@@ -15,8 +15,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *keyLabel;
 @property (weak, nonatomic) IBOutlet UITextField *valueText;
 @property (strong,nonatomic) NSString *key;
+@property (nonatomic) id targetObject;
 
 @property (weak, nonatomic) IBOutlet UILabel *lblUnit;
 
 -(void)setUnit:(NSString *)unit;
+-(void)textChanged:(id)sender;
 @end

@@ -127,6 +127,7 @@
         aCell.valueText.placeholder = item[@"placeholder"];
         aCell.valueText.autocapitalizationType = UITextAutocapitalizationTypeNone;
         aCell.valueText.secureTextEntry =NO;
+        aCell.targetObject = item;
         if ([item[@"ispassword"] isEqualToString:@"yes"]){
             aCell.valueText.secureTextEntry=YES;
         }else if ([item[@"ispassword"] isEqualToString:@"number"]){
@@ -143,6 +144,8 @@
         id input_disable = item[@"disable"];
         if (input_disable){
             aCell.valueText.enabled = NO;
+        }else{
+            [aCell.valueText addTarget:aCell action:@selector(textChanged:) forControlEvents:UIControlEventEditingChanged];
         }
     }else if ([cellCalssName isEqualToString:@"OneButtonCell"]){
         OneButtonCell *aCell =(OneButtonCell *)cell;
@@ -247,6 +250,7 @@
 }
 -(void)done{
     NSMutableDictionary *_result =[[NSMutableDictionary alloc] init];
+    /*
     for (UIView *v in [self.tableView subviews]) {
         if ([v isKindOfClass:[EditTextCell class]]){
             EditTextCell *cell = (EditTextCell *)v;
@@ -256,8 +260,15 @@
             [_result setObject:cell.targetObject[@"value"] forKey:cell.targetObject[@"key"]];
         }
         
+    }*/
+    for(id temp in _list){
+        for(id item in temp[@"list"]){
+            if (item && item[@"key"] && item[@"value"]){
+                [_result setObject:item[@"value"] forKey:item[@"key"]];
+            }
+        }
     }
-    //NSLog(@"%@",_result);
+    NSLog(@"%@",_result);
     [self processSaving:_result];
     
 }

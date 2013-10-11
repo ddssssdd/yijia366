@@ -26,7 +26,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
+        self.edgesForExtendedLayout = UIRectEdgeNone;
     _refreshHelper = [[RefreshHelper alloc] initWithDelegate:self];
     [_refreshHelper setupTableView:self.tableView parentView:self.view];
      self.clearsSelectionOnViewWillAppear = NO;

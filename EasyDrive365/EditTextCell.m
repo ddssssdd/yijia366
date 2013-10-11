@@ -33,4 +33,11 @@
     self.lblUnit.text = unit;
 }
 
+-(void)textChanged:(id)sender{
+    //NSLog(@"%@",sender);
+    if (self.targetObject){
+        self.targetObject[@"value"]=[(UITextField*)sender text];
+    }
+}
+
 @end
