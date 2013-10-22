@@ -24,6 +24,15 @@
 #import "ShowActivateTableController.h"
 #import "SignupStep1ViewController.h"
 #import "NewActivateViewController.h"
+#import "CardViewController.h"
+#import "AddCardStep1ControllerViewController.h"
+
+#define SECTION_CARD 0
+#define SECTION_SETUP 1
+#define SECTION_SYSTEM 2
+#define SECTION_FEEDBACK 3
+
+
 @interface SettingsViewController ()<ButtonViewControllerDelegate,UIAlertViewDelegate>{
     EditMaintainDataSource *_maintainDatasource;
     EditDriverLicenseDataSource *_driverDatasource;
@@ -131,6 +140,22 @@
     }];
 }
 -(void)init_dataSource{
+    id items_new=@[
+                [[NSMutableDictionary alloc] initWithDictionary:
+                 @{@"key" :@"card_view",
+                 @"label":@"保险卡单查看",
+                 @"default":@"",
+                 @"placeholder":@"",
+                 @"value":@"",
+                 @"cell":@"ChooseNextCell" }],
+                [[NSMutableDictionary alloc] initWithDictionary:
+                 @{@"key" :@"card_setup",
+                 @"label":@"保险卡单激活",
+                 @"default":@"",
+                 @"placeholder":
+                 @"",@"value":@"",
+                 @"cell":@"ChooseNextCell" }]
+                ];
     id items=@[
     [[NSMutableDictionary alloc] initWithDictionary:
      @{@"key" :@"feedback",
@@ -214,8 +239,8 @@
      @"cell":@"ChooseNextCell" }]];
     _list=[NSMutableArray arrayWithArray: @[
            /*@{@"count" : @1,@"list":@[@{@"cell":@"IntroduceCell"}],@"height":@100.0f,@"header":@"",@"footer":@""},*/
-           
-           @{@"count" : @2,@"list":items2,@"height":@44.0f,@"header":@"我的车辆",@"footer":@""},
+           @{@"count" : @2,@"list":items_new,@"height":@44.0f,@"header":@"",@"footer":@""},
+           @{@"count" : @2,@"list":items2,@"height":@44.0f,@"header":@"",@"footer":@""},
            @{@"count" : @3,@"list":items3,@"height":@44.0f,@"header":@"",@"footer":@""},
            @{@"count" : @3,@"list":items,@"height":@44.0f,@"header":@"",@"footer":@""},
            ]];
@@ -229,7 +254,7 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    if (indexPath.section==0){
+    if (indexPath.section==SECTION_SETUP){
         if (indexPath.row==0){
             [self open_maintain_setup];
         }else if (indexPath.row==1){
@@ -239,7 +264,7 @@
             [self open_car_setup];
         }
        
-    }else if (indexPath.section==1){
+    }else if (indexPath.section==SECTION_SYSTEM){
         if (indexPath.row==0){
             ResetPasswordViewController *vc = [[ResetPasswordViewController alloc] initWithStyle:UITableViewStyleGrouped];
             [self.navigationController pushViewController:vc animated:YES];
@@ -259,7 +284,7 @@
                 
             }
         }
-    }else if (indexPath.section==2){
+    }else if (indexPath.section==SECTION_FEEDBACK){
         if (indexPath.row==1){
             [AppSettings sharedSettings].isCancelUpdate = NO;
             [[AppSettings sharedSettings] check_update:YES];
@@ -286,6 +311,16 @@
                 [self.navigationController pushViewController:vc animated:YES];
             }
              */
+        }
+    }else if (indexPath.section==SECTION_CARD){
+        if (indexPath.row==0){
+            //view card
+            CardViewController *vc = [[CardViewController alloc] initWithStyle:UITableViewStyleGrouped];
+            [self.navigationController pushViewController:vc animated:YES];
+        }else{
+            //add card
+            AddCardStep1ControllerViewController *vc =[[AddCardStep1ControllerViewController alloc] initWithStyle:UITableViewStyleGrouped];
+            [self.navigationController pushViewController:vc animated:YES];
         }
     }
     NSLog(@"%@",indexPath);
@@ -384,7 +419,7 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:@"logout" object:nil];
 }
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
-    if (section==2){
+    if (section==SECTION_FEEDBACK){
         if (!logoutView){
             logoutView = [[ButtonViewController alloc] initWithNibName:@"ButtonViewController" bundle:nil];
             NSLog(@"%@",logoutView.button);
@@ -398,7 +433,7 @@
     }
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-    if (section==2){
+    if (section==SECTION_FEEDBACK){
         return 80;
     }else{
         return 22;

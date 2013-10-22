@@ -15,6 +15,7 @@
 #import "DatePickerViewController.h"
 #import "LicenseTypeViewController.h"
 #import "PickupData.h"
+#import "TextLabelCell.h"
 
 @interface CustomEditTableViewController ()<UITextFieldDelegate,SwitchCellDelegate,OneButtonCellDelegate,PickupData>{
     UITextField *_lastTextField;
@@ -172,6 +173,9 @@
         aCell.lblTitle.text = item[@"label"];
         aCell.lblDescription.text = item[@"value"];
         //cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    }else if ([cellCalssName isEqualToString:@"TextLableCell"]){
+        TextLabelCell *aCell = (TextLabelCell *)cell;
+        aCell.text.text = item[@"label"];
     }else if ([cellCalssName isEqualToString:@"default"]){
         cell.textLabel.text = item[@"label"];
         cell.detailTextLabel.text = item[@"value"];

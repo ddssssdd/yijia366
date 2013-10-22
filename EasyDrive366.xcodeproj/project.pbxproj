@@ -40,6 +40,10 @@
 		E2296D4616B760EC00E332D9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2296D4516B760EC00E332D9 /* ViewController.m */; };
 		E2296D4E16B7625800E332D9 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2296D4D16B7625800E332D9 /* LoginViewController.m */; };
 		E2296D5116B7723F00E332D9 /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2296D5016B7723F00E332D9 /* SignupViewController.m */; };
+		E23386481816BA0C0035C405 /* SingleCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E23386471816BA0C0035C405 /* SingleCardViewController.m */; };
+		E233864B1816C4D70035C405 /* AddCardStep1ControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E233864A1816C4D70035C405 /* AddCardStep1ControllerViewController.m */; };
+		E233864E1816CA020035C405 /* TextLabelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E233864D1816CA020035C405 /* TextLabelCell.m */; };
+		E23386521816CADF0035C405 /* TextLabelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E23386511816CADF0035C405 /* TextLabelCell.xib */; };
 		E23BA0E017215E770049D2CB /* SwitchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E23BA0DF17215E770049D2CB /* SwitchCell.m */; };
 		E23BA0E317215E910049D2CB /* SwitchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E23BA0E217215E910049D2CB /* SwitchCell.xib */; };
 		E23BA0E617216B600049D2CB /* ChooseNextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E23BA0E517216B600049D2CB /* ChooseNextCell.m */; };
@@ -152,6 +156,7 @@
 		E2C1626316EA1C5400B0E9EC /* OneButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2C1626216EA1C5300B0E9EC /* OneButtonCell.xib */; };
 		E2C1626616EA23F100B0E9EC /* CustomEditTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2C1626516EA23F100B0E9EC /* CustomEditTableViewController.m */; };
 		E2C1626916EA2D8100B0E9EC /* SignUpTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2C1626816EA2D8100B0E9EC /* SignUpTableViewController.m */; };
+		E2CB6D361815663700441F32 /* CardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2CB6D351815663700441F32 /* CardViewController.m */; };
 		E2DBBE9B1722BE2500493DD9 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2DBBE9A1722BE2500493DD9 /* SettingsViewController.m */; };
 		E2E6647C17D895CF00AC85BA /* TakePhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E6647A17D895CF00AC85BA /* TakePhotoViewController.m */; };
 		E2E6647D17D895CF00AC85BA /* TakePhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2E6647B17D895CF00AC85BA /* TakePhotoViewController.xib */; };
@@ -291,6 +296,13 @@
 		E2296D4D16B7625800E332D9 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		E2296D4F16B7723F00E332D9 /* SignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignupViewController.h; sourceTree = "<group>"; };
 		E2296D5016B7723F00E332D9 /* SignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignupViewController.m; sourceTree = "<group>"; };
+		E23386461816BA0C0035C405 /* SingleCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleCardViewController.h; sourceTree = "<group>"; };
+		E23386471816BA0C0035C405 /* SingleCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleCardViewController.m; sourceTree = "<group>"; };
+		E23386491816C4D70035C405 /* AddCardStep1ControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddCardStep1ControllerViewController.h; sourceTree = "<group>"; };
+		E233864A1816C4D70035C405 /* AddCardStep1ControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddCardStep1ControllerViewController.m; sourceTree = "<group>"; };
+		E233864C1816CA020035C405 /* TextLabelCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextLabelCell.h; sourceTree = "<group>"; };
+		E233864D1816CA020035C405 /* TextLabelCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextLabelCell.m; sourceTree = "<group>"; };
+		E23386511816CADF0035C405 /* TextLabelCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextLabelCell.xib; sourceTree = "<group>"; };
 		E23BA0DE17215E770049D2CB /* SwitchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwitchCell.h; sourceTree = "<group>"; };
 		E23BA0DF17215E770049D2CB /* SwitchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwitchCell.m; sourceTree = "<group>"; };
 		E23BA0E217215E910049D2CB /* SwitchCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SwitchCell.xib; sourceTree = "<group>"; };
@@ -483,6 +495,8 @@
 		E2C1626516EA23F100B0E9EC /* CustomEditTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomEditTableViewController.m; sourceTree = "<group>"; };
 		E2C1626716EA2D8100B0E9EC /* SignUpTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpTableViewController.h; sourceTree = "<group>"; };
 		E2C1626816EA2D8100B0E9EC /* SignUpTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpTableViewController.m; sourceTree = "<group>"; };
+		E2CB6D341815663700441F32 /* CardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardViewController.h; sourceTree = "<group>"; };
+		E2CB6D351815663700441F32 /* CardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardViewController.m; sourceTree = "<group>"; };
 		E2DBBE991722BE2500493DD9 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		E2DBBE9A1722BE2500493DD9 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		E2E6647917D895CF00AC85BA /* TakePhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TakePhotoViewController.h; sourceTree = "<group>"; };
@@ -957,6 +971,19 @@
 			name = information;
 			sourceTree = "<group>";
 		};
+		E2CB6D331815646F00441F32 /* inscard */ = {
+			isa = PBXGroup;
+			children = (
+				E2CB6D341815663700441F32 /* CardViewController.h */,
+				E2CB6D351815663700441F32 /* CardViewController.m */,
+				E23386461816BA0C0035C405 /* SingleCardViewController.h */,
+				E23386471816BA0C0035C405 /* SingleCardViewController.m */,
+				E23386491816C4D70035C405 /* AddCardStep1ControllerViewController.h */,
+				E233864A1816C4D70035C405 /* AddCardStep1ControllerViewController.m */,
+			);
+			name = inscard;
+			sourceTree = "<group>";
+		};
 		E2E6647817D895AC00AC85BA /* Photo */ = {
 			isa = PBXGroup;
 			children = (
@@ -1067,6 +1094,9 @@
 				E2235499172A8F8E00DDC015 /* ButtonViewController.h */,
 				E223549A172A8F8E00DDC015 /* ButtonViewController.m */,
 				E223549B172A8F8E00DDC015 /* ButtonViewController.xib */,
+				E233864C1816CA020035C405 /* TextLabelCell.h */,
+				E233864D1816CA020035C405 /* TextLabelCell.m */,
+				E23386511816CADF0035C405 /* TextLabelCell.xib */,
 			);
 			name = Components;
 			sourceTree = "<group>";
@@ -1074,6 +1104,7 @@
 		E2EE653916C5294A00ED1C73 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				E2CB6D331815646F00441F32 /* inscard */,
 				E2E6689917DF665F00AC85BA /* barcode */,
 				E2E6647817D895AC00AC85BA /* Photo */,
 				E2611B8017CB7C9500E92897 /* map */,
@@ -1391,6 +1422,7 @@
 				E2F9C3D017E9F31A00D75359 /* 0017@2x.png in Resources */,
 				E2F9C3D317E9F36100D75359 /* 0085.png in Resources */,
 				E2F9C3D417E9F36100D75359 /* 0085@2x.png in Resources */,
+				E23386521816CADF0035C405 /* TextLabelCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1522,6 +1554,10 @@
 				E2E668A117DF6C1800AC85BA /* TPKeyboardAvoidingScrollView.m in Sources */,
 				E2F9C3DA17E9F5C900D75359 /* SearchShopController.m in Sources */,
 				E2F9C3DD17E9FFB800D75359 /* SearchResultController.m in Sources */,
+				E2CB6D361815663700441F32 /* CardViewController.m in Sources */,
+				E23386481816BA0C0035C405 /* SingleCardViewController.m in Sources */,
+				E233864B1816C4D70035C405 /* AddCardStep1ControllerViewController.m in Sources */,
+				E233864E1816CA020035C405 /* TextLabelCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

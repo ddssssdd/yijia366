@@ -21,9 +21,14 @@
 
 -(void)viewDidLoad{
     [super viewDidLoad];
+#if __IPHONE_OS_VERSION_MAX_ALLOWED > __IPHONE_6_1
     if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
         self.edgesForExtendedLayout = UIRectEdgeNone;
-    
+
+#else
+    // iPhone OS SDK 3.0 之前版本的处理
+#endif
+        
     
     _helper =[[HttpHelper alloc] initWithTarget:self];
     if (_reloadDirectly){
