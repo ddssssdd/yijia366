@@ -8,6 +8,7 @@
 
 #import "AddCardStep1ControllerViewController.h"
 #import "AppSettings.h"
+#import "AddCardStep2Controller.h"
 
 @interface AddCardStep1ControllerViewController ()
 
@@ -48,7 +49,7 @@
     NSString *url = [NSString stringWithFormat:@"api/add_inscard_step0?userid=%d",[AppSettings sharedSettings].userid];
     [[AppSettings sharedSettings].http get:url block:^(id json) {
         id items=@[
-                   [[NSMutableDictionary alloc] initWithDictionary:@{@"key" :@"card",@"label":@"激活码：",@"default":@"",@"placeholder":@"输入激活码",@"ispassword":@"capital",@"cell":@"EditTextCell",@"value":@"" }],
+                   [[NSMutableDictionary alloc] initWithDictionary:@{@"key" :@"code",@"label":@"激活码：",@"default":@"",@"placeholder":@"输入激活码",@"ispassword":@"capital",@"cell":@"EditTextCell",@"value":@"" }],
                    
                    [[NSMutableDictionary alloc] initWithDictionary:@{@"key" :@"button",@"label":@"激活卡片",@"default":@"",@"placeholder":@"",@"ispassword":@"capital",@"cell":@"OneButtonCell",@"value":@""}]
                    ];
@@ -76,15 +77,24 @@
 }
 -(void)processSaving:(NSMutableDictionary *)parameters{
     
-    
-    NSString *path =[NSString stringWithFormat:@"api/wizardstep1?userid=%d&car_id=%@&license_id=%@&vin=%@",[AppSettings sharedSettings].userid, @"",@"",@""];
+    NSString *code = parameters[@"code"];
+    NSString *path =[NSString stringWithFormat:@"api/add_inscard_step1?userid=%d&code=%@",[AppSettings sharedSettings].userid, code];
     
     [[HttpClient sharedHttp] get:path block:^(id json) {
         NSLog(@"%@",json);
         if ([[AppSettings sharedSettings] isSuccess:json]){
-            
+            if (json[@"result"][@"data"][@"number"]){
+                NSString *number = json[@"result"][@"data"][@"number"];
+                AddCardStep2Controller *vc =[[AddCardStep2Controller alloc] initWithStyle:UITableViewStyleGrouped];
+                vc.number = number;
+                [self.navigationController pushViewController:vc animated:YES];
+            }
         }
     }];
+}
+
+-(void)buttonPress:(OneButtonCell *)sender{
+    [self done];
 }
 
 @end

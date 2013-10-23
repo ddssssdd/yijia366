@@ -30,9 +30,11 @@
 {
     [super viewDidLoad];
     self.title = @"保险卡单查看";
-
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"设置" style:UIBarButtonSystemItemAction target:self action:@selector(backToSettings)];
 }
-
+-(void)backToSettings{
+    [self.navigationController popToViewController:[[self.navigationController viewControllers] objectAtIndex:1]  animated:YES];
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

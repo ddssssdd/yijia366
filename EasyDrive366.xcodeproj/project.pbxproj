@@ -157,6 +157,7 @@
 		E2C1626616EA23F100B0E9EC /* CustomEditTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2C1626516EA23F100B0E9EC /* CustomEditTableViewController.m */; };
 		E2C1626916EA2D8100B0E9EC /* SignUpTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2C1626816EA2D8100B0E9EC /* SignUpTableViewController.m */; };
 		E2CB6D361815663700441F32 /* CardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2CB6D351815663700441F32 /* CardViewController.m */; };
+		E2CCBBD71817E2CF008DC8F6 /* AddCardStep2Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = E2CCBBD61817E2CF008DC8F6 /* AddCardStep2Controller.m */; };
 		E2DBBE9B1722BE2500493DD9 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2DBBE9A1722BE2500493DD9 /* SettingsViewController.m */; };
 		E2E6647C17D895CF00AC85BA /* TakePhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E6647A17D895CF00AC85BA /* TakePhotoViewController.m */; };
 		E2E6647D17D895CF00AC85BA /* TakePhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2E6647B17D895CF00AC85BA /* TakePhotoViewController.xib */; };
@@ -497,6 +498,8 @@
 		E2C1626816EA2D8100B0E9EC /* SignUpTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpTableViewController.m; sourceTree = "<group>"; };
 		E2CB6D341815663700441F32 /* CardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardViewController.h; sourceTree = "<group>"; };
 		E2CB6D351815663700441F32 /* CardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardViewController.m; sourceTree = "<group>"; };
+		E2CCBBD51817E2CF008DC8F6 /* AddCardStep2Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddCardStep2Controller.h; sourceTree = "<group>"; };
+		E2CCBBD61817E2CF008DC8F6 /* AddCardStep2Controller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddCardStep2Controller.m; sourceTree = "<group>"; };
 		E2DBBE991722BE2500493DD9 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		E2DBBE9A1722BE2500493DD9 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		E2E6647917D895CF00AC85BA /* TakePhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TakePhotoViewController.h; sourceTree = "<group>"; };
@@ -980,6 +983,8 @@
 				E23386471816BA0C0035C405 /* SingleCardViewController.m */,
 				E23386491816C4D70035C405 /* AddCardStep1ControllerViewController.h */,
 				E233864A1816C4D70035C405 /* AddCardStep1ControllerViewController.m */,
+				E2CCBBD51817E2CF008DC8F6 /* AddCardStep2Controller.h */,
+				E2CCBBD61817E2CF008DC8F6 /* AddCardStep2Controller.m */,
 			);
 			name = inscard;
 			sourceTree = "<group>";
@@ -1558,6 +1563,7 @@
 				E23386481816BA0C0035C405 /* SingleCardViewController.m in Sources */,
 				E233864B1816C4D70035C405 /* AddCardStep1ControllerViewController.m in Sources */,
 				E233864E1816CA020035C405 /* TextLabelCell.m in Sources */,
+				E2CCBBD71817E2CF008DC8F6 /* AddCardStep2Controller.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

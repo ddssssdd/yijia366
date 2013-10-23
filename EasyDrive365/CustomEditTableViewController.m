@@ -94,6 +94,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    /*
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
@@ -107,7 +108,17 @@
         }
     
        
+    }*/
+    UITableViewCell *cell;
+    
+    NSString *cellCalssName = [[_list objectAtIndex:indexPath.section][@"list"] objectAtIndex:indexPath.row][@"cell"];
+    NSLog(@"%@",cellCalssName);
+    if ([cellCalssName isEqualToString:@"default"]){
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil];
+    }else{
+        cell= [[[NSBundle mainBundle] loadNibNamed:cellCalssName owner:nil options:nil] objectAtIndex:0];
     }
+    
     [self setupCell:cell indexPath:indexPath];
     return cell;
 }
@@ -173,7 +184,7 @@
         aCell.lblTitle.text = item[@"label"];
         aCell.lblDescription.text = item[@"value"];
         //cell.accessoryType = UITableViewCellAccessoryCheckmark;
-    }else if ([cellCalssName isEqualToString:@"TextLableCell"]){
+    }else if ([cellCalssName isEqualToString:@"TextLabelCell"]){
         TextLabelCell *aCell = (TextLabelCell *)cell;
         aCell.text.text = item[@"label"];
     }else if ([cellCalssName isEqualToString:@"default"]){
