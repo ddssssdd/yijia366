@@ -67,7 +67,7 @@
 
 -(NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section{
     if (section==1){
-        return @"Step1";
+        return @"激活卡单第一步";
     }else{
         return  Nil;
     }
@@ -78,6 +78,11 @@
 -(void)processSaving:(NSMutableDictionary *)parameters{
     
     NSString *code = parameters[@"code"];
+    
+    if([@"" isEqualToString:code]){
+        [[[UIAlertView alloc] initWithTitle:AppTitle message:@"请输入激活码！" delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定", nil] show];
+        return;
+    }
     NSString *path =[NSString stringWithFormat:@"api/add_inscard_step1?userid=%d&code=%@",[AppSettings sharedSettings].userid, code];
     
     [[HttpClient sharedHttp] get:path block:^(id json) {

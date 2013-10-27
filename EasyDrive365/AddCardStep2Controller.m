@@ -73,7 +73,7 @@
 
 -(NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section{
     if (section==1){
-        return @"Step2";
+        return @"激活卡单第二步";
     }else{
         return  Nil;
     }
@@ -96,6 +96,63 @@
     }
     
     
+    if ([name isEqualToString:@""]){
+        [[[UIAlertView alloc] initWithTitle:AppTitle message:@"请输入姓名！" delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定", nil] show];
+        return;
+    }
+    if ([identity isEqualToString:@""]){
+        [[[UIAlertView alloc] initWithTitle:AppTitle message:@"请输入身份证！" delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定", nil] show];
+        return;
+    }else{
+        if ([identity length]!=18){
+            [[[UIAlertView alloc] initWithTitle:@"易驾366" message:@"身份证号码必须18位" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil] show];
+            return;
+        }
+        NSString *temp =[identity stringByTrimmingCharactersInSet:[NSCharacterSet decimalDigitCharacterSet]];
+
+        if (([temp length]==0) || (([temp length]==1) && ([identity hasSuffix:@"X"]))){
+            
+            
+        }else{
+            [[[UIAlertView alloc] initWithTitle:@"易驾366" message:@"身份证号码必须18位,只有最后一位允许是X" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil] show];
+            return;
+        }
+
+    }
+    if ([cell isEqualToString:@""]){
+        [[[UIAlertView alloc] initWithTitle:AppTitle message:@"请输入电话好吗！" delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定", nil] show];
+        return;
+    }
+    if ([address isEqualToString:@""]){
+        [[[UIAlertView alloc] initWithTitle:AppTitle message:@"请输入地址！" delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定", nil] show];
+        return;
+    }
+    
+    if (bf){
+        if ([bf_name isEqualToString:@""]){
+            [[[UIAlertView alloc] initWithTitle:AppTitle message:@"请输入受益人姓名！" delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定", nil] show];
+            return;
+        }
+        if ([bf_identity isEqualToString:@""]){
+            [[[UIAlertView alloc] initWithTitle:AppTitle message:@"请输入受益人身份证！" delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定", nil] show];
+            return;
+        }else{
+            if ([bf_identity length]!=18){
+                [[[UIAlertView alloc] initWithTitle:@"易驾366" message:@"受益人身份证号码必须18位" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil] show];
+                return;
+            }
+            NSString *temp =[bf_identity stringByTrimmingCharactersInSet:[NSCharacterSet decimalDigitCharacterSet]];
+            
+            if (([temp length]==0) || (([temp length]==1) && ([bf_identity hasSuffix:@"X"]))){
+                
+                
+            }else{
+                [[[UIAlertView alloc] initWithTitle:@"易驾366" message:@"受益人身份证号码必须18位,只有最后一位允许是X" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil] show];
+                return;
+            }
+            
+        }
+    }
     NSString *path =[NSString stringWithFormat:@"api/add_inscard_step2?userid=%d&number=%@&insured_name=%@&insured_idcard=%@&insured_phone=%@&insured_address=%@&is_agreed_bf=%@&bf_name=%@&bf_id=%@",[AppSettings sharedSettings].userid, self.number,name,identity,cell,address,bf?@"true":@"false",bf_name,bf_identity];
     
     [[HttpClient sharedHttp] get:path block:^(id json) {
