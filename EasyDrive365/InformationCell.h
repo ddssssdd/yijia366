@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TDBadgedCell.h"
 
-@interface InformationCell : UITableViewCell
+@interface InformationCell : TDBadgedCell
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 
 @property (weak, nonatomic) IBOutlet UILabel *detailLabel;

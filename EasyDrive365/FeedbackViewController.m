@@ -10,7 +10,11 @@
 #import "HttpClient.h"
 #import "AppSettings.h"
 #import <QuartzCore/QuartzCore.h>
-@interface FeedbackViewController ()<UITextViewDelegate,UIAlertViewDelegate>
+
+
+@interface FeedbackViewController ()<UITextViewDelegate,UIAlertViewDelegate>{
+    id _list;
+}
 
 @end
 
@@ -36,7 +40,14 @@
     self.txtfeedback.layer.borderWidth = 2.0f;
     self.txtfeedback.layer.borderColor = [[UIColor grayColor] CGColor];
     [self.txtfeedback becomeFirstResponder];
-
+    [self loadData];
+}
+-(void)loadData{
+    NSString *url = [NSString stringWithFormat:@"api/get_feedback_user?userid=%d",[AppSettings sharedSettings].userid];
+    [[[AppSettings sharedSettings] http] get:url block:^(id json) {
+        _list = json[@"result"][@"data"];
+        [self.tableView reloadData];
+    }];
 }
 
 -(void)textViewDidChange:(UITextView *)textView{
@@ -76,6 +87,23 @@
     [self setLblCount:nil];
     [self setTxtCommunication:nil];
     [self setBtnOK:nil];
+    [self setTableView:nil];
     [super viewDidUnload];
 }
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return [_list count];
+}
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    static NSString *cellIdentifier =@"cell1024";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    if (cell==nil){
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
+    }
+    id item = [_list objectAtIndex:indexPath.row];
+    cell.textLabel.text = item[@"user_name"];
+    cell.detailTextLabel.text = item[@"content"];
+    return cell;
+}
+
 @end

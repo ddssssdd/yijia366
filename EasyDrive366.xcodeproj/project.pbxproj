@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5104AA5F184F3AF9004B4D21 /* TDBadgedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5104AA5E184F3AF9004B4D21 /* TDBadgedCell.m */; };
 		E202E12816E0D7B400FDBD34 /* Insurance4ColumnsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E202E12716E0D7B400FDBD34 /* Insurance4ColumnsCell.m */; };
 		E202E12B16E0D7D100FDBD34 /* Insurance4ColumnsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E202E12A16E0D7D100FDBD34 /* Insurance4ColumnsCell.xib */; };
 		E202E12E16E0DC4300FDBD34 /* InsuranceFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = E202E12D16E0DC4300FDBD34 /* InsuranceFooterView.m */; };
@@ -247,6 +248,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5104AA5D184F3AF9004B4D21 /* TDBadgedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDBadgedCell.h; sourceTree = "<group>"; };
+		5104AA5E184F3AF9004B4D21 /* TDBadgedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDBadgedCell.m; sourceTree = "<group>"; };
 		E202E12616E0D7B400FDBD34 /* Insurance4ColumnsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Insurance4ColumnsCell.h; sourceTree = "<group>"; };
 		E202E12716E0D7B400FDBD34 /* Insurance4ColumnsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Insurance4ColumnsCell.m; sourceTree = "<group>"; };
 		E202E12A16E0D7D100FDBD34 /* Insurance4ColumnsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Insurance4ColumnsCell.xib; sourceTree = "<group>"; };
@@ -774,6 +777,8 @@
 		E24A041916CFBA2600B7A602 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				5104AA5D184F3AF9004B4D21 /* TDBadgedCell.h */,
+				5104AA5E184F3AF9004B4D21 /* TDBadgedCell.m */,
 				E2F9C3D117E9F36100D75359 /* 0085.png */,
 				E2F9C3D217E9F36100D75359 /* 0085@2x.png */,
 				E2F9C3C917E9F30A00D75359 /* 0004.png */,
@@ -1564,6 +1569,7 @@
 				E233864B1816C4D70035C405 /* AddCardStep1ControllerViewController.m in Sources */,
 				E233864E1816CA020035C405 /* TextLabelCell.m in Sources */,
 				E2CCBBD71817E2CF008DC8F6 /* AddCardStep2Controller.m in Sources */,
+				5104AA5F184F3AF9004B4D21 /* TDBadgedCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

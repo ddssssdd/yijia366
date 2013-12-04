@@ -86,6 +86,14 @@
     
     cell.titleLabel.text=[NSString stringWithFormat:@"%@",[item objectForKey:@"fmt_createDate"]];
     cell.detailLabel.text=[NSString stringWithFormat:@"%@",[item objectForKey:@"description"]];
+    id is_readed = item[@"is_readed"];
+    if ([is_readed intValue]==0){
+        cell.titleLabel.textColor = [UIColor redColor];
+        cell.detailLabel.textColor = [UIColor blueColor];
+        cell.badgeString = @"新";
+        cell.badgeColor = [UIColor redColor];
+
+    }
     return cell;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
