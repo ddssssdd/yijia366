@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		5104AA5F184F3AF9004B4D21 /* TDBadgedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5104AA5E184F3AF9004B4D21 /* TDBadgedCell.m */; };
+		5128E98B1850A45E00928906 /* FeedbackInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5128E98A1850A45E00928906 /* FeedbackInfoCell.xib */; };
+		5164183B18508CD400C1A792 /* FeedbackInputCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5164183A18508CD400C1A792 /* FeedbackInputCell.m */; };
+		5169E7C11850A3D100F510A7 /* FeedbackInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5169E7C01850A3D100F510A7 /* FeedbackInfoCell.m */; };
+		51E21C3518508DBE00202C29 /* FeedbackInputCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51E21C3418508DBE00202C29 /* FeedbackInputCell.xib */; };
+		51EB24C418508A9A0031B0E7 /* FeedbackController2.m in Sources */ = {isa = PBXBuildFile; fileRef = 51EB24C318508A9A0031B0E7 /* FeedbackController2.m */; };
 		E202E12816E0D7B400FDBD34 /* Insurance4ColumnsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E202E12716E0D7B400FDBD34 /* Insurance4ColumnsCell.m */; };
 		E202E12B16E0D7D100FDBD34 /* Insurance4ColumnsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E202E12A16E0D7D100FDBD34 /* Insurance4ColumnsCell.xib */; };
 		E202E12E16E0DC4300FDBD34 /* InsuranceFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = E202E12D16E0DC4300FDBD34 /* InsuranceFooterView.m */; };
@@ -250,6 +255,14 @@
 /* Begin PBXFileReference section */
 		5104AA5D184F3AF9004B4D21 /* TDBadgedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDBadgedCell.h; sourceTree = "<group>"; };
 		5104AA5E184F3AF9004B4D21 /* TDBadgedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDBadgedCell.m; sourceTree = "<group>"; };
+		5128E98A1850A45E00928906 /* FeedbackInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedbackInfoCell.xib; sourceTree = "<group>"; };
+		5164183918508CD400C1A792 /* FeedbackInputCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedbackInputCell.h; sourceTree = "<group>"; };
+		5164183A18508CD400C1A792 /* FeedbackInputCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedbackInputCell.m; sourceTree = "<group>"; };
+		5169E7BF1850A3D100F510A7 /* FeedbackInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedbackInfoCell.h; sourceTree = "<group>"; };
+		5169E7C01850A3D100F510A7 /* FeedbackInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedbackInfoCell.m; sourceTree = "<group>"; };
+		51E21C3418508DBE00202C29 /* FeedbackInputCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedbackInputCell.xib; sourceTree = "<group>"; };
+		51EB24C218508A9A0031B0E7 /* FeedbackController2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedbackController2.h; sourceTree = "<group>"; };
+		51EB24C318508A9A0031B0E7 /* FeedbackController2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedbackController2.m; sourceTree = "<group>"; };
 		E202E12616E0D7B400FDBD34 /* Insurance4ColumnsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Insurance4ColumnsCell.h; sourceTree = "<group>"; };
 		E202E12716E0D7B400FDBD34 /* Insurance4ColumnsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Insurance4ColumnsCell.m; sourceTree = "<group>"; };
 		E202E12A16E0D7D100FDBD34 /* Insurance4ColumnsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Insurance4ColumnsCell.xib; sourceTree = "<group>"; };
@@ -659,6 +672,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		51EB24C118508A6D0031B0E7 /* feedback */ = {
+			isa = PBXGroup;
+			children = (
+				51EB24C218508A9A0031B0E7 /* FeedbackController2.h */,
+				51EB24C318508A9A0031B0E7 /* FeedbackController2.m */,
+				5164183918508CD400C1A792 /* FeedbackInputCell.h */,
+				5164183A18508CD400C1A792 /* FeedbackInputCell.m */,
+				51E21C3418508DBE00202C29 /* FeedbackInputCell.xib */,
+				5169E7BF1850A3D100F510A7 /* FeedbackInfoCell.h */,
+				5169E7C01850A3D100F510A7 /* FeedbackInfoCell.m */,
+				5128E98A1850A45E00928906 /* FeedbackInfoCell.xib */,
+			);
+			name = feedback;
+			sourceTree = "<group>";
+		};
 		E2296D1A16B760EC00E332D9 = {
 			isa = PBXGroup;
 			children = (
@@ -1114,6 +1142,7 @@
 		E2EE653916C5294A00ED1C73 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				51EB24C118508A6D0031B0E7 /* feedback */,
 				E2CB6D331815646F00441F32 /* inscard */,
 				E2E6689917DF665F00AC85BA /* barcode */,
 				E2E6647817D895AC00AC85BA /* Photo */,
@@ -1433,6 +1462,8 @@
 				E2F9C3D317E9F36100D75359 /* 0085.png in Resources */,
 				E2F9C3D417E9F36100D75359 /* 0085@2x.png in Resources */,
 				E23386521816CADF0035C405 /* TextLabelCell.xib in Resources */,
+				51E21C3518508DBE00202C29 /* FeedbackInputCell.xib in Resources */,
+				5128E98B1850A45E00928906 /* FeedbackInfoCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1446,6 +1477,7 @@
 				E2F2880616F5929E00DAE1B8 /* EGORefreshTableHeaderView.h in Sources */,
 				E2F2880716F5929E00DAE1B8 /* EGORefreshTableHeaderView.m in Sources */,
 				E2F2880816F5929E00DAE1B8 /* blackArrow.png in Sources */,
+				5164183B18508CD400C1A792 /* FeedbackInputCell.m in Sources */,
 				E2F2880916F5929E00DAE1B8 /* blackArrow@2x.png in Sources */,
 				E2F2880A16F5929E00DAE1B8 /* blueArrow.png in Sources */,
 				E2F2880B16F5929E00DAE1B8 /* blueArrow@2x.png in Sources */,
@@ -1498,6 +1530,7 @@
 				E26CCF9D16D7B41600A35DA1 /* InfoAndPhoneCallCell.m in Sources */,
 				E26CCFAC16DA0D1300A35DA1 /* HelpHeaderView.m in Sources */,
 				E29B09E716DA40C4002449DE /* Reachability.m in Sources */,
+				5169E7C11850A3D100F510A7 /* FeedbackInfoCell.m in Sources */,
 				E29B09EC16DB9134002449DE /* BusinessInsViewController.m in Sources */,
 				E25D74BD16DE368D008307C7 /* NetTableViewController.m in Sources */,
 				E202E12816E0D7B400FDBD34 /* Insurance4ColumnsCell.m in Sources */,
@@ -1570,6 +1603,7 @@
 				E233864E1816CA020035C405 /* TextLabelCell.m in Sources */,
 				E2CCBBD71817E2CF008DC8F6 /* AddCardStep2Controller.m in Sources */,
 				5104AA5F184F3AF9004B4D21 /* TDBadgedCell.m in Sources */,
+				51EB24C418508A9A0031B0E7 /* FeedbackController2.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1653,7 +1687,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EasyDrive365/EasyDrive366-Prefix.pch";
 				INFOPLIST_FILE = "EasyDrive365/EasyDrive366-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -1675,7 +1709,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EasyDrive365/EasyDrive366-Prefix.pch";
 				INFOPLIST_FILE = "EasyDrive365/EasyDrive366-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",

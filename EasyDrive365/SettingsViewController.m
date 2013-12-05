@@ -26,6 +26,7 @@
 #import "NewActivateViewController.h"
 #import "CardViewController.h"
 #import "AddCardStep1ControllerViewController.h"
+#import "FeedbackController2.h"
 
 #define SECTION_CARD 0
 #define SECTION_SETUP 1
@@ -289,13 +290,15 @@
             [AppSettings sharedSettings].isCancelUpdate = NO;
             [[AppSettings sharedSettings] check_update:YES];
         }else if (indexPath.row==0){
-            FeedbackViewController *vc = [[FeedbackViewController alloc] initWithNibName:@"FeedbackViewController" bundle:nil];
+           /* FeedbackViewController *vc = [[FeedbackViewController alloc] initWithNibName:@"FeedbackViewController" bundle:nil];
             vc.btnOK.text = @"确定";
+            */
+            FeedbackController2 *vc = [[FeedbackController2 alloc] initWithStyle:UITableViewStyleGrouped];
             vc.title = @"意见反馈";
            
             [self.navigationController pushViewController:vc animated:YES];
             if (isbind==0){
-                vc.txtCommunication.text =_phone;
+                //vc.txtCommunication.text =_phone;
             }
         }else if (indexPath.row==2){
             NewActivateViewController *vc =[[NewActivateViewController alloc] initWithStyle:UITableViewStyleGrouped];
