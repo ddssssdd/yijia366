@@ -129,6 +129,12 @@
         [self.navigationController pushViewController:vc animated:YES];
         [vc loadInformation:item[@"id"]];
         return;
+    }else{
+        NSString *url =[NSString stringWithFormat:@"api/get_news_by_id?userid=%d&newsid=%@",[AppSettings sharedSettings].userid,item[@"id"]];
+        
+        [[AppSettings sharedSettings].http get:url block:^(id json) {
+           
+        }];
     }
     
     NSString *title = [[Menu sharedMenu] getTitleByKey:action];
