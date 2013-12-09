@@ -28,10 +28,10 @@
 #import "AddCardStep1ControllerViewController.h"
 #import "FeedbackController2.h"
 
-#define SECTION_CARD 0
-#define SECTION_SETUP 1
-#define SECTION_SYSTEM 2
-#define SECTION_FEEDBACK 3
+#define SECTION_CARD -1
+#define SECTION_SETUP 0
+#define SECTION_SYSTEM 1
+#define SECTION_FEEDBACK 2
 
 
 @interface SettingsViewController ()<ButtonViewControllerDelegate,UIAlertViewDelegate>{
@@ -240,7 +240,7 @@
      @"cell":@"ChooseNextCell" }]];
     _list=[NSMutableArray arrayWithArray: @[
            /*@{@"count" : @1,@"list":@[@{@"cell":@"IntroduceCell"}],@"height":@100.0f,@"header":@"",@"footer":@""},*/
-           @{@"count" : @2,@"list":items_new,@"height":@44.0f,@"header":@"",@"footer":@""},
+           //@{@"count" : @2,@"list":items_new,@"height":@44.0f,@"header":@"",@"footer":@""},
            @{@"count" : @2,@"list":items2,@"height":@44.0f,@"header":@"",@"footer":@""},
            @{@"count" : @3,@"list":items3,@"height":@44.0f,@"header":@"",@"footer":@""},
            @{@"count" : @3,@"list":items,@"height":@44.0f,@"header":@"",@"footer":@""},
