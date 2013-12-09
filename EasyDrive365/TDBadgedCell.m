@@ -258,10 +258,19 @@
 #else
 		CGSize badgeSize = [self.badgeString sizeWithFont:font];
 #endif
+        /*
 		CGRect badgeframe = CGRectMake(self.contentView.frame.size.width - (badgeSize.width + 13 + self.badgeRightOffset),
 									   (CGFloat)round((self.contentView.frame.size.height - (badgeSize.height + (50/badgeSize.height))) / 2),
 									   badgeSize.width + 13, badgeSize.height + (50/badgeSize.height));
 		
+         */
+        
+        //to make badge display of top 
+         CGRect badgeframe = CGRectMake(self.contentView.frame.size.width - (badgeSize.width + 13 + self.badgeRightOffset),
+         10,
+         badgeSize.width + 13, badgeSize.height + (50/badgeSize.height));
+         
+         
         // Enable shadows if we want them
 		if(self.showShadow)
 			[self.badge setShowShadow:YES];

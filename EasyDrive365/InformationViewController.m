@@ -107,6 +107,16 @@
     [[[UIAlertView alloc] initWithTitle:@"action" message:action delegate:self cancelButtonTitle:nil otherButtonTitles:@"go" , nil] show ];
     */
     
+    InformationCell *cell = (InformationCell *)[tableView cellForRowAtIndexPath:indexPath];
+    
+    cell.badgeString = nil;
+    
+    item[@"is_readed"]=@1;
+    [tableView beginUpdates];
+    [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+    [tableView endUpdates];
+    
+    
     NSLog(@"%@",item);
     NSString *action =item[@"action"];
     NSString *url = item[@"url"];
@@ -123,6 +133,7 @@
     
     NSString *title = [[Menu sharedMenu] getTitleByKey:action];
     [[Menu sharedMenu] pushToController:self.navigationController key:action title:title url:url];
+    
 }
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
@@ -152,7 +163,11 @@
     }else{
         _list =[[NSMutableArray alloc] init];
     }
-    [_list addObjectsFromArray:[json objectForKey:@"result"][@"data"]];
+    //[_list addObjectsFromArray:[json objectForKey:@"result"][@"data"]];
+    for (id item in json[@"result"][@"data"]) {
+        [_list addObject:[NSMutableDictionary dictionaryWithDictionary:item]];
+    }
+    
     _phone =json[@"result"][@"phone"];
     _company =json[@"result"][@"company"];
     [self.tableView reloadData];
