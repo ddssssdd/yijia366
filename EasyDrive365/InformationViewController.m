@@ -87,12 +87,14 @@
     cell.titleLabel.text=[NSString stringWithFormat:@"%@",[item objectForKey:@"fmt_createDate"]];
     cell.detailLabel.text=[NSString stringWithFormat:@"%@",[item objectForKey:@"description"]];
     id is_readed = item[@"is_readed"];
-    if ([is_readed intValue]==0){
-        cell.titleLabel.textColor = [UIColor redColor];
-        cell.detailLabel.textColor = [UIColor blueColor];
+    if ([is_readed intValue]==1){
+        //cell.titleLabel.textColor = [UIColor redColor];
+        //cell.detailLabel.textColor = [UIColor blueColor];
         cell.badgeString = @"新";
         cell.badgeColor = [UIColor redColor];
 
+    }else{
+        cell.titleLabel.frame = CGRectMake(20, 7, 187, 21);
     }
     return cell;
 }
@@ -111,7 +113,7 @@
     
     cell.badgeString = nil;
     
-    item[@"is_readed"]=@1;
+    item[@"is_readed"]=@0;
     [tableView beginUpdates];
     [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
     [tableView endUpdates];
