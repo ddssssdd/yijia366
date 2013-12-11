@@ -15,7 +15,13 @@
 #import "WelcomeViewController.h"
 #import "SettingsViewController.h"
 #import "ShowLocationViewController.h"
+#import "GoodsListController.h"
 
+
+#define TAG_MAP 0
+#define TAG_GOODS 1
+#define TAG_PROVIDER 2
+#define TAG_ARTICLE 3
 
 @interface ViewController ()<UITabBarDelegate>{
     NSMutableArray *_list;
@@ -60,20 +66,23 @@
     
     self.tabBar.delegate = self;
     
-    UITabBarItem *item1=[[UITabBarItem alloc] initWithTitle:@"地图" image:[UIImage imageNamed:@"0087.png"] tag:0];
-    //UITabBarItem *item2 =[[UITabBarItem alloc] initWithTitle:@"易驾百科" image:[UIImage imageNamed:@"0017.png"] tag:1];
-    //UITabBarItem *item3 = [[UITabBarItem alloc] initWithTitle:@"帮助" image:[UIImage imageNamed:@"0085.png"] tag:2];
-    [self.tabBar setItems:@[item1/*,
+    UITabBarItem *item1=[[UITabBarItem alloc] initWithTitle:@"地图" image:[UIImage imageNamed:@"0087.png"] tag:TAG_MAP];
+    UITabBarItem *item2 =[[UITabBarItem alloc] initWithTitle:@"商品" image:[UIImage imageNamed:@"0017.png"] tag:TAG_GOODS];
+    UITabBarItem *item3 = [[UITabBarItem alloc] initWithTitle:@"商户" image:[UIImage imageNamed:@"0085.png"] tag:TAG_PROVIDER];
+    [self.tabBar setItems:@[item1,
      item2,
-     item3*/]];
+     item3]];
     [self.tabBar setSelectedItem:nil];
     
 }
 -(void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item{
     NSLog(@"%@",item);
-    if (item.tag==0){
+    if (item.tag==TAG_MAP){
         ShowLocationViewController *vc = [[ShowLocationViewController alloc] initWithNibName:@"ShowLocationViewController" bundle:nil];
         vc.isFull = YES;
+        [self.navigationController pushViewController:vc animated:YES];
+    }else if (item.tag==TAG_GOODS){
+        GoodsListController *vc=[[GoodsListController alloc] initWithStyle:UITableViewStylePlain];
         [self.navigationController pushViewController:vc animated:YES];
     }
 }
