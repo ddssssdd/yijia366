@@ -11,6 +11,7 @@
 #import "ServiceType.h"
 #import "SearchResultController.h"
 #import "GoodsListController.h"
+#import "ProviderListController.h"
 
 @interface GoodsCategoryController ()<UISearchBarDelegate>{
     id _list;
@@ -37,7 +38,13 @@
     _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 170, 320, 44)];
     _searchBar.delegate = self;
     [[self tableView] setTableHeaderView:_searchBar];
-    self.title = @"商品分类";
+    if ([self.type isEqualToString:@"goods"]){
+        self.title = @"商品分类";
+    }else if ([self.type isEqualToString:@"provider"]){
+        self.title = @"商户分类";
+    }else{
+        self.title = @"baike";
+    }
 
 }
 
@@ -64,11 +71,25 @@
     vc.key = key;
     vc.types = types;
      */
-    GoodsListController *vc = [[GoodsListController alloc] initWithStyle:UITableViewStylePlain];
-    vc.isSearch = YES;
-    vc.searchKey = key;
-    vc.searchTypes = types;
-    [self.navigationController pushViewController:vc animated:YES];
+    
+    
+    if ([self.type isEqualToString:@"goods"]){
+
+        GoodsListController *vc = [[GoodsListController alloc] initWithStyle:UITableViewStylePlain];
+        vc.isSearch = YES;
+        vc.searchKey = key;
+        vc.searchTypes = types;
+        [self.navigationController pushViewController:vc animated:YES];
+    }else if ([self.type isEqualToString:@"provider"]){
+        ProviderListController *vc = [[ProviderListController alloc] initWithStyle:UITableViewStylePlain];
+        vc.isSearch = YES;
+        vc.searchKey = key;
+        vc.searchTypes = types;
+        [self.navigationController pushViewController:vc animated:YES];
+    }else{
+        self.title = @"baike";
+    }
+    
     
 }
 - (void)didReceiveMemoryWarning
@@ -79,7 +100,7 @@
 
 
 -(void)setup{
-    _helper.url=[NSString stringWithFormat:@"api/get_service_type?userid=%d&type=goods",[AppSettings sharedSettings].userid];
+    _helper.url=[NSString stringWithFormat:@"api/get_service_type?userid=%d&type=%@",[AppSettings sharedSettings].userid,self.type];
     
 }
 -(void)processData:(id)json{

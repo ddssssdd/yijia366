@@ -16,7 +16,7 @@
 #import "SettingsViewController.h"
 #import "ShowLocationViewController.h"
 #import "GoodsListController.h"
-
+#import "ProviderListController.h"
 
 #define TAG_MAP 0
 #define TAG_GOODS 1
@@ -83,6 +83,9 @@
         [self.navigationController pushViewController:vc animated:YES];
     }else if (item.tag==TAG_GOODS){
         GoodsListController *vc=[[GoodsListController alloc] initWithStyle:UITableViewStylePlain];
+        [self.navigationController pushViewController:vc animated:YES];
+    }else if (item.tag==TAG_PROVIDER){
+        ProviderListController *vc =[[ProviderListController alloc] initWithStyle:UITableViewStylePlain];
         [self.navigationController pushViewController:vc animated:YES];
     }
 }

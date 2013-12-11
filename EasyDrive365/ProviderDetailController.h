@@ -1,5 +1,5 @@
 //
-//  GoodsCategoryController.h
+//  ProviderDetailController.h
 //  EasyDrive366
 //
 //  Created by Steven Fu on 12/11/13.
@@ -8,6 +8,6 @@
 
 #import "NetTableViewController.h"
 
-@interface GoodsCategoryController : NetTableViewController
-@property (nonatomic) NSString *type;
+@interface ProviderDetailController : NetTableViewController
+@property (nonatomic) NSString *code;
 @end

@@ -39,6 +39,7 @@
 
 -(void)openCategory{
     GoodsCategoryController *vc = [[GoodsCategoryController alloc] initWithStyle:UITableViewStylePlain];
+    vc.type=@"goods";
     [self.navigationController pushViewController:vc animated:YES];
 }
 

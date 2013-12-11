@@ -9,5 +9,7 @@
 #import "NetTableViewController.h"
 
 @interface ProviderListController : NetTableViewController
-
+@property (nonatomic) NSString *searchKey;
+@property (nonatomic) NSString *searchTypes;
+@property (nonatomic) BOOL isSearch;
 @end
