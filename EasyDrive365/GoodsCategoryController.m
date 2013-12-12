@@ -1,28 +1,29 @@
 //
-//  SearchShopController.m
+//  GoodsCategoryController.m
 //  EasyDrive366
 //
-//  Created by Fu Steven on 9/18/13.
+//  Created by Steven Fu on 12/11/13.
 //  Copyright (c) 2013 Fu Steven. All rights reserved.
 //
 
-#import "SearchShopController.h"
+#import "GoodsCategoryController.h"
 #import "AppSettings.h"
-#import "SearchResultController.h"
 #import "ServiceType.h"
+#import "SearchResultController.h"
+#import "GoodsListController.h"
 
-@interface SearchShopController ()<UISearchBarDelegate>{
+@interface GoodsCategoryController ()<UISearchBarDelegate>{
     id _list;
     UISearchBar *_searchBar;
 }
 
 @end
 
-@implementation SearchShopController
+@implementation GoodsCategoryController
 
-- (id)initWithStyle:(UITableViewStyle)style
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    self = [super initWithStyle:style];
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
     }
@@ -32,20 +33,19 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    self.title = @"搜索服务商";
- 
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"查询" style:UIBarButtonSystemItemAction target:self action:@selector(searchShop)];
-    
-    _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0,170,320,44)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"查询" style:UIBarButtonSystemItemAction target:self action:@selector(searchCategory)];
+    _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 170, 320, 44)];
     _searchBar.delegate = self;
     [[self tableView] setTableHeaderView:_searchBar];
-    [self initData];
+    self.title = @"商品分类";
+
 }
+
+
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
     [self doSearch:searchBar.text];
 }
--(void)searchShop{
+-(void)searchCategory{
     [self doSearch:_searchBar.text];
 }
 -(void)doSearch:(NSString *)key{
@@ -59,9 +59,15 @@
     }
     NSLog(@"%@",types);
     
+    /*
     SearchResultController *vc =[[SearchResultController alloc] initWithStyle:UITableViewStyleGrouped];
     vc.key = key;
     vc.types = types;
+     */
+    GoodsListController *vc = [[GoodsListController alloc] initWithStyle:UITableViewStylePlain];
+    vc.isSearch = YES;
+    vc.searchKey = key;
+    vc.searchTypes = types;
     [self.navigationController pushViewController:vc animated:YES];
     
 }
@@ -70,30 +76,35 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
--(void)initData{
-    NSString *url =[NSString stringWithFormat:@"api/get_service_type?userid=%d",[AppSettings sharedSettings].userid];
-    [[AppSettings sharedSettings].http get:url block:^(id json) {
-        if ([[AppSettings sharedSettings] isSuccess:json]){
-            if (_list){
-                [_list removeAllObjects];
-            }else{
-                _list = [[NSMutableArray alloc] init];
-            }
-            for (id item  in json[@"result"]) {
-                ServiceType *st = [[ServiceType alloc] initWithJson:item];
-                [_list addObject:st];
-            }
-            
-            
-            [self.tableView reloadData];
-        }
-    }];
+
+
+-(void)setup{
+    _helper.url=[NSString stringWithFormat:@"api/get_service_type?userid=%d&type=goods",[AppSettings sharedSettings].userid];
+    
 }
-#pragma mark - Table view data source
+-(void)processData:(id)json{
+    if ([[AppSettings sharedSettings] isSuccess:json]){
+        if (_list){
+            [_list removeAllObjects];
+        }else{
+            _list = [[NSMutableArray alloc] init];
+        }
+        for (id item  in json[@"result"]) {
+            ServiceType *st = [[ServiceType alloc] initWithJson:item];
+            if ([st.code isEqualToString:@"00"]){
+                st.checked = YES;
+            }
+            [_list addObject:st];
+        }
+        
+        
+        [self.tableView reloadData];
+    }
+}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-
+    
     return 1;
 }
 
@@ -131,5 +142,4 @@
     else
         cell.accessoryType = UITableViewCellAccessoryNone;
 }
-
 @end

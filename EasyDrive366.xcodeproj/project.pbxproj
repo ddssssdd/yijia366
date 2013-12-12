@@ -9,8 +9,28 @@
 /* Begin PBXBuildFile section */
 		5104AA5F184F3AF9004B4D21 /* TDBadgedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5104AA5E184F3AF9004B4D21 /* TDBadgedCell.m */; };
 		5128E98B1850A45E00928906 /* FeedbackInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5128E98A1850A45E00928906 /* FeedbackInfoCell.xib */; };
+		51570C0018574E1B003655CC /* GoodsListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51570BFF18574E1B003655CC /* GoodsListController.m */; };
+		51570C0318575055003655CC /* GoodsListItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 51570C0218575055003655CC /* GoodsListItemCell.m */; };
+		51570C051857506A003655CC /* GoodsListItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51570C041857506A003655CC /* GoodsListItemCell.xib */; };
+		51570C0818584AB7003655CC /* GoodsCategoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51570C0718584AB7003655CC /* GoodsCategoryController.m */; };
+		51570C0C18584D64003655CC /* ServiceType.m in Sources */ = {isa = PBXBuildFile; fileRef = 51570C0B18584D64003655CC /* ServiceType.m */; };
+		51570C1218584FAF003655CC /* GoodsDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51570C1118584FAF003655CC /* GoodsDetailController.m */; };
+		51570C15185853C7003655CC /* DetailPictureCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 51570C14185853C7003655CC /* DetailPictureCell.m */; };
+		51570C18185853E2003655CC /* DetailPriceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 51570C17185853E2003655CC /* DetailPriceCell.m */; };
+		51570C1B185853F2003655CC /* DetailDescriptionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 51570C1A185853F2003655CC /* DetailDescriptionCell.m */; };
+		51570C1E18585401003655CC /* DetailRateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 51570C1D18585401003655CC /* DetailRateCell.m */; };
+		51570C2018585419003655CC /* DetailPictureCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51570C1F18585418003655CC /* DetailPictureCell.xib */; };
+		51570C2218585427003655CC /* DetailPriceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51570C2118585427003655CC /* DetailPriceCell.xib */; };
+		51570C2418585437003655CC /* DetailDescriptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51570C2318585437003655CC /* DetailDescriptionCell.xib */; };
+		51570C2618585448003655CC /* DetailRateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51570C2518585447003655CC /* DetailRateCell.xib */; };
 		5164183B18508CD400C1A792 /* FeedbackInputCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5164183A18508CD400C1A792 /* FeedbackInputCell.m */; };
 		5169E7C11850A3D100F510A7 /* FeedbackInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5169E7C01850A3D100F510A7 /* FeedbackInfoCell.m */; };
+		516BB5AE185874B100D38079 /* TQStarRatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 516BB5AD185874B100D38079 /* TQStarRatingView.m */; };
+		516BB5B3185874BB00D38079 /* backgroundStar.png in Resources */ = {isa = PBXBuildFile; fileRef = 516BB5AF185874BB00D38079 /* backgroundStar.png */; };
+		516BB5B4185874BB00D38079 /* backgroundStar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 516BB5B0185874BB00D38079 /* backgroundStar@2x.png */; };
+		516BB5B5185874BB00D38079 /* foregroundStar.png in Resources */ = {isa = PBXBuildFile; fileRef = 516BB5B1185874BB00D38079 /* foregroundStar.png */; };
+		516BB5B6185874BB00D38079 /* foregroundStar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 516BB5B2185874BB00D38079 /* foregroundStar@2x.png */; };
+		516BB5B918589ADE00D38079 /* ProviderListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 516BB5B818589ADE00D38079 /* ProviderListController.m */; };
 		51E21C3518508DBE00202C29 /* FeedbackInputCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51E21C3418508DBE00202C29 /* FeedbackInputCell.xib */; };
 		51EB24C418508A9A0031B0E7 /* FeedbackController2.m in Sources */ = {isa = PBXBuildFile; fileRef = 51EB24C318508A9A0031B0E7 /* FeedbackController2.m */; };
 		E202E12816E0D7B400FDBD34 /* Insurance4ColumnsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E202E12716E0D7B400FDBD34 /* Insurance4ColumnsCell.m */; };
@@ -256,10 +276,41 @@
 		5104AA5D184F3AF9004B4D21 /* TDBadgedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDBadgedCell.h; sourceTree = "<group>"; };
 		5104AA5E184F3AF9004B4D21 /* TDBadgedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDBadgedCell.m; sourceTree = "<group>"; };
 		5128E98A1850A45E00928906 /* FeedbackInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedbackInfoCell.xib; sourceTree = "<group>"; };
+		51570BFE18574E1B003655CC /* GoodsListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsListController.h; sourceTree = "<group>"; };
+		51570BFF18574E1B003655CC /* GoodsListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsListController.m; sourceTree = "<group>"; };
+		51570C0118575055003655CC /* GoodsListItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsListItemCell.h; sourceTree = "<group>"; };
+		51570C0218575055003655CC /* GoodsListItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsListItemCell.m; sourceTree = "<group>"; };
+		51570C041857506A003655CC /* GoodsListItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoodsListItemCell.xib; sourceTree = "<group>"; };
+		51570C0618584AB7003655CC /* GoodsCategoryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsCategoryController.h; sourceTree = "<group>"; };
+		51570C0718584AB7003655CC /* GoodsCategoryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsCategoryController.m; sourceTree = "<group>"; };
+		51570C0A18584D64003655CC /* ServiceType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceType.h; sourceTree = "<group>"; };
+		51570C0B18584D64003655CC /* ServiceType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceType.m; sourceTree = "<group>"; };
+		51570C1018584FAF003655CC /* GoodsDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsDetailController.h; sourceTree = "<group>"; };
+		51570C1118584FAF003655CC /* GoodsDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsDetailController.m; sourceTree = "<group>"; };
+		51570C13185853C6003655CC /* DetailPictureCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailPictureCell.h; sourceTree = "<group>"; };
+		51570C14185853C7003655CC /* DetailPictureCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailPictureCell.m; sourceTree = "<group>"; };
+		51570C16185853E2003655CC /* DetailPriceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailPriceCell.h; sourceTree = "<group>"; };
+		51570C17185853E2003655CC /* DetailPriceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailPriceCell.m; sourceTree = "<group>"; };
+		51570C19185853F2003655CC /* DetailDescriptionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailDescriptionCell.h; sourceTree = "<group>"; };
+		51570C1A185853F2003655CC /* DetailDescriptionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailDescriptionCell.m; sourceTree = "<group>"; };
+		51570C1C18585401003655CC /* DetailRateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailRateCell.h; sourceTree = "<group>"; };
+		51570C1D18585401003655CC /* DetailRateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailRateCell.m; sourceTree = "<group>"; };
+		51570C1F18585418003655CC /* DetailPictureCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailPictureCell.xib; sourceTree = "<group>"; };
+		51570C2118585427003655CC /* DetailPriceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailPriceCell.xib; sourceTree = "<group>"; };
+		51570C2318585437003655CC /* DetailDescriptionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailDescriptionCell.xib; sourceTree = "<group>"; };
+		51570C2518585447003655CC /* DetailRateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailRateCell.xib; sourceTree = "<group>"; };
 		5164183918508CD400C1A792 /* FeedbackInputCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedbackInputCell.h; sourceTree = "<group>"; };
 		5164183A18508CD400C1A792 /* FeedbackInputCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedbackInputCell.m; sourceTree = "<group>"; };
 		5169E7BF1850A3D100F510A7 /* FeedbackInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedbackInfoCell.h; sourceTree = "<group>"; };
 		5169E7C01850A3D100F510A7 /* FeedbackInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedbackInfoCell.m; sourceTree = "<group>"; };
+		516BB5AC185874B100D38079 /* TQStarRatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TQStarRatingView.h; sourceTree = "<group>"; };
+		516BB5AD185874B100D38079 /* TQStarRatingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TQStarRatingView.m; sourceTree = "<group>"; };
+		516BB5AF185874BB00D38079 /* backgroundStar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backgroundStar.png; sourceTree = "<group>"; };
+		516BB5B0185874BB00D38079 /* backgroundStar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "backgroundStar@2x.png"; sourceTree = "<group>"; };
+		516BB5B1185874BB00D38079 /* foregroundStar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = foregroundStar.png; sourceTree = "<group>"; };
+		516BB5B2185874BB00D38079 /* foregroundStar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "foregroundStar@2x.png"; sourceTree = "<group>"; };
+		516BB5B718589ADE00D38079 /* ProviderListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProviderListController.h; sourceTree = "<group>"; };
+		516BB5B818589ADE00D38079 /* ProviderListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProviderListController.m; sourceTree = "<group>"; };
 		51E21C3418508DBE00202C29 /* FeedbackInputCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedbackInputCell.xib; sourceTree = "<group>"; };
 		51EB24C218508A9A0031B0E7 /* FeedbackController2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedbackController2.h; sourceTree = "<group>"; };
 		51EB24C318508A9A0031B0E7 /* FeedbackController2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedbackController2.m; sourceTree = "<group>"; };
@@ -672,6 +723,72 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		51570BF818574AD3003655CC /* Goods */ = {
+			isa = PBXGroup;
+			children = (
+				51570BFE18574E1B003655CC /* GoodsListController.h */,
+				51570BFF18574E1B003655CC /* GoodsListController.m */,
+				51570C0118575055003655CC /* GoodsListItemCell.h */,
+				51570C0218575055003655CC /* GoodsListItemCell.m */,
+				51570C041857506A003655CC /* GoodsListItemCell.xib */,
+				51570C0618584AB7003655CC /* GoodsCategoryController.h */,
+				51570C0718584AB7003655CC /* GoodsCategoryController.m */,
+				51570C1018584FAF003655CC /* GoodsDetailController.h */,
+				51570C1118584FAF003655CC /* GoodsDetailController.m */,
+				51570C13185853C6003655CC /* DetailPictureCell.h */,
+				51570C14185853C7003655CC /* DetailPictureCell.m */,
+				51570C1F18585418003655CC /* DetailPictureCell.xib */,
+				51570C16185853E2003655CC /* DetailPriceCell.h */,
+				51570C17185853E2003655CC /* DetailPriceCell.m */,
+				51570C2118585427003655CC /* DetailPriceCell.xib */,
+				51570C19185853F2003655CC /* DetailDescriptionCell.h */,
+				51570C1A185853F2003655CC /* DetailDescriptionCell.m */,
+				51570C2318585437003655CC /* DetailDescriptionCell.xib */,
+				51570C1C18585401003655CC /* DetailRateCell.h */,
+				51570C1D18585401003655CC /* DetailRateCell.m */,
+				51570C2518585447003655CC /* DetailRateCell.xib */,
+			);
+			name = Goods;
+			sourceTree = "<group>";
+		};
+		51570BF918574ADB003655CC /* Providers */ = {
+			isa = PBXGroup;
+			children = (
+				516BB5B718589ADE00D38079 /* ProviderListController.h */,
+				516BB5B818589ADE00D38079 /* ProviderListController.m */,
+			);
+			name = Providers;
+			sourceTree = "<group>";
+		};
+		51570BFA18574AE3003655CC /* Article */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Article;
+			sourceTree = "<group>";
+		};
+		51570C0918584D4B003655CC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				51570C0A18584D64003655CC /* ServiceType.h */,
+				51570C0B18584D64003655CC /* ServiceType.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		51570C271858741A003655CC /* TQStarRating */ = {
+			isa = PBXGroup;
+			children = (
+				516BB5AF185874BB00D38079 /* backgroundStar.png */,
+				516BB5B0185874BB00D38079 /* backgroundStar@2x.png */,
+				516BB5B1185874BB00D38079 /* foregroundStar.png */,
+				516BB5B2185874BB00D38079 /* foregroundStar@2x.png */,
+				516BB5AC185874B100D38079 /* TQStarRatingView.h */,
+				516BB5AD185874B100D38079 /* TQStarRatingView.m */,
+			);
+			name = TQStarRating;
+			sourceTree = "<group>";
+		};
 		51EB24C118508A6D0031B0E7 /* feedback */ = {
 			isa = PBXGroup;
 			children = (
@@ -723,6 +840,7 @@
 		E2296D2F16B760EC00E332D9 /* EasyDrive366 */ = {
 			isa = PBXGroup;
 			children = (
+				51570C0918584D4B003655CC /* Models */,
 				E2E6688017DF664800AC85BA /* libqrencode */,
 				E2611B5B17CB7C0400E92897 /* baidumap */,
 				E29462FD16FC8B000090371C /* removable */,
@@ -805,6 +923,7 @@
 		E24A041916CFBA2600B7A602 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				51570C271858741A003655CC /* TQStarRating */,
 				5104AA5D184F3AF9004B4D21 /* TDBadgedCell.h */,
 				5104AA5E184F3AF9004B4D21 /* TDBadgedCell.m */,
 				E2F9C3D117E9F36100D75359 /* 0085.png */,
@@ -1142,6 +1261,9 @@
 		E2EE653916C5294A00ED1C73 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				51570BFA18574AE3003655CC /* Article */,
+				51570BF918574ADB003655CC /* Providers */,
+				51570BF818574AD3003655CC /* Goods */,
 				51EB24C118508A6D0031B0E7 /* feedback */,
 				E2CB6D331815646F00441F32 /* inscard */,
 				E2E6689917DF665F00AC85BA /* barcode */,
@@ -1464,6 +1586,15 @@
 				E23386521816CADF0035C405 /* TextLabelCell.xib in Resources */,
 				51E21C3518508DBE00202C29 /* FeedbackInputCell.xib in Resources */,
 				5128E98B1850A45E00928906 /* FeedbackInfoCell.xib in Resources */,
+				51570C051857506A003655CC /* GoodsListItemCell.xib in Resources */,
+				51570C2018585419003655CC /* DetailPictureCell.xib in Resources */,
+				51570C2218585427003655CC /* DetailPriceCell.xib in Resources */,
+				51570C2418585437003655CC /* DetailDescriptionCell.xib in Resources */,
+				51570C2618585448003655CC /* DetailRateCell.xib in Resources */,
+				516BB5B3185874BB00D38079 /* backgroundStar.png in Resources */,
+				516BB5B4185874BB00D38079 /* backgroundStar@2x.png in Resources */,
+				516BB5B5185874BB00D38079 /* foregroundStar.png in Resources */,
+				516BB5B6185874BB00D38079 /* foregroundStar@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1604,6 +1735,17 @@
 				E2CCBBD71817E2CF008DC8F6 /* AddCardStep2Controller.m in Sources */,
 				5104AA5F184F3AF9004B4D21 /* TDBadgedCell.m in Sources */,
 				51EB24C418508A9A0031B0E7 /* FeedbackController2.m in Sources */,
+				51570C0018574E1B003655CC /* GoodsListController.m in Sources */,
+				51570C0318575055003655CC /* GoodsListItemCell.m in Sources */,
+				51570C0818584AB7003655CC /* GoodsCategoryController.m in Sources */,
+				51570C0C18584D64003655CC /* ServiceType.m in Sources */,
+				51570C1218584FAF003655CC /* GoodsDetailController.m in Sources */,
+				51570C15185853C7003655CC /* DetailPictureCell.m in Sources */,
+				51570C18185853E2003655CC /* DetailPriceCell.m in Sources */,
+				51570C1B185853F2003655CC /* DetailDescriptionCell.m in Sources */,
+				51570C1E18585401003655CC /* DetailRateCell.m in Sources */,
+				516BB5AE185874B100D38079 /* TQStarRatingView.m in Sources */,
+				516BB5B918589ADE00D38079 /* ProviderListController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
