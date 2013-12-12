@@ -69,9 +69,9 @@
     UITabBarItem *item1=[[UITabBarItem alloc] initWithTitle:@"地图" image:[UIImage imageNamed:@"0087.png"] tag:TAG_MAP];
     UITabBarItem *item2 =[[UITabBarItem alloc] initWithTitle:@"商品" image:[UIImage imageNamed:@"0017.png"] tag:TAG_GOODS];
     UITabBarItem *item3 = [[UITabBarItem alloc] initWithTitle:@"商户" image:[UIImage imageNamed:@"0085.png"] tag:TAG_PROVIDER];
-    [self.tabBar setItems:@[item1,
+    [self.tabBar setItems:@[item1/*,
      item2,
-     item3]];
+     item3*/]];
     [self.tabBar setSelectedItem:nil];
     
 }
