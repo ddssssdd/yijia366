@@ -10,7 +10,7 @@
 #import "HttpClient.h"
 #import "AppSettings.h"
 #import "SignupStep3ViewController.h"
-NSString *inform2=@"设置向导第2步共3步";
+NSString *inform2=@"设置向导第2步共4步";
 @interface SignupStep2ViewController ()
 
 @end

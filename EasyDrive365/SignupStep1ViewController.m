@@ -11,7 +11,7 @@
 #import "AppSettings.h"
 #import "SignupStep2ViewController.h"
 
-NSString *inform1=@"设置向导第1步共3步";
+NSString *inform1=@"设置向导第1步共4步";
 @interface SignupStep1ViewController ()
 
 @end
@@ -30,14 +30,15 @@ NSString *inform1=@"设置向导第1步共3步";
     NSString *url = [NSString stringWithFormat:@"api/wizardstep0?userid=%d",[AppSettings sharedSettings].userid];
     [[AppSettings sharedSettings].http get:url block:^(id json) {
         id items=@[
-                   [[NSMutableDictionary alloc] initWithDictionary:@{@"key" :@"car_id",@"label":@"车牌号：",@"default":@"",@"placeholder":@"鲁B366YJ",@"ispassword":@"capital",@"cell":@"EditTextCell",@"value":json[@"result"][@"car_id"] }],
+                   [[NSMutableDictionary alloc] initWithDictionary:@{@"key" :@"car_id",@"label":@"车牌号：",@"default":@"",@"placeholder":@"鲁BFK982",@"ispassword":@"capital",@"cell":@"EditTextCell",@"value":json[@"result"][@"car_id"] }],
                    
                    [[NSMutableDictionary alloc] initWithDictionary:@{@"key" :@"vin",@"label":@"VIN后四位：",@"default":@"",@"placeholder":@"",@"ispassword":@"capital",@"cell":@"EditTextCell",@"value":json[@"result"][@"vin"] }],
-                   [[NSMutableDictionary alloc] initWithDictionary:@{@"key" :@"id_no",@"label":@"身份证号：",@"default":@"",@"placeholder":@"",@"ispassword":@"capital",@"cell":@"EditTextCell",@"value":json[@"result"][@"license_id"] }]
+                   [[NSMutableDictionary alloc] initWithDictionary:@{@"key" :@"id_no",@"label":@"身份证号：",@"default":@"",@"placeholder":@"",@"ispassword":@"capital",@"cell":@"EditTextCell",@"value":json[@"result"][@"license_id"] }],
+                   [[NSMutableDictionary alloc] initWithDictionary:@{@"key" :@"phone",@"label":@"手机号：",@"default":@"",@"placeholder":@"",@"ispassword":@"number",@"cell":@"EditTextCell",@"value":json[@"result"][@"phone"] }]
                    ];
         _list=[NSMutableArray arrayWithArray: @[
                /*@{@"count" : @1,@"list":@[@{@"cell":@"IntroduceCell"}],@"height":@100.0f},*/
-               @{@"count" : @3,@"list":items,@"height":@44.0f},
+               @{@"count" : @4,@"list":items,@"height":@44.0f},
                //@{@"count" : @1,@"cell":@"OneButtonCell",@"list":@[],@"height":@44.0f}
                ]];
         [self.tableView reloadData];
@@ -90,7 +91,12 @@ NSString *inform1=@"设置向导第1步共3步";
             return;
         }
     }
-    
+    NSString *phone=[parameters objectForKey:@"phone"];
+    if([@"" isEqualToString:phone]){
+        /* [[[UIAlertView alloc] initWithTitle:AppTitle message:@"手机号码不能为空！" delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定", nil] show];
+         return;
+         */
+    }
    
     /*
     SignupStep2ViewController *vc = [[SignupStep2ViewController alloc] initWithStyle:UITableViewStyleGrouped];
@@ -101,7 +107,7 @@ NSString *inform1=@"设置向导第1步共3步";
     return;
     */
     
-    NSString *path =[NSString stringWithFormat:@"api/wizardstep1?userid=%d&car_id=%@&license_id=%@&vin=%@",[AppSettings sharedSettings].userid, car_id,license_id,vin];
+    NSString *path =[NSString stringWithFormat:@"api/wizardstep1?userid=%d&car_id=%@&license_id=%@&vin=%@&phone=%@",[AppSettings sharedSettings].userid, car_id,license_id,vin,phone];
     
     [[HttpClient sharedHttp] get:path block:^(id json) {
         NSLog(@"%@",json);

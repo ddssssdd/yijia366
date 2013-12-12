@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface NewActivateViewController : UITableViewController
-
+@property (nonatomic) BOOL isWizad;
 @end
