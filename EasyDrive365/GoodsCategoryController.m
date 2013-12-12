@@ -12,6 +12,7 @@
 #import "SearchResultController.h"
 #import "GoodsListController.h"
 #import "ProviderListController.h"
+#import "ArticleListController.h"
 
 @interface GoodsCategoryController ()<UISearchBarDelegate>{
     id _list;
@@ -43,7 +44,7 @@
     }else if ([self.type isEqualToString:@"provider"]){
         self.title = @"商户分类";
     }else{
-        self.title = @"baike";
+        self.title = @"百科分类";
     }
 
 }
@@ -87,7 +88,11 @@
         vc.searchTypes = types;
         [self.navigationController pushViewController:vc animated:YES];
     }else{
-        self.title = @"baike";
+        ArticleListController *vc = [[ArticleListController alloc] initWithStyle:UITableViewStyleGrouped];
+        vc.isSearch = YES;
+        vc.searchKey = key;
+        vc.searchTypes = types;
+        [self.navigationController pushViewController:vc animated:YES];
     }
     
     

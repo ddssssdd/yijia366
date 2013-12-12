@@ -35,6 +35,9 @@
 		516BB5BE1858A06400D38079 /* ProviderListItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 516BB5BD1858A06400D38079 /* ProviderListItemCell.xib */; };
 		516BB5C11858A68100D38079 /* ProviderDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 516BB5C01858A68100D38079 /* ProviderDetailController.m */; };
 		51E21C3518508DBE00202C29 /* FeedbackInputCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51E21C3418508DBE00202C29 /* FeedbackInputCell.xib */; };
+		51E3CE131859CBA6004582BC /* ArticleListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51E3CE121859CBA6004582BC /* ArticleListController.m */; };
+		51E3CE161859E456004582BC /* ArticleListItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 51E3CE151859E456004582BC /* ArticleListItemCell.m */; };
+		51E3CE181859E46F004582BC /* ArticleListItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51E3CE171859E46F004582BC /* ArticleListItemCell.xib */; };
 		51EB24C418508A9A0031B0E7 /* FeedbackController2.m in Sources */ = {isa = PBXBuildFile; fileRef = 51EB24C318508A9A0031B0E7 /* FeedbackController2.m */; };
 		E202E12816E0D7B400FDBD34 /* Insurance4ColumnsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E202E12716E0D7B400FDBD34 /* Insurance4ColumnsCell.m */; };
 		E202E12B16E0D7D100FDBD34 /* Insurance4ColumnsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E202E12A16E0D7D100FDBD34 /* Insurance4ColumnsCell.xib */; };
@@ -320,6 +323,11 @@
 		516BB5BF1858A68100D38079 /* ProviderDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProviderDetailController.h; sourceTree = "<group>"; };
 		516BB5C01858A68100D38079 /* ProviderDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProviderDetailController.m; sourceTree = "<group>"; };
 		51E21C3418508DBE00202C29 /* FeedbackInputCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedbackInputCell.xib; sourceTree = "<group>"; };
+		51E3CE111859CBA6004582BC /* ArticleListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleListController.h; sourceTree = "<group>"; };
+		51E3CE121859CBA6004582BC /* ArticleListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleListController.m; sourceTree = "<group>"; };
+		51E3CE141859E456004582BC /* ArticleListItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleListItemCell.h; sourceTree = "<group>"; };
+		51E3CE151859E456004582BC /* ArticleListItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleListItemCell.m; sourceTree = "<group>"; };
+		51E3CE171859E46F004582BC /* ArticleListItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ArticleListItemCell.xib; sourceTree = "<group>"; };
 		51EB24C218508A9A0031B0E7 /* FeedbackController2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedbackController2.h; sourceTree = "<group>"; };
 		51EB24C318508A9A0031B0E7 /* FeedbackController2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedbackController2.m; sourceTree = "<group>"; };
 		E202E12616E0D7B400FDBD34 /* Insurance4ColumnsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Insurance4ColumnsCell.h; sourceTree = "<group>"; };
@@ -776,6 +784,11 @@
 		51570BFA18574AE3003655CC /* Article */ = {
 			isa = PBXGroup;
 			children = (
+				51E3CE111859CBA6004582BC /* ArticleListController.h */,
+				51E3CE121859CBA6004582BC /* ArticleListController.m */,
+				51E3CE141859E456004582BC /* ArticleListItemCell.h */,
+				51E3CE151859E456004582BC /* ArticleListItemCell.m */,
+				51E3CE171859E46F004582BC /* ArticleListItemCell.xib */,
 			);
 			name = Article;
 			sourceTree = "<group>";
@@ -1609,6 +1622,7 @@
 				516BB5B5185874BB00D38079 /* foregroundStar.png in Resources */,
 				516BB5B6185874BB00D38079 /* foregroundStar@2x.png in Resources */,
 				516BB5BE1858A06400D38079 /* ProviderListItemCell.xib in Resources */,
+				51E3CE181859E46F004582BC /* ArticleListItemCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1762,6 +1776,8 @@
 				516BB5B918589ADE00D38079 /* ProviderListController.m in Sources */,
 				516BB5BC1858A04900D38079 /* ProviderListItemCell.m in Sources */,
 				516BB5C11858A68100D38079 /* ProviderDetailController.m in Sources */,
+				51E3CE131859CBA6004582BC /* ArticleListController.m in Sources */,
+				51E3CE161859E456004582BC /* ArticleListItemCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

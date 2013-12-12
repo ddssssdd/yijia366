@@ -17,6 +17,7 @@
 #import "ShowLocationViewController.h"
 #import "GoodsListController.h"
 #import "ProviderListController.h"
+#import "ArticleListController.h"
 
 #define TAG_MAP 0
 #define TAG_GOODS 1
@@ -69,9 +70,14 @@
     UITabBarItem *item1=[[UITabBarItem alloc] initWithTitle:@"地图" image:[UIImage imageNamed:@"0087.png"] tag:TAG_MAP];
     UITabBarItem *item2 =[[UITabBarItem alloc] initWithTitle:@"商品" image:[UIImage imageNamed:@"0017.png"] tag:TAG_GOODS];
     UITabBarItem *item3 = [[UITabBarItem alloc] initWithTitle:@"商户" image:[UIImage imageNamed:@"0085.png"] tag:TAG_PROVIDER];
+
+    UITabBarItem *item4 = [[UITabBarItem alloc] initWithTitle:@"百科" image:[UIImage imageNamed:@"0085.png"] tag:TAG_ARTICLE];
+
+    
     [self.tabBar setItems:@[item1,
      item2,
-     item3]];
+     item3,
+     item4]];
     [self.tabBar setSelectedItem:nil];
     
 }
@@ -86,6 +92,9 @@
         [self.navigationController pushViewController:vc animated:YES];
     }else if (item.tag==TAG_PROVIDER){
         ProviderListController *vc =[[ProviderListController alloc] initWithStyle:UITableViewStylePlain];
+        [self.navigationController pushViewController:vc animated:YES];
+    }else if (item.tag==TAG_ARTICLE){
+        ArticleListController *vc=[[ArticleListController alloc] initWithStyle:UITableViewStyleGrouped];
         [self.navigationController pushViewController:vc animated:YES];
     }
 }
