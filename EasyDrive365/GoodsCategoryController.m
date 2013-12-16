@@ -37,6 +37,7 @@
     [super viewDidLoad];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"查询" style:UIBarButtonSystemItemAction target:self action:@selector(searchCategory)];
     _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 170, 320, 44)];
+    _searchBar.placeholder = @"请输入查询条件";
     _searchBar.delegate = self;
     [[self tableView] setTableHeaderView:_searchBar];
     if ([self.type isEqualToString:@"goods"]){

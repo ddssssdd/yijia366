@@ -45,6 +45,7 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{10, 10}, {280, 130}}</string>
 								<reference key="NSSuperview" ref="167412577"/>
+								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="545411468"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
@@ -56,6 +57,7 @@
 								<object class="NSPSMatrix" key="NSFrameMatrix"/>
 								<string key="NSFrame">{{131, 126}, {38, 36}}</string>
 								<reference key="NSSuperview" ref="167412577"/>
+								<reference key="NSWindow"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -63,14 +65,19 @@
 								<int key="IBUIContentVerticalAlignment">0</int>
 								<bool key="IBUIHidesForSinglePage">YES</bool>
 								<int key="IBUINumberOfPages">3</int>
+								<object class="NSColor" key="IBUIPageIndicatorTintColor">
+									<int key="NSColorSpace">3</int>
+									<bytes key="NSWhite">MC41AA</bytes>
+								</object>
 								<object class="NSColor" key="IBUICurrentPageIndicatorTintColor">
 									<int key="NSColorSpace">1</int>
-									<bytes key="NSRGB">MCAwIDAAA</bytes>
+									<bytes key="NSRGB">MSAwIDAAA</bytes>
 								</object>
 							</object>
 						</array>
 						<string key="NSFrameSize">{300, 149}</string>
 						<reference key="NSSuperview" ref="741508054"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="600750733"/>
 						<string key="NSReuseIdentifierKey">_NS:11</string>
 						<object class="NSColor" key="IBUIBackgroundColor">
@@ -86,6 +93,7 @@
 				</array>
 				<string key="NSFrameSize">{300, 150}</string>
 				<reference key="NSSuperview"/>
+				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="167412577"/>
 				<string key="NSReuseIdentifierKey">_NS:9</string>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -166,7 +174,32 @@
 			<nil key="sourceID"/>
 			<int key="maxID">6</int>
 		</object>
-		<object class="IBClassDescriber" key="IBDocument.Classes"/>
+		<object class="IBClassDescriber" key="IBDocument.Classes">
+			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
+				<object class="IBPartialClassDescription">
+					<string key="className">DetailPictureCell</string>
+					<string key="superclassName">UITableViewCell</string>
+					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="image">UIImageView</string>
+						<string key="pager">UIPageControl</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="image">
+							<string key="name">image</string>
+							<string key="candidateClassName">UIImageView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="pager">
+							<string key="name">pager</string>
+							<string key="candidateClassName">UIPageControl</string>
+						</object>
+					</dictionary>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/DetailPictureCell.h</string>
+					</object>
+				</object>
+			</array>
+		</object>
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaTouchFramework</string>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
