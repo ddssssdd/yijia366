@@ -14,6 +14,7 @@
 #import "DetailDescriptionCell.h"
 #import "DetailRateCell.h"
 #import "UIImageView+AFNetworking.h"
+#import "ItemCommentsController.h"
 
 @interface GoodsDetailController ()<OneButtonCellDelegate>{
     id _target;
@@ -156,7 +157,12 @@
     return 44.0f;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
+    if (indexPath.section==3){
+        ItemCommentsController *vc =[[ItemCommentsController alloc] initWithStyle:UITableViewStylePlain];
+        vc.itemId = [NSString stringWithFormat:@"%d",self.target_id];
+        vc.itemType =@"goods";
+        [self.navigationController pushViewController:vc animated:YES];
+    }
 }
 
 @end

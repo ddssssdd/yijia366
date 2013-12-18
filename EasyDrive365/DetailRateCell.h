@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TQStarRatingView.h"
+
 
 @interface DetailRateCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *lblStar;

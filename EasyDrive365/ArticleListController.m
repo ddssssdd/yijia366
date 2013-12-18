@@ -127,7 +127,7 @@
         itemCell.lblDescription.text = item[@"description"];
         
         itemCell.lblVoternum.text =[NSString stringWithFormat:@"%@", item[@"star_voternum"]];
-        
+        itemCell.rating = [item[@"star"] intValue];
         
         [itemCell.image setImageWithURL:[NSURL URLWithString:item[@"pic_url"]]];
     }

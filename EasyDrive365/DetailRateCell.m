@@ -7,8 +7,10 @@
 //
 
 #import "DetailRateCell.h"
-@interface DetailRateCell()<StarRatingViewDelegate>{
-    TQStarRatingView *_ratingView;
+#import "AMRatingControl.h"
+
+@interface DetailRateCell(){
+    AMRatingControl *_ratingView;
 }
 @end
 @implementation DetailRateCell
@@ -31,13 +33,16 @@
 
 -(void)setRating:(CGFloat)rating{
     if (_ratingView==nil){
-        _ratingView =[[TQStarRatingView alloc] initWithFrame:CGRectMake(20, 11, 75, 21) numberOfStar:rating];
+        _ratingView =[[AMRatingControl alloc] initWithLocation:CGPointMake(20, 11) andMaxRating:5];
+        [_ratingView setRating:rating];
+        [_ratingView addTarget:self action:@selector(rated:) forControlEvents:UIControlEventEditingDidEnd];
         [self addSubview:_ratingView];
-        _ratingView.delegate= self;
+        [_ratingView setEnabled:false];
+        
     }
 
 }
--(void)starRatingView:(TQStarRatingView *)view score:(float)score{
-    NSLog(@"%f",score);
+-(void)rated:(AMRatingControl *)sender{
+    NSLog(@"%d",[sender rating]);
 }
 @end

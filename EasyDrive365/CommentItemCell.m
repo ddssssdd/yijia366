@@ -1,21 +1,20 @@
 //
-//  ArticleListItemCell.m
+//  CommentItemCell.m
 //  EasyDrive366
 //
-//  Created by Steven Fu on 12/12/13.
+//  Created by Steven Fu on 12/18/13.
 //  Copyright (c) 2013 Fu Steven. All rights reserved.
 //
 
-#import "ArticleListItemCell.h"
+#import "CommentItemCell.h"
 #import "AMRatingControl.h"
 
-@interface ArticleListItemCell(){
-    AMRatingControl *_ratingControl;
+@interface CommentItemCell(){
+    AMRatingControl *_ratingView;
 }
 
 @end
-
-@implementation ArticleListItemCell
+@implementation CommentItemCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -34,12 +33,16 @@
 }
 
 -(void)setRating:(int)rating{
-    if (!_ratingControl){
-        _ratingControl =[[AMRatingControl alloc] initWithLocation:CGPointMake(125, 88) andMaxRating:5];
-        [_ratingControl setRating:rating];
-        [self addSubview:_ratingControl];
-        [_ratingControl setEnabled:NO];
+    if (_ratingView==nil){
+        _ratingView =[[AMRatingControl alloc] initWithLocation:CGPointMake(15, 75) andMaxRating:5];
+        [_ratingView setRating:rating];
+    
+        [self addSubview:_ratingView];
+        [_ratingView setEnabled:false];
+        
     }
+    
 }
+
 
 @end

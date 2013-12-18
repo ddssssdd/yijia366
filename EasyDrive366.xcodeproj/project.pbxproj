@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		5104AA5F184F3AF9004B4D21 /* TDBadgedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5104AA5E184F3AF9004B4D21 /* TDBadgedCell.m */; };
+		51160F781861D92000AA15D3 /* CommentItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 51160F771861D92000AA15D3 /* CommentItemCell.m */; };
+		51160F7B1861D92F00AA15D3 /* CommentListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 51160F7A1861D92F00AA15D3 /* CommentListCell.m */; };
+		51160F7D1861D94000AA15D3 /* CommentListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51160F7C1861D94000AA15D3 /* CommentListCell.xib */; };
+		51160F7F1861D94E00AA15D3 /* CommentItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51160F7E1861D94E00AA15D3 /* CommentItemCell.xib */; };
 		5128E98B1850A45E00928906 /* FeedbackInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5128E98A1850A45E00928906 /* FeedbackInfoCell.xib */; };
 		51570C0018574E1B003655CC /* GoodsListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51570BFF18574E1B003655CC /* GoodsListController.m */; };
 		51570C0318575055003655CC /* GoodsListItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 51570C0218575055003655CC /* GoodsListItemCell.m */; };
@@ -25,7 +29,6 @@
 		51570C2618585448003655CC /* DetailRateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51570C2518585447003655CC /* DetailRateCell.xib */; };
 		5164183B18508CD400C1A792 /* FeedbackInputCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5164183A18508CD400C1A792 /* FeedbackInputCell.m */; };
 		5169E7C11850A3D100F510A7 /* FeedbackInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5169E7C01850A3D100F510A7 /* FeedbackInfoCell.m */; };
-		516BB5AE185874B100D38079 /* TQStarRatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 516BB5AD185874B100D38079 /* TQStarRatingView.m */; };
 		516BB5B3185874BB00D38079 /* backgroundStar.png in Resources */ = {isa = PBXBuildFile; fileRef = 516BB5AF185874BB00D38079 /* backgroundStar.png */; };
 		516BB5B4185874BB00D38079 /* backgroundStar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 516BB5B0185874BB00D38079 /* backgroundStar@2x.png */; };
 		516BB5B5185874BB00D38079 /* foregroundStar.png in Resources */ = {isa = PBXBuildFile; fileRef = 516BB5B1185874BB00D38079 /* foregroundStar.png */; };
@@ -34,6 +37,10 @@
 		516BB5BC1858A04900D38079 /* ProviderListItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 516BB5BB1858A04900D38079 /* ProviderListItemCell.m */; };
 		516BB5BE1858A06400D38079 /* ProviderListItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 516BB5BD1858A06400D38079 /* ProviderListItemCell.xib */; };
 		516BB5C11858A68100D38079 /* ProviderDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 516BB5C01858A68100D38079 /* ProviderDetailController.m */; };
+		51B9E11F1861E3AC005B9704 /* DoCommentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51B9E11D1861E3AC005B9704 /* DoCommentController.m */; };
+		51B9E1201861E3AC005B9704 /* DoCommentController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51B9E11E1861E3AC005B9704 /* DoCommentController.xib */; };
+		51BF51931861D2450021AA3C /* AMRatingControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 51BF51921861D2440021AA3C /* AMRatingControl.m */; };
+		51BF51961861D6E20021AA3C /* ItemCommentsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51BF51951861D6E20021AA3C /* ItemCommentsController.m */; };
 		51E21C3518508DBE00202C29 /* FeedbackInputCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51E21C3418508DBE00202C29 /* FeedbackInputCell.xib */; };
 		51E3CE131859CBA6004582BC /* ArticleListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51E3CE121859CBA6004582BC /* ArticleListController.m */; };
 		51E3CE161859E456004582BC /* ArticleListItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 51E3CE151859E456004582BC /* ArticleListItemCell.m */; };
@@ -281,6 +288,12 @@
 /* Begin PBXFileReference section */
 		5104AA5D184F3AF9004B4D21 /* TDBadgedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDBadgedCell.h; sourceTree = "<group>"; };
 		5104AA5E184F3AF9004B4D21 /* TDBadgedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDBadgedCell.m; sourceTree = "<group>"; };
+		51160F761861D92000AA15D3 /* CommentItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentItemCell.h; sourceTree = "<group>"; };
+		51160F771861D92000AA15D3 /* CommentItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentItemCell.m; sourceTree = "<group>"; };
+		51160F791861D92F00AA15D3 /* CommentListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentListCell.h; sourceTree = "<group>"; };
+		51160F7A1861D92F00AA15D3 /* CommentListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentListCell.m; sourceTree = "<group>"; };
+		51160F7C1861D94000AA15D3 /* CommentListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentListCell.xib; sourceTree = "<group>"; };
+		51160F7E1861D94E00AA15D3 /* CommentItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentItemCell.xib; sourceTree = "<group>"; };
 		5128E98A1850A45E00928906 /* FeedbackInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedbackInfoCell.xib; sourceTree = "<group>"; };
 		51570BFE18574E1B003655CC /* GoodsListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsListController.h; sourceTree = "<group>"; };
 		51570BFF18574E1B003655CC /* GoodsListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsListController.m; sourceTree = "<group>"; };
@@ -309,8 +322,6 @@
 		5164183A18508CD400C1A792 /* FeedbackInputCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedbackInputCell.m; sourceTree = "<group>"; };
 		5169E7BF1850A3D100F510A7 /* FeedbackInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedbackInfoCell.h; sourceTree = "<group>"; };
 		5169E7C01850A3D100F510A7 /* FeedbackInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedbackInfoCell.m; sourceTree = "<group>"; };
-		516BB5AC185874B100D38079 /* TQStarRatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TQStarRatingView.h; sourceTree = "<group>"; };
-		516BB5AD185874B100D38079 /* TQStarRatingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TQStarRatingView.m; sourceTree = "<group>"; };
 		516BB5AF185874BB00D38079 /* backgroundStar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backgroundStar.png; sourceTree = "<group>"; };
 		516BB5B0185874BB00D38079 /* backgroundStar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "backgroundStar@2x.png"; sourceTree = "<group>"; };
 		516BB5B1185874BB00D38079 /* foregroundStar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = foregroundStar.png; sourceTree = "<group>"; };
@@ -322,6 +333,13 @@
 		516BB5BD1858A06400D38079 /* ProviderListItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProviderListItemCell.xib; sourceTree = "<group>"; };
 		516BB5BF1858A68100D38079 /* ProviderDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProviderDetailController.h; sourceTree = "<group>"; };
 		516BB5C01858A68100D38079 /* ProviderDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProviderDetailController.m; sourceTree = "<group>"; };
+		51B9E11C1861E3AC005B9704 /* DoCommentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoCommentController.h; sourceTree = "<group>"; };
+		51B9E11D1861E3AC005B9704 /* DoCommentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoCommentController.m; sourceTree = "<group>"; };
+		51B9E11E1861E3AC005B9704 /* DoCommentController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DoCommentController.xib; sourceTree = "<group>"; };
+		51BF51911861D2440021AA3C /* AMRatingControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMRatingControl.h; sourceTree = "<group>"; };
+		51BF51921861D2440021AA3C /* AMRatingControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMRatingControl.m; sourceTree = "<group>"; };
+		51BF51941861D6E20021AA3C /* ItemCommentsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemCommentsController.h; sourceTree = "<group>"; };
+		51BF51951861D6E20021AA3C /* ItemCommentsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemCommentsController.m; sourceTree = "<group>"; };
 		51E21C3418508DBE00202C29 /* FeedbackInputCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedbackInputCell.xib; sourceTree = "<group>"; };
 		51E3CE111859CBA6004582BC /* ArticleListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleListController.h; sourceTree = "<group>"; };
 		51E3CE121859CBA6004582BC /* ArticleListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleListController.m; sourceTree = "<group>"; };
@@ -805,14 +823,32 @@
 		51570C271858741A003655CC /* TQStarRating */ = {
 			isa = PBXGroup;
 			children = (
+				51BF51911861D2440021AA3C /* AMRatingControl.h */,
+				51BF51921861D2440021AA3C /* AMRatingControl.m */,
 				516BB5AF185874BB00D38079 /* backgroundStar.png */,
 				516BB5B0185874BB00D38079 /* backgroundStar@2x.png */,
 				516BB5B1185874BB00D38079 /* foregroundStar.png */,
 				516BB5B2185874BB00D38079 /* foregroundStar@2x.png */,
-				516BB5AC185874B100D38079 /* TQStarRatingView.h */,
-				516BB5AD185874B100D38079 /* TQStarRatingView.m */,
 			);
 			name = TQStarRating;
+			sourceTree = "<group>";
+		};
+		51BF51901861CF720021AA3C /* Comments */ = {
+			isa = PBXGroup;
+			children = (
+				51BF51941861D6E20021AA3C /* ItemCommentsController.h */,
+				51BF51951861D6E20021AA3C /* ItemCommentsController.m */,
+				51160F761861D92000AA15D3 /* CommentItemCell.h */,
+				51160F771861D92000AA15D3 /* CommentItemCell.m */,
+				51160F7E1861D94E00AA15D3 /* CommentItemCell.xib */,
+				51160F791861D92F00AA15D3 /* CommentListCell.h */,
+				51160F7A1861D92F00AA15D3 /* CommentListCell.m */,
+				51160F7C1861D94000AA15D3 /* CommentListCell.xib */,
+				51B9E11C1861E3AC005B9704 /* DoCommentController.h */,
+				51B9E11D1861E3AC005B9704 /* DoCommentController.m */,
+				51B9E11E1861E3AC005B9704 /* DoCommentController.xib */,
+			);
+			name = Comments;
 			sourceTree = "<group>";
 		};
 		51EB24C118508A6D0031B0E7 /* feedback */ = {
@@ -1287,6 +1323,7 @@
 		E2EE653916C5294A00ED1C73 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				51BF51901861CF720021AA3C /* Comments */,
 				51570BFA18574AE3003655CC /* Article */,
 				51570BF918574ADB003655CC /* Providers */,
 				51570BF818574AD3003655CC /* Goods */,
@@ -1559,6 +1596,7 @@
 				E2903BD016F373F600A93CBF /* surf_gradient_textured_32.png in Resources */,
 				E2903BD116F373F600A93CBF /* surf_gradient_textured_44.png in Resources */,
 				E2903BE016F41C9800A93CBF /* PhoneView.xib in Resources */,
+				51160F7D1861D94000AA15D3 /* CommentListCell.xib in Resources */,
 				E2903BE616F4213E00A93CBF /* arrow.png in Resources */,
 				E2903BE916F424D300A93CBF /* phone_Blue.png in Resources */,
 				E2903BEA16F424D300A93CBF /* phone_s Green.png in Resources */,
@@ -1570,6 +1608,7 @@
 				E212279D16FA06D200B494E0 /* 0228.png in Resources */,
 				E212279E16FA06D200B494E0 /* 0228@2x.png in Resources */,
 				E23BA0E317215E910049D2CB /* SwitchCell.xib in Resources */,
+				51160F7F1861D94E00AA15D3 /* CommentItemCell.xib in Resources */,
 				E23BA0E817216B780049D2CB /* ChooseNextCell.xib in Resources */,
 				E23BA0ED172170460049D2CB /* ChooseUserController.xib in Resources */,
 				E223549D172A8F8E00DDC015 /* ButtonViewController.xib in Resources */,
@@ -1610,6 +1649,7 @@
 				E2F9C3D317E9F36100D75359 /* 0085.png in Resources */,
 				E2F9C3D417E9F36100D75359 /* 0085@2x.png in Resources */,
 				E23386521816CADF0035C405 /* TextLabelCell.xib in Resources */,
+				51B9E1201861E3AC005B9704 /* DoCommentController.xib in Resources */,
 				51E21C3518508DBE00202C29 /* FeedbackInputCell.xib in Resources */,
 				5128E98B1850A45E00928906 /* FeedbackInfoCell.xib in Resources */,
 				51570C051857506A003655CC /* GoodsListItemCell.xib in Resources */,
@@ -1659,6 +1699,7 @@
 				E2EE657316C685F300ED1C73 /* AFImageRequestOperation.m in Sources */,
 				E2EE657416C685F300ED1C73 /* AFJSONRequestOperation.m in Sources */,
 				E2EE657516C685F300ED1C73 /* AFNetworkActivityIndicatorManager.m in Sources */,
+				51160F781861D92000AA15D3 /* CommentItemCell.m in Sources */,
 				E2EE657616C685F300ED1C73 /* AFPropertyListRequestOperation.m in Sources */,
 				E2EE657716C685F300ED1C73 /* AFURLConnectionOperation.m in Sources */,
 				E2EE657816C685F300ED1C73 /* AFXMLRequestOperation.m in Sources */,
@@ -1693,6 +1734,7 @@
 				E29B09EC16DB9134002449DE /* BusinessInsViewController.m in Sources */,
 				E25D74BD16DE368D008307C7 /* NetTableViewController.m in Sources */,
 				E202E12816E0D7B400FDBD34 /* Insurance4ColumnsCell.m in Sources */,
+				51B9E11F1861E3AC005B9704 /* DoCommentController.m in Sources */,
 				E202E12E16E0DC4300FDBD34 /* InsuranceFooterView.m in Sources */,
 				E202E13316E0E3E000FDBD34 /* RecordCell.m in Sources */,
 				E202E13D16E1FCFD00FDBD34 /* DisplayTextCell.m in Sources */,
@@ -1747,6 +1789,7 @@
 				E2E6689117DF664800AC85BA /* bitstream.c in Sources */,
 				E2E6689217DF664800AC85BA /* mask.c in Sources */,
 				E2E6689317DF664800AC85BA /* QRCodeGenerator.m in Sources */,
+				51160F7B1861D92F00AA15D3 /* CommentListCell.m in Sources */,
 				E2E6689417DF664800AC85BA /* qrencode.c in Sources */,
 				E2E6689517DF664800AC85BA /* qrinput.c in Sources */,
 				E2E6689617DF664800AC85BA /* qrspec.c in Sources */,
@@ -1772,12 +1815,13 @@
 				51570C18185853E2003655CC /* DetailPriceCell.m in Sources */,
 				51570C1B185853F2003655CC /* DetailDescriptionCell.m in Sources */,
 				51570C1E18585401003655CC /* DetailRateCell.m in Sources */,
-				516BB5AE185874B100D38079 /* TQStarRatingView.m in Sources */,
 				516BB5B918589ADE00D38079 /* ProviderListController.m in Sources */,
 				516BB5BC1858A04900D38079 /* ProviderListItemCell.m in Sources */,
 				516BB5C11858A68100D38079 /* ProviderDetailController.m in Sources */,
 				51E3CE131859CBA6004582BC /* ArticleListController.m in Sources */,
 				51E3CE161859E456004582BC /* ArticleListItemCell.m in Sources */,
+				51BF51931861D2450021AA3C /* AMRatingControl.m in Sources */,
+				51BF51961861D6E20021AA3C /* ItemCommentsController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

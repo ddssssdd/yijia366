@@ -14,4 +14,6 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *lblDescription;
 @property (weak, nonatomic) IBOutlet UILabel *lblVoternum;
+
+@property (nonatomic) int rating;
 @end

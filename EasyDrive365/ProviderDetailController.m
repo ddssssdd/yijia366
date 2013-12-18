@@ -12,6 +12,7 @@
 #import "DetailPictureCell.h"
 #import "DetailRateCell.h"
 #import "UIImageView+AFNetworking.h"
+#import "ItemCommentsController.h"
 
 
 @interface ProviderDetailController (){
@@ -163,7 +164,12 @@
     return 44.0f;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
+    if (indexPath.section==2){
+        ItemCommentsController *vc =[[ItemCommentsController alloc] initWithStyle:UITableViewStylePlain];
+        vc.itemId = self.code;
+        vc.itemType =@"provider";
+        [self.navigationController pushViewController:vc animated:YES];
+    }
 }
 
 @end

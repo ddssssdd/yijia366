@@ -7,6 +7,14 @@
 //
 
 #import "ProviderListItemCell.h"
+#import "AMRatingControl.h"
+
+
+@interface ProviderListItemCell(){
+    AMRatingControl *_ratingControl;
+}
+@end
+
 
 @implementation ProviderListItemCell
 
@@ -26,4 +34,12 @@
     // Configure the view for the selected state
 }
 
+-(void)setRating:(int)rating{
+    if (!_ratingControl){
+        _ratingControl =[[AMRatingControl alloc] initWithLocation:CGPointMake(140, 85) andMaxRating:5];
+        [_ratingControl setRating:rating];
+        [self addSubview:_ratingControl];
+        [_ratingControl setEnabled:NO];
+    }
+}
 @end

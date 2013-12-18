@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+
 @interface ProviderListItemCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *image;
@@ -15,4 +16,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblName;
 @property (weak, nonatomic) IBOutlet UILabel *lblPhone;
 @property (weak, nonatomic) IBOutlet UILabel *lblVoternum;
+
+@property (nonatomic) int rating;
 @end
