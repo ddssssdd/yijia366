@@ -27,11 +27,10 @@
 #import "CardViewController.h"
 #import "AddCardStep1ControllerViewController.h"
 #import "FeedbackController2.h"
+#import "UserProfileView.h"
 
-#define SECTION_CARD -1
-#define SECTION_SETUP 0
-#define SECTION_SYSTEM 1
-#define SECTION_FEEDBACK 2
+
+#define SECTION_LAST 5
 
 
 @interface SettingsViewController ()<ButtonViewControllerDelegate,UIAlertViewDelegate>{
@@ -49,6 +48,7 @@
     NSString *_activate_date;
     NSString *_valid_date;
     id contents;
+    UserProfileView *_headerView;
 }
 
 @end
@@ -77,6 +77,7 @@
     _carDatasource =[[EditCarReigsterationDataSource alloc] initWithData:[[AppSettings sharedSettings] loadJsonBy:@"car_data"]];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(initData) name:@"Update_settings" object:nil];
+    //[self.tableView setBackgroundColor:[UIColor clearColor]];
 }
 -(void)viewDidUnload{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -141,6 +142,7 @@
     }];
 }
 -(void)init_dataSource{
+    /*
     id items_new=@[
                 [[NSMutableDictionary alloc] initWithDictionary:
                  @{@"key" :@"card_view",
@@ -157,93 +159,120 @@
                  @"",@"value":@"",
                  @"cell":@"ChooseNextCell" }]
                 ];
-    id items=@[
-    [[NSMutableDictionary alloc] initWithDictionary:
-     @{@"key" :@"feedback",
-     @"label":@"意见反馈",
-     @"default":@"",
-     @"placeholder":@"",
-     @"ispassword":@"",
-     @"value":@"",
-     @"cell":@"ChooseNextCell"  }],
-    [[NSMutableDictionary alloc] initWithDictionary:
-     @{@"key" :@"version",
-     @"label":@"版本号",
-     @"default":@"",
-     @"placeholder":@"",
-     @"ispassword":@"",
-     @"value":[NSString stringWithFormat:@"V%@",AppVersion],
-     @"cell":@"ChooseNextCell"  }],
-    [[NSMutableDictionary alloc] initWithDictionary:
-     @{@"key" :@"active_code",
-     @"label":@"我的卡券",
-     @"default":@"",
-     @"placeholder":@"",
-     @"ispassword":@"",
-     @"value":@"",//_isActive?@"已经激活": @"激活",
-     @"cell":@"ChooseNextCell"  }]
-    
-    ];
+     */
+    id items0=@[
+                [[NSMutableDictionary alloc] initWithDictionary:
+                 @{@"key" :@"feedback",
+                 @"label":@"意见反馈",
+                 @"default":@"",
+                 @"placeholder":@"",
+                 @"ispassword":@"",
+                 @"value":@"",
+                 @"cell":@"ChooseNextCell"  }]
+                ];
+    id items1=@[
+                   [[NSMutableDictionary alloc] initWithDictionary:
+                    @{@"key" :@"order",
+                    @"label":@"我的订单",
+                    @"default":@"",
+                    @"placeholder":@"",
+                    @"value":@"",
+                    @"cell":@"ChooseNextCell" }],
+                   [[NSMutableDictionary alloc] initWithDictionary:
+                    @{@"key" :@"card",
+                    @"label":@"我的卡券",
+                    @"default":@"",
+                    @"placeholder":
+                    @"",@"value":@"",
+                    @"cell":@"ChooseNextCell" }],
+                   [[NSMutableDictionary alloc] initWithDictionary:
+                    @{@"key" :@"favorite",
+                    @"label":@"我的收藏",
+                    @"default":@"",
+                    @"placeholder":@"",
+                    @"value":@"",
+                    @"cell":@"ChooseNextCell" }],
+                   [[NSMutableDictionary alloc] initWithDictionary:
+                    @{@"key" :@"histroy",
+                    @"label":@"浏览历史",
+                    @"default":@"",
+                    @"placeholder":
+                    @"",@"value":@"",
+                    @"cell":@"ChooseNextCell" }]
+                   ];
     id items2=@[
-    [[NSMutableDictionary alloc] initWithDictionary:
-     @{@"key" :@"maintain",
-     @"label":@"保养设置",
-     @"default":@"",
-     @"placeholder":@"",
-     @"value":@"",
-     @"cell":@"ChooseNextCell" }],
-    [[NSMutableDictionary alloc] initWithDictionary:
-     @{@"key" :@"setup",
-     @"label":@"设置向导",
-     @"default":@"",
-     @"placeholder":
-     @"",@"value":@"",
-     @"cell":@"ChooseNextCell" }]
-    /*
-    [[NSMutableDictionary alloc] initWithDictionary:
-     @{@"key" :@"driver",
-     @"label":@"驾驶证",
-     @"default":@"",
-     @"placeholder":
-     @"",@"value":@"",
-     @"cell":@"ChooseNextCell" }],
-    [[NSMutableDictionary alloc] initWithDictionary:
-     @{@"key" :@"car_register",
-     @"label":@"我的车辆",
-     @"default":@"",
-     @"placeholder":
-     @"",@"value":@"",
-     @"cell":@"ChooseNextCell" }]*/];
-    ;
+                [[NSMutableDictionary alloc] initWithDictionary:
+                 @{@"key" :@"car_register",
+                 @"label":@"我的车辆",
+                 @"default":@"",
+                 @"placeholder":
+                 @"",@"value":@"",
+                 @"cell":@"ChooseNextCell" }],
+                [[NSMutableDictionary alloc] initWithDictionary:
+                 @{@"key" :@"driver",
+                 @"label":@"驾驶证",
+                 @"default":@"",
+                 @"placeholder":
+                 @"",@"value":@"",
+                 @"cell":@"ChooseNextCell" }],
+                [[NSMutableDictionary alloc] initWithDictionary:
+                 @{@"key" :@"maintain",
+                 @"label":@"保养设置",
+                 @"default":@"",
+                 @"placeholder":@"",
+                 @"value":@"",
+                 @"cell":@"ChooseNextCell" }]
+                ];
+    
     id items3= @[
-    [[NSMutableDictionary alloc] initWithDictionary:
-     @{@"key" :@"car_register",
-     @"label":@"重设密码",
-     @"default":@"",
-     @"placeholder":
-     @"",@"value":@"",
-     @"cell":@"ChooseNextCell" }],
-    [[NSMutableDictionary alloc] initWithDictionary:
-     @{@"key" :@"cellphone",
-     @"label":_phoneStatus,
-     @"default":@"",
-     @"placeholder":@"",
-     @"ispassword":@"",
-     @"value":_phone,
-     @"cell":@"ChooseNextCell"  }],
-    [[NSMutableDictionary alloc] initWithDictionary:
-     @{@"key" :@"reset_password",
-     @"label":@"找回密码",
-     @"default":@"",
-     @"placeholder":
-     @"",@"value":@"",
-     @"cell":@"ChooseNextCell" }]];
+                  [[NSMutableDictionary alloc] initWithDictionary:
+                   @{@"key" :@"resetpassword",
+                   @"label":@"重设密码",
+                   @"default":@"",
+                   @"placeholder":
+                   @"",@"value":@"",
+                   @"cell":@"ChooseNextCell" }],
+                  [[NSMutableDictionary alloc] initWithDictionary:
+                   @{@"key" :@"cellphone",
+                   @"label":_phoneStatus,
+                   @"default":@"",
+                   @"placeholder":@"",
+                   @"ispassword":@"",
+                   @"value":_phone,
+                   @"cell":@"ChooseNextCell"  }],
+                  [[NSMutableDictionary alloc] initWithDictionary:
+                   @{@"key" :@"find_password",
+                   @"label":@"找回密码",
+                   @"default":@"",
+                   @"placeholder":
+                   @"",@"value":@"",
+                   @"cell":@"ChooseNextCell" }]];
+    id items4=@[[[NSMutableDictionary alloc] initWithDictionary:
+                 @{@"key" :@"version",
+                 @"label":@"版本号",
+                 @"default":@"",
+                 @"placeholder":@"",
+                 @"ispassword":@"",
+                 @"value":[NSString stringWithFormat:@"V%@",AppVersion],
+                 @"cell":@"ChooseNextCell"  }]];
+    
+    id items5=@[[[NSMutableDictionary alloc] initWithDictionary:
+                 @{@"key" :@"setup",
+                 @"label":@"设置向导",
+                 @"default":@"",
+                 @"placeholder":
+                 @"",@"value":@"",
+                 @"cell":@"ChooseNextCell" }]];
+    
+    
+    
     _list=[NSMutableArray arrayWithArray: @[
-           /*@{@"count" : @1,@"list":@[@{@"cell":@"IntroduceCell"}],@"height":@100.0f,@"header":@"",@"footer":@""},*/
-           //@{@"count" : @2,@"list":items_new,@"height":@44.0f,@"header":@"",@"footer":@""},
-           @{@"count" : @2,@"list":items2,@"height":@44.0f,@"header":@"",@"footer":@""},
+           @{@"count" : @1,@"list":items0,@"height":@44.0f,@"header":@"",@"footer":@""},
+           @{@"count" : @4,@"list":items1,@"height":@44.0f,@"header":@"",@"footer":@""},
+           @{@"count" : @3,@"list":items2,@"height":@44.0f,@"header":@"",@"footer":@""},
            @{@"count" : @3,@"list":items3,@"height":@44.0f,@"header":@"",@"footer":@""},
-           @{@"count" : @3,@"list":items,@"height":@44.0f,@"header":@"",@"footer":@""},
+           @{@"count" : @1,@"list":items4,@"height":@44.0f,@"header":@"",@"footer":@""},
+           @{@"count" : @1,@"list":items5,@"height":@44.0f,@"header":@"",@"footer":@""},
            ]];
     [self.tableView reloadData];
 }
@@ -254,80 +283,62 @@
 
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    if (indexPath.section==SECTION_SETUP){
-        if (indexPath.row==0){
-            [self open_maintain_setup];
-        }else if (indexPath.row==1){
-            //[self open_driver_setup];
-            [self register_step];
-        }else if (indexPath.row==2){
-            [self open_car_setup];
+    /*
+     
+     
+     
+     */
+    NSString *key =[[_list objectAtIndex:indexPath.section][@"list"] objectAtIndex:indexPath.row][@"key"];
+    if ([key isEqualToString:@"feedback"]){
+        FeedbackController2 *vc = [[FeedbackController2 alloc] initWithStyle:UITableViewStyleGrouped];
+        vc.title = @"意见反馈";
+        
+        [self.navigationController pushViewController:vc animated:YES];
+        if (isbind==0){
+            //vc.txtCommunication.text =_phone;
         }
-       
-    }else if (indexPath.section==SECTION_SYSTEM){
-        if (indexPath.row==0){
-            ResetPasswordViewController *vc = [[ResetPasswordViewController alloc] initWithStyle:UITableViewStyleGrouped];
-            [self.navigationController pushViewController:vc animated:YES];
-        }else if (indexPath.row==1){
-            BindCellPhoneViewController *vc =[[BindCellPhoneViewController alloc] initWithStyle:UITableViewStyleGrouped];
-            vc.isbind = isbind;
-            vc.phone = _phone;
-            [self.navigationController pushViewController:vc animated:YES];
-        }else if (indexPath.row==2){
-            if (isbind==1){
-                //unbind cellphone
-                UIAlertView *alertView =[[UIAlertView alloc] initWithTitle:AppTitle message:@"找回密码操作需要绑定手机，请先绑定手机。" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
-                [alertView show];
-            }else{
-                UIAlertView *alertView =[[UIAlertView alloc] initWithTitle:AppTitle message:@"找回密码操作将向您绑定手机发送随机初始密码（短信免费），请确认要找回密码？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
-                [alertView show];
-                
-            }
-        }
-    }else if (indexPath.section==SECTION_FEEDBACK){
-        if (indexPath.row==1){
-            [AppSettings sharedSettings].isCancelUpdate = NO;
-            [[AppSettings sharedSettings] check_update:YES];
-        }else if (indexPath.row==0){
-           /* FeedbackViewController *vc = [[FeedbackViewController alloc] initWithNibName:@"FeedbackViewController" bundle:nil];
-            vc.btnOK.text = @"确定";
-            */
-            FeedbackController2 *vc = [[FeedbackController2 alloc] initWithStyle:UITableViewStyleGrouped];
-            vc.title = @"意见反馈";
-           
-            [self.navigationController pushViewController:vc animated:YES];
-            if (isbind==0){
-                //vc.txtCommunication.text =_phone;
-            }
-        }else if (indexPath.row==2){
-            NewActivateViewController *vc =[[NewActivateViewController alloc] initWithStyle:UITableViewStyleGrouped];
-            [self.navigationController pushViewController:vc animated:YES];
-            /*
-            if (_isActive){
-               
-                ShowActivateTableController *vc =[[ShowActivateTableController alloc] initWithStyle:UITableViewStyleGrouped];
-                [vc setData:_number code:_code activate_date:_activate_date valid_date:_valid_date contents:contents];
-                [self.navigationController pushViewController:vc animated:YES];
-            }else{
-                ActivateViewController *vc = [[ActivateViewController alloc] initWithNibName:@"ActivateViewController" bundle:nil];
-                [self.navigationController pushViewController:vc animated:YES];
-            }
-             */
-        }
-    }else if (indexPath.section==SECTION_CARD){
-        if (indexPath.row==0){
-            //view card
-            CardViewController *vc = [[CardViewController alloc] initWithStyle:UITableViewStyleGrouped];
-            [self.navigationController pushViewController:vc animated:YES];
+    }else if ([key isEqualToString:@"order"]){
+        
+    }else if ([key isEqualToString:@"card"]){
+        NewActivateViewController *vc =[[NewActivateViewController alloc] initWithStyle:UITableViewStyleGrouped];
+        [self.navigationController pushViewController:vc animated:YES];
+        
+    }else if ([key isEqualToString:@"favorite"]){
+        
+    }else if ([key isEqualToString:@"histroy"]){
+        
+    }else if ([key isEqualToString:@"car_register"]){
+        [self open_car_setup];
+    }else if ([key isEqualToString:@"driver"]){
+        [self open_driver_setup];
+    }else if ([key isEqualToString:@"maintain"]){
+        [self open_maintain_setup];
+    }else if ([key isEqualToString:@"resetpassword"]){
+        ResetPasswordViewController *vc = [[ResetPasswordViewController alloc] initWithStyle:UITableViewStyleGrouped];
+        [self.navigationController pushViewController:vc animated:YES];
+    }else if ([key isEqualToString:@"cellphone"]){
+        BindCellPhoneViewController *vc =[[BindCellPhoneViewController alloc] initWithStyle:UITableViewStyleGrouped];
+        vc.isbind = isbind;
+        vc.phone = _phone;
+        [self.navigationController pushViewController:vc animated:YES];
+    }else if ([key isEqualToString:@"find_password"]){
+        if (isbind==1){
+            //unbind cellphone
+            UIAlertView *alertView =[[UIAlertView alloc] initWithTitle:AppTitle message:@"找回密码操作需要绑定手机，请先绑定手机。" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+            [alertView show];
         }else{
-            //add card
-            AddCardStep1ControllerViewController *vc =[[AddCardStep1ControllerViewController alloc] initWithStyle:UITableViewStyleGrouped];
-            [self.navigationController pushViewController:vc animated:YES];
+            UIAlertView *alertView =[[UIAlertView alloc] initWithTitle:AppTitle message:@"找回密码操作将向您绑定手机发送随机初始密码（短信免费），请确认要找回密码？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+            [alertView show];
+            
         }
+    }else if ([key isEqualToString:@"version"]){
+        [AppSettings sharedSettings].isCancelUpdate = NO;
+        [[AppSettings sharedSettings] check_update:YES];
+    }else if ([key isEqualToString:@"setup"]){
+        [self register_step];
     }
-    NSLog(@"%@",indexPath);
-    //[super tableView:tableView didSelectRowAtIndexPath:indexPath];
+    
+        //[super tableView:tableView didSelectRowAtIndexPath:indexPath];
 }
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (isbind==1){
@@ -422,7 +433,7 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:@"logout" object:nil];
 }
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
-    if (section==SECTION_FEEDBACK){
+    if (section==SECTION_LAST){
         if (!logoutView){
             logoutView = [[ButtonViewController alloc] initWithNibName:@"ButtonViewController" bundle:nil];
             NSLog(@"%@",logoutView.button);
@@ -436,11 +447,28 @@
     }
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-    if (section==SECTION_FEEDBACK){
+    if (section==SECTION_LAST){
         return 80;
     }else{
-        return 22;
+        return 11;
     }
     
+}
+
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    if (section==0){
+        if (!_headerView){
+            _headerView =[[UserProfileView alloc] initWithController:self.navigationController];
+        }
+        return _headerView;
+    }else
+        return nil;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    if (section==0){
+        return 180;
+    }else{
+        return 11;
+    }
 }
 @end

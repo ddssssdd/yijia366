@@ -93,4 +93,6 @@
 
 -(void)check_update:(BOOL)inSettings;
 -(void)login:(NSString *)username password:(NSString *)password remember:(NSString *)remember callback:(void (^)(BOOL loginSuccess))callback;
+
++(NSString *)getStringDefault:(id)item default:(NSString *)d;
 @end

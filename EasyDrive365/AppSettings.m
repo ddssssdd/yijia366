@@ -384,4 +384,15 @@
     }];
     
 }
++(NSString *)getStringDefault:(id)item default:(NSString *)d{
+    NSLog(@"item=%@,class is %@",item,[item class]);
+    if (item==nil)
+        return d;
+    if ([item isKindOfClass:[NSNull class]])
+        return d;
+    NSString *result =[NSString stringWithFormat:@"%@",item];
+    if ([result isEqualToString:@""])
+        return d;
+    return result;
+}
 @end
