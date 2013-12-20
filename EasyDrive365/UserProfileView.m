@@ -10,6 +10,7 @@
 #import "AppSettings.h"
 #import "UIImageView+AFNetworking.h"
 #import "BoundListController.h"
+#import "FriendListController.h"
 
 @implementation UserProfileView
 
@@ -56,6 +57,8 @@
 - (IBAction)myTaskPressed:(id)sender {
 }
 - (IBAction)myFriendPressed:(id)sender {
+    FriendListController *vc =[[FriendListController alloc] initWithStyle:UITableViewStylePlain];
+    [_parent pushViewController:vc animated:YES];
 }
 
 -(void)load_data{

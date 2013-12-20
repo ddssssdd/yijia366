@@ -10,6 +10,7 @@
 #import "AppSettings.h"
 #import "TaskListCell.h"
 #import "UIImageView+AFNetworking.h"
+#import "ExecuteTaskController.h"
 @interface TaskListController (){
     id _list;
 }
@@ -80,5 +81,11 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 60.0f;
     
+}
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    id item = [_list objectAtIndex:indexPath.row];
+    ExecuteTaskController *vc = [[ExecuteTaskController alloc] initWithNibName:@"ExecuteTaskController" bundle:nil];
+    vc.task_id = [item[@"id"] intValue];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 @end
