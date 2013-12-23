@@ -29,13 +29,17 @@
 
 - (void)viewDidLoad
 {
+#if __IPHONE_OS_VERSION_MAX_ALLOWED > __IPHONE_6_1
+    if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+#endif
     [super viewDidLoad];
     self.btnOK.text = @"保存";
     [self textViewDidChange:self.txtComment];
     self.txtComment.layer.borderWidth=2.0f;
     self.txtComment.layer.borderColor=[[UIColor grayColor] CGColor];
     self.txtComment.delegate = self;
-    _ratingView = [[AMRatingControl alloc] initWithLocation:CGPointMake(10, 10) andMaxRating:5];
+    _ratingView = [[AMRatingControl alloc] initWithLocation:CGPointMake(40, 20) andMaxRating:5 withRadius:50];
     [self.view addSubview:_ratingView];
 }
 

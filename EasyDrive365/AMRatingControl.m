@@ -9,7 +9,7 @@
 
 // Constants :
 static const CGFloat kFontSize = 20;
-static const NSInteger kStarWidthAndHeight = 20;
+//static const NSInteger kStarWidthAndHeight = 20;
 
 static const NSString *kDefaultEmptyChar = @"☆";
 static const NSString *kDefaultSolidChar = @"★";
@@ -55,7 +55,11 @@ static const NSString *kDefaultSolidChar = @"★";
                        solidImage:nil
                        emptyColor:nil
                        solidColor:nil
-                     andMaxRating:maxRating];
+                     andMaxRating:maxRating
+            withRadius:20];
+}
+-(id)initWithLocation:(CGPoint)location andMaxRating:(NSInteger)maxRating withRadius:(NSInteger)radius{
+    return [self initWithLocation:location emptyImage:nil solidImage:nil emptyColor:nil solidColor:nil andMaxRating:maxRating withRadius:radius];
 }
 
 - (id)initWithLocation:(CGPoint)location
@@ -68,7 +72,8 @@ static const NSString *kDefaultSolidChar = @"★";
                        solidImage:solidImageOrNil
                        emptyColor:nil
                        solidColor:nil
-                     andMaxRating:maxRating];
+                     andMaxRating:maxRating
+                    withRadius:20];
 }
 
 - (id)initWithLocation:(CGPoint)location
@@ -81,7 +86,8 @@ static const NSString *kDefaultSolidChar = @"★";
                        solidImage:nil
                        emptyColor:emptyColor
                        solidColor:solidColor
-                     andMaxRating:maxRating];
+                     andMaxRating:maxRating
+            withRadius:20];
 }
 
 - (void)dealloc
@@ -163,7 +169,9 @@ static const NSString *kDefaultSolidChar = @"★";
             emptyColor:(UIColor *)emptyColor
             solidColor:(UIColor *)solidColor
           andMaxRating:(NSInteger)maxRating
+            withRadius:(NSInteger)Radius
 {
+    kStarWidthAndHeight = Radius;
     if (self = [self initWithFrame:CGRectMake(location.x,
                                               location.y,
                                               (maxRating * kStarWidthAndHeight),

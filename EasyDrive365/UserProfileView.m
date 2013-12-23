@@ -69,7 +69,7 @@
             self.lblExp.text=[NSString stringWithFormat:@"%@",json[@"result"][@"exp"]];
             self.lblSignature.text=[AppSettings getStringDefault:json[@"result"][@"signature"] default:@"啥也没有说"];
             self.lblUsername.text=[AppSettings getStringDefault:json[@"result"][@"nickname"] default:@"(未设置)"];
-            [self.imageAvater setImageWithURL:[NSURL URLWithString:json[@"result"][@"photourl"]] placeholderImage:[UIImage imageNamed:@"default_avater.jpg"]];
+            [self.imageAvater setImageWithURL:[NSURL URLWithString:json[@"result"][@"photourl"]] placeholderImage:[UIImage imageNamed:@"m.png"]];
         }
     }];
 }

@@ -12,6 +12,7 @@
 	UIImage *_emptyImage, *_solidImage;
     UIColor *_emptyColor, *_solidColor;
     NSInteger _maxRating;
+    NSInteger kStarWidthAndHeight;
 }
 
 
@@ -30,6 +31,7 @@
  * @param maxRating
  */
 - (id)initWithLocation:(CGPoint)location andMaxRating:(NSInteger)maxRating;
+- (id)initWithLocation:(CGPoint)location andMaxRating:(NSInteger)maxRating withRadius:(NSInteger)radius;
 
 /**
  * @param location : position of the rating control in your view
