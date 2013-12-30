@@ -16,7 +16,7 @@
 #import "SettingsViewController.h"
 #import "ShowLocationViewController.h"
 #import "GoodsListController.h"
-
+#import "SignupStep1ViewController.h"
 
 #define TAG_MAP 0
 #define TAG_GOODS 1
@@ -63,6 +63,7 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getNews:) name:@"NavigationCell_01" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(logout) name:@"logout" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(need_set) name:NEED_SET object:nil];
     
     self.tabBar.delegate = self;
     
@@ -251,6 +252,12 @@
 }
 -(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
     [_helper.refreshHeaderView egoRefreshScrollViewDidEndDragging:scrollView];
+}
+
+-(void)need_set{
+    SignupStep1ViewController *vc = [[SignupStep1ViewController alloc] initWithStyle:UITableViewStyleGrouped];
+    vc.isFromHome = YES;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 @end

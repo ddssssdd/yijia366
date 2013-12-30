@@ -23,6 +23,7 @@
 
 @interface AppSettings : NSObject<NSCoding,UIAlertViewDelegate>{
     NSMutableDictionary *_dict;
+    BOOL _needset;
 }
 
 @property (nonatomic,retain) NSString *firstName;

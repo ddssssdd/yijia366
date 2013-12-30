@@ -326,12 +326,18 @@
     if (_isCancelUpdate){
         return;
     }
+    _needset=NO;
     NSString *url = [NSString stringWithFormat:@"api/get_ver?ver=%@&device=iphone&userid=%d",AppVersion,self.userid];
     [self.http get:url block:^(id json) {
         if ([self isSuccess:json]){
 
             NSString *oldVersion = [NSString stringWithFormat:@"%@",AppVersion];
             _version= json[@"result"];
+            _needset = [_version[@"needset"] boolValue];
+            if (_needset){
+                _needset=NO;
+                [[NSNotificationCenter defaultCenter] postNotificationName:NEED_SET object:nil];
+            }
             if (![oldVersion isEqual:_version[@"ver"]]){
                 NSString *msg = _version[@"msg"];
                 UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:AppTitle message:msg delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"更新", nil];
@@ -359,6 +365,7 @@
     }else {
         _isCancelUpdate  = YES;
     }
+    
 }
 - (void)login:(NSString *)username password:(NSString *)password remember:(NSString *)remember callback:(void (^)(BOOL loginSuccess))callback{
     //[self doLogin];

@@ -25,7 +25,8 @@ NSString *inform1=@"设置向导第1步共4步";
     [self.navigationController popViewControllerAnimated:YES];
 }
 -(void)initData{
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"设置" style:UIBarButtonSystemItemAction target:self action:@selector(backTo)];
+
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:self.isFromHome?@"主页": @"设置" style:UIBarButtonSystemItemAction target:self action:@selector(backTo)];
     
     NSString *url = [NSString stringWithFormat:@"api/wizardstep0?userid=%d",[AppSettings sharedSettings].userid];
     [[AppSettings sharedSettings].http get:url block:^(id json) {
