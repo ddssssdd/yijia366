@@ -24,6 +24,8 @@
 @interface AppSettings : NSObject<NSCoding,UIAlertViewDelegate>{
     NSMutableDictionary *_dict;
     BOOL _needset;
+    NSString *_needsetmsg;
+    BOOL *_isUpdating;
 }
 
 @property (nonatomic,retain) NSString *firstName;

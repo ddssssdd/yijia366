@@ -323,7 +323,14 @@
     return _list;
 }
 -(void)check_update:(BOOL)inSettings{
+    if (inSettings){
+        _isCancelUpdate = NO;
+        _isUpdating=NO;
+    }
     if (_isCancelUpdate){
+        return;
+    }
+    if (_isUpdating){
         return;
     }
     _needset=NO;
@@ -333,11 +340,12 @@
 
             NSString *oldVersion = [NSString stringWithFormat:@"%@",AppVersion];
             _version= json[@"result"];
-            _needset = [_version[@"needset"] boolValue];
-            if (_needset){
-                _needset=NO;
-                [[NSNotificationCenter defaultCenter] postNotificationName:NEED_SET object:nil];
+            if (!inSettings){
+                _needset = [_version[@"needset"] boolValue];
             }
+            
+            _needsetmsg =_version[@"needsetmsg"];
+            
             if (![oldVersion isEqual:_version[@"ver"]]){
                 NSString *msg = _version[@"msg"];
                 UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:AppTitle message:msg delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"更新", nil];
@@ -347,6 +355,11 @@
                     NSString *msg = _version[@"msg"];
                     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:AppTitle message:msg delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
                     [alertView show];
+                }else{
+                    if (_needset){
+                        _needset=NO;
+                        [[NSNotificationCenter defaultCenter] postNotificationName:NEED_SET object:_needsetmsg];
+                    }
                 }
                 
             }
@@ -357,13 +370,17 @@
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     NSLog(@"%d",buttonIndex);
     if (buttonIndex==1){
-        
+        _isUpdating=YES;
         NSString *url = _version[@"ios"];
         
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
        
     }else {
         _isCancelUpdate  = YES;
+    }
+    if (_needset){
+        _needset=NO;
+        [[NSNotificationCenter defaultCenter] postNotificationName:NEED_SET object:_needsetmsg];
     }
     
 }

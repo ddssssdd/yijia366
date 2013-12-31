@@ -23,7 +23,7 @@
 #define TAG_PROVIDER 2
 #define TAG_ARTICLE 3
 
-@interface ViewController ()<UITabBarDelegate>{
+@interface ViewController ()<UITabBarDelegate,UIAlertViewDelegate>{
     NSMutableArray *_list;
     RefreshHelper *_helper;
 }
@@ -63,7 +63,7 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getNews:) name:@"NavigationCell_01" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(logout) name:@"logout" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(need_set) name:NEED_SET object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(need_set:) name:NEED_SET object:nil];
     
     self.tabBar.delegate = self;
     
@@ -254,10 +254,17 @@
     [_helper.refreshHeaderView egoRefreshScrollViewDidEndDragging:scrollView];
 }
 
--(void)need_set{
-    SignupStep1ViewController *vc = [[SignupStep1ViewController alloc] initWithStyle:UITableViewStyleGrouped];
-    vc.isFromHome = YES;
-    [self.navigationController pushViewController:vc animated:YES];
+-(void)need_set:(NSNotification *)notification{
+    NSString *message = [notification object];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:AppTitle message:message delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"设置", nil];
+    [alertView show];
 }
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex==1){
+        SignupStep1ViewController *vc = [[SignupStep1ViewController alloc] initWithStyle:UITableViewStyleGrouped];
+        vc.isFromHome = YES;
+        [self.navigationController pushViewController:vc animated:YES];
 
+    }
+}
 @end
