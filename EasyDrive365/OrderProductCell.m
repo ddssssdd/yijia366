@@ -1,14 +1,14 @@
 //
-//  GoodsListItemCell.m
+//  OrderProductCell.m
 //  EasyDrive366
 //
-//  Created by Steven Fu on 12/10/13.
-//  Copyright (c) 2013 Fu Steven. All rights reserved.
+//  Created by Steven Fu on 1/7/14.
+//  Copyright (c) 2014 Fu Steven. All rights reserved.
 //
 
-#import "GoodsListItemCell.h"
+#import "OrderProductCell.h"
 
-@implementation GoodsListItemCell
+@implementation OrderProductCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -24,11 +24,6 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
-}
-- (IBAction)buyButtonPressed:(id)sender {
-    if (self.delegate){
-        [self.delegate BuyButtonDelegate:self.item];
-    }
 }
 
 @end

@@ -11,8 +11,10 @@
 #import "UIImageView+AFNetworking.h"
 #import "GoodsCategoryController.h"
 #import "GoodsDetailController.h"
+#import "BuyButtonDelegate.h"
+#import "NewOrderController.h"
 
-@interface GoodsListController (){
+@interface GoodsListController ()<BuyButtonDelegate>{
     id _list;
 }
 
@@ -82,7 +84,8 @@
     itemCell.lblStand_price.text = item[@"stand_price"];
     itemCell.lblDiscount.text = item[@"discount"];
     itemCell.lblBuyer.text=item[@"buyer"];
-    
+    itemCell.item = item;
+    itemCell.delegate = self;
     [itemCell.image setImageWithURL:[NSURL URLWithString:item[@"pic_url"]]];
     return  cell;
 }
@@ -94,6 +97,13 @@
     id item = [_list objectAtIndex:indexPath.row];
     GoodsDetailController *vc =[[GoodsDetailController alloc] initWithStyle:UITableViewStyleGrouped];
     vc.target_id =[item[@"id"] intValue];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+-(void)BuyButtonDelegate:(id)item{
+    NSLog(@"%@",item);
+    NewOrderController *vc = [[NewOrderController alloc] initWithStyle:UITableViewStyleGrouped];
+    vc.product_id = [item[@"id"] intValue];
     [self.navigationController pushViewController:vc animated:YES];
 }
 @end

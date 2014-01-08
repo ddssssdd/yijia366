@@ -1,14 +1,14 @@
 //
-//  GoodsListItemCell.m
+//  PayUseDiscountCell.m
 //  EasyDrive366
 //
-//  Created by Steven Fu on 12/10/13.
-//  Copyright (c) 2013 Fu Steven. All rights reserved.
+//  Created by Steven Fu on 1/7/14.
+//  Copyright (c) 2014 Fu Steven. All rights reserved.
 //
 
-#import "GoodsListItemCell.h"
+#import "PayUseDiscountCell.h"
 
-@implementation GoodsListItemCell
+@implementation PayUseDiscountCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -25,9 +25,9 @@
 
     // Configure the view for the selected state
 }
-- (IBAction)buyButtonPressed:(id)sender {
+- (IBAction)settingChanged:(UISwitch *)sender {
     if (self.delegate){
-        [self.delegate BuyButtonDelegate:self.item];
+        [self.delegate settingsChanged:self value:sender.on];
     }
 }
 

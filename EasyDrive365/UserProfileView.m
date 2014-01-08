@@ -11,6 +11,7 @@
 #import "UIImageView+AFNetworking.h"
 #import "BoundListController.h"
 #import "FriendListController.h"
+#import "NeedPayController.h"
 
 @implementation UserProfileView
 
@@ -51,6 +52,8 @@
 }
 */
 - (IBAction)needPayPressed:(id)sender {
+    NeedPayController *vc = [[NeedPayController alloc] initWithStyle:UITableViewStylePlain];
+    [_parent pushViewController:vc animated:YES];
 }
 - (IBAction)myInsurancePressed:(id)sender {
 }

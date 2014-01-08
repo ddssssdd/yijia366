@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "BuyButtonDelegate.h"
 @interface GoodsListItemCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *image;
@@ -16,4 +16,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblStand_price;
 @property (weak, nonatomic) IBOutlet UILabel *lblDiscount;
 @property (weak, nonatomic) IBOutlet UILabel *lblBuyer;
+
+
+@property (nonatomic) id item;
+@property (nonatomic) id<BuyButtonDelegate> delegate;
 @end

@@ -1,14 +1,14 @@
 //
-//  GoodsListItemCell.m
+//  OrderQuantityCell.m
 //  EasyDrive366
 //
-//  Created by Steven Fu on 12/10/13.
-//  Copyright (c) 2013 Fu Steven. All rights reserved.
+//  Created by Steven Fu on 1/7/14.
+//  Copyright (c) 2014 Fu Steven. All rights reserved.
 //
 
-#import "GoodsListItemCell.h"
+#import "OrderQuantityCell.h"
 
-@implementation GoodsListItemCell
+@implementation OrderQuantityCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -25,9 +25,12 @@
 
     // Configure the view for the selected state
 }
-- (IBAction)buyButtonPressed:(id)sender {
+- (IBAction)stepChanged:(UIStepper *)sender {
+    int v = [sender value];
+
+    self.lblQuantity.text=[NSString stringWithFormat:@"%d",v];
     if (self.delegate){
-        [self.delegate BuyButtonDelegate:self.item];
+        [self.delegate quantityChanged:self value:v];
     }
 }
 

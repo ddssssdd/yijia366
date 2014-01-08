@@ -1,14 +1,14 @@
 //
-//  GoodsListItemCell.m
+//  NeedPayItemCell.m
 //  EasyDrive366
 //
-//  Created by Steven Fu on 12/10/13.
-//  Copyright (c) 2013 Fu Steven. All rights reserved.
+//  Created by Steven Fu on 1/8/14.
+//  Copyright (c) 2014 Fu Steven. All rights reserved.
 //
 
-#import "GoodsListItemCell.h"
+#import "NeedPayItemCell.h"
 
-@implementation GoodsListItemCell
+@implementation NeedPayItemCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -25,9 +25,15 @@
 
     // Configure the view for the selected state
 }
-- (IBAction)buyButtonPressed:(id)sender {
+
+- (IBAction)payButtonPressed:(id)sender {
     if (self.delegate){
-        [self.delegate BuyButtonDelegate:self.item];
+        [self.delegate payButtonPressed:self.orderItem];
+    }
+}
+- (IBAction)swipeRight:(id)sender {
+    if (self.delegate){
+        [self.delegate swipeRight:self orderItem:self.orderItem];
     }
 }
 
