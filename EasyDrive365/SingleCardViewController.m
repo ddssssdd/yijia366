@@ -7,7 +7,7 @@
 //
 
 #import "SingleCardViewController.h"
-#import "BrowserViewController.h"
+#import "Browser2Controller.h"
 
 @interface SingleCardViewController (){
     id _list;
@@ -57,15 +57,17 @@
 }
 -(void)viewUrl{
     //self.data[@"url"];
-    BrowserViewController *vc = [[BrowserViewController alloc] initWithNibName:@"BrowserViewController" bundle:nil];
+    Browser2Controller *vc = [[Browser2Controller alloc] initWithNibName:@"Browser2Controller" bundle:nil];
     vc.title = self.title;
-    [self.navigationController pushViewController:vc animated:YES];
     NSString *url = self.data[@"url"];
     if (![[[url substringToIndex:5] lowercaseString] isEqualToString:@"http:"]){
-        [vc go:[NSString stringWithFormat:@"http://%@",url]];
+        vc.url = [NSString stringWithFormat:@"http://%@",url];
     }else{
-        [vc go:url];
+        vc.url = url;
     }
+    
+    [self.navigationController pushViewController:vc animated:YES];
+    
     
 }
 - (void)didReceiveMemoryWarning

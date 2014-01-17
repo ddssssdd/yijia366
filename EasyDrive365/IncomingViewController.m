@@ -9,7 +9,7 @@
 #import "IncomingViewController.h"
 #import "AppSettings.h"
 #import "ItemDetailCell.h"
-#import "ArticleViewController.h"
+#import "ArticleController.h"
 
 @interface IncomingViewController (){
     id _data;

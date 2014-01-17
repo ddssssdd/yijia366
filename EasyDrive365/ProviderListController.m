@@ -85,7 +85,7 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     id item = [_list objectAtIndex:indexPath.row];
-    ProviderDetailController *vc = [[ProviderDetailController alloc] initWithStyle:UITableViewStyleGrouped];
+    ProviderDetailController *vc = [[ProviderDetailController alloc] initWithStyle:UITableViewStylePlain];
     vc.code= item[@"code"];
     vc.title = item[@"name"];
     [self.navigationController pushViewController:vc animated:YES];

@@ -49,7 +49,16 @@ static const NSString *kDefaultSolidChar = @"★";
 #pragma mark - Birth & Death
 
 - (id)initWithLocation:(CGPoint)location andMaxRating:(NSInteger)maxRating
+
 {
+    return [self initWithLocation:location
+                       emptyImage:[UIImage imageNamed:@"star.png"]
+                       solidImage:[UIImage imageNamed:@"starfull.png"]
+                       emptyColor:nil
+                       solidColor:nil
+                     andMaxRating:maxRating
+                       withRadius:20];
+    /*
     return [self initWithLocation:location
                        emptyImage:nil
                        solidImage:nil
@@ -57,9 +66,10 @@ static const NSString *kDefaultSolidChar = @"★";
                        solidColor:nil
                      andMaxRating:maxRating
             withRadius:20];
+     */
 }
 -(id)initWithLocation:(CGPoint)location andMaxRating:(NSInteger)maxRating withRadius:(NSInteger)radius{
-    return [self initWithLocation:location emptyImage:nil solidImage:nil emptyColor:nil solidColor:nil andMaxRating:maxRating withRadius:radius];
+    return [self initWithLocation:location emptyImage:[UIImage imageNamed:@"star.png"] solidImage:[UIImage imageNamed:@"starfull.png"] emptyColor:nil solidColor:nil andMaxRating:maxRating withRadius:radius];
 }
 
 - (id)initWithLocation:(CGPoint)location

@@ -10,7 +10,7 @@
 
 #import "AppSettings.h"
 #import "InformationCell.h"
-#import "BrowserViewController.h"
+#import "Browser2Controller.h"
 #import "PhoneView.h"
 #import "Menu.h"
 

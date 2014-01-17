@@ -46,6 +46,7 @@
     UISwipeGestureRecognizer *swipeRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(goRight)];
     swipeRight.direction = UISwipeGestureRecognizerDirectionRight;
     [self.tableView addGestureRecognizer:swipeRight];
+
     
 }
 
@@ -87,6 +88,8 @@
         _index=0;
         NSLog(@"%@",_target);
         [self.tableView reloadData];
+        [self.refreshControl endRefreshing];
+        self.title = _target[@"name"];
     }
     
 }
@@ -124,10 +127,12 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cellIndetifier"];
         cell.textLabel.text = _target[@"phone"];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        cell.imageView.image = [UIImage imageNamed:@"l.png"];
     }else if (indexPath.section==4){
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cellIndetifier"];
         cell.textLabel.text = _target[@"address"];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        cell.imageView.image = [UIImage imageNamed:@"k.png"];
     }else if (indexPath.section==5){
         id item = [_target[@"goods"] objectAtIndex:indexPath.row];
         cell = [[[NSBundle mainBundle] loadNibNamed:@"ProviderListItemCell" owner:nil options:nil] objectAtIndex:0];

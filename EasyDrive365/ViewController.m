@@ -18,11 +18,11 @@
 #import "GoodsListController.h"
 #import "ProviderListController.h"
 #import "ArticleListController.h"
-
-#define TAG_MAP 0
-#define TAG_GOODS 1
-#define TAG_PROVIDER 2
-#define TAG_ARTICLE 3
+#define TAG_HOMEPAGE 0
+#define TAG_MAP 1
+#define TAG_GOODS 2
+#define TAG_PROVIDER 3
+#define TAG_ARTICLE 4
 
 @interface ViewController ()<UITabBarDelegate>{
     NSMutableArray *_list;
@@ -66,15 +66,15 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(logout) name:@"logout" object:nil];
     
     self.tabBar.delegate = self;
-    
-    UITabBarItem *item1=[[UITabBarItem alloc] initWithTitle:@"地图" image:[UIImage imageNamed:@"0087.png"] tag:TAG_MAP];
-    UITabBarItem *item2 =[[UITabBarItem alloc] initWithTitle:@"商品" image:[UIImage imageNamed:@"0017.png"] tag:TAG_GOODS];
-    UITabBarItem *item3 = [[UITabBarItem alloc] initWithTitle:@"商户" image:[UIImage imageNamed:@"0085.png"] tag:TAG_PROVIDER];
+    UITabBarItem *item0=[[UITabBarItem alloc] initWithTitle:@"主页" image:[UIImage imageNamed:@"toolbar/zhuye.png"] tag:TAG_HOMEPAGE];
+    UITabBarItem *item1=[[UITabBarItem alloc] initWithTitle:@"保险" image:[UIImage imageNamed:@"toolbar/baoxian.png"] tag:TAG_MAP];
+    UITabBarItem *item2 =[[UITabBarItem alloc] initWithTitle:@"附进" image:[UIImage imageNamed:@"toolbar/shanghu.png"] tag:TAG_GOODS];
+    UITabBarItem *item3 = [[UITabBarItem alloc] initWithTitle:@"百科" image:[UIImage imageNamed:@"toolbar/baike.png"] tag:TAG_PROVIDER];
 
-    UITabBarItem *item4 = [[UITabBarItem alloc] initWithTitle:@"百科" image:[UIImage imageNamed:@"0085.png"] tag:TAG_ARTICLE];
+    UITabBarItem *item4 = [[UITabBarItem alloc] initWithTitle:@"用户" image:[UIImage imageNamed:@"toolbar/yonghu.png"] tag:TAG_ARTICLE];
 
     
-    [self.tabBar setItems:@[item1,
+    [self.tabBar setItems:@[item0,item1,
      item2,
      item3,
      item4]];
@@ -94,8 +94,10 @@
         ProviderListController *vc =[[ProviderListController alloc] initWithStyle:UITableViewStylePlain];
         [self.navigationController pushViewController:vc animated:YES];
     }else if (item.tag==TAG_ARTICLE){
-        ArticleListController *vc=[[ArticleListController alloc] initWithStyle:UITableViewStyleGrouped];
+        ArticleListController *vc=[[ArticleListController alloc] initWithStyle:UITableViewStylePlain];
         [self.navigationController pushViewController:vc animated:YES];
+    }else if (item.tag==TAG_HOMEPAGE){
+        //home page
     }
 }
 -(void)getNews:(NSNotification *)noti{
@@ -233,6 +235,9 @@
         MenuItem *item = [[Menu sharedMenu].list objectAtIndex:indexPath.row];
         ((NavigationCell *)cell).titleLabel.text = item.title;
         ((NavigationCell *)cell).keyname = item.name;
+        if (item.imagePath && ![item.imagePath isEqualToString:@""]){
+            ((NavigationCell *)cell).imgeIcon.image = [UIImage imageNamed:item.imagePath];
+        }
         cell.rootController = self.navigationController;
         return cell;
         

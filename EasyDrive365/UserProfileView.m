@@ -69,10 +69,14 @@
     [[AppSettings sharedSettings].http get:url block:^(id json) {
         if ([[AppSettings sharedSettings] isSuccess:json]){
             self.lblBound.text=[NSString stringWithFormat:@"积分：%@",json[@"result"][@"bound"]];
-            self.lblExp.text=[NSString stringWithFormat:@"%@",json[@"result"][@"exp"]];
+            self.lblExp.text=[NSString stringWithFormat:@"%@",json[@"result"][@"exp_label"]];
             self.lblSignature.text=[AppSettings getStringDefault:json[@"result"][@"signature"] default:@"啥也没有说"];
             self.lblUsername.text=[AppSettings getStringDefault:json[@"result"][@"nickname"] default:@"(未设置)"];
             [self.imageAvater setImageWithURL:[NSURL URLWithString:json[@"result"][@"photourl"]] placeholderImage:[UIImage imageNamed:@"m.png"]];
+            CGFloat exp = [json[@"result"][@"exp"] floatValue];
+            CGFloat nextlevel = [json[@"result"][@"exp_nextlevel"] floatValue];
+            [self.pvExp setProgress:(exp /nextlevel) animated:YES];
+
         }
     }];
 }

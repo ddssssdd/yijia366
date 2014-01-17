@@ -12,7 +12,9 @@
 #import "GoodsCategoryController.h"
 #import "ProviderDetailController.h"
 #import "DetailPictureCell.h"
-#import "BrowserViewController.h"
+
+#import "ArticleListItem2Cell.h"
+#import "Browser2Controller.h"
 
 @interface ArticleListController (){
     id _list;
@@ -118,6 +120,7 @@
         _imageView = aCell.image;
         _pager = aCell.pager;
     }else{
+        /*
         if (cell==nil){
             cell= [[[NSBundle mainBundle] loadNibNamed:@"ArticleListItemCell" owner:nil options:nil] objectAtIndex:0];
         }
@@ -128,26 +131,54 @@
         
         itemCell.lblVoternum.text =[NSString stringWithFormat:@"%@", item[@"star_voternum"]];
         itemCell.rating = [item[@"star"] intValue];
+         */
+        if (cell==nil){
+            cell= [[[NSBundle mainBundle] loadNibNamed:@"ArticleListItem2Cell" owner:nil options:nil] objectAtIndex:0];
+        }
+        id item = [_list objectAtIndex:indexPath.row];
+        ArticleListItem2Cell *itemCell=(ArticleListItem2Cell *)cell;
+        itemCell.lblTitle.text =item[@"title"];
+        itemCell.lblDescription.text = item[@"description"];
         
         [itemCell.image setImageWithURL:[NSURL URLWithString:item[@"pic_url"]]];
     }
     
     return  cell;
 }
-
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return 0;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 0;
+}
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.section==0)
+    if (indexPath.section==0){
         return 150.0f;
-    return 120.0f;
+        
+    }
+    //return 120.0f;
+    return 85.0f;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section==1){
         id item = [_list objectAtIndex:indexPath.row];
         NSString *url = item[@"url"];
+        
+        /*
         BrowserViewController *vc = [[BrowserViewController alloc] initWithNibName:@"BrowserViewController" bundle:nil];
         vc.title = item[@"title"];
-        [self.navigationController pushViewController:vc animated:YES];
+//        vc.url  = url;
+        [self.navigationController pushViewController:vc animated:NO];
         [vc go:url];
+        */
+        Browser2Controller *vc = [[Browser2Controller alloc] initWithNibName:@"Browser2Controller" bundle:nil];
+        vc.url = url;
+        vc.title = item[@"title"];
+        
+        [self.navigationController pushViewController:vc animated:YES];
+        
+        
+        
     }
     
     

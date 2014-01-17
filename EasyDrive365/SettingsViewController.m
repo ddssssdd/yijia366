@@ -168,7 +168,7 @@
                  @"placeholder":@"",
                  @"ispassword":@"",
                  @"value":@"",
-                 @"cell":@"ChooseNextCell"  }]
+                 @"cell":@"ChooseNextCell"}]
                 ];
     id items1=@[
                    [[NSMutableDictionary alloc] initWithDictionary:
@@ -177,28 +177,28 @@
                     @"default":@"",
                     @"placeholder":@"",
                     @"value":@"",
-                    @"cell":@"ChooseNextCell" }],
+                    @"cell":@"ChooseNextImageCell",@"icon":@"a.png" }],
                    [[NSMutableDictionary alloc] initWithDictionary:
                     @{@"key" :@"card",
                     @"label":@"我的卡券",
                     @"default":@"",
                     @"placeholder":
                     @"",@"value":@"",
-                    @"cell":@"ChooseNextCell" }],
+                    @"cell":@"ChooseNextImageCell",@"icon":@"b.png" }],
                    [[NSMutableDictionary alloc] initWithDictionary:
                     @{@"key" :@"favorite",
                     @"label":@"我的收藏",
                     @"default":@"",
                     @"placeholder":@"",
                     @"value":@"",
-                    @"cell":@"ChooseNextCell" }],
+                    @"cell":@"ChooseNextImageCell",@"icon":@"c.png" }],
                    [[NSMutableDictionary alloc] initWithDictionary:
                     @{@"key" :@"histroy",
                     @"label":@"浏览历史",
                     @"default":@"",
                     @"placeholder":
                     @"",@"value":@"",
-                    @"cell":@"ChooseNextCell" }]
+                    @"cell":@"ChooseNextImageCell",@"icon":@"d.png" }]
                    ];
     id items2=@[
                 [[NSMutableDictionary alloc] initWithDictionary:
@@ -207,21 +207,21 @@
                  @"default":@"",
                  @"placeholder":
                  @"",@"value":@"",
-                 @"cell":@"ChooseNextCell" }],
+                 @"cell":@"ChooseNextImageCell",@"icon":@"e.png" }],
                 [[NSMutableDictionary alloc] initWithDictionary:
                  @{@"key" :@"driver",
                  @"label":@"驾驶证",
                  @"default":@"",
                  @"placeholder":
                  @"",@"value":@"",
-                 @"cell":@"ChooseNextCell" }],
+                 @"cell":@"ChooseNextImageCell",@"icon":@"f.png" }],
                 [[NSMutableDictionary alloc] initWithDictionary:
                  @{@"key" :@"maintain",
                  @"label":@"保养设置",
                  @"default":@"",
                  @"placeholder":@"",
                  @"value":@"",
-                 @"cell":@"ChooseNextCell" }]
+                 @"cell":@"ChooseNextImageCell",@"icon":@"g.png" }]
                 ];
     
     id items3= @[
@@ -231,7 +231,7 @@
                    @"default":@"",
                    @"placeholder":
                    @"",@"value":@"",
-                   @"cell":@"ChooseNextCell" }],
+                   @"cell":@"ChooseNextImageCell",@"icon":@"h.png" }],
                   [[NSMutableDictionary alloc] initWithDictionary:
                    @{@"key" :@"cellphone",
                    @"label":_phoneStatus,
@@ -239,14 +239,14 @@
                    @"placeholder":@"",
                    @"ispassword":@"",
                    @"value":_phone,
-                   @"cell":@"ChooseNextCell"  }],
+                   @"cell":@"ChooseNextImageCell",@"icon":@"i.png"  }],
                   [[NSMutableDictionary alloc] initWithDictionary:
                    @{@"key" :@"find_password",
                    @"label":@"找回密码",
                    @"default":@"",
                    @"placeholder":
                    @"",@"value":@"",
-                   @"cell":@"ChooseNextCell" }]];
+                   @"cell":@"ChooseNextImageCell",@"icon":@"j.png" }]];
     id items4=@[[[NSMutableDictionary alloc] initWithDictionary:
                  @{@"key" :@"version",
                  @"label":@"版本号",

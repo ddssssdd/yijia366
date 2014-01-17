@@ -17,6 +17,7 @@
 
 @property (nonatomic,copy) NSString *phone;
 @property (nonatomic) UINavigationController *rootController;
+@property (weak, nonatomic) IBOutlet UIImageView *imgeIcon;
 
 
 -(void)getLatest;

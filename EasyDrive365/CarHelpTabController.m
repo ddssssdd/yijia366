@@ -10,7 +10,9 @@
 #import "VendorViewController.h"
 #import "ServiceNoteViewController.h"
 #import "IncomingViewController.h"
-#import "ArticleViewController.h"
+#import "ArticleController.h"
+#import "Browser2Controller.h"
+
 @interface CarHelpTabController (){
     UITabBarController *_tabController;
     VendorViewController *_venderController;
@@ -65,12 +67,19 @@
 }
 -(void)gotoArticle:(NSNotification *)notification{
     id item = notification.userInfo;
-    ArticleViewController *vc =[[ArticleViewController alloc] initWithNibName:@"ArticleViewController" bundle:nil];
-   
+    
+    ArticleController *vc =[[ArticleController alloc] initWithNibName:@"ArticleController" bundle:nil];
+    vc.article = item;
     
     [self.navigationController pushViewController:vc animated:YES];
     
-    [vc goto:item ];
+    /*
+    
+    Browser2Controller *vc = [[Browser2Controller alloc] initWithNibName:@"Browser2Controller" bundle:nil];
+    vc.article = item;
+    [self.navigationController pushViewController:vc animated:YES];
+    */
+
 }
 
 @end

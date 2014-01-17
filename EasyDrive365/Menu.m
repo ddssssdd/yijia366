@@ -19,7 +19,7 @@
 #import "BusinessInsuranceViewController.h"
 #import "InsuranceRecordsViewController.h"
 #import "MaintainListViewController.h"
-#import "BrowserViewController.h"
+#import "Browser2Controller.h"
 #import "BusinessInsViewController.h"
 #import "MaintanViewController.h"
 
@@ -45,19 +45,19 @@
     if (self){
         NSString *defaultInfo = @"";
         NSString *defaultPhone=@"";
-        _list=[NSArray arrayWithObjects:[[MenuItem alloc] initWithName:@"01" title:@"最新信息" description:defaultInfo imagePath:@"0001.png" phone:defaultPhone],
-            [[MenuItem alloc] initWithName:@"02" title:@"紧急救助" description:defaultInfo imagePath:@"0002.png" phone:defaultPhone],
+        _list=[NSArray arrayWithObjects:[[MenuItem alloc] initWithName:@"01" title:@"最新信息" description:defaultInfo imagePath:@"main_menu/m.png" phone:defaultPhone],
+            [[MenuItem alloc] initWithName:@"02" title:@"紧急救助" description:defaultInfo imagePath:@"main_menu/n.png" phone:defaultPhone],
             /*[[MenuItem alloc] initWithName:@"03" title:@"事故救援" description:defaultInfo imagePath:@"0003.png" phone:defaultPhone],*/
-            [[MenuItem alloc] initWithName:@"04" title:@"保养建议" description:defaultInfo imagePath:@"0004.png" phone:defaultPhone],
-            [[MenuItem alloc] initWithName:@"12" title:@"车务服务" description:defaultInfo imagePath:@"0004.png" phone:defaultPhone],
+            [[MenuItem alloc] initWithName:@"04" title:@"保养建议" description:defaultInfo imagePath:@"main_menu/g.png" phone:defaultPhone],
+            [[MenuItem alloc] initWithName:@"12" title:@"车务服务" description:defaultInfo imagePath:@"main_menu/o.png" phone:defaultPhone],
                
-               [[MenuItem alloc] initWithName:@"06" title:@"我的车辆" description:defaultInfo imagePath:@"0006.png" phone:defaultPhone],
-               [[MenuItem alloc] initWithName:@"05" title:@"驾驶证" description:defaultInfo imagePath:@"0005.png" phone:defaultPhone],
+               [[MenuItem alloc] initWithName:@"06" title:@"我的车辆" description:defaultInfo imagePath:@"main_menu/e.png" phone:defaultPhone],
+               [[MenuItem alloc] initWithName:@"05" title:@"驾驶证" description:defaultInfo imagePath:@"main_menu/f.png" phone:defaultPhone],
             
-            [[MenuItem alloc] initWithName:@"07" title:@"车船税" description:defaultInfo imagePath:@"0007.png" phone:defaultPhone],
-            [[MenuItem alloc] initWithName:@"08" title:@"交强险" description:defaultInfo imagePath:@"0008.png" phone:defaultPhone],
-            [[MenuItem alloc] initWithName:@"09" title:@"商业险" description:defaultInfo imagePath:@"0009.png" phone:defaultPhone],
-            [[MenuItem alloc] initWithName:@"10" title:@"理赔记录" description:defaultInfo imagePath:@"0010.png" phone:defaultPhone],
+            [[MenuItem alloc] initWithName:@"07" title:@"车船税" description:defaultInfo imagePath:@"" phone:defaultPhone],
+            [[MenuItem alloc] initWithName:@"08" title:@"交强险" description:defaultInfo imagePath:@"" phone:defaultPhone],
+            [[MenuItem alloc] initWithName:@"09" title:@"商业险" description:defaultInfo imagePath:@"" phone:defaultPhone],
+            [[MenuItem alloc] initWithName:@"10" title:@"理赔记录" description:defaultInfo imagePath:@"" phone:defaultPhone],
             //[[MenuItem alloc] initWithName:@"11" title:@"维修记录" description:defaultInfo imagePath:@"0011.png" phone:defaultPhone],
             nil];
     }
@@ -148,10 +148,11 @@
      */
      
     if ([key isEqualToString:@"00"] && url){
-        BrowserViewController *vc = [[BrowserViewController alloc] initWithNibName:@"BrowserViewController" bundle:nil];
+        Browser2Controller *vc = [[Browser2Controller alloc] initWithNibName:@"Browser2Controller" bundle:nil];
         vc.title = title;
+        vc.url = url;
         [controller pushViewController:vc animated:YES];
-        [vc go:url];
+
     }
 }
 

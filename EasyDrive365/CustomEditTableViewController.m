@@ -16,6 +16,7 @@
 #import "LicenseTypeViewController.h"
 #import "PickupData.h"
 #import "TextLabelCell.h"
+#import "ChooseNextImageCell.h"
 
 @interface CustomEditTableViewController ()<UITextFieldDelegate,SwitchCellDelegate,OneButtonCellDelegate,PickupData>{
     UITextField *_lastTextField;
@@ -184,6 +185,20 @@
         aCell.lblTitle.text = item[@"label"];
         aCell.lblDescription.text = item[@"value"];
         //cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        NSString *icon = item[@"icon"];
+        if (icon && ![icon isEqualToString:@""]){
+            cell.imageView.image = [UIImage imageNamed:icon];
+        }
+    }else if ([cellCalssName isEqualToString:@"ChooseNextImageCell"]){
+        
+        ChooseNextImageCell *aCell = (ChooseNextImageCell *)cell;
+        aCell.lblTitle.text = item[@"label"];
+        aCell.lblDescription.text = item[@"value"];
+        //cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        NSString *icon = item[@"icon"];
+        if (icon && ![icon isEqualToString:@""]){
+            aCell.imageIcon.image = [UIImage imageNamed:icon];
+        }
     }else if ([cellCalssName isEqualToString:@"TextLabelCell"]){
         TextLabelCell *aCell = (TextLabelCell *)cell;
         aCell.text.text = item[@"label"];
@@ -191,6 +206,7 @@
         cell.textLabel.text = item[@"label"];
         cell.detailTextLabel.text = item[@"value"];
     }
+    
     
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{

@@ -33,7 +33,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.navigationItem.rightBarButtonItem =[[UIBarButtonItem alloc] initWithTitle:@"comment" style:UIBarButtonSystemItemAction target:self action:@selector(addComment)];
+    self.title = @"评论详情";
+    self.navigationItem.rightBarButtonItem =[[UIBarButtonItem alloc] initWithTitle:@"评论" style:UIBarButtonSystemItemAction target:self action:@selector(addComment)];
     [self load_data];
 }
 -(void)load_data{
