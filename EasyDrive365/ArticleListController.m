@@ -88,7 +88,7 @@
         self.title = @"百科查询";
     }else{
         _helper.url = [NSString stringWithFormat:@"library/get_list?userid=%d",[AppSettings sharedSettings].userid];
-        self.title = @"推荐百科";
+        self.title = @"百科";
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"分类" style:UIBarButtonSystemItemAction target:self action:@selector(openCategory)];
     }
     

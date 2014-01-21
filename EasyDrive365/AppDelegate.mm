@@ -11,8 +11,20 @@
 #import "AppSettings.h"
 #import "BMapKit.h"
 #import "ViewController.h"
+#import "ShowLocationViewController.h"
+#import "ProviderListController.h"
+#import "ArticleListController.h"
+#import "SettingsViewController.h"
+#define TAG_HOMEPAGE 0
+#define TAG_INSURANCE 1
+#define TAG_PROVIDER 2
+#define TAG_ARTICLE 3
+#define TAG_SETTINGS 4
+
 @interface AppDelegate(){
     BMKMapManager *_mapManager;
+    UITabBarController *_tabbarController;
+    
 }
 @end
 @implementation AppDelegate
@@ -40,12 +52,49 @@
     //[self setup_display];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
+    /*
     self.viewController = [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];
     self.navigationController = [[UINavigationController alloc] initWithRootViewController:self.viewController];
     self.window.rootViewController = self.navigationController;
+     */
+    _tabbarController =[[UITabBarController alloc] init];
+    [self createControllers];
+    self.window.rootViewController = _tabbarController;
     [self.window makeKeyAndVisible];
     
     return YES;
+}
+-(void)createControllers{
+    ViewController *vcHome =[[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];
+    ShowLocationViewController *vcMap = [[ShowLocationViewController alloc] initWithNibName:@"ShowLocationViewController" bundle:nil];
+    vcMap.isFull = YES;
+    ProviderListController *vcProvider =[[ProviderListController alloc] initWithStyle:UITableViewStylePlain];
+    ArticleListController *vcArticle=[[ArticleListController alloc] initWithStyle:UITableViewStylePlain];
+    SettingsViewController *vcUser = [[SettingsViewController alloc] initWithStyle:UITableViewStyleGrouped];
+    UITabBarItem *item0=[[UITabBarItem alloc] initWithTitle:@"主页" image:[UIImage imageNamed:@"toolbar/zhuye.png"] tag:TAG_HOMEPAGE];
+    UITabBarItem *item1=[[UITabBarItem alloc] initWithTitle:@"保险" image:[UIImage imageNamed:@"toolbar/baoxian.png"] tag:TAG_INSURANCE];
+    UITabBarItem *item2 =[[UITabBarItem alloc] initWithTitle:@"附近" image:[UIImage imageNamed:@"toolbar/shanghu.png"] tag:TAG_PROVIDER];
+    UITabBarItem *item3 = [[UITabBarItem alloc] initWithTitle:@"百科" image:[UIImage imageNamed:@"toolbar/baike.png"] tag:TAG_ARTICLE];
+    
+    UITabBarItem *item4 = [[UITabBarItem alloc] initWithTitle:@"用户" image:[UIImage imageNamed:@"toolbar/yonghu.png"] tag:TAG_SETTINGS];
+    
+    UINavigationController *menu0 = [[UINavigationController alloc] initWithRootViewController:vcHome];
+    menu0.tabBarItem  = item0;
+    
+    UINavigationController *menu1 = [[UINavigationController alloc] initWithRootViewController:vcMap];
+    menu1.tabBarItem  = item1;
+    
+    UINavigationController *menu2 = [[UINavigationController alloc] initWithRootViewController:vcProvider];
+    menu2.tabBarItem  = item2;
+    
+    UINavigationController *menu3 = [[UINavigationController alloc] initWithRootViewController:vcArticle];
+    menu3.tabBarItem  = item3;
+
+    UINavigationController *menu4 = [[UINavigationController alloc] initWithRootViewController:vcUser];
+    menu4.tabBarItem  = item4;
+    
+    _tabbarController.viewControllers =@[menu0,menu1,menu2,menu3,menu4];
+    
 }
 -(void)setup_display{
     UIImage *gradientImage44 = [[UIImage imageNamed:@"surf_gradient_textured_44"]
