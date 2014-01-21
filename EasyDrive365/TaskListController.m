@@ -31,7 +31,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    self.title = @"我的任务";
     [self load_data];
 }
 -(void)load_data{

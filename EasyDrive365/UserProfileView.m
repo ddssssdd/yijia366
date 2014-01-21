@@ -12,6 +12,7 @@
 #import "BoundListController.h"
 #import "FriendListController.h"
 #import "NeedPayController.h"
+#import "TaskListController.h"
 
 @implementation UserProfileView
 
@@ -58,6 +59,8 @@
 - (IBAction)myInsurancePressed:(id)sender {
 }
 - (IBAction)myTaskPressed:(id)sender {
+    TaskListController *vc = [[TaskListController alloc] initWithStyle:UITableViewStylePlain];
+    [_parent pushViewController:vc animated:YES];
 }
 - (IBAction)myFriendPressed:(id)sender {
     FriendListController *vc =[[FriendListController alloc] initWithStyle:UITableViewStylePlain];
