@@ -39,6 +39,7 @@
     self.navigationItem.leftBarButtonItem =[[UIBarButtonItem alloc] initWithTitle:@"返回"
                                      style:UIBarButtonItemStyleBordered
                                     target:self action:@selector(goBack)];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(load_data) name:ADD_COMMENT_SUCCESS object:Nil];
 }
 -(void)goBack{
     [self.navigationController popViewControllerAnimated:YES];

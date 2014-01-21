@@ -40,6 +40,7 @@
     self.txtComment.layer.borderColor=[[UIColor grayColor] CGColor];
     self.txtComment.delegate = self;
     _ratingView = [[AMRatingControl alloc] initWithLocation:CGPointMake(40, 20) andMaxRating:5 withRadius:50];
+    [_ratingView setRating:1];
     [self.view addSubview:_ratingView];
 }
 
@@ -66,7 +67,10 @@
                      _ratingView.rating
                      ];
     [[AppSettings sharedSettings].http get:url block:^(id json) {
-        [self.navigationController popViewControllerAnimated:YES];
+        if ([[AppSettings sharedSettings] isSuccess:json]){
+            [self.navigationController popViewControllerAnimated:YES];
+            [[NSNotificationCenter defaultCenter] postNotificationName:ADD_COMMENT_SUCCESS object:Nil];
+        }
     }];
 }
 @end

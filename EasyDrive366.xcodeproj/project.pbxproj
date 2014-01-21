@@ -122,6 +122,7 @@
 		51DF0EC5188DF778002C044E /* starfull_small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 51DF0EC3188DF778002C044E /* starfull_small@2x.png */; };
 		51DF0EC8188DFB77002C044E /* ImageInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 51DF0EC7188DFB77002C044E /* ImageInfoCell.m */; };
 		51DF0ECA188DFB88002C044E /* ImageInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51DF0EC9188DFB88002C044E /* ImageInfoCell.xib */; };
+		51DF0ECC188E455B002C044E /* default_640x234.png in Resources */ = {isa = PBXBuildFile; fileRef = 51DF0ECB188E455B002C044E /* default_640x234.png */; };
 		51E21C3518508DBE00202C29 /* FeedbackInputCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51E21C3418508DBE00202C29 /* FeedbackInputCell.xib */; };
 		51E3CE131859CBA6004582BC /* ArticleListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51E3CE121859CBA6004582BC /* ArticleListController.m */; };
 		51E3CE161859E456004582BC /* ArticleListItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 51E3CE151859E456004582BC /* ArticleListItemCell.m */; };
@@ -530,6 +531,7 @@
 		51DF0EC6188DFB77002C044E /* ImageInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageInfoCell.h; sourceTree = "<group>"; };
 		51DF0EC7188DFB77002C044E /* ImageInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageInfoCell.m; sourceTree = "<group>"; };
 		51DF0EC9188DFB88002C044E /* ImageInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageInfoCell.xib; sourceTree = "<group>"; };
+		51DF0ECB188E455B002C044E /* default_640x234.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = default_640x234.png; sourceTree = "<group>"; };
 		51E21C3418508DBE00202C29 /* FeedbackInputCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedbackInputCell.xib; sourceTree = "<group>"; };
 		51E3CE111859CBA6004582BC /* ArticleListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleListController.h; sourceTree = "<group>"; };
 		51E3CE121859CBA6004582BC /* ArticleListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleListController.m; sourceTree = "<group>"; };
@@ -1304,6 +1306,7 @@
 		E24A041916CFBA2600B7A602 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				51DF0ECB188E455B002C044E /* default_640x234.png */,
 				51DF0EC2188DF778002C044E /* star_small@2x.png */,
 				51DF0EC3188DF778002C044E /* starfull_small@2x.png */,
 				512599261888DB1D00967BDE /* main_menu */,
@@ -2072,6 +2075,7 @@
 				51B26A211863355700C20C56 /* BoundHeader.xib in Resources */,
 				51F0A65F187BAB5900CC9A1D /* OrderQuantityCell.xib in Resources */,
 				E2F9C3CC17E9F30A00D75359 /* 0004@2x.png in Resources */,
+				51DF0ECC188E455B002C044E /* default_640x234.png in Resources */,
 				E2F9C3CF17E9F31A00D75359 /* 0017.png in Resources */,
 				512598DF1888D17200967BDE /* daifukuan.png in Resources */,
 				E2F9C3D017E9F31A00D75359 /* 0017@2x.png in Resources */,

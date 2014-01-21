@@ -57,7 +57,8 @@
 
 -(void)showPicture:(int)i{
     NSString *url = [_target[@"album"] objectAtIndex:i][@"pic_url"];
-    [_imageView setImageWithURL:[NSURL URLWithString:url]];
+    //[_imageView setImageWithURL:[NSURL URLWithString:url]];
+    [_imageView setImageWithURL:[NSURL URLWithString:url] placeholderImage:[UIImage imageNamed:@"default_640x234.png"]];
     _pager.currentPage = i;
 }
 
@@ -116,7 +117,7 @@
     }else if (indexPath.section==1){
         cell = [[[NSBundle mainBundle] loadNibNamed:@"DetailPictureCell" owner:nil options:nil] objectAtIndex:0];
         DetailPictureCell *aCell = (DetailPictureCell *)cell;
-        [aCell.image setImageWithURL:[NSURL URLWithString:_target[@"pic_url"]]];
+        [aCell.image setImageWithURL:[NSURL URLWithString:_target[@"pic_url"]] placeholderImage:[UIImage imageNamed:@"default_640x234.png"]];
         aCell.pager.numberOfPages =[ _target[@"album"] count];
         _imageView = aCell.image;
         _pager = aCell.pager;
@@ -133,14 +134,14 @@
         ImageInfoCell *aCell = (ImageInfoCell *)cell;
 
         aCell.lblTitle.text = _target[@"phone"];
-        aCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        //aCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         aCell.imageIcon.image = [UIImage imageNamed:@"l.png"];
         
     }else if (indexPath.section==4){
         cell = [[[NSBundle mainBundle] loadNibNamed:@"ImageInfoCell" owner:nil options:nil] objectAtIndex:0];
         ImageInfoCell *aCell = (ImageInfoCell *)cell;
         aCell.lblTitle.text = _target[@"address"];
-        aCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        //aCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         aCell.imageIcon.image = [UIImage imageNamed:@"k.png"];
         
     }else if (indexPath.section==5){
