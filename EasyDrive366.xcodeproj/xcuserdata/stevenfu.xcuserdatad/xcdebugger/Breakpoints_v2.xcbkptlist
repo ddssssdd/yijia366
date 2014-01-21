@@ -89,6 +89,7 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
+
             filePath = "EasyDrive365/ItemCommentsController.m"
             timestampString = "411976711.914142"
             startingColumnNumber = "9223372036854775807"
@@ -105,6 +106,7 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
+
             filePath = "EasyDrive365/CommentItemCell.m"
             timestampString = "409068063.024996"
             startingColumnNumber = "9223372036854775807"
@@ -121,6 +123,7 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
+
             filePath = "EasyDrive365/CommentListCell.m"
             timestampString = "409068065.832433"
             startingColumnNumber = "9223372036854775807"
@@ -438,6 +441,7 @@
                   shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
+
                   symbolName = "-[CarHelpViewController tableView]"
                   moduleName = "EasyDrive366"
                   urlString = "file:///Users/stevenfu/Documents/workspace/EasyDrive365/EasyDrive365/CarHelpViewController.h"
@@ -452,6 +456,7 @@
                   shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
+
                   symbolName = "-[CarHelpViewController setTableView:]"
                   moduleName = "EasyDrive366"
                   urlString = "file:///Users/stevenfu/Documents/workspace/EasyDrive365/EasyDrive365/CarHelpViewController.h"
@@ -471,6 +476,7 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
+
             filePath = "EasyDrive365/ArticleListController.m"
             timestampString = "411474960.743947"
             startingColumnNumber = "9223372036854775807"
@@ -702,6 +708,15 @@
             startingLineNumber = "48"
             endingLineNumber = "48"
             landmarkName = "-load_data"
+=======
+            filePath = "EasyDrive365/AppSettings.m"
+            timestampString = "410161865.410641"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "343"
+            endingLineNumber = "343"
+            landmarkName = "-check_update:"
+>>>>>>> v107
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

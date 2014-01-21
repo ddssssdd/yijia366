@@ -36,6 +36,20 @@
     self.title =@"我的卡券";
 
     [self loadData];
+    if (self.isWizad){
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"上一步" style:UIBarButtonSystemItemAction target:self action:@selector(gotoBack)];
+        
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonSystemItemAction target:self action:@selector(gotoSettings)];
+    }
+}
+-(void)gotoBack{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+-(void)gotoSettings{
+    
+     [self.navigationController popToViewController:[[self.navigationController viewControllers] objectAtIndex:1]  animated:YES];
+     
+   
 }
 
 - (void)didReceiveMemoryWarning

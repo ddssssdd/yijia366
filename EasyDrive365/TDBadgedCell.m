@@ -266,7 +266,7 @@
          */
         
         //to make badge display of top 
-         CGRect badgeframe = CGRectMake(self.contentView.frame.size.width - (badgeSize.width + 13 + self.badgeRightOffset),
+         CGRect badgeframe = CGRectMake(13,
          10,
          badgeSize.width + 13, badgeSize.height + (50/badgeSize.height));
          

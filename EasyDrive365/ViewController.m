@@ -23,8 +23,10 @@
 #define TAG_GOODS 2
 #define TAG_PROVIDER 3
 #define TAG_ARTICLE 4
+#import "SignupStep1ViewController.h"
 
-@interface ViewController ()<UITabBarDelegate>{
+
+@interface ViewController ()<UITabBarDelegate,UIAlertViewDelegate>{
     NSMutableArray *_list;
     RefreshHelper *_helper;
 }
@@ -64,6 +66,7 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getNews:) name:@"NavigationCell_01" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(logout) name:@"logout" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(need_set:) name:NEED_SET object:nil];
     
     self.tabBar.delegate = self;
     UITabBarItem *item0=[[UITabBarItem alloc] initWithTitle:@"主页" image:[UIImage imageNamed:@"toolbar/zhuye.png"] tag:TAG_HOMEPAGE];
@@ -84,12 +87,13 @@
 -(void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item{
     NSLog(@"%@",item);
     if (item.tag==TAG_MAP){//baoxian
-        ProviderListController *vc =[[ProviderListController alloc] initWithStyle:UITableViewStylePlain];
-        [self.navigationController pushViewController:vc animated:YES];
-
-    }else if (item.tag==TAG_GOODS){
         ShowLocationViewController *vc = [[ShowLocationViewController alloc] initWithNibName:@"ShowLocationViewController" bundle:nil];
         vc.isFull = YES;
+        [self.navigationController pushViewController:vc animated:YES];
+        
+
+    }else if (item.tag==TAG_GOODS){
+        ProviderListController *vc =[[ProviderListController alloc] initWithStyle:UITableViewStylePlain];
         [self.navigationController pushViewController:vc animated:YES];
 
 //        GoodsListController *vc=[[GoodsListController alloc] initWithStyle:UITableViewStylePlain];
@@ -98,7 +102,7 @@
         ArticleListController *vc=[[ArticleListController alloc] initWithStyle:UITableViewStylePlain];
         [self.navigationController pushViewController:vc animated:YES];
     }else if (item.tag==TAG_ARTICLE){
-  
+        [self settingsButtonPress:nil];
     }else if (item.tag==TAG_HOMEPAGE){
         //home page
     }
@@ -273,4 +277,17 @@
     [_helper.refreshHeaderView egoRefreshScrollViewDidEndDragging:scrollView];
 }
 
+-(void)need_set:(NSNotification *)notification{
+    NSString *message = [notification object];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:AppTitle message:message delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"设置", nil];
+    [alertView show];
+}
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex==1){
+        SignupStep1ViewController *vc = [[SignupStep1ViewController alloc] initWithStyle:UITableViewStyleGrouped];
+        vc.isFromHome = YES;
+        [self.navigationController pushViewController:vc animated:YES];
+
+    }
+}
 @end

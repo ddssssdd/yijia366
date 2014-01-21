@@ -88,11 +88,13 @@
     cell.detailLabel.text=[NSString stringWithFormat:@"%@",[item objectForKey:@"description"]];
     id is_readed = item[@"is_readed"];
     if ([is_readed intValue]==0){
-        cell.titleLabel.textColor = [UIColor redColor];
-        cell.detailLabel.textColor = [UIColor blueColor];
+        //cell.titleLabel.textColor = [UIColor redColor];
+        //cell.detailLabel.textColor = [UIColor blueColor];
         cell.badgeString = @"新";
         cell.badgeColor = [UIColor redColor];
 
+    }else{
+        cell.titleLabel.frame = CGRectMake(20, 7, 187, 21);
     }
     return cell;
 }

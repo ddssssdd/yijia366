@@ -9,5 +9,6 @@
 #import "CustomEditTableViewController.h"
 
 @interface SignupStep1ViewController : CustomEditTableViewController
+@property (nonatomic) BOOL isFromHome;
 
 @end

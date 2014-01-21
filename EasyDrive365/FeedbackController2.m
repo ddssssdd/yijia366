@@ -96,7 +96,7 @@
 }
 -(void)feedback:(NSString *)info phone:(NSString *)phone{
     if (info.length>0 && info.length<=200){
-        NSString *url = [NSString stringWithFormat:@"api/add_feeback?userid=%d&communication=%@&content=%@",[AppSettings sharedSettings].userid,phone,phone];
+        NSString *url = [NSString stringWithFormat:@"api/add_feeback?userid=%d&communication=%@&content=%@",[AppSettings sharedSettings].userid,phone,info];
         [[HttpClient sharedHttp] get:url block:^(id json) {
             if ([[AppSettings sharedSettings] isSuccess:json]){
                 [[[UIAlertView alloc] initWithTitle:AppTitle message:@"反馈已经提交，请耐心等候。" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil] show];

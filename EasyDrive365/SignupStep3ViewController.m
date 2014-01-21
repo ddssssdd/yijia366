@@ -11,14 +11,15 @@
 #import "AppSettings.h"
 #import "SignUpTableViewController.h"
 #import "SettingsViewController.h"
-NSString *inform3=@"设置向导第3步共3步";
+#import "NewActivateViewController.h"
+NSString *inform3=@"设置向导第3步共4步";
 @interface SignupStep3ViewController ()
 
 @end
 
 @implementation SignupStep3ViewController
 -(void)init_setup{
-    _saveButtonName = @"完成";
+    _saveButtonName = @"下一步";
 }
 -(void)backTo{
     [self.navigationController popViewControllerAnimated:YES];
@@ -28,7 +29,7 @@ NSString *inform3=@"设置向导第3步共3步";
     id items=@[
                [[NSMutableDictionary alloc] initWithDictionary:@{@"key" :@"name",@"label":@"姓名：",@"default":@"",@"placeholder":@"",@"ispassword":@"capital",@"cell":@"EditTextCell",@"value":self.name }],
                [[NSMutableDictionary alloc] initWithDictionary:@{@"key" :@"car_type",@"label":@"准驾车型：",@"default":@"",@"placeholder":@"",@"ispassword":@"capital",@"cell":@"ChooseNextCell",@"value":self.car_type }],
-               [[NSMutableDictionary alloc] initWithDictionary:@{@"key" :@"init_date",@"label":@"初登日期：",@"default":@"",@"placeholder":@"DatePickerViewController",@"ispassword":@"no",@"cell":@"ChooseNextCell",@"value":self.car_init_date }]
+               [[NSMutableDictionary alloc] initWithDictionary:@{@"key" :@"init_date",@"label":@"初领日期：",@"default":@"",@"placeholder":@"DatePickerViewController",@"ispassword":@"no",@"cell":@"ChooseNextCell",@"value":self.car_init_date }]
                ];
     _list=[NSMutableArray arrayWithArray: @[
            /*@{@"count" : @1,@"list":@[@{@"cell":@"IntroduceCell"}],@"height":@100.0f},*/
@@ -85,11 +86,11 @@ NSString *inform3=@"设置向导第3步共3步";
     }
 }
 -(void)gotoSettings{
-    
+    /*
     [self.navigationController popToViewController:[[self.navigationController viewControllers] objectAtIndex:1]  animated:YES];
-    
-    //[self.navigationController popToRootViewControllerAnimated:YES];
-    
-    //[[[[[self.navigationController popViewControllerAnimated:NO] navigationController] popViewControllerAnimated:NO] navigationController ] popViewControllerAnimated:NO];
+    */
+    NewActivateViewController *vc =[[NewActivateViewController alloc] initWithStyle:UITableViewStyleGrouped];
+    vc.isWizad = YES;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 @end
