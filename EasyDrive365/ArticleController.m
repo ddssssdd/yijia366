@@ -28,6 +28,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+#if __IPHONE_OS_VERSION_MAX_ALLOWED > __IPHONE_6_1
+    if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+#endif
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"查看评论" style:UIBarButtonSystemItemFastForward target:self action:@selector(gotoShare)];
     if (self.article){
         NSString *_article_url;

@@ -55,7 +55,7 @@
     _pager.currentPage = i;
 }
 
--(void)goLeft{
+-(void)goRight{
     _index--;
     if (_index<0){
         _index =[_imageList count]-1;
@@ -63,7 +63,7 @@
     }
     [self showPicture:_index];
 }
--(void)goRight{
+-(void)goLeft{
     _index++;
     if (_index>[_imageList count]-1){
         _index=0;

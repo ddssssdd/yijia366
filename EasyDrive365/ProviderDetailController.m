@@ -13,9 +13,11 @@
 #import "DetailRateCell.h"
 #import "UIImageView+AFNetworking.h"
 #import "ItemCommentsController.h"
+#import "ImageInfoCell.h"
+#import "ShowLocationViewController.h"
 
 
-@interface ProviderDetailController (){
+@interface ProviderDetailController ()<UIActionSheetDelegate>{
     id _target;
     UIImageView *_imageView;
     UIPageControl *_pager;
@@ -38,7 +40,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    if (self.name)
+        self.title = self.name;
+
     
     UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(goLeft)];
     swipeLeft.direction = UISwipeGestureRecognizerDirectionLeft;
@@ -46,6 +50,7 @@
     UISwipeGestureRecognizer *swipeRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(goRight)];
     swipeRight.direction = UISwipeGestureRecognizerDirectionRight;
     [self.tableView addGestureRecognizer:swipeRight];
+    
 
     
 }
@@ -56,7 +61,7 @@
     _pager.currentPage = i;
 }
 
--(void)goLeft{
+-(void)goRight{
     _index--;
     if (_index<0){
         _index =[_target[@"album"] count]-1;
@@ -64,7 +69,7 @@
     }
     [self showPicture:_index];
 }
--(void)goRight{
+-(void)goLeft{
     _index++;
     if (_index>[_target[@"album"] count]-1){
         _index=0;
@@ -89,7 +94,7 @@
         NSLog(@"%@",_target);
         [self.tableView reloadData];
         [self.refreshControl endRefreshing];
-        self.title = _target[@"name"];
+
     }
     
 }
@@ -124,15 +129,20 @@
         aCell.rating = 4.5;
         
     }else if (indexPath.section==3){
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cellIndetifier"];
-        cell.textLabel.text = _target[@"phone"];
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        cell.imageView.image = [UIImage imageNamed:@"l.png"];
+        cell = [[[NSBundle mainBundle] loadNibNamed:@"ImageInfoCell" owner:nil options:nil] objectAtIndex:0];
+        ImageInfoCell *aCell = (ImageInfoCell *)cell;
+
+        aCell.lblTitle.text = _target[@"phone"];
+        aCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        aCell.imageIcon.image = [UIImage imageNamed:@"l.png"];
+        
     }else if (indexPath.section==4){
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cellIndetifier"];
-        cell.textLabel.text = _target[@"address"];
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        cell.imageView.image = [UIImage imageNamed:@"k.png"];
+        cell = [[[NSBundle mainBundle] loadNibNamed:@"ImageInfoCell" owner:nil options:nil] objectAtIndex:0];
+        ImageInfoCell *aCell = (ImageInfoCell *)cell;
+        aCell.lblTitle.text = _target[@"address"];
+        aCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        aCell.imageIcon.image = [UIImage imageNamed:@"k.png"];
+        
     }else if (indexPath.section==5){
         id item = [_target[@"goods"] objectAtIndex:indexPath.row];
         cell = [[[NSBundle mainBundle] loadNibNamed:@"ProviderListItemCell" owner:nil options:nil] objectAtIndex:0];
@@ -157,9 +167,9 @@
         case 2:
             return 44;
         case 3:
-            return 44;
+            return 50;
         case 4:
-            return 44;
+            return 50;
         case 5:
             return 120.0;
             
@@ -174,7 +184,45 @@
         vc.itemId = self.code;
         vc.itemType =@"provider";
         [self.navigationController pushViewController:vc animated:YES];
+    }else if (indexPath.section==3){
+        //phone
+        [self makeCall];
+    }else if (indexPath.section==4){
+        //address;
+        [self showMap];
     }
 }
-
+-(void)showMap{
+    id item = _target[@"x"];
+    if (item==nil)
+        return;
+    if ([item isKindOfClass:[NSNull class]])
+        return;
+    if ([item isEqualToString:@""])
+        return;
+    
+    ShowLocationViewController *vc = [[ShowLocationViewController alloc] initWithNibName:@"ShowLocationViewController" bundle:nil];
+    vc.isFull = NO;
+    [self.navigationController pushViewController:vc animated:YES];
+    [vc showSingleShop:_target];
+}
+- (void)makeCall {
+    
+    if(_target[@"phone"]){
+        
+        UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:[NSString stringWithFormat:@"拨号：%@",_target[@"phone"]],nil];
+        
+        [sheet showInView:self.view];
+        
+    }
+    
+    
+}
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex==0){
+        NSString *phoneNumber = [@"tel://" stringByAppendingString:_target[@"phone"]];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phoneNumber]];
+    }
+    
+}
 @end

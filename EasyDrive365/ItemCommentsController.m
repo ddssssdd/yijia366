@@ -36,6 +36,12 @@
     self.title = @"评论详情";
     self.navigationItem.rightBarButtonItem =[[UIBarButtonItem alloc] initWithTitle:@"评论" style:UIBarButtonSystemItemAction target:self action:@selector(addComment)];
     [self load_data];
+    self.navigationItem.leftBarButtonItem =[[UIBarButtonItem alloc] initWithTitle:@"返回"
+                                     style:UIBarButtonItemStyleBordered
+                                    target:self action:@selector(goBack)];
+}
+-(void)goBack{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 -(void)load_data{
     NSString* url = [NSString stringWithFormat:@"comment/get_comment?userid=%d&type=%@&id=%@",[AppSettings sharedSettings].userid,self.itemType,self.itemId];

@@ -52,8 +52,8 @@ static const NSString *kDefaultSolidChar = @"★";
 
 {
     return [self initWithLocation:location
-                       emptyImage:[UIImage imageNamed:@"star.png"]
-                       solidImage:[UIImage imageNamed:@"starfull.png"]
+                       emptyImage:[UIImage imageNamed:@"star_small.png"]
+                       solidImage:[UIImage imageNamed:@"starfull_small.png"]
                        emptyColor:nil
                        solidColor:nil
                      andMaxRating:maxRating

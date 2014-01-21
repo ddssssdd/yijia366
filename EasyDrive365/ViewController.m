@@ -68,7 +68,7 @@
     self.tabBar.delegate = self;
     UITabBarItem *item0=[[UITabBarItem alloc] initWithTitle:@"主页" image:[UIImage imageNamed:@"toolbar/zhuye.png"] tag:TAG_HOMEPAGE];
     UITabBarItem *item1=[[UITabBarItem alloc] initWithTitle:@"保险" image:[UIImage imageNamed:@"toolbar/baoxian.png"] tag:TAG_MAP];
-    UITabBarItem *item2 =[[UITabBarItem alloc] initWithTitle:@"附进" image:[UIImage imageNamed:@"toolbar/shanghu.png"] tag:TAG_GOODS];
+    UITabBarItem *item2 =[[UITabBarItem alloc] initWithTitle:@"附近" image:[UIImage imageNamed:@"toolbar/shanghu.png"] tag:TAG_GOODS];
     UITabBarItem *item3 = [[UITabBarItem alloc] initWithTitle:@"百科" image:[UIImage imageNamed:@"toolbar/baike.png"] tag:TAG_PROVIDER];
 
     UITabBarItem *item4 = [[UITabBarItem alloc] initWithTitle:@"用户" image:[UIImage imageNamed:@"toolbar/yonghu.png"] tag:TAG_ARTICLE];
@@ -83,19 +83,22 @@
 }
 -(void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item{
     NSLog(@"%@",item);
-    if (item.tag==TAG_MAP){
+    if (item.tag==TAG_MAP){//baoxian
+        ProviderListController *vc =[[ProviderListController alloc] initWithStyle:UITableViewStylePlain];
+        [self.navigationController pushViewController:vc animated:YES];
+
+    }else if (item.tag==TAG_GOODS){
         ShowLocationViewController *vc = [[ShowLocationViewController alloc] initWithNibName:@"ShowLocationViewController" bundle:nil];
         vc.isFull = YES;
         [self.navigationController pushViewController:vc animated:YES];
-    }else if (item.tag==TAG_GOODS){
-        GoodsListController *vc=[[GoodsListController alloc] initWithStyle:UITableViewStylePlain];
-        [self.navigationController pushViewController:vc animated:YES];
+
+//        GoodsListController *vc=[[GoodsListController alloc] initWithStyle:UITableViewStylePlain];
+//        [self.navigationController pushViewController:vc animated:YES];
     }else if (item.tag==TAG_PROVIDER){
-        ProviderListController *vc =[[ProviderListController alloc] initWithStyle:UITableViewStylePlain];
-        [self.navigationController pushViewController:vc animated:YES];
-    }else if (item.tag==TAG_ARTICLE){
         ArticleListController *vc=[[ArticleListController alloc] initWithStyle:UITableViewStylePlain];
         [self.navigationController pushViewController:vc animated:YES];
+    }else if (item.tag==TAG_ARTICLE){
+  
     }else if (item.tag==TAG_HOMEPAGE){
         //home page
     }

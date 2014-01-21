@@ -87,7 +87,8 @@
     id item = [_list objectAtIndex:indexPath.row];
     ProviderDetailController *vc = [[ProviderDetailController alloc] initWithStyle:UITableViewStylePlain];
     vc.code= item[@"code"];
-    vc.title = item[@"name"];
+
+    vc.name = item[@"name"];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

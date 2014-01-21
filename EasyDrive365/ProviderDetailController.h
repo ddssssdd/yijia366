@@ -10,4 +10,5 @@
 
 @interface ProviderDetailController : NetTableViewController
 @property (nonatomic) NSString *code;
+@property (nonatomic) NSString *name;
 @end

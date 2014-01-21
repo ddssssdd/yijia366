@@ -118,6 +118,10 @@
 		51B9E1201861E3AC005B9704 /* DoCommentController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51B9E11E1861E3AC005B9704 /* DoCommentController.xib */; };
 		51BF51931861D2450021AA3C /* AMRatingControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 51BF51921861D2440021AA3C /* AMRatingControl.m */; };
 		51BF51961861D6E20021AA3C /* ItemCommentsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51BF51951861D6E20021AA3C /* ItemCommentsController.m */; };
+		51DF0EC4188DF778002C044E /* star_small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 51DF0EC2188DF778002C044E /* star_small@2x.png */; };
+		51DF0EC5188DF778002C044E /* starfull_small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 51DF0EC3188DF778002C044E /* starfull_small@2x.png */; };
+		51DF0EC8188DFB77002C044E /* ImageInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 51DF0EC7188DFB77002C044E /* ImageInfoCell.m */; };
+		51DF0ECA188DFB88002C044E /* ImageInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51DF0EC9188DFB88002C044E /* ImageInfoCell.xib */; };
 		51E21C3518508DBE00202C29 /* FeedbackInputCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51E21C3418508DBE00202C29 /* FeedbackInputCell.xib */; };
 		51E3CE131859CBA6004582BC /* ArticleListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51E3CE121859CBA6004582BC /* ArticleListController.m */; };
 		51E3CE161859E456004582BC /* ArticleListItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 51E3CE151859E456004582BC /* ArticleListItemCell.m */; };
@@ -521,6 +525,11 @@
 		51BF51941861D6E20021AA3C /* ItemCommentsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemCommentsController.h; sourceTree = "<group>"; };
 		51BF51951861D6E20021AA3C /* ItemCommentsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemCommentsController.m; sourceTree = "<group>"; };
 		51D7DF6718757F7E001807D7 /* BuyButtonDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyButtonDelegate.h; sourceTree = "<group>"; };
+		51DF0EC2188DF778002C044E /* star_small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star_small@2x.png"; sourceTree = "<group>"; };
+		51DF0EC3188DF778002C044E /* starfull_small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "starfull_small@2x.png"; sourceTree = "<group>"; };
+		51DF0EC6188DFB77002C044E /* ImageInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageInfoCell.h; sourceTree = "<group>"; };
+		51DF0EC7188DFB77002C044E /* ImageInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageInfoCell.m; sourceTree = "<group>"; };
+		51DF0EC9188DFB88002C044E /* ImageInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageInfoCell.xib; sourceTree = "<group>"; };
 		51E21C3418508DBE00202C29 /* FeedbackInputCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedbackInputCell.xib; sourceTree = "<group>"; };
 		51E3CE111859CBA6004582BC /* ArticleListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleListController.h; sourceTree = "<group>"; };
 		51E3CE121859CBA6004582BC /* ArticleListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleListController.m; sourceTree = "<group>"; };
@@ -997,6 +1006,9 @@
 				516BB5BD1858A06400D38079 /* ProviderListItemCell.xib */,
 				516BB5BF1858A68100D38079 /* ProviderDetailController.h */,
 				516BB5C01858A68100D38079 /* ProviderDetailController.m */,
+				51DF0EC6188DFB77002C044E /* ImageInfoCell.h */,
+				51DF0EC7188DFB77002C044E /* ImageInfoCell.m */,
+				51DF0EC9188DFB88002C044E /* ImageInfoCell.xib */,
 			);
 			name = Providers;
 			sourceTree = "<group>";
@@ -1292,6 +1304,8 @@
 		E24A041916CFBA2600B7A602 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				51DF0EC2188DF778002C044E /* star_small@2x.png */,
+				51DF0EC3188DF778002C044E /* starfull_small@2x.png */,
 				512599261888DB1D00967BDE /* main_menu */,
 				5125991D1888D3A900967BDE /* l.png */,
 				5125991E1888D3A900967BDE /* l@2x.png */,
@@ -1914,6 +1928,7 @@
 				512598E71888D17200967BDE /* pengyou.png in Resources */,
 				E2EE658D16C7C72100ED1C73 /* HelpCallViewController.xib in Resources */,
 				E2EE659216C7E6E600ED1C73 /* AccidentRescueViewController.xib in Resources */,
+				51DF0EC4188DF778002C044E /* star_small@2x.png in Resources */,
 				512598DE1888D17200967BDE /* baoxian@2x.png in Resources */,
 				512598E21888D17200967BDE /* jifen@2x.png in Resources */,
 				512598E51888D17200967BDE /* m.png in Resources */,
@@ -1970,6 +1985,7 @@
 				E26460E416F094DE0050BDA4 /* WelcomeViewController.xib in Resources */,
 				E26460F216F1F4CE0050BDA4 /* SVProgressHUD.bundle in Resources */,
 				512599171888D39500967BDE /* j.png in Resources */,
+				51DF0ECA188DFB88002C044E /* ImageInfoCell.xib in Resources */,
 				E2903BA916F36B9F00A93CBF /* Icon-72.png in Resources */,
 				E2903BAA16F36B9F00A93CBF /* Icon-Small-50.png in Resources */,
 				512598E81888D17200967BDE /* pengyou@2x.png in Resources */,
@@ -2077,6 +2093,7 @@
 				51570C2418585437003655CC /* DetailDescriptionCell.xib in Resources */,
 				51B26A1C1863317700C20C56 /* BoundListCell.xib in Resources */,
 				51570C2618585448003655CC /* DetailRateCell.xib in Resources */,
+				51DF0EC5188DF778002C044E /* starfull_small@2x.png in Resources */,
 				516BB5B3185874BB00D38079 /* backgroundStar.png in Resources */,
 				516BB5B4185874BB00D38079 /* backgroundStar@2x.png in Resources */,
 				516BB5B5185874BB00D38079 /* foregroundStar.png in Resources */,
@@ -2246,6 +2263,7 @@
 				E2F9C3DD17E9FFB800D75359 /* SearchResultController.m in Sources */,
 				E2CB6D361815663700441F32 /* CardViewController.m in Sources */,
 				E23386481816BA0C0035C405 /* SingleCardViewController.m in Sources */,
+				51DF0EC8188DFB77002C044E /* ImageInfoCell.m in Sources */,
 				E233864B1816C4D70035C405 /* AddCardStep1ControllerViewController.m in Sources */,
 				E233864E1816CA020035C405 /* TextLabelCell.m in Sources */,
 				E2CCBBD71817E2CF008DC8F6 /* AddCardStep2Controller.m in Sources */,
