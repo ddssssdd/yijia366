@@ -12,6 +12,10 @@
 		51116A681885483300AEE5D0 /* toolbar in Resources */ = {isa = PBXBuildFile; fileRef = 51116A671885483300AEE5D0 /* toolbar */; };
 		51116A6B18865F6100AEE5D0 /* ArticleListItem2Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = 51116A6A18865F6100AEE5D0 /* ArticleListItem2Cell.m */; };
 		51116A6D18865F7900AEE5D0 /* ArticleListItem2Cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51116A6C18865F7900AEE5D0 /* ArticleListItem2Cell.xib */; };
+		51133411188FE5B9005A02C3 /* btnbuy.png in Resources */ = {isa = PBXBuildFile; fileRef = 51133410188FE5B9005A02C3 /* btnbuy.png */; };
+		51133414188FE7B6005A02C3 /* StrikeThroughLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 51133413188FE7B6005A02C3 /* StrikeThroughLabel.m */; };
+		5113341718900612005A02C3 /* BuyButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5113341618900612005A02C3 /* BuyButtonView.m */; };
+		5113341918900622005A02C3 /* BuyButtonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5113341818900622005A02C3 /* BuyButtonView.xib */; };
 		51160F781861D92000AA15D3 /* CommentItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 51160F771861D92000AA15D3 /* CommentItemCell.m */; };
 		51160F7B1861D92F00AA15D3 /* CommentListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 51160F7A1861D92F00AA15D3 /* CommentListCell.m */; };
 		51160F7D1861D94000AA15D3 /* CommentListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51160F7C1861D94000AA15D3 /* CommentListCell.xib */; };
@@ -388,6 +392,12 @@
 		51116A6918865F6100AEE5D0 /* ArticleListItem2Cell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleListItem2Cell.h; sourceTree = "<group>"; };
 		51116A6A18865F6100AEE5D0 /* ArticleListItem2Cell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleListItem2Cell.m; sourceTree = "<group>"; };
 		51116A6C18865F7900AEE5D0 /* ArticleListItem2Cell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ArticleListItem2Cell.xib; sourceTree = "<group>"; };
+		51133410188FE5B9005A02C3 /* btnbuy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnbuy.png; sourceTree = "<group>"; };
+		51133412188FE7B6005A02C3 /* StrikeThroughLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StrikeThroughLabel.h; sourceTree = "<group>"; };
+		51133413188FE7B6005A02C3 /* StrikeThroughLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StrikeThroughLabel.m; sourceTree = "<group>"; };
+		5113341518900612005A02C3 /* BuyButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyButtonView.h; sourceTree = "<group>"; };
+		5113341618900612005A02C3 /* BuyButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyButtonView.m; sourceTree = "<group>"; };
+		5113341818900622005A02C3 /* BuyButtonView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BuyButtonView.xib; sourceTree = "<group>"; };
 		51160F761861D92000AA15D3 /* CommentItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentItemCell.h; sourceTree = "<group>"; };
 		51160F771861D92000AA15D3 /* CommentItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentItemCell.m; sourceTree = "<group>"; };
 		51160F791861D92F00AA15D3 /* CommentListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentListCell.h; sourceTree = "<group>"; };
@@ -1139,6 +1149,9 @@
 				51F0A66B187BE15400CC9A1D /* PayUseDiscountCell.h */,
 				51F0A66C187BE15400CC9A1D /* PayUseDiscountCell.m */,
 				51F0A66E187BE16A00CC9A1D /* PayUseDiscountCell.xib */,
+				5113341518900612005A02C3 /* BuyButtonView.h */,
+				5113341618900612005A02C3 /* BuyButtonView.m */,
+				5113341818900622005A02C3 /* BuyButtonView.xib */,
 			);
 			name = Order;
 			sourceTree = "<group>";
@@ -1306,6 +1319,9 @@
 		E24A041916CFBA2600B7A602 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				51133412188FE7B6005A02C3 /* StrikeThroughLabel.h */,
+				51133413188FE7B6005A02C3 /* StrikeThroughLabel.m */,
+				51133410188FE5B9005A02C3 /* btnbuy.png */,
 				51DF0ECB188E455B002C044E /* default_640x234.png */,
 				51DF0EC2188DF778002C044E /* star_small@2x.png */,
 				51DF0EC3188DF778002C044E /* starfull_small@2x.png */,
@@ -1935,6 +1951,7 @@
 				512598DE1888D17200967BDE /* baoxian@2x.png in Resources */,
 				512598E21888D17200967BDE /* jifen@2x.png in Resources */,
 				512598E51888D17200967BDE /* m.png in Resources */,
+				5113341918900622005A02C3 /* BuyButtonView.xib in Resources */,
 				512598E91888D17200967BDE /* renwu.png in Resources */,
 				512598E11888D17200967BDE /* jifen.png in Resources */,
 				512598C81888C6F600967BDE /* star.png in Resources */,
@@ -2016,6 +2033,7 @@
 				E2903BE616F4213E00A93CBF /* arrow.png in Resources */,
 				51F0A65A187BA97800CC9A1D /* OrderProductCell.xib in Resources */,
 				E2903BE916F424D300A93CBF /* phone_Blue.png in Resources */,
+				51133411188FE5B9005A02C3 /* btnbuy.png in Resources */,
 				E2903BEA16F424D300A93CBF /* phone_s Green.png in Resources */,
 				E25AF0B216F9FED900E79057 /* CIViewController.xib in Resources */,
 				E212279416FA068200B494E0 /* 0083.png in Resources */,
@@ -2189,6 +2207,7 @@
 				E26CCF9816D7B14D00A35DA1 /* InsuranceDetailCell.m in Sources */,
 				E26CCF9D16D7B41600A35DA1 /* InfoAndPhoneCallCell.m in Sources */,
 				E26CCFAC16DA0D1300A35DA1 /* HelpHeaderView.m in Sources */,
+				5113341718900612005A02C3 /* BuyButtonView.m in Sources */,
 				E29B09E716DA40C4002449DE /* Reachability.m in Sources */,
 				5169E7C11850A3D100F510A7 /* FeedbackInfoCell.m in Sources */,
 				E29B09EC16DB9134002449DE /* BusinessInsViewController.m in Sources */,
@@ -2267,6 +2286,7 @@
 				E2F9C3DD17E9FFB800D75359 /* SearchResultController.m in Sources */,
 				E2CB6D361815663700441F32 /* CardViewController.m in Sources */,
 				E23386481816BA0C0035C405 /* SingleCardViewController.m in Sources */,
+				51133414188FE7B6005A02C3 /* StrikeThroughLabel.m in Sources */,
 				51DF0EC8188DFB77002C044E /* ImageInfoCell.m in Sources */,
 				E233864B1816C4D70035C405 /* AddCardStep1ControllerViewController.m in Sources */,
 				E233864E1816CA020035C405 /* TextLabelCell.m in Sources */,

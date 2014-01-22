@@ -15,12 +15,13 @@
 #import "NewOrderHeader.h"
 #import "ButtonViewController.h"
 #import "OrderPayController.h"
+#import "BuyButtonView.h"
 
-@interface NewOrderController ()<OrderQuantityCellDelegate,ButtonViewControllerDelegate>{
+@interface NewOrderController ()<OrderQuantityCellDelegate,BuyButtonViewDelegate>{
     id _list;
     NSString *_order_id;
     NSString *_order_total;
-    ButtonViewController *_buttonController;
+    BuyButtonView *_buttonView;
     NewOrderHeader *_header;
 }
 
@@ -40,7 +41,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    self.title = @"新订单";
     [self load_data];
 }
 
@@ -108,6 +109,7 @@
         productCell.lblDescription.text = item.description;
         productCell.lblPrice.text = item.price;
         productCell.lblStand_price.text = item.stand_price;
+        productCell.lblStand_price.strikeThroughEnabled = YES;
         productCell.lblDiscount.text = item.discount;
         productCell.lblBuyer.text = item.buyer;
     
@@ -116,7 +118,7 @@
             if (cell==nil){
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
             }
-            cell.textLabel.text=@"price";
+            cell.textLabel.text=@"单价";
             cell.detailTextLabel.text= item.price;
         }else if (indexPath.row==1){
             if (cell==nil){
@@ -130,7 +132,7 @@
             if (cell==nil){
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
             }
-            cell.textLabel.text=@"total";
+            cell.textLabel.text=@"合计";
             cell.detailTextLabel.text=_order_total;
         }
     }
@@ -155,15 +157,15 @@
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     if (section==[_list count]*2-1){
-        return 80.0f;
+        return 60.0f;
     }
-    return 22.0f;
+    return 11.0;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     if (section==0) {
         return 44.0f;
     }
-    return 22.0f;
+    return 11.0;
 }
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     if (section==0){
@@ -176,17 +178,18 @@
 }
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
     if (section==[_list count]*2-1){
-        if (!_buttonController){
-            _buttonController =[[ButtonViewController alloc] initWithNibName:@"ButtonViewController" bundle:nil];
-            _buttonController.delegate = self;
-            _buttonController.buttonText = @"submit";
+        if (!_buttonView){
+            _buttonView =[[[NSBundle mainBundle] loadNibNamed:@"BuyButtonView" owner:nil options:nil] objectAtIndex:0];
+            
+            _buttonView.delegate = self;
+\
         }
-        return _buttonController.view;
+        return _buttonView;
     }
     return nil;
 }
--(void)buttonPressed:(NVUIGradientButton *)button{
-    NSLog(@"%@",button);
+-(void)buyButtonPressed:(BuyButtonView *)sender data:(id)data{
+
     if ([_list count]==0)
         return;
     OrderItem *item = [_list objectAtIndex:0];

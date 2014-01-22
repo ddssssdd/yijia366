@@ -105,7 +105,9 @@
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
     return [_sectionlist objectAtIndex:section];
 }
-
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return 0;
+}
 -(void)settingsChanged:(UITableViewCell *)cell value:(BOOL)value{
     _payItem.useDiscount = value;
     _payItem.detail = value?self.data[@"order_pay"]:self.data[@"order_pay_2"];

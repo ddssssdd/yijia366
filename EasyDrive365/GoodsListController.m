@@ -82,7 +82,9 @@
     itemCell.lblTitle.text =item[@"name"];
     itemCell.lblPrice.text = item[@"price"];
     itemCell.lblStand_price.text = item[@"stand_price"];
+    itemCell.lblStand_price.strikeThroughEnabled = YES;
     itemCell.lblDiscount.text = item[@"discount"];
+    itemCell.lblDescription.text = item[@"description"];
     itemCell.lblBuyer.text=item[@"buyer"];
     itemCell.item = item;
     itemCell.delegate = self;
@@ -95,14 +97,15 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     id item = [_list objectAtIndex:indexPath.row];
-    GoodsDetailController *vc =[[GoodsDetailController alloc] initWithStyle:UITableViewStyleGrouped];
+    GoodsDetailController *vc =[[GoodsDetailController alloc] initWithStyle:UITableViewStylePlain];
     vc.target_id =[item[@"id"] intValue];
+    vc.title = item[@"name"];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
 -(void)BuyButtonDelegate:(id)item{
     NSLog(@"%@",item);
-    NewOrderController *vc = [[NewOrderController alloc] initWithStyle:UITableViewStyleGrouped];
+    NewOrderController *vc = [[NewOrderController alloc] initWithStyle:UITableViewStylePlain];
     vc.product_id = [item[@"id"] intValue];
     [self.navigationController pushViewController:vc animated:YES];
 }

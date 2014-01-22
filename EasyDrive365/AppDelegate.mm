@@ -15,6 +15,8 @@
 #import "ProviderListController.h"
 #import "ArticleListController.h"
 #import "SettingsViewController.h"
+#import "GoodsListController.h"
+
 #define TAG_HOMEPAGE 0
 #define TAG_INSURANCE 1
 #define TAG_PROVIDER 2
@@ -71,6 +73,9 @@
     ProviderListController *vcProvider =[[ProviderListController alloc] initWithStyle:UITableViewStylePlain];
     ArticleListController *vcArticle=[[ArticleListController alloc] initWithStyle:UITableViewStylePlain];
     SettingsViewController *vcUser = [[SettingsViewController alloc] initWithStyle:UITableViewStyleGrouped];
+    
+    GoodsListController *vcGoods = [[GoodsListController alloc] initWithStyle:UITableViewStylePlain];
+    
     UITabBarItem *item0=[[UITabBarItem alloc] initWithTitle:@"主页" image:[UIImage imageNamed:@"toolbar/zhuye.png"] tag:TAG_HOMEPAGE];
     UITabBarItem *item1=[[UITabBarItem alloc] initWithTitle:@"保险" image:[UIImage imageNamed:@"toolbar/baoxian.png"] tag:TAG_INSURANCE];
     UITabBarItem *item2 =[[UITabBarItem alloc] initWithTitle:@"附近" image:[UIImage imageNamed:@"toolbar/shanghu.png"] tag:TAG_PROVIDER];
@@ -81,7 +86,8 @@
     UINavigationController *menu0 = [[UINavigationController alloc] initWithRootViewController:vcHome];
     menu0.tabBarItem  = item0;
     
-    UINavigationController *menu1 = [[UINavigationController alloc] initWithRootViewController:vcMap];
+    //UINavigationController *menu1 = [[UINavigationController alloc] initWithRootViewController:vcMap];
+    UINavigationController *menu1 = [[UINavigationController alloc] initWithRootViewController:vcGoods];
     menu1.tabBarItem  = item1;
     
     UINavigationController *menu2 = [[UINavigationController alloc] initWithRootViewController:vcProvider];

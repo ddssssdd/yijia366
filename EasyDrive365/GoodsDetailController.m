@@ -15,12 +15,15 @@
 #import "DetailRateCell.h"
 #import "UIImageView+AFNetworking.h"
 #import "ItemCommentsController.h"
+#import "BuyButtonView.h"
+#import "NewOrderController.h"
 
-@interface GoodsDetailController ()<OneButtonCellDelegate>{
+@interface GoodsDetailController ()<BuyButtonViewDelegate>{
     id _target;
     UIImageView *_imageView;
     UIPageControl *_pager;
     int _index;
+    BuyButtonView *_buttonView;
 }
 
 @end
@@ -52,11 +55,11 @@
 
 -(void)showPicture:(int)i{
     NSString *url = [_target[@"album"] objectAtIndex:i][@"pic_url"];
-    [_imageView setImageWithURL:[NSURL URLWithString:url]];
+    [_imageView setImageWithURL:[NSURL URLWithString:url] placeholderImage:[UIImage imageNamed:@"default_640x234.png"]];
     _pager.currentPage = i;
 }
 
--(void)goLeft{
+-(void)goRight{
     _index--;
     if (_index<0){
         _index =[_target[@"album"] count]-1;
@@ -64,7 +67,7 @@
     }
     [self showPicture:_index];
 }
--(void)goRight{
+-(void)goLeft{
     _index++;
     if (_index>[_target[@"album"] count]-1){
         _index=0;
@@ -91,7 +94,7 @@
     
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 5;
+    return 4;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return 1;
@@ -102,7 +105,7 @@
     if (indexPath.section==0){
         cell = [[[NSBundle mainBundle] loadNibNamed:@"DetailPictureCell" owner:nil options:nil] objectAtIndex:0];
         DetailPictureCell *aCell = (DetailPictureCell *)cell;
-        [aCell.image setImageWithURL:[NSURL URLWithString:_target[@"pic_url"]]];
+        [aCell.image setImageWithURL:[NSURL URLWithString:_target[@"pic_url"]]  placeholderImage:[UIImage imageNamed:@"default_640x234.png"]];
         aCell.pager.numberOfPages =[ _target[@"album"] count];
         _imageView = aCell.image;
         _pager = aCell.pager;
@@ -113,6 +116,7 @@
         aCell.lblBuyer.text =_target[@"buyer"];
         aCell.lblDiscount.text = _target[@"discount"];
         aCell.lblStand_price.text = _target[@"stand_price"];
+        aCell.lblStand_price.strikeThroughEnabled = YES;
         aCell.lblPrice.text = _target[@"price"];
     }else if (indexPath.section==2){
         cell = [[[NSBundle mainBundle] loadNibNamed:@"DetailDescriptionCell" owner:nil options:nil] objectAtIndex:0];
@@ -124,18 +128,29 @@
         aCell.lblStar.text =[NSString stringWithFormat:@"%@",  _target[@"star"]];
         aCell.lblStar_voternum.text = [NSString stringWithFormat:@"%@", _target[@"star_voternum"]];
         aCell.rating = 4.5;
-    }else if (indexPath.section==4){
-        cell = [[[NSBundle mainBundle] loadNibNamed:@"OneButtonCell" owner:nil options:nil] objectAtIndex:0];
-        OneButtonCell *aCell = (OneButtonCell *)cell;
-        aCell.button.text = @"购买";
-        aCell.delegate = self;
-        aCell.backgroundColor =[UIColor clearColor];
     }
     return cell;
 }
-
--(void)buttonPress:(OneButtonCell *)sender{
-    NSLog(@"clicked on buying");
+-(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+    if (section==3){
+        if (!_buttonView){
+            _buttonView = [[[NSBundle mainBundle] loadNibNamed:@"BuyButtonView" owner:nil options:nil] objectAtIndex:0];
+            _buttonView.delegate = self;
+            
+        }
+        return _buttonView;
+    }
+    return  nil;
+}
+-(void)buyButtonPressed:(BuyButtonView *)sender data:(id)data{
+    NewOrderController *vc = [[NewOrderController alloc] initWithStyle:UITableViewStylePlain];
+    vc.product_id = [_target[@"id"] intValue];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    if (section==3)
+        return 60;
+    return 0;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{

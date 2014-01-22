@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "StrikeThroughLabel.h"
 
 @interface OrderProductCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *imageProduct;
@@ -14,7 +15,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *lblDescription;
 @property (weak, nonatomic) IBOutlet UILabel *lblPrice;
-@property (weak, nonatomic) IBOutlet UILabel *lblStand_price;
+@property (weak, nonatomic) IBOutlet StrikeThroughLabel *lblStand_price;
 @property (weak, nonatomic) IBOutlet UILabel *lblBuyer;
 @property (weak, nonatomic) IBOutlet UILabel *lblDiscount;
 @property (weak, nonatomic) IBOutlet UILabel *lblStatus;
