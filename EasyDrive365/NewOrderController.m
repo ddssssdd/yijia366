@@ -180,9 +180,9 @@
     if (section==[_list count]*2-1){
         if (!_buttonView){
             _buttonView =[[[NSBundle mainBundle] loadNibNamed:@"BuyButtonView" owner:nil options:nil] objectAtIndex:0];
-            
+            [_buttonView.btnBuy setBackgroundImage:[UIImage imageNamed:@"btnpay_big"] forState:UIControlStateNormal];
             _buttonView.delegate = self;
-\
+
         }
         return _buttonView;
     }

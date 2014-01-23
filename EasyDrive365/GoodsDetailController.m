@@ -136,7 +136,7 @@
         if (!_buttonView){
             _buttonView = [[[NSBundle mainBundle] loadNibNamed:@"BuyButtonView" owner:nil options:nil] objectAtIndex:0];
             _buttonView.delegate = self;
-            
+            [_buttonView.btnBuy setBackgroundImage:[UIImage imageNamed:@"btnbuy_big"] forState:UIControlStateNormal];
         }
         return _buttonView;
     }

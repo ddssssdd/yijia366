@@ -8,7 +8,11 @@
 
 #import "OrderPayController.h"
 #import "PayUseDiscountCell.h"
-
+#import "DataSigner.h"
+#import "AlixPayResult.h"
+#import "DataVerifier.h"
+#import "AlixPayOrder.h"
+#import "AlixLibService.h"
 
 @interface OrderPayItem:NSObject
 @property (nonatomic) NSString *title;
@@ -28,6 +32,11 @@
     id _list;
     id _sectionlist;
     OrderPayItem *_payItem;
+    SEL _result;
+    NSString *_name;
+    NSString *_description;
+    NSString *_price;
+    CGFloat _amount;
 }
 
 @end
@@ -117,9 +126,61 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     id item = [[_list objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
     
-    if (item[@"item"]){
-        NSLog(@"%@",item[@"item"]);
+    if (item[@"item"] && item[@"pay"]){
+        //doing pay
+        NSString *appScheme = APP_SCHEMA;
+        NSString* orderInfo = [self getOrderInfo:indexPath.row];
+        NSString* signedStr = [self doRsa:orderInfo];
+        
+        NSLog(@"%@",signedStr);
+        
+        NSString *orderString = [NSString stringWithFormat:@"%@&sign=\"%@\"&sign_type=\"%@\"",
+                                 orderInfo, signedStr, @"RSA"];
+        
+        [AlixLibService payOrder:orderString AndScheme:appScheme seletor:_result target:self];
     }
+}
+-(NSString*)getOrderInfo:(NSInteger)index
+{
+    /*
+	 *点击获取prodcut实例并初始化订单信息
+	 */
+
+    AlixPayOrder *order = [[AlixPayOrder alloc] init];
+    order.partner = PartnerID;
+    order.seller = SellerID;
+    
+    order.tradeNO = [self generateTradeNO]; //订单ID（由商家自行制定）
+	order.productName = _name; //商品标题
+	order.productDescription = _description; //商品描述
+	order.amount = @"0.01";//_price; //商品价格
+	order.notifyURL =  @"http%3A%2F%2Fm.4006678888.com:21000/index.php/"; //回调URL
+	
+	return [order description];
+}
+
+- (NSString *)generateTradeNO
+{
+	const int N = 15;
+	
+	NSString *sourceString = @"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	NSMutableString *result = [[NSMutableString alloc] init] ;
+	srand(time(0));
+	for (int i = 0; i < N; i++)
+	{
+		unsigned index = rand() % [sourceString length];
+		NSString *s = [sourceString substringWithRange:NSMakeRange(index, 1)];
+		[result appendString:s];
+	}
+	return result;
+}
+
+-(NSString*)doRsa:(NSString*)orderInfo
+{
+    id<DataSigner> signer;
+    signer = CreateRSADataSigner(PartnerPrivKey);
+    NSString *signedString = [signer signString:orderInfo];
+    return signedString;
 }
 -(void)load_data{
     if (self.data){
@@ -131,6 +192,11 @@
             
             [_list addObject:@[@{@"title":@"单价",@"detail":good[@"price"]},@{@"title":@"数量",@"detail":[NSString stringWithFormat:@"%@",good[@"quantity"]]}]];
             [_sectionlist addObject:good[@"name"]];
+            
+            _name = good[@"name"];
+            _description = good[@"name"];//missing description for good's description
+            _price = good[@"price"];
+            _amount = [good[@"quantity"] floatValue];
         }
         //money information
         [_sectionlist addObject:@"应付款"];
@@ -147,7 +213,7 @@
         [_sectionlist addObject:@"付款方式"];
         id paylist = [[NSMutableArray alloc] init];
         for (id pay in self.data[@"pay"]) {
-            [paylist addObject:@{@"title": pay[@"bank_name"],@"detail":pay[@"account"],@"item":pay}];
+            [paylist addObject:@{@"title": pay[@"bank_name"],@"detail":pay[@"account"],@"item":pay,@"pay":@"yes"}];
         }
         [_list addObject:paylist];
         [self.tableView reloadData];

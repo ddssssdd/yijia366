@@ -32,7 +32,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    self.title = @"商户";
 }
 
 - (void)didReceiveMemoryWarning
@@ -45,10 +45,10 @@
 -(void)setup{
     if (self.isSearch){
         _helper.url = [NSString stringWithFormat:@"api/get_service_list?userid=%d&type=%@&keyword=%@",[AppSettings sharedSettings].userid,self.searchTypes,self.searchKey];
-        self.title = @"商户查询";
+        //self.title = @"商户查询";
     }else{
         _helper.url = [NSString stringWithFormat:@"api/get_service_list?userid=%d",[AppSettings sharedSettings].userid];
-        self.title = @"推荐商户";
+        //self.title = @"推荐商户";
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"分类" style:UIBarButtonSystemItemAction target:self action:@selector(openCategory)];
     }
     

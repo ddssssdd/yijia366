@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface NeedPayController : UITableViewController
-
+@property (nonatomic) NSString *status;
 @end

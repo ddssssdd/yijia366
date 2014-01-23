@@ -14,7 +14,7 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="6j8-Zs-fi6">
                     <rect key="frame" x="23" y="7" width="275" height="45"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" image="btnbuy.png">
+                    <state key="normal">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
@@ -29,7 +29,4 @@
             </connections>
         </view>
     </objects>
-    <resources>
-        <image name="btnbuy.png" width="220" height="50"/>
-    </resources>
 </document>

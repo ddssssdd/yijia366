@@ -14,6 +14,7 @@
 
 @interface NeedPayItemCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *imagePicture;
+@property (weak, nonatomic) IBOutlet UIButton *btnPay;
 
 @property (weak, nonatomic) IBOutlet UILabel *lblName;
 @property (weak, nonatomic) IBOutlet UILabel *lblDescription;

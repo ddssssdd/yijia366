@@ -35,6 +35,7 @@
 {
     
     [super viewDidLoad];
+    self.title = @"商品";
     
     
 }
@@ -54,10 +55,10 @@
 -(void)setup{
     if (self.isSearch){
         _helper.url = [NSString stringWithFormat:@"library/get_list?userid=%d&type=%@&keyword=%@",[AppSettings sharedSettings].userid,self.searchTypes,self.searchKey];
-        self.title = @"商品查询";
+        //self.title = @"商品查询";
     }else{
         _helper.url = [NSString stringWithFormat:@"goods/get_goods_list?userid=%d",[AppSettings sharedSettings].userid];
-        self.title = @"推荐商品";
+        //self.title = @"推荐商品";
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"分类" style:UIBarButtonSystemItemAction target:self action:@selector(openCategory)];
     }
     

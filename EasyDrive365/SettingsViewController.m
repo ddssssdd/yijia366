@@ -28,7 +28,7 @@
 #import "AddCardStep1ControllerViewController.h"
 #import "FeedbackController2.h"
 #import "UserProfileView.h"
-
+#import "NeedPayController.h"
 
 #define SECTION_LAST 5
 
@@ -298,7 +298,9 @@
             //vc.txtCommunication.text =_phone;
         }
     }else if ([key isEqualToString:@"order"]){
-        
+        NeedPayController *vc = [[NeedPayController alloc] initWithStyle:UITableViewStylePlain];
+        vc.status = @"finished";
+        [self.navigationController pushViewController:vc animated:YES];
     }else if ([key isEqualToString:@"card"]){
         NewActivateViewController *vc =[[NewActivateViewController alloc] initWithStyle:UITableViewStyleGrouped];
         [self.navigationController pushViewController:vc animated:YES];

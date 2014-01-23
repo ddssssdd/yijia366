@@ -16,6 +16,8 @@
 #import "ArticleListController.h"
 #import "SettingsViewController.h"
 #import "GoodsListController.h"
+#import "AlixPayResult.h"
+#import "DataVerifier.h"
 
 #define TAG_HOMEPAGE 0
 #define TAG_INSURANCE 1
@@ -63,6 +65,7 @@
     [self createControllers];
     self.window.rootViewController = _tabbarController;
     [self.window makeKeyAndVisible];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(logout) name:@"logout" object:nil];
     
     return YES;
 }
@@ -77,15 +80,15 @@
     GoodsListController *vcGoods = [[GoodsListController alloc] initWithStyle:UITableViewStylePlain];
     
     UITabBarItem *item0=[[UITabBarItem alloc] initWithTitle:@"主页" image:[UIImage imageNamed:@"toolbar/zhuye.png"] tag:TAG_HOMEPAGE];
-    UITabBarItem *item1=[[UITabBarItem alloc] initWithTitle:@"保险" image:[UIImage imageNamed:@"toolbar/baoxian.png"] tag:TAG_INSURANCE];
-    UITabBarItem *item2 =[[UITabBarItem alloc] initWithTitle:@"附近" image:[UIImage imageNamed:@"toolbar/shanghu.png"] tag:TAG_PROVIDER];
+    UITabBarItem *item1=[[UITabBarItem alloc] initWithTitle:@"商品" image:[UIImage imageNamed:@"toolbar/baoxian.png"] tag:TAG_INSURANCE];
+    UITabBarItem *item2 =[[UITabBarItem alloc] initWithTitle:@"服务商" image:[UIImage imageNamed:@"toolbar/shanghu.png"] tag:TAG_PROVIDER];
     UITabBarItem *item3 = [[UITabBarItem alloc] initWithTitle:@"百科" image:[UIImage imageNamed:@"toolbar/baike.png"] tag:TAG_ARTICLE];
     
     UITabBarItem *item4 = [[UITabBarItem alloc] initWithTitle:@"用户" image:[UIImage imageNamed:@"toolbar/yonghu.png"] tag:TAG_SETTINGS];
     
     UINavigationController *menu0 = [[UINavigationController alloc] initWithRootViewController:vcHome];
     menu0.tabBarItem  = item0;
-    
+
     //UINavigationController *menu1 = [[UINavigationController alloc] initWithRootViewController:vcMap];
     UINavigationController *menu1 = [[UINavigationController alloc] initWithRootViewController:vcGoods];
     menu1.tabBarItem  = item1;
@@ -101,6 +104,9 @@
     
     _tabbarController.viewControllers =@[menu0,menu1,menu2,menu3,menu4];
     
+}
+-(void)logout{
+    _tabbarController.selectedIndex =0;
 }
 -(void)setup_display{
     UIImage *gradientImage44 = [[UIImage imageNamed:@"surf_gradient_textured_44"]
@@ -161,4 +167,73 @@
     NSLog(@"received notificaiton:%@",payload);
     
 }
+-(BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url{
+    [self parse:url application:application];
+	return YES;
+}
+
+- (void)parse:(NSURL *)url application:(UIApplication *)application {
+    
+    //结果处理
+    AlixPayResult* result = [self handleOpenURL:url];
+    
+	if (result)
+    {
+		
+		if (result.statusCode == 9000)
+        {
+			/*
+			 *用公钥验证签名 严格验证请使用result.resultString与result.signString验签
+			 */
+            /*
+            result = {
+                statusCode=9000
+                statusMessage=支付结束
+                signType=RSA
+                signString=ZQU+KoRuM3VvkyHbdQE1vqfQmXSw8fLz4weTzinFNDWIA4qZvCplrVEiIKAFZ4h0A4J4FdeHJnvvhs+JjLT7iTlq3fO9lyaqvm6pUjQZn6lCLAs5RsE2su6mFQnHNmiQL/Be3UG0oQuv3SPi9etxfjMJpTLN8y5mxubmzaNPyUc=
+            }
+             */
+            
+            //交易成功
+            /*
+            NSString* key = @"签约帐户后获取到的支付宝公钥";
+            id<DataVerifier> verifier;
+            verifier = CreateRSADataVerifier(key);
+            
+            if ([verifier verifyString:result.resultString withSign:result.signString])
+            {
+                //验证签名成功，交易结果无篡改
+            }
+             */
+            
+        }
+        else
+        {
+            //交易失败
+        }
+    }
+    else
+    {
+        //失败
+    }
+    
+}
+
+- (AlixPayResult *)resultFromURL:(NSURL *)url {
+	NSString * query = [[url query] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+
+	return [[AlixPayResult alloc] initWithString:query];
+
+}
+
+- (AlixPayResult *)handleOpenURL:(NSURL *)url {
+	AlixPayResult * result = nil;
+	
+	if (url != nil && [[url host] compare:@"safepay"] == 0) {
+		result = [self resultFromURL:url];
+	}
+    
+	return result;
+}
+
 @end

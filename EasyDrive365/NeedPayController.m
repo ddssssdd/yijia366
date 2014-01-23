@@ -34,7 +34,7 @@
     [super viewDidLoad];
 
     [self load_data];
-    self.title=@"待付款";
+    self.title=[self.status isEqualToString:@"finished"]?@"我的订单": @"待付款";
 }
 
 - (void)didReceiveMemoryWarning
@@ -74,7 +74,9 @@
     payCell.lblPrice.text= item[@"order_total"];
     payCell.lblQuantity.text = product[@"quantity"];
     payCell.delegate = self;
-    
+    if ([self.status isEqualToString:@"finished"]){
+        [payCell.btnPay removeFromSuperview];
+    }
     return cell;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -106,7 +108,7 @@
     }
 }
 -(void)load_data{
-    NSString *url = [NSString stringWithFormat:@"order/order_list?userid=%d&status=notpay",[AppSettings sharedSettings].userid];
+    NSString *url = [NSString stringWithFormat:@"order/order_list?userid=%d&status=%@",[AppSettings sharedSettings].userid,self.status];
     [[AppSettings sharedSettings].http get:url block:^(id json) {
         if ([[AppSettings sharedSettings] isSuccess:json]){
             _list = json[@"result"];

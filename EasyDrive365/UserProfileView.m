@@ -54,6 +54,7 @@
 */
 - (IBAction)needPayPressed:(id)sender {
     NeedPayController *vc = [[NeedPayController alloc] initWithStyle:UITableViewStylePlain];
+    vc.status = @"notpay";
     [_parent pushViewController:vc animated:YES];
 }
 - (IBAction)myInsurancePressed:(id)sender {
