@@ -119,7 +119,7 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     id item = [_list objectAtIndex:indexPath.row];
-    OrderDetailController *vc = [[OrderDetailController alloc] initWithStyle:UITableViewStyleGrouped];
+    OrderDetailController *vc = [[OrderDetailController alloc] initWithStyle:UITableViewStylePlain];
     vc.order_id=item[@"order_id"];
     [self.navigationController pushViewController:vc animated:YES];
 }

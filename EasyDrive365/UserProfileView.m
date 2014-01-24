@@ -13,6 +13,7 @@
 #import "FriendListController.h"
 #import "NeedPayController.h"
 #import "TaskListController.h"
+#import "SetupUserController.h"
 
 @implementation UserProfileView
 
@@ -29,6 +30,8 @@
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openBound)];
         [self.lblBound addGestureRecognizer:tap];
         
+        UITapGestureRecognizer *tapOnView = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(setupUser)];
+        [self addGestureRecognizer:tapOnView];
         [self load_data];
     }
     return self;
@@ -42,6 +45,12 @@
         // Initialization code
     }
     return self;
+}
+-(void)setupUser{
+    SetupUserController *vc = [[SetupUserController alloc] initWithStyle:UITableViewStyleGrouped];
+    //[_parent presentViewController:vc animated:YES completion:Nil];
+    [_parent pushViewController:vc animated:YES];
+    
 }
 
 /*

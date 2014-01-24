@@ -7,18 +7,18 @@
 //
 
 #import "OrderDetailController.h"
-#import "ButtonViewController.h"
+#import "BuyButtonView.h"
 #import "OrderProductCell.h"
 #import "AppSettings.h"
 #import "UIImageView+AFNetworking.h"
 #import "NewOrderController.h"
 
-@interface OrderDetailController ()<ButtonViewControllerDelegate>{
+@interface OrderDetailController ()<BuyButtonViewDelegate>{
     id _list;
     id _sectionList;
     NSString *_order_status;
     NSString *_order_status_name;
-    ButtonViewController *_buttonView;
+    BuyButtonView *_buttonView;
     int _footer_index;
 }
 
@@ -75,6 +75,7 @@
         productCell.lblDescription.text = item[@"description"];
         productCell.lblPrice.text = item[@"price"];
         productCell.lblStand_price.text = item[@"stand_price"];
+        productCell.lblStand_price.strikeThroughEnabled = YES;
         productCell.lblDiscount.text = item[@"discount"];
         productCell.lblBuyer.text = item[@"buyer"];
         productCell.lblStatus.text = _order_status_name;
@@ -103,11 +104,11 @@
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
     if ([_order_status isEqualToString:@"notpay"] &&  section==_footer_index){
         if (!_buttonView){
-            _buttonView = [[ButtonViewController alloc] initWithNibName:@"ButtonViewController" bundle:nil];
+            _buttonView = [[[NSBundle mainBundle] loadNibNamed:@"BuyButtonView" owner:nil options:nil] objectAtIndex:0];
             _buttonView.delegate = self;
-            _buttonView.buttonText = @"pay";
+            [_buttonView.btnBuy setBackgroundImage:[UIImage imageNamed:@"btnpay_big"] forState:UIControlStateNormal];
         }
-        return _buttonView.view;
+        return _buttonView;
     }
     return  nil;
 }
@@ -117,7 +118,7 @@
     }
     return  22.0f;
 }
--(void)buttonPressed:(NVUIGradientButton *)button{
+-(void)buyButtonPressed:(BuyButtonView *)sender data:(id)data{
     NewOrderController *vc = [[NewOrderController alloc] initWithStyle:UITableViewStyleGrouped];
     vc.order_id = self.order_id;
     [self.navigationController pushViewController:vc animated:YES];

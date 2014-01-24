@@ -165,6 +165,7 @@
 		51F10F4118632FF800F4E72D /* BoundListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51F10F4018632FF800F4E72D /* BoundListController.m */; };
 		51F704941862CA8F00A17D24 /* UserProfileView.m in Sources */ = {isa = PBXBuildFile; fileRef = 51F704931862CA8F00A17D24 /* UserProfileView.m */; };
 		51F704961862CAAA00A17D24 /* UserProfileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51F704951862CAAA00A17D24 /* UserProfileView.xib */; };
+		51FD8A5F1892B29B00963987 /* SetupUserController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51FD8A5E1892B29B00963987 /* SetupUserController.m */; };
 		E202E12816E0D7B400FDBD34 /* Insurance4ColumnsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E202E12716E0D7B400FDBD34 /* Insurance4ColumnsCell.m */; };
 		E202E12B16E0D7D100FDBD34 /* Insurance4ColumnsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E202E12A16E0D7D100FDBD34 /* Insurance4ColumnsCell.xib */; };
 		E202E12E16E0DC4300FDBD34 /* InsuranceFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = E202E12D16E0DC4300FDBD34 /* InsuranceFooterView.m */; };
@@ -622,6 +623,8 @@
 		51F704921862CA8F00A17D24 /* UserProfileView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfileView.h; sourceTree = "<group>"; };
 		51F704931862CA8F00A17D24 /* UserProfileView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfileView.m; sourceTree = "<group>"; };
 		51F704951862CAAA00A17D24 /* UserProfileView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserProfileView.xib; sourceTree = "<group>"; };
+		51FD8A5D1892B29B00963987 /* SetupUserController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetupUserController.h; sourceTree = "<group>"; };
+		51FD8A5E1892B29B00963987 /* SetupUserController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetupUserController.m; sourceTree = "<group>"; };
 		E202E12616E0D7B400FDBD34 /* Insurance4ColumnsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Insurance4ColumnsCell.h; sourceTree = "<group>"; };
 		E202E12716E0D7B400FDBD34 /* Insurance4ColumnsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Insurance4ColumnsCell.m; sourceTree = "<group>"; };
 		E202E12A16E0D7D100FDBD34 /* Insurance4ColumnsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Insurance4ColumnsCell.xib; sourceTree = "<group>"; };
@@ -1291,6 +1294,8 @@
 				51F704921862CA8F00A17D24 /* UserProfileView.h */,
 				51F704931862CA8F00A17D24 /* UserProfileView.m */,
 				51F704951862CAAA00A17D24 /* UserProfileView.xib */,
+				51FD8A5D1892B29B00963987 /* SetupUserController.h */,
+				51FD8A5E1892B29B00963987 /* SetupUserController.m */,
 			);
 			name = Users;
 			sourceTree = "<group>";
@@ -2372,6 +2377,7 @@
 				E271A3F717658B7C001E4D54 /* CommentCell.m in Sources */,
 				E27A7D5517B12A81009895E6 /* ActivateViewController.m in Sources */,
 				E27A7D5A17B12D75009895E6 /* ShowActivateViewController.m in Sources */,
+				51FD8A5F1892B29B00963987 /* SetupUserController.m in Sources */,
 				E27A7D5F17B13DBE009895E6 /* SignupStep1ViewController.m in Sources */,
 				E27A7D6217B14081009895E6 /* SignupStep2ViewController.m in Sources */,
 				E27A7D6517B14091009895E6 /* SignupStep3ViewController.m in Sources */,
