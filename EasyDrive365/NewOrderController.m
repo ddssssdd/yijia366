@@ -21,6 +21,7 @@
     id _list;
     NSString *_order_id;
     NSString *_order_total;
+    CGFloat _price;
     BuyButtonView *_buttonView;
     NewOrderHeader *_header;
 }
@@ -112,6 +113,7 @@
         productCell.lblStand_price.strikeThroughEnabled = YES;
         productCell.lblDiscount.text = item.discount;
         productCell.lblBuyer.text = item.buyer;
+        
     
     }else{
         if (indexPath.row==0){
@@ -152,7 +154,7 @@
     int index = indexPath.section / 2;
     OrderItem *orderItem = [_list objectAtIndex:index];
     orderItem.quantity = value;
-    _order_total = @"1000000";
+    _order_total = [NSString stringWithFormat:@"¥%0.2f元",value*orderItem.price_num];
     [self.tableView reloadRowsAtIndexPaths:@[nextCell] withRowAnimation:UITableViewRowAnimationTop];
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
@@ -163,16 +165,20 @@
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     if (section==0) {
-        return 44.0f;
+        return 22.0f;
+        //return 44.0f;
     }
     return 11.0;
 }
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     if (section==0){
+        /*
         if (!_header){
             _header =[[[NSBundle mainBundle] loadNibNamed:@"NewOrderHeader" owner:nil options:nil] objectAtIndex:0];
         }
         return _header;
+         */
+        return nil;
     }
     return  nil;
 }

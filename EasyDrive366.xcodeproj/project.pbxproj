@@ -78,6 +78,7 @@
 		512599251888D63D00967BDE /* ChooseNextImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 512599241888D63D00967BDE /* ChooseNextImageCell.xib */; };
 		512599271888DB1D00967BDE /* main_menu in Resources */ = {isa = PBXBuildFile; fileRef = 512599261888DB1D00967BDE /* main_menu */; };
 		5128E98B1850A45E00928906 /* FeedbackInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5128E98A1850A45E00928906 /* FeedbackInfoCell.xib */; };
+		514C90D918951451007FFFCC /* InsuranceMainController.m in Sources */ = {isa = PBXBuildFile; fileRef = 514C90D818951451007FFFCC /* InsuranceMainController.m */; };
 		51570C0018574E1B003655CC /* GoodsListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51570BFF18574E1B003655CC /* GoodsListController.m */; };
 		51570C0318575055003655CC /* GoodsListItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 51570C0218575055003655CC /* GoodsListItemCell.m */; };
 		51570C051857506A003655CC /* GoodsListItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51570C041857506A003655CC /* GoodsListItemCell.xib */; };
@@ -483,6 +484,8 @@
 		512599241888D63D00967BDE /* ChooseNextImageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChooseNextImageCell.xib; sourceTree = "<group>"; };
 		512599261888DB1D00967BDE /* main_menu */ = {isa = PBXFileReference; lastKnownFileType = folder; path = main_menu; sourceTree = "<group>"; };
 		5128E98A1850A45E00928906 /* FeedbackInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedbackInfoCell.xib; sourceTree = "<group>"; };
+		514C90D718951451007FFFCC /* InsuranceMainController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InsuranceMainController.h; sourceTree = "<group>"; };
+		514C90D818951451007FFFCC /* InsuranceMainController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InsuranceMainController.m; sourceTree = "<group>"; };
 		51570BFE18574E1B003655CC /* GoodsListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsListController.h; sourceTree = "<group>"; };
 		51570BFF18574E1B003655CC /* GoodsListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsListController.m; sourceTree = "<group>"; };
 		51570C0118575055003655CC /* GoodsListItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsListItemCell.h; sourceTree = "<group>"; };
@@ -1032,6 +1035,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		514C90D6189513C9007FFFCC /* Insurance */ = {
+			isa = PBXGroup;
+			children = (
+				514C90D718951451007FFFCC /* InsuranceMainController.h */,
+				514C90D818951451007FFFCC /* InsuranceMainController.m */,
+			);
+			name = Insurance;
+			sourceTree = "<group>";
+		};
 		51570BF818574AD3003655CC /* Goods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1827,6 +1839,7 @@
 		E2EE653916C5294A00ED1C73 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				514C90D6189513C9007FFFCC /* Insurance */,
 				51F0A670187BE8EF00CC9A1D /* NeedPay */,
 				51F0A64F187B96AC00CC9A1D /* Order */,
 				51F704911862CA2E00A17D24 /* Users */,
@@ -2263,6 +2276,7 @@
 				E2F2880716F5929E00DAE1B8 /* EGORefreshTableHeaderView.m in Sources */,
 				E2F2880816F5929E00DAE1B8 /* blackArrow.png in Sources */,
 				5164183B18508CD400C1A792 /* FeedbackInputCell.m in Sources */,
+				514C90D918951451007FFFCC /* InsuranceMainController.m in Sources */,
 				E2F2880916F5929E00DAE1B8 /* blackArrow@2x.png in Sources */,
 				E2F2880A16F5929E00DAE1B8 /* blueArrow.png in Sources */,
 				E2F2880B16F5929E00DAE1B8 /* blueArrow@2x.png in Sources */,

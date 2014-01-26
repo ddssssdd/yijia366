@@ -22,6 +22,7 @@
         self.description = json[@"description"];
         self.pic_url = json[@"pic_url"];
         self.quantity =[json[@"quantity"] intValue];
+        self.price_num =[json[@"price_num"] floatValue];
     }
     return self;
 }

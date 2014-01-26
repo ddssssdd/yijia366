@@ -7,7 +7,8 @@
 //
 
 #import "AppSettings.h"
-
+#import "Menu.h"
+#import "MenuItem.h"
 
 
 @implementation Information
@@ -267,9 +268,14 @@
     }
      */
     self.isNeedRefresh= NO;
+    /*
     for(int i=1;i<=APPLATEST_COUNT;i++){
         NSString *keyname = [NSString stringWithFormat:@"%02d",i];
         [self get_latest_by_key:keyname];
+    }
+     */
+    for (MenuItem *item in [Menu sharedMenu].list) {
+        [self get_latest_by_key:item.name];
     }
 }
 -(void)get_latest_by_key:(NSString *)keyname{

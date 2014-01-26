@@ -124,6 +124,7 @@
         cell.textLabel.text =@"设置头像";
         if (!_imageCell){
             _imageCell= [[UIImageView alloc] initWithFrame:CGRectMake(240, 2, 40, 40)];
+            _imageCell.contentMode = UIViewContentModeScaleAspectFill;
             UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapOnImage)];
             _imageCell.userInteractionEnabled = YES;
             
@@ -231,6 +232,7 @@
 }
 -(void)showBigImage:(NSString *)url{
     _imageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 50, 300, 300)];
+    _imageView.contentMode = UIViewContentModeCenter;
     if ([url hasPrefix:@"http://"]){
         [_imageView setImageWithURLWithoutCache:[NSURL URLWithString:url] placeholderImage:[UIImage imageNamed:@"m"]];
     }else{

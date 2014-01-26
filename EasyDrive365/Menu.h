@@ -11,6 +11,7 @@
 @interface Menu : NSObject
 
 @property (nonatomic,retain) NSArray *list;
+@property (nonatomic,retain) NSArray *insurance_list;
 +(Menu *)sharedMenu;
 -(NSString *)getTitleByKey:(NSString *)key;
 -(void)pushToController:(UINavigationController *)controller key:(NSString *)key  title:(NSString *)title   url:(NSString *)url;

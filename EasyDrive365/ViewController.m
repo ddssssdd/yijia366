@@ -204,7 +204,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [[Menu sharedMenu].list count] +2;
+    return [[Menu sharedMenu].list count] ;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -267,6 +267,13 @@
     [[Menu sharedMenu] pushToController:self.navigationController key:item.name title:item.title url:nil];
    
 
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 0;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return 0;
 }
 
 #pragma mark UIScrollViewDelegate

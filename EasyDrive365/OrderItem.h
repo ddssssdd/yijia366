@@ -18,6 +18,7 @@
 @property (nonatomic) NSString *description;
 @property (nonatomic) NSString *pic_url;
 @property (nonatomic) int quantity;
+@property (nonatomic) float price_num;
 
 -(id)initWithJson:(id)json;
 
