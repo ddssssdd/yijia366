@@ -23,4 +23,5 @@
 
 
 -(id)initWithController:(UINavigationController *)parent;
+-(void)load_data;
 @end

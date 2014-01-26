@@ -32,7 +32,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = @"商户";
+    self.title = @"服务商";
 }
 
 - (void)didReceiveMemoryWarning

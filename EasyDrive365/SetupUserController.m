@@ -11,6 +11,7 @@
 #import "UIImageView+AFNetworking.h"
 #import "BoundListController.h"
 #import "AFHTTPClient.h"
+#import "SVProgressHUD.h"
 
 @interface SetupUserController ()<UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>{
     id _user;
@@ -67,6 +68,7 @@
     [[AppSettings sharedSettings].http get:url block:^(id json) {
         if ([[AppSettings sharedSettings] isSuccess:json]){
             [self.navigationController popViewControllerAnimated:YES];
+            [[NSNotificationCenter defaultCenter] postNotificationName:UPDATE_USER_PROFILE object:nil];
         }
     }];
 }
@@ -128,7 +130,7 @@
             [_imageCell addGestureRecognizer:tap];
         }
         [_imageCell removeFromSuperview];
-        [_imageCell setImageWithURL:[NSURL URLWithString:_user[@"photourl"]] placeholderImage:[UIImage imageNamed:@"m"]];
+        [_imageCell setImageWithURLWithoutCache:[NSURL URLWithString:_user[@"photourl"]] placeholderImage:[UIImage imageNamed:@"m"]];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         [cell addSubview:_imageCell];
         
@@ -230,7 +232,7 @@
 -(void)showBigImage:(NSString *)url{
     _imageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 50, 300, 300)];
     if ([url hasPrefix:@"http://"]){
-        [_imageView setImageWithURL:[NSURL URLWithString:url] placeholderImage:[UIImage imageNamed:@"m"]];
+        [_imageView setImageWithURLWithoutCache:[NSURL URLWithString:url] placeholderImage:[UIImage imageNamed:@"m"]];
     }else{
         _imageView.image = [UIImage imageNamed:url];
     }
@@ -306,7 +308,26 @@
         id jsonResult =[NSJSONSerialization JSONObjectWithData:operation.responseData options:NSJSONReadingMutableContainers error:&error];
         NSLog(@"%@",jsonResult);
         if ([[AppSettings sharedSettings] isSuccess:jsonResult]){
-            [_imageCell setImageWithURL:[NSURL URLWithString:jsonResult[@"result"]] placeholderImage:[UIImage imageNamed:@"m"]];
+            //[_imageCell setImageWithURL:[NSURL URLWithString:jsonResult[@"result"]] placeholderImage:[UIImage imageNamed:@"m"]];
+            [[NSNotificationCenter defaultCenter] postNotificationName:UPDATE_USER_PROFILE object:nil];
+            _user[@"photourl"]=jsonResult[@"result"];
+            [self.tableView reloadData];
+        }
+        if (![[jsonResult objectForKey:@"status"] isEqualToString:@"success"]){
+            NSString *message = @"发生异常，请稍后再试.";
+            if ([[jsonResult allKeys] containsObject:@"message"]){
+                message = [jsonResult objectForKey:@"message"];
+            }
+            [SVProgressHUD dismissWithSuccess:message afterDelay:3];
+        }else{
+            id alertMsg = jsonResult[@"alertmsg"];
+            if (alertMsg && ![alertMsg isKindOfClass:[NSNull class]] && ![alertMsg isEqualToString:@""]){
+                [SVProgressHUD dismissWithSuccess:alertMsg afterDelay:3];
+            }else{
+                [SVProgressHUD dismiss];
+            }
+            
+            
         }
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {

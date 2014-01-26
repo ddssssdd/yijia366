@@ -41,6 +41,7 @@
 #define SETTINGS_CHANGE @"Update_settings"
 #define ADD_COMMENT_SUCCESS @"Add_comment_success"
 #define NEED_SET @"need_set"
+#define UPDATE_USER_PROFILE @"Update_user_profile"
 
 
 //合作身份者id，以2088开头的16位纯数字

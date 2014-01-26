@@ -77,6 +77,7 @@
     _carDatasource =[[EditCarReigsterationDataSource alloc] initWithData:[[AppSettings sharedSettings] loadJsonBy:@"car_data"]];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(initData) name:@"Update_settings" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(update_user_profile) name:UPDATE_USER_PROFILE object:nil];
     //[self.tableView setBackgroundColor:[UIColor clearColor]];
 }
 -(void)viewDidUnload{
@@ -87,6 +88,10 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)update_user_profile{
+    [_headerView load_data];
 }
 
 -(void)initData{

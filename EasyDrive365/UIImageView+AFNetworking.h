@@ -73,6 +73,10 @@
  */
 - (void)cancelImageRequestOperation;
 
+
+- (void)setImageWithURLWithoutCache:(NSURL *)url
+       placeholderImage:(UIImage *)placeholderImage;
+
 @end
 
 #endif

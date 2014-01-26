@@ -93,6 +93,41 @@ static char kAFImageRequestOperationObjectKey;
     [self setImageWithURLRequest:request placeholderImage:placeholderImage success:nil failure:nil];
 }
 
+- (void)setImageWithURLWithoutCache:(NSURL *)url placeholderImage:(UIImage *)placeholderImage{
+    NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:url];
+    [urlRequest setHTTPShouldHandleCookies:NO];
+    [urlRequest addValue:@"image/*" forHTTPHeaderField:@"Accept"];
+    
+    [self cancelImageRequestOperation];
+    
+    self.image = placeholderImage;
+    
+    AFImageRequestOperation *requestOperation = [[AFImageRequestOperation alloc] initWithRequest:urlRequest];
+    [requestOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        if ([[urlRequest URL] isEqual:[[self.af_imageRequestOperation request] URL]]) {
+            self.image = responseObject;
+            
+            if (self.af_imageRequestOperation == operation) {
+                self.af_imageRequestOperation = nil;
+            }
+        }
+        
+        [[[self class] af_sharedImageCache] cacheImage:responseObject forRequest:urlRequest];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if ([[urlRequest URL] isEqual:[[self.af_imageRequestOperation request] URL]]) {
+            
+            
+            if (self.af_imageRequestOperation == operation) {
+                self.af_imageRequestOperation = nil;
+            }
+        }
+    }];
+    
+    self.af_imageRequestOperation = requestOperation;
+    
+    [[[self class] af_sharedImageRequestOperationQueue] addOperation:self.af_imageRequestOperation];
+}
+
 - (void)setImageWithURLRequest:(NSURLRequest *)urlRequest
               placeholderImage:(UIImage *)placeholderImage
                        success:(void (^)(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image))success
