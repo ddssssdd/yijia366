@@ -1,0 +1,155 @@
+//
+//  InsuranceStep5Controller.m
+//  EasyDrive366
+//
+//  Created by Steven Fu on 1/27/14.
+//  Copyright (c) 2014 Fu Steven. All rights reserved.
+//
+
+#import "InsuranceStep5Controller.h"
+#import "AppSettings.h"
+#import "InsuranceStep6Controller.h"
+
+@interface InsuranceStep5Controller (){
+    id _list;
+    id _sectionList;
+    BOOL _includingCom;
+}
+
+@end
+
+@implementation InsuranceStep5Controller
+
+- (id)initWithStyle:(UITableViewStyle)style
+{
+    self = [super initWithStyle:style];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+
+    self.title = @"第五步";
+    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"上一步" style:UIBarButtonSystemItemAction target:self action:@selector(backTo)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"下一步" style:UIBarButtonSystemItemAction target:self action:@selector(confirm)];
+    
+    [self load_data];
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+-(void)backTo{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+-(void)confirm{
+    
+    
+    NSString *url = [NSString stringWithFormat:@"ins/carins_check?userid=%d&is_comm=%@",[AppSettings sharedSettings].userid,self.insurance_data[@"com"][@"is_com"]];
+    [[AppSettings sharedSettings].http get:url block:^(id json) {
+        if ([[AppSettings sharedSettings] isSuccess:json]){
+            NSLog(@"%@",json);
+            InsuranceStep6Controller *vc = [[InsuranceStep6Controller alloc] initWithStyle:UITableViewStyleGrouped];
+            vc.order_data = json[@"result"];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+    }];
+}
+-(void)load_data{
+    _includingCom = YES;
+    _sectionList =[[NSMutableArray alloc] initWithArray:@[self.insurance_data[@"biz"][@"title"],self.insurance_data[@"com"][@"title"],self.insurance_data[@"price_content"]]];
+    
+}
+#pragma mark - Table view data source
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+
+    return 3;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    if (section==0){
+        return [self.insurance_data[@"biz"][@"list"] count];
+    }else if (section==1){
+        return 4;
+    }else {
+        return 1;
+    }
+}
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+    return [_sectionList objectAtIndex:section];
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"Cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
+    if (indexPath.section==0){
+        //biz
+        id item =[self.insurance_data[@"biz"][@"list"] objectAtIndex:indexPath.row];
+        UILabel *lblTitle =[[UILabel alloc] initWithFrame:CGRectMake(10, 10, 75, 24)];
+        lblTitle.text = item[@"insu_name"];
+        lblTitle.font=[UIFont fontWithName:@"Arial Bold" size:14];
+        [cell.contentView addSubview:lblTitle];
+        UILabel *lbl2 =[[UILabel alloc] initWithFrame:CGRectMake(85, 10, 75, 24)];
+        lbl2.text = item[@"amount"];
+        lbl2.font=[UIFont fontWithName:@"Arial" size:12];
+        lbl2.textAlignment =NSTextAlignmentRight;
+        [cell.contentView addSubview:lbl2];
+        UILabel *lbl3 =[[UILabel alloc] initWithFrame:CGRectMake(160, 10, 75, 24)];
+        lbl3.text = item[@"fee"];
+        lbl3.font=[UIFont fontWithName:@"Arial" size:12];
+        lbl3.textAlignment =NSTextAlignmentRight;
+        [cell.contentView addSubview:lbl3];
+        UILabel *lbl4 =[[UILabel alloc] initWithFrame:CGRectMake(235, 10, 75, 24)];
+        lbl4.text = item[@"no_excuse"];
+        lbl4.textAlignment =NSTextAlignmentRight;
+        lbl4.font=[UIFont fontWithName:@"Arial" size:12];
+        [cell.contentView addSubview:lbl4];
+        
+        
+    }else if (indexPath.section==1){
+        //com
+        if (indexPath.row==0){
+            cell.textLabel.text = @"选择是否包含交强险和车船税";
+            UISwitch *sw = [[UISwitch alloc] initWithFrame:CGRectMake(260, 10, 50, 24)];
+            sw.on = [self.insurance_data[@"com"][@"is_com"] intValue]==1;
+            [cell.contentView addSubview:sw];
+            [sw addTarget:self action:@selector(selectCom:) forControlEvents:UIControlEventValueChanged];
+        }else if (indexPath.row==1){
+            cell.textLabel.text=@"交强险";
+            cell.detailTextLabel.text = self.insurance_data[@"com"][@"com"];
+        }else if (indexPath.row==2){
+            cell.textLabel.text=@"车船税";
+            cell.detailTextLabel.text = self.insurance_data[@"com"][@"tax"];
+        }else if (indexPath.row==3){
+            cell.textLabel.text=@"小计";
+            cell.detailTextLabel.text = self.insurance_data[@"com"][@"com_total"];
+        }
+        
+    }else{
+        //summary
+        cell.textLabel.text=self.insurance_data[_includingCom? @"total":@"total_nocomm"];
+        
+    }
+    return cell;
+}
+
+-(void)selectCom:(UISwitch *)sender{
+    self.insurance_data[@"com"][@"is_com"]= [sender isOn]?@"1":@"0";
+    _includingCom = [sender isOn];
+    _sectionList =[[NSMutableArray alloc] initWithArray:@[self.insurance_data[@"biz"][@"title"],self.insurance_data[@"com"][@"title"],self.insurance_data[_includingCom?@"price_content":@"price_content_nocomm"]]];
+    [self.tableView reloadData];
+}
+
+@end

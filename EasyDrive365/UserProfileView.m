@@ -14,7 +14,7 @@
 #import "NeedPayController.h"
 #import "TaskListController.h"
 #import "SetupUserController.h"
-
+#import "InsuranceDetailController.h"
 @implementation UserProfileView
 
 -(id)initWithController:(UINavigationController *)parent{
@@ -67,6 +67,9 @@
     [_parent pushViewController:vc animated:YES];
 }
 - (IBAction)myInsurancePressed:(id)sender {
+    InsuranceDetailController *vc = [[InsuranceDetailController alloc] initWithStyle:UITableViewStyleGrouped];
+    [_parent pushViewController:vc animated:YES];
+    
 }
 - (IBAction)myTaskPressed:(id)sender {
     TaskListController *vc = [[TaskListController alloc] initWithStyle:UITableViewStylePlain];

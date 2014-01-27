@@ -74,7 +74,7 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    MenuItem *item = [[Menu sharedMenu].list objectAtIndex:indexPath.row];
+    MenuItem *item = [_list objectAtIndex:indexPath.row];
     NSLog(@"Select %@",item.title);
     [[Menu sharedMenu] pushToController:self.navigationController key:item.name title:item.title url:nil];
     

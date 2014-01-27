@@ -27,6 +27,7 @@
 #import "CarHelpViewController.h"
 
 #import "InsuranceMainController.h"
+#import "InsuranceStep1Controller.h"
 
 @implementation Menu
 @synthesize list = _list;
@@ -148,15 +149,18 @@
         [controller pushViewController:vc animated:YES];
         
     }
-    /*
+    
     if ([key isEqualToString:@"11"]){
 //        MaintainListViewController *vc = [[MaintainListViewController alloc] initWithNibName:@"MaintainListViewController" bundle:nil];
-        CIViewController *vc = [[CIViewController alloc] initWithNibName:@"CIViewController" bundle:nil];
+     //   CIViewController *vc = [[CIViewController alloc] initWithNibName:@"CIViewController" bundle:nil];
+        InsuranceStep1Controller *vc =[[InsuranceStep1Controller alloc] initWithNibName:@"InsuranceStep1Controller" bundle:nil];
         vc.title = title;
         [controller pushViewController:vc animated:YES];
+    //    [controller presentViewController:[[UINavigationController alloc] initWithRootViewController:vc] animated:YES completion:nil];
+    
         
     }
-     */
+    
      
     if ([key isEqualToString:@"00"] && url){
         Browser2Controller *vc = [[Browser2Controller alloc] initWithNibName:@"Browser2Controller" bundle:nil];

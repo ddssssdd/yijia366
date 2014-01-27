@@ -79,6 +79,16 @@
 		512599271888DB1D00967BDE /* main_menu in Resources */ = {isa = PBXBuildFile; fileRef = 512599261888DB1D00967BDE /* main_menu */; };
 		5128E98B1850A45E00928906 /* FeedbackInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5128E98A1850A45E00928906 /* FeedbackInfoCell.xib */; };
 		514C90D918951451007FFFCC /* InsuranceMainController.m in Sources */ = {isa = PBXBuildFile; fileRef = 514C90D818951451007FFFCC /* InsuranceMainController.m */; };
+		514C90DD1895350A007FFFCC /* InsuranceStep1Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 514C90DB1895350A007FFFCC /* InsuranceStep1Controller.m */; };
+		514C90DE1895350A007FFFCC /* InsuranceStep1Controller.xib in Resources */ = {isa = PBXBuildFile; fileRef = 514C90DC1895350A007FFFCC /* InsuranceStep1Controller.xib */; };
+		514C90E41895397B007FFFCC /* InsuranceStep2Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 514C90E31895397B007FFFCC /* InsuranceStep2Controller.m */; };
+		514C90E718954047007FFFCC /* InsuranceStep3Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 514C90E618954047007FFFCC /* InsuranceStep3Controller.m */; };
+		514C90EA1895E272007FFFCC /* InsuranceStep4Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 514C90E91895E272007FFFCC /* InsuranceStep4Controller.m */; };
+		514C90ED189606C2007FFFCC /* InsuranceStep5Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 514C90EC189606C2007FFFCC /* InsuranceStep5Controller.m */; };
+		514C90F01896222C007FFFCC /* InsuranceStep6Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 514C90EF1896222C007FFFCC /* InsuranceStep6Controller.m */; };
+		514C90F318962731007FFFCC /* InsuranceStep7Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 514C90F218962731007FFFCC /* InsuranceStep7Controller.m */; };
+		514C90F618962DD1007FFFCC /* InsuranceStep8Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 514C90F518962DD1007FFFCC /* InsuranceStep8Controller.m */; };
+		514C90F918963E1F007FFFCC /* InsuranceDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 514C90F818963E1F007FFFCC /* InsuranceDetailController.m */; };
 		51570C0018574E1B003655CC /* GoodsListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51570BFF18574E1B003655CC /* GoodsListController.m */; };
 		51570C0318575055003655CC /* GoodsListItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 51570C0218575055003655CC /* GoodsListItemCell.m */; };
 		51570C051857506A003655CC /* GoodsListItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51570C041857506A003655CC /* GoodsListItemCell.xib */; };
@@ -486,6 +496,25 @@
 		5128E98A1850A45E00928906 /* FeedbackInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedbackInfoCell.xib; sourceTree = "<group>"; };
 		514C90D718951451007FFFCC /* InsuranceMainController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InsuranceMainController.h; sourceTree = "<group>"; };
 		514C90D818951451007FFFCC /* InsuranceMainController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InsuranceMainController.m; sourceTree = "<group>"; };
+		514C90DA1895350A007FFFCC /* InsuranceStep1Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InsuranceStep1Controller.h; sourceTree = "<group>"; };
+		514C90DB1895350A007FFFCC /* InsuranceStep1Controller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InsuranceStep1Controller.m; sourceTree = "<group>"; };
+		514C90DC1895350A007FFFCC /* InsuranceStep1Controller.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InsuranceStep1Controller.xib; sourceTree = "<group>"; };
+		514C90E21895397B007FFFCC /* InsuranceStep2Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InsuranceStep2Controller.h; sourceTree = "<group>"; };
+		514C90E31895397B007FFFCC /* InsuranceStep2Controller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InsuranceStep2Controller.m; sourceTree = "<group>"; };
+		514C90E518954047007FFFCC /* InsuranceStep3Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InsuranceStep3Controller.h; sourceTree = "<group>"; };
+		514C90E618954047007FFFCC /* InsuranceStep3Controller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InsuranceStep3Controller.m; sourceTree = "<group>"; };
+		514C90E81895E272007FFFCC /* InsuranceStep4Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InsuranceStep4Controller.h; sourceTree = "<group>"; };
+		514C90E91895E272007FFFCC /* InsuranceStep4Controller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InsuranceStep4Controller.m; sourceTree = "<group>"; };
+		514C90EB189606C2007FFFCC /* InsuranceStep5Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InsuranceStep5Controller.h; sourceTree = "<group>"; };
+		514C90EC189606C2007FFFCC /* InsuranceStep5Controller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InsuranceStep5Controller.m; sourceTree = "<group>"; };
+		514C90EE1896222C007FFFCC /* InsuranceStep6Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InsuranceStep6Controller.h; sourceTree = "<group>"; };
+		514C90EF1896222C007FFFCC /* InsuranceStep6Controller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InsuranceStep6Controller.m; sourceTree = "<group>"; };
+		514C90F118962731007FFFCC /* InsuranceStep7Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InsuranceStep7Controller.h; sourceTree = "<group>"; };
+		514C90F218962731007FFFCC /* InsuranceStep7Controller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InsuranceStep7Controller.m; sourceTree = "<group>"; };
+		514C90F418962DD1007FFFCC /* InsuranceStep8Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InsuranceStep8Controller.h; sourceTree = "<group>"; };
+		514C90F518962DD1007FFFCC /* InsuranceStep8Controller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InsuranceStep8Controller.m; sourceTree = "<group>"; };
+		514C90F718963E1F007FFFCC /* InsuranceDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InsuranceDetailController.h; sourceTree = "<group>"; };
+		514C90F818963E1F007FFFCC /* InsuranceDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InsuranceDetailController.m; sourceTree = "<group>"; };
 		51570BFE18574E1B003655CC /* GoodsListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsListController.h; sourceTree = "<group>"; };
 		51570BFF18574E1B003655CC /* GoodsListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsListController.m; sourceTree = "<group>"; };
 		51570C0118575055003655CC /* GoodsListItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsListItemCell.h; sourceTree = "<group>"; };
@@ -1040,6 +1069,25 @@
 			children = (
 				514C90D718951451007FFFCC /* InsuranceMainController.h */,
 				514C90D818951451007FFFCC /* InsuranceMainController.m */,
+				514C90DA1895350A007FFFCC /* InsuranceStep1Controller.h */,
+				514C90DB1895350A007FFFCC /* InsuranceStep1Controller.m */,
+				514C90DC1895350A007FFFCC /* InsuranceStep1Controller.xib */,
+				514C90E21895397B007FFFCC /* InsuranceStep2Controller.h */,
+				514C90E31895397B007FFFCC /* InsuranceStep2Controller.m */,
+				514C90E518954047007FFFCC /* InsuranceStep3Controller.h */,
+				514C90E618954047007FFFCC /* InsuranceStep3Controller.m */,
+				514C90E81895E272007FFFCC /* InsuranceStep4Controller.h */,
+				514C90E91895E272007FFFCC /* InsuranceStep4Controller.m */,
+				514C90EB189606C2007FFFCC /* InsuranceStep5Controller.h */,
+				514C90EC189606C2007FFFCC /* InsuranceStep5Controller.m */,
+				514C90EE1896222C007FFFCC /* InsuranceStep6Controller.h */,
+				514C90EF1896222C007FFFCC /* InsuranceStep6Controller.m */,
+				514C90F118962731007FFFCC /* InsuranceStep7Controller.h */,
+				514C90F218962731007FFFCC /* InsuranceStep7Controller.m */,
+				514C90F418962DD1007FFFCC /* InsuranceStep8Controller.h */,
+				514C90F518962DD1007FFFCC /* InsuranceStep8Controller.m */,
+				514C90F718963E1F007FFFCC /* InsuranceDetailController.h */,
+				514C90F818963E1F007FFFCC /* InsuranceDetailController.m */,
 			);
 			name = Insurance;
 			sourceTree = "<group>";
@@ -2082,6 +2130,7 @@
 				51B9953B18913AE200C2DD5D /* Alixpay.bundle in Resources */,
 				512598E11888D17200967BDE /* jifen.png in Resources */,
 				512598C81888C6F600967BDE /* star.png in Resources */,
+				514C90DE1895350A007FFFCC /* InsuranceStep1Controller.xib in Resources */,
 				E2EE659C16C7EFA800ED1C73 /* DriverLicenseViewController.xib in Resources */,
 				512598FC1888D32900967BDE /* b@2x.png in Resources */,
 				E2EE65A116C7F13500ED1C73 /* CarRegistrationViewController.xib in Resources */,
@@ -2292,6 +2341,7 @@
 				51F0A658187BA96600CC9A1D /* OrderProductCell.m in Sources */,
 				E2296D5116B7723F00E332D9 /* SignupViewController.m in Sources */,
 				E2EE650516C293D300ED1C73 /* AppSettings.m in Sources */,
+				514C90F618962DD1007FFFCC /* InsuranceStep8Controller.m in Sources */,
 				E2EE650F16C29C2F00ED1C73 /* NavigationCell.m in Sources */,
 				E2EE651416C2A59400ED1C73 /* MenuItem.m in Sources */,
 				E2EE651716C2A62500ED1C73 /* Menu.m in Sources */,
@@ -2304,6 +2354,7 @@
 				512598B218866A5500967BDE /* Browser2Controller.m in Sources */,
 				E2EE657516C685F300ED1C73 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				51160F781861D92000AA15D3 /* CommentItemCell.m in Sources */,
+				514C90EA1895E272007FFFCC /* InsuranceStep4Controller.m in Sources */,
 				E2EE657616C685F300ED1C73 /* AFPropertyListRequestOperation.m in Sources */,
 				E2EE657716C685F300ED1C73 /* AFURLConnectionOperation.m in Sources */,
 				E2EE657816C685F300ED1C73 /* AFXMLRequestOperation.m in Sources */,
@@ -2328,6 +2379,7 @@
 				E2EE65D216CC915500ED1C73 /* BusinessInsuranceViewController.m in Sources */,
 				E2EE65DC16CC9E4600ED1C73 /* InsuranceRecordsViewController.m in Sources */,
 				E2EE65E116CCA13E00ED1C73 /* MaintainListViewController.m in Sources */,
+				514C90F318962731007FFFCC /* InsuranceStep7Controller.m in Sources */,
 				E2EE65E616CCA4C600ED1C73 /* MaintainRecordDetailViewController.m in Sources */,
 				E2EE65EA16CD099000ED1C73 /* NetViewController.m in Sources */,
 				E24A043716D0B40500B7A602 /* HttpHelper.m in Sources */,
@@ -2359,6 +2411,7 @@
 				E2C1625C16EA161700B0E9EC /* IntroduceCell.m in Sources */,
 				E2C1626116EA1C3D00B0E9EC /* OneButtonCell.m in Sources */,
 				E2C1626616EA23F100B0E9EC /* CustomEditTableViewController.m in Sources */,
+				514C90F01896222C007FFFCC /* InsuranceStep6Controller.m in Sources */,
 				E2C1626916EA2D8100B0E9EC /* SignUpTableViewController.m in Sources */,
 				E2EBCED616EE13C900E918C5 /* InformationCell.m in Sources */,
 				5189CB62186415CB00DB9A26 /* FriendListCell.m in Sources */,
@@ -2401,6 +2454,7 @@
 				E2611B8917CCE27A00E92897 /* ShowDetailViewController.m in Sources */,
 				51B9953118913AC900C2DD5D /* SBJsonBase.m in Sources */,
 				51F0A66A187BD81700CC9A1D /* OrderPayController.m in Sources */,
+				514C90E718954047007FFFCC /* InsuranceStep3Controller.m in Sources */,
 				E2611B8E17CE090F00E92897 /* NavigationViewController.mm in Sources */,
 				E2611B9217CF345600E92897 /* NewActivateViewController.m in Sources */,
 				E2611B9517CF534100E92897 /* ActivateHeader.m in Sources */,
@@ -2413,6 +2467,7 @@
 				E2E6689417DF664800AC85BA /* qrencode.c in Sources */,
 				E2E6689517DF664800AC85BA /* qrinput.c in Sources */,
 				51B9953218913AC900C2DD5D /* SBJsonParser.m in Sources */,
+				514C90F918963E1F007FFFCC /* InsuranceDetailController.m in Sources */,
 				51116A6B18865F6100AEE5D0 /* ArticleListItem2Cell.m in Sources */,
 				E2E6689617DF664800AC85BA /* qrspec.c in Sources */,
 				51B26A1F1863354200C20C56 /* BoundHeader.m in Sources */,
@@ -2420,12 +2475,14 @@
 				E2E6689717DF664800AC85BA /* rscode.c in Sources */,
 				E2E6689817DF664800AC85BA /* split.c in Sources */,
 				E2E6689D17DF668200AC85BA /* QRCodeShowViewController.m in Sources */,
+				514C90ED189606C2007FFFCC /* InsuranceStep5Controller.m in Sources */,
 				51B9952F18913AC900C2DD5D /* NSString+SBJSON.m in Sources */,
 				E2E668A117DF6C1800AC85BA /* TPKeyboardAvoidingScrollView.m in Sources */,
 				E2F9C3DA17E9F5C900D75359 /* SearchShopController.m in Sources */,
 				E2F9C3DD17E9FFB800D75359 /* SearchResultController.m in Sources */,
 				E2CB6D361815663700441F32 /* CardViewController.m in Sources */,
 				E23386481816BA0C0035C405 /* SingleCardViewController.m in Sources */,
+				514C90E41895397B007FFFCC /* InsuranceStep2Controller.m in Sources */,
 				51133414188FE7B6005A02C3 /* StrikeThroughLabel.m in Sources */,
 				51DF0EC8188DFB77002C044E /* ImageInfoCell.m in Sources */,
 				E233864B1816C4D70035C405 /* AddCardStep1ControllerViewController.m in Sources */,
@@ -2442,6 +2499,7 @@
 				51570C15185853C7003655CC /* DetailPictureCell.m in Sources */,
 				51570C18185853E2003655CC /* DetailPriceCell.m in Sources */,
 				51570C1B185853F2003655CC /* DetailDescriptionCell.m in Sources */,
+				514C90DD1895350A007FFFCC /* InsuranceStep1Controller.m in Sources */,
 				51F0A65D187BAB4500CC9A1D /* OrderQuantityCell.m in Sources */,
 				51B9953018913AC900C2DD5D /* SBJSON.m in Sources */,
 				51570C1E18585401003655CC /* DetailRateCell.m in Sources */,
