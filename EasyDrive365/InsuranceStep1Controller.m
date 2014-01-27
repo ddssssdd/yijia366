@@ -51,9 +51,9 @@
 }
 
 -(void)nextStep{
-    //InsuranceStep2Controller *vc =[[InsuranceStep2Controller alloc] initWithStyle:UITableViewStyleGrouped];
+    InsuranceStep2Controller *vc =[[InsuranceStep2Controller alloc] initWithStyle:UITableViewStyleGrouped];
     
-    InsuranceStep7Controller *vc =[[InsuranceStep7Controller alloc] initWithStyle:UITableViewStyleGrouped];
+    //InsuranceStep7Controller *vc =[[InsuranceStep7Controller alloc] initWithStyle:UITableViewStyleGrouped];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

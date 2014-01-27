@@ -36,6 +36,7 @@
     
     _useDiscount = YES;
     [self load_data];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleAfterPay:) name:ALIPAY_SUCCESS object:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -115,8 +116,13 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section==1){
         //assume pay succesuss!
-        InsuranceStep7Controller *vc = [[InsuranceStep7Controller alloc] initWithStyle:UITableViewStyleGrouped];
-        [self.navigationController pushViewController:vc animated:YES];
+        CGFloat amount = [self.order_data[_useDiscount? @"order_pay":@"order_pay_2"] floatValue];
+        [[AppSettings sharedSettings] pay:@"在线购买保险" description:self.order_data[@"order_id"] amount:amount order_no:self.order_data[@"order_id"]];
     }
+}
+-(void)handleAfterPay:(NSNotification *)notification{
+    NSLog(@"%@",notification);
+    InsuranceStep7Controller *vc = [[InsuranceStep7Controller alloc] initWithStyle:UITableViewStyleGrouped];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 @end

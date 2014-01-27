@@ -182,6 +182,7 @@
 		
 		if (result.statusCode == 9000)
         {
+            [[NSNotificationCenter defaultCenter] postNotificationName:ALIPAY_SUCCESS object:result];
 			/*
 			 *用公钥验证签名 严格验证请使用result.resultString与result.signString验签
 			 */

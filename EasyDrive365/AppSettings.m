@@ -9,6 +9,12 @@
 #import "AppSettings.h"
 #import "Menu.h"
 #import "MenuItem.h"
+#import "DataSigner.h"
+#import "AlixPayResult.h"
+#import "DataVerifier.h"
+#import "AlixPayOrder.h"
+#import "AlixLibService.h"
+
 
 
 @implementation Information
@@ -22,6 +28,12 @@
 }
 @end
 
+
+@interface AppSettings(){
+    SEL _result;
+}
+
+@end
 @implementation AppSettings
 @synthesize firstName=_firstName;
 @synthesize lastName=_lastName;
@@ -424,5 +436,58 @@
     if ([result isEqualToString:@""])
         return d;
     return result;
+}
+
+-(void)pay:(NSString *)name description:(NSString *)description amount:(CGFloat)amount order_no:(NSString *)order_no{
+    
+    amount = 0.01;
+    
+    
+    AlixPayOrder *order = [[AlixPayOrder alloc] init];
+    order.partner = PartnerID;
+    order.seller = SellerID;
+    
+    order.tradeNO = [self generateTradeNO]; //order_no //订单ID（由商家自行制定）
+	order.productName = name; //商品标题
+	order.productDescription = description; //商品描述
+	order.amount = [NSString stringWithFormat:@"%0.2f",amount];//商品价格
+	order.notifyURL =  @"http%3A%2F%2Fm.4006678888.com:21000/index.php/"; //回调URL
+    
+    NSString *appScheme = APP_SCHEMA;
+    NSString* orderInfo = [order description];
+    NSString* signedStr = [self doRsa:orderInfo];
+
+    NSLog(@"%@",signedStr);
+
+    NSString *orderString = [NSString stringWithFormat:@"%@&sign=\"%@\"&sign_type=\"%@\"",
+                         orderInfo, signedStr, @"RSA"];
+
+    [AlixLibService payOrder:orderString AndScheme:appScheme seletor:_result target:self];
+
+}
+
+
+- (NSString *)generateTradeNO
+{
+	const int N = 15;
+	
+	NSString *sourceString = @"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	NSMutableString *result = [[NSMutableString alloc] init] ;
+	srand(time(0));
+	for (int i = 0; i < N; i++)
+	{
+		unsigned index = rand() % [sourceString length];
+		NSString *s = [sourceString substringWithRange:NSMakeRange(index, 1)];
+		[result appendString:s];
+	}
+	return result;
+}
+
+-(NSString*)doRsa:(NSString*)orderInfo
+{
+    id<DataSigner> signer;
+    signer = CreateRSADataSigner(PartnerPrivKey);
+    NSString *signedString = [signer signString:orderInfo];
+    return signedString;
 }
 @end
