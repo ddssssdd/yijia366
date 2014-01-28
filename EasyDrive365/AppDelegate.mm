@@ -66,9 +66,11 @@
     self.window.rootViewController = _tabbarController;
     [self.window makeKeyAndVisible];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(logout) name:@"logout" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openGoods) name:OPEN_GOODS object:nil];
     
     return YES;
 }
+
 -(void)createControllers{
     ViewController *vcHome =[[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];
     ShowLocationViewController *vcMap = [[ShowLocationViewController alloc] initWithNibName:@"ShowLocationViewController" bundle:nil];
@@ -104,6 +106,9 @@
     
     _tabbarController.viewControllers =@[menu0,menu1,menu2,menu3,menu4];
     
+}
+-(void)openGoods{
+    _tabbarController.selectedIndex =1;
 }
 -(void)logout{
     _tabbarController.selectedIndex =0;
@@ -182,6 +187,7 @@
 		
 		if (result.statusCode == 9000)
         {
+            [[[UIAlertView alloc] initWithTitle:AppTitle message:@"支付成功！" delegate:Nil cancelButtonTitle:@"关闭" otherButtonTitles: nil] show];
             [[NSNotificationCenter defaultCenter] postNotificationName:ALIPAY_SUCCESS object:result];
 			/*
 			 *用公钥验证签名 严格验证请使用result.resultString与result.signString验签
@@ -211,11 +217,13 @@
         else
         {
             //交易失败
+            [[[UIAlertView alloc] initWithTitle:AppTitle message:@"支付没有成功，请联系客服" delegate:Nil cancelButtonTitle:@"关闭" otherButtonTitles: nil] show];
         }
     }
     else
     {
         //失败
+        [[[UIAlertView alloc] initWithTitle:AppTitle message:@"支付没有成功，请联系客服" delegate:Nil cancelButtonTitle:@"关闭" otherButtonTitles: nil] show];
     }
     
 }

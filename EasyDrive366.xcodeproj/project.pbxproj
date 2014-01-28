@@ -78,6 +78,9 @@
 		512599251888D63D00967BDE /* ChooseNextImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 512599241888D63D00967BDE /* ChooseNextImageCell.xib */; };
 		512599271888DB1D00967BDE /* main_menu in Resources */ = {isa = PBXBuildFile; fileRef = 512599261888DB1D00967BDE /* main_menu */; };
 		5128E98B1850A45E00928906 /* FeedbackInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5128E98A1850A45E00928906 /* FeedbackInfoCell.xib */; };
+		513225211897E0B100C3552A /* OrderAddressController.m in Sources */ = {isa = PBXBuildFile; fileRef = 513225201897E0B100C3552A /* OrderAddressController.m */; };
+		513225251897E76600C3552A /* OrderFinishedController.m in Sources */ = {isa = PBXBuildFile; fileRef = 513225231897E76600C3552A /* OrderFinishedController.m */; };
+		513225261897E76600C3552A /* OrderFinishedController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 513225241897E76600C3552A /* OrderFinishedController.xib */; };
 		514C90D918951451007FFFCC /* InsuranceMainController.m in Sources */ = {isa = PBXBuildFile; fileRef = 514C90D818951451007FFFCC /* InsuranceMainController.m */; };
 		514C90DD1895350A007FFFCC /* InsuranceStep1Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 514C90DB1895350A007FFFCC /* InsuranceStep1Controller.m */; };
 		514C90DE1895350A007FFFCC /* InsuranceStep1Controller.xib in Resources */ = {isa = PBXBuildFile; fileRef = 514C90DC1895350A007FFFCC /* InsuranceStep1Controller.xib */; };
@@ -496,6 +499,11 @@
 		512599241888D63D00967BDE /* ChooseNextImageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChooseNextImageCell.xib; sourceTree = "<group>"; };
 		512599261888DB1D00967BDE /* main_menu */ = {isa = PBXFileReference; lastKnownFileType = folder; path = main_menu; sourceTree = "<group>"; };
 		5128E98A1850A45E00928906 /* FeedbackInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedbackInfoCell.xib; sourceTree = "<group>"; };
+		5132251F1897E0B100C3552A /* OrderAddressController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderAddressController.h; sourceTree = "<group>"; };
+		513225201897E0B100C3552A /* OrderAddressController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderAddressController.m; sourceTree = "<group>"; };
+		513225221897E76600C3552A /* OrderFinishedController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderFinishedController.h; sourceTree = "<group>"; };
+		513225231897E76600C3552A /* OrderFinishedController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderFinishedController.m; sourceTree = "<group>"; };
+		513225241897E76600C3552A /* OrderFinishedController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderFinishedController.xib; sourceTree = "<group>"; };
 		514C90D718951451007FFFCC /* InsuranceMainController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InsuranceMainController.h; sourceTree = "<group>"; };
 		514C90D818951451007FFFCC /* InsuranceMainController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InsuranceMainController.m; sourceTree = "<group>"; };
 		514C90DA1895350A007FFFCC /* InsuranceStep1Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InsuranceStep1Controller.h; sourceTree = "<group>"; };
@@ -1314,6 +1322,11 @@
 				5113341518900612005A02C3 /* BuyButtonView.h */,
 				5113341618900612005A02C3 /* BuyButtonView.m */,
 				5113341818900622005A02C3 /* BuyButtonView.xib */,
+				5132251F1897E0B100C3552A /* OrderAddressController.h */,
+				513225201897E0B100C3552A /* OrderAddressController.m */,
+				513225221897E76600C3552A /* OrderFinishedController.h */,
+				513225231897E76600C3552A /* OrderFinishedController.m */,
+				513225241897E76600C3552A /* OrderFinishedController.xib */,
 			);
 			name = Order;
 			sourceTree = "<group>";
@@ -2269,6 +2282,7 @@
 				E2611B9717CF535900E92897 /* ActivateHeader.xib in Resources */,
 				E2E6647D17D895CF00AC85BA /* TakePhotoViewController.xib in Resources */,
 				E2E6689E17DF668200AC85BA /* QRCodeShowViewController.xib in Resources */,
+				513225261897E76600C3552A /* OrderFinishedController.xib in Resources */,
 				E2F9C3C417E9EE8E00D75359 /* ViewController.xib in Resources */,
 				E2F9C3C717E9F2F600D75359 /* 0300.png in Resources */,
 				512598EB1888D17200967BDE /* w.png in Resources */,
@@ -2369,6 +2383,7 @@
 				5189CB5F1864129A00DB9A26 /* FriendListController.m in Sources */,
 				51B26A1A1863316700C20C56 /* BoundListCell.m in Sources */,
 				E2EE657916C685F300ED1C73 /* UIImageView+AFNetworking.m in Sources */,
+				513225211897E0B100C3552A /* OrderAddressController.m in Sources */,
 				E2EE658016C6860300ED1C73 /* SyncParseAPIClient.m in Sources */,
 				E2EE658116C6860300ED1C73 /* SyncEngine.m in Sources */,
 				E2EE658216C6860300ED1C73 /* CoreDataController.m in Sources */,
@@ -2431,6 +2446,7 @@
 				E2F2881416F5948100DAE1B8 /* RefreshHelper.m in Sources */,
 				E25AF0B116F9FED900E79057 /* CIViewController.m in Sources */,
 				E23BA0E017215E770049D2CB /* SwitchCell.m in Sources */,
+				513225251897E76600C3552A /* OrderFinishedController.m in Sources */,
 				E23BA0E617216B600049D2CB /* ChooseNextCell.m in Sources */,
 				E23BA0EC172170460049D2CB /* ChooseUserController.m in Sources */,
 				E2DBBE9B1722BE2500493DD9 /* SettingsViewController.m in Sources */,

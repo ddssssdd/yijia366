@@ -8,11 +8,10 @@
 
 #import "OrderPayController.h"
 #import "PayUseDiscountCell.h"
-#import "DataSigner.h"
-#import "AlixPayResult.h"
-#import "DataVerifier.h"
-#import "AlixPayOrder.h"
-#import "AlixLibService.h"
+#import "AppSettings.h"
+#import "OrderAddressController.h"
+#import "OrderFinishedController.h"
+
 
 @interface OrderPayItem:NSObject
 @property (nonatomic) NSString *title;
@@ -32,7 +31,7 @@
     id _list;
     id _sectionlist;
     OrderPayItem *_payItem;
-    SEL _result;
+    id _pay;
     NSString *_name;
     NSString *_description;
     NSString *_price;
@@ -55,7 +54,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleAfterPay:) name:ALIPAY_SUCCESS object:nil];
     [self load_data];
 }
 
@@ -128,71 +127,25 @@
     
     if (item[@"item"] && item[@"pay"]){
         //doing pay
-        NSString *appScheme = APP_SCHEMA;
-        NSString* orderInfo = [self getOrderInfo:indexPath.row];
-        NSString* signedStr = [self doRsa:orderInfo];
-        
-        NSLog(@"%@",signedStr);
-        
-        NSString *orderString = [NSString stringWithFormat:@"%@&sign=\"%@\"&sign_type=\"%@\"",
-                                 orderInfo, signedStr, @"RSA"];
-        
-        [AlixLibService payOrder:orderString AndScheme:appScheme seletor:_result target:self];
+        _pay = item[@"item"];
+        if ([item[@"item"][@"bank_name"] isEqualToString:@"支付宝"]){
+            [[AppSettings sharedSettings] pay:_name description:_description amount:_amount order_no:@"AABB"];
+            //[self handleAfterPay:Nil];
+        }
     }
 }
--(NSString*)getOrderInfo:(NSInteger)index
-{
-    /*
-	 *点击获取prodcut实例并初始化订单信息
-	 */
 
-    AlixPayOrder *order = [[AlixPayOrder alloc] init];
-    order.partner = PartnerID;
-    order.seller = SellerID;
-    
-    order.tradeNO = [self generateTradeNO]; //订单ID（由商家自行制定）
-	order.productName = _name; //商品标题
-	order.productDescription = _description; //商品描述
-	order.amount = @"0.01";//_price; //商品价格
-	order.notifyURL =  @"http%3A%2F%2Fm.4006678888.com:21000/index.php/"; //回调URL
-	
-	return [order description];
-}
-
-- (NSString *)generateTradeNO
-{
-	const int N = 15;
-	
-	NSString *sourceString = @"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-	NSMutableString *result = [[NSMutableString alloc] init] ;
-	srand(time(0));
-	for (int i = 0; i < N; i++)
-	{
-		unsigned index = rand() % [sourceString length];
-		NSString *s = [sourceString substringWithRange:NSMakeRange(index, 1)];
-		[result appendString:s];
-	}
-	return result;
-}
-
--(NSString*)doRsa:(NSString*)orderInfo
-{
-    id<DataSigner> signer;
-    signer = CreateRSADataSigner(PartnerPrivKey);
-    NSString *signedString = [signer signString:orderInfo];
-    return signedString;
-}
 -(void)load_data{
     if (self.data){
-        //NSLog(@"%@",self.data);
+        NSLog(@"%@",self.data);
         _list = [[NSMutableArray alloc] init];
         _sectionlist = [[NSMutableArray alloc] init];
         //productions
         for (id good in self.data[@"goods"]) {
-            
+            /*
             [_list addObject:@[@{@"title":@"单价",@"detail":good[@"price"]},@{@"title":@"数量",@"detail":[NSString stringWithFormat:@"%@",good[@"quantity"]]}]];
             [_sectionlist addObject:good[@"name"]];
-            
+            */
             _name = good[@"name"];
             _description = good[@"name"];//missing description for good's description
             _price = good[@"price"];
@@ -220,5 +173,26 @@
         
         self.title = [NSString stringWithFormat:@"Order[%@]",self.data[@"order_id"]];
     }
+}
+-(void)handleAfterPay:(NSNotification *)notification{
+    NSLog(@"%@",notification);
+    NSString *url = [NSString stringWithFormat:@"order/order_payed?userid=%d&orderid=%@&orderpay=%f&bounds=%@&bankid=%@&account=%@",[AppSettings sharedSettings].userid,self.data[@"order_id"],_amount,_payItem.useDiscount?@"1":@"0",_pay[@"id"],_pay[@"bank_name"]];
+    [[AppSettings sharedSettings].http get:url block:^(id json) {
+        if ([[AppSettings sharedSettings] isSuccess:json]){
+
+            if ([json[@"result"][@"next_form"] isEqualToString:@"finished"]){
+                OrderFinishedController *vc = [[OrderFinishedController alloc] initWithNibName:@"OrderFinishedController" bundle:Nil];
+                vc.order_id = json[@"result"][@"order_id"];
+                vc.content = json[@"result"][@"content"];
+                [self.navigationController pushViewController:vc animated:YES];
+            }else{
+                OrderAddressController *vc =[[OrderAddressController alloc] initWithStyle:UITableViewStyleGrouped];
+                vc.address_data = json[@"result"];
+                [self.navigationController pushViewController:vc animated:YES];
+            }
+            
+        }
+    }];
+    
 }
 @end
