@@ -58,7 +58,7 @@
                
                [[MenuItem alloc] initWithName:@"06" title:@"我的车辆" description:defaultInfo imagePath:@"main_menu/e.png" phone:defaultPhone],
                [[MenuItem alloc] initWithName:@"05" title:@"驾驶证" description:defaultInfo imagePath:@"main_menu/f.png" phone:defaultPhone],
-               [[MenuItem alloc] initWithName:@"03" title:@"我的保险" description:defaultInfo imagePath:@"baoxian" phone:defaultPhone],
+               [[MenuItem alloc] initWithName:@"03" title:@"我的保险" description:defaultInfo imagePath:@"main_menu/p.png" phone:defaultPhone],
             
             //[[MenuItem alloc] initWithName:@"11" title:@"维修记录" description:defaultInfo imagePath:@"0011.png" phone:defaultPhone],
             nil];
