@@ -113,6 +113,8 @@
 		516BB5BC1858A04900D38079 /* ProviderListItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 516BB5BB1858A04900D38079 /* ProviderListItemCell.m */; };
 		516BB5BE1858A06400D38079 /* ProviderListItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 516BB5BD1858A06400D38079 /* ProviderListItemCell.xib */; };
 		516BB5C11858A68100D38079 /* ProviderDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 516BB5C01858A68100D38079 /* ProviderDetailController.m */; };
+		5188968A189755A000B368FE /* p.png in Resources */ = {isa = PBXBuildFile; fileRef = 51889688189755A000B368FE /* p.png */; };
+		5188968B189755A000B368FE /* p@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 51889689189755A000B368FE /* p@2x.png */; };
 		5189CB5A18640B1200DB9A26 /* ExecuteTaskController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5189CB5818640B1200DB9A26 /* ExecuteTaskController.m */; };
 		5189CB5B18640B1200DB9A26 /* ExecuteTaskController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5189CB5918640B1200DB9A26 /* ExecuteTaskController.xib */; };
 		5189CB5F1864129A00DB9A26 /* FriendListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5189CB5E1864129A00DB9A26 /* FriendListController.m */; };
@@ -553,6 +555,8 @@
 		516BB5BD1858A06400D38079 /* ProviderListItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProviderListItemCell.xib; sourceTree = "<group>"; };
 		516BB5BF1858A68100D38079 /* ProviderDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProviderDetailController.h; sourceTree = "<group>"; };
 		516BB5C01858A68100D38079 /* ProviderDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProviderDetailController.m; sourceTree = "<group>"; };
+		51889688189755A000B368FE /* p.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = p.png; sourceTree = "<group>"; };
+		51889689189755A000B368FE /* p@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "p@2x.png"; sourceTree = "<group>"; };
 		5189CB5718640B1200DB9A26 /* ExecuteTaskController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExecuteTaskController.h; sourceTree = "<group>"; };
 		5189CB5818640B1200DB9A26 /* ExecuteTaskController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExecuteTaskController.m; sourceTree = "<group>"; };
 		5189CB5918640B1200DB9A26 /* ExecuteTaskController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExecuteTaskController.xib; sourceTree = "<group>"; };
@@ -1483,6 +1487,8 @@
 		E24A041916CFBA2600B7A602 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				51889688189755A000B368FE /* p.png */,
+				51889689189755A000B368FE /* p@2x.png */,
 				51B995491891558400C2DD5D /* btnbuy_big@2x.png */,
 				51B9954A1891558400C2DD5D /* btnpay_big@2x.png */,
 				51B9954B1891558400C2DD5D /* btnpay@2x.png */,
@@ -2113,6 +2119,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5188968A189755A000B368FE /* p.png in Resources */,
 				E2296D3416B760EC00E332D9 /* InfoPlist.strings in Resources */,
 				5189CB64186415DB00DB9A26 /* FriendListCell.xib in Resources */,
 				E2296D4016B760EC00E332D9 /* Default-568h@2x.png in Resources */,
@@ -2150,6 +2157,7 @@
 				51B26A2A186337DA00C20C56 /* TaskListCell.xib in Resources */,
 				E24A047F16D270DA00B7A602 /* DatePickerViewController.xib in Resources */,
 				E26CCF9516D78FA200A35DA1 /* ItemDetailCell.xib in Resources */,
+				5188968B189755A000B368FE /* p@2x.png in Resources */,
 				E26CCF9A16D7B17100A35DA1 /* InsuranceDetailCell.xib in Resources */,
 				E26CCF9F16D7B42D00A35DA1 /* InfoAndPhoneCallCell.xib in Resources */,
 				512599131888D38A00967BDE /* i.png in Resources */,

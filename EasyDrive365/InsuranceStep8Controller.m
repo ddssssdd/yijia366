@@ -271,7 +271,7 @@
             if (alertMsg && ![alertMsg isKindOfClass:[NSNull class]] && ![alertMsg isEqualToString:@""]){
                 [SVProgressHUD dismissWithSuccess:alertMsg afterDelay:3];
             }else{
-                [SVProgressHUD dismiss];
+                [SVProgressHUD dismissWithSuccess:@"图片上传成功！" afterDelay:3];
             }
             
             
@@ -282,6 +282,7 @@
         
         
     }];
+    [SVProgressHUD showWithStatus:@"正在上传图片..."];
     NSOperationQueue *queue=[[NSOperationQueue alloc] init];
     [queue addOperation:operation];
     
