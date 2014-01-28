@@ -10,7 +10,7 @@
 #import "MenuItem.h"
 #import "Menu.h"
 #import "NavigationCell.h"
-
+#import "AppSettings.h"
 @interface InsuranceMainController (){
     id _list;
 }
@@ -38,6 +38,7 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     _list = [Menu sharedMenu].insurance_list;
+    [[AppSettings sharedSettings] get_insurance_latest];
 }
 
 - (void)didReceiveMemoryWarning

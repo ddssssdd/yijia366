@@ -129,11 +129,20 @@
     id item = [_list objectAtIndex:indexPath.row];
     cell.textLabel.text = item[@"insu_name"];
     //cell.detailTextLabel.text = [NSString stringWithFormat:@"¥%0.2f", [item[@"amount"] floatValue]];
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(110, 10, 100, 24)];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(90, 10, 105, 24)];
     label.text =[NSString stringWithFormat:@"¥%0.2f", [item[@"amount"] floatValue]];
     label.textAlignment = NSTextAlignmentRight;
+    label.backgroundColor = [UIColor clearColor];
     [cell.contentView addSubview:label];
-    UISwitch *sw = [[UISwitch alloc] initWithFrame:CGRectMake(230, 10, 50, 24)];
+
+    CGRect rect;
+    if ([[AppSettings sharedSettings] isIos7]){
+        rect =  CGRectMake(240, 10, 50, 24);
+    }else{
+        rect = CGRectMake(200, 10, 50, 24);
+    }
+
+    UISwitch *sw = [[UISwitch alloc] initWithFrame:rect];
     sw.on = [item[@"is_enabled"] intValue]==1;
     sw.tag = indexPath.row;
     [sw addTarget:self action:@selector(switchChanged:) forControlEvents:UIControlEventValueChanged];

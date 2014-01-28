@@ -87,11 +87,17 @@
             cell.detailTextLabel.text = self.order_data[@"order_total"];
         }else if (indexPath.row==1){
             cell.textLabel.text = @"积分";
-            UILabel *label =[[UILabel alloc] initWithFrame:CGRectMake(100, 10, 140, 24)];
+            UILabel *label =[[UILabel alloc] initWithFrame:CGRectMake(90, 10, 120, 24)];
             label.text = self.order_data[@"bounds"];
-            label.font = [UIFont fontWithName:@"Arial" size:14];
+            label.font = [UIFont fontWithName:@"Arial" size:12];
             [cell.contentView addSubview:label];
-            UISwitch *sw = [[UISwitch alloc] initWithFrame:CGRectMake(250, 10, 50, 24)];
+            CGRect rect;
+            if ([[AppSettings sharedSettings] isIos7]){
+                rect = CGRectMake(250, 10, 50, 24);
+            }else{
+                rect = CGRectMake(220, 10, 50, 24);
+            }
+            UISwitch *sw = [[UISwitch alloc] initWithFrame:rect];
             [sw setOn:_useDiscount];
             [sw addTarget:self action:@selector(switchUseDiscount:) forControlEvents:UIControlEventValueChanged];
             [cell.contentView addSubview:sw];

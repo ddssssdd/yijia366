@@ -89,6 +89,7 @@
 -(void)login:(NSString *)username userid:(int)userid;
 -(void)makeCall:(NSString *)phone;
 -(void)get_latest;
+-(void)get_insurance_latest;
 -(Information *)getInformationByKey:(NSString *)key;
 
 -(void)add_login:(NSString *)username password:(NSString *)password rememberPassword:(NSString *)rememberPassword;
@@ -96,8 +97,9 @@
 
 -(void)check_update:(BOOL)inSettings;
 -(void)login:(NSString *)username password:(NSString *)password remember:(NSString *)remember callback:(void (^)(BOOL loginSuccess))callback;
-
+-(BOOL)isIos7;
 +(NSString *)getStringDefault:(id)item default:(NSString *)d;
+
 
 -(void)pay:(NSString *)name description:(NSString *)description amount:(CGFloat)amount order_no:(NSString *)order_no;
 @end

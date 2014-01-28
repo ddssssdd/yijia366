@@ -290,6 +290,23 @@
         [self get_latest_by_key:item.name];
     }
 }
+-(void)get_insurance_latest{
+    /*
+     if (!self.isLogin){
+     return;
+     }
+     */
+    self.isNeedRefresh= NO;
+    /*
+     for(int i=1;i<=APPLATEST_COUNT;i++){
+     NSString *keyname = [NSString stringWithFormat:@"%02d",i];
+     [self get_latest_by_key:keyname];
+     }
+     */
+    for (MenuItem *item in [Menu sharedMenu].insurance_list) {
+        [self get_latest_by_key:item.name];
+    }
+}
 -(void)get_latest_by_key:(NSString *)keyname{
     NSString *url = [self url_getlatest:keyname];
     [[HttpClient sharedHttp] get:url block:^(id json) {
@@ -425,6 +442,9 @@
         }
     }];
     
+}
+-(BOOL)isIos7{
+    return [[[UIDevice currentDevice] systemVersion]  compare: @"6.1"]==NSOrderedDescending;
 }
 +(NSString *)getStringDefault:(id)item default:(NSString *)d{
     NSLog(@"item=%@,class is %@",item,[item class]);

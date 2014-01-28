@@ -96,33 +96,52 @@
     cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
     if (indexPath.section==0){
         //biz
+        int width;
+        int additional ;
+        if ([[AppSettings sharedSettings] isIos7]){
+            width = 75;
+            additional = 0;
+        }else{
+            width = 67;
+            additional =10;
+        }
         id item =[self.insurance_data[@"biz"][@"list"] objectAtIndex:indexPath.row];
-        UILabel *lblTitle =[[UILabel alloc] initWithFrame:CGRectMake(10, 10, 75, 24)];
+        UILabel *lblTitle =[[UILabel alloc] initWithFrame:CGRectMake(10, 10, width+additional, 24)];
         lblTitle.text = item[@"insu_name"];
-        lblTitle.font=[UIFont fontWithName:@"Arial Bold" size:14];
+        lblTitle.font=[UIFont fontWithName:@"Arial Bold" size:12];
+        lblTitle.backgroundColor  = [UIColor clearColor];
         [cell.contentView addSubview:lblTitle];
-        UILabel *lbl2 =[[UILabel alloc] initWithFrame:CGRectMake(85, 10, 75, 24)];
+        UILabel *lbl2 =[[UILabel alloc] initWithFrame:CGRectMake(10+additional+width, 10, width, 24)];
         lbl2.text = item[@"amount"];
         lbl2.font=[UIFont fontWithName:@"Arial" size:12];
+        lbl2.backgroundColor = [UIColor clearColor];
         lbl2.textAlignment =NSTextAlignmentRight;
         [cell.contentView addSubview:lbl2];
-        UILabel *lbl3 =[[UILabel alloc] initWithFrame:CGRectMake(160, 10, 75, 24)];
+        UILabel *lbl3 =[[UILabel alloc] initWithFrame:CGRectMake(10+additional+width*2, 10, width, 24)];
         lbl3.text = item[@"fee"];
         lbl3.font=[UIFont fontWithName:@"Arial" size:12];
+        lbl3.backgroundColor = [UIColor clearColor];
         lbl3.textAlignment =NSTextAlignmentRight;
         [cell.contentView addSubview:lbl3];
-        UILabel *lbl4 =[[UILabel alloc] initWithFrame:CGRectMake(235, 10, 75, 24)];
+        UILabel *lbl4 =[[UILabel alloc] initWithFrame:CGRectMake(10+additional+width*3, 10, width, 24)];
         lbl4.text = item[@"no_excuse"];
         lbl4.textAlignment =NSTextAlignmentRight;
         lbl4.font=[UIFont fontWithName:@"Arial" size:12];
+        lbl4.backgroundColor = [UIColor clearColor];
         [cell.contentView addSubview:lbl4];
         
         
     }else if (indexPath.section==1){
         //com
         if (indexPath.row==0){
-            cell.textLabel.text = @"选择是否包含交强险和车船税";
-            UISwitch *sw = [[UISwitch alloc] initWithFrame:CGRectMake(260, 10, 50, 24)];
+            cell.textLabel.text = @"选择交强险和车船税";
+            CGRect rect;
+            if ([[AppSettings sharedSettings] isIos7]){
+                rect = CGRectMake(250, 10, 50, 24);
+            }else{
+                rect = CGRectMake(220, 10, 50, 24);
+            }
+            UISwitch *sw = [[UISwitch alloc] initWithFrame:rect];
             sw.on = [self.insurance_data[@"com"][@"is_com"] intValue]==1;
             [cell.contentView addSubview:sw];
             [sw addTarget:self action:@selector(selectCom:) forControlEvents:UIControlEventValueChanged];
