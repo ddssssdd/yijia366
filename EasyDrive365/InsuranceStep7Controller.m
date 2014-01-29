@@ -46,7 +46,7 @@
     // Dispose of any resources that can be recreated.
 }
 -(void)load_data{
-    NSString *url = [NSString stringWithFormat:@"ins/carins_address?userid=%d",[AppSettings sharedSettings].userid];
+    NSString *url = [NSString stringWithFormat:@"ins/carins_address?userid=%d&orderid=%@&bounds=%@&bankid=%@&account=%@",[AppSettings sharedSettings].userid,self.orderid,self.bounds,self.bankid,self.account];
     [[AppSettings sharedSettings].http get:url block:^(id json) {
         if ([[AppSettings sharedSettings] isSuccess:json]){
             _address_data = json[@"result"];

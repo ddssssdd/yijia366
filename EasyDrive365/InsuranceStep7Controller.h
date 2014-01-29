@@ -9,5 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface InsuranceStep7Controller : UITableViewController
+@property (nonatomic) NSString *orderid;
+@property (nonatomic) NSString *bounds;
+@property (nonatomic) NSString *bankid;
+@property (nonatomic) NSString *account;
 
 @end

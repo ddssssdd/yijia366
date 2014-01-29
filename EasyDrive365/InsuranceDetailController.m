@@ -81,6 +81,7 @@
     cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
     id item = [[_list objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
     if (indexPath.section==2){
+        /*
         UILabel *lblTitle =[[UILabel alloc] initWithFrame:CGRectMake(10, 10, 75, 24)];
         lblTitle.text = item[@"insu_name"];
         lblTitle.font=[UIFont fontWithName:@"Arial Bold" size:14];
@@ -99,6 +100,41 @@
         lbl4.text = item[@"no_excuse"];
         lbl4.textAlignment =NSTextAlignmentRight;
         lbl4.font=[UIFont fontWithName:@"Arial" size:12];
+        [cell.contentView addSubview:lbl4];
+         */
+        //biz
+        int width;
+        int additional ;
+        if ([[AppSettings sharedSettings] isIos7]){
+            width = 75;
+            additional = 0;
+        }else{
+            width = 67;
+            additional =10;
+        }
+
+        UILabel *lblTitle =[[UILabel alloc] initWithFrame:CGRectMake(10, 10, width+additional, 24)];
+        lblTitle.text = item[@"insu_name"];
+        lblTitle.font=[UIFont fontWithName:@"Arial Bold" size:12];
+        lblTitle.backgroundColor  = [UIColor clearColor];
+        [cell.contentView addSubview:lblTitle];
+        UILabel *lbl2 =[[UILabel alloc] initWithFrame:CGRectMake(10+additional+width, 10, width, 24)];
+        lbl2.text = item[@"amount"];
+        lbl2.font=[UIFont fontWithName:@"Arial" size:12];
+        lbl2.backgroundColor = [UIColor clearColor];
+        lbl2.textAlignment =NSTextAlignmentRight;
+        [cell.contentView addSubview:lbl2];
+        UILabel *lbl3 =[[UILabel alloc] initWithFrame:CGRectMake(10+additional+width*2, 10, width, 24)];
+        lbl3.text = item[@"fee"];
+        lbl3.font=[UIFont fontWithName:@"Arial" size:12];
+        lbl3.backgroundColor = [UIColor clearColor];
+        lbl3.textAlignment =NSTextAlignmentRight;
+        [cell.contentView addSubview:lbl3];
+        UILabel *lbl4 =[[UILabel alloc] initWithFrame:CGRectMake(10+additional+width*3, 10, width, 24)];
+        lbl4.text = item[@"no_excuse"];
+        lbl4.textAlignment =NSTextAlignmentRight;
+        lbl4.font=[UIFont fontWithName:@"Arial" size:12];
+        lbl4.backgroundColor = [UIColor clearColor];
         [cell.contentView addSubview:lbl4];
     }else{
         cell.textLabel.text = item[@"title"];
