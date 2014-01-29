@@ -185,7 +185,8 @@
         if (selectedIndex>-1){
             [actionSheet setDestructiveButtonIndex:selectedIndex];
         }
-        [actionSheet showInView:self.view];
+        //[actionSheet showInView:self.view];
+        [actionSheet showFromTabBar:[[AppSettings sharedSettings] tabBarController].tabBar];
     }
 }
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{

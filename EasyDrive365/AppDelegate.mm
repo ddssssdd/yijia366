@@ -27,7 +27,7 @@
 
 @interface AppDelegate(){
     BMKMapManager *_mapManager;
-    UITabBarController *_tabbarController;
+
     
 }
 @end

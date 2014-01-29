@@ -14,7 +14,7 @@
 #import "DataVerifier.h"
 #import "AlixPayOrder.h"
 #import "AlixLibService.h"
-
+#import "AppDelegate.h"
 
 
 @implementation Information
@@ -445,6 +445,10 @@
 }
 -(BOOL)isIos7{
     return [[[UIDevice currentDevice] systemVersion]  compare: @"6.1"]==NSOrderedDescending;
+}
+
+-(UITabBarController *)tabBarController{
+    return ((AppDelegate *)[[UIApplication sharedApplication] delegate]).tabbarController;
 }
 +(NSString *)getStringDefault:(id)item default:(NSString *)d{
     NSLog(@"item=%@,class is %@",item,[item class]);

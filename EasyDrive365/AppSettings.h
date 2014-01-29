@@ -98,6 +98,8 @@
 -(void)check_update:(BOOL)inSettings;
 -(void)login:(NSString *)username password:(NSString *)password remember:(NSString *)remember callback:(void (^)(BOOL loginSuccess))callback;
 -(BOOL)isIos7;
+-(UITabBarController *)tabBarController;
+
 +(NSString *)getStringDefault:(id)item default:(NSString *)d;
 
 

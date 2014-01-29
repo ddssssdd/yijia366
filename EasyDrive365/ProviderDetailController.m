@@ -213,7 +213,9 @@
         
         UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:[NSString stringWithFormat:@"拨号：%@",_target[@"phone"]],nil];
         
-        [sheet showInView:self.view];
+        //[sheet showInView:self.view];
+        
+        [sheet showFromTabBar:[[AppSettings sharedSettings] tabBarController].tabBar];
         
     }
     
