@@ -444,7 +444,8 @@
     
 }
 -(BOOL)isIos7{
-    return [[[UIDevice currentDevice] systemVersion]  compare: @"6.1"]==NSOrderedDescending;
+    //return [[[UIDevice currentDevice] systemVersion]  compare: @"6.2"]==NSOrderedDescending;
+    return [[[UIDevice currentDevice] systemVersion] hasPrefix:@"7."];
 }
 
 -(UITabBarController *)tabBarController{
