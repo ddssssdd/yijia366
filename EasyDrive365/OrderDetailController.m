@@ -148,7 +148,8 @@
                                @{@"title":@"数量",@"detail":[NSString stringWithFormat:@"%d",order_count]},
                                @{@"title":@"总价",@"detail":json[@"result"][@"order_total"]}]];
             //if else depends on order_status
-            if ([_order_status isEqualToString:@"notpay"]){
+            //if ([_order_status isEqualToString:@"notpay"]){
+            if ([_order_status isEqualToString:@"finished"]){
                 //price
                 [_sectionList addObject:@"应付款"];
                 [_list addObject:@[@{@"title":@"会员折扣",@"detail":json[@"result"][@"discount"]},
