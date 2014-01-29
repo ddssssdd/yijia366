@@ -122,8 +122,11 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section==1){
         //assume pay succesuss!
-        CGFloat amount = [self.order_data[_useDiscount? @"order_pay":@"order_pay_2"] floatValue];
-        [[AppSettings sharedSettings] pay:@"在线购买保险" description:self.order_data[@"order_id"] amount:amount order_no:self.order_data[@"order_id"]];
+        id item = [self.order_data[@"pay"] objectAtIndex:indexPath.row];
+        if ([item[@"bank_id"] isEqualToString:@"00001"]){
+            CGFloat amount = [self.order_data[_useDiscount? @"order_pay":@"order_pay_2"] floatValue];
+            [[AppSettings sharedSettings] pay:@"在线购买保险" description:self.order_data[@"order_id"] amount:amount order_no:self.order_data[@"order_id"]];
+        }
     }
 }
 -(void)handleAfterPay:(NSNotification *)notification{

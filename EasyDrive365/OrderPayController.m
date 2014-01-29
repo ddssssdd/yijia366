@@ -127,9 +127,11 @@
     
     if (item[@"item"] && item[@"pay"]){
         //doing pay
+        
         _pay = item[@"item"];
-        if ([item[@"item"][@"bank_name"] isEqualToString:@"支付宝"]){
-            [[AppSettings sharedSettings] pay:_name description:_description amount:_amount order_no:@"AABB"];
+        NSLog(@"%@",_pay);
+        if ([item[@"item"][@"bank_id"] isEqualToString:@"00001"]){
+            [[AppSettings sharedSettings] pay:_name description:_description amount:_amount order_no:self.data[@"order_id"]];
             //[self handleAfterPay:Nil];
         }
     }
@@ -176,7 +178,7 @@
 }
 -(void)handleAfterPay:(NSNotification *)notification{
     NSLog(@"%@",notification);
-    NSString *url = [NSString stringWithFormat:@"order/order_payed?userid=%d&orderid=%@&orderpay=%f&bounds=%@&bankid=%@&account=%@",[AppSettings sharedSettings].userid,self.data[@"order_id"],_amount,_payItem.useDiscount?@"1":@"0",_pay[@"id"],_pay[@"bank_name"]];
+    NSString *url = [NSString stringWithFormat:@"order/order_payed?userid=%d&orderid=%@&orderpay=%f&bounds=%@&bankid=%@&account=%@",[AppSettings sharedSettings].userid,self.data[@"order_id"],_amount,_payItem.useDiscount?@"1":@"0",_pay[@"bank_id"],_pay[@"bank_name"]];
     [[AppSettings sharedSettings].http get:url block:^(id json) {
         if ([[AppSettings sharedSettings] isSuccess:json]){
 

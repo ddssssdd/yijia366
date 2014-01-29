@@ -472,7 +472,7 @@
     order.partner = PartnerID;
     order.seller = SellerID;
     
-    order.tradeNO = [self generateTradeNO]; //order_no //订单ID（由商家自行制定）
+    order.tradeNO = order_no;//[self generateTradeNO];//订单ID（由商家自行制定）
 	order.productName = name; //商品标题
 	order.productDescription = description; //商品描述
 	order.amount = [NSString stringWithFormat:@"%0.2f",amount];//商品价格
