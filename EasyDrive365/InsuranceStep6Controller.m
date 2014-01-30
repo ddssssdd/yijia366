@@ -127,8 +127,8 @@
         if ([item[@"bank_id"] isEqualToString:@"00001"]){
             _pay = item;
             CGFloat amount = [self.order_data[_useDiscount? @"order_pay":@"order_pay_2"] floatValue];
-            [[AppSettings sharedSettings] pay:@"在线购买保险" description:self.order_data[@"order_id"] amount:amount order_no:self.order_data[@"order_id"]];
-            //[self handleAfterPay:nil];
+            //[[AppSettings sharedSettings] pay:@"在线购买保险" description:self.order_data[@"order_id"] amount:amount order_no:self.order_data[@"order_id"]];
+            [self handleAfterPay:nil];
         }
     }
 }
@@ -136,7 +136,7 @@
     NSLog(@"%@",notification);
     InsuranceStep7Controller *vc = [[InsuranceStep7Controller alloc] initWithStyle:UITableViewStyleGrouped];
     vc.orderid = self.order_data[@"order_id"];
-    vc.bounds = _useDiscount?self.order_data[@"bounds"]:@"0";
+    vc.bounds = _useDiscount?self.order_data[@"bounds_num"]:@"0";
     vc.bankid = _pay[@"bank_id"];
     vc.account = @"";
     [self.navigationController pushViewController:vc animated:YES];
