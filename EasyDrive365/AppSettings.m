@@ -476,9 +476,9 @@
 	order.productName = name; //商品标题
 	order.productDescription = description; //商品描述
 	order.amount = [NSString stringWithFormat:@"%0.2f",amount];//商品价格
-	order.notifyURL =  @"http%3A%2F%2Fm.4006678888.com:21000/index.php/"; //回调URL
-    order.returnUrl =  @"http%3A%2F%2Fm.4006678888.com:21000/index.php/returnurl"; //回调URL
-    order.showUrl = @"http%3A%2F%2Fm.4006678888.com:21000/index.php/showurl"; //回调URL
+	order.notifyURL =  @"http%3A%2F%2Fm.4006678888.com:21000/index.php/paylog/noti_action"; //回调URL
+    order.returnUrl =  @"http%3A%2F%2Fm.4006678888.com:21000/index.php/paylog/return_action"; //回调URL
+    order.showUrl = @"http%3A%2F%2Fm.4006678888.com:21000/index.php/paylog/show_action"; //回调URL
     
     NSString *appScheme = APP_SCHEMA;
     NSString* orderInfo = [order description];

@@ -132,8 +132,8 @@
         NSLog(@"%@",_pay);
         if ([item[@"item"][@"bank_id"] isEqualToString:@"00001"]){
             _amount = [_payItem.detail floatValue];
-            //[[AppSettings sharedSettings] pay:_name description:_description amount:_amount order_no:self.data[@"order_id"]];
-            [self handleAfterPay:Nil];
+            [[AppSettings sharedSettings] pay:_name description:_description amount:_amount order_no:self.data[@"order_id"]];
+            //[self handleAfterPay:Nil];
         }
     }
 }
