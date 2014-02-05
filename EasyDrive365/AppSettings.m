@@ -517,4 +517,11 @@
     NSString *signedString = [signer signString:orderInfo];
     return signedString;
 }
+
+-(void)popupShareMenu:(NSString *)title introduce:(NSString *)introduce url:(NSString *)url;{
+    if (!_sharecontrol){
+        _sharecontrol = [[ShareControl alloc] init];
+    }
+    [_sharecontrol popupMenu:title introduce:introduce url:url];
+}
 @end

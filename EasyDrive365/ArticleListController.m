@@ -139,8 +139,13 @@
         ArticleListItem2Cell *itemCell=(ArticleListItem2Cell *)cell;
         itemCell.lblTitle.text =item[@"title"];
         itemCell.lblDescription.text = item[@"description"];
-        
+        itemCell.share_data = item;
         [itemCell.image setImageWithURL:[NSURL URLWithString:item[@"pic_url"]]];
+        if (indexPath.row % 2==0){
+            [itemCell.favorbtn setBackgroundImage:[UIImage imageNamed:@"favor"] forState:UIControlStateNormal];
+        }else{
+                        [itemCell.favorbtn setBackgroundImage:[UIImage imageNamed:@"favorno"] forState:UIControlStateNormal];
+        }
     }
     
     return  cell;

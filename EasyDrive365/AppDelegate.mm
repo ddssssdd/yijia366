@@ -19,13 +19,18 @@
 #import "AlixPayResult.h"
 #import "DataVerifier.h"
 
+
+#import "WXApi.h"
+#import "WeiboSDK.h"
+
+
 #define TAG_HOMEPAGE 0
 #define TAG_INSURANCE 1
 #define TAG_PROVIDER 2
 #define TAG_ARTICLE 3
 #define TAG_SETTINGS 4
 
-@interface AppDelegate(){
+@interface AppDelegate()<WXApiDelegate,WeiboSDKDelegate>{
     BMKMapManager *_mapManager;
 
     
@@ -67,6 +72,11 @@
     [self.window makeKeyAndVisible];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(logout) name:@"logout" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openGoods) name:OPEN_GOODS object:nil];
+    
+    [WXApi registerApp:@"wxbf4902100b6d4a69"];
+    
+    [WeiboSDK enableDebugMode:YES];
+    [WeiboSDK registerApp:@"4276960189"];
     
     return YES;
 }
@@ -173,10 +183,13 @@
     
 }
 -(BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url{
+    NSLog(@"%@",url);
     [self parse:url application:application];
 	return YES;
 }
-
+-(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation{
+    return [WXApi handleOpenURL:url delegate:self] || [WeiboSDK handleOpenURL:url delegate:self];
+}
 - (void)parse:(NSURL *)url application:(UIApplication *)application {
     
     //结果处理
@@ -243,6 +256,20 @@
 	}
     
 	return result;
+}
+
+-(void)onReq:(BaseReq *)req{
+    
+}
+-(void)onResp:(BaseResp *)resp{
+    
+}
+
+-(void)didReceiveWeiboRequest:(WBBaseRequest *)request{
+    NSLog(@"%@",request);
+}
+-(void)didReceiveWeiboResponse:(WBBaseResponse *)response{
+    NSLog(@"%@",response);
 }
 
 @end

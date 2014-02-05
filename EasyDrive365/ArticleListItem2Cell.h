@@ -13,4 +13,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblTitle;
 
 @property (weak, nonatomic) IBOutlet UILabel *lblDescription;
+@property (weak, nonatomic) IBOutlet UIButton *favorbtn;
+@property (weak, nonatomic) IBOutlet UIButton *sharebtn;
+
+@property (nonatomic) id share_data;
 @end

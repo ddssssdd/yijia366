@@ -16,6 +16,9 @@
     NSString *_content;
     FriendHeader *_header;
     NSString *_invite_code;
+    NSString *_share_title;
+    NSString *_share_inctroduce;
+    NSString *_share_url;
 }
 
 @end
@@ -35,7 +38,11 @@
 {
     [super viewDidLoad];
     [self load_data];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"分享" style:UIBarButtonItemStyleBordered target:self action:@selector(share)];
     
+}
+-(void)share{
+    [[AppSettings sharedSettings] popupShareMenu:_share_title introduce:_share_inctroduce url:_share_url];
 }
 -(void)load_data{
     NSString *url = [NSString stringWithFormat:@"bound/get_my_friends?userid=%d",[AppSettings sharedSettings].userid];
@@ -45,7 +52,11 @@
             NSLog(@"%@",_list);
             _content = json[@"result"][@"content"];
             _invite_code = json[@"result"][@"my_invite"];
+            _share_url = json[@"result"][@"share_url"];
+            _share_title = json[@"result"][@"share_title"];
+            _share_inctroduce = json[@"result"][@"share_intro"];
             [self.tableView reloadData];
+            
             
         }
     }];
@@ -91,7 +102,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     if (section==0){
-        return 220.0f;
+        return 100.0f;
     }
     return  0;
 }

@@ -7,6 +7,7 @@
 //
 
 #import "ArticleListItem2Cell.h"
+#import "AppSettings.h"
 
 @implementation ArticleListItem2Cell
 
@@ -24,6 +25,13 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+- (IBAction)favorBtnPressed:(id)sender {
+    NSLog(@"favor");
+}
+- (IBAction)shareBtnPressed:(id)sender {
+    [[AppSettings sharedSettings] popupShareMenu:self.share_data[@"share_title"] introduce:self.share_data[@"share_intro"] url:self.share_data[@"share_url"]];
 }
 
 @end

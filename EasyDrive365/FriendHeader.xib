@@ -40,7 +40,6 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{20, 27}, {280, 47}}</string>
 						<reference key="NSSuperview" ref="502684688"/>
-						<reference key="NSNextKeyView" ref="188991972"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<string key="NSHuggingPriority">{251, 251}</string>
 						<bool key="IBUIOpaque">NO</bool>
@@ -65,43 +64,12 @@
 						<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
 						<double key="preferredMaxLayoutWidth">280</double>
 					</object>
-					<object class="IBUIView" id="188991972">
-						<reference key="NSNextResponder" ref="502684688"/>
-						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{20, 79}, {280, 40}}</string>
-						<reference key="NSSuperview" ref="502684688"/>
-						<reference key="NSNextKeyView" ref="969164792"/>
-						<string key="NSReuseIdentifierKey">_NS:9</string>
-						<object class="NSColor" key="IBUIBackgroundColor" id="67864498">
-							<int key="NSColorSpace">3</int>
-							<bytes key="NSWhite">MC4zMzMzMzMzMzMzAA</bytes>
-						</object>
-						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-					</object>
-					<object class="IBUIView" id="969164792">
-						<reference key="NSNextResponder" ref="502684688"/>
-						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{20, 125}, {280, 40}}</string>
-						<reference key="NSSuperview" ref="502684688"/>
-						<reference key="NSNextKeyView" ref="908199625"/>
-						<string key="NSReuseIdentifierKey">_NS:9</string>
-						<reference key="IBUIBackgroundColor" ref="67864498"/>
-						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-					</object>
-					<object class="IBUIView" id="908199625">
-						<reference key="NSNextResponder" ref="502684688"/>
-						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{20, 171}, {280, 40}}</string>
-						<reference key="NSSuperview" ref="502684688"/>
-						<string key="NSReuseIdentifierKey">_NS:9</string>
-						<reference key="IBUIBackgroundColor" ref="67864498"/>
-						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-					</object>
 					<object class="IBUILabel" id="311265300">
 						<reference key="NSNextResponder" ref="502684688"/>
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{20, 4}, {280, 21}}</string>
 						<reference key="NSSuperview" ref="502684688"/>
+						<reference key="NSNextKeyView" ref="456899684"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<string key="NSHuggingPriority">{251, 251}</string>
 						<bool key="IBUIOpaque">NO</bool>
@@ -122,8 +90,8 @@
 						<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
 					</object>
 				</array>
-				<string key="NSFrameSize">{320, 220}</string>
-				<reference key="NSNextKeyView" ref="456899684"/>
+				<string key="NSFrameSize">{320, 100}</string>
+				<reference key="NSNextKeyView" ref="311265300"/>
 				<string key="NSReuseIdentifierKey">_NS:9</string>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">3</int>
@@ -143,24 +111,6 @@
 			<bool key="usesAutoincrementingIDs">NO</bool>
 			<array class="NSMutableArray" key="connectionRecords">
 				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchEventConnection" key="connection">
-						<string key="label">button1Pressed:</string>
-						<reference key="source" ref="188991972"/>
-						<reference key="destination" ref="502684688"/>
-						<int key="IBEventType">7</int>
-					</object>
-					<string key="id">12i-rK-jir</string>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchEventConnection" key="connection">
-						<string key="label">button2Pressed:</string>
-						<reference key="source" ref="969164792"/>
-						<reference key="destination" ref="502684688"/>
-						<int key="IBEventType">7</int>
-					</object>
-					<string key="id">gIk-9C-tdS</string>
-				</object>
-				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">lblInvite_code</string>
 						<reference key="source" ref="502684688"/>
@@ -175,39 +125,6 @@
 						<reference key="destination" ref="456899684"/>
 					</object>
 					<string key="id">ebp-ws-u20</string>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">btnButton1</string>
-						<reference key="source" ref="502684688"/>
-						<reference key="destination" ref="188991972"/>
-					</object>
-					<string key="id">z9q-uq-7L4</string>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">btnButton2</string>
-						<reference key="source" ref="502684688"/>
-						<reference key="destination" ref="969164792"/>
-					</object>
-					<string key="id">Ri9-Kp-AoT</string>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">btnButton3</string>
-						<reference key="source" ref="502684688"/>
-						<reference key="destination" ref="908199625"/>
-					</object>
-					<string key="id">tAC-al-arU</string>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchEventConnection" key="connection">
-						<string key="label">button3Pressed:</string>
-						<reference key="source" ref="908199625"/>
-						<reference key="destination" ref="502684688"/>
-						<int key="IBEventType">7</int>
-					</object>
-					<string key="id">dL9-cf-XEC</string>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -234,9 +151,6 @@
 						<reference key="object" ref="502684688"/>
 						<array class="NSMutableArray" key="children">
 							<reference ref="456899684"/>
-							<reference ref="188991972"/>
-							<reference ref="969164792"/>
-							<reference ref="908199625"/>
 							<reference ref="311265300"/>
 						</array>
 						<reference key="parent" ref="0"/>
@@ -244,21 +158,6 @@
 					<object class="IBObjectRecord">
 						<string key="id">UYT-Lq-1ad</string>
 						<reference key="object" ref="456899684"/>
-						<reference key="parent" ref="502684688"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">Pjc-zg-Xvc</string>
-						<reference key="object" ref="188991972"/>
-						<reference key="parent" ref="502684688"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">YCJ-cd-uye</string>
-						<reference key="object" ref="969164792"/>
-						<reference key="parent" ref="502684688"/>
-					</object>
-					<object class="IBObjectRecord">
-						<string key="id">xCh-F2-B72</string>
-						<reference key="object" ref="908199625"/>
 						<reference key="parent" ref="502684688"/>
 					</object>
 					<object class="IBObjectRecord">
@@ -274,16 +173,10 @@
 				<string key="-2.CustomClassName">UIResponder</string>
 				<string key="-2.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<boolean value="NO" key="-2.showNotes"/>
-				<string key="Pjc-zg-Xvc.CustomClassName">NVUIGradientButton</string>
-				<string key="Pjc-zg-Xvc.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="UEe-oC-MpI.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="UYT-Lq-1ad.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="YCJ-cd-uye.CustomClassName">NVUIGradientButton</string>
-				<string key="YCJ-cd-uye.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="buI-Ly-ndv.CustomClassName">FriendHeader</string>
 				<string key="buI-Ly-ndv.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="xCh-F2-B72.CustomClassName">NVUIGradientButton</string>
-				<string key="xCh-F2-B72.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 			</dictionary>
 			<dictionary class="NSMutableDictionary" key="unlocalizedProperties"/>
 			<nil key="activeLocalization"/>

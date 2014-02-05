@@ -16,6 +16,8 @@
 		51133414188FE7B6005A02C3 /* StrikeThroughLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 51133413188FE7B6005A02C3 /* StrikeThroughLabel.m */; };
 		5113341718900612005A02C3 /* BuyButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5113341618900612005A02C3 /* BuyButtonView.m */; };
 		5113341918900622005A02C3 /* BuyButtonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5113341818900622005A02C3 /* BuyButtonView.xib */; };
+		511567DA18A2963F00784878 /* libWeiboSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 511567D718A2963F00784878 /* libWeiboSDK.a */; };
+		511567DB18A2963F00784878 /* WeiboSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 511567D818A2963F00784878 /* WeiboSDK.bundle */; };
 		51160F781861D92000AA15D3 /* CommentItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 51160F771861D92000AA15D3 /* CommentItemCell.m */; };
 		51160F7B1861D92F00AA15D3 /* CommentListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 51160F7A1861D92F00AA15D3 /* CommentListCell.m */; };
 		51160F7D1861D94000AA15D3 /* CommentListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51160F7C1861D94000AA15D3 /* CommentListCell.xib */; };
@@ -116,6 +118,12 @@
 		516BB5BC1858A04900D38079 /* ProviderListItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 516BB5BB1858A04900D38079 /* ProviderListItemCell.m */; };
 		516BB5BE1858A06400D38079 /* ProviderListItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 516BB5BD1858A06400D38079 /* ProviderListItemCell.xib */; };
 		516BB5C11858A68100D38079 /* ProviderDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 516BB5C01858A68100D38079 /* ProviderDetailController.m */; };
+		518001FB18A270CB006539BA /* favor.png in Resources */ = {isa = PBXBuildFile; fileRef = 518001F818A270CB006539BA /* favor.png */; };
+		518001FC18A270CB006539BA /* favorno.png in Resources */ = {isa = PBXBuildFile; fileRef = 518001F918A270CB006539BA /* favorno.png */; };
+		518001FD18A270CB006539BA /* share.png in Resources */ = {isa = PBXBuildFile; fileRef = 518001FA18A270CB006539BA /* share.png */; };
+		5180020118A27440006539BA /* ShareControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 5180020018A27440006539BA /* ShareControl.m */; };
+		5180020318A27B42006539BA /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5180020218A27B42006539BA /* MessageUI.framework */; };
+		5180020718A28419006539BA /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5180020418A28419006539BA /* libWeChatSDK.a */; };
 		5188968A189755A000B368FE /* p.png in Resources */ = {isa = PBXBuildFile; fileRef = 51889688189755A000B368FE /* p.png */; };
 		5188968B189755A000B368FE /* p@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 51889689189755A000B368FE /* p@2x.png */; };
 		5189CB5A18640B1200DB9A26 /* ExecuteTaskController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5189CB5818640B1200DB9A26 /* ExecuteTaskController.m */; };
@@ -432,6 +440,9 @@
 		5113341518900612005A02C3 /* BuyButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyButtonView.h; sourceTree = "<group>"; };
 		5113341618900612005A02C3 /* BuyButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyButtonView.m; sourceTree = "<group>"; };
 		5113341818900622005A02C3 /* BuyButtonView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BuyButtonView.xib; sourceTree = "<group>"; };
+		511567D718A2963F00784878 /* libWeiboSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeiboSDK.a; sourceTree = "<group>"; };
+		511567D818A2963F00784878 /* WeiboSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = WeiboSDK.bundle; sourceTree = "<group>"; };
+		511567D918A2963F00784878 /* WeiboSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiboSDK.h; sourceTree = "<group>"; };
 		51160F761861D92000AA15D3 /* CommentItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentItemCell.h; sourceTree = "<group>"; };
 		51160F771861D92000AA15D3 /* CommentItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentItemCell.m; sourceTree = "<group>"; };
 		51160F791861D92F00AA15D3 /* CommentListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentListCell.h; sourceTree = "<group>"; };
@@ -563,6 +574,15 @@
 		516BB5BD1858A06400D38079 /* ProviderListItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProviderListItemCell.xib; sourceTree = "<group>"; };
 		516BB5BF1858A68100D38079 /* ProviderDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProviderDetailController.h; sourceTree = "<group>"; };
 		516BB5C01858A68100D38079 /* ProviderDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProviderDetailController.m; sourceTree = "<group>"; };
+		518001F818A270CB006539BA /* favor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = favor.png; sourceTree = "<group>"; };
+		518001F918A270CB006539BA /* favorno.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = favorno.png; sourceTree = "<group>"; };
+		518001FA18A270CB006539BA /* share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = share.png; sourceTree = "<group>"; };
+		518001FF18A27440006539BA /* ShareControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareControl.h; sourceTree = "<group>"; };
+		5180020018A27440006539BA /* ShareControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareControl.m; sourceTree = "<group>"; };
+		5180020218A27B42006539BA /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		5180020418A28419006539BA /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
+		5180020518A28419006539BA /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
+		5180020618A28419006539BA /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
 		51889688189755A000B368FE /* p.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = p.png; sourceTree = "<group>"; };
 		51889689189755A000B368FE /* p@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "p@2x.png"; sourceTree = "<group>"; };
 		5189CB5718640B1200DB9A26 /* ExecuteTaskController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExecuteTaskController.h; sourceTree = "<group>"; };
@@ -1057,6 +1077,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5180020318A27B42006539BA /* MessageUI.framework in Frameworks */,
 				51B9953C18913AE200C2DD5D /* AlipayRsaLib.a in Frameworks */,
 				E2611B7F17CB7C4F00E92897 /* OpenGLES.framework in Frameworks */,
 				51B9954318913B3F00C2DD5D /* libcrypto.a in Frameworks */,
@@ -1067,9 +1088,11 @@
 				E2296D2A16B760EC00E332D9 /* UIKit.framework in Frameworks */,
 				E2296D2C16B760EC00E332D9 /* Foundation.framework in Frameworks */,
 				E2296D2E16B760EC00E332D9 /* CoreGraphics.framework in Frameworks */,
+				511567DA18A2963F00784878 /* libWeiboSDK.a in Frameworks */,
 				51B9954218913B3F00C2DD5D /* AlixPaylib_arc.a in Frameworks */,
 				51B9954418913B3F00C2DD5D /* libssl.a in Frameworks */,
 				E2611B5A17CB7BF600E92897 /* libbaidumapapi.a in Frameworks */,
+				5180020718A28419006539BA /* libWeChatSDK.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1188,6 +1211,15 @@
 				516BB5B2185874BB00D38079 /* foregroundStar@2x.png */,
 			);
 			name = TQStarRating;
+			sourceTree = "<group>";
+		};
+		518001FE18A27421006539BA /* Share */ = {
+			isa = PBXGroup;
+			children = (
+				518001FF18A27440006539BA /* ShareControl.h */,
+				5180020018A27440006539BA /* ShareControl.m */,
+			);
+			name = Share;
 			sourceTree = "<group>";
 		};
 		5189CB5C1864127A00DB9A26 /* Friends */ = {
@@ -1397,6 +1429,13 @@
 		E2296D2816B760EC00E332D9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				511567D718A2963F00784878 /* libWeiboSDK.a */,
+				511567D818A2963F00784878 /* WeiboSDK.bundle */,
+				511567D918A2963F00784878 /* WeiboSDK.h */,
+				5180020418A28419006539BA /* libWeChatSDK.a */,
+				5180020518A28419006539BA /* WXApi.h */,
+				5180020618A28419006539BA /* WXApiObject.h */,
+				5180020218A27B42006539BA /* MessageUI.framework */,
 				51B9953F18913B3F00C2DD5D /* AlixPaylib_arc.a */,
 				51B9954018913B3F00C2DD5D /* libcrypto.a */,
 				51B9954118913B3F00C2DD5D /* libssl.a */,
@@ -1416,6 +1455,7 @@
 		E2296D2F16B760EC00E332D9 /* EasyDrive366 */ = {
 			isa = PBXGroup;
 			children = (
+				518001FE18A27421006539BA /* Share */,
 				51B9951C18913A9200C2DD5D /* alipay */,
 				51570C0918584D4B003655CC /* Models */,
 				E2E6688017DF664800AC85BA /* libqrencode */,
@@ -1500,6 +1540,9 @@
 		E24A041916CFBA2600B7A602 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				518001F818A270CB006539BA /* favor.png */,
+				518001F918A270CB006539BA /* favorno.png */,
+				518001FA18A270CB006539BA /* share.png */,
 				51889688189755A000B368FE /* p.png */,
 				51889689189755A000B368FE /* p@2x.png */,
 				51B995491891558400C2DD5D /* btnbuy_big@2x.png */,
@@ -2147,6 +2190,7 @@
 				512598E51888D17200967BDE /* m.png in Resources */,
 				5113341918900622005A02C3 /* BuyButtonView.xib in Resources */,
 				512598E91888D17200967BDE /* renwu.png in Resources */,
+				518001FC18A270CB006539BA /* favorno.png in Resources */,
 				51B9953B18913AE200C2DD5D /* Alixpay.bundle in Resources */,
 				512598E11888D17200967BDE /* jifen.png in Resources */,
 				512598C81888C6F600967BDE /* star.png in Resources */,
@@ -2159,6 +2203,7 @@
 				E2EE65CE16CC89B400ED1C73 /* CompulsoryInsuranceViewController.xib in Resources */,
 				512599201888D3A900967BDE /* l@2x.png in Resources */,
 				E2EE65D316CC915500ED1C73 /* BusinessInsuranceViewController.xib in Resources */,
+				518001FB18A270CB006539BA /* favor.png in Resources */,
 				E2EE65DD16CC9E4600ED1C73 /* InsuranceRecordsViewController.xib in Resources */,
 				5125991F1888D3A900967BDE /* l.png in Resources */,
 				E2EE65E216CCA13E00ED1C73 /* MaintainListViewController.xib in Resources */,
@@ -2177,6 +2222,7 @@
 				512598C41888C6F600967BDE /* starfull@2x.png in Resources */,
 				512598C61888C6F600967BDE /* starhalf.png in Resources */,
 				512599041888D35900967BDE /* e@2x.png in Resources */,
+				511567DB18A2963F00784878 /* WeiboSDK.bundle in Resources */,
 				E26CCFAE16DA0D2800A35DA1 /* HelpHeaderView.xib in Resources */,
 				512598FD1888D32900967BDE /* c.png in Resources */,
 				512598C31888C6F600967BDE /* starhalf@2x.png in Resources */,
@@ -2221,6 +2267,7 @@
 				512599101888D38200967BDE /* h@2x.png in Resources */,
 				E2903BB916F3710500A93CBF /* Long_Bar@2x.png in Resources */,
 				E2903BD016F373F600A93CBF /* surf_gradient_textured_32.png in Resources */,
+				518001FD18A270CB006539BA /* share.png in Resources */,
 				51F704961862CAAA00A17D24 /* UserProfileView.xib in Resources */,
 				E2903BD116F373F600A93CBF /* surf_gradient_textured_44.png in Resources */,
 				E2903BE016F41C9800A93CBF /* PhoneView.xib in Resources */,
@@ -2419,6 +2466,7 @@
 				E26CCFAC16DA0D1300A35DA1 /* HelpHeaderView.m in Sources */,
 				5113341718900612005A02C3 /* BuyButtonView.m in Sources */,
 				E29B09E716DA40C4002449DE /* Reachability.m in Sources */,
+				5180020118A27440006539BA /* ShareControl.m in Sources */,
 				5169E7C11850A3D100F510A7 /* FeedbackInfoCell.m in Sources */,
 				E29B09EC16DB9134002449DE /* BusinessInsViewController.m in Sources */,
 				E25D74BD16DE368D008307C7 /* NetTableViewController.m in Sources */,

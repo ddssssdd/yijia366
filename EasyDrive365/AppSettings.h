@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "HttpClient.h"
-
+#import "ShareControl.h"
 
 @interface Information:NSObject
 @property (nonatomic,strong) NSString *key;
@@ -26,6 +26,7 @@
     BOOL _needset;
     NSString *_needsetmsg;
     BOOL *_isUpdating;
+    ShareControl *_sharecontrol;
 }
 
 @property (nonatomic,retain) NSString *firstName;
@@ -104,4 +105,6 @@
 
 
 -(void)pay:(NSString *)name description:(NSString *)description amount:(CGFloat)amount order_no:(NSString *)order_no;
+
+-(void)popupShareMenu:(NSString *)title introduce:(NSString *)introduce url:(NSString *)url;
 @end
