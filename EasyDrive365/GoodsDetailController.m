@@ -85,10 +85,20 @@
             if ([[AppSettings sharedSettings] isSuccess:json]){
                 [_favorBtn setImage:[UIImage imageNamed:@"favor"] forState:UIControlStateNormal];
                 [_navigationView setNeedsLayout];
+                _target[@"is_favor"]=@"1";
+            }
+        }];
+    }else{
+        NSString *url = [NSString stringWithFormat:@"favor/del?userid=%d&id=%@",[AppSettings sharedSettings].userid,_target[@"favor_id"]];
+        [[AppSettings sharedSettings].http get:url block:^(id json) {
+            if ([[AppSettings sharedSettings] isSuccess:json]){
+                [_favorBtn setImage:[UIImage imageNamed:@"favorno"] forState:UIControlStateNormal];
+                [_navigationView setNeedsLayout];
+                _target[@"is_favor"]=@"0";
                 
             }
         }];
-    };
+    }
 }
 -(void)goShare{
     [[AppSettings sharedSettings] popupShareMenu:_target[@"share_title"] introduce:_target[@"share_intro"] url:_target[@"share_url"]];

@@ -50,10 +50,19 @@
             if ([[AppSettings sharedSettings] isSuccess:json]){
                 [self.favorbtn setImage:[UIImage imageNamed:@"favor"] forState:UIControlStateNormal];
                 [self setNeedsLayout];
-
+                self.share_data[@"is_favor"]=@"1";
             }
         }];
-    };
+    }else{
+        NSString *url = [NSString stringWithFormat:@"favor/del?userid=%d&id=%@",[AppSettings sharedSettings].userid,self.share_data[@"favor_id"]];
+        [[AppSettings sharedSettings].http get:url block:^(id json) {
+            if ([[AppSettings sharedSettings] isSuccess:json]){
+                [self.favorbtn setImage:[UIImage imageNamed:@"favorno"] forState:UIControlStateNormal];
+                [self setNeedsLayout];
+                self.share_data[@"is_favor"]=@"0";
+            }
+        }];
+    }
     
     
     

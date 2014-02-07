@@ -22,6 +22,9 @@
 		511567E118A4FB9800784878 /* FavorItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 511567E018A4FB9800784878 /* FavorItemCell.m */; };
 		511567E318A4FBA900784878 /* FavorItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 511567E218A4FBA900784878 /* FavorItemCell.xib */; };
 		511567E618A501A700784878 /* MyHistroyController.m in Sources */ = {isa = PBXBuildFile; fileRef = 511567E518A501A700784878 /* MyHistroyController.m */; };
+		511567E918A51A7700784878 /* favor@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 511567E718A51A7700784878 /* favor@2x.png */; };
+		511567EA18A51A7700784878 /* favorno@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 511567E818A51A7700784878 /* favorno@2x.png */; };
+		511567EC18A51A8600784878 /* share@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 511567EB18A51A8600784878 /* share@2x.png */; };
 		51160F781861D92000AA15D3 /* CommentItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 51160F771861D92000AA15D3 /* CommentItemCell.m */; };
 		51160F7B1861D92F00AA15D3 /* CommentListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 51160F7A1861D92F00AA15D3 /* CommentListCell.m */; };
 		51160F7D1861D94000AA15D3 /* CommentListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51160F7C1861D94000AA15D3 /* CommentListCell.xib */; };
@@ -454,6 +457,9 @@
 		511567E218A4FBA900784878 /* FavorItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FavorItemCell.xib; sourceTree = "<group>"; };
 		511567E418A501A700784878 /* MyHistroyController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyHistroyController.h; sourceTree = "<group>"; };
 		511567E518A501A700784878 /* MyHistroyController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyHistroyController.m; sourceTree = "<group>"; };
+		511567E718A51A7700784878 /* favor@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "favor@2x.png"; sourceTree = "<group>"; };
+		511567E818A51A7700784878 /* favorno@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "favorno@2x.png"; sourceTree = "<group>"; };
+		511567EB18A51A8600784878 /* share@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "share@2x.png"; sourceTree = "<group>"; };
 		51160F761861D92000AA15D3 /* CommentItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentItemCell.h; sourceTree = "<group>"; };
 		51160F771861D92000AA15D3 /* CommentItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentItemCell.m; sourceTree = "<group>"; };
 		51160F791861D92F00AA15D3 /* CommentListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentListCell.h; sourceTree = "<group>"; };
@@ -1558,6 +1564,9 @@
 		E24A041916CFBA2600B7A602 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				511567EB18A51A8600784878 /* share@2x.png */,
+				511567E718A51A7700784878 /* favor@2x.png */,
+				511567E818A51A7700784878 /* favorno@2x.png */,
 				518001F818A270CB006539BA /* favor.png */,
 				518001F918A270CB006539BA /* favorno.png */,
 				518001FA18A270CB006539BA /* share.png */,
@@ -2278,6 +2287,7 @@
 				E2903BAC16F36B9F00A93CBF /* Icon-Small@2x.png in Resources */,
 				512598FB1888D32900967BDE /* b.png in Resources */,
 				E2903BAD16F36B9F00A93CBF /* Icon.png in Resources */,
+				511567EA18A51A7700784878 /* favorno@2x.png in Resources */,
 				E2903BAE16F36B9F00A93CBF /* Icon@2x.png in Resources */,
 				E2903BAF16F36B9F00A93CBF /* iTunesArtwork in Resources */,
 				E2903BB316F36BB700A93CBF /* Default.png in Resources */,
@@ -2332,6 +2342,7 @@
 				E241CF09173BF42300B1441D /* 0052@2x.png in Resources */,
 				E2771F91174A321B0056E6F7 /* FeedbackViewController.xib in Resources */,
 				E254410F174D078E0015A84C /* IllegallyDetailViewController.xib in Resources */,
+				511567EC18A51A8600784878 /* share@2x.png in Resources */,
 				E2B489FA1761FAC300B8947D /* InfromationDetailViewController.xib in Resources */,
 				E271A3ED17658235001E4D54 /* ArticleCommentViewController.xib in Resources */,
 				E271A3F317658545001E4D54 /* AddCommentViewController.xib in Resources */,
@@ -2398,6 +2409,7 @@
 				51E3CE181859E46F004582BC /* ArticleListItemCell.xib in Resources */,
 				512599001888D32900967BDE /* d@2x.png in Resources */,
 				512598B818866F7700967BDE /* ArticleController.xib in Resources */,
+				511567E918A51A7700784878 /* favor@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
