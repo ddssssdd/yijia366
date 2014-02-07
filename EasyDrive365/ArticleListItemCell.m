@@ -8,6 +8,7 @@
 
 #import "ArticleListItemCell.h"
 #import "AMRatingControl.h"
+#import "AppSettings.h"
 
 @interface ArticleListItemCell(){
     AMRatingControl *_ratingControl;
@@ -35,11 +36,29 @@
 
 -(void)setRating:(int)rating{
     if (!_ratingControl){
-        _ratingControl =[[AMRatingControl alloc] initWithLocation:CGPointMake(125, 88) andMaxRating:5];
+        _ratingControl =[[AMRatingControl alloc] initWithLocation:CGPointMake(185, 88) andMaxRating:5];
         [_ratingControl setRating:rating];
         [self addSubview:_ratingControl];
         [_ratingControl setEnabled:NO];
     }
 }
+- (IBAction)favorBtnPressed:(id)sender {
+    NSLog(@"favor");
+    if ([self.share_data[@"is_favor"] intValue]==0){
+        NSString *url = [NSString stringWithFormat:@"favor/add?userid=%d&id=%@&type=ATL",[AppSettings sharedSettings].userid,self.share_data[@"id"]];
+        [[AppSettings sharedSettings].http get:url block:^(id json) {
+            if ([[AppSettings sharedSettings] isSuccess:json]){
+                [self.favorbtn setImage:[UIImage imageNamed:@"favor"] forState:UIControlStateNormal];
+                [self setNeedsLayout];
 
+            }
+        }];
+    };
+    
+    
+    
+}
+- (IBAction)shareBtnPressed:(id)sender {
+    [[AppSettings sharedSettings] popupShareMenu:self.share_data[@"share_title"] introduce:self.share_data[@"share_intro"] url:self.share_data[@"share_url"]];
+}
 @end

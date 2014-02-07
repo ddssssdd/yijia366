@@ -22,6 +22,8 @@
     UIImageView *_imageView;
     UIPageControl *_pager;
     int _index;
+    UIView *_navigationView;
+    UIButton *_favorBtn;
 }
 
 @end
@@ -95,9 +97,47 @@
         NSLog(@"%@",_target);
         [self.tableView reloadData];
         [self.refreshControl endRefreshing];
-
+        [self addRightButtons];
     }
     
+}
+-(void)addRightButtons{
+    NSString *imageName = [_target[@"is_favor"] intValue]==1?@"favor":@"favorno";
+    if (!_navigationView){
+        _navigationView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 44)];
+        
+        _favorBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        _favorBtn.frame = CGRectMake(30, 2, 30, 30);
+        [_favorBtn addTarget:self action:@selector(addFavor) forControlEvents:UIControlEventTouchUpInside];
+        [_favorBtn setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
+        [_navigationView addSubview:_favorBtn];
+        
+        
+        UIButton *exampleButton2 = [UIButton buttonWithType:UIButtonTypeCustom];
+        exampleButton2.frame = CGRectMake(70, 2, 30, 30);
+        [exampleButton2 addTarget:self action:@selector(goShare) forControlEvents:UIControlEventTouchUpInside];
+        [exampleButton2 setImage:[UIImage imageNamed:@"share.png"] forState:UIControlStateNormal];
+        
+        [_navigationView addSubview:exampleButton2];
+        
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:_navigationView];
+    }
+    
+}
+-(void)addFavor{
+    if ([_target[@"is_favor"] intValue]==0){
+        NSString *url = [NSString stringWithFormat:@"favor/add?userid=%d&id=%@&type=SPV",[AppSettings sharedSettings].userid,_target[@"id"]];
+        [[AppSettings sharedSettings].http get:url block:^(id json) {
+            if ([[AppSettings sharedSettings] isSuccess:json]){
+                [_favorBtn setImage:[UIImage imageNamed:@"favor"] forState:UIControlStateNormal];
+                [_navigationView setNeedsLayout];
+                
+            }
+        }];
+    };
+}
+-(void)goShare{
+    [[AppSettings sharedSettings] popupShareMenu:_target[@"share_title"] introduce:_target[@"share_intro"] url:_target[@"share_url"]];
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 6;

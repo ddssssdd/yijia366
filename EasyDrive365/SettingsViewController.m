@@ -29,6 +29,8 @@
 #import "FeedbackController2.h"
 #import "UserProfileView.h"
 #import "NeedPayController.h"
+#import "MyFavorController.h"
+#import "MyHistroyController.h"
 
 #define SECTION_LAST 5
 
@@ -311,8 +313,12 @@
         [self.navigationController pushViewController:vc animated:YES];
         
     }else if ([key isEqualToString:@"favorite"]){
+        MyFavorController *vc = [[MyFavorController alloc] initWithStyle:UITableViewStylePlain];
+        [self.navigationController pushViewController:vc animated:YES];
         
     }else if ([key isEqualToString:@"histroy"]){
+        MyHistroyController *vc = [[MyHistroyController alloc] initWithStyle:UITableViewStylePlain];
+        [self.navigationController pushViewController:vc animated:YES];
         
     }else if ([key isEqualToString:@"car_register"]){
         [self open_car_setup];

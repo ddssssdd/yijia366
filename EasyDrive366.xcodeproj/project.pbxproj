@@ -18,6 +18,10 @@
 		5113341918900622005A02C3 /* BuyButtonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5113341818900622005A02C3 /* BuyButtonView.xib */; };
 		511567DA18A2963F00784878 /* libWeiboSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 511567D718A2963F00784878 /* libWeiboSDK.a */; };
 		511567DB18A2963F00784878 /* WeiboSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 511567D818A2963F00784878 /* WeiboSDK.bundle */; };
+		511567DE18A4FAC400784878 /* MyFavorController.m in Sources */ = {isa = PBXBuildFile; fileRef = 511567DD18A4FAC400784878 /* MyFavorController.m */; };
+		511567E118A4FB9800784878 /* FavorItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 511567E018A4FB9800784878 /* FavorItemCell.m */; };
+		511567E318A4FBA900784878 /* FavorItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 511567E218A4FBA900784878 /* FavorItemCell.xib */; };
+		511567E618A501A700784878 /* MyHistroyController.m in Sources */ = {isa = PBXBuildFile; fileRef = 511567E518A501A700784878 /* MyHistroyController.m */; };
 		51160F781861D92000AA15D3 /* CommentItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 51160F771861D92000AA15D3 /* CommentItemCell.m */; };
 		51160F7B1861D92F00AA15D3 /* CommentListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 51160F7A1861D92F00AA15D3 /* CommentListCell.m */; };
 		51160F7D1861D94000AA15D3 /* CommentListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51160F7C1861D94000AA15D3 /* CommentListCell.xib */; };
@@ -443,6 +447,13 @@
 		511567D718A2963F00784878 /* libWeiboSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeiboSDK.a; sourceTree = "<group>"; };
 		511567D818A2963F00784878 /* WeiboSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = WeiboSDK.bundle; sourceTree = "<group>"; };
 		511567D918A2963F00784878 /* WeiboSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiboSDK.h; sourceTree = "<group>"; };
+		511567DC18A4FAC400784878 /* MyFavorController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyFavorController.h; sourceTree = "<group>"; };
+		511567DD18A4FAC400784878 /* MyFavorController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyFavorController.m; sourceTree = "<group>"; };
+		511567DF18A4FB9800784878 /* FavorItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavorItemCell.h; sourceTree = "<group>"; };
+		511567E018A4FB9800784878 /* FavorItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavorItemCell.m; sourceTree = "<group>"; };
+		511567E218A4FBA900784878 /* FavorItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FavorItemCell.xib; sourceTree = "<group>"; };
+		511567E418A501A700784878 /* MyHistroyController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyHistroyController.h; sourceTree = "<group>"; };
+		511567E518A501A700784878 /* MyHistroyController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyHistroyController.m; sourceTree = "<group>"; };
 		51160F761861D92000AA15D3 /* CommentItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentItemCell.h; sourceTree = "<group>"; };
 		51160F771861D92000AA15D3 /* CommentItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentItemCell.m; sourceTree = "<group>"; };
 		51160F791861D92F00AA15D3 /* CommentListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentListCell.h; sourceTree = "<group>"; };
@@ -1405,6 +1416,13 @@
 				51F704951862CAAA00A17D24 /* UserProfileView.xib */,
 				51FD8A5D1892B29B00963987 /* SetupUserController.h */,
 				51FD8A5E1892B29B00963987 /* SetupUserController.m */,
+				511567DC18A4FAC400784878 /* MyFavorController.h */,
+				511567DD18A4FAC400784878 /* MyFavorController.m */,
+				511567DF18A4FB9800784878 /* FavorItemCell.h */,
+				511567E018A4FB9800784878 /* FavorItemCell.m */,
+				511567E218A4FBA900784878 /* FavorItemCell.xib */,
+				511567E418A501A700784878 /* MyHistroyController.h */,
+				511567E518A501A700784878 /* MyHistroyController.m */,
 			);
 			name = Users;
 			sourceTree = "<group>";
@@ -2191,6 +2209,7 @@
 				5113341918900622005A02C3 /* BuyButtonView.xib in Resources */,
 				512598E91888D17200967BDE /* renwu.png in Resources */,
 				518001FC18A270CB006539BA /* favorno.png in Resources */,
+				511567E318A4FBA900784878 /* FavorItemCell.xib in Resources */,
 				51B9953B18913AE200C2DD5D /* Alixpay.bundle in Resources */,
 				512598E11888D17200967BDE /* jifen.png in Resources */,
 				512598C81888C6F600967BDE /* star.png in Resources */,
@@ -2524,6 +2543,7 @@
 				51B9953318913AC900C2DD5D /* SBJsonWriter.m in Sources */,
 				E2611B8417CB7CC500E92897 /* ShowLocationViewController.m in Sources */,
 				E2611B8917CCE27A00E92897 /* ShowDetailViewController.m in Sources */,
+				511567E118A4FB9800784878 /* FavorItemCell.m in Sources */,
 				51B9953118913AC900C2DD5D /* SBJsonBase.m in Sources */,
 				51F0A66A187BD81700CC9A1D /* OrderPayController.m in Sources */,
 				514C90E718954047007FFFCC /* InsuranceStep3Controller.m in Sources */,
@@ -2533,6 +2553,7 @@
 				E2E6647C17D895CF00AC85BA /* TakePhotoViewController.m in Sources */,
 				5189CB67186415F400DB9A26 /* FriendHeader.m in Sources */,
 				E2E6689117DF664800AC85BA /* bitstream.c in Sources */,
+				511567E618A501A700784878 /* MyHistroyController.m in Sources */,
 				E2E6689217DF664800AC85BA /* mask.c in Sources */,
 				E2E6689317DF664800AC85BA /* QRCodeGenerator.m in Sources */,
 				51160F7B1861D92F00AA15D3 /* CommentListCell.m in Sources */,
@@ -2571,6 +2592,7 @@
 				51570C15185853C7003655CC /* DetailPictureCell.m in Sources */,
 				51570C18185853E2003655CC /* DetailPriceCell.m in Sources */,
 				51570C1B185853F2003655CC /* DetailDescriptionCell.m in Sources */,
+				511567DE18A4FAC400784878 /* MyFavorController.m in Sources */,
 				514C90DD1895350A007FFFCC /* InsuranceStep1Controller.m in Sources */,
 				51F0A65D187BAB4500CC9A1D /* OrderQuantityCell.m in Sources */,
 				51B9953018913AC900C2DD5D /* SBJSON.m in Sources */,

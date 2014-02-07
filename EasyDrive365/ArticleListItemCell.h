@@ -14,6 +14,9 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *lblDescription;
 @property (weak, nonatomic) IBOutlet UILabel *lblVoternum;
+@property (weak, nonatomic) IBOutlet UIButton *favorbtn;
+@property (weak, nonatomic) IBOutlet UIButton *sharebtn;
 
+@property (nonatomic) id share_data;
 @property (nonatomic) int rating;
 @end

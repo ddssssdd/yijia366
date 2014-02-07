@@ -23,7 +23,7 @@
     _share_inctroduce = introduce;
     _share_title = title;
     _share_url = url;
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"新浪微博",@"微信好友",@"微信朋友圈",@"腾讯微博",@"邮件",@"短信", nil];
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"新浪微博",@"微信好友",@"微信朋友圈",@"邮件",@"短信", nil];
     [actionSheet showFromTabBar:((AppDelegate *)[[UIApplication sharedApplication] delegate]).tabbarController.tabBar];
     
 }
@@ -101,8 +101,6 @@
         
         [WXApi sendReq:req];
     }else if (buttonIndex==3){
-        //tencent
-    }else if (buttonIndex==4){
         //email
 
         MFMailComposeViewController *mc = [[MFMailComposeViewController alloc] init];
@@ -120,7 +118,7 @@
         // displaying our modal view controller on the screen with standard transition
         [((AppDelegate *)[[UIApplication sharedApplication] delegate]).tabbarController presentViewController:mc animated:YES completion:nil];
         
-    }else if (buttonIndex==5){
+    }else if (buttonIndex==4){
         //text
         if(![MFMessageComposeViewController canSendText]) {
             UIAlertView *warningAlert = [[UIAlertView alloc] initWithTitle:@"错误" message:@"设备不支持发送短信!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];

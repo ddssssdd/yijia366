@@ -120,7 +120,7 @@
         _imageView = aCell.image;
         _pager = aCell.pager;
     }else{
-        /*
+        
         if (cell==nil){
             cell= [[[NSBundle mainBundle] loadNibNamed:@"ArticleListItemCell" owner:nil options:nil] objectAtIndex:0];
         }
@@ -131,7 +131,15 @@
         
         itemCell.lblVoternum.text =[NSString stringWithFormat:@"%@", item[@"star_voternum"]];
         itemCell.rating = [item[@"star"] intValue];
-         */
+         [itemCell.image setImageWithURL:[NSURL URLWithString:item[@"pic_url"]]];
+        itemCell.share_data = item;
+        [itemCell.image setImageWithURL:[NSURL URLWithString:item[@"pic_url"]]];
+        if ([item[@"is_favor"] intValue]==1){
+            [itemCell.favorbtn setImage:[UIImage imageNamed:@"favor"] forState:UIControlStateNormal];
+        }else{
+            [itemCell.favorbtn setImage:[UIImage imageNamed:@"favorno"] forState:UIControlStateNormal];
+        }
+        /*
         if (cell==nil){
             cell= [[[NSBundle mainBundle] loadNibNamed:@"ArticleListItem2Cell" owner:nil options:nil] objectAtIndex:0];
         }
@@ -146,6 +154,7 @@
         }else{
                         [itemCell.favorbtn setBackgroundImage:[UIImage imageNamed:@"favorno"] forState:UIControlStateNormal];
         }
+         */
     }
     
     return  cell;
@@ -161,8 +170,8 @@
         return 150.0f;
         
     }
-    //return 120.0f;
-    return 85.0f;
+    return 120.0f;
+    //return 85.0f;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section==1){
