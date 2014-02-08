@@ -58,7 +58,7 @@
                    
                    [[NSMutableDictionary alloc] initWithDictionary:@{@"key" :@"vin",@"label":@"VIN：",@"default":@"",@"placeholder":@"",@"ispassword":@"capital",@"cell":@"EditTextCell",@"value":json[@"result"][@"vin"] }],
                    [[NSMutableDictionary alloc] initWithDictionary:@{@"key" :@"engine_no",@"label":@"发动机号：",@"default":@"",@"placeholder":@"",@"ispassword":@"capital",@"cell":@"EditTextCell",@"value":json[@"result"][@"engine_no"] }],
-                   [[NSMutableDictionary alloc] initWithDictionary:@{@"key" :@"registration_date",@"label":@"初登日期号：",@"default":@"",@"placeholder":@"DatePickerViewController",@"ispassword":@"no",@"cell":@"ChooseNextCell",@"value":r_date }],
+                   [[NSMutableDictionary alloc] initWithDictionary:@{@"key" :@"registration_date",@"label":@"  初登日期：",@"default":@"",@"placeholder":@"DatePickerViewController",@"ispassword":@"no",@"cell":@"ChooseNextCell",@"value":r_date }],
                    [[NSMutableDictionary alloc] initWithDictionary:@{@"key" :@"owner_name",@"label":@"车主姓名：",@"default":@"",@"placeholder":@"",@"ispassword":@"capital",@"cell":@"EditTextCell",@"value":json[@"result"][@"owner_name"] }]
                    ];
         id items2=@[
