@@ -73,10 +73,10 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(logout) name:@"logout" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openGoods) name:OPEN_GOODS object:nil];
     
-    [WXApi registerApp:@"wxbf4902100b6d4a69"];
+    [WXApi registerApp:WEIXIN_APPKEY];
     
     [WeiboSDK enableDebugMode:YES];
-    [WeiboSDK registerApp:@"4276960189"];
+    [WeiboSDK registerApp:SINAWEIBO_APPKEY];
     
     return YES;
 }
@@ -188,7 +188,14 @@
 	return YES;
 }
 -(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation{
-    return [WXApi handleOpenURL:url delegate:self] || [WeiboSDK handleOpenURL:url delegate:self];
+    NSLog(@"%@",[url scheme]);
+    if (url != nil && [[url scheme] compare:WEIXIN_APPKEY] == 0) {
+        return [WXApi handleOpenURL:url delegate:self];
+    }else if (url != nil && [[url scheme] compare:SINAWEIBO_APPKEY] == 0){
+       return [WeiboSDK handleOpenURL:url delegate:self];
+    }
+    
+    return YES;
 }
 - (void)parse:(NSURL *)url application:(UIApplication *)application {
     

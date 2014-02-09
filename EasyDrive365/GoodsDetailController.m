@@ -56,7 +56,7 @@
     
 }
 -(void)addRightButtons{
-    NSString *imageName = [_target[@"is_favor"] intValue]==1?@"favor":@"favorno";
+    NSString *imageName = [_target[@"is_favor"] intValue]==1?@"shoucang":@"quxiaosc";
     if (!_navigationView){
         _navigationView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 44)];
         
@@ -70,7 +70,7 @@
         UIButton *exampleButton2 = [UIButton buttonWithType:UIButtonTypeCustom];
         exampleButton2.frame = CGRectMake(70, 2, 30, 30);
         [exampleButton2 addTarget:self action:@selector(goShare) forControlEvents:UIControlEventTouchUpInside];
-        [exampleButton2 setImage:[UIImage imageNamed:@"share.png"] forState:UIControlStateNormal];
+        [exampleButton2 setImage:[UIImage imageNamed:@"fenxiang"] forState:UIControlStateNormal];
         
         [_navigationView addSubview:exampleButton2];
         
@@ -83,7 +83,7 @@
         NSString *url = [NSString stringWithFormat:@"favor/add?userid=%d&id=%@&type=GDS",[AppSettings sharedSettings].userid,_target[@"id"]];
         [[AppSettings sharedSettings].http get:url block:^(id json) {
             if ([[AppSettings sharedSettings] isSuccess:json]){
-                [_favorBtn setImage:[UIImage imageNamed:@"favor"] forState:UIControlStateNormal];
+                [_favorBtn setImage:[UIImage imageNamed:@"shoucang"] forState:UIControlStateNormal];
                 [_navigationView setNeedsLayout];
                 _target[@"is_favor"]=@"1";
             }
@@ -92,7 +92,7 @@
         NSString *url = [NSString stringWithFormat:@"favor/del?userid=%d&id=%@",[AppSettings sharedSettings].userid,_target[@"favor_id"]];
         [[AppSettings sharedSettings].http get:url block:^(id json) {
             if ([[AppSettings sharedSettings] isSuccess:json]){
-                [_favorBtn setImage:[UIImage imageNamed:@"favorno"] forState:UIControlStateNormal];
+                [_favorBtn setImage:[UIImage imageNamed:@"quxiaosc"] forState:UIControlStateNormal];
                 [_navigationView setNeedsLayout];
                 _target[@"is_favor"]=@"0";
                 
