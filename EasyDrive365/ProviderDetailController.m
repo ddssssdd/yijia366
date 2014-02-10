@@ -109,7 +109,7 @@
         _favorBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         _favorBtn.frame = CGRectMake(30, 2, 30, 30);
         [_favorBtn addTarget:self action:@selector(addFavor) forControlEvents:UIControlEventTouchUpInside];
-        [_favorBtn setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
+        //[_favorBtn setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
         [_navigationView addSubview:_favorBtn];
         
         
@@ -122,11 +122,12 @@
         
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:_navigationView];
     }
+    [_favorBtn setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
     
 }
 -(void)addFavor{
     if ([_target[@"is_favor"] intValue]==0){
-        NSString *url = [NSString stringWithFormat:@"favor/add?userid=%d&id=%@&type=SPV",[AppSettings sharedSettings].userid,_target[@"id"]];
+        NSString *url = [NSString stringWithFormat:@"favor/add?userid=%d&id=%@&type=SPV",[AppSettings sharedSettings].userid,_target[@"code"]];
         [[AppSettings sharedSettings].http get:url block:^(id json) {
             if ([[AppSettings sharedSettings] isSuccess:json]){
                 [_favorBtn setImage:[UIImage imageNamed:@"shoucang"] forState:UIControlStateNormal];
@@ -136,7 +137,7 @@
             }
         }];
     }else{
-        NSString *url = [NSString stringWithFormat:@"favor/del?userid=%d&id=%@",[AppSettings sharedSettings].userid,_target[@"favor_id"]];
+        NSString *url = [NSString stringWithFormat:@"favor/remove?userid=%d&id=%@&type=SPV",[AppSettings sharedSettings].userid,_target[@"code"]];
         [[AppSettings sharedSettings].http get:url block:^(id json) {
             if ([[AppSettings sharedSettings] isSuccess:json]){
                 [_favorBtn setImage:[UIImage imageNamed:@"quxiaosc"] forState:UIControlStateNormal];

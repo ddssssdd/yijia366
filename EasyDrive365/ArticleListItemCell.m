@@ -54,7 +54,7 @@
             }
         }];
     }else{
-        NSString *url = [NSString stringWithFormat:@"favor/del?userid=%d&id=%@",[AppSettings sharedSettings].userid,self.share_data[@"favor_id"]];
+        NSString *url = [NSString stringWithFormat:@"favor/remove?userid=%d&id=%@&type=ATL",[AppSettings sharedSettings].userid,self.share_data[@"id"]];
         [[AppSettings sharedSettings].http get:url block:^(id json) {
             if ([[AppSettings sharedSettings] isSuccess:json]){
                 [self.favorbtn setImage:[UIImage imageNamed:@"favorno"] forState:UIControlStateNormal];
