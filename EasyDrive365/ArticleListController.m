@@ -139,6 +139,7 @@
         }else{
             [itemCell.favorbtn setImage:[UIImage imageNamed:@"favorno"] forState:UIControlStateNormal];
         }
+        itemCell.parent = self.navigationController;
         /*
         if (cell==nil){
             cell= [[[NSBundle mainBundle] loadNibNamed:@"ArticleListItem2Cell" owner:nil options:nil] objectAtIndex:0];

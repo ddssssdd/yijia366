@@ -21,6 +21,8 @@
 
 @property (nonatomic, assign) NSInteger rating;
 
+@property (nonatomic) BOOL handleTouch;
+
 
 /**************************************************************************************************/
 #pragma mark - Birth & Death

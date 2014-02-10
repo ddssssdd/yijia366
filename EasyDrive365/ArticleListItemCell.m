@@ -9,7 +9,7 @@
 #import "ArticleListItemCell.h"
 #import "AMRatingControl.h"
 #import "AppSettings.h"
-
+#import "ItemCommentsController.h"
 @interface ArticleListItemCell(){
     AMRatingControl *_ratingControl;
 }
@@ -39,8 +39,20 @@
         _ratingControl =[[AMRatingControl alloc] initWithLocation:CGPointMake(185, 88) andMaxRating:5];
         [_ratingControl setRating:rating];
         [self addSubview:_ratingControl];
-        [_ratingControl setEnabled:NO];
+        //[_ratingControl setEnabled:YES];
+        _ratingControl.handleTouch = NO;
+        //[_ratingControl addTarget:self action:@selector(clickRate) forControlEvents:UIControlEventTouchUpInside];
+        //[_ratingControl setUserInteractionEnabled:YES];
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickRate)];
+        tap.cancelsTouchesInView = NO;
+        [_ratingControl addGestureRecognizer:tap];
     }
+}
+-(void)clickRate{
+    ItemCommentsController *vc =[[ItemCommentsController alloc] initWithStyle:UITableViewStylePlain];
+    vc.itemId = self.share_data[@"id"];
+    vc.itemType =@"article";
+    [self.parent pushViewController:vc animated:YES];
 }
 - (IBAction)favorBtnPressed:(id)sender {
     NSLog(@"favor");
@@ -69,5 +81,8 @@
 }
 - (IBAction)shareBtnPressed:(id)sender {
     [[AppSettings sharedSettings] popupShareMenu:self.share_data[@"share_title"] introduce:self.share_data[@"share_intro"] url:self.share_data[@"share_url"]];
+}
+- (IBAction)emptyButtonPressed:(id)sender {
+    //[self clickRate];
 }
 @end

@@ -196,6 +196,7 @@ static const NSString *kDefaultSolidChar = @"★";
         _emptyColor = emptyColor;
         _solidColor = solidColor;
         _maxRating = maxRating;
+        _handleTouch = YES;
 	}
 	
 	return self;
@@ -203,6 +204,8 @@ static const NSString *kDefaultSolidChar = @"★";
 
 - (void)handleTouch:(UITouch *)touch
 {
+    if (!_handleTouch)
+        return;
     CGFloat width = self.frame.size.width;
 	CGRect section = CGRectMake(0, 0, (width / _maxRating), self.frame.size.height);
 	

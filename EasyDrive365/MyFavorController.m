@@ -13,9 +13,11 @@
 #import "Browser2Controller.h"
 #import "GoodsDetailController.h"
 #import "ProviderDetailController.h"
+#import "RefreshHelper.h"
 
-@interface MyFavorController (){
+@interface MyFavorController ()<RefreshHelperDelegate,UIScrollViewDelegate>{
     id _list;
+    RefreshHelper *_helper;
 }
 
 @end
@@ -34,25 +36,40 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+#if __IPHONE_OS_VERSION_MAX_ALLOWED > __IPHONE_6_1
+    if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+#endif
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     self.title = @"我的收藏";
+    _helper = [[RefreshHelper alloc] init];
+    [_helper setupTableView:self.tableView parentView:self.view];
+    _helper.delegate = self;
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     //self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"全部删除" style:UIBarButtonItemStyleBordered target:self action:@selector(deleteAll)];
-    [self load_data];
+    [self loadData:0];
+
 }
+
 -(void)deleteAll{
     //nothing;
 }
--(void)load_data{
+-(void)loadData:(int)reload{
     NSString *url = [NSString stringWithFormat:@"favor/find?userid=%d&type=",[AppSettings sharedSettings].userid];
     [[AppSettings sharedSettings].http get:url block:^(id json) {
         if([[AppSettings sharedSettings] isSuccess:json]){
             _list = json[@"result"];
             [self.tableView reloadData];
+            [_helper endRefresh:self.tableView];
         }
     }];
+}
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    [_helper.refreshHeaderView egoRefreshScrollViewDidScroll:scrollView];
+}
+-(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+    [_helper.refreshHeaderView egoRefreshScrollViewDidEndDragging:scrollView];
 }
 
 - (void)didReceiveMemoryWarning

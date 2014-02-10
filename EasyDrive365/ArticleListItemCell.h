@@ -19,4 +19,5 @@
 
 @property (nonatomic) id share_data;
 @property (nonatomic) int rating;
+@property (nonatomic,weak) UINavigationController *parent;
 @end
