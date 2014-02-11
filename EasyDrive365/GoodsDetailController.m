@@ -172,11 +172,11 @@
         aCell.lblStand_price.text = _target[@"stand_price"];
         aCell.lblStand_price.strikeThroughEnabled = YES;
         aCell.lblPrice.text = _target[@"price"];
-    }else if (indexPath.section==2){
+    }else if (indexPath.section==3){
         cell = [[[NSBundle mainBundle] loadNibNamed:@"DetailDescriptionCell" owner:nil options:nil] objectAtIndex:0];
         DetailDescriptionCell *aCell = (DetailDescriptionCell *)cell;
         aCell.txtDescription.text = _target[@"description"];
-    }else if (indexPath.section==3){
+    }else if (indexPath.section==2){
         cell = [[[NSBundle mainBundle] loadNibNamed:@"DetailRateCell" owner:nil options:nil] objectAtIndex:0];
         DetailRateCell *aCell = (DetailRateCell *)cell;
         aCell.lblStar.text =[NSString stringWithFormat:@"%@",  _target[@"star"]];
@@ -186,7 +186,7 @@
     return cell;
 }
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
-    if (section==3){
+    if (section==2){
         if (!_buttonView){
             _buttonView = [[[NSBundle mainBundle] loadNibNamed:@"BuyButtonView" owner:nil options:nil] objectAtIndex:0];
             _buttonView.delegate = self;
@@ -202,7 +202,7 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-    if (section==3)
+    if (section==2)
         return 60;
     return 0;
 }
@@ -214,11 +214,10 @@
         case 1:
             return 44;
         case 2:
-            return 60;
+            return 44;
         case 3:
-            return 44;
-        case 4:
-            return 44;
+            return 100;
+      
             
         default:
             break;
@@ -226,7 +225,7 @@
     return 44.0f;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.section==3){
+    if (indexPath.section==2){
         ItemCommentsController *vc =[[ItemCommentsController alloc] initWithStyle:UITableViewStylePlain];
         vc.itemId = [NSString stringWithFormat:@"%d",self.target_id];
         vc.itemType =@"goods";
