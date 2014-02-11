@@ -191,7 +191,7 @@
     NSLog(@"%@",[url scheme]);
     if (url != nil && [[url scheme] compare:WEIXIN_APPKEY] == 0) {
         return [WXApi handleOpenURL:url delegate:self];
-    }else if (url != nil && [[url scheme] compare:SINAWEIBO_APPKEY] == 0){
+    }else if (url != nil && [[url scheme] compare:[NSString stringWithFormat:@"wb%@",SINAWEIBO_APPKEY]] == 0){
        return [WeiboSDK handleOpenURL:url delegate:self];
     }
     
@@ -266,10 +266,10 @@
 }
 
 -(void)onReq:(BaseReq *)req{
-    
+    NSLog(@"%@",req);
 }
 -(void)onResp:(BaseResp *)resp{
-    
+    NSLog(@"%@",resp);
 }
 
 -(void)didReceiveWeiboRequest:(WBBaseRequest *)request{
