@@ -145,6 +145,7 @@
         _target = json[@"result"];
         _index=0;
         _hasAgreement = ![_target[@"clause_url"] isEqualToString:@""];
+        [self.tableView reloadData];
         NSLog(@"%@",_target);
         [self addRightButtons];
     }
