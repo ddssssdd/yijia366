@@ -17,6 +17,7 @@
 #import "ItemCommentsController.h"
 #import "BuyButtonView.h"
 #import "NewOrderController.h"
+#import "Browser2Controller.h"
 
 @interface GoodsDetailController ()<BuyButtonViewDelegate>{
     id _target;
@@ -26,6 +27,7 @@
     BuyButtonView *_buttonView;
     UIView *_navigationView;
     UIButton *_favorBtn;
+    BOOL _hasAgreement;
 }
 
 @end
@@ -45,7 +47,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    
+    //self.title = @"商品明细";
     UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(goLeft)];
     swipeLeft.direction = UISwipeGestureRecognizerDirectionLeft;
     [self.tableView addGestureRecognizer:swipeLeft];
@@ -142,13 +144,14 @@
     if ([[AppSettings sharedSettings] isSuccess:json]){
         _target = json[@"result"];
         _index=0;
+        _hasAgreement = ![_target[@"clause_url"] isEqualToString:@""];
         NSLog(@"%@",_target);
         [self addRightButtons];
     }
     
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 4;
+    return _hasAgreement?5:4;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return 1;
@@ -182,6 +185,11 @@
         aCell.lblStar.text =[NSString stringWithFormat:@"%@",  _target[@"star"]];
         aCell.lblStar_voternum.text = [NSString stringWithFormat:@"%@", _target[@"star_voternum"]];
         aCell.rating = 4.5;
+    }else if (indexPath.section==4){
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"whatEver"];
+        cell.textLabel.text = @"";
+        cell.detailTextLabel.text = @"请在购买之前阅读服务说明";
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     return cell;
 }
@@ -229,6 +237,12 @@
         ItemCommentsController *vc =[[ItemCommentsController alloc] initWithStyle:UITableViewStylePlain];
         vc.itemId = [NSString stringWithFormat:@"%d",self.target_id];
         vc.itemType =@"goods";
+        [self.navigationController pushViewController:vc animated:YES];
+    }else if (indexPath.section==4){
+        Browser2Controller *vc = [[Browser2Controller alloc] initWithNibName:@"Browser2Controller" bundle:nil];
+        vc.url = _target[@"clause_url"];
+        vc.title = @"服务说明";
+        
         [self.navigationController pushViewController:vc animated:YES];
     }
 }
