@@ -193,6 +193,8 @@
         return [WXApi handleOpenURL:url delegate:self];
     }else if (url != nil && [[url scheme] compare:[NSString stringWithFormat:@"wb%@",SINAWEIBO_APPKEY]] == 0){
        return [WeiboSDK handleOpenURL:url delegate:self];
+    }else{
+        [self parse:url application:application];
     }
     
     return YES;
