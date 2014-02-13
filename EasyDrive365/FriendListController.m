@@ -121,8 +121,10 @@
         _header.lblContent.text= _content;
         _header.lblInvite_code.text =@"";// _invite_code;
         [_header.txtInviteCode setEnabled:_is_can_invite];
-        if (!_is_can_invite)
-            [_header.btnSave removeFromSuperview];
+        [_header.btnSave setEnabled:_is_can_invite];
+        if (!_is_can_invite){
+             _header.lblInvite_code.text =_invite_code;
+        }
         return _header;
     }
     return nil;
@@ -140,7 +142,7 @@
                 [self.tableView reloadData];
                 _header.txtInviteCode.text = _input_code;
                 [_header.txtInviteCode setEnabled:_is_can_invite];
-                [_header.btnSave removeFromSuperview];
+                [_header.btnSave setEnabled:_is_can_invite];
                 [self load_data];
             }
         }];

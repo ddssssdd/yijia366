@@ -142,6 +142,7 @@
 						<object class="IBUITextInputTraits" key="IBUITextInputTraits">
 							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						</object>
+						<int key="IBUIClearButtonMode">3</int>
 						<reference key="IBUIFontDescription" ref="103279197"/>
 						<reference key="IBUIFont" ref="88763261"/>
 					</object>
@@ -151,7 +152,6 @@
 						<string key="NSFrame">{{236, 77}, {70, 34}}</string>
 						<reference key="NSSuperview" ref="502684688"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
