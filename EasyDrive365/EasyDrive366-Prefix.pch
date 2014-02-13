@@ -44,6 +44,7 @@
 #define UPDATE_USER_PROFILE @"Update_user_profile"
 #define ALIPAY_SUCCESS @"Alipay_success"
 #define OPEN_GOODS @"Open_goods"
+#define LOGIN_SUCCESS @"Login_success"
 
 
 //合作身份者id，以2088开头的16位纯数字

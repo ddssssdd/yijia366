@@ -433,7 +433,8 @@
                 
                 [self login:username userid:[userid intValue]];
                 [self add_login:username password:password rememberPassword:remember];
-                //[self.navigationController popToRootViewControllerAnimated:YES];
+
+                [[NSNotificationCenter defaultCenter] postNotificationName:LOGIN_SUCCESS object:nil];
                 if (callback){
                     callback(YES);
                 }

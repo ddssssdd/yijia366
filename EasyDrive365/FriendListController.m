@@ -20,6 +20,7 @@
     NSString *_share_inctroduce;
     NSString *_share_url;
     BOOL _is_can_invite;
+    NSString *_input_code;
 }
 
 @end
@@ -105,7 +106,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     if (section==0){
-        return 100.0f;
+        return 120.0f;
     }
     return  0;
 }
@@ -120,7 +121,8 @@
         _header.lblContent.text= _content;
         _header.lblInvite_code.text =@"";// _invite_code;
         [_header.txtInviteCode setEnabled:_is_can_invite];
-        [_header.btnSave setEnabled:_is_can_invite];
+        if (!_is_can_invite)
+            [_header.btnSave removeFromSuperview];
         return _header;
     }
     return nil;
@@ -128,13 +130,17 @@
 
 -(void)saveInviteCode{
     NSLog(@"%@",_header.txtInviteCode.text);
+    _input_code = _header.txtInviteCode.text;
     if (![_header.txtInviteCode.text isEqualToString:@""]){
         NSString *url = [NSString stringWithFormat:@"bound/update_invite?userid=%d&code=%@",[AppSettings sharedSettings].userid,_header.txtInviteCode.text];
         [[AppSettings sharedSettings].http get:url block:^(id json) {
             if ([[AppSettings sharedSettings] isSuccess:json]){
                 _is_can_invite =NO;
+                _list =json[@"result"][@"friends"];
+                [self.tableView reloadData];
+                _header.txtInviteCode.text = _input_code;
                 [_header.txtInviteCode setEnabled:_is_can_invite];
-                [_header.btnSave setEnabled:_is_can_invite];
+                [_header.btnSave removeFromSuperview];
                 [self load_data];
             }
         }];

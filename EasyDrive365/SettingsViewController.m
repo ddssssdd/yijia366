@@ -80,6 +80,7 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(initData) name:@"Update_settings" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(update_user_profile) name:UPDATE_USER_PROFILE object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(initData) name:LOGIN_SUCCESS object:nil];
     //[self.tableView setBackgroundColor:[UIColor clearColor]];
 }
 -(void)viewDidUnload{
@@ -119,7 +120,9 @@
         
             }            
         }
+        [_headerView load_data];
         [self init_dataSource];
+        
     }];
     
     
@@ -448,12 +451,14 @@
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
     if (section==SECTION_LAST){
         if (!logoutView){
-            logoutView = [[ButtonViewController alloc] initWithNibName:@"ButtonViewController" bundle:nil];
-            NSLog(@"%@",logoutView.button);
-            logoutView.buttonText=[NSString stringWithFormat:@"注销--%@",[AppSettings sharedSettings].firstName];
-            logoutView.delegate = self;
-            logoutView.buttonType =1;
+            [logoutView removeFromParentViewController];
         }
+        logoutView = [[ButtonViewController alloc] initWithNibName:@"ButtonViewController" bundle:nil];
+        logoutView.buttonText=[NSString stringWithFormat:@"注销--%@",[AppSettings sharedSettings].firstName];
+        
+        logoutView.delegate = self;
+        logoutView.buttonType =1;
+        
         return logoutView.view;
     }else{
         return nil;

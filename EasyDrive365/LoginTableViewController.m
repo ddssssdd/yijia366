@@ -129,6 +129,7 @@
                 [[AppSettings sharedSettings] add_login:username password:password rememberPassword:remember];
                 [self.navigationController popToRootViewControllerAnimated:YES];
                 
+                
             }else{
                 //self.txtUsername.text = [json objectForKey:@"message"];
                 //[[[UIAlertView alloc] initWithTitle:@"提示" message:[json objectForKey:@"message"] delegate:self cancelButtonTitle:nil otherButtonTitles:@"继续", nil] show];
