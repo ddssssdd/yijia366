@@ -19,6 +19,7 @@
     NSString *_share_title;
     NSString *_share_inctroduce;
     NSString *_share_url;
+    BOOL _is_can_invite;
 }
 
 @end
@@ -37,6 +38,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.title = @"邀请朋友";
     [self load_data];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"分享" style:UIBarButtonItemStyleBordered target:self action:@selector(share)];
     
@@ -55,6 +57,7 @@
             _share_url = json[@"result"][@"share_url"];
             _share_title = json[@"result"][@"share_title"];
             _share_inctroduce = json[@"result"][@"share_intro"];
+            _is_can_invite = [json[@"result"][@"is_can_invite"] intValue] ==1;
             [self.tableView reloadData];
             
             
@@ -110,18 +113,32 @@
     if (section==0){
         if (!_header){
             _header =[[[NSBundle mainBundle] loadNibNamed:@"FriendHeader" owner:nil options:nil] objectAtIndex:0];
-            _header.btnButton1.text=@"invite way 1";
-            _header.btnButton2.text=@"invite way 2";
-            _header.btnButton3.text=@"invite way 3";
+          
             _header.parent = self.navigationController;
+            [_header.btnSave addTarget:self action:@selector(saveInviteCode) forControlEvents:UIControlEventTouchUpInside];
         }
         _header.lblContent.text= _content;
-        _header.lblInvite_code.text = _invite_code;
+        _header.lblInvite_code.text =@"";// _invite_code;
+        [_header.txtInviteCode setEnabled:_is_can_invite];
+        [_header.btnSave setEnabled:_is_can_invite];
         return _header;
     }
     return nil;
 }
 
-
+-(void)saveInviteCode{
+    NSLog(@"%@",_header.txtInviteCode.text);
+    if (![_header.txtInviteCode.text isEqualToString:@""]){
+        NSString *url = [NSString stringWithFormat:@"bound/update_invite?userid=%d&code=%@",[AppSettings sharedSettings].userid,_header.txtInviteCode.text];
+        [[AppSettings sharedSettings].http get:url block:^(id json) {
+            if ([[AppSettings sharedSettings] isSuccess:json]){
+                _is_can_invite =NO;
+                [_header.txtInviteCode setEnabled:_is_can_invite];
+                [_header.btnSave setEnabled:_is_can_invite];
+                [self load_data];
+            }
+        }];
+    }
+}
 
 @end

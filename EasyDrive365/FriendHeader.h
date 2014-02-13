@@ -19,4 +19,6 @@
 @property (weak, nonatomic) IBOutlet NVUIGradientButton *btnButton3;
 
 @property (nonatomic,weak) UINavigationController *parent;
+@property (weak, nonatomic) IBOutlet UITextField *txtInviteCode;
+@property (weak, nonatomic) IBOutlet UIButton *btnSave;
 @end
