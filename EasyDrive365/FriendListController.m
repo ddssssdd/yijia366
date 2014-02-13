@@ -54,7 +54,7 @@
             _list =json[@"result"][@"friends"];
             NSLog(@"%@",_list);
             _content = json[@"result"][@"content"];
-            _invite_code = json[@"result"][@"my_invite"];
+            _invite_code = json[@"result"][@"invite_code"];
             _share_url = json[@"result"][@"share_url"];
             _share_title = json[@"result"][@"share_title"];
             _share_inctroduce = json[@"result"][@"share_intro"];
@@ -122,8 +122,8 @@
         _header.lblInvite_code.text =@"";// _invite_code;
         [_header.txtInviteCode setEnabled:_is_can_invite];
         [_header.btnSave setEnabled:_is_can_invite];
-        if (!_is_can_invite){
-             _header.lblInvite_code.text =_invite_code;
+        if (![_invite_code isEqualToString:@""]){
+             _header.txtInviteCode.text =_invite_code;
         }
         return _header;
     }
