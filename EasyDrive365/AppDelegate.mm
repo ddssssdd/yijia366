@@ -24,6 +24,9 @@
 #import "WeiboSDK.h"
 
 
+#import "ProviderDetailController.h"
+#import "GoodsDetailController.h"
+
 #define TAG_HOMEPAGE 0
 #define TAG_INSURANCE 1
 #define TAG_PROVIDER 2
@@ -32,6 +35,9 @@
 
 @interface AppDelegate()<WXApiDelegate,WeiboSDKDelegate>{
     BMKMapManager *_mapManager;
+    UINavigationController *menu1;
+    UINavigationController *menu2;
+    UINavigationController *menu3;
 
     
 }
@@ -102,13 +108,13 @@
     menu0.tabBarItem  = item0;
 
     //UINavigationController *menu1 = [[UINavigationController alloc] initWithRootViewController:vcMap];
-    UINavigationController *menu1 = [[UINavigationController alloc] initWithRootViewController:vcGoods];
+    menu1 = [[UINavigationController alloc] initWithRootViewController:vcGoods];
     menu1.tabBarItem  = item1;
     
-    UINavigationController *menu2 = [[UINavigationController alloc] initWithRootViewController:vcProvider];
+    menu2 = [[UINavigationController alloc] initWithRootViewController:vcProvider];
     menu2.tabBarItem  = item2;
     
-    UINavigationController *menu3 = [[UINavigationController alloc] initWithRootViewController:vcArticle];
+    menu3 = [[UINavigationController alloc] initWithRootViewController:vcArticle];
     menu3.tabBarItem  = item3;
 
     UINavigationController *menu4 = [[UINavigationController alloc] initWithRootViewController:vcUser];
@@ -193,6 +199,10 @@
         return [WXApi handleOpenURL:url delegate:self];
     }else if (url != nil && [[url scheme] compare:[NSString stringWithFormat:@"wb%@",SINAWEIBO_APPKEY]] == 0){
        return [WeiboSDK handleOpenURL:url delegate:self];
+    }else if (url != nil && [[url scheme] compare:@"EasyDrive366"] == 0) {
+        NSString * query = [[url query] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        NSLog(@"%@",query);
+        [self handleOpenCallback:query];
     }else{
         [self parse:url application:application];
     }
@@ -281,4 +291,47 @@
     NSLog(@"%@",response);
 }
 
+
+-(void)handleOpenCallback:(NSString *)query{
+    NSArray *items = [query componentsSeparatedByString:@"&"];
+    NSString *type;
+    NSString *production_id;
+    NSString *name;
+    for (NSString *item in items) {
+        NSArray *temps = [item componentsSeparatedByString:@"="];
+        if ([temps count]==2){
+            if ([[temps objectAtIndex:0] isEqualToString:@"type"]){
+                type=[temps objectAtIndex:1];
+                
+                
+            }else if ([[temps objectAtIndex:0] isEqualToString:@"id"]){
+                production_id = [temps objectAtIndex:1];
+            }else if ([[temps objectAtIndex:0] isEqualToString:@"name"]){
+                name = [temps objectAtIndex:1];
+            }
+        }
+    }
+    if (type && production_id){
+        if ([type isEqualToString:@"GDS"]){
+            GoodsDetailController *vc =[[GoodsDetailController alloc] initWithStyle:UITableViewStylePlain];
+            vc.target_id =[production_id intValue];
+            vc.title = name;
+            [menu1 pushViewController:vc animated:YES];
+            _tabbarController.selectedIndex = 1;
+
+        }else if ([type isEqualToString:@"SPV"]){
+            ProviderDetailController *vc = [[ProviderDetailController alloc] initWithStyle:UITableViewStylePlain];
+            vc.code= production_id;
+            
+            vc.name = name;
+            [self.navigationController pushViewController:vc animated:YES];
+        
+            [menu2 pushViewController:vc animated:YES];
+            _tabbarController.selectedIndex = 2;
+            
+        }else if ([type isEqualToString:@"ATL"]){
+            
+        }
+    }
+}
 @end

@@ -127,7 +127,7 @@
         }
         
 
-        NSString *message = [NSString stringWithFormat:@"[%@]%@(%@)", _share_title,_share_inctroduce,_share_url];
+        NSString *message = [NSString stringWithFormat:@"[%@]%@(EasyDrive366://open?type=GDS&id=10&name=test%@)", _share_title,_share_inctroduce,_share_url];
         
         MFMessageComposeViewController *messageController = [[MFMessageComposeViewController alloc] init];
         messageController.messageComposeDelegate=self;
