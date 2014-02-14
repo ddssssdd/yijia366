@@ -205,7 +205,7 @@
         NSString * query = [[url query] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         NSLog(@"%@",query);
         [self handleOpenCallback:query];
-    }else{
+    }else if (url != nil && [scheme compare:@"easydrive366"] == 0 && [host compare:@"safepay"]==0){
         [self parse:url application:application];
     }
     
@@ -257,7 +257,7 @@
     else
     {
         //失败
-        [[[UIAlertView alloc] initWithTitle:AppTitle message:@"支付没有成功，请联系客服" delegate:Nil cancelButtonTitle:@"关闭" otherButtonTitles: nil] show];
+        //[[[UIAlertView alloc] initWithTitle:AppTitle message:@"支付没有成功，请联系客服" delegate:Nil cancelButtonTitle:@"关闭" otherButtonTitles: nil] show];
     }
     
 }
