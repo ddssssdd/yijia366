@@ -44,6 +44,7 @@
 						<object class="NSPSMatrix" key="NSFrameMatrix"/>
 						<string key="NSFrame">{{117, 14}, {84, 21}}</string>
 						<reference key="NSSuperview" ref="988123960"/>
+						<reference key="NSNextKeyView" ref="594184772"/>
 						<string key="NSHuggingPriority">{251, 251}</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -73,8 +74,9 @@
 						<reference key="NSNextResponder" ref="988123960"/>
 						<int key="NSvFlags">1316</int>
 						<object class="NSPSMatrix" key="NSFrameMatrix"/>
-						<string key="NSFrame">{{20, 109}, {62, 57}}</string>
+						<string key="NSFrame">{{20, 108}, {60, 60}}</string>
 						<reference key="NSSuperview" ref="988123960"/>
+						<reference key="NSNextKeyView" ref="248321950"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
@@ -104,6 +106,7 @@
 						<object class="NSPSMatrix" key="NSFrameMatrix"/>
 						<string key="NSFrame">{{94, 108}, {60, 60}}</string>
 						<reference key="NSSuperview" ref="988123960"/>
+						<reference key="NSNextKeyView" ref="679111240"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
@@ -131,6 +134,7 @@
 						<object class="NSPSMatrix" key="NSFrameMatrix"/>
 						<string key="NSFrame">{{167, 108}, {60, 60}}</string>
 						<reference key="NSSuperview" ref="988123960"/>
+						<reference key="NSNextKeyView" ref="242239350"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
@@ -173,6 +177,7 @@
 						<object class="NSPSMatrix" key="NSFrameMatrix"/>
 						<string key="NSFrame">{{20, 14}, {80, 80}}</string>
 						<reference key="NSSuperview" ref="988123960"/>
+						<reference key="NSNextKeyView" ref="1025070903"/>
 						<string key="NSHuggingPriority">{251, 251}</string>
 						<int key="IBUIContentMode">1</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
@@ -188,6 +193,7 @@
 						<object class="NSPSMatrix" key="NSFrameMatrix"/>
 						<string key="NSFrame">{{117, 43}, {183, 21}}</string>
 						<reference key="NSSuperview" ref="988123960"/>
+						<reference key="NSNextKeyView" ref="243921115"/>
 						<string key="NSHuggingPriority">{251, 251}</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -215,6 +221,7 @@
 						<object class="NSPSMatrix" key="NSFrameMatrix"/>
 						<string key="NSFrame">{{216, 14}, {84, 21}}</string>
 						<reference key="NSSuperview" ref="988123960"/>
+						<reference key="NSNextKeyView" ref="761586554"/>
 						<string key="NSHuggingPriority">{251, 251}</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -245,6 +252,7 @@
 						<object class="NSPSMatrix" key="NSFrameMatrix"/>
 						<string key="NSFrame">{{117, 72}, {180, 9}}</string>
 						<reference key="NSSuperview" ref="988123960"/>
+						<reference key="NSNextKeyView" ref="892704336"/>
 						<string key="NSHuggingPriority">{250, 750}</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -256,6 +264,7 @@
 						<object class="NSPSMatrix" key="NSFrameMatrix"/>
 						<string key="NSFrame">{{117, 84}, {180, 16}}</string>
 						<reference key="NSSuperview" ref="988123960"/>
+						<reference key="NSNextKeyView" ref="547529460"/>
 						<string key="NSHuggingPriority">{251, 251}</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -279,6 +288,7 @@
 				</array>
 				<object class="NSPSMatrix" key="NSFrameMatrix"/>
 				<string key="NSFrameSize">{320, 180}</string>
+				<reference key="NSNextKeyView" ref="500541548"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">3</int>
 					<bytes key="NSWhite">MQA</bytes>

@@ -28,6 +28,7 @@
     
 }
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+    //_share_url =@"EasyDrive366://open?type=GDS&id=10&name=test";
     if (buttonIndex ==0){
         //sina weibo
         
@@ -70,7 +71,7 @@
         [message setThumbImage:[UIImage imageNamed:@"p.png"]];
         
         WXWebpageObject *ext = [WXWebpageObject object];
-        ext.webpageUrl = _share_url;
+        ext.webpageUrl =_share_url;
         
         message.mediaObject = ext;
         

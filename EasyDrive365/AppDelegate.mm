@@ -195,11 +195,13 @@
 }
 -(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation{
     NSLog(@"%@",[url scheme]);
+    NSString *scheme = [[url scheme] lowercaseString];
+    NSString *host =[[url host] lowercaseString];
     if (url != nil && [[url scheme] compare:WEIXIN_APPKEY] == 0) {
         return [WXApi handleOpenURL:url delegate:self];
     }else if (url != nil && [[url scheme] compare:[NSString stringWithFormat:@"wb%@",SINAWEIBO_APPKEY]] == 0){
        return [WeiboSDK handleOpenURL:url delegate:self];
-    }else if (url != nil && [[url scheme] compare:@"EasyDrive366"] == 0) {
+    }else if (url != nil && [scheme compare:@"easydrive366"] == 0 && [host compare:@"open"]==0) {
         NSString * query = [[url query] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         NSLog(@"%@",query);
         [self handleOpenCallback:query];
