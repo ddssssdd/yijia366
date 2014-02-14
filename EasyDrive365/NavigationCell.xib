@@ -44,7 +44,7 @@
 								<reference key="NSNextResponder" ref="865145209"/>
 								<int key="NSvFlags">1316</int>
 								<object class="NSPSMatrix" key="NSFrameMatrix"/>
-								<string key="NSFrame">{{56, 12}, {80, 30}}</string>
+								<string key="NSFrame">{{52, 12}, {85, 30}}</string>
 								<reference key="NSSuperview" ref="865145209"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="924985699"/>
@@ -64,6 +64,7 @@
 									<bytes key="NSWhite">MQA</bytes>
 								</object>
 								<int key="IBUIBaselineAdjustment">1</int>
+								<float key="IBUIMinimumScaleFactor">0.80000001192092896</float>
 								<int key="IBUINumberOfLines">2</int>
 								<object class="IBUIFontDescription" key="IBUIFontDescription">
 									<int key="type">1</int>
@@ -74,8 +75,7 @@
 									<double key="NSSize">18</double>
 									<int key="NSfFlags">16</int>
 								</object>
-								<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
-								<double key="preferredMaxLayoutWidth">80</double>
+								<double key="preferredMaxLayoutWidth">85</double>
 							</object>
 							<object class="IBUILabel" id="924985699">
 								<reference key="NSNextResponder" ref="865145209"/>
@@ -84,7 +84,6 @@
 								<string key="NSFrame">{{143, 9}, {164, 35}}</string>
 								<reference key="NSSuperview" ref="865145209"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<int key="IBUIContentMode">7</int>

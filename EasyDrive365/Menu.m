@@ -29,6 +29,8 @@
 #import "InsuranceMainController.h"
 #import "InsuranceStep1Controller.h"
 
+#import "AddCardStep1ControllerViewController.h"
+
 @implementation Menu
 @synthesize list = _list;
 @synthesize insurance_list = _insurance_list;
@@ -65,8 +67,9 @@
         _insurance_list=@[[[MenuItem alloc] initWithName:@"07" title:@"车船税" description:defaultInfo imagePath:@"main_menu/q.png" phone:defaultPhone],
                           [[MenuItem alloc] initWithName:@"08" title:@"交强险" description:defaultInfo imagePath:@"main_menu/s.png" phone:defaultPhone],
                           [[MenuItem alloc] initWithName:@"09" title:@"商业险" description:defaultInfo imagePath:@"main_menu/t.png" phone:defaultPhone],
-                          //[[MenuItem alloc] initWithName:@"10" title:@"理赔记录" description:defaultInfo imagePath:@"main_menu/f.png" phone:defaultPhone],
-                          [[MenuItem alloc] initWithName:@"11" title:@"购买车险" description:defaultInfo imagePath:@"main_menu/r.png" phone:defaultPhone]];
+                         
+                          [[MenuItem alloc] initWithName:@"11" title:@"购买车险" description:defaultInfo imagePath:@"main_menu/r.png" phone:defaultPhone],
+                          [[MenuItem alloc] initWithName:@"10" title:@"购买意外险" description:defaultInfo imagePath:@"main_menu/n.png" phone:defaultPhone]];
     }
     return self;
 }
@@ -138,7 +141,12 @@
         
     }
     if ([key isEqualToString:@"10"]){
+        /*
         InsuranceRecordsViewController *vc = [[InsuranceRecordsViewController alloc] initWithNibName:@"InsuranceRecordsViewController" bundle:nil];
+        vc.title = title;
+        [controller pushViewController:vc animated:YES];
+         */
+        AddCardStep1ControllerViewController *vc = [[AddCardStep1ControllerViewController alloc] initWithStyle:UITableViewStyleGrouped];
         vc.title = title;
         [controller pushViewController:vc animated:YES];
         

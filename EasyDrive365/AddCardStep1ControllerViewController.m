@@ -44,7 +44,7 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 -(void)initData{
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"设置" style:UIBarButtonSystemItemAction target:self action:@selector(backTo)];
+    //self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"设置" style:UIBarButtonSystemItemAction target:self action:@selector(backTo)];
     
     NSString *url = [NSString stringWithFormat:@"api/add_inscard_step0?userid=%d",[AppSettings sharedSettings].userid];
     [[AppSettings sharedSettings].http get:url block:^(id json) {

@@ -68,7 +68,7 @@
         WXMediaMessage *message = [WXMediaMessage message];
         message.title = _share_title;
         message.description = _share_inctroduce;
-        [message setThumbImage:[UIImage imageNamed:@"p.png"]];
+        [message setThumbImage:[UIImage imageNamed:@"Icon.png"]];
         
         WXWebpageObject *ext = [WXWebpageObject object];
         ext.webpageUrl =_share_url;
