@@ -96,7 +96,7 @@
         _index=0;
         NSLog(@"%@",_target);
         [self.tableView reloadData];
-        [self.refreshControl endRefreshing];
+        [_refreshHelper endRefresh:self.tableView];
         [self addRightButtons];
     }
     
@@ -179,7 +179,7 @@
         DetailRateCell *aCell = (DetailRateCell *)cell;
         aCell.lblStar.text =[NSString stringWithFormat:@"%@",  _target[@"star"]];
         aCell.lblStar_voternum.text = [NSString stringWithFormat:@"%@", _target[@"star_voternum"]];
-        aCell.rating = 4.5;
+        aCell.rating =  [_target[@"star_num"] intValue];
         
     }else if (indexPath.section==3){
         cell = [[[NSBundle mainBundle] loadNibNamed:@"ImageInfoCell" owner:nil options:nil] objectAtIndex:0];

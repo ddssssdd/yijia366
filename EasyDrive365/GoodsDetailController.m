@@ -148,6 +148,7 @@
         [self.tableView reloadData];
         NSLog(@"%@",_target);
         [self addRightButtons];
+        [_refreshHelper endRefresh:self.tableView];
     }
     
 }
@@ -185,7 +186,7 @@
         DetailRateCell *aCell = (DetailRateCell *)cell;
         aCell.lblStar.text =[NSString stringWithFormat:@"%@",  _target[@"star"]];
         aCell.lblStar_voternum.text = [NSString stringWithFormat:@"%@", _target[@"star_voternum"]];
-        aCell.rating = 4.5;
+        aCell.rating =[_target[@"star_num"] intValue];
     }else if (indexPath.section==4){
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"whatEver"];
         cell.textLabel.text = @"";

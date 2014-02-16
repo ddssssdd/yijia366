@@ -74,7 +74,7 @@
     itemCell.lblAddress.text = item[@"address"];
     itemCell.lblPhone.text = item[@"phone"];
     itemCell.lblVoternum.text =[NSString stringWithFormat:@"%@", item[@"star_voternum"]];
-    itemCell.rating = [item[@"star"] intValue];
+    itemCell.rating = [item[@"star_num"] intValue];
     
     [itemCell.image setImageWithURL:[NSURL URLWithString:item[@"pic_url"]]];
     return  cell;
