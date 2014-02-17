@@ -15,9 +15,12 @@
 #import "ItemCommentsController.h"
 #import "ImageInfoCell.h"
 #import "ShowLocationViewController.h"
+#import "GoodsListItemCell.h"
+#import "NewOrderController.h"
+#import "GoodsDetailController.h"
+#import "Browser2Controller.h"
 
-
-@interface ProviderDetailController ()<UIActionSheetDelegate>{
+@interface ProviderDetailController ()<UIActionSheetDelegate,BuyButtonDelegate>{
     id _target;
     UIImageView *_imageView;
     UIPageControl *_pager;
@@ -152,10 +155,10 @@
     [[AppSettings sharedSettings] popupShareMenu:_target[@"share_title"] introduce:_target[@"share_intro"] url:_target[@"share_url"]];
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 6;
+    return 7;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    if (section==5){
+    if (section==6){
         return [_target[@"goods"] count];
     }else{
         return 1;
@@ -196,8 +199,9 @@
         //aCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         aCell.imageIcon.image = [UIImage imageNamed:@"k.png"];
         
-    }else if (indexPath.section==5){
+    }else if (indexPath.section==6){
         id item = [_target[@"goods"] objectAtIndex:indexPath.row];
+        /*
         cell = [[[NSBundle mainBundle] loadNibNamed:@"ProviderListItemCell" owner:nil options:nil] objectAtIndex:0];
         ProviderListItemCell *itemCell=(ProviderListItemCell *)cell;
         itemCell.lblName.text =item[@"name"];
@@ -205,6 +209,27 @@
         itemCell.lblPhone.text = item[@"phone"];
         
         [itemCell.image setImageWithURL:[NSURL URLWithString:item[@"pic_url"]]];
+         */
+        cell = [[[NSBundle mainBundle] loadNibNamed:@"GoodsListItemCell" owner:nil options:nil] objectAtIndex:0];
+        GoodsListItemCell *itemCell=(GoodsListItemCell *)cell;
+        itemCell.lblTitle.text =item[@"name"];
+        itemCell.lblPrice.text = item[@"price"];
+        itemCell.lblStand_price.text = item[@"stand_price"];
+        itemCell.lblStand_price.strikeThroughEnabled = YES;
+        itemCell.lblDiscount.text = item[@"discount"];
+        itemCell.lblDescription.text = item[@"description"];
+        itemCell.lblBuyer.text=item[@"buyer"];
+        itemCell.item = item;
+        itemCell.delegate = self;
+        [itemCell.image setImageWithURL:[NSURL URLWithString:item[@"pic_url"]]];
+    }else if (indexPath.section==5){
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cellIdentifier"];
+        UITextView *textView = [[UITextView alloc] initWithFrame:CGRectMake(20, 10, cell.frame.size.width-40, cell.frame.size.height-10)];
+        textView.text = _target[@"description"];
+        [textView setEditable:NO];
+        [textView setUserInteractionEnabled:NO];
+        [cell addSubview:textView];
+        
     }
     return cell;
 }
@@ -223,8 +248,10 @@
             return 50;
         case 4:
             return 50;
-        case 5:
+        case 6:
             return 120.0;
+        case 5:
+            return 80;
             
         default:
             break;
@@ -243,8 +270,27 @@
     }else if (indexPath.section==4){
         //address;
         [self showMap];
+    }else if (indexPath.section==6){
+        id item = [_target[@"goods"] objectAtIndex:indexPath.row];
+        GoodsDetailController *vc =[[GoodsDetailController alloc] initWithStyle:UITableViewStylePlain];
+        vc.target_id =[item[@"id"] intValue];
+        vc.title = item[@"name"];
+        [self.navigationController pushViewController:vc animated:YES];
+    }else if (indexPath.section==5){
+        Browser2Controller *vc = [[Browser2Controller alloc] initWithNibName:@"Browser2Controller" bundle:nil];
+        vc.url = _target[@"intro_url"];
+
+        
+        [self.navigationController pushViewController:vc animated:YES];
     }
 }
+-(void)BuyButtonDelegate:(id)item{
+    NSLog(@"%@",item);
+    NewOrderController *vc = [[NewOrderController alloc] initWithStyle:UITableViewStylePlain];
+    vc.product_id = [item[@"id"] intValue];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
 -(void)showMap{
     id item = _target[@"x"];
     if (item==nil)

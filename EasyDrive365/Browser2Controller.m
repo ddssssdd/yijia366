@@ -31,6 +31,7 @@
     if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
         self.edgesForExtendedLayout = UIRectEdgeNone;
 #endif
+    self.title = @"浏览";
     if (self.url){
         [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.url]]];
     }else if (self.article){
