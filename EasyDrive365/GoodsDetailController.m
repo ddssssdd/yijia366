@@ -209,6 +209,8 @@
 -(void)buyButtonPressed:(BuyButtonView *)sender data:(id)data{
     NewOrderController *vc = [[NewOrderController alloc] initWithStyle:UITableViewStylePlain];
     vc.product_id = [_target[@"id"] intValue];
+    vc.min =[_target[@"min_quantity"] intValue];
+    vc.max =[_target[@"max_quantity"] intValue];
     [self.navigationController pushViewController:vc animated:YES];
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{

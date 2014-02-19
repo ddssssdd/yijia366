@@ -108,6 +108,8 @@
     NSLog(@"%@",item);
     NewOrderController *vc = [[NewOrderController alloc] initWithStyle:UITableViewStylePlain];
     vc.product_id = [item[@"id"] intValue];
+    vc.min =[item[@"min_quantity"] intValue];
+    vc.max =[item[@"max_quantity"] intValue];
     [self.navigationController pushViewController:vc animated:YES];
 }
 @end

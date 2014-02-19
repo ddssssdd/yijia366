@@ -149,6 +149,8 @@
 		5197B78C187D32D200D906E2 /* NeedPayItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5197B78B187D32D200D906E2 /* NeedPayItemCell.m */; };
 		5197B78E187D32E800D906E2 /* NeedPayItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5197B78D187D32E800D906E2 /* NeedPayItemCell.xib */; };
 		51A20AC818B453B9008054C4 /* TaskDispatch.m in Sources */ = {isa = PBXBuildFile; fileRef = 51A20AC718B453B9008054C4 /* TaskDispatch.m */; };
+		51A20ACB18B4E59E008054C4 /* OrderContentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51A20ACA18B4E59E008054C4 /* OrderContentController.m */; };
+		51A20ACE18B4E5C6008054C4 /* OrderAccidentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51A20ACD18B4E5C6008054C4 /* OrderAccidentController.m */; };
 		51B26A1A1863316700C20C56 /* BoundListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 51B26A191863316700C20C56 /* BoundListCell.m */; };
 		51B26A1C1863317700C20C56 /* BoundListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51B26A1B1863317700C20C56 /* BoundListCell.xib */; };
 		51B26A1F1863354200C20C56 /* BoundHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 51B26A1E1863354200C20C56 /* BoundHeader.m */; };
@@ -631,6 +633,10 @@
 		5197B78D187D32E800D906E2 /* NeedPayItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NeedPayItemCell.xib; sourceTree = "<group>"; };
 		51A20AC618B453B9008054C4 /* TaskDispatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskDispatch.h; sourceTree = "<group>"; };
 		51A20AC718B453B9008054C4 /* TaskDispatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskDispatch.m; sourceTree = "<group>"; };
+		51A20AC918B4E59E008054C4 /* OrderContentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderContentController.h; sourceTree = "<group>"; };
+		51A20ACA18B4E59E008054C4 /* OrderContentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderContentController.m; sourceTree = "<group>"; };
+		51A20ACC18B4E5C6008054C4 /* OrderAccidentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderAccidentController.h; sourceTree = "<group>"; };
+		51A20ACD18B4E5C6008054C4 /* OrderAccidentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderAccidentController.m; sourceTree = "<group>"; };
 		51B26A181863316700C20C56 /* BoundListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoundListCell.h; sourceTree = "<group>"; };
 		51B26A191863316700C20C56 /* BoundListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoundListCell.m; sourceTree = "<group>"; };
 		51B26A1B1863317700C20C56 /* BoundListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BoundListCell.xib; sourceTree = "<group>"; };
@@ -1393,6 +1399,10 @@
 				513225221897E76600C3552A /* OrderFinishedController.h */,
 				513225231897E76600C3552A /* OrderFinishedController.m */,
 				513225241897E76600C3552A /* OrderFinishedController.xib */,
+				51A20AC918B4E59E008054C4 /* OrderContentController.h */,
+				51A20ACA18B4E59E008054C4 /* OrderContentController.m */,
+				51A20ACC18B4E5C6008054C4 /* OrderAccidentController.h */,
+				51A20ACD18B4E5C6008054C4 /* OrderAccidentController.m */,
 			);
 			name = Order;
 			sourceTree = "<group>";
@@ -2560,6 +2570,7 @@
 				E23BA0EC172170460049D2CB /* ChooseUserController.m in Sources */,
 				E2DBBE9B1722BE2500493DD9 /* SettingsViewController.m in Sources */,
 				E223549C172A8F8E00DDC015 /* ButtonViewController.m in Sources */,
+				51A20ACE18B4E5C6008054C4 /* OrderAccidentController.m in Sources */,
 				E22354A1172A945D00DDC015 /* ResetPasswordViewController.m in Sources */,
 				E241CE9A17328EA400B1441D /* BindCellPhoneViewController.m in Sources */,
 				E241CECC1733EB4600B1441D /* TextViewFooter.m in Sources */,
@@ -2591,6 +2602,7 @@
 				514C90E718954047007FFFCC /* InsuranceStep3Controller.m in Sources */,
 				E2611B8E17CE090F00E92897 /* NavigationViewController.mm in Sources */,
 				E2611B9217CF345600E92897 /* NewActivateViewController.m in Sources */,
+				51A20ACB18B4E59E008054C4 /* OrderContentController.m in Sources */,
 				E2611B9517CF534100E92897 /* ActivateHeader.m in Sources */,
 				E2E6647C17D895CF00AC85BA /* TakePhotoViewController.m in Sources */,
 				5189CB67186415F400DB9A26 /* FriendHeader.m in Sources */,

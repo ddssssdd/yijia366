@@ -14,4 +14,5 @@
 @interface OrderQuantityCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *lblQuantity;
 @property (nonatomic) id<OrderQuantityCellDelegate> delegate;
+@property (weak, nonatomic) IBOutlet UIStepper *stepper;
 @end

@@ -13,4 +13,6 @@
 
 @property (nonatomic) int product_id;
 @property (nonatomic) id order_id;
+@property (nonatomic) int min;
+@property (nonatomic) int max;
 @end

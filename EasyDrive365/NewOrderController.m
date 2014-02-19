@@ -63,6 +63,7 @@
                 OrderItem *orderItem = [[OrderItem alloc] initWithJson:item];
                 [_list addObject:orderItem];
             }
+
             [self.tableView reloadData];
         }
     }];
@@ -129,6 +130,10 @@
             OrderQuantityCell *quantityCell = (OrderQuantityCell *)cell;
             quantityCell.lblQuantity.text = [NSString stringWithFormat:@"%d",item.quantity];
             quantityCell.delegate = self;
+            if (self.min && self.max){
+                quantityCell.stepper.minimumValue = self.min;
+                quantityCell.stepper.maximumValue = self.max;
+            }
             
         }else if (indexPath.row==2){
             if (cell==nil){

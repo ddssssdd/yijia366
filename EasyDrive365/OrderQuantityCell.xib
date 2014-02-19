@@ -157,6 +157,14 @@
 					<string key="id">SdC-P5-CSk</string>
 				</object>
 				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">stepper</string>
+						<reference key="source" ref="543169170"/>
+						<reference key="destination" ref="684027441"/>
+					</object>
+					<string key="id">8Xe-Rh-6aE</string>
+				</object>
+				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">stepChanged:</string>
 						<reference key="source" ref="684027441"/>

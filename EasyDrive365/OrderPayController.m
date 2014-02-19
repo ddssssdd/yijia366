@@ -11,6 +11,8 @@
 #import "AppSettings.h"
 #import "OrderAddressController.h"
 #import "OrderFinishedController.h"
+#import "OrderAccidentController.h"
+#import "OrderContentController.h"
 
 
 @interface OrderPayItem:NSObject
@@ -132,8 +134,8 @@
         NSLog(@"%@",_pay);
         if ([item[@"item"][@"bank_id"] isEqualToString:@"00001"]){
             _amount = [_payItem.detail floatValue];
-            [[AppSettings sharedSettings] pay:_name description:_description amount:_amount order_no:self.data[@"order_id"]];
-            //[self handleAfterPay:Nil];
+            //[[AppSettings sharedSettings] pay:_name description:_description amount:_amount order_no:self.data[@"order_id"]];
+            [self handleAfterPay:Nil];
         }
     }
 }
@@ -189,9 +191,17 @@
                 vc.order_id = json[@"result"][@"order_id"];
                 vc.content = json[@"result"][@"content"];
                 [self.navigationController pushViewController:vc animated:YES];
-            }else{
+            }else if ([json[@"result"][@"next_form"] isEqualToString:@"address"]){
                 OrderAddressController *vc =[[OrderAddressController alloc] initWithStyle:UITableViewStyleGrouped];
                 vc.address_data = json[@"result"];
+                [self.navigationController pushViewController:vc animated:YES];
+            }else if ([json[@"result"][@"next_form"] isEqualToString:@"ins_contents"]){
+                OrderContentController *vc =[[OrderContentController alloc] initWithStyle:UITableViewStyleGrouped];
+                vc.ins_data = json[@"result"];
+                [self.navigationController pushViewController:vc animated:YES];
+            }else if ([json[@"result"][@"next_form"] isEqualToString:@"ins_accident"]){
+                OrderAccidentController *vc =[[OrderAccidentController alloc] initWithStyle:UITableViewStyleGrouped];
+                vc.ins_data = json[@"result"];
                 [self.navigationController pushViewController:vc animated:YES];
             }
             
