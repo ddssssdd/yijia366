@@ -95,7 +95,7 @@
     }
     NSString *vin=[parameters objectForKey:@"vin"];
     if([@"" isEqualToString:car_id]){
-         [[[UIAlertView alloc] initWithTitle:AppTitle message:@"车牌号码不能为空！" delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定", nil] show];
+         [[[UIAlertView alloc] initWithTitle:AppTitle message:@"VIN不能为空！" delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定", nil] show];
          return;
         
     }
@@ -107,7 +107,7 @@
     }
     NSString *registration_date=[parameters objectForKey:@"registration_date"];
     if([@"" isEqualToString:registration_date]){
-        [[[UIAlertView alloc] initWithTitle:AppTitle message:@"初等日期不能为空！" delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定", nil] show];
+        [[[UIAlertView alloc] initWithTitle:AppTitle message:@"初登日期不能为空！" delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定", nil] show];
         return;
         
     }
