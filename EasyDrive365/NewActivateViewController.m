@@ -145,7 +145,11 @@
 -(void)loadData{
     //_list =@[@[@{@"title":@"a",@"detail":@"b"}],@[@{@"title":@"a",@"detail":@"b"}]];
     
-    NSString *url = [NSString stringWithFormat:@"api/get_activate_code_list?userid=%d",[AppSettings sharedSettings].userid];
+    NSString *url;
+    if (self.taskid>0)
+        url = [NSString stringWithFormat:@"api/get_activate_code_list?userid=%d&taskid=%d",[AppSettings sharedSettings].userid,self.taskid];
+    else
+        url = [NSString stringWithFormat:@"api/get_activate_code_list?userid=%d",[AppSettings sharedSettings].userid];
     [[AppSettings sharedSettings].http get:url block:^(id json) {
         if ([[AppSettings sharedSettings] isSuccess:json]){
             [self processData:json[@"result"]];

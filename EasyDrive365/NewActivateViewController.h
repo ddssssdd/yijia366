@@ -10,4 +10,5 @@
 
 @interface NewActivateViewController : UITableViewController
 @property (nonatomic) BOOL isWizad;
+@property (nonatomic) int taskid;
 @end

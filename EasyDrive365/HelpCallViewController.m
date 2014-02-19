@@ -55,7 +55,11 @@
 
 
 -(void)setup{
-    _helper.url = [AppSettings sharedSettings].url_for_get_helpcalls;
+    if (self.taskid>0)
+        _helper.url =[NSString stringWithFormat:@"%@&taskid=%d", [AppSettings sharedSettings].url_for_get_helpcalls,self.taskid];
+    else
+            
+        _helper.url = [AppSettings sharedSettings].url_for_get_helpcalls;
 }
 -(void)processData:(id)json{
     

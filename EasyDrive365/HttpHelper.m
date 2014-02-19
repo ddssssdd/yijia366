@@ -20,6 +20,13 @@
     }
     return self;
 }
+-(void)setUrl:(NSString *)url{
+    if (self.delegate && [self.delegate taskid]>0){
+        _url =[NSString stringWithFormat:@"%@&taskid=%d",url,[self.delegate taskid]];
+    }else{
+        _url = url;
+    }
+}
 -(void)loadData{
     [self loadData:0];
 }

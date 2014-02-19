@@ -10,7 +10,7 @@
 
 @protocol HttpClientDelegate <NSObject>
 
-
+@property (nonatomic) int taskid;
 -(void)setup;
 
 -(void)processData:(id)json;

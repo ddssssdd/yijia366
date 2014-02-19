@@ -48,7 +48,12 @@
     [[AppSettings sharedSettings] popupShareMenu:_share_title introduce:_share_inctroduce url:_share_url];
 }
 -(void)load_data{
-    NSString *url = [NSString stringWithFormat:@"bound/get_my_friends?userid=%d",[AppSettings sharedSettings].userid];
+    NSString *url;
+    if (self.taskid>0) {
+        url = [NSString stringWithFormat:@"bound/get_my_friends?userid=%d&taskid=%d",[AppSettings sharedSettings].userid,self.taskid];
+    }else{
+        url = [NSString stringWithFormat:@"bound/get_my_friends?userid=%d",[AppSettings sharedSettings].userid];
+    }
     [[AppSettings sharedSettings].http get:url block:^(id json) {
         if ([[AppSettings sharedSettings] isSuccess:json]){
             _list =json[@"result"][@"friends"];

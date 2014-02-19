@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface SetupUserController : UITableViewController
-
+@property (nonatomic) int taskid;
 @end

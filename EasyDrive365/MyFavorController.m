@@ -56,7 +56,12 @@
     //nothing;
 }
 -(void)loadData:(int)reload{
-    NSString *url = [NSString stringWithFormat:@"favor/find?userid=%d&type=",[AppSettings sharedSettings].userid];
+    NSString *url;
+    if (self.taskid>0){
+        url = [NSString stringWithFormat:@"favor/find?userid=%d&type=&taskid=%d",[AppSettings sharedSettings].userid,self.taskid];
+    }else{
+        url = [NSString stringWithFormat:@"favor/find?userid=%d&type=",[AppSettings sharedSettings].userid];
+    }
     [[AppSettings sharedSettings].http get:url block:^(id json) {
         if([[AppSettings sharedSettings] isSuccess:json]){
             _list = json[@"result"];

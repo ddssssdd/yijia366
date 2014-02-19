@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface TaskListController : UITableViewController
+@property (nonatomic) int taskid;
 
 @end

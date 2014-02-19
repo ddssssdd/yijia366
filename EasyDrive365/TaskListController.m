@@ -10,7 +10,8 @@
 #import "AppSettings.h"
 #import "TaskListCell.h"
 #import "UIImageView+AFNetworking.h"
-#import "ExecuteTaskController.h"
+#import "TaskDispatch.h"
+
 @interface TaskListController (){
     id _list;
 }
@@ -35,7 +36,11 @@
     [self load_data];
 }
 -(void)load_data{
-    NSString *url = [NSString stringWithFormat:@"bound/get_task_list?userid=%d",[AppSettings sharedSettings].userid];
+    NSString *url;
+    if (self.taskid>0)
+        url = [NSString stringWithFormat:@"bound/get_task_list?userid=%d&taskid=%d",[AppSettings sharedSettings].userid,self.taskid];
+    else
+        url = [NSString stringWithFormat:@"bound/get_task_list?userid=%d",[AppSettings sharedSettings].userid];
     [[AppSettings sharedSettings].http get:url block:^(id json) {
         if ([[AppSettings sharedSettings] isSuccess:json]){
             _list = json[@"result"][@"data"];
@@ -84,8 +89,12 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     id item = [_list objectAtIndex:indexPath.row];
+    /*
     ExecuteTaskController *vc = [[ExecuteTaskController alloc] initWithNibName:@"ExecuteTaskController" bundle:nil];
     vc.task_id = [item[@"id"] intValue];
     [self.navigationController pushViewController:vc animated:YES];
+     */
+    TaskDispatch *dispatch =[[TaskDispatch alloc] initWithController:self.navigationController task:item];
+    [dispatch pushToController];
 }
 @end

@@ -86,6 +86,7 @@
     if ([key isEqualToString:@"01"]){
         InformationViewController *vc = [[InformationViewController alloc] initWithNibName:@"InformationViewController" bundle:nil];
         vc.title = title;
+        //vc.taskid=1;
         [controller pushViewController:vc animated:YES];
     }
     if ([key isEqualToString:@"02"]){

@@ -73,7 +73,11 @@
     }];
 }
 -(void)load_data{
-    NSString *url =[NSString stringWithFormat:@"bound/get_user_info?userid=%d",[AppSettings sharedSettings].userid];
+    NSString *url;
+    if (self.taskid>0)
+        url =[NSString stringWithFormat:@"bound/get_user_info?userid=%d&taskid=%d",[AppSettings sharedSettings].userid,self.taskid];
+    else
+        url =[NSString stringWithFormat:@"bound/get_user_info?userid=%d",[AppSettings sharedSettings].userid];
     [[AppSettings sharedSettings].http get:url block:^(id json) {
         if ([[AppSettings sharedSettings] isSuccess:json]){
             _user = json[@"result"];

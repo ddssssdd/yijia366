@@ -83,7 +83,12 @@
     return indexPath.section==0?250.0f:100.0f;
 }
 -(void)loadData{
-    NSString *url = [NSString stringWithFormat:@"api/get_feedback_user?userid=%d",[AppSettings sharedSettings].userid];
+    NSString *url;
+    if (self.taskid>0) {
+        url = [NSString stringWithFormat:@"api/get_feedback_user?userid=%d&taskid=%d",[AppSettings sharedSettings].userid,self.taskid];
+    }else{
+        url = [NSString stringWithFormat:@"api/get_feedback_user?userid=%d",[AppSettings sharedSettings].userid];
+    }
     [[[AppSettings sharedSettings] http] get:url block:^(id json) {
         id temp = json[@"result"][@"data"];
         

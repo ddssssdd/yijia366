@@ -17,7 +17,7 @@
 #import "InsuranceDetailController.h"
 @implementation UserProfileView
 
--(id)initWithController:(UINavigationController *)parent{
+-(id)initWithController:(UINavigationController *)parent  taskid:(int)taskid{
     self =[[[NSBundle mainBundle] loadNibNamed:@"UserProfileView" owner:nil options:nil] objectAtIndex:0];
     if (self){
         self.backgroundColor = [UIColor clearColor];
@@ -32,7 +32,7 @@
         
         UITapGestureRecognizer *tapOnView = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(setupUser)];
         [self addGestureRecognizer:tapOnView];
-        [self load_data];
+        [self load_data:taskid];
     }
     return self;
     
@@ -80,8 +80,12 @@
     [_parent pushViewController:vc animated:YES];
 }
 
--(void)load_data{
-    NSString *url = [NSString stringWithFormat:@"bound/get_user_set?userid=%d",[AppSettings sharedSettings].userid];
+-(void)load_data:(int)taskid{
+    NSString *url;
+    if (taskid>0)
+        url = [NSString stringWithFormat:@"bound/get_user_set?userid=%d&taskid=%d",[AppSettings sharedSettings].userid,taskid];
+    else
+        url = [NSString stringWithFormat:@"bound/get_user_set?userid=%d",[AppSettings sharedSettings].userid];
     [[AppSettings sharedSettings].http get:url block:^(id json) {
         if ([[AppSettings sharedSettings] isSuccess:json]){
             self.lblBound.text=[NSString stringWithFormat:@"积分：%@",json[@"result"][@"bound"]];

@@ -28,7 +28,11 @@ NSString *inform1=@"设置向导第1步共4步";
 
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:self.isFromHome?@"主页": @"设置" style:UIBarButtonSystemItemAction target:self action:@selector(backTo)];
     
-    NSString *url = [NSString stringWithFormat:@"api/wizardstep0?userid=%d",[AppSettings sharedSettings].userid];
+    NSString *url;
+    if (self.taskid>0)
+        url = [NSString stringWithFormat:@"api/wizardstep0?userid=%d&taskid=%d",[AppSettings sharedSettings].userid,self.taskid];
+    else
+        url = [NSString stringWithFormat:@"api/wizardstep0?userid=%d",[AppSettings sharedSettings].userid];
     [[AppSettings sharedSettings].http get:url block:^(id json) {
         id items=@[
                    [[NSMutableDictionary alloc] initWithDictionary:@{@"key" :@"car_id",@"label":@"车牌号：",@"default":@"",@"placeholder":@"鲁BFK982",@"ispassword":@"capital",@"cell":@"EditTextCell",@"value":json[@"result"][@"car_id"] }],

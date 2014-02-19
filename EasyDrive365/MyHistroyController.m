@@ -58,7 +58,11 @@
 }
 
 -(void)load_data{
-    NSString *url = [NSString stringWithFormat:@"history/find?userid=%d&type=",[AppSettings sharedSettings].userid];
+    NSString *url;
+    if (self.taskid>0)
+        url = [NSString stringWithFormat:@"history/find?userid=%d&type=&taskid=%d",[AppSettings sharedSettings].userid,self.taskid];
+    else
+        url = [NSString stringWithFormat:@"history/find?userid=%d&type=",[AppSettings sharedSettings].userid];
     [[AppSettings sharedSettings].http get:url block:^(id json) {
         if([[AppSettings sharedSettings] isSuccess:json]){
             _list = json[@"result"];

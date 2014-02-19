@@ -41,10 +41,14 @@
     // Dispose of any resources that can be recreated.
 }
 -(void)load_data{
-    NSString *url =[NSString stringWithFormat:@"ins/carins_intro?userid=%d",[AppSettings sharedSettings].userid];
+    NSString *url;
+    if (self.taskid>0)
+        url =[NSString stringWithFormat:@"ins/carins_intro?userid=%d&taskid=%d",[AppSettings sharedSettings].userid,self.taskid];
+    else
+        url =[NSString stringWithFormat:@"ins/carins_intro?userid=%d",[AppSettings sharedSettings].userid];
     [[AppSettings sharedSettings].http get:url block:^(id json) {
         if ([[AppSettings sharedSettings] isSuccess:json]){
-            NSString *content_url = @"http://m.yijia366.com/html/20140123.htm";
+            NSString *content_url = json[@"result"][@"web_url"];// @"http://m.yijia366.com/html/20140123.htm";
             [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:content_url]]];
         }
     }];

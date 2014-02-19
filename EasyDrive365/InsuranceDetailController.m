@@ -43,7 +43,11 @@
     // Dispose of any resources that can be recreated.
 }
 -(void)load_data{
-    NSString *url = [NSString stringWithFormat:@"ins/carins_get_one?userid=%d&id=%@",[AppSettings sharedSettings].userid,self.insurance_id];
+    NSString *url;
+    if (self.taskid>0)
+        url = [NSString stringWithFormat:@"ins/carins_get_one?userid=%d&id=%@&taskid=%d",[AppSettings sharedSettings].userid,self.insurance_id,self.taskid];
+    else
+        url = [NSString stringWithFormat:@"ins/carins_get_one?userid=%d&id=%@",[AppSettings sharedSettings].userid,self.insurance_id];
     [[AppSettings sharedSettings].http get:url block:^(id json) {
         if ([[AppSettings sharedSettings] isSuccess:json]){
             id items0 = @[@{@"title":@"保单号",@"detail":json[@"result"][@"po"]},

@@ -14,6 +14,7 @@
     NSMutableArray *_list;
     NSString *_saveButtonName;
 }
+@property (nonatomic) int taskid;
 -(void)init_setup;
 -(void)initData;
 -(void)setupCell:(UITableViewCell *)cell indexPath:(NSIndexPath *)indexPath;

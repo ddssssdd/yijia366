@@ -46,7 +46,11 @@
 -(void)initData{
     //self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"设置" style:UIBarButtonSystemItemAction target:self action:@selector(backTo)];
     
-    NSString *url = [NSString stringWithFormat:@"api/add_inscard_step0?userid=%d",[AppSettings sharedSettings].userid];
+    NSString *url;
+    if (self.taskid>0)
+        url =  [NSString stringWithFormat:@"api/add_inscard_step0?userid=%d&taskid=%d",[AppSettings sharedSettings].userid,self.taskid];
+    else
+        url = [NSString stringWithFormat:@"api/add_inscard_step0?userid=%d",[AppSettings sharedSettings].userid];
     [[AppSettings sharedSettings].http get:url block:^(id json) {
         id items=@[
                    [[NSMutableDictionary alloc] initWithDictionary:@{@"key" :@"code",@"label":@"激活码：",@"default":@"",@"placeholder":@"输入激活码",@"ispassword":@"capital",@"cell":@"EditTextCell",@"value":@"" }],

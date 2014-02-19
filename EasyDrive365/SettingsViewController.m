@@ -94,11 +94,17 @@
 }
 
 -(void)update_user_profile{
-    [_headerView load_data];
+    [_headerView load_data:self.taskid];
 }
 
 -(void)initData{
-    NSString *url = [NSString stringWithFormat:@"api/get_user_phone?userid=%d",[AppSettings sharedSettings].userid];
+    NSString *url;
+    
+    if (self.taskid>0)
+        url = [NSString stringWithFormat:@"api/get_user_phone?userid=%d&taskid=%d",[AppSettings sharedSettings].userid,self.taskid];
+    else
+        url =[NSString stringWithFormat:@"api/get_user_phone?userid=%d",[AppSettings sharedSettings].userid];
+    
      _phoneStatus = @"绑定手机";
     _phone = @"";
     [[AppSettings sharedSettings].http get:url block:^(id json) {
@@ -120,7 +126,7 @@
         
             }            
         }
-        [_headerView load_data];
+        [_headerView load_data:self.taskid];
         [self init_dataSource];
         
     }];
@@ -476,7 +482,7 @@
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     if (section==0){
         if (!_headerView){
-            _headerView =[[UserProfileView alloc] initWithController:self.navigationController];
+            _headerView =[[UserProfileView alloc] initWithController:self.navigationController taskid:self.taskid];
         }
         return _headerView;
     }else

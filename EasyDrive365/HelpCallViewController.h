@@ -12,5 +12,6 @@
 @interface HelpCallViewController : NetViewController<UITableViewDataSource,UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
+@property (nonatomic) int taskid;
 
 @end

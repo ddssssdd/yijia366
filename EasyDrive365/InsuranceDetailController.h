@@ -10,4 +10,5 @@
 
 @interface InsuranceDetailController : UITableViewController
 @property (nonatomic) NSString *insurance_id;
+@property (nonatomic) int taskid;
 @end

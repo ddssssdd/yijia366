@@ -20,6 +20,8 @@
     BOOL _reloadDirectly;
    
 }
+@property (nonatomic) int taskid;
+
 -(void)setup;
 -(void)processData:(id)json;
 -(void)setupTableView:(UITableView *)tableView;

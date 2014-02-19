@@ -11,4 +11,5 @@
 @interface InsuranceStep1Controller : UIViewController
 
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
+@property (nonatomic) int taskid;
 @end

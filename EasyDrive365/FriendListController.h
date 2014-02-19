@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface FriendListController : UITableViewController
-
+@property (nonatomic) int taskid;
 @end

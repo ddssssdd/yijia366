@@ -10,4 +10,5 @@
 
 @interface NeedPayController : UITableViewController
 @property (nonatomic) NSString *status;
+@property (nonatomic) int taskid;
 @end

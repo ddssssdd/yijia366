@@ -17,6 +17,7 @@
     NSString *_phone;
     RefreshHelper *_refreshHelper;
 }
+@property (nonatomic) int taskid;
 -(void)setup;
 -(void)processData:(id)json;
 

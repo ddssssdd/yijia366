@@ -108,7 +108,11 @@
     }
 }
 -(void)load_data{
-    NSString *url = [NSString stringWithFormat:@"order/order_list?userid=%d&status=%@",[AppSettings sharedSettings].userid,self.status];
+    NSString *url;
+    if (self.taskid>0)
+        url = [NSString stringWithFormat:@"order/order_list?userid=%d&status=%@&taskid=%d",[AppSettings sharedSettings].userid,self.status,self.taskid];
+    else
+        url= [NSString stringWithFormat:@"order/order_list?userid=%d&status=%@",[AppSettings sharedSettings].userid,self.status];
     [[AppSettings sharedSettings].http get:url block:^(id json) {
         if ([[AppSettings sharedSettings] isSuccess:json]){
             _list = json[@"result"];

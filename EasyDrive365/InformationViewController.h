@@ -13,4 +13,5 @@
 @interface InformationViewController : NetViewController<UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
+
 @end

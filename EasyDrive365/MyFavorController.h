@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface MyFavorController : UITableViewController
+@property (nonatomic) int taskid;
 
 @end

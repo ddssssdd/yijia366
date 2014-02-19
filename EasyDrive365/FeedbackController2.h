@@ -10,4 +10,5 @@
 
 @interface FeedbackController2 : UITableViewController
 @property (nonatomic) NSString *phone;
+@property (nonatomic) int taskid;
 @end

@@ -148,6 +148,7 @@
 		5189CB691864160800DB9A26 /* FriendHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5189CB681864160800DB9A26 /* FriendHeader.xib */; };
 		5197B78C187D32D200D906E2 /* NeedPayItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5197B78B187D32D200D906E2 /* NeedPayItemCell.m */; };
 		5197B78E187D32E800D906E2 /* NeedPayItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5197B78D187D32E800D906E2 /* NeedPayItemCell.xib */; };
+		51A20AC818B453B9008054C4 /* TaskDispatch.m in Sources */ = {isa = PBXBuildFile; fileRef = 51A20AC718B453B9008054C4 /* TaskDispatch.m */; };
 		51B26A1A1863316700C20C56 /* BoundListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 51B26A191863316700C20C56 /* BoundListCell.m */; };
 		51B26A1C1863317700C20C56 /* BoundListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51B26A1B1863317700C20C56 /* BoundListCell.xib */; };
 		51B26A1F1863354200C20C56 /* BoundHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 51B26A1E1863354200C20C56 /* BoundHeader.m */; };
@@ -628,6 +629,8 @@
 		5197B78A187D32D200D906E2 /* NeedPayItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NeedPayItemCell.h; sourceTree = "<group>"; };
 		5197B78B187D32D200D906E2 /* NeedPayItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NeedPayItemCell.m; sourceTree = "<group>"; };
 		5197B78D187D32E800D906E2 /* NeedPayItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NeedPayItemCell.xib; sourceTree = "<group>"; };
+		51A20AC618B453B9008054C4 /* TaskDispatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskDispatch.h; sourceTree = "<group>"; };
+		51A20AC718B453B9008054C4 /* TaskDispatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskDispatch.m; sourceTree = "<group>"; };
 		51B26A181863316700C20C56 /* BoundListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoundListCell.h; sourceTree = "<group>"; };
 		51B26A191863316700C20C56 /* BoundListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoundListCell.m; sourceTree = "<group>"; };
 		51B26A1B1863317700C20C56 /* BoundListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BoundListCell.xib; sourceTree = "<group>"; };
@@ -1277,6 +1280,8 @@
 				5189CB5718640B1200DB9A26 /* ExecuteTaskController.h */,
 				5189CB5818640B1200DB9A26 /* ExecuteTaskController.m */,
 				5189CB5918640B1200DB9A26 /* ExecuteTaskController.xib */,
+				51A20AC618B453B9008054C4 /* TaskDispatch.h */,
+				51A20AC718B453B9008054C4 /* TaskDispatch.m */,
 			);
 			name = Tasks;
 			sourceTree = "<group>";
@@ -2472,6 +2477,7 @@
 				E2EE653D16C529A100ED1C73 /* InformationViewController.m in Sources */,
 				E2EE657116C685F300ED1C73 /* AFHTTPClient.m in Sources */,
 				E2EE657216C685F300ED1C73 /* AFHTTPRequestOperation.m in Sources */,
+				51A20AC818B453B9008054C4 /* TaskDispatch.m in Sources */,
 				E2EE657316C685F300ED1C73 /* AFImageRequestOperation.m in Sources */,
 				512599231888D62000967BDE /* ChooseNextImageCell.m in Sources */,
 				E2EE657416C685F300ED1C73 /* AFJSONRequestOperation.m in Sources */,

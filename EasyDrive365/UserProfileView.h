@@ -22,6 +22,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblExp;
 
 
--(id)initWithController:(UINavigationController *)parent;
--(void)load_data;
+-(id)initWithController:(UINavigationController *)parent taskid:(int)taskid;
+-(void)load_data:(int)taskid;
 @end
