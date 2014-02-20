@@ -130,9 +130,9 @@
             OrderQuantityCell *quantityCell = (OrderQuantityCell *)cell;
             quantityCell.lblQuantity.text = [NSString stringWithFormat:@"%d",item.quantity];
             quantityCell.delegate = self;
-            if (self.min && self.max){
-                quantityCell.stepper.minimumValue = self.min;
-                quantityCell.stepper.maximumValue = self.max;
+            if (item.max_quantity && item.min_quantity){
+                quantityCell.stepper.minimumValue = item.min_quantity;
+                quantityCell.stepper.maximumValue = item.max_quantity;
             }
             
         }else if (indexPath.row==2){

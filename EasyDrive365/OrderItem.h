@@ -18,6 +18,8 @@
 @property (nonatomic) NSString *description;
 @property (nonatomic) NSString *pic_url;
 @property (nonatomic) int quantity;
+@property (nonatomic) int min_quantity;
+@property (nonatomic) int max_quantity;
 @property (nonatomic) float price_num;
 
 -(id)initWithJson:(id)json;
