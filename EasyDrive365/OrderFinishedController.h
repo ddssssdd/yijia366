@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface OrderFinishedController : UIViewController
-@property (nonatomic) NSString * order_id;
-@property (nonatomic) NSString * content;
+
+@property (nonatomic) id content_data;
 @property (weak, nonatomic) IBOutlet UITextView *txtContent;
 
 @end

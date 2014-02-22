@@ -28,7 +28,7 @@
 {
     [super viewDidLoad];
     self.title = @"订单完成";
-    self.txtContent.text = self.content;
+    self.txtContent.text = self.content_data[@"content"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -43,7 +43,7 @@
 }
 - (IBAction)goOrderDetailPressed:(id)sender {
     OrderDetailController *vc = [[OrderDetailController alloc] initWithStyle:UITableViewStyleGrouped];
-    vc.order_id = self.order_id;
+    vc.order_id = self.content_data[@"order_id"];
     [self.navigationController pushViewController:vc animated:YES];
 }
 @end

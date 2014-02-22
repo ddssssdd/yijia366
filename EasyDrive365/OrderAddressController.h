@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface OrderAddressController : UITableViewController
+#import "BaseAfterController.h"
+@interface OrderAddressController : BaseAfterController
 @property (nonatomic) id address_data;
 @end

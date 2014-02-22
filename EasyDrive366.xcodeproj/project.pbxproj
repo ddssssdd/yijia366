@@ -180,6 +180,8 @@
 		51B9E1201861E3AC005B9704 /* DoCommentController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51B9E11E1861E3AC005B9704 /* DoCommentController.xib */; };
 		51BF51931861D2450021AA3C /* AMRatingControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 51BF51921861D2440021AA3C /* AMRatingControl.m */; };
 		51BF51961861D6E20021AA3C /* ItemCommentsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51BF51951861D6E20021AA3C /* ItemCommentsController.m */; };
+		51DA093E18B83CCF0048E9D2 /* AfterPayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51DA093D18B83CCF0048E9D2 /* AfterPayController.m */; };
+		51DA094118B841AD0048E9D2 /* BaseAfterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51DA094018B841AD0048E9D2 /* BaseAfterController.m */; };
 		51DF0EC4188DF778002C044E /* star_small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 51DF0EC2188DF778002C044E /* star_small@2x.png */; };
 		51DF0EC5188DF778002C044E /* starfull_small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 51DF0EC3188DF778002C044E /* starfull_small@2x.png */; };
 		51DF0EC8188DFB77002C044E /* ImageInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 51DF0EC7188DFB77002C044E /* ImageInfoCell.m */; };
@@ -686,6 +688,10 @@
 		51BF51941861D6E20021AA3C /* ItemCommentsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemCommentsController.h; sourceTree = "<group>"; };
 		51BF51951861D6E20021AA3C /* ItemCommentsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemCommentsController.m; sourceTree = "<group>"; };
 		51D7DF6718757F7E001807D7 /* BuyButtonDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyButtonDelegate.h; sourceTree = "<group>"; };
+		51DA093C18B83CCF0048E9D2 /* AfterPayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AfterPayController.h; sourceTree = "<group>"; };
+		51DA093D18B83CCF0048E9D2 /* AfterPayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AfterPayController.m; sourceTree = "<group>"; };
+		51DA093F18B841AD0048E9D2 /* BaseAfterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseAfterController.h; sourceTree = "<group>"; };
+		51DA094018B841AD0048E9D2 /* BaseAfterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseAfterController.m; sourceTree = "<group>"; };
 		51DF0EC2188DF778002C044E /* star_small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star_small@2x.png"; sourceTree = "<group>"; };
 		51DF0EC3188DF778002C044E /* starfull_small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "starfull_small@2x.png"; sourceTree = "<group>"; };
 		51DF0EC6188DFB77002C044E /* ImageInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageInfoCell.h; sourceTree = "<group>"; };
@@ -1355,6 +1361,15 @@
 			name = Comments;
 			sourceTree = "<group>";
 		};
+		51DA093B18B83CB00048E9D2 /* AfterPay */ = {
+			isa = PBXGroup;
+			children = (
+				51DA093C18B83CCF0048E9D2 /* AfterPayController.h */,
+				51DA093D18B83CCF0048E9D2 /* AfterPayController.m */,
+			);
+			name = AfterPay;
+			sourceTree = "<group>";
+		};
 		51EB24C118508A6D0031B0E7 /* feedback */ = {
 			isa = PBXGroup;
 			children = (
@@ -1403,6 +1418,8 @@
 				51A20ACA18B4E59E008054C4 /* OrderContentController.m */,
 				51A20ACC18B4E5C6008054C4 /* OrderAccidentController.h */,
 				51A20ACD18B4E5C6008054C4 /* OrderAccidentController.m */,
+				51DA093F18B841AD0048E9D2 /* BaseAfterController.h */,
+				51DA094018B841AD0048E9D2 /* BaseAfterController.m */,
 			);
 			name = Order;
 			sourceTree = "<group>";
@@ -2009,6 +2026,7 @@
 		E2EE653916C5294A00ED1C73 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				51DA093B18B83CB00048E9D2 /* AfterPay */,
 				514C90D6189513C9007FFFCC /* Insurance */,
 				51F0A670187BE8EF00CC9A1D /* NeedPay */,
 				51F0A64F187B96AC00CC9A1D /* Order */,
@@ -2564,6 +2582,7 @@
 				E2903BDD16F41C8500A93CBF /* PhoneView.m in Sources */,
 				E2F2881416F5948100DAE1B8 /* RefreshHelper.m in Sources */,
 				E25AF0B116F9FED900E79057 /* CIViewController.m in Sources */,
+				51DA094118B841AD0048E9D2 /* BaseAfterController.m in Sources */,
 				E23BA0E017215E770049D2CB /* SwitchCell.m in Sources */,
 				513225251897E76600C3552A /* OrderFinishedController.m in Sources */,
 				E23BA0E617216B600049D2CB /* ChooseNextCell.m in Sources */,
@@ -2649,6 +2668,7 @@
 				511567DE18A4FAC400784878 /* MyFavorController.m in Sources */,
 				514C90DD1895350A007FFFCC /* InsuranceStep1Controller.m in Sources */,
 				51F0A65D187BAB4500CC9A1D /* OrderQuantityCell.m in Sources */,
+				51DA093E18B83CCF0048E9D2 /* AfterPayController.m in Sources */,
 				51B9953018913AC900C2DD5D /* SBJSON.m in Sources */,
 				51570C1E18585401003655CC /* DetailRateCell.m in Sources */,
 				516BB5B918589ADE00D38079 /* ProviderListController.m in Sources */,

@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface OrderAccidentController : UITableViewController
+#import "BaseAfterController.h"
+@interface OrderAccidentController : BaseAfterController
 @property (nonatomic) id ins_data;
 @end

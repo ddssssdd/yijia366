@@ -52,7 +52,7 @@
                
                [[NSMutableDictionary alloc] initWithDictionary:@{@"key" :@"model",@"label":@"车款：",@"default":@"",@"placeholder":@"",@"ispassword":@"capital",@"cell":@"default",@"value":self.car_data[@"model"] }],
                [[NSMutableDictionary alloc] initWithDictionary:@{@"key" :@"exhause",@"label":@"排气量：",@"default":@"",@"placeholder":@"",@"ispassword":@"capital",@"cell":@"default",@"value":self.car_data[@"exhause"] }],
-               [[NSMutableDictionary alloc] initWithDictionary:@{@"key" :@"gear",@"label":@"排挡：",@"default":@"",@"placeholder":@"DatePickerViewController",@"ispassword":@"no",@"cell":@"default",@"value":self.car_data[@"gear"] }],
+               [[NSMutableDictionary alloc] initWithDictionary:@{@"key" :@"passengers",@"label":@"乘客数：",@"default":@"",@"placeholder":@"DatePickerViewController",@"ispassword":@"no",@"cell":@"default",@"value":self.car_data[@"passengers"] }],
                [[NSMutableDictionary alloc] initWithDictionary:@{@"key" :@"price",@"label":@"参考价格：",@"default":@"",@"placeholder":@"",@"ispassword":@"capital",@"cell":@"default",@"value":self.car_data[@"price"] }]
                ];
     id items2=@[

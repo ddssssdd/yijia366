@@ -13,6 +13,7 @@
 #import "OrderFinishedController.h"
 #import "OrderAccidentController.h"
 #import "OrderContentController.h"
+#import "AfterPayController.h"
 
 
 @interface OrderPayItem:NSObject
@@ -185,25 +186,8 @@
     NSString *url = [NSString stringWithFormat:@"order/order_payed?userid=%d&orderid=%@&orderpay=%f&bounds=%@&bankid=%@&account=%@",[AppSettings sharedSettings].userid,self.data[@"order_id"],_amount,bounds,_pay[@"bank_id"],_pay[@"bank_name"]];
     [[AppSettings sharedSettings].http get:url block:^(id json) {
         if ([[AppSettings sharedSettings] isSuccess:json]){
-
-            if ([json[@"result"][@"next_form"] isEqualToString:@"finished"]){
-                OrderFinishedController *vc = [[OrderFinishedController alloc] initWithNibName:@"OrderFinishedController" bundle:Nil];
-                vc.order_id = json[@"result"][@"order_id"];
-                vc.content = json[@"result"][@"content"];
-                [self.navigationController pushViewController:vc animated:YES];
-            }else if ([json[@"result"][@"next_form"] isEqualToString:@"address"]){
-                OrderAddressController *vc =[[OrderAddressController alloc] initWithStyle:UITableViewStyleGrouped];
-                vc.address_data = json[@"result"];
-                [self.navigationController pushViewController:vc animated:YES];
-            }else if ([json[@"result"][@"next_form"] isEqualToString:@"ins_contents"]){
-                OrderContentController *vc =[[OrderContentController alloc] initWithStyle:UITableViewStyleGrouped];
-                vc.ins_data = json[@"result"];
-                [self.navigationController pushViewController:vc animated:YES];
-            }else if ([json[@"result"][@"next_form"] isEqualToString:@"ins_accident"]){
-                OrderAccidentController *vc =[[OrderAccidentController alloc] initWithStyle:UITableViewStyleGrouped];
-                vc.ins_data = json[@"result"];
-                [self.navigationController pushViewController:vc animated:YES];
-            }
+            AfterPayController *vc = [[AfterPayController alloc] init];
+            [vc pushToNext:self.navigationController json:json hasBack:NO];
             
         }
     }];

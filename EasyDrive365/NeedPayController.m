@@ -34,7 +34,7 @@
     [super viewDidLoad];
 
     [self load_data];
-    self.title=[self.status isEqualToString:@"finished"]?@"我的订单": @"待付款";
+    self.title=@"我的订单";//[self.status isEqualToString:@"finished"]?@"我的订单": @"待付款";
 }
 
 - (void)didReceiveMemoryWarning
@@ -76,6 +76,10 @@
     payCell.delegate = self;
     if ([self.status isEqualToString:@"finished"]){
         [payCell.btnPay removeFromSuperview];
+        UILabel *label = [[UILabel alloc] initWithFrame:payCell.btnPay.frame];
+        label.text = item[@"order_time"];
+        label.font =[UIFont fontWithName:@"Arial" size:10];
+        [payCell addSubview:label];
     }
     return cell;
 }

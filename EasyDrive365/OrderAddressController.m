@@ -39,7 +39,7 @@
     [super viewDidLoad];
 
     self.title = @"配送信息";
-    [self.navigationItem setHidesBackButton:YES];
+    
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStyleBordered target:self action:@selector(finished)];
     _canChooseWantGetBySelf =[self.address_data[@"a_visible"] intValue]==1;
 }
@@ -65,8 +65,10 @@
     [[AppSettings sharedSettings].http get:url block:^(id json) {
         if ([[AppSettings sharedSettings] isSuccess:json]){
             OrderFinishedController *vc = [[OrderFinishedController alloc] initWithNibName:@"OrderFinishedController" bundle:Nil];
-            vc.order_id = json[@"result"][@"order_id"];
+           /* vc.order_id = json[@"result"][@"order_id"];
             vc.content = json[@"result"][@"content"];
+            */
+            vc.content_data = json[@"result"];
             [self.navigationController pushViewController:vc animated:YES];
         }
     }];

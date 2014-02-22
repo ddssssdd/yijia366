@@ -12,13 +12,15 @@
 #import "AppSettings.h"
 #import "UIImageView+AFNetworking.h"
 #import "NewOrderController.h"
-
+#import "AfterPayController.h"
 @interface OrderDetailController ()<BuyButtonViewDelegate>{
     id _list;
     id _sectionList;
     NSString *_order_status;
     NSString *_order_status_name;
     BuyButtonView *_buttonView;
+    NSString *_next_form;
+    int _is_exform;
     int _footer_index;
 }
 
@@ -78,11 +80,12 @@
         productCell.lblStand_price.strikeThroughEnabled = YES;
         productCell.lblDiscount.text = item[@"discount"];
         productCell.lblBuyer.text = item[@"buyer"];
-        productCell.lblStatus.text = _order_status_name;
+        productCell.lblStatus.text =@"";// _order_status_name;
     }else{
         cell =[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
         cell.textLabel.text = item[@"title"];
         cell.detailTextLabel.text = item[@"detail"];
+        cell.detailTextLabel.font =[UIFont fontWithName:@"Arial" size:12];
     }
     
     
@@ -132,6 +135,9 @@
             _footer_index = -1;
             _order_status = json[@"result"][@"order_status"];
             _order_status_name =json[@"result"][@"order_status_name"];
+            _next_form = json[@"result"][@"next_form"];
+            _is_exform = [json[@"result"][@"is_exform"] intValue];
+            [self setup_exform];
             int order_count=0;
             //goods information
             for (id good in json[@"result"][@"goods"]) {
@@ -148,7 +154,39 @@
                                @{@"title":@"数量",@"detail":[NSString stringWithFormat:@"%d",order_count]},
                                @{@"title":@"总价",@"detail":json[@"result"][@"order_total"]}]];
             //if else depends on order_status
-            //if ([_order_status isEqualToString:@"notpay"]){
+            if ([_order_status isEqualToString:@"notpay"]){
+                //nothing
+            }else{
+                if ([_next_form isEqualToString:@"address"]){
+                    [_sectionList addObject:@"配送信息"];
+                    [_list addObject:@[@{@"title":@"配送方式",@"detail":json[@"result"][@"shipping"]},
+                                       @{@"title":@"联系人",@"detail":json[@"result"][@"name"]},
+                                       @{@"title":@"电话",@"detail":json[@"result"][@"phone"]},
+                                       @{@"title":@"地址",@"detail":json[@"result"][@"address"]}]];
+                }else if ([_next_form isEqualToString:@"ins_contents"]){
+                    [_sectionList addObject:@"家庭财产险信息"];
+                    [_list addObject:@[
+                                       @{@"title":@"被保险人姓名",@"detail":json[@"result"][@"name"]},
+                                       @{@"title":@"电话",@"detail":json[@"result"][@"phone"]},
+                                       @{@"title":@"地址",@"detail":json[@"result"][@"address"]},
+                                       @{@"title":@"身份证号",@"detail":json[@"result"][@"idcard"]}]];
+                }else if ([_next_form isEqualToString:@"ins_accident"]){
+                    [_sectionList addObject:@"意外伤害险信息"];
+                    [_list addObject:@[
+                                       @{@"title":@"被保险人姓名",@"detail":json[@"result"][@"name"]},
+                                       @{@"title":@"身份证号",@"detail":json[@"result"][@"idcard"]},
+                                       @{@"title":@"电话",@"detail":json[@"result"][@"phone"]},
+                                       @{@"title":@"职业类别",@"detail":json[@"result"][@"typename"]},
+                                       ]];
+                }else if ([_next_form isEqualToString:@"finished"]){
+                    [_sectionList addObject:@"附加信息"];
+                    [_list addObject:@[
+                                       @{@"title":@"内容",@"detail":json[@"result"][@"content"]},
+                                      
+                                       ]];
+                }
+            }
+            
             if ([_order_status isEqualToString:@"finished"]){
                 //price
                 [_sectionList addObject:@"应付款"];
@@ -164,13 +202,23 @@
                     [paylist addObject:@{@"title":pay[@"bank_name"],@"detail":pay[@"account"]}];
                 }
                 [_list addObject:paylist];
-            }else{
-                //nothing for now;
             }
+            
             [self.tableView reloadData];
             
         }
     }];
 }
-
+-(void)setup_exform{
+    if (_is_exform==1){
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"编辑" style:UIBarButtonItemStyleBordered target:self action:@selector(edit_exform)];
+        
+    }else{
+        self.navigationItem.rightBarButtonItem = nil;
+    }
+}
+-(void)edit_exform{
+    AfterPayController *vc = [[AfterPayController alloc] init];
+    [vc pushToNext:self.navigationController order_id:self.order_id];
+}
 @end
