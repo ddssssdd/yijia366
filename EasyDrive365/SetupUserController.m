@@ -126,6 +126,7 @@
     }else if (indexPath.section==1){ //avatar
         cell =[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         cell.textLabel.text =@"设置头像";
+        /*
         if (!_imageCell){
             _imageCell= [[UIImageView alloc] initWithFrame:CGRectMake(240, 2, 40, 40)];
             _imageCell.contentMode = UIViewContentModeScaleAspectFill;
@@ -133,7 +134,13 @@
             _imageCell.userInteractionEnabled = YES;
             
             [_imageCell addGestureRecognizer:tap];
-        }
+        }*/
+        _imageCell= [[UIImageView alloc] initWithFrame:CGRectMake(240, 2, 40, 40)];
+        _imageCell.contentMode = UIViewContentModeScaleAspectFill;
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapOnImage)];
+        _imageCell.userInteractionEnabled = YES;
+        
+        [_imageCell addGestureRecognizer:tap];
         [_imageCell removeFromSuperview];
         [_imageCell setImageWithURLWithoutCache:[NSURL URLWithString:_user[@"photourl"]] placeholderImage:[UIImage imageNamed:@"m"]];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -353,8 +360,11 @@
         if ([[AppSettings sharedSettings] isSuccess:jsonResult]){
             //[_imageCell setImageWithURL:[NSURL URLWithString:jsonResult[@"result"]] placeholderImage:[UIImage imageNamed:@"m"]];
             [[NSNotificationCenter defaultCenter] postNotificationName:UPDATE_USER_PROFILE object:nil];
+            /*
             _user[@"photourl"]=jsonResult[@"result"];
             [self.tableView reloadData];
+             */
+            _imageCell.image = image;
         }
         if (![[jsonResult objectForKey:@"status"] isEqualToString:@"success"]){
             NSString *message = @"发生异常，请稍后再试.";

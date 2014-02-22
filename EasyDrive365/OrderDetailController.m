@@ -13,6 +13,8 @@
 #import "UIImageView+AFNetworking.h"
 #import "NewOrderController.h"
 #import "AfterPayController.h"
+#import "UploadPhotoController.h"
+
 @interface OrderDetailController ()<BuyButtonViewDelegate>{
     id _list;
     id _sectionList;
@@ -22,6 +24,7 @@
     NSString *_next_form;
     int _is_exform;
     int _footer_index;
+    int _is_upload;
 }
 
 @end
@@ -86,6 +89,11 @@
         cell.textLabel.text = item[@"title"];
         cell.detailTextLabel.text = item[@"detail"];
         cell.detailTextLabel.font =[UIFont fontWithName:@"Arial" size:12];
+        if (item[@"key"]){
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        }else{
+            cell.accessoryType = UITableViewCellAccessoryNone;
+        }
     }
     
     
@@ -96,6 +104,8 @@
     id item = [[_list objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
     if (item[@"pic_url"]){
         return 120.0f;
+    }else if (item[@"height"]){
+        return [item[@"height"] floatValue];
     }else{
         return 44.0f;
     }
@@ -121,6 +131,15 @@
     }
     return  22.0f;
 }
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    id item = [[_list objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+    if (item[@"key"] && [item[@"key"] isEqualToString:@"upload"]){
+        UploadPhotoController *vc = [[UploadPhotoController alloc] initWithStyle:UITableViewStyleGrouped];
+        vc.order_id = self.order_id;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+}
+
 -(void)buyButtonPressed:(BuyButtonView *)sender data:(id)data{
     NewOrderController *vc = [[NewOrderController alloc] initWithStyle:UITableViewStyleGrouped];
     vc.order_id = self.order_id;
@@ -137,6 +156,7 @@
             _order_status_name =json[@"result"][@"order_status_name"];
             _next_form = json[@"result"][@"next_form"];
             _is_exform = [json[@"result"][@"is_exform"] intValue];
+            _is_upload = [json[@"result"][@"is_upload"] intValue];
             [self setup_exform];
             int order_count=0;
             //goods information
@@ -157,6 +177,10 @@
             if ([_order_status isEqualToString:@"notpay"]){
                 //nothing
             }else{
+                if (_is_upload==1){
+                    [_sectionList addObject:@"上传照片"];
+                    [_list addObject:@[@{@"title":@"照片",@"detail":@"上传",@"key":@"upload"}]];
+                }
                 if ([_next_form isEqualToString:@"address"]){
                     [_sectionList addObject:@"配送信息"];
                     [_list addObject:@[@{@"title":@"配送方式",@"detail":json[@"result"][@"shipping"]},
@@ -181,7 +205,7 @@
                 }else if ([_next_form isEqualToString:@"finished"]){
                     [_sectionList addObject:@"附加信息"];
                     [_list addObject:@[
-                                       @{@"title":@"内容",@"detail":json[@"result"][@"content"]},
+                                       @{@"title":@"内容",@"detail":json[@"result"][@"content"],@"height":@"80"},
                                       
                                        ]];
                 }

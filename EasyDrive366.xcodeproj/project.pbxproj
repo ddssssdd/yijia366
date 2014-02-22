@@ -182,6 +182,7 @@
 		51BF51961861D6E20021AA3C /* ItemCommentsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51BF51951861D6E20021AA3C /* ItemCommentsController.m */; };
 		51DA093E18B83CCF0048E9D2 /* AfterPayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51DA093D18B83CCF0048E9D2 /* AfterPayController.m */; };
 		51DA094118B841AD0048E9D2 /* BaseAfterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51DA094018B841AD0048E9D2 /* BaseAfterController.m */; };
+		51DA094418B8A3330048E9D2 /* UploadPhotoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51DA094318B8A3330048E9D2 /* UploadPhotoController.m */; };
 		51DF0EC4188DF778002C044E /* star_small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 51DF0EC2188DF778002C044E /* star_small@2x.png */; };
 		51DF0EC5188DF778002C044E /* starfull_small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 51DF0EC3188DF778002C044E /* starfull_small@2x.png */; };
 		51DF0EC8188DFB77002C044E /* ImageInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 51DF0EC7188DFB77002C044E /* ImageInfoCell.m */; };
@@ -692,6 +693,8 @@
 		51DA093D18B83CCF0048E9D2 /* AfterPayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AfterPayController.m; sourceTree = "<group>"; };
 		51DA093F18B841AD0048E9D2 /* BaseAfterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseAfterController.h; sourceTree = "<group>"; };
 		51DA094018B841AD0048E9D2 /* BaseAfterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseAfterController.m; sourceTree = "<group>"; };
+		51DA094218B8A3330048E9D2 /* UploadPhotoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadPhotoController.h; sourceTree = "<group>"; };
+		51DA094318B8A3330048E9D2 /* UploadPhotoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadPhotoController.m; sourceTree = "<group>"; };
 		51DF0EC2188DF778002C044E /* star_small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star_small@2x.png"; sourceTree = "<group>"; };
 		51DF0EC3188DF778002C044E /* starfull_small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "starfull_small@2x.png"; sourceTree = "<group>"; };
 		51DF0EC6188DFB77002C044E /* ImageInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageInfoCell.h; sourceTree = "<group>"; };
@@ -1434,6 +1437,8 @@
 				5197B78D187D32E800D906E2 /* NeedPayItemCell.xib */,
 				510041B6187D3ED600325F09 /* OrderDetailController.h */,
 				510041B7187D3ED600325F09 /* OrderDetailController.m */,
+				51DA094218B8A3330048E9D2 /* UploadPhotoController.h */,
+				51DA094318B8A3330048E9D2 /* UploadPhotoController.m */,
 			);
 			name = NeedPay;
 			sourceTree = "<group>";
@@ -2611,6 +2616,7 @@
 				E27A7D5F17B13DBE009895E6 /* SignupStep1ViewController.m in Sources */,
 				E27A7D6217B14081009895E6 /* SignupStep2ViewController.m in Sources */,
 				E27A7D6517B14091009895E6 /* SignupStep3ViewController.m in Sources */,
+				51DA094418B8A3330048E9D2 /* UploadPhotoController.m in Sources */,
 				E223299B17BBD4F3000035B1 /* ShowActivateTableController.m in Sources */,
 				51B9953318913AC900C2DD5D /* SBJsonWriter.m in Sources */,
 				E2611B8417CB7CC500E92897 /* ShowLocationViewController.m in Sources */,
