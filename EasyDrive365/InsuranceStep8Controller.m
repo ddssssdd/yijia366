@@ -89,11 +89,13 @@
         [imageCell addGestureRecognizer:tap];
     
         [imageCell removeFromSuperview];
+        /*
         if (indexPath.row==0){
             item[@"photourl"]=@"http://e.hiphotos.baidu.com/image/w%3D2048/sign=6c91e31feb24b899de3c7e385a3e1c95/730e0cf3d7ca7bcb4eef0e30bc096b63f624a81d.jpg";
         }else if (indexPath.row==1){
             item[@"photourl"]=@"http://h.hiphotos.baidu.com/image/w%3D2048/sign=443597d217ce36d3a20484300ecb3b87/3801213fb80e7bec4b6768e92d2eb9389b506b7c.jpg";
         }
+         */
         if ([item[@"photourl"] hasPrefix:@"http://"]){
             [imageCell setImageWithURLWithoutCache:[NSURL URLWithString:item[@"photourl"]] placeholderImage:Nil];
             //[imageCell setImageWithURL:[NSURL URLWithString:item[@"photourl"]]];

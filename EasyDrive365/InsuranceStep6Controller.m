@@ -129,6 +129,8 @@
             CGFloat amount = [self.order_data[_useDiscount? @"order_pay":@"order_pay_2"] floatValue];
             [[AppSettings sharedSettings] pay:@"在线购买保险" description:self.order_data[@"order_id"] amount:amount order_no:self.order_data[@"order_id"]];
             //[self handleAfterPay:nil];
+        }else{
+            //[self handleAfterPay:nil];
         }
     }
 }
