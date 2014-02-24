@@ -8,6 +8,7 @@
 
 #import "InsuranceDetailController.h"
 #import "AppSettings.h"
+#import "InsuranceListController.h"
 @interface InsuranceDetailController (){
     id _list;
 }
@@ -32,9 +33,12 @@
     self.title =@"我的保险";
     self.insurance_id = @"123";
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.navigationItem.rightBarButtonItem =[[UIBarButtonItem alloc] initWithTitle:@"投保单" style:UIBarButtonItemStyleBordered target:self action:@selector(openitems)];
     [self load_data];
+}
+-(void)openitems{
+    InsuranceListController *vc = [[InsuranceListController alloc] initWithStyle:UITableViewStyleGrouped];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)didReceiveMemoryWarning

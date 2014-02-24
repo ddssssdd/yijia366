@@ -9,5 +9,6 @@
 #import "CustomEditTableViewController.h"
 
 @interface InsuranceStep2Controller : CustomEditTableViewController
+@property (nonatomic) NSString *ins_id;
 
 @end

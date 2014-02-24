@@ -184,6 +184,7 @@
 		51DA094118B841AD0048E9D2 /* BaseAfterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51DA094018B841AD0048E9D2 /* BaseAfterController.m */; };
 		51DA094418B8A3330048E9D2 /* UploadPhotoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51DA094318B8A3330048E9D2 /* UploadPhotoController.m */; };
 		51DA094618BAE4570048E9D2 /* NeedPayItemCell2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51DA094518BAE4570048E9D2 /* NeedPayItemCell2.xib */; };
+		51DA094918BB0ED60048E9D2 /* InsuranceListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51DA094818BB0ED60048E9D2 /* InsuranceListController.m */; };
 		51DF0EC4188DF778002C044E /* star_small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 51DF0EC2188DF778002C044E /* star_small@2x.png */; };
 		51DF0EC5188DF778002C044E /* starfull_small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 51DF0EC3188DF778002C044E /* starfull_small@2x.png */; };
 		51DF0EC8188DFB77002C044E /* ImageInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 51DF0EC7188DFB77002C044E /* ImageInfoCell.m */; };
@@ -697,6 +698,8 @@
 		51DA094218B8A3330048E9D2 /* UploadPhotoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadPhotoController.h; sourceTree = "<group>"; };
 		51DA094318B8A3330048E9D2 /* UploadPhotoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadPhotoController.m; sourceTree = "<group>"; };
 		51DA094518BAE4570048E9D2 /* NeedPayItemCell2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NeedPayItemCell2.xib; sourceTree = "<group>"; };
+		51DA094718BB0ED60048E9D2 /* InsuranceListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InsuranceListController.h; sourceTree = "<group>"; };
+		51DA094818BB0ED60048E9D2 /* InsuranceListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InsuranceListController.m; sourceTree = "<group>"; };
 		51DF0EC2188DF778002C044E /* star_small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star_small@2x.png"; sourceTree = "<group>"; };
 		51DF0EC3188DF778002C044E /* starfull_small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "starfull_small@2x.png"; sourceTree = "<group>"; };
 		51DF0EC6188DFB77002C044E /* ImageInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageInfoCell.h; sourceTree = "<group>"; };
@@ -1172,6 +1175,8 @@
 				514C90F518962DD1007FFFCC /* InsuranceStep8Controller.m */,
 				514C90F718963E1F007FFFCC /* InsuranceDetailController.h */,
 				514C90F818963E1F007FFFCC /* InsuranceDetailController.m */,
+				51DA094718BB0ED60048E9D2 /* InsuranceListController.h */,
+				51DA094818BB0ED60048E9D2 /* InsuranceListController.m */,
 			);
 			name = Insurance;
 			sourceTree = "<group>";
@@ -2548,6 +2553,7 @@
 				E2EE65DC16CC9E4600ED1C73 /* InsuranceRecordsViewController.m in Sources */,
 				E2EE65E116CCA13E00ED1C73 /* MaintainListViewController.m in Sources */,
 				514C90F318962731007FFFCC /* InsuranceStep7Controller.m in Sources */,
+				51DA094918BB0ED60048E9D2 /* InsuranceListController.m in Sources */,
 				E2EE65E616CCA4C600ED1C73 /* MaintainRecordDetailViewController.m in Sources */,
 				E2EE65EA16CD099000ED1C73 /* NetViewController.m in Sources */,
 				E24A043716D0B40500B7A602 /* HttpHelper.m in Sources */,

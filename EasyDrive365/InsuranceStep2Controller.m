@@ -45,9 +45,17 @@
 }
 -(void)initData{
     
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"上一步" style:UIBarButtonSystemItemAction target:self action:@selector(backTo)];
+   
     
-    NSString *url = [NSString stringWithFormat:@"ins/carins_info?userid=%d",[AppSettings sharedSettings].userid];
+    NSString *url;
+    if (self.ins_id){
+         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"投保单" style:UIBarButtonSystemItemAction target:self action:@selector(backTo)];
+        url = [NSString stringWithFormat:@"ins/carins_info?userid=%d&id=%@",[AppSettings sharedSettings].userid,self.ins_id];
+    }else{
+         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"上一步" style:UIBarButtonSystemItemAction target:self action:@selector(backTo)];
+        url = [NSString stringWithFormat:@"ins/carins_info?userid=%d",[AppSettings sharedSettings].userid];
+    }
+    
     [[AppSettings sharedSettings].http get:url block:^(id json) {
         NSString *r_date = json[@"result"][@"registration_date"];
         if ([r_date length]>10){
