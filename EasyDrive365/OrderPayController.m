@@ -137,6 +137,8 @@
             _amount = [_payItem.detail floatValue];
             [[AppSettings sharedSettings] pay:_name description:_description amount:_amount order_no:self.data[@"order_id"]];
             //[self handleAfterPay:Nil];
+        }else{
+            [self handleAfterPay:Nil];
         }
     }
 }

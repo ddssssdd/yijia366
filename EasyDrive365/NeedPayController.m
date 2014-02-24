@@ -62,7 +62,12 @@
     
     if (cell == nil){
         //cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-        cell = [[[NSBundle mainBundle] loadNibNamed:@"NeedPayItemCell" owner:nil options:nil] objectAtIndex:0];
+        if ([self.status isEqualToString:@"finished"]){
+            cell = [[[NSBundle mainBundle] loadNibNamed:@"NeedPayItemCell2" owner:nil options:nil] objectAtIndex:0];
+        }else{
+            cell = [[[NSBundle mainBundle] loadNibNamed:@"NeedPayItemCell" owner:nil options:nil] objectAtIndex:0];
+        }
+        
     }
     id item = [_list objectAtIndex:indexPath.row];
     NeedPayItemCell *payCell = (NeedPayItemCell *)cell;
@@ -75,11 +80,14 @@
     payCell.lblQuantity.text = product[@"quantity"];
     payCell.delegate = self;
     if ([self.status isEqualToString:@"finished"]){
+        payCell.lblTime.text = item[@"order_time"];
+        /*
         [payCell.btnPay removeFromSuperview];
         UILabel *label = [[UILabel alloc] initWithFrame:payCell.btnPay.frame];
         label.text = item[@"order_time"];
         label.font =[UIFont fontWithName:@"Arial" size:10];
         [payCell addSubview:label];
+         */
     }
     return cell;
 }
