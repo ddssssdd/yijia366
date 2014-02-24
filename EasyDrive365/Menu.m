@@ -30,6 +30,7 @@
 #import "InsuranceStep1Controller.h"
 
 #import "AddCardStep1ControllerViewController.h"
+#import "InsuranceListController.h"
 
 @implementation Menu
 @synthesize list = _list;
@@ -69,7 +70,8 @@
                           [[MenuItem alloc] initWithName:@"09" title:@"商业险" description:defaultInfo imagePath:@"main_menu/t.png" phone:defaultPhone],
                          
                           [[MenuItem alloc] initWithName:@"11" title:@"购买车险" description:defaultInfo imagePath:@"main_menu/r.png" phone:defaultPhone],
-                          [[MenuItem alloc] initWithName:@"10" title:@"购买意外险" description:defaultInfo imagePath:@"main_menu/n.png" phone:defaultPhone]];
+                          [[MenuItem alloc] initWithName:@"10" title:@"购买意外险" description:defaultInfo imagePath:@"main_menu/n.png" phone:defaultPhone],
+                          [[MenuItem alloc] initWithName:@"13" title:@"投保单" description:defaultInfo imagePath:@"main_menu/r.png" phone:defaultPhone]];
     }
     return self;
 }
@@ -177,6 +179,12 @@
         vc.url = url;
         [controller pushViewController:vc animated:YES];
 
+    }
+    if ([key isEqualToString:@"13"]){
+        InsuranceListController *vc = [[InsuranceListController alloc] initWithStyle:UITableViewStyleGrouped];
+        vc.title = title;
+        [controller pushViewController:vc animated:YES];
+        
     }
 }
 
