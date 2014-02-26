@@ -181,7 +181,7 @@
 
     }
     if ([key isEqualToString:@"13"]){
-        InsuranceListController *vc = [[InsuranceListController alloc] initWithStyle:UITableViewStyleGrouped];
+        InsuranceListController *vc = [[InsuranceListController alloc] initWithStyle:UITableViewStylePlain];
         vc.title = title;
         [controller pushViewController:vc animated:YES];
         

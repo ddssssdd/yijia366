@@ -9,7 +9,7 @@
 #import "InsuranceListController.h"
 #import "AppSettings.h"
 #import "InsuranceStep2Controller.h"
-
+#import "InsuranceListCell.h"
 @interface InsuranceListController (){
     id _list;
 }
@@ -67,10 +67,15 @@
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell==nil){
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[[NSBundle mainBundle] loadNibNamed:@"InsuranceListCell" owner:nil options:nil] objectAtIndex:0];
     }
     id item = [_list objectAtIndex:indexPath.row];
     //car_id  price_time  status_name
+    InsuranceListCell *aCell = (InsuranceListCell *)cell;
+    aCell.lblTitle.text = item[@"car_id"];
+    aCell.lblTime.text = item[@"price_time"];
+    aCell.lblStatus.text = item[@"status_name"];
+    /*
     
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 80, 24)];
     label.font=[UIFont fontWithName:@"Arial" size:12];
@@ -90,6 +95,7 @@
     label3.backgroundColor = [UIColor clearColor];
     
     [cell addSubview:label3];
+     */
     
     return cell;
 }

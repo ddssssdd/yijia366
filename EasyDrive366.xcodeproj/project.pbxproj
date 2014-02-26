@@ -151,6 +151,8 @@
 		51A20AC818B453B9008054C4 /* TaskDispatch.m in Sources */ = {isa = PBXBuildFile; fileRef = 51A20AC718B453B9008054C4 /* TaskDispatch.m */; };
 		51A20ACB18B4E59E008054C4 /* OrderContentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51A20ACA18B4E59E008054C4 /* OrderContentController.m */; };
 		51A20ACE18B4E5C6008054C4 /* OrderAccidentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51A20ACD18B4E5C6008054C4 /* OrderAccidentController.m */; };
+		51B0D64F18BDCF2100F3B33F /* InsuranceListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 51B0D64E18BDCF2100F3B33F /* InsuranceListCell.m */; };
+		51B0D65118BDCF3A00F3B33F /* InsuranceListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51B0D65018BDCF3A00F3B33F /* InsuranceListCell.xib */; };
 		51B26A1A1863316700C20C56 /* BoundListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 51B26A191863316700C20C56 /* BoundListCell.m */; };
 		51B26A1C1863317700C20C56 /* BoundListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51B26A1B1863317700C20C56 /* BoundListCell.xib */; };
 		51B26A1F1863354200C20C56 /* BoundHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 51B26A1E1863354200C20C56 /* BoundHeader.m */; };
@@ -642,6 +644,9 @@
 		51A20ACA18B4E59E008054C4 /* OrderContentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderContentController.m; sourceTree = "<group>"; };
 		51A20ACC18B4E5C6008054C4 /* OrderAccidentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderAccidentController.h; sourceTree = "<group>"; };
 		51A20ACD18B4E5C6008054C4 /* OrderAccidentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderAccidentController.m; sourceTree = "<group>"; };
+		51B0D64D18BDCF2100F3B33F /* InsuranceListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InsuranceListCell.h; sourceTree = "<group>"; };
+		51B0D64E18BDCF2100F3B33F /* InsuranceListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InsuranceListCell.m; sourceTree = "<group>"; };
+		51B0D65018BDCF3A00F3B33F /* InsuranceListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InsuranceListCell.xib; sourceTree = "<group>"; };
 		51B26A181863316700C20C56 /* BoundListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoundListCell.h; sourceTree = "<group>"; };
 		51B26A191863316700C20C56 /* BoundListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoundListCell.m; sourceTree = "<group>"; };
 		51B26A1B1863317700C20C56 /* BoundListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BoundListCell.xib; sourceTree = "<group>"; };
@@ -1177,6 +1182,9 @@
 				514C90F818963E1F007FFFCC /* InsuranceDetailController.m */,
 				51DA094718BB0ED60048E9D2 /* InsuranceListController.h */,
 				51DA094818BB0ED60048E9D2 /* InsuranceListController.m */,
+				51B0D64D18BDCF2100F3B33F /* InsuranceListCell.h */,
+				51B0D64E18BDCF2100F3B33F /* InsuranceListCell.m */,
+				51B0D65018BDCF3A00F3B33F /* InsuranceListCell.xib */,
 			);
 			name = Insurance;
 			sourceTree = "<group>";
@@ -2388,6 +2396,7 @@
 				5189CB691864160800DB9A26 /* FriendHeader.xib in Resources */,
 				E212279A16FA069B00B494E0 /* 0051@2x.png in Resources */,
 				E212279D16FA06D200B494E0 /* 0228.png in Resources */,
+				51B0D65118BDCF3A00F3B33F /* InsuranceListCell.xib in Resources */,
 				E212279E16FA06D200B494E0 /* 0228@2x.png in Resources */,
 				E23BA0E317215E910049D2CB /* SwitchCell.xib in Resources */,
 				51160F7F1861D94E00AA15D3 /* CommentItemCell.xib in Resources */,
@@ -2671,6 +2680,7 @@
 				E233864E1816CA020035C405 /* TextLabelCell.m in Sources */,
 				E2CCBBD71817E2CF008DC8F6 /* AddCardStep2Controller.m in Sources */,
 				5197B78C187D32D200D906E2 /* NeedPayItemCell.m in Sources */,
+				51B0D64F18BDCF2100F3B33F /* InsuranceListCell.m in Sources */,
 				5104AA5F184F3AF9004B4D21 /* TDBadgedCell.m in Sources */,
 				51EB24C418508A9A0031B0E7 /* FeedbackController2.m in Sources */,
 				51570C0018574E1B003655CC /* GoodsListController.m in Sources */,
