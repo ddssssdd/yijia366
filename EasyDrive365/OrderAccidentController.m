@@ -37,7 +37,7 @@
     self.title = @"配送信息";
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStyleBordered target:self action:@selector(finished)];
-    _type = self.ins_data[@"list_type"][0];
+    _type = @{@"label":self.ins_data[@"type_name"],@"value":self.ins_data[@"type"]};
 }
 -(void)finished{
     //complete
@@ -148,7 +148,7 @@
     }else if (indexPath.section==1){
         id item = [self.ins_data[@"list_type"] objectAtIndex:indexPath.row];
         cell.textLabel.text = item[@"label"];
-        if (item==_type){
+        if ([item[@"value"] isEqualToString: _type[@"value"]]){
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
         }else{
             cell.accessoryType = UITableViewCellAccessoryNone;
@@ -175,7 +175,7 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section==1){
         id item = [self.ins_data[@"list_type"] objectAtIndex:indexPath.row];
-        if (item==_type){
+        if ([item[@"value"] isEqualToString:  _type[@"value"]]){
             _type =nil;
         }else{
             _type = item;
