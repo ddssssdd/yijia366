@@ -65,7 +65,7 @@
 }
 -(void)save:(id)sender{
     
-    
+    /*
     for (UIView *v in [self.tableView subviews]) {
         if ([v isKindOfClass:[EditTextCell class]]){
             EditTextCell *cell = (EditTextCell *)v;
@@ -74,6 +74,7 @@
         }
         
     }
+     */
     [_result setObject:[NSString stringWithFormat:@"%d", [AppSettings sharedSettings].userid] forKey:@"user_id"];
     if ([self.delegate saveData:_result]){
          [self.navigationController popViewControllerAnimated:YES];
@@ -128,6 +129,8 @@
             cell =[cells objectAtIndex:0];
             
             cell.valueText.delegate = self;
+            EditTextCell *aCell = (EditTextCell *)cell;
+            [aCell.valueText addTarget:aCell action:@selector(textChanged2:) forControlEvents:UIControlEventEditingChanged];
             item[@"description"]=cell;
            // [item setObject:cell forKey:@"edit_text_cell"];
             if (item[@"unit"]){
@@ -144,6 +147,7 @@
     cell.valueText.text = [NSString stringWithFormat:@"%@",value];
     cell.key = item[@"key"];
     cell.valueText.tag = indexPath.row;
+    cell.targetObject = _result;
     if ([item[@"mode"] isEqual:@"number"]){
         cell.valueText.keyboardType = UIKeyboardTypeNumberPad;
     }

@@ -39,5 +39,10 @@
         self.targetObject[@"value"]=[(UITextField*)sender text];
     }
 }
+-(void)textChanged2:(id)sender{
 
+    if (self.targetObject){
+        self.targetObject[self.key]=[(UITextField*)sender text];
+    }
+}
 @end

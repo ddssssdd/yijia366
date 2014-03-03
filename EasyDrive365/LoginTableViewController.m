@@ -52,7 +52,10 @@
     NSLog(@"%@",notification.object);
     [self setupLoginUser:notification.object];
     if ([_remember isEqualToString:@"1"]){
-        [self login:_username password:_password remember:_remember];
+        //[self login:_username password:_password remember:_remember];
+        [[AppSettings sharedSettings] login:_username password:_password remember:_remember callback:^(BOOL loginSuccess) {
+            [self.navigationController popToRootViewControllerAnimated:YES];
+        }];
     }else{
         [self initData];
         [self.tableView reloadData];
@@ -83,7 +86,7 @@
     id items2=@[
         [[NSMutableDictionary alloc] initWithDictionary:
          @{@"key" :@"remember",@"label":@"记住密码",@"default":@"",@"placeholder":@"",@"value":_remember,@"cell":@"SwitchCell" }],
-            [[NSMutableDictionary alloc] initWithDictionary: @{@"key" :@"remember",@"label":@"选择曾经登录用户",@"default":@"",@"placeholder":@"",@"value":@"",@"cell":@"ChooseNextCell" }]];
+            [[NSMutableDictionary alloc] initWithDictionary: @{@"key" :@"choose_next",@"label":@"选择曾经登录用户",@"default":@"",@"placeholder":@"",@"value":@"",@"cell":@"ChooseNextCell" }]];
     _list=[NSMutableArray arrayWithArray: @[
            @{@"count" : @1,@"list":@[@{@"cell":@"IntroduceCell"}],@"height":@100.0f},
            @{@"count" : @2,@"list":items,@"height":@44.0f},
@@ -113,7 +116,7 @@
         [self.navigationController popToRootViewControllerAnimated:YES];
     }];
 }
-
+/*
 - (void)login:(NSString *)username password:(NSString *)password remember:(NSString *)remember {
     //[self doLogin];
     NSString *path  =[NSString stringWithFormat:@"api/login?username=%@&password=%@",username,password];
@@ -138,6 +141,7 @@
     }];
     
 }
+ */
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section==2 && indexPath.row==1){
         ChooseUserController *vc = [[ChooseUserController alloc] initWithNibName:@"ChooseUserController" bundle:nil];

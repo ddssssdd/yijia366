@@ -21,4 +21,5 @@
 
 -(void)setUnit:(NSString *)unit;
 -(void)textChanged:(id)sender;
+-(void)textChanged2:(id)sender;
 @end
