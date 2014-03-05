@@ -54,10 +54,10 @@
         NSString *defaultInfo = @"";
         NSString *defaultPhone=@"";
         _list=[NSArray arrayWithObjects:[[MenuItem alloc] initWithName:@"01" title:@"最新信息" description:defaultInfo imagePath:@"main_menu/m.png" phone:defaultPhone],
-            [[MenuItem alloc] initWithName:@"02" title:@"紧急救助" description:defaultInfo imagePath:@"main_menu/n.png" phone:defaultPhone],
+            //[[MenuItem alloc] initWithName:@"02" title:@"紧急救助" description:defaultInfo imagePath:@"main_menu/n.png" phone:defaultPhone],
             /*[[MenuItem alloc] initWithName:@"03" title:@"事故救援" description:defaultInfo imagePath:@"0003.png" phone:defaultPhone],*/
             [[MenuItem alloc] initWithName:@"04" title:@"保养建议" description:defaultInfo imagePath:@"main_menu/g.png" phone:defaultPhone],
-            [[MenuItem alloc] initWithName:@"12" title:@"车务服务" description:defaultInfo imagePath:@"main_menu/o.png" phone:defaultPhone],
+            //[[MenuItem alloc] initWithName:@"12" title:@"车务服务" description:defaultInfo imagePath:@"main_menu/o.png" phone:defaultPhone],
                
                [[MenuItem alloc] initWithName:@"06" title:@"我的车辆" description:defaultInfo imagePath:@"main_menu/e.png" phone:defaultPhone],
                [[MenuItem alloc] initWithName:@"05" title:@"驾驶证" description:defaultInfo imagePath:@"main_menu/f.png" phone:defaultPhone],
@@ -70,8 +70,8 @@
                           [[MenuItem alloc] initWithName:@"09" title:@"商业险" description:defaultInfo imagePath:@"main_menu/t.png" phone:defaultPhone],
                          
                           [[MenuItem alloc] initWithName:@"11" title:@"购买车险" description:defaultInfo imagePath:@"main_menu/r.png" phone:defaultPhone],
-                          [[MenuItem alloc] initWithName:@"10" title:@"购买意外险" description:defaultInfo imagePath:@"main_menu/n.png" phone:defaultPhone],
-                          [[MenuItem alloc] initWithName:@"13" title:@"投保单" description:defaultInfo imagePath:@"main_menu/r.png" phone:defaultPhone]];
+                          //[[MenuItem alloc] initWithName:@"10" title:@"购买意外险" description:defaultInfo imagePath:@"main_menu/n.png" phone:defaultPhone],
+                          [[MenuItem alloc] initWithName:@"13" title:@"投保单" description:defaultInfo imagePath:@"p.png" phone:defaultPhone]];
     }
     return self;
 }
