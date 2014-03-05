@@ -46,8 +46,8 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 -(void)gotoSettings{
-    
-     [self.navigationController popToViewController:[[self.navigationController viewControllers] objectAtIndex:1]  animated:YES];
+    [self.navigationController popToRootViewControllerAnimated:YES];
+     //[self.navigationController popToViewController:[[self.navigationController viewControllers] objectAtIndex:1]  animated:YES];
      
    
 }

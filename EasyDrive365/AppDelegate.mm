@@ -35,9 +35,11 @@
 
 @interface AppDelegate()<WXApiDelegate,WeiboSDKDelegate>{
     BMKMapManager *_mapManager;
+    UINavigationController *menu0;
     UINavigationController *menu1;
     UINavigationController *menu2;
     UINavigationController *menu3;
+    UINavigationController *menu4;
 
     
 }
@@ -104,7 +106,7 @@
     
     UITabBarItem *item4 = [[UITabBarItem alloc] initWithTitle:@"用户" image:[UIImage imageNamed:@"toolbar/yonghu.png"] tag:TAG_SETTINGS];
     
-    UINavigationController *menu0 = [[UINavigationController alloc] initWithRootViewController:vcHome];
+    menu0 = [[UINavigationController alloc] initWithRootViewController:vcHome];
     menu0.tabBarItem  = item0;
 
     //UINavigationController *menu1 = [[UINavigationController alloc] initWithRootViewController:vcMap];
@@ -117,7 +119,7 @@
     menu3 = [[UINavigationController alloc] initWithRootViewController:vcArticle];
     menu3.tabBarItem  = item3;
 
-    UINavigationController *menu4 = [[UINavigationController alloc] initWithRootViewController:vcUser];
+    menu4 = [[UINavigationController alloc] initWithRootViewController:vcUser];
     menu4.tabBarItem  = item4;
     
     _tabbarController.viewControllers =@[menu0,menu1,menu2,menu3,menu4];
@@ -128,6 +130,10 @@
 }
 -(void)logout{
     _tabbarController.selectedIndex =0;
+    [menu0 popToRootViewControllerAnimated:YES];
+    [menu1 popToRootViewControllerAnimated:YES];
+    [menu2 popToRootViewControllerAnimated:YES];
+    [menu3 popToRootViewControllerAnimated:YES];
 }
 -(void)setup_display{
     UIImage *gradientImage44 = [[UIImage imageNamed:@"surf_gradient_textured_44"]

@@ -42,7 +42,7 @@
     //complete
     NSLog(@"%@",self.ins_data);
     if([@"" isEqualToString:self.ins_data[@"name"]]){
-        [[[UIAlertView alloc] initWithTitle:AppTitle message:@"收件人不能为空！" delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定", nil] show];
+        [[[UIAlertView alloc] initWithTitle:AppTitle message:@"姓名不能为空！" delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定", nil] show];
         return;
         
     }

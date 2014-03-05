@@ -18,6 +18,7 @@
 #import "GoodsListController.h"
 #import "ProviderListController.h"
 #import "ArticleListController.h"
+#import "AppDelegate.h"
 #define TAG_HOMEPAGE 0
 #define TAG_MAP 1
 #define TAG_GOODS 2
@@ -292,6 +293,7 @@
 }
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (buttonIndex==1){
+        ((AppDelegate *)[[UIApplication sharedApplication] delegate]).tabbarController.selectedIndex =0;
         SignupStep1ViewController *vc = [[SignupStep1ViewController alloc] initWithStyle:UITableViewStyleGrouped];
         vc.isFromHome = YES;
         [self.navigationController pushViewController:vc animated:YES];
