@@ -377,7 +377,7 @@
             _version= json[@"result"];
             if (!inSettings){
                 _needset = [_version[@"needset"] boolValue];
-                _needset = YES;
+               // _needset = YES;
             }
             
             _needsetmsg =_version[@"needsetmsg"];
