@@ -12,6 +12,7 @@
 #import "BoundListController.h"
 #import "AFHTTPClient.h"
 #import "SVProgressHUD.h"
+#import "Browser2Controller.h"
 
 @interface SetupUserController ()<UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>{
     id _user;
@@ -209,6 +210,10 @@
     if (indexPath.section==3){
         if (indexPath.row==0){
             BoundListController *vc = [[BoundListController alloc] initWithStyle:UITableViewStylePlain];
+            [self.navigationController pushViewController:vc animated:YES];
+        }else{
+            Browser2Controller *vc = [[Browser2Controller alloc] initWithNibName:@"Browser2Controller" bundle:nil];
+            vc.url = _user[@"exp_url"];
             [self.navigationController pushViewController:vc animated:YES];
         }
     }else if (indexPath.section==1){

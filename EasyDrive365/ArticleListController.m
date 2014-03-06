@@ -194,6 +194,15 @@
         
         
         
+    }else if (indexPath.section==0){
+        id item = [_imageList objectAtIndex:_pager.currentPage];
+        //NSLog(@"%@",item);
+
+        Browser2Controller *vc = [[Browser2Controller alloc] initWithNibName:@"Browser2Controller" bundle:nil];
+        vc.url = item[@"url"];
+
+        
+        [self.navigationController pushViewController:vc animated:YES];
     }
     
     
