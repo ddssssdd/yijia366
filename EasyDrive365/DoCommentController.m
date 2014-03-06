@@ -42,6 +42,7 @@
     _ratingView = [[AMRatingControl alloc] initWithLocation:CGPointMake(40, 20) andMaxRating:5 withRadius:50];
     [_ratingView setRating:1];
     [self.view addSubview:_ratingView];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"保存" style:UIBarButtonItemStyleBordered target:self action:@selector(buttonPressed:)];
 }
 
 - (void)didReceiveMemoryWarning
