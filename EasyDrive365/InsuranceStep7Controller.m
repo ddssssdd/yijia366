@@ -35,11 +35,14 @@
 
     self.title = @"配送信息";
  
-
+    self.navigationItem.backBarButtonItem =[[UIBarButtonItem alloc] initWithTitle:@"上一步" style:UIBarButtonItemStyleBordered target:self action:@selector(backStep5)];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"下一步" style:UIBarButtonItemStyleBordered target:self action:@selector(completeAddress)];
     [self load_data];
 }
-
+-(void)backStep5{
+    UINavigationController *vc = [self.navigationController.viewControllers objectAtIndex:4];
+    [self.navigationController popToViewController:vc animated:YES];
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
