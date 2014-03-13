@@ -40,7 +40,7 @@
     [self load_data];
 }
 -(void)backStep5{
-    UINavigationController *vc = [self.navigationController.viewControllers objectAtIndex:4];
+    UINavigationController *vc = [self.navigationController.viewControllers objectAtIndex:5];
     [self.navigationController popToViewController:vc animated:YES];
 }
 - (void)didReceiveMemoryWarning
