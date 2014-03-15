@@ -23,7 +23,7 @@
     _share_inctroduce = introduce;
     _share_title = title;
     _share_url = url;
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"新浪微博",@"微信好友",@"微信朋友圈",@"邮件",@"短信", nil];
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"新浪微博",@"微信好友",@"微信朋友圈",/*@"邮件",@"短信",*/ nil];
     [actionSheet showFromTabBar:((AppDelegate *)[[UIApplication sharedApplication] delegate]).tabbarController.tabBar];
     
 }
@@ -33,7 +33,7 @@
         //sina weibo
         
         WBMessageObject *message = [WBMessageObject message];
-        
+        message.text = [NSString stringWithFormat:@"%@:%@",_share_title,_share_inctroduce];
         if (NO){
             message.text = _share_title;
         }
