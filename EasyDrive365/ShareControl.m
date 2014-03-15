@@ -50,16 +50,17 @@
             webpage.objectID = @"identifier1";
             webpage.title = _share_title;
             webpage.description = _share_inctroduce;
-            webpage.thumbnailData = UIImagePNGRepresentation([UIImage imageNamed:@"icon"]);//[NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"image_2" ofType:@"jpg"]];//[NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"icon" ofType:@"png"]];
+            webpage.thumbnailData = UIImagePNGRepresentation([UIImage imageNamed:@"Icon"]);//[NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"image_2" ofType:@"jpg"]];//[NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"icon" ofType:@"png"]];
             
             webpage.webpageUrl = _share_url;
             message.mediaObject = webpage;
         }
         WBSendMessageToWeiboRequest *request = [WBSendMessageToWeiboRequest requestWithMessage:message];
-        request.userInfo = @{@"ShareMessageFrom": @"test",
+        /*request.userInfo = @{@"ShareMessageFrom": @"test",
                              @"Other_Info_1": [NSNumber numberWithInt:123],
                              @"Other_Info_2": @[@"obj1", @"obj2"],
                              @"Other_Info_3": @{@"key1": @"obj1", @"key2": @"obj2"}};
+         */
         request.shouldOpenWeiboAppInstallPageIfNotInstalled = YES;
         
         [WeiboSDK sendRequest:request];
@@ -101,7 +102,7 @@
         req.scene = WXSceneTimeline;// WXSceneFavorite;
         
         [WXApi sendReq:req];
-    }else if (buttonIndex==3){
+    }/* else if (buttonIndex==3){
         //email
 
         MFMailComposeViewController *mc = [[MFMailComposeViewController alloc] init];
@@ -140,6 +141,7 @@
         [((AppDelegate *)[[UIApplication sharedApplication] delegate]).tabbarController presentViewController:messageController animated:YES completion:nil];
     
     }
+      */
     
 }
 -(void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result{
