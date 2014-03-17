@@ -14,7 +14,7 @@
 #import "NewOrderController.h"
 #import "AfterPayController.h"
 #import "UploadPhotoController.h"
-
+#import "Browser2Controller.h"
 @interface OrderDetailController ()<BuyButtonViewDelegate>{
     id _list;
     id _sectionList;
@@ -25,6 +25,7 @@
     int _is_exform;
     int _footer_index;
     int _is_upload;
+    NSString *order_url;
 }
 
 @end
@@ -137,6 +138,12 @@
         UploadPhotoController *vc = [[UploadPhotoController alloc] initWithStyle:UITableViewStyleGrouped];
         vc.order_id = self.order_id;
         [self.navigationController pushViewController:vc animated:YES];
+    }else if (item[@"key"] && [item[@"key"] isEqualToString:@"url"]){
+        if (order_url && ![order_url isEqualToString:@""]){
+            Browser2Controller *vc = [[Browser2Controller alloc] initWithNibName:@"Browser2Controller" bundle:nil];
+            vc.url = order_url;
+            [self.navigationController pushViewController:vc animated:YES];
+        }
     }
 }
 
@@ -157,6 +164,7 @@
             _next_form = json[@"result"][@"next_form"];
             _is_exform = [json[@"result"][@"is_exform"] intValue];
             _is_upload = [json[@"result"][@"is_upload"] intValue];
+            order_url = json[@"result"][@"order_url"];
             [self setup_exform];
             int order_count=0;
             //goods information
@@ -169,7 +177,8 @@
             // order informaiton
             [_sectionList addObject:@"订单信息"];
             
-            [_list addObject:@[@{@"title":@"订单号",@"detail":json[@"result"][@"order_id"]},
+            [_list addObject:@[@{@"title":@"订单号",@"detail":json[@"result"][@"order_id"],@"key":@"url"},
+                               @{@"title":@"消费码",@"detail":json[@"result"][@"coupon_code"]},
                                @{@"title":@"下单时间",@"detail":json[@"result"][@"order_time"]},
                                @{@"title":@"数量",@"detail":[NSString stringWithFormat:@"%d",order_count]},
                                @{@"title":@"总价",@"detail":json[@"result"][@"order_total"]}]];

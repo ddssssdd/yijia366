@@ -467,7 +467,7 @@
 
 -(void)pay:(NSString *)name description:(NSString *)description amount:(CGFloat)amount order_no:(NSString *)order_no{
     
-    amount = 0.01;
+   // amount = 0.01;
     
     
     AlixPayOrder *order = [[AlixPayOrder alloc] init];

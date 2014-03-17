@@ -67,9 +67,13 @@
     [_parent pushViewController:vc animated:YES];
 }
 - (IBAction)myInsurancePressed:(id)sender {
+    /*
     InsuranceDetailController *vc = [[InsuranceDetailController alloc] initWithStyle:UITableViewStyleGrouped];
     [_parent pushViewController:vc animated:YES];
-    
+    */
+    NeedPayController *vc = [[NeedPayController alloc] initWithStyle:UITableViewStylePlain];
+    vc.status = @"finished&type=ins";
+    [_parent pushViewController:vc animated:YES];
 }
 - (IBAction)myTaskPressed:(id)sender {
     TaskListController *vc = [[TaskListController alloc] initWithStyle:UITableViewStylePlain];
