@@ -302,8 +302,9 @@
     
     ShowLocationViewController *vc = [[ShowLocationViewController alloc] initWithNibName:@"ShowLocationViewController" bundle:nil];
     vc.isFull = NO;
+    vc.target_postion = _target ;
     [self.navigationController pushViewController:vc animated:YES];
-    [vc showSingleShop:_target];
+//    [vc showSingleShop:_target];
 }
 - (void)makeCall {
     

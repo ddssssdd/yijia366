@@ -10,7 +10,7 @@
 #import "NavigationViewController.h"
 
 @interface ShowDetailViewController (){
-
+    id _data;
 
 }
 
@@ -29,11 +29,23 @@
 
 - (void)viewDidLoad
 {
+#if __IPHONE_OS_VERSION_MAX_ALLOWED > __IPHONE_6_1
+    if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+#endif
     [super viewDidLoad];
-    self.lblAddress.text=@"";
-    self.lblDescription.text=@"";
-    self.lblName.text = @"";
-    self.lblPhone.text=@"";
+    if (_data){
+        self.lblPhone.text = _data[@"phone"];
+        self.lblAddress.text=_data[@"address"];
+        self.lblDescription.text=_data[@"description"];
+        self.lblName.text = _data[@"name"];
+        self.title = self.lblName.text;
+    }else{
+        self.lblAddress.text=@"";
+        self.lblDescription.text=@"";
+        self.lblName.text = @"";
+        self.lblPhone.text=@"";
+    }
 
     self.btnNav.text = @"导航到这里";
 }
@@ -61,6 +73,7 @@
     self.lblDescription.text=data[@"description"];
     self.lblName.text = data[@"name"];
     self.title = self.lblName.text;
+    _data = data;
 }
 - (IBAction)buttonNavPressed:(id)sender {
     NavigationViewController *controller = [[NavigationViewController alloc] initWithNibName:@"NavigationViewController" bundle:nil];

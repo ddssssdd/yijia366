@@ -11,6 +11,7 @@
 @interface ShowLocationViewController : UIViewController
 
 @property (nonatomic) Boolean isFull;
+@property (nonatomic) id target_postion;
 
 -(void)goLocation:(CGFloat)latitude longtitude:(CGFloat)longtitude;
 -(void)showMineLocation:(CGFloat)latitude longtitude:(CGFloat)longtitude;

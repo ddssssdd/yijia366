@@ -50,8 +50,8 @@
 {
     //[[AppSettings sharedSettings] get_latest];
     
-    _mapManager = [[BMKMapManager alloc] init];
-    BOOL ret = [_mapManager start:@"1680f38dadab9089d45bedcca6080876" generalDelegate:nil];
+    _mapManager = [[BMKMapManager alloc] init];  //old:1680f38dadab9089d45bedcca6080876
+    BOOL ret = [_mapManager start:@"P1C8dnBtHzd9DL2bGiEOidtl" generalDelegate:nil];
     if (!ret){
         NSLog(@"Start map failure.");
     }

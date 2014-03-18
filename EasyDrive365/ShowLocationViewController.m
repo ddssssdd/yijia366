@@ -55,9 +55,12 @@
     _mapView.delegate = self;
     _mapView.zoomLevel = 16;
     _mapView.showsUserLocation = NO;
-    _mapView.userTrackingMode = BMKUserTrackingModeNone;
-    _mapView.showsUserLocation = YES;
+  //  _mapView.userTrackingMode = BMKUserTrackingModeNone;
+  //  _mapView.showsUserLocation = YES;
     
+    if (self.target_postion){
+        [self showSingleShop:self.target_postion];
+    }
     
     //test use
     /*
@@ -180,7 +183,8 @@
     CLLocationCoordinate2D coor;
     coor.latitude = [item[@"y"] floatValue];
     coor.longitude = [item[@"x"] floatValue];
-    [_mapView setCenterCoordinate:coor];
+    [_mapView setZoomLevel:14];
+    [_mapView setCenterCoordinate:coor animated:YES];
     self.title = item[@"name"];
 
 }
