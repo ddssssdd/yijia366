@@ -95,6 +95,10 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    int topX = 14;
+    if ([[AppSettings sharedSettings] isIos7]){
+        topX = 4;
+    }
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
@@ -102,7 +106,7 @@
         if (indexPath.row==0){
             cell.textLabel.text= @"姓名";
             if (!_txtName){
-                _txtName = [[UITextField alloc] initWithFrame:CGRectMake(100, 4, 200, 36)];
+                _txtName = [[UITextField alloc] initWithFrame:CGRectMake(100, topX, 200, 36)];
                 [_txtName addTarget:self action:@selector(valueChanged:) forControlEvents:UIControlEventEditingChanged];
                 _txtName.placeholder =@"姓名";
                 _txtName.returnKeyType = UIReturnKeyNext;
@@ -117,7 +121,7 @@
         }else if (indexPath.row==1){
             cell.textLabel.text= @"身份证号";
             if (!_txtId){
-                _txtId = [[UITextField alloc] initWithFrame:CGRectMake(100, 4, 200, 36)];
+                _txtId = [[UITextField alloc] initWithFrame:CGRectMake(100, topX, 200, 36)];
                 [_txtId addTarget:self action:@selector(valueChanged:) forControlEvents:UIControlEventEditingChanged];
                 _txtId.placeholder =@"身份证号";
                 _txtId.returnKeyType = UIReturnKeyNext;
@@ -132,7 +136,7 @@
         }else if (indexPath.row==2){
             cell.textLabel.text= @"手机";
             if (!_txtPhone){
-                _txtPhone = [[UITextField alloc] initWithFrame:CGRectMake(100, 4, 200, 36)];
+                _txtPhone = [[UITextField alloc] initWithFrame:CGRectMake(100, topX, 200, 36)];
                 [_txtPhone addTarget:self action:@selector(valueChanged:) forControlEvents:UIControlEventEditingChanged];
                 _txtPhone.placeholder =@"手机";
                 _txtPhone.returnKeyType = UIReturnKeyNext;

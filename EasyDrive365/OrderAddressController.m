@@ -99,6 +99,10 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    int topX = 14;
+    if ([[AppSettings sharedSettings] isIos7]){
+        topX = 4;
+    }
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
@@ -106,7 +110,7 @@
         if (indexPath.row==0){
             cell.textLabel.text= @"收件人";
             if (!_txtName){
-                _txtName = [[UITextField alloc] initWithFrame:CGRectMake(100, 4, 200, 36)];
+                _txtName = [[UITextField alloc] initWithFrame:CGRectMake(100, topX, 200, 36)];
                 [_txtName addTarget:self action:@selector(nameChanged:) forControlEvents:UIControlEventEditingChanged];
                 _txtName.placeholder =@"收件人";
                 _txtName.returnKeyType = UIReturnKeyNext;
@@ -120,7 +124,7 @@
         }else if (indexPath.row==1){
             cell.textLabel.text= @"手机";
             if (!_txtPhone){
-                _txtPhone = [[UITextField alloc] initWithFrame:CGRectMake(100, 4, 200, 36)];
+                _txtPhone = [[UITextField alloc] initWithFrame:CGRectMake(100, topX, 200, 36)];
                 [_txtPhone addTarget:self action:@selector(phoneChanged:) forControlEvents:UIControlEventEditingChanged];
                 _txtPhone.placeholder =@"手机";
                 _txtPhone.returnKeyType = UIReturnKeyNext;
@@ -134,7 +138,7 @@
         }else{
             cell.textLabel.text= @"地址";
             if (!_txtAddress){
-                _txtAddress = [[UITextField alloc] initWithFrame:CGRectMake(100, 4, 200, 36)];
+                _txtAddress = [[UITextField alloc] initWithFrame:CGRectMake(100, topX, 200, 36)];
                 [_txtAddress addTarget:self action:@selector(addressChanged:) forControlEvents:UIControlEventEditingChanged];
                 _txtAddress.placeholder =@"地址";
                 _txtAddress.returnKeyType = UIReturnKeyDone;
@@ -162,7 +166,7 @@
         }else if (indexPath.row==1){
             cell.textLabel.text= @"联系人";
             if (!_txtA_Name){
-                _txtA_Name = [[UITextField alloc] initWithFrame:CGRectMake(100, 4, 200, 36)];
+                _txtA_Name = [[UITextField alloc] initWithFrame:CGRectMake(100, topX, 200, 36)];
                 [_txtA_Name addTarget:self action:@selector(anameChanged:) forControlEvents:UIControlEventEditingChanged];
                 _txtA_Name.placeholder =@"联系人";
                 _txtA_Name.returnKeyType = UIReturnKeyNext;
@@ -176,7 +180,7 @@
         }else if (indexPath.row==2){
             cell.textLabel.text= @"手机";
             if (!_txtA_Phone){
-                _txtA_Phone = [[UITextField alloc] initWithFrame:CGRectMake(100, 4, 200, 36)];
+                _txtA_Phone = [[UITextField alloc] initWithFrame:CGRectMake(100, topX, 200, 36)];
                 [_txtA_Phone addTarget:self action:@selector(aphoneChanged:) forControlEvents:UIControlEventEditingChanged];
                 _txtA_Phone.placeholder =@"手机";
                 _txtA_Phone.returnKeyType = UIReturnKeyNext;
@@ -190,7 +194,7 @@
         }else if (indexPath.row==3){
             cell.textLabel.text= @"地址";
             if (!_txtA_Address){
-                _txtA_Address = [[UITextField alloc] initWithFrame:CGRectMake(100, 4, 200, 36)];
+                _txtA_Address = [[UITextField alloc] initWithFrame:CGRectMake(100, topX, 200, 36)];
                 [_txtA_Address addTarget:self action:@selector(aaddressChanged:) forControlEvents:UIControlEventEditingChanged];
                 _txtA_Address.placeholder =@"地址";
                 _txtA_Address.returnKeyType = UIReturnKeyDone;

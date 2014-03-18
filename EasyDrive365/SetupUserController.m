@@ -150,11 +150,15 @@
         
 
     }else if (indexPath.section==2){
+        int topX = 14;
+        if ([[AppSettings sharedSettings] isIos7]){
+            topX = 4;
+        }
         if (indexPath.row==0){
             cell =[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
             cell.textLabel.text =@"姓名";
             if (!_txtname){
-                _txtname = [[UITextField alloc] initWithFrame:CGRectMake(100, 4, 200, 36)];
+                _txtname = [[UITextField alloc] initWithFrame:CGRectMake(100, topX, 200, 36)];
                 [_txtname addTarget:self action:@selector(nameChanged:) forControlEvents:UIControlEventEditingChanged];
                 _txtname.placeholder =@"用户名称";
                 _txtname.returnKeyType = UIReturnKeyNext;
@@ -170,7 +174,7 @@
             cell =[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
             cell.textLabel.text =@"签名";
             if (!_txtsignature){
-                _txtsignature= [[UITextField alloc] initWithFrame:CGRectMake(100, 4, 200, 36)];
+                _txtsignature= [[UITextField alloc] initWithFrame:CGRectMake(100, topX, 200, 36)];
                 [_txtsignature addTarget:self action:@selector(signatureChanged:) forControlEvents:UIControlEventEditingChanged];
                 _txtsignature.placeholder =@"签名";
                 _txtsignature.returnKeyType = UIReturnKeyDone;
