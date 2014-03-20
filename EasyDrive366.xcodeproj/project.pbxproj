@@ -93,6 +93,9 @@
 		512599251888D63D00967BDE /* ChooseNextImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 512599241888D63D00967BDE /* ChooseNextImageCell.xib */; };
 		512599271888DB1D00967BDE /* main_menu in Resources */ = {isa = PBXBuildFile; fileRef = 512599261888DB1D00967BDE /* main_menu */; };
 		5128E98B1850A45E00928906 /* FeedbackInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5128E98A1850A45E00928906 /* FeedbackInfoCell.xib */; };
+		512B56A518DAFE4900F5D5C5 /* JobSelectMainController.m in Sources */ = {isa = PBXBuildFile; fileRef = 512B56A418DAFE4900F5D5C5 /* JobSelectMainController.m */; };
+		512B56A918DB1C9A00F5D5C5 /* JobItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 512B56A718DB1C9A00F5D5C5 /* JobItemCell.m */; };
+		512B56AA18DB1C9A00F5D5C5 /* JobItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 512B56A818DB1C9A00F5D5C5 /* JobItemCell.xib */; };
 		513225211897E0B100C3552A /* OrderAddressController.m in Sources */ = {isa = PBXBuildFile; fileRef = 513225201897E0B100C3552A /* OrderAddressController.m */; };
 		513225251897E76600C3552A /* OrderFinishedController.m in Sources */ = {isa = PBXBuildFile; fileRef = 513225231897E76600C3552A /* OrderFinishedController.m */; };
 		513225261897E76600C3552A /* OrderFinishedController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 513225241897E76600C3552A /* OrderFinishedController.xib */; };
@@ -549,6 +552,11 @@
 		512599241888D63D00967BDE /* ChooseNextImageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChooseNextImageCell.xib; sourceTree = "<group>"; };
 		512599261888DB1D00967BDE /* main_menu */ = {isa = PBXFileReference; lastKnownFileType = folder; path = main_menu; sourceTree = "<group>"; };
 		5128E98A1850A45E00928906 /* FeedbackInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedbackInfoCell.xib; sourceTree = "<group>"; };
+		512B56A318DAFE4900F5D5C5 /* JobSelectMainController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobSelectMainController.h; sourceTree = "<group>"; };
+		512B56A418DAFE4900F5D5C5 /* JobSelectMainController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobSelectMainController.m; sourceTree = "<group>"; };
+		512B56A618DB1C9A00F5D5C5 /* JobItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobItemCell.h; sourceTree = "<group>"; };
+		512B56A718DB1C9A00F5D5C5 /* JobItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobItemCell.m; sourceTree = "<group>"; };
+		512B56A818DB1C9A00F5D5C5 /* JobItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JobItemCell.xib; sourceTree = "<group>"; };
 		5132251F1897E0B100C3552A /* OrderAddressController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderAddressController.h; sourceTree = "<group>"; };
 		513225201897E0B100C3552A /* OrderAddressController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderAddressController.m; sourceTree = "<group>"; };
 		513225221897E76600C3552A /* OrderFinishedController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderFinishedController.h; sourceTree = "<group>"; };
@@ -1438,6 +1446,11 @@
 				51A20ACD18B4E5C6008054C4 /* OrderAccidentController.m */,
 				51DA093F18B841AD0048E9D2 /* BaseAfterController.h */,
 				51DA094018B841AD0048E9D2 /* BaseAfterController.m */,
+				512B56A318DAFE4900F5D5C5 /* JobSelectMainController.h */,
+				512B56A418DAFE4900F5D5C5 /* JobSelectMainController.m */,
+				512B56A618DB1C9A00F5D5C5 /* JobItemCell.h */,
+				512B56A718DB1C9A00F5D5C5 /* JobItemCell.m */,
+				512B56A818DB1C9A00F5D5C5 /* JobItemCell.xib */,
 			);
 			name = Order;
 			sourceTree = "<group>";
@@ -2317,6 +2330,7 @@
 				51B26A2A186337DA00C20C56 /* TaskListCell.xib in Resources */,
 				E24A047F16D270DA00B7A602 /* DatePickerViewController.xib in Resources */,
 				E26CCF9516D78FA200A35DA1 /* ItemDetailCell.xib in Resources */,
+				512B56AA18DB1C9A00F5D5C5 /* JobItemCell.xib in Resources */,
 				5188968B189755A000B368FE /* p@2x.png in Resources */,
 				E26CCF9A16D7B17100A35DA1 /* InsuranceDetailCell.xib in Resources */,
 				E26CCF9F16D7B42D00A35DA1 /* InfoAndPhoneCallCell.xib in Resources */,
@@ -2540,6 +2554,7 @@
 				E2EE657716C685F300ED1C73 /* AFURLConnectionOperation.m in Sources */,
 				E2EE657816C685F300ED1C73 /* AFXMLRequestOperation.m in Sources */,
 				5189CB5F1864129A00DB9A26 /* FriendListController.m in Sources */,
+				512B56A518DAFE4900F5D5C5 /* JobSelectMainController.m in Sources */,
 				51B26A1A1863316700C20C56 /* BoundListCell.m in Sources */,
 				E2EE657916C685F300ED1C73 /* UIImageView+AFNetworking.m in Sources */,
 				513225211897E0B100C3552A /* OrderAddressController.m in Sources */,
@@ -2675,6 +2690,7 @@
 				E23386481816BA0C0035C405 /* SingleCardViewController.m in Sources */,
 				514C90E41895397B007FFFCC /* InsuranceStep2Controller.m in Sources */,
 				51133414188FE7B6005A02C3 /* StrikeThroughLabel.m in Sources */,
+				512B56A918DB1C9A00F5D5C5 /* JobItemCell.m in Sources */,
 				51DF0EC8188DFB77002C044E /* ImageInfoCell.m in Sources */,
 				E233864B1816C4D70035C405 /* AddCardStep1ControllerViewController.m in Sources */,
 				E233864E1816CA020035C405 /* TextLabelCell.m in Sources */,

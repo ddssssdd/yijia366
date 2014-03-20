@@ -9,11 +9,13 @@
 #import "OrderAccidentController.h"
 #import "AppSettings.h"
 #import "OrderFinishedController.h"
+#import "JobSelectMainController.h"
 
 @interface OrderAccidentController (){
     UITextField *_txtName;
     UITextField *_txtId;
     UITextField *_txtPhone;
+    int _job_id;
     id _type;
 }
 
@@ -35,9 +37,15 @@
     [super viewDidLoad];
 
     self.title = @"配送信息";
-    
+    _job_id=0;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStyleBordered target:self action:@selector(finished)];
     _type = @{@"label":self.ins_data[@"type_name"],@"value":self.ins_data[@"type"]};
+    [[NSNotificationCenter defaultCenter]  addObserver:self selector:@selector(selected_job:) name:SELECTED_JOBITEM object:nil];
+}
+-(void)selected_job:(NSNotification *)notification{
+    self.ins_data[@"type_name"] = notification.userInfo[@"name"];
+    _job_id = [notification.userInfo[@"id"] intValue];
+    [self.tableView reloadData];
 }
 -(void)finished{
     //complete
@@ -88,7 +96,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (section==0)
-        return 3;
+        return 4;
     else
         return [self.ins_data[@"list_type"] count];
 }
@@ -101,7 +109,7 @@
     }
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
     if (indexPath.section==0){
         if (indexPath.row==0){
             cell.textLabel.text= @"姓名";
@@ -148,6 +156,10 @@
             _txtPhone.text = self.ins_data[@"phone"];
             [_txtPhone removeFromSuperview];
             [cell.contentView addSubview:_txtPhone];
+        }else if (indexPath.row==3){
+            cell.textLabel.text = @"职业分类";
+            cell.detailTextLabel.text = self.ins_data[@"type_name"];
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         }
     }else if (indexPath.section==1){
         id item = [self.ins_data[@"list_type"] objectAtIndex:indexPath.row];
@@ -188,6 +200,13 @@
         [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationNone];
 
         
+    }else if (indexPath.section==0){
+        if (indexPath.row==3){
+            JobSelectMainController *vc = [[JobSelectMainController alloc] initWithStyle:UITableViewStyleGrouped];
+            vc.order_id =self.ins_data[@"order_id"];
+            vc.job_id =_job_id;
+            [self.navigationController pushViewController:vc animated:YES];
+        }
     }
 }
 
