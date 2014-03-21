@@ -7,6 +7,7 @@
 //
 
 #import "JobItemCell.h"
+#import "JobDetailController.h"
 
 @implementation JobItemCell
 
@@ -20,6 +21,13 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+- (IBAction)detailButtonPressed:(id)sender {
+    JobDetailController *vc = [[JobDetailController alloc] initWithNibName:@"JobDetailController" bundle:nil];
+    
+    vc.job_id = [self.job[@"id"] intValue];
+    [self.parent pushViewController:vc animated:YES];
+    
 }
 
 @end

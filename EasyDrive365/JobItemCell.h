@@ -13,4 +13,5 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblLevel;
 @property (weak, nonatomic) IBOutlet UILabel *lblContent;
 @property (nonatomic,weak) id job;
+@property (nonatomic,weak) UINavigationController *parent;
 @end

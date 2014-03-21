@@ -101,6 +101,7 @@
     jCell.lblContent.text = item[@"content"];
     jCell.lblLevel.text = item[@"level"];
     jCell.job = item;
+    jCell.parent = self.navigationController;
     if ([item[@"id"] intValue]==self.job_id){
         jCell.accessoryType = UITableViewCellAccessoryCheckmark;
         _current = item;

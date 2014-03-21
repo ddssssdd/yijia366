@@ -79,11 +79,11 @@
             if ([[jsonResult allKeys] containsObject:@"message"]){
                 message = [jsonResult objectForKey:@"message"];
             }
-            [SVProgressHUD dismissWithSuccess:message afterDelay:3];
+            [SVProgressHUD dismissWithSuccess:message afterDelay:MESSAGE_SHOW_TIME];
         }else{
             id alertMsg = jsonResult[@"alertmsg"];
             if (alertMsg && ![alertMsg isKindOfClass:[NSNull class]] && ![alertMsg isEqualToString:@""]){
-                [SVProgressHUD dismissWithSuccess:alertMsg afterDelay:3];
+                [SVProgressHUD dismissWithSuccess:alertMsg afterDelay:MESSAGE_SHOW_TIME];
             }else{
                 [SVProgressHUD dismiss];
             }

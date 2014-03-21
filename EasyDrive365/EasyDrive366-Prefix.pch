@@ -36,6 +36,7 @@
 #define APP_SCHEMA @"EasyDrive366"
 #define AppVersion @"1.07"
 #define APPLATEST_COUNT 12
+#define MESSAGE_SHOW_TIME 15
 #define DELETE_INFORMATION @"delete information"
 #define OPEN_ARTICLE @"Open article"
 #define SETTINGS_CHANGE @"Update_settings"

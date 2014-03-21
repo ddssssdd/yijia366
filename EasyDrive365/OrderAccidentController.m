@@ -40,6 +40,7 @@
     _job_id=0;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStyleBordered target:self action:@selector(finished)];
     _type = @{@"label":self.ins_data[@"type_name"],@"value":self.ins_data[@"type"]};
+    _job_id = [self.ins_data[@"type"] intValue];
     [[NSNotificationCenter defaultCenter]  addObserver:self selector:@selector(selected_job:) name:SELECTED_JOBITEM object:nil];
 }
 -(void)selected_job:(NSNotification *)notification{
@@ -69,7 +70,7 @@
         [[[UIAlertView alloc] initWithTitle:AppTitle message:@"请选择职业类别！" delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定", nil] show];
         return;
     }
-    NSString *url = [NSString stringWithFormat:@"order/order_ins_accident?userid=%d&orderid=%@&name=%@&idcard=%@&phone=%@&type=%@",[AppSettings sharedSettings].userid,self.ins_data[@"order_id"], self.ins_data[@"name"],self.ins_data[@"idcard"],self.ins_data[@"phone"],_type[@"value"]];
+    NSString *url = [NSString stringWithFormat:@"order/order_ins_accident?userid=%d&orderid=%@&name=%@&idcard=%@&phone=%@&type=%d",[AppSettings sharedSettings].userid,self.ins_data[@"order_id"], self.ins_data[@"name"],self.ins_data[@"idcard"],self.ins_data[@"phone"],_job_id];
     [[AppSettings sharedSettings].http get:url block:^(id json) {
         if ([[AppSettings sharedSettings] isSuccess:json]){
             OrderFinishedController *vc = [[OrderFinishedController alloc] initWithNibName:@"OrderFinishedController" bundle:Nil];
@@ -90,11 +91,12 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     
-    return 2;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    
     if (section==0)
         return 4;
     else

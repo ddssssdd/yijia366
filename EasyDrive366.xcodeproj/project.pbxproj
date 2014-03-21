@@ -200,6 +200,8 @@
 		51E3CE161859E456004582BC /* ArticleListItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 51E3CE151859E456004582BC /* ArticleListItemCell.m */; };
 		51E3CE181859E46F004582BC /* ArticleListItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51E3CE171859E46F004582BC /* ArticleListItemCell.xib */; };
 		51EB24C418508A9A0031B0E7 /* FeedbackController2.m in Sources */ = {isa = PBXBuildFile; fileRef = 51EB24C318508A9A0031B0E7 /* FeedbackController2.m */; };
+		51F0198118DC078C00924778 /* JobDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51F0197F18DC078C00924778 /* JobDetailController.m */; };
+		51F0198218DC078C00924778 /* JobDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51F0198018DC078C00924778 /* JobDetailController.xib */; };
 		51F0A652187B970B00CC9A1D /* NewOrderController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51F0A651187B970B00CC9A1D /* NewOrderController.m */; };
 		51F0A655187BA77600CC9A1D /* OrderItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 51F0A654187BA77600CC9A1D /* OrderItem.m */; };
 		51F0A658187BA96600CC9A1D /* OrderProductCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 51F0A657187BA96600CC9A1D /* OrderProductCell.m */; };
@@ -727,6 +729,9 @@
 		51E3CE171859E46F004582BC /* ArticleListItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ArticleListItemCell.xib; sourceTree = "<group>"; };
 		51EB24C218508A9A0031B0E7 /* FeedbackController2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedbackController2.h; sourceTree = "<group>"; };
 		51EB24C318508A9A0031B0E7 /* FeedbackController2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedbackController2.m; sourceTree = "<group>"; };
+		51F0197E18DC078C00924778 /* JobDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobDetailController.h; sourceTree = "<group>"; };
+		51F0197F18DC078C00924778 /* JobDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobDetailController.m; sourceTree = "<group>"; };
+		51F0198018DC078C00924778 /* JobDetailController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JobDetailController.xib; sourceTree = "<group>"; };
 		51F0A650187B970B00CC9A1D /* NewOrderController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewOrderController.h; sourceTree = "<group>"; };
 		51F0A651187B970B00CC9A1D /* NewOrderController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewOrderController.m; sourceTree = "<group>"; };
 		51F0A653187BA77600CC9A1D /* OrderItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderItem.h; sourceTree = "<group>"; };
@@ -1451,6 +1456,9 @@
 				512B56A618DB1C9A00F5D5C5 /* JobItemCell.h */,
 				512B56A718DB1C9A00F5D5C5 /* JobItemCell.m */,
 				512B56A818DB1C9A00F5D5C5 /* JobItemCell.xib */,
+				51F0197E18DC078C00924778 /* JobDetailController.h */,
+				51F0197F18DC078C00924778 /* JobDetailController.m */,
+				51F0198018DC078C00924778 /* JobDetailController.xib */,
 			);
 			name = Order;
 			sourceTree = "<group>";
@@ -2487,6 +2495,7 @@
 				51570C2218585427003655CC /* DetailPriceCell.xib in Resources */,
 				51570C2418585437003655CC /* DetailDescriptionCell.xib in Resources */,
 				51B26A1C1863317700C20C56 /* BoundListCell.xib in Resources */,
+				51F0198218DC078C00924778 /* JobDetailController.xib in Resources */,
 				51570C2618585448003655CC /* DetailRateCell.xib in Resources */,
 				51DF0EC5188DF778002C044E /* starfull_small@2x.png in Resources */,
 				511567F718A83DA700784878 /* shoucang.png in Resources */,
@@ -2610,6 +2619,7 @@
 				E2C1625C16EA161700B0E9EC /* IntroduceCell.m in Sources */,
 				E2C1626116EA1C3D00B0E9EC /* OneButtonCell.m in Sources */,
 				E2C1626616EA23F100B0E9EC /* CustomEditTableViewController.m in Sources */,
+				51F0198118DC078C00924778 /* JobDetailController.m in Sources */,
 				514C90F01896222C007FFFCC /* InsuranceStep6Controller.m in Sources */,
 				E2C1626916EA2D8100B0E9EC /* SignUpTableViewController.m in Sources */,
 				E2EBCED616EE13C900E918C5 /* InformationCell.m in Sources */,
