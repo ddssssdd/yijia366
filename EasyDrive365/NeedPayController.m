@@ -62,7 +62,7 @@
     
     if (cell == nil){
         //cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-        if ([self.status isEqualToString:@"finished"]){
+        if (![self.status isEqualToString:@"notpay"]){
             cell = [[[NSBundle mainBundle] loadNibNamed:@"NeedPayItemCell2" owner:nil options:nil] objectAtIndex:0];
         }else{
             cell = [[[NSBundle mainBundle] loadNibNamed:@"NeedPayItemCell" owner:nil options:nil] objectAtIndex:0];
@@ -79,7 +79,7 @@
     payCell.lblPrice.text= item[@"order_total"];
     payCell.lblQuantity.text = product[@"quantity"];
     payCell.delegate = self;
-    if ([self.status isEqualToString:@"finished"]){
+    if (![self.status isEqualToString:@"notpay"]){
         payCell.lblTime.text = item[@"order_time"];
         /*
         [payCell.btnPay removeFromSuperview];
