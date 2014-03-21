@@ -63,7 +63,7 @@
     //no judgement
     NSString *url = [NSString stringWithFormat:@"bound/save_user_info?userid=%d&nickname=%@&signature=%@",
                      [AppSettings sharedSettings].userid,
-                     _user[@"name"],
+                     _user[@"nickname"],
                      _user[@"signature"]];
     
     [[AppSettings sharedSettings].http get:url block:^(id json) {
@@ -235,7 +235,7 @@
     }
 }
 -(void)nameChanged:(UITextField *)sender{
-    _user[@"name"] = sender.text;
+    _user[@"nickname"] = sender.text;
 }
 -(void)signatureChanged:(UITextField *)sender{
     _user[@"signature"] = sender.text;
