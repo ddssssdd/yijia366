@@ -54,7 +54,7 @@
 
 -(void)setup{
     if (self.isSearch){
-        _helper.url = [NSString stringWithFormat:@"library/get_list?userid=%d&type=%@&keyword=%@",[AppSettings sharedSettings].userid,self.searchTypes,self.searchKey];
+        _helper.url = [NSString stringWithFormat:@"goods/get_goods_list?userid=%d&type=%@&keyword=%@",[AppSettings sharedSettings].userid,self.searchTypes,self.searchKey];
         //self.title = @"商品查询";
     }else{
         _helper.url = [NSString stringWithFormat:@"goods/get_goods_list?userid=%d",[AppSettings sharedSettings].userid];
