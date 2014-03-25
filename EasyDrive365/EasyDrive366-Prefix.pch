@@ -34,7 +34,7 @@
 
 #define AppTitle @"易驾366"
 #define APP_SCHEMA @"EasyDrive366"
-#define AppVersion @"1.07"
+#define AppVersion @"2.0"
 #define APPLATEST_COUNT 12
 #define MESSAGE_SHOW_TIME 15
 #define DELETE_INFORMATION @"delete information"
