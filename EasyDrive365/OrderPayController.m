@@ -135,6 +135,10 @@
         NSLog(@"%@",_pay);
         if ([item[@"item"][@"bank_id"] isEqualToString:@"00001"]){
             _amount = [_payItem.detail floatValue];
+            if (_amount < 0.009){
+                [[[UIAlertView alloc] initWithTitle:AppTitle message:@"应付金额为0不能使用支付宝支付" delegate:nil cancelButtonTitle:nil otherButtonTitles:@"确定", nil] show];
+                return;
+            }
             [[AppSettings sharedSettings] pay:_name description:_description amount:_amount order_no:self.data[@"order_id"]];
 
         }else{
