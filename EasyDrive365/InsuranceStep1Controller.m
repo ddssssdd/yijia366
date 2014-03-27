@@ -13,7 +13,9 @@
 
 #import "InsuranceStep7Controller.h"
 
-@interface InsuranceStep1Controller ()
+@interface InsuranceStep1Controller (){
+    
+}
 
 @end
 
@@ -31,7 +33,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"下一步" style:UIBarButtonSystemItemAction target:self action:@selector(nextStep)];
+    
     [self load_data];
 }
 
@@ -48,8 +50,11 @@
         url =[NSString stringWithFormat:@"ins/carins_intro?userid=%d",[AppSettings sharedSettings].userid];
     [[AppSettings sharedSettings].http get:url block:^(id json) {
         if ([[AppSettings sharedSettings] isSuccess:json]){
+            self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"下一步" style:UIBarButtonSystemItemAction target:self action:@selector(nextStep)];
             NSString *content_url = json[@"result"][@"web_url"];// @"http://m.yijia366.com/html/20140123.htm";
             [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:content_url]]];
+        }else{
+            self.navigationItem.rightBarButtonItem =nil;
         }
     }];
 }

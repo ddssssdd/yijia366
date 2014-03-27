@@ -86,6 +86,7 @@
     aCell.lblBound.text = item[@"bounds"];
     aCell.lblDate.text = [AppSettings getStringDefault:item[@"from_time"] default:@""];
     aCell.lblMemo.text = item[@"from_type"];
+    aCell.lblLeft.text = item[@"this_bounds"];
     
     return cell;
 }

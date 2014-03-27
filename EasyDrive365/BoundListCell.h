@@ -11,6 +11,7 @@
 @interface BoundListCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *lblDate;
 @property (weak, nonatomic) IBOutlet UILabel *lblBound;
+@property (weak, nonatomic) IBOutlet UILabel *lblLeft;
 
 @property (weak, nonatomic) IBOutlet UILabel *lblMemo;
 @end
