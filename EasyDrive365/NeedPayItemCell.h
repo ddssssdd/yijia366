@@ -23,5 +23,7 @@
 @property (nonatomic) id orderItem;
 @property (nonatomic) id<NeedPayItemCellDelegate> delegate;
 @property (weak, nonatomic) IBOutlet UILabel *lblTime;
+@property (weak, nonatomic) IBOutlet UILabel *lblOrder_id;
+@property (weak, nonatomic) IBOutlet UILabel *lblStatus;
 
 @end

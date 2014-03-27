@@ -81,6 +81,8 @@
     payCell.delegate = self;
     if (![self.status isEqualToString:@"notpay"]){
         payCell.lblTime.text = item[@"order_time"];
+        payCell.lblOrder_id.text = item[@"po"];
+        payCell.lblStatus.text = item[@"order_status_name"];
         /*
         [payCell.btnPay removeFromSuperview];
         UILabel *label = [[UILabel alloc] initWithFrame:payCell.btnPay.frame];

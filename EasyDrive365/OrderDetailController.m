@@ -15,6 +15,7 @@
 #import "AfterPayController.h"
 #import "UploadPhotoController.h"
 #import "Browser2Controller.h"
+#import "BoundListController.h"
 @interface OrderDetailController ()<BuyButtonViewDelegate>{
     id _list;
     id _sectionList;
@@ -95,6 +96,9 @@
         }else{
             cell.accessoryType = UITableViewCellAccessoryNone;
         }
+        if (item[@"lines"]){
+            cell.detailTextLabel.numberOfLines = [item[@"lines"] intValue];
+        }
     }
     
     
@@ -138,12 +142,13 @@
         UploadPhotoController *vc = [[UploadPhotoController alloc] initWithStyle:UITableViewStyleGrouped];
         vc.order_id = self.order_id;
         [self.navigationController pushViewController:vc animated:YES];
-    }else if (item[@"key"] && [item[@"key"] isEqualToString:@"url"]){
-        if (order_url && ![order_url isEqualToString:@""]){
-            Browser2Controller *vc = [[Browser2Controller alloc] initWithNibName:@"Browser2Controller" bundle:nil];
-            vc.url = order_url;
-            [self.navigationController pushViewController:vc animated:YES];
-        }
+    }else if (item[@"key"] && [item[@"key"] isEqualToString:@"bounds"]){
+        BoundListController *vc = [[BoundListController alloc] initWithStyle:UITableViewStylePlain];
+        [self.navigationController pushViewController:vc animated:YES];
+    }else if (item[@"url"] && ![item[@"url"] isEqualToString:@""]){
+        Browser2Controller *vc = [[Browser2Controller alloc] initWithNibName:@"Browser2Controller" bundle:nil];
+        vc.url = item[@"url"];
+        [self.navigationController pushViewController:vc animated:YES];
     }
 }
 
@@ -177,11 +182,12 @@
             // order informaiton
             [_sectionList addObject:@"订单信息"];
             
-            [_list addObject:@[@{@"title":@"订单号",@"detail":json[@"result"][@"order_id"],@"key":@"url"},
+            [_list addObject:@[@{@"title":@"订单号",@"detail":json[@"result"][@"order_id"],@"url":order_url},
                                @{@"title":@"消费码",@"detail":json[@"result"][@"coupon_code"]},
                                @{@"title":@"下单时间",@"detail":json[@"result"][@"order_time"]},
                                @{@"title":@"数量",@"detail":[NSString stringWithFormat:@"%d",order_count]},
-                               @{@"title":@"总价",@"detail":json[@"result"][@"order_total"]}]];
+                               @{@"title":@"总价",@"detail":json[@"result"][@"order_total"]},
+                               @{@"title":@"当前状态",@"detail":json[@"result"][@"order_status_name"],@"url":json[@"result"][@"status_url"],@"key":@"status"}]];
             //if else depends on order_status
             if ([_order_status isEqualToString:@"notpay"]){
                 //nothing
@@ -214,7 +220,7 @@
                 }else if ([_next_form isEqualToString:@"finished"]){
                     [_sectionList addObject:@"附加信息"];
                     [_list addObject:@[
-                                       @{@"title":@"内容",@"detail":json[@"result"][@"content"],@"height":@"80"},
+                                       @{@"title":@"内容",@"detail":json[@"result"][@"content"],@"height":@"80",@"lines":@5},
                                       
                                        ]];
                 }
@@ -235,6 +241,9 @@
                     [paylist addObject:@{@"title":pay[@"bank_name"],@"detail":pay[@"account"]}];
                 }
                 [_list addObject:paylist];
+                
+                [_sectionList addObject:@"积分"];
+                [_list addObject:@[@{@"title":@"订单积分",@"detail":json[@"result"][@"get_bounds"],@"key":@"bounds"}]];
             }
             
             [self.tableView reloadData];
