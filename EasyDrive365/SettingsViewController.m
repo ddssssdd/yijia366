@@ -71,7 +71,7 @@
 {
     [super viewDidLoad];
     self.navigationItem.rightBarButtonItem = nil;
-    self.title = @"设置";
+    self.title = @"用户";
     
     _maintainDatasource = [[EditMaintainDataSource alloc] initWithData: [[AppSettings sharedSettings] loadJsonBy:@"maintain_data"]];
     
