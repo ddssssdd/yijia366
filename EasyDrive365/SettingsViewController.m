@@ -31,6 +31,7 @@
 #import "NeedPayController.h"
 #import "MyFavorController.h"
 #import "MyHistroyController.h"
+#import "UserProfileController.h"
 
 #define SECTION_LAST 5
 
@@ -237,7 +238,14 @@
                  @"default":@"",
                  @"placeholder":@"",
                  @"value":@"",
-                 @"cell":@"ChooseNextImageCell",@"icon":@"g.png" }]
+                   @"cell":@"ChooseNextImageCell",@"icon":@"g.png" }],
+                [[NSMutableDictionary alloc] initWithDictionary:
+                 @{@"key" :@"profile",
+                   @"label":@"我的资料",
+                   @"default":@"",
+                   @"placeholder":@"",
+                   @"value":@"",
+                   @"cell":@"ChooseNextImageCell",@"icon":@"g.png" }]
                 ];
     
     id items3= @[
@@ -285,7 +293,7 @@
     _list=[NSMutableArray arrayWithArray: @[
            @{@"count" : @1,@"list":items0,@"height":@44.0f,@"header":@"",@"footer":@""},
            @{@"count" : @4,@"list":items1,@"height":@44.0f,@"header":@"",@"footer":@""},
-           @{@"count" : @3,@"list":items2,@"height":@44.0f,@"header":@"",@"footer":@""},
+           @{@"count" : @4,@"list":items2,@"height":@44.0f,@"header":@"",@"footer":@""},
            @{@"count" : @3,@"list":items3,@"height":@44.0f,@"header":@"",@"footer":@""},
            @{@"count" : @1,@"list":items4,@"height":@44.0f,@"header":@"",@"footer":@""},
            @{@"count" : @1,@"list":items5,@"height":@44.0f,@"header":@"",@"footer":@""},
@@ -358,7 +366,11 @@
         [[AppSettings sharedSettings] check_update:YES];
     }else if ([key isEqualToString:@"setup"]){
         [self register_step];
+    }else if ([key isEqualToString:@"profile"]){
+        UserProfileController *vc = [[UserProfileController alloc] initWithStyle:UITableViewStyleGrouped];
+        [self.navigationController pushViewController:vc animated:YES];
     }
+    
     
         //[super tableView:tableView didSelectRowAtIndexPath:indexPath];
 }

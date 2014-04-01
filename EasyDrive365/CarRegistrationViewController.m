@@ -14,6 +14,7 @@
 #import "OneButtonCell.h"
 #import "HttpClient.h"
 
+#import "Browser2Controller.h"
 
 @implementation EditCarReigsterationDataSource
 
@@ -29,7 +30,7 @@
 {
     NSLog(@"%@",paramters);
     
-    NSString *url =[NSString stringWithFormat:@"api/add_car_registration?user_id=%d&car_id=%@&vin=%@&init_date=%@&engine_no=%@",[AppSettings sharedSettings].userid,paramters[@"car_id"],paramters[@"vin"],paramters[@"init_date"],paramters[@"engine_no"]];
+    NSString *url =[NSString stringWithFormat:@"api/add_car_registration?user_id=%d&car_id=%@&vin=%@&init_date=%@&engine_no=%@&owner_name=%@",[AppSettings sharedSettings].userid,paramters[@"car_id"],paramters[@"vin"],paramters[@"init_date"],paramters[@"engine_no"],paramters[@"owner_name"]];
     NSLog(@"%@",url);
     [[HttpClient sharedHttp] get:url  block:^(id json) {
         NSLog(@"%@",json);
@@ -53,6 +54,7 @@
     @{@"name":@"发动机号",@"key":@"engine_no",@"mode":@"add",@"description":@"",@"vcname":@""},
     @{@"name":@"VIN",@"key":@"vin",@"mode":@"add",@"description":@"",@"vcname":@""},
     @{@"name":@"初登日期",@"key":@"init_date",@"mode":@"add",@"description":@"",@"vcname":@"DatePickerViewController"},
+    @{@"name":@"车主名称",@"key":@"owner_name",@"mode":@"add",@"description":@"",@"vcname":@""},
     ]];
 }
 -(NSDictionary *)getInitData{
@@ -62,13 +64,14 @@
         [_result setObject:@"" forKey:@"engine_no"];
         [_result setObject:@"" forKey:@"vin"];
         [_result setObject:@"" forKey:@"registration_date"];
+        [_result setObject:@"" forKey:@"owner_name"];
     }else{
         NSString *plate_no = _result[@"plate_no"];
         if ([plate_no isEqualToString:@""]){
             [_result setObject:@"鲁B" forKey:@"plate_no"];
         }
     }
-    return @{@"car_id":_result[@"plate_no"],@"engine_no":_result[@"engine_no"],@"vin":_result[@"vin"],@"init_date":_result[@"registration_date"]};
+    return @{@"car_id":_result[@"plate_no"],@"engine_no":_result[@"engine_no"],@"vin":_result[@"vin"],@"init_date":_result[@"registration_date"],@"owner_name":_result[@"owner_name"]};
 }
 @end
 
@@ -93,7 +96,7 @@
     return self;
 }
 -(void)initData{
-    _sections=@[@"提醒",@"违章信息",@"基本信息"];
+    _sections=@[@"提醒",@"违章信息",@"基本信息",@"4S店"];
     _items=@[
     @[@{@"name":@"年审日期",@"key":@"check_date",@"mode":@"",@"description":@"",@"vcname":@""}],
     @[ @{@"name":@"未处理次数",@"key":@"untreated_number",@"mode":@"",@"description":@"",@"vcname":@""},
@@ -108,7 +111,9 @@
     @{@"name":@"发动机号",@"key":@"engine_no",@"mode":@"add",@"description":@"",@"vcname":@""},
     @{@"name":@"VIN",@"key":@"vin",@"mode":@"add",@"description":@"",@"vcname":@""},
     @{@"name":@"初登日期",@"key":@"registration_date",@"mode":@"add",@"description":@"",@"vcname":@""},
-    ]
+    @{@"name":@"车主名称",@"key":@"owner_name",@"mode":@"add",@"description":@"",@"vcname":@""},
+    ],
+    [[NSMutableArray alloc] init]
   ];
 }
 
@@ -163,30 +168,40 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     id item =[[_items objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
-    
-    if (![item[@"vcname"] isEqualToString:@""]){
-        OneButtonCell *cell =[[[NSBundle mainBundle] loadNibNamed:@"OneButtonCell" owner:tableView options:nil] objectAtIndex:0];
-        cell.button.text=item[@"name"];
-        cell.delegate=self;
+    if (indexPath.section==3){
+        UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"cellIdentifier"];
+        cell.textLabel.text = item[@"name"];
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@(%@)", item[@"address"],item[@"phone"]];
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         return cell;
-        
     }else{
-        DisplayTextCell *cell=nil;
-        NSArray *cells =[[NSBundle mainBundle] loadNibNamed:@"DisplayTextCell" owner:self.tableView options:nil];
-        cell =[cells objectAtIndex:0];
-        cell.keyLabel.text = item[@"name"];
-        if (![item[@"key"] isEqualToString:@""]){
-            NSString *value =[result objectForKey:item[@"key"]];
-            if (value){
-                cell.valueLabel.text = [NSString stringWithFormat:@"%@",value];
-            }
+        if (![item[@"vcname"] isEqualToString:@""]){
+            OneButtonCell *cell =[[[NSBundle mainBundle] loadNibNamed:@"OneButtonCell" owner:tableView options:nil] objectAtIndex:0];
+            cell.button.text=item[@"name"];
+            cell.delegate=self;
+            return cell;
+            
         }else{
-            cell.valueLabel.text=@"";
+            DisplayTextCell *cell=nil;
+            NSArray *cells =[[NSBundle mainBundle] loadNibNamed:@"DisplayTextCell" owner:self.tableView options:nil];
+            cell =[cells objectAtIndex:0];
+            cell.keyLabel.text = item[@"name"];
+            if (![item[@"key"] isEqualToString:@""]){
+                NSString *value =[result objectForKey:item[@"key"]];
+                if (value){
+                    cell.valueLabel.text = [NSString stringWithFormat:@"%@",value];
+                }
+            }else{
+                cell.valueLabel.text=@"";
+            }
+            cell.tag = indexPath.row;
+            cell.valueLabel.tag = indexPath.row;
+            return cell;
+            
         }
-        cell.tag = indexPath.row;
-        cell.valueLabel.tag = indexPath.row;
-        return cell;
+        
     }
+    
     
     
     
@@ -219,6 +234,14 @@
         return 22;
     }
 }
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.section==3){
+        id item =[[_items objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+        Browser2Controller *vc = [[Browser2Controller alloc] initWithNibName:@"Browser2Controller" bundle:nil];
+        vc.url = item[@"url"];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+}
 
 -(void)setup{
     _helper.url =[[_helper appSetttings] url_get_car_registration];
@@ -235,6 +258,11 @@
         result=list[@"data"];
     }
     [[AppSettings sharedSettings] saveJsonWith:@"car_data" data:result];
+    [[_items objectAtIndex:3] removeAllObjects];
+    for (id item in list[@"list"]) {
+        [[_items objectAtIndex:3] addObject:item];
+    }
+
     [self.tableView reloadData];
     [self endRefresh:self.tableView];
 }

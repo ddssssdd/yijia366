@@ -19,17 +19,27 @@
 #import "ProviderListController.h"
 #import "ArticleListController.h"
 #import "AppDelegate.h"
+#import "SignupStep1ViewController.h"
+#import "DetailPictureCell.h"
+#import "UIImageView+AFNetworking.h"
+#import "AppSettings.h"
+#import "Browser2Controller.h"
+#import "TaskDispatch.h"
+
 #define TAG_HOMEPAGE 0
 #define TAG_MAP 1
 #define TAG_GOODS 2
 #define TAG_PROVIDER 3
 #define TAG_ARTICLE 4
-#import "SignupStep1ViewController.h"
 
 
-@interface ViewController ()<UITabBarDelegate,UIAlertViewDelegate>{
+@interface ViewController ()<UIAlertViewDelegate>{
     NSMutableArray *_list;
     RefreshHelper *_helper;
+    id _imageList;
+    UIImageView *_imageView;
+    UIPageControl *_pager;
+    int _index;
 }
 
 @end
@@ -60,54 +70,54 @@
     [refreshControl addTarget:self action:@selector(handleRefresh:) forControlEvents:UIControlEventValueChanged];
     [self.tableview addSubview:refreshControl];
     */
-    [self.tableview reloadData];
-    [self get_latest];
+    
+    
     
     [[HttpClient sharedHttp] online];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getNews:) name:@"NavigationCell_01" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(logout) name:@"logout" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(need_set:) name:NEED_SET object:nil];
-    /*
-    self.tabBar.delegate = self;
-    UITabBarItem *item0=[[UITabBarItem alloc] initWithTitle:@"主页" image:[UIImage imageNamed:@"toolbar/zhuye.png"] tag:TAG_HOMEPAGE];
-    UITabBarItem *item1=[[UITabBarItem alloc] initWithTitle:@"保险" image:[UIImage imageNamed:@"toolbar/baoxian.png"] tag:TAG_MAP];
-    UITabBarItem *item2 =[[UITabBarItem alloc] initWithTitle:@"附近" image:[UIImage imageNamed:@"toolbar/shanghu.png"] tag:TAG_GOODS];
-    UITabBarItem *item3 = [[UITabBarItem alloc] initWithTitle:@"百科" image:[UIImage imageNamed:@"toolbar/baike.png"] tag:TAG_PROVIDER];
-
-    UITabBarItem *item4 = [[UITabBarItem alloc] initWithTitle:@"用户" image:[UIImage imageNamed:@"toolbar/yonghu.png"] tag:TAG_ARTICLE];
-
     
-    [self.tabBar setItems:@[item0,item1,
-     item2,
-     item3,
-     item4]];
-    [self.tabBar setSelectedItem:nil];
-     */
+    
+    UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(goLeft)];
+    swipeLeft.direction = UISwipeGestureRecognizerDirectionLeft;
+    [self.tableview addGestureRecognizer:swipeLeft];
+    UISwipeGestureRecognizer *swipeRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(goRight)];
+    swipeRight.direction = UISwipeGestureRecognizerDirectionRight;
+    [self.tableview addGestureRecognizer:swipeRight];
+    NSString *url = [NSString stringWithFormat:@"api/get_mainform?userid=%d",[AppSettings sharedSettings].userid];
+    [[AppSettings sharedSettings].http get:url block:^(id json) {
+        if ([[AppSettings sharedSettings] isSuccess:json]){
+            _imageList = json[@"result"];
+            [self.tableview reloadData];
+            [self get_latest];
+        }
+    }];
+    
+    
     
 }
--(void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item{
-    NSLog(@"%@",item);
-    if (item.tag==TAG_MAP){//baoxian
-        ShowLocationViewController *vc = [[ShowLocationViewController alloc] initWithNibName:@"ShowLocationViewController" bundle:nil];
-        vc.isFull = YES;
-        [self.navigationController pushViewController:vc animated:YES];
+-(void)showPicture:(int)i{
+    NSString *url = [_imageList objectAtIndex:i][@"pic_url"];
+    [_imageView setImageWithURL:[NSURL URLWithString:url]];
+    _pager.currentPage = i;
+}
+
+-(void)goRight{
+    _index--;
+    if (_index<0){
+        _index =[_imageList count]-1;
         
-
-    }else if (item.tag==TAG_GOODS){
-        ProviderListController *vc =[[ProviderListController alloc] initWithStyle:UITableViewStylePlain];
-        [self.navigationController pushViewController:vc animated:YES];
-
-//        GoodsListController *vc=[[GoodsListController alloc] initWithStyle:UITableViewStylePlain];
-//        [self.navigationController pushViewController:vc animated:YES];
-    }else if (item.tag==TAG_PROVIDER){
-        ArticleListController *vc=[[ArticleListController alloc] initWithStyle:UITableViewStylePlain];
-        [self.navigationController pushViewController:vc animated:YES];
-    }else if (item.tag==TAG_ARTICLE){
-        [self settingsButtonPress:nil];
-    }else if (item.tag==TAG_HOMEPAGE){
-        //home page
     }
+    [self showPicture:_index];
+}
+-(void)goLeft{
+    _index++;
+    if (_index>[_imageList count]-1){
+        _index=0;
+    }
+    [self showPicture:_index];
 }
 -(void)getNews:(NSNotification *)noti{
     [_helper endRefresh:self.tableview];
@@ -202,70 +212,79 @@
 
 
 //Table view
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 2;
+}
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [[Menu sharedMenu].list count] ;
+    if (section==0){
+        return 1;
+    }else{
+        return [[Menu sharedMenu].list count] ;
+    }
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    /*
-    static NSString *CellIdentifier = @"Cell";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        if (indexPath.row>=[[Menu sharedMenu].list count]){
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-        }else{
-        
-            NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"NavigationCell"  owner:self options:nil];
-            cell =[nib objectAtIndex:0];
-            
-        }
-      
-    }
-    
-    if (indexPath.row<[[Menu sharedMenu].list count]){
-        MenuItem *item = [[Menu sharedMenu].list objectAtIndex:indexPath.row];
-        ((NavigationCell *)cell).titleLabel.text = item.title;
-        ((NavigationCell *)cell).keyname = item.name;
-    }
-     return cell;
-
-   
-    */
-    if (indexPath.row>=[[Menu sharedMenu].list count]){
-        UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+    if (indexPath.section==0){
+        UITableViewCell *cell = [[[NSBundle mainBundle] loadNibNamed:@"DetailPictureCell" owner:nil options:nil] objectAtIndex:0];
+        DetailPictureCell *aCell = (DetailPictureCell *)cell;
+        [aCell.image setImageWithURL:[NSURL URLWithString:[_imageList objectAtIndex:0 ][@"pic_url"]]];
+        aCell.pager.numberOfPages =[ _imageList count];
+        _imageView = aCell.image;
+        _pager = aCell.pager;
         return cell;
     }else{
-        
-        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"NavigationCell"  owner:self options:nil];
-        NavigationCell *cell =[nib objectAtIndex:0];
-        MenuItem *item = [[Menu sharedMenu].list objectAtIndex:indexPath.row];
-        ((NavigationCell *)cell).titleLabel.text = item.title;
-        ((NavigationCell *)cell).keyname = item.name;
-        if (item.imagePath && ![item.imagePath isEqualToString:@""]){
-            ((NavigationCell *)cell).imgeIcon.image = [UIImage imageNamed:item.imagePath];
+        if (indexPath.row>=[[Menu sharedMenu].list count]){
+            UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+            return cell;
+        }else{
+            
+            NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"NavigationCell"  owner:self options:nil];
+            NavigationCell *cell =[nib objectAtIndex:0];
+            MenuItem *item = [[Menu sharedMenu].list objectAtIndex:indexPath.row];
+            ((NavigationCell *)cell).titleLabel.text = item.title;
+            ((NavigationCell *)cell).keyname = item.name;
+            if (item.imagePath && ![item.imagePath isEqualToString:@""]){
+                ((NavigationCell *)cell).imgeIcon.image = [UIImage imageNamed:item.imagePath];
+            }
+            cell.rootController = self.navigationController;
+            return cell;
+            
         }
-        cell.rootController = self.navigationController;
-        return cell;
+
         
     }
     
 }
 -(float)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 50;
+
+    if (indexPath.section==0){
+        return 150.0f;
+        
+    }
+    return 50.0f;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row>=[[Menu sharedMenu].list count]){
-        return ;
+    if (indexPath.section==0){
+        id item = [_imageList objectAtIndex:_pager.currentPage];
+        NSLog(@"%@",item);
+        id obj = @{@"id":item[@"id"],@"page_id":item[@"page_id"],@"action_url":item[@"url"]};
+        TaskDispatch *dispatch =[[TaskDispatch alloc] initWithController:self.navigationController task:obj];
+        [dispatch pushToController];
+        
+    }else{
+        if (indexPath.row>=[[Menu sharedMenu].list count]){
+            return ;
+        }
+        MenuItem *item = [[Menu sharedMenu].list objectAtIndex:indexPath.row];
+        NSLog(@"Select %@",item.title);
+        [[Menu sharedMenu] pushToController:self.navigationController key:item.name title:item.title url:nil];
+
     }
-    MenuItem *item = [[Menu sharedMenu].list objectAtIndex:indexPath.row];
-    NSLog(@"Select %@",item.title);
-    [[Menu sharedMenu] pushToController:self.navigationController key:item.name title:item.title url:nil];
    
 
 }

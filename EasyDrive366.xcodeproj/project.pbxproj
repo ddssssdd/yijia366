@@ -125,6 +125,7 @@
 		51570C2418585437003655CC /* DetailDescriptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51570C2318585437003655CC /* DetailDescriptionCell.xib */; };
 		51570C2618585448003655CC /* DetailRateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51570C2518585447003655CC /* DetailRateCell.xib */; };
 		51591F7818EAC96600980A21 /* background_login.png in Resources */ = {isa = PBXBuildFile; fileRef = 51591F7718EAC96600980A21 /* background_login.png */; };
+		51591F7B18EAE7EE00980A21 /* UserProfileController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51591F7A18EAE7EE00980A21 /* UserProfileController.m */; };
 		5164183B18508CD400C1A792 /* FeedbackInputCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5164183A18508CD400C1A792 /* FeedbackInputCell.m */; };
 		5169E7C11850A3D100F510A7 /* FeedbackInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5169E7C01850A3D100F510A7 /* FeedbackInfoCell.m */; };
 		516BB5B3185874BB00D38079 /* backgroundStar.png in Resources */ = {isa = PBXBuildFile; fileRef = 516BB5AF185874BB00D38079 /* backgroundStar.png */; };
@@ -614,6 +615,8 @@
 		51570C2318585437003655CC /* DetailDescriptionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailDescriptionCell.xib; sourceTree = "<group>"; };
 		51570C2518585447003655CC /* DetailRateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailRateCell.xib; sourceTree = "<group>"; };
 		51591F7718EAC96600980A21 /* background_login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background_login.png; sourceTree = "<group>"; };
+		51591F7918EAE7EE00980A21 /* UserProfileController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfileController.h; sourceTree = "<group>"; };
+		51591F7A18EAE7EE00980A21 /* UserProfileController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfileController.m; sourceTree = "<group>"; };
 		5164183918508CD400C1A792 /* FeedbackInputCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedbackInputCell.h; sourceTree = "<group>"; };
 		5164183A18508CD400C1A792 /* FeedbackInputCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedbackInputCell.m; sourceTree = "<group>"; };
 		5169E7BF1850A3D100F510A7 /* FeedbackInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedbackInfoCell.h; sourceTree = "<group>"; };
@@ -1525,6 +1528,8 @@
 				511567E218A4FBA900784878 /* FavorItemCell.xib */,
 				511567E418A501A700784878 /* MyHistroyController.h */,
 				511567E518A501A700784878 /* MyHistroyController.m */,
+				51591F7918EAE7EE00980A21 /* UserProfileController.h */,
+				51591F7A18EAE7EE00980A21 /* UserProfileController.m */,
 			);
 			name = Users;
 			sourceTree = "<group>";
@@ -2648,6 +2653,7 @@
 				E26460E316F094DE0050BDA4 /* WelcomeViewController.m in Sources */,
 				E26460F316F1F4CE0050BDA4 /* SVProgressHUD.m in Sources */,
 				E26460FC16F1F96D0050BDA4 /* NVUIGradientButton.m in Sources */,
+				51591F7B18EAE7EE00980A21 /* UserProfileController.m in Sources */,
 				E2903BDD16F41C8500A93CBF /* PhoneView.m in Sources */,
 				E2F2881416F5948100DAE1B8 /* RefreshHelper.m in Sources */,
 				E25AF0B116F9FED900E79057 /* CIViewController.m in Sources */,
