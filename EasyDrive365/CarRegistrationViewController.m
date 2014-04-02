@@ -54,7 +54,7 @@
     @{@"name":@"发动机号",@"key":@"engine_no",@"mode":@"add",@"description":@"",@"vcname":@""},
     @{@"name":@"VIN",@"key":@"vin",@"mode":@"add",@"description":@"",@"vcname":@""},
     @{@"name":@"初登日期",@"key":@"init_date",@"mode":@"add",@"description":@"",@"vcname":@"DatePickerViewController"},
-    @{@"name":@"车主名称",@"key":@"owner_name",@"mode":@"add",@"description":@"",@"vcname":@""},
+    @{@"name":@"所有人",@"key":@"owner_name",@"mode":@"add",@"description":@"",@"vcname":@""},
     ]];
 }
 -(NSDictionary *)getInitData{
@@ -111,7 +111,7 @@
     @{@"name":@"发动机号",@"key":@"engine_no",@"mode":@"add",@"description":@"",@"vcname":@""},
     @{@"name":@"VIN",@"key":@"vin",@"mode":@"add",@"description":@"",@"vcname":@""},
     @{@"name":@"初登日期",@"key":@"registration_date",@"mode":@"add",@"description":@"",@"vcname":@""},
-    @{@"name":@"车主名称",@"key":@"owner_name",@"mode":@"add",@"description":@"",@"vcname":@""},
+    @{@"name":@"所有人",@"key":@"owner_name",@"mode":@"add",@"description":@"",@"vcname":@""},
     ],
     [[NSMutableArray alloc] init]
   ];

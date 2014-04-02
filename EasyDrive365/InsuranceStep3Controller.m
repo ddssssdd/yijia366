@@ -53,7 +53,7 @@
                [[NSMutableDictionary alloc] initWithDictionary:@{@"key" :@"model",@"label":@"车款：",@"default":@"",@"placeholder":@"",@"ispassword":@"capital",@"cell":@"default",@"value":self.car_data[@"model"] }],
                [[NSMutableDictionary alloc] initWithDictionary:@{@"key" :@"exhause",@"label":@"排气量：",@"default":@"",@"placeholder":@"",@"ispassword":@"capital",@"cell":@"default",@"value":self.car_data[@"exhause"] }],
                [[NSMutableDictionary alloc] initWithDictionary:@{@"key" :@"passengers",@"label":@"乘客数：",@"default":@"",@"placeholder":@"DatePickerViewController",@"ispassword":@"no",@"cell":@"default",@"value":self.car_data[@"passengers"] }],
-               [[NSMutableDictionary alloc] initWithDictionary:@{@"key" :@"price",@"label":@"参考价格：",@"default":@"",@"placeholder":@"",@"ispassword":@"capital",@"cell":@"default",@"value":self.car_data[@"price"] }]
+               [[NSMutableDictionary alloc] initWithDictionary:@{@"key" :@"price",@"label":@"参考价格：",@"default":@"",@"placeholder":@"",@"ispassword":@"number",@"cell":@"EditTextCell",@"value":self.car_data[@"price"] }]
                ];
     id items2=@[
                 [[NSMutableDictionary alloc] initWithDictionary:@{@"key" :@"biz_valid",@"label":@"商业险起期：",@"default":@"",@"placeholder":@"DatePickerViewController",@"ispassword":@"no",@"cell":@"ChooseNextCell",@"value":self.car_data[@"biz_valid"] }],
@@ -80,6 +80,12 @@
 }
 -(void)processSaving:(NSMutableDictionary *)parameters{
     NSLog(@"%@",parameters);
+    NSString *price =[parameters objectForKey:@"price"];
+    if([@"" isEqualToString:price]){
+        [[[UIAlertView alloc] initWithTitle:AppTitle message:@"参考价格不能为空！" delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定", nil] show];
+        return;
+        
+    }
     
     NSString *biz_valid=[parameters objectForKey:@"biz_valid"];
     if([@"" isEqualToString:biz_valid]){
@@ -96,7 +102,7 @@
    
     
     
-    NSString *path =[NSString stringWithFormat:@"ins/carins_clause?userid=%d&biz_valid=%@&com_valid=%@",[AppSettings sharedSettings].userid,biz_valid,com_valid];
+    NSString *path =[NSString stringWithFormat:@"ins/carins_clause?userid=%d&biz_valid=%@&com_valid=%@&price=%@",[AppSettings sharedSettings].userid,biz_valid,com_valid,price];
     
     [[HttpClient sharedHttp] get:path block:^(id json) {
         NSLog(@"%@",json);

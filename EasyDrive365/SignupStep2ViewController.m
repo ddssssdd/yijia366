@@ -27,11 +27,12 @@ NSString *inform2=@"设置向导第2步共4步";
     id items=@[
                [[NSMutableDictionary alloc] initWithDictionary:@{@"key" :@"vin",@"label":@"VIN：",@"default":@"",@"placeholder":@"VIN",@"ispassword":@"capital",@"cell":@"EditTextCell",@"value":self.vin }],
                [[NSMutableDictionary alloc] initWithDictionary:@{@"key" :@"engine_no",@"label":@"发动机号：",@"default":@"",@"placeholder":@"",@"ispassword":@"capital",@"cell":@"EditTextCell",@"value":self.engine_no }],
-               [[NSMutableDictionary alloc] initWithDictionary:@{@"key" :@"registration_date",@"label":@"初登日期：",@"default":@"",@"placeholder":@"DatePickerViewController",@"ispassword":@"no",@"cell":@"ChooseNextCell",@"value":self.registration_date }]
+               [[NSMutableDictionary alloc] initWithDictionary:@{@"key" :@"registration_date",@"label":@"初登日期：",@"default":@"",@"placeholder":@"DatePickerViewController",@"ispassword":@"no",@"cell":@"ChooseNextCell",@"value":self.registration_date }],
+               [[NSMutableDictionary alloc] initWithDictionary:@{@"key" :@"owner_name",@"label":@"所有人：",@"default":@"",@"placeholder":@"",@"ispassword":@"capital",@"cell":@"EditTextCell",@"value":self.owner_name }]
                ];
     _list=[NSMutableArray arrayWithArray: @[
            /*@{@"count" : @1,@"list":@[@{@"cell":@"IntroduceCell"}],@"height":@100.0f},*/
-           @{@"count" : @3,@"list":items,@"height":@44.0f},
+           @{@"count" : @4,@"list":items,@"height":@44.0f},
            //@{@"count" : @1,@"cell":@"OneButtonCell",@"list":@[],@"height":@44.0f}
            ]];
     self.title = @"设置向导";
@@ -45,6 +46,7 @@ NSString *inform2=@"设置向导第2步共4步";
     NSString *vin=[parameters objectForKey:@"vin"];
     NSString *engine_no = [parameters objectForKey:@"engine_no"];
     NSString *registration_date = [parameters objectForKey:@"registration_date"];
+    NSString *owner_name = [parameters objectForKey:@"owner_name"];
     /*
     if([@"" isEqualToString:vin]){
         [[[UIAlertView alloc] initWithTitle:AppTitle message:@"VIN不能为空！" delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定", nil] show];
@@ -63,7 +65,7 @@ NSString *inform2=@"设置向导第2步共4步";
     }
     
     */
-    NSString *path =[NSString stringWithFormat:@"api/wizardstep2?userid=%d&vin=%@&engine_no=%@&registration_date=%@",[AppSettings sharedSettings].userid,vin,engine_no,registration_date];
+    NSString *path =[NSString stringWithFormat:@"api/wizardstep2?userid=%d&vin=%@&engine_no=%@&registration_date=%@&owner_name=%@",[AppSettings sharedSettings].userid,vin,engine_no,registration_date,owner_name];
     
     [[HttpClient sharedHttp] get:path block:^(id json) {
         NSLog(@"%@",json);

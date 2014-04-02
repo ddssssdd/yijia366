@@ -245,7 +245,7 @@
                    @"default":@"",
                    @"placeholder":@"",
                    @"value":@"",
-                   @"cell":@"ChooseNextImageCell",@"icon":@"g.png" }]
+                   @"cell":@"ChooseNextImageCell",@"icon":@"p.png" }]
                 ];
     
     id items3= @[

@@ -12,4 +12,5 @@
 @property (nonatomic) NSString *vin;
 @property (nonatomic) NSString *engine_no;
 @property (nonatomic) NSString *registration_date;
+@property (nonatomic) NSString *owner_name;
 @end

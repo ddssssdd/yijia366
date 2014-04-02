@@ -122,6 +122,7 @@ NSString *inform1=@"设置向导第1步共4步";
             vc.vin=json[@"result"][@"vin"];
             vc.engine_no =json[@"result"][@"engine_no"];
             vc.registration_date=json[@"result"][@"registration_date"];
+            vc.owner_name=json[@"result"][@"owner_name"];
             [self.navigationController pushViewController:vc animated:YES];
         }
     }];
