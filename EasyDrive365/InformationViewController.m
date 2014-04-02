@@ -13,6 +13,7 @@
 #import "Browser2Controller.h"
 #import "PhoneView.h"
 #import "Menu.h"
+#import "TaskDispatch.h"
 
 #import "InfromationDetailViewController.h"
 
@@ -138,9 +139,11 @@
            
         }];
     }
+    TaskDispatch *dispatch = [[TaskDispatch alloc] initWithController:self.navigationController task:@{@"page_id":item[@"action"],@"id":item[@"id"],@"action_url":item[@"url"]}];
+    [dispatch pushToController];
     
-    NSString *title = [[Menu sharedMenu] getTitleByKey:action];
-    [[Menu sharedMenu] pushToController:self.navigationController key:action title:title url:url];
+    //NSString *title = [[Menu sharedMenu] getTitleByKey:action];
+    //[[Menu sharedMenu] pushToController:self.navigationController key:action title:title url:url];
     
 }
 

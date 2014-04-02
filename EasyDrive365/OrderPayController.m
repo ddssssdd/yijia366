@@ -166,8 +166,8 @@
         //money information
         [_sectionlist addObject:@"应付款"];
         _payItem = [[OrderPayItem alloc] init];
-        _payItem.useDiscount = YES;
-        _payItem.detail = self.data[@"order_pay"];
+        _payItem.useDiscount = NO;
+        _payItem.detail = self.data[@"order_pay_2"];
         
         [_list addObject:@[@{@"title":@"总价",@"detail":self.data[@"order_total"]},
                            @{@"title":@"会员折扣",@"detail":self.data[@"discount"]},
