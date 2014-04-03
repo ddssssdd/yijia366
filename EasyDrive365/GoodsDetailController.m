@@ -18,7 +18,9 @@
 #import "BuyButtonView.h"
 #import "NewOrderController.h"
 #import "Browser2Controller.h"
-
+#import "ProviderListItemCell.h"
+#import "ProviderDetailController.h"
+#import "GoodsShopListController.h"
 @interface GoodsDetailController ()<BuyButtonViewDelegate>{
     id _target;
     UIImageView *_imageView;
@@ -28,6 +30,11 @@
     UIView *_navigationView;
     UIButton *_favorBtn;
     BOOL _hasAgreement;
+    int maxSection;
+    int introduceSection;
+    int lookServiceSection;
+    int providerSection;
+    id provider_list;
 }
 
 @end
@@ -145,6 +152,19 @@
         _target = json[@"result"];
         _index=0;
         _hasAgreement = ![_target[@"clause_url"] isEqualToString:@""];
+        if (_hasAgreement){
+            maxSection = 7;
+            introduceSection = 4;
+            lookServiceSection = 5;
+            providerSection = 6;
+        }else{
+            maxSection = 6;
+            introduceSection = -1;
+            lookServiceSection = 4;
+            providerSection = 5;
+        }
+        provider_list = _target[@"provider_list"];
+        
         [self.tableView reloadData];
         NSLog(@"%@",_target);
         [self addRightButtons];
@@ -153,10 +173,14 @@
     
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return _hasAgreement?5:4;
+    return maxSection;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 1;
+    if (section==providerSection){
+        return [provider_list count];
+    }else{
+        return 1;
+    }
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell;
@@ -187,11 +211,28 @@
         aCell.lblStar.text =[NSString stringWithFormat:@"%@",  _target[@"star"]];
         aCell.lblStar_voternum.text = [NSString stringWithFormat:@"%@", _target[@"star_voternum"]];
         aCell.rating =[_target[@"star_num"] intValue];
-    }else if (indexPath.section==4){
+    }else if (indexPath.section==introduceSection){
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"whatEver"];
         cell.textLabel.text = @"";
-        cell.detailTextLabel.text = @"请在购买之前阅读服务说明";
+        cell.detailTextLabel.text = @"查看详细介绍";
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    }else if (indexPath.section==lookServiceSection){
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"whatEver"];
+        cell.textLabel.text = @"";
+        cell.detailTextLabel.text = @"查看服务网点";
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    }else if (indexPath.section==providerSection){
+        //provider;
+        cell= [[[NSBundle mainBundle] loadNibNamed:@"ProviderListItemCell" owner:nil options:nil] objectAtIndex:0];
+        id item = [provider_list objectAtIndex:indexPath.row];
+        ProviderListItemCell *itemCell=(ProviderListItemCell *)cell;
+        itemCell.lblName.text =item[@"name"];
+        itemCell.lblAddress.text = item[@"address"];
+        itemCell.lblPhone.text = item[@"phone"];
+        itemCell.lblVoternum.text =[NSString stringWithFormat:@"%@", item[@"star_voternum"]];
+        itemCell.rating = [item[@"star_num"] intValue];
+        
+        [itemCell.image setImageWithURL:[NSURL URLWithString:item[@"pic_url"]]];
     }
     return cell;
 }
@@ -229,12 +270,15 @@
             return 44;
         case 3:
             return 100;
-      
             
         default:
             break;
     }
-    return 44.0f;
+    if (indexPath.section==providerSection){
+        return 120.0f;
+    }else{
+        return 44.0f;
+    }
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section==2){
@@ -242,12 +286,25 @@
         vc.itemId = [NSString stringWithFormat:@"%d",self.target_id];
         vc.itemType =@"goods";
         [self.navigationController pushViewController:vc animated:YES];
-    }else if (indexPath.section==4){
+    }else if (indexPath.section==introduceSection){
         Browser2Controller *vc = [[Browser2Controller alloc] initWithNibName:@"Browser2Controller" bundle:nil];
         vc.url = _target[@"clause_url"];
         vc.title = @"服务说明";
         
         [self.navigationController pushViewController:vc animated:YES];
+    }else if (indexPath.section==providerSection){
+        id item = [provider_list objectAtIndex:indexPath.row];
+        ProviderDetailController *vc = [[ProviderDetailController alloc] initWithStyle:UITableViewStylePlain];
+        vc.code= item[@"code"];
+        
+        vc.name = item[@"name"];
+        [self.navigationController pushViewController:vc animated:YES];
+
+    }else if (indexPath.section==lookServiceSection){
+        GoodsShopListController *vc =[[GoodsShopListController alloc] initWithStyle:UITableViewStyleGrouped];
+        vc.goods_id = self.target_id;
+        [self.navigationController pushViewController:vc animated:YES];
+        
     }
 }
 

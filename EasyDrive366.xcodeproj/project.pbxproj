@@ -35,6 +35,7 @@
 		51160F7B1861D92F00AA15D3 /* CommentListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 51160F7A1861D92F00AA15D3 /* CommentListCell.m */; };
 		51160F7D1861D94000AA15D3 /* CommentListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51160F7C1861D94000AA15D3 /* CommentListCell.xib */; };
 		51160F7F1861D94E00AA15D3 /* CommentItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51160F7E1861D94E00AA15D3 /* CommentItemCell.xib */; };
+		5122C83018ED87A000E70F2B /* GoodsShopListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5122C82F18ED87A000E70F2B /* GoodsShopListController.m */; };
 		512598B218866A5500967BDE /* Browser2Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 512598B018866A5500967BDE /* Browser2Controller.m */; };
 		512598B318866A5500967BDE /* Browser2Controller.xib in Resources */ = {isa = PBXBuildFile; fileRef = 512598B118866A5500967BDE /* Browser2Controller.xib */; };
 		512598B718866F7700967BDE /* ArticleController.m in Sources */ = {isa = PBXBuildFile; fileRef = 512598B518866F7700967BDE /* ArticleController.m */; };
@@ -499,6 +500,8 @@
 		51160F7A1861D92F00AA15D3 /* CommentListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentListCell.m; sourceTree = "<group>"; };
 		51160F7C1861D94000AA15D3 /* CommentListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentListCell.xib; sourceTree = "<group>"; };
 		51160F7E1861D94E00AA15D3 /* CommentItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentItemCell.xib; sourceTree = "<group>"; };
+		5122C82E18ED87A000E70F2B /* GoodsShopListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsShopListController.h; sourceTree = "<group>"; };
+		5122C82F18ED87A000E70F2B /* GoodsShopListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsShopListController.m; sourceTree = "<group>"; };
 		512598AF18866A5500967BDE /* Browser2Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Browser2Controller.h; sourceTree = "<group>"; };
 		512598B018866A5500967BDE /* Browser2Controller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Browser2Controller.m; sourceTree = "<group>"; };
 		512598B118866A5500967BDE /* Browser2Controller.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Browser2Controller.xib; sourceTree = "<group>"; };
@@ -1240,6 +1243,8 @@
 				51570C1D18585401003655CC /* DetailRateCell.m */,
 				51570C2518585447003655CC /* DetailRateCell.xib */,
 				51D7DF6718757F7E001807D7 /* BuyButtonDelegate.h */,
+				5122C82E18ED87A000E70F2B /* GoodsShopListController.h */,
+				5122C82F18ED87A000E70F2B /* GoodsShopListController.m */,
 			);
 			name = Goods;
 			sourceTree = "<group>";
@@ -2570,6 +2575,7 @@
 				E2296D5116B7723F00E332D9 /* SignupViewController.m in Sources */,
 				E2EE650516C293D300ED1C73 /* AppSettings.m in Sources */,
 				514C90F618962DD1007FFFCC /* InsuranceStep8Controller.m in Sources */,
+				5122C83018ED87A000E70F2B /* GoodsShopListController.m in Sources */,
 				E2EE650F16C29C2F00ED1C73 /* NavigationCell.m in Sources */,
 				E2EE651416C2A59400ED1C73 /* MenuItem.m in Sources */,
 				E2EE651716C2A62500ED1C73 /* Menu.m in Sources */,

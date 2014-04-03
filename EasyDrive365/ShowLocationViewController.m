@@ -54,7 +54,7 @@
     [_mapView viewWillAppear];
     _mapView.delegate = self;
     _mapView.zoomLevel = 16;
-    _mapView.showsUserLocation = NO;
+    _mapView.showsUserLocation = YES;
   //  _mapView.userTrackingMode = BMKUserTrackingModeNone;
   //  _mapView.showsUserLocation = YES;
     
