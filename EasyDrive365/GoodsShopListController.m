@@ -45,9 +45,9 @@
 }
 -(void)openMap{
     ShowLocationViewController *vc =[[ShowLocationViewController alloc] initWithNibName:@"ShowLocationViewController" bundle:nil];
-
+    vc.target_list = _list;
     [self.navigationController pushViewController:vc animated:YES];
-    [vc showShop:_list];
+//    [vc showShop:_list];
 }
 - (void)didReceiveMemoryWarning
 {

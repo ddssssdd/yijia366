@@ -60,6 +60,8 @@
     
     if (self.target_postion){
         [self showSingleShop:self.target_postion];
+    }else if (self.target_list){
+        [self showShop:self.target_list];
     }
     
     //test use
@@ -183,7 +185,7 @@
     CLLocationCoordinate2D coor;
     coor.latitude = [item[@"y"] floatValue];
     coor.longitude = [item[@"x"] floatValue];
-    [_mapView setZoomLevel:14];
+    [_mapView setZoomLevel:16];
     [_mapView setCenterCoordinate:coor animated:YES];
     self.title = item[@"name"];
 
