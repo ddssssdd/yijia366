@@ -84,8 +84,10 @@
     if (result[@"pricelist"]){
         total =result[@"pricelist"][@"total"];
         if ([total intValue]>0){
+
             _price=[self parseData:result key:@"pricelist"];
         }else{
+           
             _price = nil;
         }
     }
@@ -113,7 +115,7 @@
     
     //[_list addObject:sum];
     [_list addObject:items];
-    [_sectionHeaders addObject:curr[@"title"]];
+    [_sectionHeaders addObject:curr];
     return curr;
 }
 -(void)parseData_old:(id)result key:(NSString *)key{
@@ -151,7 +153,7 @@
         return @"新续保单";
     }
      */
-    return [_sectionHeaders objectAtIndex:section];
+    return [_sectionHeaders objectAtIndex:section][@"title"];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -203,6 +205,7 @@
 
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
     id dict;
+    /*
     if (section==0){
         dict = _curr;
     }else if (section==1){
@@ -211,7 +214,8 @@
         
     }else{
         dict = _price;
-    }
+    }*/
+    dict = [_sectionHeaders objectAtIndex:section];
     InsuranceFooterView *fv = [[[NSBundle mainBundle] loadNibNamed:@"InsuranceFooterView" owner:nil options:nil] objectAtIndex:0];
     fv.backgroundColor = [self.tableView backgroundColor];
     fv.summaryLabel.text=[NSString stringWithFormat:@"%@",dict[@"total"]];
