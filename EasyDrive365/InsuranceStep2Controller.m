@@ -10,7 +10,10 @@
 #import "AppSettings.h"
 #import "InsuranceStep3Controller.h"
 
-@interface InsuranceStep2Controller ()
+@interface InsuranceStep2Controller (){
+    UIView *ins_view;
+    BOOL _sameAsOwner;
+}
 
 @end
 
@@ -44,7 +47,7 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 -(void)initData{
-    
+    _sameAsOwner=YES;
    
     
     NSString *url;
@@ -67,7 +70,10 @@
                    [[NSMutableDictionary alloc] initWithDictionary:@{@"key" :@"vin",@"label":@"VIN：",@"default":@"",@"placeholder":@"",@"ispassword":@"capital",@"cell":@"EditTextCell",@"value":json[@"result"][@"vin"] }],
                    [[NSMutableDictionary alloc] initWithDictionary:@{@"key" :@"engine_no",@"label":@"发动机号：",@"default":@"",@"placeholder":@"",@"ispassword":@"capital",@"cell":@"EditTextCell",@"value":json[@"result"][@"engine_no"] }],
                    [[NSMutableDictionary alloc] initWithDictionary:@{@"key" :@"registration_date",@"label":@"  初登日期：",@"default":@"",@"placeholder":@"DatePickerViewController",@"ispassword":@"no",@"cell":@"ChooseNextCell",@"value":r_date }],
-                   [[NSMutableDictionary alloc] initWithDictionary:@{@"key" :@"owner_name",@"label":@"车主姓名：",@"default":@"",@"placeholder":@"",@"ispassword":@"capital",@"cell":@"EditTextCell",@"value":json[@"result"][@"owner_name"] }]
+                   [[NSMutableDictionary alloc] initWithDictionary:@{@"key" :@"owner_name",@"label":@"车主姓名：",@"default":@"",@"placeholder":@"",@"ispassword":@"capital",@"cell":@"EditTextCell",@"value":json[@"result"][@"owner_name"] }],
+                   [[NSMutableDictionary alloc] initWithDictionary:@{@"key" :@"owner_license",@"label":@"身份证号：",@"default":@"",@"placeholder":@"",@"ispassword":@"capital",@"cell":@"EditTextCell",@"value":json[@"result"][@"owner_license"] }],
+                   [[NSMutableDictionary alloc] initWithDictionary:@{@"key" :@"owner_phone",@"label":@"手机号：",@"default":@"",@"placeholder":@"",@"ispassword":@"capital",@"cell":@"EditTextCell",@"value":json[@"result"][@"owner_phone"] }],
+                   [[NSMutableDictionary alloc] initWithDictionary:@{@"key" :@"policy_hoder",@"label":@"投保人：",@"default":@"",@"placeholder":@"",@"ispassword":@"capital",@"cell":@"EditTextCell",@"value":json[@"result"][@"policy_hoder"] }]
                    ];
         id items2=@[
                     [[NSMutableDictionary alloc] initWithDictionary:@{@"key" :@"name",@"label":@"姓名：",@"default":@"",@"placeholder":@"",@"ispassword":@"capital",@"cell":@"EditTextCell",@"value":json[@"result"][@"name"] }],
@@ -76,7 +82,7 @@
                     ];
         _list=[NSMutableArray arrayWithArray: @[
 
-                                                @{@"count" : @5,@"list":items,@"height":@44.0f},
+                                                @{@"count" : @8,@"list":items,@"height":@44.0f},
                                                 @{@"count" : @3,@"list":items2,@"height":@44.0f}
                                                 ]];
         [self.tableView reloadData];
@@ -90,6 +96,66 @@
         return @"车辆基本信息";
     else
         return @"被保险人信息";
+}
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    if (section==0){
+        return nil;
+    }else{
+        if (!ins_view){
+            ins_view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+            UILabel *label =[[UILabel alloc] initWithFrame:CGRectMake(20, 10, 160, 21)];
+            label.font =[UIFont fontWithName:@"Arial" size:14.0f];
+            label.text =@"被保险人信息";
+            [ins_view addSubview:label];
+            UILabel *label2 =[[UILabel alloc] initWithFrame:CGRectMake(180, 10, 60, 21)];
+            label2.font =[UIFont fontWithName:@"Arial" size:14.0f];
+            [label2 setTextAlignment:NSTextAlignmentRight];
+            label2.text =@"同车主";
+            [ins_view addSubview:label2];
+            UISwitch *sw =[[UISwitch alloc] initWithFrame:CGRectMake(240, 5, 60, 21)];
+            [sw addTarget:self action:@selector(sameAsOwner:) forControlEvents:UIControlEventValueChanged];
+            sw.on = _sameAsOwner;
+            [ins_view addSubview:sw];
+            
+        }
+        return  ins_view;
+        
+    }
+    
+}
+-(void)valueChanged:(NSString *)key value:(NSString *)value{
+    NSLog(@"%@=%@",key,value);
+    if (_sameAsOwner){
+        if ([key isEqualToString:@"owner_name"]){
+            [[_list objectAtIndex:1][@"list"] objectAtIndex:0][@"value"]=value;
+            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:1];
+            [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        }
+        if ([key isEqualToString:@"owner_license"]){
+            [[_list objectAtIndex:1][@"list"] objectAtIndex:1][@"value"]=value;
+            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:1 inSection:1];
+            [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+
+        }
+        if ([key isEqualToString:@"owner_phone"]){
+            [[_list objectAtIndex:1][@"list"] objectAtIndex:2][@"value"]=value;
+            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:2 inSection:1];
+            [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+
+        }
+        
+        
+    }
+}
+-(void)sameAsOwner:(UISwitch *)sw{
+    _sameAsOwner = sw.isOn;
+    if (sw.isOn){
+        
+        [[_list objectAtIndex:1][@"list"] objectAtIndex:0][@"value"]=[[_list objectAtIndex:0][@"list"] objectAtIndex:4][@"value"];
+        [[_list objectAtIndex:1][@"list"] objectAtIndex:1][@"value"]=[[_list objectAtIndex:0][@"list"] objectAtIndex:5][@"value"];
+         [[_list objectAtIndex:1][@"list"] objectAtIndex:2][@"value"]=[[_list objectAtIndex:0][@"list"] objectAtIndex:6][@"value"];
+        [self.tableView reloadData];
+    }
 }
 -(void)setupCell:(UITableViewCell *)cell indexPath:(NSIndexPath *)indexPath{
     [super setupCell:cell indexPath:indexPath];
@@ -125,6 +191,43 @@
         return;
         
     }
+    //owner_license
+    NSString *owner_license=[parameters objectForKey:@"owner_license"];
+    if([@"" isEqualToString:owner_license]){
+        [[[UIAlertView alloc] initWithTitle:AppTitle message:@"车主－身份证号码不能为空！" delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定", nil] show];
+        return;
+        
+    }else{
+        if ([owner_license length]!=18){
+            [[[UIAlertView alloc] initWithTitle:@"易驾366" message:@"车主－身份证号码必须18位" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil] show];
+            return;
+        }
+        NSString *temp =[owner_license stringByTrimmingCharactersInSet:[NSCharacterSet decimalDigitCharacterSet]];
+        NSLog(@"%@=%d",temp,[temp length]);
+        if (([temp length]==0) || (([temp length]==1) && ([owner_license hasSuffix:@"X"]))){
+            
+            
+        }else{
+            [[[UIAlertView alloc] initWithTitle:@"易驾366" message:@"车主－身份证号码必须18位,只有最后一位允许是X" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil] show];
+            return;
+        }
+        
+        
+    }
+    //owner_phone
+    NSString *owner_phone=[parameters objectForKey:@"owner_phone"];
+    if([@"" isEqualToString:owner_phone]){
+        [[[UIAlertView alloc] initWithTitle:AppTitle message:@"车主手机号码不能为空！" delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定", nil] show];
+        return;
+        
+    }
+    //policy_hoder
+    NSString *policy_hoder=[parameters objectForKey:@"policy_hoder"];
+    if([@"" isEqualToString:policy_hoder]){
+        [[[UIAlertView alloc] initWithTitle:AppTitle message:@"投保人不能为空！" delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定", nil] show];
+        return;
+        
+    }
     NSString *name=[parameters objectForKey:@"name"];
     if([@"" isEqualToString:name]){
         [[[UIAlertView alloc] initWithTitle:AppTitle message:@"被保险人姓名不能为空！" delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定", nil] show];
@@ -135,21 +238,21 @@
     NSString *license_id = [parameters objectForKey:@"license_id"];
     if([@"" isEqualToString:license_id]){
         
-         [[[UIAlertView alloc] initWithTitle:@"提示" message:@"身份证号码不能为空！" delegate:self cancelButtonTitle:nil otherButtonTitles:@"继续", nil] show];
+         [[[UIAlertView alloc] initWithTitle:@"提示" message:@"被保险人－身份证号码不能为空！" delegate:self cancelButtonTitle:nil otherButtonTitles:@"继续", nil] show];
          return;
         
     }else{
         if ([license_id length]!=18){
-            [[[UIAlertView alloc] initWithTitle:@"易驾366" message:@"身份证号码必须18位" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil] show];
+            [[[UIAlertView alloc] initWithTitle:@"易驾366" message:@"被保险人－身份证号码必须18位" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil] show];
             return;
         }
         NSString *temp =[license_id stringByTrimmingCharactersInSet:[NSCharacterSet decimalDigitCharacterSet]];
-        NSLog(@"%@=%d",temp,[temp length]);
+        //NSLog(@"%@=%d",temp,[temp length]);
         if (([temp length]==0) || (([temp length]==1) && ([license_id hasSuffix:@"X"]))){
             
             
         }else{
-            [[[UIAlertView alloc] initWithTitle:@"易驾366" message:@"身份证号码必须18位,只有最后一位允许是X" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil] show];
+            [[[UIAlertView alloc] initWithTitle:@"易驾366" message:@"被保险人－身份证号码必须18位,只有最后一位允许是X" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil] show];
             return;
         }
     }
@@ -163,7 +266,8 @@
     
     
     
-    NSString *path =[NSString stringWithFormat:@"ins/carins_confirm?userid=%d&car_id=%@&vin=%@&engine_no=%@&registration_date=%@&owner_name=%@&name=%@&license_id=%@&phone=%@",[AppSettings sharedSettings].userid, car_id,vin,engine_no,registration_date,owner_name,name,license_id,phone];
+    NSString *path =[NSString stringWithFormat:@"ins/carins_confirm?userid=%d&car_id=%@&vin=%@&engine_no=%@&registration_date=%@&owner_name=%@&name=%@&license_id=%@&phone=%@&owner_license=%@&owner_phone=%@&policy_hoder=%@",[AppSettings sharedSettings].userid, car_id,vin,engine_no,registration_date,owner_name,name,license_id,phone,
+                     owner_license,owner_phone,policy_hoder];
     
     [[HttpClient sharedHttp] get:path block:^(id json) {
         NSLog(@"%@",json);

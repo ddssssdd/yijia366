@@ -18,7 +18,7 @@
 #import "TextLabelCell.h"
 #import "ChooseNextImageCell.h"
 
-@interface CustomEditTableViewController ()<UITextFieldDelegate,SwitchCellDelegate,OneButtonCellDelegate,PickupData>{
+@interface CustomEditTableViewController ()<UITextFieldDelegate,SwitchCellDelegate,OneButtonCellDelegate,PickupData,EditTextCellTextChanged>{
     UITextField *_lastTextField;
     int textfield_count;
 }
@@ -159,6 +159,8 @@
             aCell.valueText.enabled = NO;
         }else{
             [aCell.valueText addTarget:aCell action:@selector(textChanged:) forControlEvents:UIControlEventEditingChanged];
+            [aCell.valueText addTarget:aCell action:@selector(onExit:) forControlEvents:UIControlEventEditingDidEndOnExit];
+            aCell.delegate = self;
         }
     }else if ([cellCalssName isEqualToString:@"OneButtonCell"]){
         OneButtonCell *aCell =(OneButtonCell *)cell;
@@ -322,5 +324,10 @@
         cell.targetObject[@"value"] = aSwitch.on?@"1":@"0";
     }
 }
+-(void)valueChanged:(NSString *)key value:(NSString *)value{
 
+}
+-(void)exitEdit:(NSString *)key value:(NSString *)value{
+    NSLog(@"%@=%@",key,value);
+}
 @end

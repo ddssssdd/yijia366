@@ -33,10 +33,18 @@
     self.lblUnit.text = unit;
 }
 
+-(void)onExit:(UITextField *)sender{
+    if (self.delegate){
+        [self.delegate exitEdit:self.key value:sender.text];
+    }
+}
 -(void)textChanged:(id)sender{
     //NSLog(@"%@",sender);
     if (self.targetObject){
         self.targetObject[@"value"]=[(UITextField*)sender text];
+    }
+    if (self.delegate){
+        [self.delegate valueChanged:self.key value:[(UITextField*)sender text]];
     }
 }
 -(void)textChanged2:(id)sender{

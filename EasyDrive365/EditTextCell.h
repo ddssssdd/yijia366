@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol EditTextCellTextChanged <NSObject>
+
+-(void)valueChanged:(NSString *)key value:(NSString *)value;
+-(void)exitEdit:(NSString *)key value:(NSString *)value;
+@end
+
 @interface EditTextCell : UITableViewCell{
     BOOL _inListen;
 }
@@ -16,7 +22,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *valueText;
 @property (strong,nonatomic) NSString *key;
 @property (nonatomic) id targetObject;
-
+@property (nonatomic) id<EditTextCellTextChanged> delegate;
 @property (weak, nonatomic) IBOutlet UILabel *lblUnit;
 
 -(void)setUnit:(NSString *)unit;
