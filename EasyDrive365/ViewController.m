@@ -86,12 +86,13 @@
     UISwipeGestureRecognizer *swipeRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(goRight)];
     swipeRight.direction = UISwipeGestureRecognizerDirectionRight;
     [self.tableview addGestureRecognizer:swipeRight];
+    
     NSString *url = [NSString stringWithFormat:@"api/get_mainform?userid=%d",[AppSettings sharedSettings].userid];
     [[AppSettings sharedSettings].http get:url block:^(id json) {
         if ([[AppSettings sharedSettings] isSuccess:json]){
             _imageList = json[@"result"];
             [self.tableview reloadData];
-            [self get_latest];
+            [[AppSettings sharedSettings] get_latest];
         }
     }];
     
@@ -127,6 +128,14 @@
 }
 -(void)get_latest
 {
+    NSString *url = [NSString stringWithFormat:@"api/get_mainform?userid=%d",[AppSettings sharedSettings].userid];
+    [[AppSettings sharedSettings].http get:url block:^(id json) {
+        if ([[AppSettings sharedSettings] isSuccess:json]){
+            _imageList = json[@"result"];
+            [self.tableview reloadData];
+    
+        }
+    }];
     [[AppSettings sharedSettings] get_latest];
     
 }

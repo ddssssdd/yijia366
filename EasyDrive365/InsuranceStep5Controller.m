@@ -14,7 +14,7 @@
     id _list;
     id _sectionList;
     BOOL _includingCom;
-    BOOL _is_biz;
+    BOOL _includingBiz;
 }
 
 @end
@@ -54,7 +54,7 @@
 -(void)confirm{
     
     
-    NSString *url = [NSString stringWithFormat:@"ins/carins_check?userid=%d&is_comm=%@&is_biz=%@",[AppSettings sharedSettings].userid,self.insurance_data[@"com"][@"is_com"],_is_biz?@"1":@"0"];
+    NSString *url = [NSString stringWithFormat:@"ins/carins_check?userid=%d&is_comm=%@&is_biz=%@",[AppSettings sharedSettings].userid,self.insurance_data[@"com"][@"is_com"],self.insurance_data[@"biz"][@"is_biz"]];
     [[AppSettings sharedSettings].http get:url block:^(id json) {
         if ([[AppSettings sharedSettings] isSuccess:json]){
             NSLog(@"%@",json);
@@ -65,8 +65,8 @@
     }];
 }
 -(void)load_data{
-    _includingCom = YES;
-    _is_biz=YES;
+    _includingCom = [self.insurance_data[@"com"][@"is_com"] intValue]==1;
+    _includingBiz = [self.insurance_data[@"biz"][@"is_biz"] intValue]==1;
     _sectionList =[[NSMutableArray alloc] initWithArray:@[self.insurance_data[@"biz"][@"title"],self.insurance_data[@"com"][@"title"],self.insurance_data[@"price_content"]]];
     
 }
@@ -107,7 +107,7 @@
                 rect = CGRectMake(220, 10, 50, 24);
             }
             UISwitch *sw = [[UISwitch alloc] initWithFrame:rect];
-            sw.on = _is_biz;
+            sw.on = [self.insurance_data[@"biz"][@"is_biz"] intValue]==1;
             [cell.contentView addSubview:sw];
             [sw addTarget:self action:@selector(selectBiz:) forControlEvents:UIControlEventValueChanged];
         }else{
@@ -159,7 +159,7 @@
                 rect = CGRectMake(220, 10, 50, 24);
             }
             UISwitch *sw = [[UISwitch alloc] initWithFrame:rect];
-            sw.on = [self.insurance_data[@""][@"is_com"] intValue]==1;
+            sw.on = [self.insurance_data[@"com"][@"is_com"] intValue]==1;
             [cell.contentView addSubview:sw];
             [sw addTarget:self action:@selector(selectCom:) forControlEvents:UIControlEventValueChanged];
         }else if (indexPath.row==1){
@@ -176,6 +176,9 @@
     }else{
         //summary
         cell.textLabel.text=self.insurance_data[_includingCom? @"total":@"total_nocomm"];
+        if (!_includingBiz && _includingCom){
+            cell.textLabel.text=self.insurance_data[@"total_only_comm"];
+        }
         
     }
     return cell;
@@ -188,6 +191,9 @@
     [self.tableView reloadData];
 }
 -(void)selectBiz:(UISwitch *)sender{
-    _is_biz = sender.isOn;
+    self.insurance_data[@"biz"][@"is_biz"] = sender.isOn?@"1":@"0";
+    _includingBiz = [sender isOn];
+    _sectionList =[[NSMutableArray alloc] initWithArray:@[self.insurance_data[@"biz"][@"title"],self.insurance_data[@"com"][@"title"],self.insurance_data[_includingBiz?@"price_content":@"price_content_only_comm"]]];
+    [self.tableView reloadData];
 }
 @end
