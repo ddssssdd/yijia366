@@ -18,7 +18,7 @@
 #import "GoodsListController.h"
 #import "AlixPayResult.h"
 #import "DataVerifier.h"
-
+#import "GuideController.h"
 
 #import "WXApi.h"
 #import "WeiboSDK.h"
@@ -75,7 +75,7 @@
     self.window.rootViewController = self.navigationController;
      */
     _tabbarController =[[UITabBarController alloc] init];
-    [self createControllers];
+    
     self.window.rootViewController = _tabbarController;
     [self.window makeKeyAndVisible];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(logout) name:@"logout" object:nil];
@@ -85,7 +85,17 @@
     
     [WeiboSDK enableDebugMode:YES];
     [WeiboSDK registerApp:SINAWEIBO_APPKEY];
-    
+    if ([AppSettings sharedSettings].isFirst){
+        [AppSettings sharedSettings].isFirst=false;
+        [[AppSettings sharedSettings] save];
+        GuideController *vc = [[GuideController alloc] initWithNibName:@"GuideController" bundle:nil];
+        [_tabbarController presentViewController:vc animated:YES completion:^{
+            //for now nothing;
+            
+        }];
+    }else{
+        [self createControllers];
+    }
     return YES;
 }
 

@@ -238,8 +238,14 @@
     if (indexPath.section==0){
         UITableViewCell *cell = [[[NSBundle mainBundle] loadNibNamed:@"DetailPictureCell" owner:nil options:nil] objectAtIndex:0];
         DetailPictureCell *aCell = (DetailPictureCell *)cell;
-        [aCell.image setImageWithURL:[NSURL URLWithString:[_imageList objectAtIndex:0 ][@"pic_url"]]];
-        aCell.pager.numberOfPages =[ _imageList count];
+        if (_imageList && [_imageList count]>0){
+            [aCell.image setImageWithURL:[NSURL URLWithString:[_imageList objectAtIndex:0 ][@"pic_url"]]];
+            aCell.pager.numberOfPages =[ _imageList count];
+        }else{
+            [aCell.image setImage:[UIImage imageNamed:@"default_640x234"]];
+            aCell.pager.numberOfPages =[ _imageList count];
+        }
+        
         _imageView = aCell.image;
         _pager = aCell.pager;
         return cell;

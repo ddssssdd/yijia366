@@ -128,6 +128,12 @@
 		51591F7818EAC96600980A21 /* background_login.png in Resources */ = {isa = PBXBuildFile; fileRef = 51591F7718EAC96600980A21 /* background_login.png */; };
 		51591F7B18EAE7EE00980A21 /* UserProfileController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51591F7A18EAE7EE00980A21 /* UserProfileController.m */; };
 		5164183B18508CD400C1A792 /* FeedbackInputCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5164183A18508CD400C1A792 /* FeedbackInputCell.m */; };
+		5166B65118F6A26C00139321 /* GuideController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5166B64F18F6A26C00139321 /* GuideController.m */; };
+		5166B65218F6A26C00139321 /* GuideController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5166B65018F6A26C00139321 /* GuideController.xib */; };
+		5166B65718F6A28C00139321 /* 01.png in Resources */ = {isa = PBXBuildFile; fileRef = 5166B65318F6A28C00139321 /* 01.png */; };
+		5166B65818F6A28C00139321 /* 02.png in Resources */ = {isa = PBXBuildFile; fileRef = 5166B65418F6A28C00139321 /* 02.png */; };
+		5166B65918F6A28C00139321 /* 03.png in Resources */ = {isa = PBXBuildFile; fileRef = 5166B65518F6A28C00139321 /* 03.png */; };
+		5166B65A18F6A28C00139321 /* 04.png in Resources */ = {isa = PBXBuildFile; fileRef = 5166B65618F6A28C00139321 /* 04.png */; };
 		5169E7C11850A3D100F510A7 /* FeedbackInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5169E7C01850A3D100F510A7 /* FeedbackInfoCell.m */; };
 		516BB5B3185874BB00D38079 /* backgroundStar.png in Resources */ = {isa = PBXBuildFile; fileRef = 516BB5AF185874BB00D38079 /* backgroundStar.png */; };
 		516BB5B4185874BB00D38079 /* backgroundStar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 516BB5B0185874BB00D38079 /* backgroundStar@2x.png */; };
@@ -622,6 +628,13 @@
 		51591F7A18EAE7EE00980A21 /* UserProfileController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfileController.m; sourceTree = "<group>"; };
 		5164183918508CD400C1A792 /* FeedbackInputCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedbackInputCell.h; sourceTree = "<group>"; };
 		5164183A18508CD400C1A792 /* FeedbackInputCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedbackInputCell.m; sourceTree = "<group>"; };
+		5166B64E18F6A26C00139321 /* GuideController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuideController.h; sourceTree = "<group>"; };
+		5166B64F18F6A26C00139321 /* GuideController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuideController.m; sourceTree = "<group>"; };
+		5166B65018F6A26C00139321 /* GuideController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GuideController.xib; sourceTree = "<group>"; };
+		5166B65318F6A28C00139321 /* 01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 01.png; sourceTree = "<group>"; };
+		5166B65418F6A28C00139321 /* 02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 02.png; sourceTree = "<group>"; };
+		5166B65518F6A28C00139321 /* 03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 03.png; sourceTree = "<group>"; };
+		5166B65618F6A28C00139321 /* 04.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 04.png; sourceTree = "<group>"; };
 		5169E7BF1850A3D100F510A7 /* FeedbackInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedbackInfoCell.h; sourceTree = "<group>"; };
 		5169E7C01850A3D100F510A7 /* FeedbackInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedbackInfoCell.m; sourceTree = "<group>"; };
 		516BB5AF185874BB00D38079 /* backgroundStar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backgroundStar.png; sourceTree = "<group>"; };
@@ -1306,6 +1319,16 @@
 			name = TQStarRating;
 			sourceTree = "<group>";
 		};
+		5166B64D18F6A24B00139321 /* guide */ = {
+			isa = PBXGroup;
+			children = (
+				5166B64E18F6A26C00139321 /* GuideController.h */,
+				5166B64F18F6A26C00139321 /* GuideController.m */,
+				5166B65018F6A26C00139321 /* GuideController.xib */,
+			);
+			name = guide;
+			sourceTree = "<group>";
+		};
 		518001FE18A27421006539BA /* Share */ = {
 			isa = PBXGroup;
 			children = (
@@ -1674,6 +1697,10 @@
 		E24A041916CFBA2600B7A602 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				5166B65318F6A28C00139321 /* 01.png */,
+				5166B65418F6A28C00139321 /* 02.png */,
+				5166B65518F6A28C00139321 /* 03.png */,
+				5166B65618F6A28C00139321 /* 04.png */,
 				51591F7718EAC96600980A21 /* background_login.png */,
 				511567ED18A83DA700784878 /* fenxiang.png */,
 				511567EE18A83DA700784878 /* fenxiang@2x.png */,
@@ -2093,6 +2120,7 @@
 		E2EE653916C5294A00ED1C73 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				5166B64D18F6A24B00139321 /* guide */,
 				51DA093B18B83CB00048E9D2 /* AfterPay */,
 				514C90D6189513C9007FFFCC /* Insurance */,
 				51F0A670187BE8EF00CC9A1D /* NeedPay */,
@@ -2335,6 +2363,7 @@
 				512598E51888D17200967BDE /* m.png in Resources */,
 				5113341918900622005A02C3 /* BuyButtonView.xib in Resources */,
 				512598E91888D17200967BDE /* renwu.png in Resources */,
+				5166B65918F6A28C00139321 /* 03.png in Resources */,
 				518001FC18A270CB006539BA /* favorno.png in Resources */,
 				511567E318A4FBA900784878 /* FavorItemCell.xib in Resources */,
 				51B9953B18913AE200C2DD5D /* Alixpay.bundle in Resources */,
@@ -2352,6 +2381,7 @@
 				511567F518A83DA700784878 /* quxiaosc.png in Resources */,
 				518001FB18A270CB006539BA /* favor.png in Resources */,
 				E2EE65DD16CC9E4600ED1C73 /* InsuranceRecordsViewController.xib in Resources */,
+				5166B65A18F6A28C00139321 /* 04.png in Resources */,
 				5125991F1888D3A900967BDE /* l.png in Resources */,
 				E2EE65E216CCA13E00ED1C73 /* MaintainListViewController.xib in Resources */,
 				E2EE65E716CCA4C600ED1C73 /* MaintainRecordDetailViewController.xib in Resources */,
@@ -2415,6 +2445,7 @@
 				E2903BAE16F36B9F00A93CBF /* Icon@2x.png in Resources */,
 				E2903BAF16F36B9F00A93CBF /* iTunesArtwork in Resources */,
 				E2903BB316F36BB700A93CBF /* Default.png in Resources */,
+				5166B65818F6A28C00139321 /* 02.png in Resources */,
 				E2903BB716F3710500A93CBF /* Long_Bar Green.png in Resources */,
 				51DA094618BAE4570048E9D2 /* NeedPayItemCell2.xib in Resources */,
 				E2903BB816F3710500A93CBF /* Long_Bar Red.png in Resources */,
@@ -2455,6 +2486,7 @@
 				E23BA0ED172170460049D2CB /* ChooseUserController.xib in Resources */,
 				512598B318866A5500967BDE /* Browser2Controller.xib in Resources */,
 				E223549D172A8F8E00DDC015 /* ButtonViewController.xib in Resources */,
+				5166B65718F6A28C00139321 /* 01.png in Resources */,
 				E241CECF1733EB6900B1441D /* TextViewFooter.xib in Resources */,
 				511567F618A83DA700784878 /* quxiaosc@2x.png in Resources */,
 				E241CEE3173BE02B00B1441D /* CarHelpViewController.xib in Resources */,
@@ -2502,6 +2534,7 @@
 				51F0A65F187BAB5900CC9A1D /* OrderQuantityCell.xib in Resources */,
 				E2F9C3CC17E9F30A00D75359 /* 0004@2x.png in Resources */,
 				51DF0ECC188E455B002C044E /* default_640x234.png in Resources */,
+				5166B65218F6A26C00139321 /* GuideController.xib in Resources */,
 				E2F9C3CF17E9F31A00D75359 /* 0017.png in Resources */,
 				512598DF1888D17200967BDE /* daifukuan.png in Resources */,
 				E2F9C3D017E9F31A00D75359 /* 0017@2x.png in Resources */,
@@ -2634,6 +2667,7 @@
 				E26CCFAC16DA0D1300A35DA1 /* HelpHeaderView.m in Sources */,
 				5113341718900612005A02C3 /* BuyButtonView.m in Sources */,
 				E29B09E716DA40C4002449DE /* Reachability.m in Sources */,
+				5166B65118F6A26C00139321 /* GuideController.m in Sources */,
 				5180020118A27440006539BA /* ShareControl.m in Sources */,
 				5169E7C11850A3D100F510A7 /* FeedbackInfoCell.m in Sources */,
 				E29B09EC16DB9134002449DE /* BusinessInsViewController.m in Sources */,

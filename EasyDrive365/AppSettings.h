@@ -32,6 +32,7 @@
 @property (nonatomic,retain) NSString *firstName;
 @property (nonatomic,retain) NSString *lastName;
 @property (nonatomic) BOOL isLogin;
+@property (nonatomic) BOOL isFirst;
 @property (nonatomic) int userid;
 @property (nonatomic,retain) NSString *deviceToken;
 

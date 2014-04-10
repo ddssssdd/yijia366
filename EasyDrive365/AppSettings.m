@@ -53,6 +53,7 @@
         _firstName = [aDecoder decodeObjectForKey:@"firstname"];
         _lastName =[aDecoder decodeObjectForKey:@"lastname"];
         _isLogin =[aDecoder decodeBoolForKey:@"isLogin"];
+        _isFirst =[aDecoder decodeBoolForKey:@"isFirst"];
         _userid =[aDecoder decodeInt32ForKey:@"userid"];
         _list =[aDecoder decodeObjectForKey:@"list"];
         _latest_news =[aDecoder decodeObjectForKey:@"latest_news"];
@@ -69,6 +70,7 @@
     [aCoder encodeObject:_firstName forKey:@"firstname"];
     [aCoder encodeObject:_lastName forKey:@"lastname"];
     [aCoder encodeBool:_isLogin forKey:@"isLogin"];
+    [aCoder encodeBool:_isFirst forKey:@"isFirst"];
     [aCoder encodeInt32:_userid forKey:@"userid"];
     [aCoder encodeObject:_list forKey:@"list"];
     [aCoder encodeObject:_latest_news forKey:@"latest_news"];
@@ -81,6 +83,7 @@
     self = [super init];
     if (self){
         _dict = [[NSMutableDictionary  alloc] init];
+        _isFirst = YES;
         [self init_latest];
     }
     return self;
