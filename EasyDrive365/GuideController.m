@@ -51,12 +51,12 @@
 }
 - (IBAction)swipeRight:(UISwipeGestureRecognizer *)sender {
     NSLog(@"%@",sender);
-    [_pager setCurrentPage:[_pager currentPage]+1];
+    [_pager setCurrentPage:[_pager currentPage]-1];
     [self.imagePicture setImage:[UIImage imageNamed:[_list objectAtIndex:[_pager currentPage]]]];
 }
 - (IBAction)swipeLeft:(UISwipeGestureRecognizer *)sender {
     NSLog(@"%@",sender);
-    [_pager setCurrentPage:[_pager currentPage]-1];
+    [_pager setCurrentPage:[_pager currentPage]+1];
     [self.imagePicture setImage:[UIImage imageNamed:[_list objectAtIndex:[_pager currentPage]]]];
 
 }

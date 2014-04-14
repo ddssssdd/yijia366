@@ -105,4 +105,19 @@
     vc.ins_id = item[@"id"];
     [self.navigationController pushViewController:vc animated:YES];
  }
+-(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
+    return YES;
+}
+-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (editingStyle==UITableViewCellEditingStyleDelete){
+        id item = [_list objectAtIndex:indexPath.row];
+        NSString *url = [NSString stringWithFormat:@"ins/del_quote?userid=%d&id=%@",[AppSettings sharedSettings].userid,item[@"id"]];
+        [[AppSettings sharedSettings].http get:url block:^(id json) {
+            if ([[AppSettings sharedSettings] isSuccess:json]){
+                [_list removeObject:item];
+                [self.tableView reloadData];
+            }
+        }];
+    }
+}
 @end

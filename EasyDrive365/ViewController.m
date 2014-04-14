@@ -79,7 +79,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(logout) name:@"logout" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(need_set:) name:NEED_SET object:nil];
     
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(settingsButtonPress:) name:@"Login_First" object:nil];
     UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(goLeft)];
     swipeLeft.direction = UISwipeGestureRecognizerDirectionLeft;
     [self.tableview addGestureRecognizer:swipeLeft];

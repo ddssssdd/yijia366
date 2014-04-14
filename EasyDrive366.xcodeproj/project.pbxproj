@@ -127,6 +127,9 @@
 		51570C2618585448003655CC /* DetailRateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51570C2518585447003655CC /* DetailRateCell.xib */; };
 		51591F7818EAC96600980A21 /* background_login.png in Resources */ = {isa = PBXBuildFile; fileRef = 51591F7718EAC96600980A21 /* background_login.png */; };
 		51591F7B18EAE7EE00980A21 /* UserProfileController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51591F7A18EAE7EE00980A21 /* UserProfileController.m */; };
+		51604D8018FBFE68006C0BB9 /* BrandSelectController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51604D7F18FBFE68006C0BB9 /* BrandSelectController.m */; };
+		51604D8418FBFE80006C0BB9 /* BrandItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 51604D8218FBFE80006C0BB9 /* BrandItemCell.m */; };
+		51604D8518FBFE80006C0BB9 /* BrandItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51604D8318FBFE80006C0BB9 /* BrandItemCell.xib */; };
 		5164183B18508CD400C1A792 /* FeedbackInputCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5164183A18508CD400C1A792 /* FeedbackInputCell.m */; };
 		5166B65118F6A26C00139321 /* GuideController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5166B64F18F6A26C00139321 /* GuideController.m */; };
 		5166B65218F6A26C00139321 /* GuideController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5166B65018F6A26C00139321 /* GuideController.xib */; };
@@ -626,6 +629,11 @@
 		51591F7718EAC96600980A21 /* background_login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background_login.png; sourceTree = "<group>"; };
 		51591F7918EAE7EE00980A21 /* UserProfileController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfileController.h; sourceTree = "<group>"; };
 		51591F7A18EAE7EE00980A21 /* UserProfileController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfileController.m; sourceTree = "<group>"; };
+		51604D7E18FBFE68006C0BB9 /* BrandSelectController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrandSelectController.h; sourceTree = "<group>"; };
+		51604D7F18FBFE68006C0BB9 /* BrandSelectController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrandSelectController.m; sourceTree = "<group>"; };
+		51604D8118FBFE80006C0BB9 /* BrandItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrandItemCell.h; sourceTree = "<group>"; };
+		51604D8218FBFE80006C0BB9 /* BrandItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrandItemCell.m; sourceTree = "<group>"; };
+		51604D8318FBFE80006C0BB9 /* BrandItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BrandItemCell.xib; sourceTree = "<group>"; };
 		5164183918508CD400C1A792 /* FeedbackInputCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedbackInputCell.h; sourceTree = "<group>"; };
 		5164183A18508CD400C1A792 /* FeedbackInputCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedbackInputCell.m; sourceTree = "<group>"; };
 		5166B64E18F6A26C00139321 /* GuideController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuideController.h; sourceTree = "<group>"; };
@@ -1227,6 +1235,11 @@
 				51B0D64D18BDCF2100F3B33F /* InsuranceListCell.h */,
 				51B0D64E18BDCF2100F3B33F /* InsuranceListCell.m */,
 				51B0D65018BDCF3A00F3B33F /* InsuranceListCell.xib */,
+				51604D7E18FBFE68006C0BB9 /* BrandSelectController.h */,
+				51604D7F18FBFE68006C0BB9 /* BrandSelectController.m */,
+				51604D8118FBFE80006C0BB9 /* BrandItemCell.h */,
+				51604D8218FBFE80006C0BB9 /* BrandItemCell.m */,
+				51604D8318FBFE80006C0BB9 /* BrandItemCell.xib */,
 			);
 			name = Insurance;
 			sourceTree = "<group>";
@@ -2428,6 +2441,7 @@
 				E26460E416F094DE0050BDA4 /* WelcomeViewController.xib in Resources */,
 				E26460F216F1F4CE0050BDA4 /* SVProgressHUD.bundle in Resources */,
 				512599171888D39500967BDE /* j.png in Resources */,
+				51604D8518FBFE80006C0BB9 /* BrandItemCell.xib in Resources */,
 				51DF0ECA188DFB88002C044E /* ImageInfoCell.xib in Resources */,
 				E2903BA916F36B9F00A93CBF /* Icon-72.png in Resources */,
 				51B9954C1891558400C2DD5D /* btnbuy_big@2x.png in Resources */,
@@ -2605,6 +2619,7 @@
 				E2296D4616B760EC00E332D9 /* ViewController.m in Sources */,
 				E2296D4E16B7625800E332D9 /* LoginViewController.m in Sources */,
 				51F0A658187BA96600CC9A1D /* OrderProductCell.m in Sources */,
+				51604D8018FBFE68006C0BB9 /* BrandSelectController.m in Sources */,
 				E2296D5116B7723F00E332D9 /* SignupViewController.m in Sources */,
 				E2EE650516C293D300ED1C73 /* AppSettings.m in Sources */,
 				514C90F618962DD1007FFFCC /* InsuranceStep8Controller.m in Sources */,
@@ -2657,6 +2672,7 @@
 				51B26A28186337C900C20C56 /* TaskListCell.m in Sources */,
 				E24A043A16D0E95100B7A602 /* DetailCompulsoryViewController.m in Sources */,
 				51B9952E18913AC900C2DD5D /* NSObject+SBJSON.m in Sources */,
+				51604D8418FBFE80006C0BB9 /* BrandItemCell.m in Sources */,
 				E24A043E16D1074800B7A602 /* LicenseTypeViewController.m in Sources */,
 				E24A047E16D270DA00B7A602 /* DatePickerViewController.m in Sources */,
 				51F0A652187B970B00CC9A1D /* NewOrderController.m in Sources */,

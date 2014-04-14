@@ -19,7 +19,7 @@
 #import "AlixPayResult.h"
 #import "DataVerifier.h"
 #import "GuideController.h"
-
+#import "WelcomeViewController.h"
 #import "WXApi.h"
 #import "WeiboSDK.h"
 
@@ -133,7 +133,19 @@
     menu4.tabBarItem  = item4;
     
     _tabbarController.viewControllers =@[menu0,menu1,menu2,menu3,menu4];
+    _tabbarController.delegate = self;
     
+}
+-(BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController{
+    NSLog(@"%@",viewController);
+    if (![AppSettings sharedSettings].isLogin){
+        if (viewController == menu4){
+             _tabbarController.selectedIndex =0;
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"Login_First" object:nil];
+            return NO;
+        }
+    }
+    return YES;
 }
 -(void)openGoods{
     _tabbarController.selectedIndex =1;

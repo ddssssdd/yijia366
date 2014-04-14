@@ -113,7 +113,7 @@
     UITableViewCell *cell;
     
     NSString *cellCalssName = [[_list objectAtIndex:indexPath.section][@"list"] objectAtIndex:indexPath.row][@"cell"];
-    NSLog(@"%@",cellCalssName);
+
     if ([cellCalssName isEqualToString:@"default"]){
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil];
     }else{
@@ -145,6 +145,8 @@
             aCell.valueText.secureTextEntry=YES;
         }else if ([item[@"ispassword"] isEqualToString:@"number"]){
             aCell.valueText.keyboardType = UIKeyboardTypeNumberPad;
+        }else if ([item[@"ispassword"] isEqualToString:@"decimal"]){
+            aCell.valueText.keyboardType = UIKeyboardTypeDecimalPad;
         }else if ([item[@"ispassword"] isEqualToString:@"capital"]){
             aCell.valueText.keyboardType = UIKeyboardAppearanceDefault;
             aCell.valueText.autocapitalizationType = UITextAutocapitalizationTypeAllCharacters;
@@ -157,10 +159,16 @@
         id input_disable = item[@"disable"];
         if (input_disable){
             aCell.valueText.enabled = NO;
+            aCell.valueText.borderStyle =UITextBorderStyleNone;
         }else{
             [aCell.valueText addTarget:aCell action:@selector(textChanged:) forControlEvents:UIControlEventEditingChanged];
             [aCell.valueText addTarget:aCell action:@selector(onExit:) forControlEvents:UIControlEventEditingDidEndOnExit];
             aCell.delegate = self;
+        }
+        if (item[@"has_choice"]){
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        }else{
+            cell.accessoryType = UITableViewCellAccessoryNone;
         }
     }else if ([cellCalssName isEqualToString:@"OneButtonCell"]){
         OneButtonCell *aCell =(OneButtonCell *)cell;
