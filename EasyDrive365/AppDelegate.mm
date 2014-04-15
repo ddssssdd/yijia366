@@ -85,9 +85,13 @@
     
     [WeiboSDK enableDebugMode:YES];
     [WeiboSDK registerApp:SINAWEIBO_APPKEY];
-    if ([AppSettings sharedSettings].isFirst){
-        [AppSettings sharedSettings].isFirst=false;
-        [[AppSettings sharedSettings] save];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    id first_run = [defaults objectForKey:[NSString stringWithFormat:@"First_Run_On_%@",AppVersion]];
+    if (!first_run){
+    //if ([AppSettings sharedSettings].isFirst){
+    //    [AppSettings sharedSettings].isFirst=false;
+    //    [[AppSettings sharedSettings] save];
+        [defaults setObject:@"1" forKey:[NSString stringWithFormat:@"First_Run_On_%@",AppVersion]];
         GuideController *vc = [[GuideController alloc] initWithNibName:@"GuideController" bundle:nil];
         [_tabbarController presentViewController:vc animated:YES completion:^{
             //for now nothing;
