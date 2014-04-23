@@ -12,7 +12,7 @@
 
 @property (nonatomic) Boolean isFull;
 @property (nonatomic) id target_postion;
-
+@property (nonatomic) id target_list;
 -(void)goLocation:(CGFloat)latitude longtitude:(CGFloat)longtitude;
 -(void)showMineLocation:(CGFloat)latitude longtitude:(CGFloat)longtitude;
 
