@@ -53,11 +53,11 @@
     [super viewWillAppear:animated];
     [_mapView viewWillAppear];
     _mapView.delegate = self;
-    _mapView.zoomLevel = 16;
+    _mapView.zoomLevel = 15;
     _mapView.showsUserLocation = YES;
-  //  _mapView.userTrackingMode = BMKUserTrackingModeNone;
-  //  _mapView.showsUserLocation = YES;
-    
+    _mapView.userTrackingMode = BMKUserTrackingModeNone;
+    _mapView.showsUserLocation = YES;
+    _hasLocation = NO;
     if (self.target_postion){
         [self showSingleShop:self.target_postion];
     }else if (self.target_list){
@@ -106,6 +106,11 @@
             _hasLocation = !_hasLocation;
             if (self.isFull){
                 [self showMineLocation:userLocation.location.coordinate.latitude longtitude:userLocation.location.coordinate.longitude];
+            }else{
+                CLLocationCoordinate2D coor;
+                coor.latitude = userLocation.location.coordinate.latitude;
+                coor.longitude = userLocation.location.coordinate.longitude;
+                [_mapView setCenterCoordinate:coor];
             }
         }
 	}

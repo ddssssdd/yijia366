@@ -16,6 +16,7 @@
 #import "UploadPhotoController.h"
 #import "Browser2Controller.h"
 #import "BoundListController.h"
+#import "GoodsDetailController.h"
 @interface OrderDetailController ()<BuyButtonViewDelegate>{
     id _list;
     id _sectionList;
@@ -93,9 +94,12 @@
         cell.detailTextLabel.font =[UIFont fontWithName:@"Arial" size:12];
         if (item[@"key"]){
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        }else if (item[@"url"] && ![item[@"url"] isEqualToString:@""]){
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         }else{
             cell.accessoryType = UITableViewCellAccessoryNone;
         }
+        
         if (item[@"lines"]){
             cell.detailTextLabel.numberOfLines = [item[@"lines"] intValue];
         }
@@ -149,6 +153,12 @@
         Browser2Controller *vc = [[Browser2Controller alloc] initWithNibName:@"Browser2Controller" bundle:nil];
         vc.url = item[@"url"];
         [self.navigationController pushViewController:vc animated:YES];
+    }else if (item[@"pic_url"]){
+
+        GoodsDetailController *vc =[[GoodsDetailController alloc] initWithStyle:UITableViewStylePlain];
+        vc.target_id =[item[@"id"] intValue];
+        vc.title = item[@"name"];
+        [self.navigationController pushViewController:vc animated:YES];
     }
 }
 
@@ -183,7 +193,7 @@
             [_sectionList addObject:@"订单信息"];
             
             [_list addObject:@[@{@"title":@"订单号",@"detail":json[@"result"][@"order_id"],@"url":order_url},
-                               @{@"title":@"消费码",@"detail":json[@"result"][@"coupon_code"]},
+                               @{@"title":@"消费码",@"detail":json[@"result"][@"coupon_code"],@"url":json[@"result"][@"coupon_url"]},
                                @{@"title":@"下单时间",@"detail":json[@"result"][@"order_time"]},
                                @{@"title":@"数量",@"detail":[NSString stringWithFormat:@"%d",order_count]},
                                @{@"title":@"总价",@"detail":json[@"result"][@"order_total"]},
@@ -238,7 +248,7 @@
                 [_sectionList addObject:@"付款方式"];
                 NSMutableArray *paylist =[[NSMutableArray alloc] init];
                 for (id pay  in json[@"result"][@"pay"]) {
-                    [paylist addObject:@{@"title":pay[@"bank_name"],@"detail":pay[@"account"]}];
+                    [paylist addObject:@{@"title":pay[@"bank_name"],@"detail":pay[@"account"],@"url":pay[@"pay_url"]}];
                 }
                 [_list addObject:paylist];
                 
