@@ -52,6 +52,7 @@
     NSString *_valid_date;
     id contents;
     UserProfileView *_headerView;
+    UIRefreshControl *_refreshControl;
 }
 
 @end
@@ -83,6 +84,13 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(update_user_profile) name:UPDATE_USER_PROFILE object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(initData) name:LOGIN_SUCCESS object:nil];
     //[self.tableView setBackgroundColor:[UIColor clearColor]];
+    _refreshControl= [[UIRefreshControl alloc] init];
+    self.refreshControl = _refreshControl;
+    [_refreshControl addTarget:self action:@selector(refreshUser) forControlEvents:UIControlEventValueChanged];
+}
+-(void)refreshUser{
+    [self update_user_profile];
+    [_refreshControl endRefreshing];
 }
 -(void)viewDidUnload{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
