@@ -48,6 +48,7 @@
 #define LOGIN_SUCCESS @"Login_success"
 #define SELECTED_JOBITEM @"Selected_job_item"
 #define SELECTED_BRAND @"selected_brand"
+#define REFRESH_BROWSER @"Refresh_browser"
 
 //合作身份者id，以2088开头的16位纯数字
 #define PartnerID @"2088901722164970"

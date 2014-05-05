@@ -9,7 +9,7 @@
 #import "Browser2Controller.h"
 #import "ArticleCommentViewController.h"
 
-@interface Browser2Controller ()
+@interface Browser2Controller ()<UIWebViewDelegate>
 
 @end
 
@@ -45,6 +45,17 @@
         }
         [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:_article_url]]];
     }
+    self.webView.delegate = self;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshBrowser:) name:REFRESH_BROWSER object:nil];
+}
+
+-(void)refreshBrowser:(NSNotification *)notification{
+    NSString *url = notification.userInfo[@"url"];
+    if (url && ![url isEqualToString:@""]){
+        [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]];
+    }else{
+        [self.webView reload];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -57,5 +68,46 @@
     ArticleCommentViewController *vc = [[ArticleCommentViewController alloc] initWithNibName:@"ArticleCommentViewController" bundle:nil];
     vc.article = _article;
     [self.navigationController pushViewController:vc animated:YES];
+}
+-(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
+    static NSString *callSchema = @"EasyDrive366";
+
+    NSString *schema = request.URL.scheme;
+    if ([callSchema isEqualToString:schema]){
+        NSString *command_name = request.URL.host;
+        NSString *query = request.URL.query;
+        NSLog(@"query=%@",query);
+        NSArray *arr = [query componentsSeparatedByString:@"&"];
+
+        NSMutableDictionary *params =[NSMutableDictionary new];
+        [arr enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            NSArray *kv =[obj componentsSeparatedByString:@"="];
+            NSLog(@"parameter=%@",kv);
+            if (kv){
+                [params setObject:kv[1] forKey:kv[0]];
+            }
+        }];
+
+        NSLog(@"%@",params);
+        [self process_command:command_name params:params];
+        return NO;
+    }
+    return YES;
+}
+-(void)process_command:(NSString *)command params:(id)params{
+    if ([command isEqualToString:@"open_page"]){
+        NSString *url = params[@"url"];
+        if (url && ![url isEqualToString:@""]){
+            Browser2Controller *vc = [[Browser2Controller alloc] initWithNibName:@"Browser2Controller" bundle:nil];
+            vc.url = url;
+            [self.navigationController pushViewController:vc animated:YES];
+            
+        }
+    }else if ([command isEqualToString:@"close_page"]){
+        NSString *url = params[@"url"];
+        [self.navigationController popViewControllerAnimated:YES];
+        [[NSNotificationCenter defaultCenter] postNotificationName:REFRESH_BROWSER object:nil userInfo:@{@"url":url}];
+        
+    }
 }
 @end

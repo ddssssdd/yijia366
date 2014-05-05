@@ -77,6 +77,7 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getNews:) name:@"NavigationCell_01" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(logout) name:@"logout" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginSuccess) name:LOGIN_SUCCESS object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(need_set:) name:NEED_SET object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(settingsButtonPress:) name:@"Login_First" object:nil];
@@ -209,6 +210,16 @@
     [self setTabBar:nil];
     [super viewDidUnload];
 }
+-(void)loginSuccess{
+    NSString *url = [NSString stringWithFormat:@"api/get_mainform?userid=%d",[AppSettings sharedSettings].userid];
+    [[AppSettings sharedSettings].http get:url block:^(id json) {
+        if ([[AppSettings sharedSettings] isSuccess:json]){
+            _imageList = json[@"result"];
+            [self.tableview reloadData];
+            [[AppSettings sharedSettings] get_latest];
+        }
+    }];
+}
 - (IBAction)logout {
     [AppSettings sharedSettings].isLogin = FALSE;
     [AppSettings sharedSettings].userid = -1;
@@ -217,6 +228,14 @@
     WelcomeViewController *vc = [[WelcomeViewController alloc] initWithNibName:@"WelcomeViewController" bundle:nil];
     [self.navigationController pushViewController:vc animated:NO];
      */
+    NSString *url = [NSString stringWithFormat:@"api/get_mainform?userid=%d",[AppSettings sharedSettings].userid];
+    [[AppSettings sharedSettings].http get:url block:^(id json) {
+        if ([[AppSettings sharedSettings] isSuccess:json]){
+            _imageList = json[@"result"];
+            [self.tableview reloadData];
+            [[AppSettings sharedSettings] get_latest];
+        }
+    }];
 }
 
 
