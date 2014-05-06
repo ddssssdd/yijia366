@@ -70,7 +70,7 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 -(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
-    static NSString *callSchema = @"EasyDrive366";
+    static NSString *callSchema = @"easydrive366";
 
     NSString *schema = request.URL.scheme;
     if ([callSchema isEqualToString:schema]){
