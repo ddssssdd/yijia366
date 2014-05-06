@@ -45,6 +45,9 @@
         }
         [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:_article_url]]];
     }
+    if (self.browser_title){
+        self.title = self.browser_title;
+    }
     self.webView.delegate = self;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshBrowser:) name:REFRESH_BROWSER object:nil];
 }
@@ -100,7 +103,9 @@
         if (url && ![url isEqualToString:@""]){
             Browser2Controller *vc = [[Browser2Controller alloc] initWithNibName:@"Browser2Controller" bundle:nil];
             vc.url = url;
+            vc.browser_title = params[@"title"];
             [self.navigationController pushViewController:vc animated:YES];
+            
             
         }
     }else if ([command isEqualToString:@"close_page"]){

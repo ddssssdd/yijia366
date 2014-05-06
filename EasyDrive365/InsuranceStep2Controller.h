@@ -10,5 +10,5 @@
 
 @interface InsuranceStep2Controller : CustomEditTableViewController
 @property (nonatomic) NSString *ins_id;
-
+@property (nonatomic) int goods_id;
 @end

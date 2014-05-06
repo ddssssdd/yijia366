@@ -12,4 +12,6 @@
 
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 @property (nonatomic) int taskid;
+@property (nonatomic) NSString *web_url;
+@property (nonatomic) int goods_id;
 @end

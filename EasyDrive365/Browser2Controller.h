@@ -11,6 +11,6 @@
 @interface Browser2Controller : UIViewController
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 @property (nonatomic) NSString *url;
-
+@property (nonatomic) NSString *browser_title;
 @property (nonatomic) id article;
 @end

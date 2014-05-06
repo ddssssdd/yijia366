@@ -13,6 +13,7 @@
 #import "GoodsDetailController.h"
 #import "BuyButtonDelegate.h"
 #import "NewOrderController.h"
+#import "InsuranceStep1Controller.h"
 
 @interface GoodsListController ()<BuyButtonDelegate>{
     id _list;
@@ -106,10 +107,21 @@
 
 -(void)BuyButtonDelegate:(id)item{
     NSLog(@"%@",item);
-    NewOrderController *vc = [[NewOrderController alloc] initWithStyle:UITableViewStylePlain];
-    vc.product_id = [item[@"id"] intValue];
-    vc.min =[item[@"min_quantity"] intValue];
-    vc.max =[item[@"max_quantity"] intValue];
-    [self.navigationController pushViewController:vc animated:YES];
+    if ([item[@"is_carins"] intValue]==0){
+        NewOrderController *vc = [[NewOrderController alloc] initWithStyle:UITableViewStylePlain];
+        vc.product_id = [item[@"id"] intValue];
+        vc.min =[item[@"min_quantity"] intValue];
+        vc.max =[item[@"max_quantity"] intValue];
+        [self.navigationController pushViewController:vc animated:YES];
+
+    }else{
+        InsuranceStep1Controller *vc =[[InsuranceStep1Controller alloc] initWithNibName:@"InsuranceStep1Controller" bundle:nil];
+        vc.title = item[@"name"];
+        vc.web_url = item[@"web_url"];
+        vc.goods_id = [item[@"id"] intValue];
+        [self.navigationController pushViewController:vc animated:YES];
+
+    }
+    
 }
 @end

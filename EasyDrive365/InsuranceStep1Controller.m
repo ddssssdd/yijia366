@@ -33,8 +33,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    if (self.web_url){
+        [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.web_url]]];
+         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"下一步" style:UIBarButtonSystemItemAction target:self action:@selector(nextStep)];
+    }else{
+        [self load_data];
+    }
     
-    [self load_data];
 }
 
 - (void)didReceiveMemoryWarning
@@ -61,7 +66,7 @@
 
 -(void)nextStep{
     InsuranceStep2Controller *vc =[[InsuranceStep2Controller alloc] initWithStyle:UITableViewStyleGrouped];
-    
+    vc.goods_id = self.goods_id;
     //InsuranceStep7Controller *vc =[[InsuranceStep7Controller alloc] initWithStyle:UITableViewStyleGrouped];
     [self.navigationController pushViewController:vc animated:YES];
 }

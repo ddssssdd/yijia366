@@ -58,7 +58,7 @@
         url = [NSString stringWithFormat:@"ins/carins_info?userid=%d&id=%@",[AppSettings sharedSettings].userid,self.ins_id];
     }else{
          self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"上一步" style:UIBarButtonSystemItemAction target:self action:@selector(backTo)];
-        url = [NSString stringWithFormat:@"ins/carins_info?userid=%d",[AppSettings sharedSettings].userid];
+        url = [NSString stringWithFormat:@"ins/carins_info?userid=%d&goods_id=%d",[AppSettings sharedSettings].userid,self.goods_id];
     }
     
     [[AppSettings sharedSettings].http get:url block:^(id json) {

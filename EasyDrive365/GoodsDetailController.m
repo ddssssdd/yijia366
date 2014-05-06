@@ -21,6 +21,7 @@
 #import "ProviderListItemCell.h"
 #import "ProviderDetailController.h"
 #import "GoodsShopListController.h"
+#import "InsuranceStep1Controller.h"
 @interface GoodsDetailController ()<BuyButtonViewDelegate>{
     id _target;
     UIImageView *_imageView;
@@ -248,11 +249,20 @@
     return  nil;
 }
 -(void)buyButtonPressed:(BuyButtonView *)sender data:(id)data{
-    NewOrderController *vc = [[NewOrderController alloc] initWithStyle:UITableViewStylePlain];
-    vc.product_id = [_target[@"id"] intValue];
-    vc.min =[_target[@"min_quantity"] intValue];
-    vc.max =[_target[@"max_quantity"] intValue];
-    [self.navigationController pushViewController:vc animated:YES];
+    if ([_target[@"is_carins"] intValue]==0){
+        NewOrderController *vc = [[NewOrderController alloc] initWithStyle:UITableViewStylePlain];
+        vc.product_id = [_target[@"id"] intValue];
+        vc.min =[_target[@"min_quantity"] intValue];
+        vc.max =[_target[@"max_quantity"] intValue];
+        [self.navigationController pushViewController:vc animated:YES];
+
+    }else{
+        InsuranceStep1Controller *vc =[[InsuranceStep1Controller alloc] initWithNibName:@"InsuranceStep1Controller" bundle:nil];
+        vc.title = _target[@"name"];
+        vc.web_url = _target[@"web_url"];
+        vc.goods_id = [_target[@"id"] intValue];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     if (section==2)
