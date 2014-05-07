@@ -31,6 +31,7 @@
 
 #import "AddCardStep1ControllerViewController.h"
 #import "InsuranceListController.h"
+#import "NeedPayController.h"
 
 @implementation Menu
 @synthesize list = _list;
@@ -71,7 +72,9 @@
                          
                           [[MenuItem alloc] initWithName:@"11" title:@"购买车险" description:defaultInfo imagePath:@"main_menu/r.png" phone:defaultPhone],
                           //[[MenuItem alloc] initWithName:@"10" title:@"购买意外险" description:defaultInfo imagePath:@"main_menu/n.png" phone:defaultPhone],
-                          [[MenuItem alloc] initWithName:@"13" title:@"投保单" description:defaultInfo imagePath:@"p.png" phone:defaultPhone]];
+                          [[MenuItem alloc] initWithName:@"13" title:@"保险订单" description:defaultInfo imagePath:@"p.png" phone:defaultPhone]
+                          
+                          ];
     }
     return self;
 }
@@ -181,8 +184,13 @@
 
     }
     if ([key isEqualToString:@"13"]){
+        /*
         InsuranceListController *vc = [[InsuranceListController alloc] initWithStyle:UITableViewStylePlain];
         vc.title = title;
+        [controller pushViewController:vc animated:YES];
+         */
+        NeedPayController *vc = [[NeedPayController alloc] initWithStyle:UITableViewStylePlain];
+        vc.status = @"finished&type=ins";
         [controller pushViewController:vc animated:YES];
         
     }

@@ -15,6 +15,7 @@
 #import "TaskListController.h"
 #import "SetupUserController.h"
 #import "InsuranceDetailController.h"
+#import "Browser2Controller.h"
 @implementation UserProfileView
 
 -(id)initWithController:(UINavigationController *)parent  taskid:(int)taskid{
@@ -71,9 +72,16 @@
     InsuranceDetailController *vc = [[InsuranceDetailController alloc] initWithStyle:UITableViewStyleGrouped];
     [_parent pushViewController:vc animated:YES];
     */
+    /*
     NeedPayController *vc = [[NeedPayController alloc] initWithStyle:UITableViewStylePlain];
     vc.status = @"finished&type=ins";
     [_parent pushViewController:vc animated:YES];
+     */
+    Browser2Controller *vc = [[Browser2Controller alloc] initWithNibName:@"Browser2Controller" bundle:nil];
+    vc.url = [NSString stringWithFormat:@"http://server_url/prize/summary?userid=%d",[AppSettings sharedSettings].userid];
+    vc.browser_title = @"我的积分";
+    [_parent pushViewController:vc animated:YES];
+    
 }
 - (IBAction)myTaskPressed:(id)sender {
     TaskListController *vc = [[TaskListController alloc] initWithStyle:UITableViewStylePlain];

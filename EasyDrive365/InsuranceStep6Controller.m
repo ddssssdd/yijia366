@@ -87,7 +87,7 @@
             cell.textLabel.text = @"保费总额";
             cell.detailTextLabel.text = self.order_data[@"order_total"];
         }else if (indexPath.row==1){
-            cell.textLabel.text = @"积分";
+            cell.textLabel.text = @"积分支付";
             UILabel *label =[[UILabel alloc] initWithFrame:CGRectMake(90, 10, 120, 24)];
             label.text = self.order_data[@"bounds"];
             label.font = [UIFont fontWithName:@"Arial" size:12];

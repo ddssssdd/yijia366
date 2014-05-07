@@ -171,7 +171,7 @@
         
         [_list addObject:@[@{@"title":@"总价",@"detail":self.data[@"order_total"]},
                            @{@"title":@"会员折扣",@"detail":self.data[@"discount"]},
-                           @{@"title":@"可用积分折扣",@"detail":self.data[@"bounds"],@"cell":@"switch"},
+                           @{@"title":@"积分支付",@"detail":self.data[@"bounds"],@"cell":@"switch"},
                            @{@"title":@"应付总额",@"detail":self.data[@"order_pay"],@"object":@"1"}]];
         
         //pay method

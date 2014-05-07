@@ -30,7 +30,7 @@
 {
     NSLog(@"%@",paramters);
     
-    NSString *url =[NSString stringWithFormat:@"api/add_car_registration?user_id=%d&car_id=%@&vin=%@&init_date=%@&engine_no=%@&owner_name=%@",[AppSettings sharedSettings].userid,paramters[@"car_id"],paramters[@"vin"],paramters[@"init_date"],paramters[@"engine_no"],paramters[@"owner_name"]];
+    NSString *url =[NSString stringWithFormat:@"api/add_car_registration?user_id=%d&car_id=%@&vin=%@&init_date=%@&engine_no=%@&owner_name=%@&owner_license=%@",[AppSettings sharedSettings].userid,paramters[@"car_id"],paramters[@"vin"],paramters[@"init_date"],paramters[@"engine_no"],paramters[@"owner_name"],paramters[@"owner_license"]];
     NSLog(@"%@",url);
     [[HttpClient sharedHttp] get:url  block:^(id json) {
         NSLog(@"%@",json);
@@ -55,6 +55,7 @@
     @{@"name":@"VIN",@"key":@"vin",@"mode":@"add",@"description":@"",@"vcname":@""},
     @{@"name":@"初登日期",@"key":@"init_date",@"mode":@"add",@"description":@"",@"vcname":@"DatePickerViewController"},
     @{@"name":@"所有人",@"key":@"owner_name",@"mode":@"add",@"description":@"",@"vcname":@""},
+    @{@"name":@"所有人证件",@"key":@"owner_license",@"mode":@"add",@"description":@"",@"vcname":@""},
     ]];
 }
 -(NSDictionary *)getInitData{
@@ -65,13 +66,14 @@
         [_result setObject:@"" forKey:@"vin"];
         [_result setObject:@"" forKey:@"registration_date"];
         [_result setObject:@"" forKey:@"owner_name"];
+        [_result setObject:@"" forKey:@"owner_license"];
     }else{
         NSString *plate_no = _result[@"plate_no"];
         if ([plate_no isEqualToString:@""]){
             [_result setObject:@"鲁B" forKey:@"plate_no"];
         }
     }
-    return @{@"car_id":_result[@"plate_no"],@"engine_no":_result[@"engine_no"],@"vin":_result[@"vin"],@"init_date":_result[@"registration_date"],@"owner_name":_result[@"owner_name"]};
+    return @{@"car_id":_result[@"plate_no"],@"engine_no":_result[@"engine_no"],@"vin":_result[@"vin"],@"init_date":_result[@"registration_date"],@"owner_name":_result[@"owner_name"],@"owner_license":_result[@"owner_license"]};
 }
 @end
 
@@ -112,6 +114,7 @@
     @{@"name":@"VIN",@"key":@"vin",@"mode":@"add",@"description":@"",@"vcname":@""},
     @{@"name":@"初登日期",@"key":@"registration_date",@"mode":@"add",@"description":@"",@"vcname":@""},
     @{@"name":@"所有人",@"key":@"owner_name",@"mode":@"add",@"description":@"",@"vcname":@""},
+       @{@"name":@"所有人证件",@"key":@"owner_license",@"mode":@"add",@"description":@"",@"vcname":@""},
     ],
     [[NSMutableArray alloc] init]
   ];
