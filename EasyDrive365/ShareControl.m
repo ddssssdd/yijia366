@@ -23,7 +23,7 @@
     _share_inctroduce = introduce;
     _share_title = title;
     _share_url = url;
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"新浪微博",@"微信好友",@"微信朋友圈",/*@"邮件",@"短信",*/ nil];
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"新浪微博",@"微信好友",@"微信朋友圈",/*@"邮件",*/@"短信", nil];
     [actionSheet showFromTabBar:((AppDelegate *)[[UIApplication sharedApplication] delegate]).tabbarController.tabBar];
     
 }
@@ -120,7 +120,7 @@
         // displaying our modal view controller on the screen with standard transition
         [((AppDelegate *)[[UIApplication sharedApplication] delegate]).tabbarController presentViewController:mc animated:YES completion:nil];
         
-    }else if (buttonIndex==4){
+    }*/else if (buttonIndex==3){
         //text
         if(![MFMessageComposeViewController canSendText]) {
             UIAlertView *warningAlert = [[UIAlertView alloc] initWithTitle:@"错误" message:@"设备不支持发送短信!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
@@ -129,7 +129,7 @@
         }
         
 
-        NSString *message = [NSString stringWithFormat:@"[%@]%@(EasyDrive366://open?type=GDS&id=10&name=test%@)", _share_title,_share_inctroduce,_share_url];
+        NSString *message = [NSString stringWithFormat:@"%@(%@)%@", _share_inctroduce,_share_url,_share_title];
         
         MFMessageComposeViewController *messageController = [[MFMessageComposeViewController alloc] init];
         messageController.messageComposeDelegate=self;
@@ -141,7 +141,7 @@
         [((AppDelegate *)[[UIApplication sharedApplication] delegate]).tabbarController presentViewController:messageController animated:YES completion:nil];
     
     }
-      */
+    
     
 }
 -(void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result{
