@@ -146,6 +146,7 @@
 		516BB5BC1858A04900D38079 /* ProviderListItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 516BB5BB1858A04900D38079 /* ProviderListItemCell.m */; };
 		516BB5BE1858A06400D38079 /* ProviderListItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 516BB5BD1858A06400D38079 /* ProviderListItemCell.xib */; };
 		516BB5C11858A68100D38079 /* ProviderDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 516BB5C01858A68100D38079 /* ProviderDetailController.m */; };
+		516C6438191CAF3B0035733B /* libUPPayPlugin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 516C6437191CAF3B0035733B /* libUPPayPlugin.a */; };
 		518001FB18A270CB006539BA /* favor.png in Resources */ = {isa = PBXBuildFile; fileRef = 518001F818A270CB006539BA /* favor.png */; };
 		518001FC18A270CB006539BA /* favorno.png in Resources */ = {isa = PBXBuildFile; fileRef = 518001F918A270CB006539BA /* favorno.png */; };
 		518001FD18A270CB006539BA /* share.png in Resources */ = {isa = PBXBuildFile; fileRef = 518001FA18A270CB006539BA /* share.png */; };
@@ -659,6 +660,9 @@
 		516BB5BD1858A06400D38079 /* ProviderListItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProviderListItemCell.xib; sourceTree = "<group>"; };
 		516BB5BF1858A68100D38079 /* ProviderDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProviderDetailController.h; sourceTree = "<group>"; };
 		516BB5C01858A68100D38079 /* ProviderDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProviderDetailController.m; sourceTree = "<group>"; };
+		516C6435191CAF2F0035733B /* UPPayPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UPPayPlugin.h; sourceTree = "<group>"; };
+		516C6436191CAF2F0035733B /* UPPayPluginDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UPPayPluginDelegate.h; sourceTree = "<group>"; };
+		516C6437191CAF3B0035733B /* libUPPayPlugin.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUPPayPlugin.a; sourceTree = "<group>"; };
 		518001F818A270CB006539BA /* favor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = favor.png; sourceTree = "<group>"; };
 		518001F918A270CB006539BA /* favorno.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = favorno.png; sourceTree = "<group>"; };
 		518001FA18A270CB006539BA /* share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = share.png; sourceTree = "<group>"; };
@@ -1218,6 +1222,7 @@
 				511567DA18A2963F00784878 /* libWeiboSDK.a in Frameworks */,
 				51B9954218913B3F00C2DD5D /* AlixPaylib_arc.a in Frameworks */,
 				51B9954418913B3F00C2DD5D /* libssl.a in Frameworks */,
+				516C6438191CAF3B0035733B /* libUPPayPlugin.a in Frameworks */,
 				5180020718A28419006539BA /* libWeChatSDK.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1359,6 +1364,26 @@
 				5166B65018F6A26C00139321 /* GuideController.xib */,
 			);
 			name = guide;
+			sourceTree = "<group>";
+		};
+		516C6433191CAF030035733B /* map */ = {
+			isa = PBXGroup;
+			children = (
+				51C5E00C18F0546B00208F22 /* inc */,
+				51C5E03618F0546B00208F22 /* mapapi.bundle */,
+				51C5E00A18F0545600208F22 /* libbaidumapapi.a */,
+			);
+			name = map;
+			sourceTree = "<group>";
+		};
+		516C6434191CAF190035733B /* Uppay */ = {
+			isa = PBXGroup;
+			children = (
+				516C6437191CAF3B0035733B /* libUPPayPlugin.a */,
+				516C6435191CAF2F0035733B /* UPPayPlugin.h */,
+				516C6436191CAF2F0035733B /* UPPayPluginDelegate.h */,
+			);
+			name = Uppay;
 			sourceTree = "<group>";
 		};
 		518001FE18A27421006539BA /* Share */ = {
@@ -1645,9 +1670,7 @@
 		E2296D1A16B760EC00E332D9 = {
 			isa = PBXGroup;
 			children = (
-				51C5E00C18F0546B00208F22 /* inc */,
-				51C5E03618F0546B00208F22 /* mapapi.bundle */,
-				51C5E00A18F0545600208F22 /* libbaidumapapi.a */,
+				516C6433191CAF030035733B /* map */,
 				E2296D2F16B760EC00E332D9 /* EasyDrive366 */,
 				E2296D2816B760EC00E332D9 /* Frameworks */,
 				E2296D2616B760EC00E332D9 /* Products */,
@@ -1691,6 +1714,7 @@
 		E2296D2F16B760EC00E332D9 /* EasyDrive366 */ = {
 			isa = PBXGroup;
 			children = (
+				516C6434191CAF190035733B /* Uppay */,
 				518001FE18A27421006539BA /* Share */,
 				51B9951C18913A9200C2DD5D /* alipay */,
 				51570C0918584D4B003655CC /* Models */,
@@ -2944,6 +2968,7 @@
 					/Users/stevenfu/Documents/workspace/EasyDrive365/EasyDrive365,
 					/Users/stevenfu/Documents/workspace/EasyDrive365,
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/EasyDrive365",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
@@ -2972,6 +2997,7 @@
 					/Users/stevenfu/Documents/workspace/EasyDrive365/EasyDrive365,
 					/Users/stevenfu/Documents/workspace/EasyDrive365,
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/EasyDrive365",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";

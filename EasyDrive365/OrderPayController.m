@@ -14,7 +14,10 @@
 #import "OrderAccidentController.h"
 #import "OrderContentController.h"
 #import "AfterPayController.h"
-
+#import "AFHTTPClient.h"
+#import "AFNetworking.h"
+#import "UPPayPlugin.h"
+#import "UPPayPluginDelegate.h"
 
 @interface OrderPayItem:NSObject
 @property (nonatomic) NSString *title;
@@ -30,7 +33,7 @@
 
 @end
 
-@interface OrderPayController ()<PayUseDiscountCellDelegate>{
+@interface OrderPayController ()<PayUseDiscountCellDelegate,UPPayPluginDelegate>{
     id _list;
     id _sectionlist;
     OrderPayItem *_payItem;
@@ -141,8 +144,13 @@
             }
             [[AppSettings sharedSettings] pay:_name description:_description amount:_amount order_no:self.data[@"order_id"]];
 
-        }else{
+        } if ([item[@"item"][@"bank_id"] isEqualToString:@"62000"]){
+            //up pay
+            [self up_pay];
+        }if ([item[@"item"][@"bank_id"] isEqualToString:@"00000"]){
             [self handleAfterPay:Nil];
+        }else{
+            
         }
     }
 }
@@ -198,5 +206,35 @@
         }
     }];
     
+}
+-(void)up_pay{
+    NSString *path= [NSString stringWithFormat:@"UnionPay/PayNewOrder/%@/%f",self.data[@"order_id"],_amount];
+    NSURL *url = [NSURL URLWithString:@"http://payment.yijia366.cn/"];
+    AFHTTPClient *httpClient =[[AFHTTPClient alloc] initWithBaseURL:url];
+    
+    NSMutableURLRequest *request=[httpClient requestWithMethod:@"GET"  path:path parameters:nil];
+    NSLog(@"Request=%@",request.URL);
+    AFHTTPRequestOperation *operation=[[AFHTTPRequestOperation alloc] initWithRequest:request];
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        NSError *error = nil;
+        id jsonResult =[NSJSONSerialization JSONObjectWithData:operation.responseData options:NSJSONReadingMutableContainers error:&error];
+        NSLog(@"get Result=%@",jsonResult);
+        [UPPayPlugin startPay:jsonResult[@"tn"] mode:@"01" viewController:self delegate:self];
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Access server error:%@,because %@",error,operation.request);
+       
+        
+    }];
+    NSOperationQueue *queue=[[NSOperationQueue alloc] init];
+    [queue addOperation:operation];
+}
+
+-(void)UPPayPluginResult:(NSString *)result{
+    NSLog(@"%@",result);
+    if ([result isEqualToString:@"success"]){
+        [self handleAfterPay:nil];
+    }
 }
 @end
