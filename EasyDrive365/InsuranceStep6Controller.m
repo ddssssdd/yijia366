@@ -137,12 +137,12 @@
             
             [[AppSettings sharedSettings] pay:@"在线购买保险" description:self.order_data[@"order_id"] amount:_amount order_no:self.order_data[@"order_id"]];
 
-        }else if ([item[@"item"][@"bank_id"] isEqualToString:@"62000"]){
+        }else if ([item[@"bank_id"] isEqualToString:@"62000"]){
             //up pay
             [self up_pay];
-        }else if ([item[@"item"][@"bank_id"] isEqualToString:@"00000"]){
+        }else if ([item[@"bank_id"] isEqualToString:@"00000"]){
             [self handleAfterPay:Nil];
-        }else if ([item[@"item"][@"bank_id"] isEqualToString:@"60000"]){
+        }else if ([item[@"bank_id"] isEqualToString:@"60000"]){
             [self wx_pay];
         }
     }
