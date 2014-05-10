@@ -9,10 +9,16 @@
 #import "InsuranceStep6Controller.h"
 #import "AppSettings.h"
 #import "InsuranceStep7Controller.h"
+#import "WXApi.h"
+#import "UPPayPlugin.h"
+#import "UPPayPluginDelegate.h"
+#import "AFHTTPClient.h"
+#import "AFNetworking.h"
 
-@interface InsuranceStep6Controller (){
+@interface InsuranceStep6Controller ()<UPPayPluginDelegate>{
     BOOL _useDiscount;
     id _pay;
+    CGFloat _amount;
 }
 
 @end
@@ -125,13 +131,19 @@
         //assume pay succesuss!
         id item = [self.order_data[@"pay"] objectAtIndex:indexPath.row];
          _pay = item;
+        _amount = [self.order_data[_useDiscount? @"order_pay":@"order_pay_2"] floatValue];
         if ([item[@"bank_id"] isEqualToString:@"00001"]){
            
-            CGFloat amount = [self.order_data[_useDiscount? @"order_pay":@"order_pay_2"] floatValue];
-            [[AppSettings sharedSettings] pay:@"在线购买保险" description:self.order_data[@"order_id"] amount:amount order_no:self.order_data[@"order_id"]];
+            
+            [[AppSettings sharedSettings] pay:@"在线购买保险" description:self.order_data[@"order_id"] amount:_amount order_no:self.order_data[@"order_id"]];
 
-        }else{
-            [self handleAfterPay:nil];
+        }else if ([item[@"item"][@"bank_id"] isEqualToString:@"62000"]){
+            //up pay
+            [self up_pay];
+        }else if ([item[@"item"][@"bank_id"] isEqualToString:@"00000"]){
+            [self handleAfterPay:Nil];
+        }else if ([item[@"item"][@"bank_id"] isEqualToString:@"60000"]){
+            [self wx_pay];
         }
     }
 }
@@ -143,5 +155,56 @@
     vc.bankid = _pay[@"bank_id"];
     vc.account = @"";
     [self.navigationController pushViewController:vc animated:YES];
+}
+-(void)up_pay{
+    NSString *path= [NSString stringWithFormat:@"UnionPay/PayNewOrder/%@/%f",self.order_data[@"order_id"],_amount];
+    NSURL *url = [NSURL URLWithString:@"http://payment.yijia366.cn/"];
+    AFHTTPClient *httpClient =[[AFHTTPClient alloc] initWithBaseURL:url];
+    
+    NSMutableURLRequest *request=[httpClient requestWithMethod:@"GET"  path:path parameters:nil];
+    NSLog(@"Request=%@",request.URL);
+    AFHTTPRequestOperation *operation=[[AFHTTPRequestOperation alloc] initWithRequest:request];
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        NSError *error = nil;
+        id jsonResult =[NSJSONSerialization JSONObjectWithData:operation.responseData options:NSJSONReadingMutableContainers error:&error];
+        NSLog(@"get Result=%@",jsonResult);
+        [UPPayPlugin startPay:jsonResult[@"tn"] mode:@"01" viewController:self delegate:self];
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Access server error:%@,because %@",error,operation.request);
+        
+        
+    }];
+    NSOperationQueue *queue=[[NSOperationQueue alloc] init];
+    [queue addOperation:operation];
+}
+
+-(void)UPPayPluginResult:(NSString *)result{
+    NSLog(@"%@",result);
+    if ([result isEqualToString:@"success"]){
+        [self handleAfterPay:nil];
+    }
+}
+-(void)wx_pay{
+    NSString *url = [NSString stringWithFormat:@"pay_wechat/get_prepay?userid=%d&orderid=%@&total=0.01",
+                     [AppSettings sharedSettings].userid,
+                     self.order_data[@"order_id"]
+                     ];
+    [[AppSettings sharedSettings].http get:url block:^(id json) {
+        if ([[AppSettings sharedSettings] isSuccess:json]){
+            PayReq *request =[[PayReq alloc] init];
+            request.partnerId = WEIXIN_PARTENERID;
+            request.prepayId = json[@"result"][@"prepayid"];
+            request.package = @"Sign=WXPay";
+            request.nonceStr = json[@"result"][@"noncestr"];
+            
+            
+            request.timeStamp = [json[@"result"][@"timestamp"] intValue];
+            request.sign = json[@"result"][@"sign"];
+            [WXApi safeSendReq:request];
+            
+        }
+    }];
 }
 @end

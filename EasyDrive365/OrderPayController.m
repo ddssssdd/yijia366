@@ -19,7 +19,7 @@
 #import "UPPayPlugin.h"
 #import "UPPayPluginDelegate.h"
 #import "WXApi.h"
-
+#import <CommonCrypto/CommonDigest.h>
 
 @interface OrderPayItem:NSObject
 @property (nonatomic) NSString *title;
@@ -240,13 +240,22 @@
     }
 }
 -(void)wx_pay{
-    NSString *url = [NSString stringWithFormat:@"pay_wechat/get_prepay?userid=%d&orerid=%@&total=%f",
+    NSString *url = [NSString stringWithFormat:@"pay_wechat/get_prepay?userid=%d&orderid=%@&total=0.01",
                      [AppSettings sharedSettings].userid,
-                     self.data[@"order_id"],_amount
+                     self.data[@"order_id"]
                      ];
     [[AppSettings sharedSettings].http get:url block:^(id json) {
         if ([[AppSettings sharedSettings] isSuccess:json]){
-            PayReq *request = [[PayReq alloc] init];
+            PayReq *request =[[PayReq alloc] init];
+            request.partnerId = WEIXIN_PARTENERID;
+            request.prepayId = json[@"result"][@"prepayid"];
+            request.package = @"Sign=WXPay";
+            request.nonceStr = json[@"result"][@"noncestr"];
+
+            
+            request.timeStamp = [json[@"result"][@"timestamp"] intValue];
+            request.sign = json[@"result"][@"sign"];
+            [WXApi safeSendReq:request];
 
         }
     }];
@@ -254,4 +263,5 @@
 -(void)onResp:(BaseResp *)resp{
     NSLog(@"%@",resp);
 }
+
 @end

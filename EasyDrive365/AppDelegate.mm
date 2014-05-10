@@ -81,7 +81,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(logout) name:@"logout" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openGoods) name:OPEN_GOODS object:nil];
     
-    [WXApi registerApp:WEIXIN_APPKEY];
+    [WXApi registerApp:WEIXIN_APPID];
     
     [WeiboSDK enableDebugMode:YES];
     [WeiboSDK registerApp:SINAWEIBO_APPKEY];
@@ -229,7 +229,7 @@
     NSLog(@"%@",[url scheme]);
     NSString *scheme = [[url scheme] lowercaseString];
     NSString *host =[[url host] lowercaseString];
-    if (url != nil && [[url scheme] compare:WEIXIN_APPKEY] == 0) {
+    if (url != nil && [[url scheme] compare:WEIXIN_APPID] == 0) {
         return [WXApi handleOpenURL:url delegate:self];
     }else if (url != nil && [[url scheme] compare:[NSString stringWithFormat:@"wb%@",SINAWEIBO_APPKEY]] == 0){
        return [WeiboSDK handleOpenURL:url delegate:self];
@@ -316,6 +316,20 @@
 }
 -(void)onResp:(BaseResp *)resp{
     NSLog(@"%@",resp);
+    
+    if ([resp isKindOfClass:[PayResp class]]){
+        PayResp *response = (PayResp *)resp;
+        switch (response.errCode) {
+            case WXSuccess:
+                //suceess
+                [[[UIAlertView alloc] initWithTitle:AppTitle message:@"支付成功！" delegate:Nil cancelButtonTitle:@"关闭" otherButtonTitles: nil] show];
+                [[NSNotificationCenter defaultCenter] postNotificationName:ALIPAY_SUCCESS object:nil];
+                break;
+                
+            default:
+                break;
+        }
+    }
 }
 
 -(void)didReceiveWeiboRequest:(WBBaseRequest *)request{
