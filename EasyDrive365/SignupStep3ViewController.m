@@ -75,7 +75,11 @@
             vc.username =json[@"result"][@"username"];
             [self.navigationController pushViewController:vc animated:YES];
              */
-            [self gotoSettings];
+            //[self gotoSettings];
+            NewActivateViewController *vc =[[NewActivateViewController alloc] initWithStyle:UITableViewStyleGrouped];
+            vc.isWizad = YES;
+            vc.remark =json[@"result"][@"remark"];
+            [self.navigationController pushViewController:vc animated:YES];
         }
     }];
 }

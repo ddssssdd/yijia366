@@ -87,7 +87,7 @@
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     if (section==0){
-        return 140;
+        return 200;
     }else{
         return 22.0;
     }
@@ -97,6 +97,7 @@
         if (!_headerView){
             [self createHeaderView];
         }
+        _headerView.txt_remark.text = self.remark;
         return _headerView;
     }else{
         return nil;
@@ -106,6 +107,7 @@
     _headerView = [[[NSBundle mainBundle] loadNibNamed:@"ActivateHeader" owner:nil options:nil] objectAtIndex:0];
     _headerView.delegate = self;
     _headerView.btnOK.text = @"激活服务卡";
+
     //_headerView.btnOK.style = NVUIGradientButtonStyleBlackOpaque;
     _headerView.backgroundColor = [UIColor clearColor];
     /*

@@ -20,4 +20,5 @@
 @property (weak, nonatomic) IBOutlet UITextField *txtCode;
 @property (weak, nonatomic) IBOutlet NVUIGradientButton *btnOK;
 @property (nonatomic,weak) id<ActivateHeaderDelegate> delegate;
+@property (weak, nonatomic) IBOutlet UITextView *txt_remark;
 @end
