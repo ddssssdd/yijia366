@@ -18,6 +18,8 @@
 #import "AFNetworking.h"
 #import "UPPayPlugin.h"
 #import "UPPayPluginDelegate.h"
+#import "WXApi.h"
+
 
 @interface OrderPayItem:NSObject
 @property (nonatomic) NSString *title;
@@ -33,7 +35,7 @@
 
 @end
 
-@interface OrderPayController ()<PayUseDiscountCellDelegate,UPPayPluginDelegate>{
+@interface OrderPayController ()<PayUseDiscountCellDelegate,UPPayPluginDelegate,WXApiDelegate>{
     id _list;
     id _sectionlist;
     OrderPayItem *_payItem;
@@ -144,13 +146,13 @@
             }
             [[AppSettings sharedSettings] pay:_name description:_description amount:_amount order_no:self.data[@"order_id"]];
 
-        } if ([item[@"item"][@"bank_id"] isEqualToString:@"62000"]){
+        }else if ([item[@"item"][@"bank_id"] isEqualToString:@"62000"]){
             //up pay
             [self up_pay];
-        }if ([item[@"item"][@"bank_id"] isEqualToString:@"00000"]){
+        }else if ([item[@"item"][@"bank_id"] isEqualToString:@"00000"]){
             [self handleAfterPay:Nil];
-        }else{
-            
+        }else if ([item[@"item"][@"bank_id"] isEqualToString:@"60000"]){
+            [self wx_pay];
         }
     }
 }
@@ -236,5 +238,20 @@
     if ([result isEqualToString:@"success"]){
         [self handleAfterPay:nil];
     }
+}
+-(void)wx_pay{
+    NSString *url = [NSString stringWithFormat:@"pay_wechat/get_prepay?userid=%d&orerid=%@&total=%f",
+                     [AppSettings sharedSettings].userid,
+                     self.data[@"order_id"],_amount
+                     ];
+    [[AppSettings sharedSettings].http get:url block:^(id json) {
+        if ([[AppSettings sharedSettings] isSuccess:json]){
+            PayReq *request = [[PayReq alloc] init];
+
+        }
+    }];
+}
+-(void)onResp:(BaseResp *)resp{
+    NSLog(@"%@",resp);
 }
 @end
