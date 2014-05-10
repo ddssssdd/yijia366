@@ -20,6 +20,7 @@
 #import "ArticleListController.h"
 #import "AppDelegate.h"
 #import "SignupStep1ViewController.h"
+#import "SignupStep0ViewController.h"
 #import "DetailPictureCell.h"
 #import "UIImageView+AFNetworking.h"
 #import "AppSettings.h"
@@ -185,9 +186,12 @@
         return;
     }
    
+   /*
     SettingsViewController *vc = [[SettingsViewController alloc] initWithStyle:UITableViewStyleGrouped];
     [self.navigationController pushViewController:vc animated:YES];
-    
+    */
+    SignupStep0ViewController *vc = [[SignupStep0ViewController alloc] initWithStyle:UITableViewStyleGrouped];
+    [self.navigationController pushViewController:vc animated:YES];
 
 }
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
@@ -348,7 +352,7 @@
     if (buttonIndex==1){
         ((AppDelegate *)[[UIApplication sharedApplication] delegate]).tabbarController.selectedIndex =0;
         SignupStep1ViewController *vc = [[SignupStep1ViewController alloc] initWithStyle:UITableViewStyleGrouped];
-        vc.isFromHome = YES;
+        vc.commingFrom = @"主页";
         [self.navigationController pushViewController:vc animated:YES];
 
     }

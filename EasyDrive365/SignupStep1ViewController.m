@@ -11,7 +11,7 @@
 #import "AppSettings.h"
 #import "SignupStep2ViewController.h"
 
-NSString *inform1=@"设置向导第1步共4步";
+
 @interface SignupStep1ViewController ()
 
 @end
@@ -19,21 +19,25 @@ NSString *inform1=@"设置向导第1步共4步";
 @implementation SignupStep1ViewController
 -(void)init_setup{
     _saveButtonName = @"下一步";
+    self.header_text =@"设置向导第1步共4步";
     
 }
 -(void)backTo{
     [self.navigationController popViewControllerAnimated:YES];
 }
 -(void)initData{
+    if (self.commingFrom){
 
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:self.isFromHome?@"主页": @"设置" style:UIBarButtonSystemItemAction target:self action:@selector(backTo)];
-    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:self.commingFrom style:UIBarButtonSystemItemAction target:self action:@selector(backTo)];
+    }
     NSString *url;
     if (self.taskid>0)
         url = [NSString stringWithFormat:@"api/wizardstep0?userid=%d&taskid=%d",[AppSettings sharedSettings].userid,self.taskid];
     else
         url = [NSString stringWithFormat:@"api/wizardstep0?userid=%d",[AppSettings sharedSettings].userid];
     [[AppSettings sharedSettings].http get:url block:^(id json) {
+        if (!self.remark_text)
+            self.remark_text = json[@"result"][@"remark"];
         id items=@[
                    [[NSMutableDictionary alloc] initWithDictionary:@{@"key" :@"car_id",@"label":@"车牌号：",@"default":@"",@"placeholder":@"鲁BFK982",@"ispassword":@"capital",@"cell":@"EditTextCell",@"value":json[@"result"][@"car_id"] }],
                    
@@ -52,13 +56,7 @@ NSString *inform1=@"设置向导第1步共4步";
     self.title = @"设置向导";
 }
 
--(NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section{
-    if (section==0){
-        return inform1;
-    }else{
-        return  Nil;
-    }
-}
+
 -(void)setupCell:(UITableViewCell *)cell indexPath:(NSIndexPath *)indexPath{
     [super setupCell:cell indexPath:indexPath];
 }
@@ -123,6 +121,8 @@ NSString *inform1=@"设置向导第1步共4步";
             vc.engine_no =json[@"result"][@"engine_no"];
             vc.registration_date=json[@"result"][@"registration_date"];
             vc.owner_name=json[@"result"][@"owner_name"];
+            vc.remark_text = json[@"result"][@"remark"];
+            vc.owner_license =json[@"result"][@"owner_license"];
             [self.navigationController pushViewController:vc animated:YES];
         }
     }];

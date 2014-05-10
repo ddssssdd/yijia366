@@ -127,6 +127,8 @@
 		51570C2618585448003655CC /* DetailRateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51570C2518585447003655CC /* DetailRateCell.xib */; };
 		51591F7818EAC96600980A21 /* background_login.png in Resources */ = {isa = PBXBuildFile; fileRef = 51591F7718EAC96600980A21 /* background_login.png */; };
 		51591F7B18EAE7EE00980A21 /* UserProfileController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51591F7A18EAE7EE00980A21 /* UserProfileController.m */; };
+		515F82B2191DA308004C459C /* SignupStep0ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 515F82B1191DA308004C459C /* SignupStep0ViewController.m */; };
+		515F82B5191DA6A4004C459C /* SignStepBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 515F82B4191DA6A4004C459C /* SignStepBase.m */; };
 		51604D8018FBFE68006C0BB9 /* BrandSelectController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51604D7F18FBFE68006C0BB9 /* BrandSelectController.m */; };
 		51604D8418FBFE80006C0BB9 /* BrandItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 51604D8218FBFE80006C0BB9 /* BrandItemCell.m */; };
 		51604D8518FBFE80006C0BB9 /* BrandItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51604D8318FBFE80006C0BB9 /* BrandItemCell.xib */; };
@@ -633,6 +635,10 @@
 		51591F7718EAC96600980A21 /* background_login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background_login.png; sourceTree = "<group>"; };
 		51591F7918EAE7EE00980A21 /* UserProfileController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfileController.h; sourceTree = "<group>"; };
 		51591F7A18EAE7EE00980A21 /* UserProfileController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfileController.m; sourceTree = "<group>"; };
+		515F82B0191DA308004C459C /* SignupStep0ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignupStep0ViewController.h; sourceTree = "<group>"; };
+		515F82B1191DA308004C459C /* SignupStep0ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignupStep0ViewController.m; sourceTree = "<group>"; };
+		515F82B3191DA6A4004C459C /* SignStepBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignStepBase.h; sourceTree = "<group>"; };
+		515F82B4191DA6A4004C459C /* SignStepBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignStepBase.m; sourceTree = "<group>"; };
 		51604D7E18FBFE68006C0BB9 /* BrandSelectController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrandSelectController.h; sourceTree = "<group>"; };
 		51604D7F18FBFE68006C0BB9 /* BrandSelectController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrandSelectController.m; sourceTree = "<group>"; };
 		51604D8118FBFE80006C0BB9 /* BrandItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrandItemCell.h; sourceTree = "<group>"; };
@@ -2016,6 +2022,10 @@
 				E27A7D6117B14081009895E6 /* SignupStep2ViewController.m */,
 				E27A7D6317B14091009895E6 /* SignupStep3ViewController.h */,
 				E27A7D6417B14091009895E6 /* SignupStep3ViewController.m */,
+				515F82B0191DA308004C459C /* SignupStep0ViewController.h */,
+				515F82B1191DA308004C459C /* SignupStep0ViewController.m */,
+				515F82B3191DA6A4004C459C /* SignStepBase.h */,
+				515F82B4191DA6A4004C459C /* SignStepBase.m */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -2787,6 +2797,7 @@
 				E241CEE2173BE02B00B1441D /* CarHelpViewController.m in Sources */,
 				E241CEE7173BE26400B1441D /* VendorViewController.m in Sources */,
 				E241CEEC173BE7E700B1441D /* ServiceNoteViewController.m in Sources */,
+				515F82B2191DA308004C459C /* SignupStep0ViewController.m in Sources */,
 				E241CEF6173BEA9E00B1441D /* IncomingViewController.m in Sources */,
 				E241CEFD173BEE2D00B1441D /* CarHelpTabController.m in Sources */,
 				E2771F90174A321B0056E6F7 /* FeedbackViewController.m in Sources */,
@@ -2867,6 +2878,7 @@
 				51570C1E18585401003655CC /* DetailRateCell.m in Sources */,
 				516BB5B918589ADE00D38079 /* ProviderListController.m in Sources */,
 				516BB5BC1858A04900D38079 /* ProviderListItemCell.m in Sources */,
+				515F82B5191DA6A4004C459C /* SignStepBase.m in Sources */,
 				516BB5C11858A68100D38079 /* ProviderDetailController.m in Sources */,
 				51E3CE131859CBA6004582BC /* ArticleListController.m in Sources */,
 				51E3CE161859E456004582BC /* ArticleListItemCell.m in Sources */,

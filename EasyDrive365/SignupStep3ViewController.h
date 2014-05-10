@@ -7,8 +7,8 @@
 //
 
 #import "CustomEditTableViewController.h"
-
-@interface SignupStep3ViewController : CustomEditTableViewController
+#import "SignStepBase.h"
+@interface SignupStep3ViewController : SignStepBase
 @property (nonatomic) NSString *name;
 @property (nonatomic) NSString *car_type;
 @property (nonatomic) NSString *car_init_date;

@@ -12,7 +12,7 @@
 #import "SignUpTableViewController.h"
 #import "SettingsViewController.h"
 #import "NewActivateViewController.h"
-NSString *inform3=@"设置向导第3步共4步";
+
 @interface SignupStep3ViewController ()
 
 @end
@@ -20,6 +20,7 @@ NSString *inform3=@"设置向导第3步共4步";
 @implementation SignupStep3ViewController
 -(void)init_setup{
     _saveButtonName = @"下一步";
+    self.header_text =@"设置向导第3步共4步";
 }
 -(void)backTo{
     [self.navigationController popViewControllerAnimated:YES];
@@ -78,13 +79,7 @@ NSString *inform3=@"设置向导第3步共4步";
         }
     }];
 }
--(NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section{
-    if (section==0){
-        return inform3;
-    }else{
-        return  Nil;
-    }
-}
+
 -(void)gotoSettings{
     /*
     [self.navigationController popToViewController:[[self.navigationController viewControllers] objectAtIndex:1]  animated:YES];

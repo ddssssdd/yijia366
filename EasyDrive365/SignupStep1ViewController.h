@@ -7,8 +7,8 @@
 //
 
 #import "CustomEditTableViewController.h"
-
-@interface SignupStep1ViewController : CustomEditTableViewController
-@property (nonatomic) BOOL isFromHome;
+#import "SignStepBase.h"
+@interface SignupStep1ViewController : SignStepBase
+@property (nonatomic) NSString * commingFrom;
 
 @end
