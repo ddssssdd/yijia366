@@ -70,7 +70,7 @@
                           [[MenuItem alloc] initWithName:@"08" title:@"交强险" description:defaultInfo imagePath:@"main_menu/s.png" phone:defaultPhone],
                           [[MenuItem alloc] initWithName:@"09" title:@"商业险" description:defaultInfo imagePath:@"main_menu/t.png" phone:defaultPhone],
                          
-                          [[MenuItem alloc] initWithName:@"11" title:@"购买车险" description:defaultInfo imagePath:@"main_menu/r.png" phone:defaultPhone],
+                          //[[MenuItem alloc] initWithName:@"11" title:@"购买车险" description:defaultInfo imagePath:@"main_menu/r.png" phone:defaultPhone],
                           //[[MenuItem alloc] initWithName:@"10" title:@"购买意外险" description:defaultInfo imagePath:@"main_menu/n.png" phone:defaultPhone],
                           [[MenuItem alloc] initWithName:@"13" title:@"保险订单" description:defaultInfo imagePath:@"p.png" phone:defaultPhone]
                           
