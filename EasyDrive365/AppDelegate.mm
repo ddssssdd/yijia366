@@ -327,6 +327,7 @@
                 break;
                 
             default:
+                 [[[UIAlertView alloc] initWithTitle:AppTitle message:@"支付失败！" delegate:Nil cancelButtonTitle:@"关闭" otherButtonTitles: nil] show];
                 break;
         }
     }

@@ -138,6 +138,7 @@
         
         _pay = item[@"item"];
         NSLog(@"%@",_pay);
+        _amount = [_payItem.detail floatValue];
         if ([item[@"item"][@"bank_id"] isEqualToString:@"00001"]){
             _amount = [_payItem.detail floatValue];
             if (_amount < 0.009){
@@ -222,7 +223,7 @@
         NSError *error = nil;
         id jsonResult =[NSJSONSerialization JSONObjectWithData:operation.responseData options:NSJSONReadingMutableContainers error:&error];
         NSLog(@"get Result=%@",jsonResult);
-        [UPPayPlugin startPay:jsonResult[@"tn"] mode:@"01" viewController:self delegate:self];
+        [UPPayPlugin startPay:jsonResult[@"tn"] mode:@"00" viewController:self delegate:self];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Access server error:%@,because %@",error,operation.request);
@@ -237,12 +238,15 @@
     NSLog(@"%@",result);
     if ([result isEqualToString:@"success"]){
         [self handleAfterPay:nil];
+    }else{
+        [[[UIAlertView alloc] initWithTitle:AppTitle message:@"支付失败！" delegate:Nil cancelButtonTitle:@"关闭" otherButtonTitles: nil] show];
     }
 }
 -(void)wx_pay{
-    NSString *url = [NSString stringWithFormat:@"pay_wechat/get_prepay?userid=%d&orderid=%@&total=0.01",
+    NSString *url = [NSString stringWithFormat:@"pay_wechat/get_prepay?userid=%d&orderid=%@&total=%f",
                      [AppSettings sharedSettings].userid,
-                     self.data[@"order_id"]
+                     self.data[@"order_id"],
+                     _amount
                      ];
     [[AppSettings sharedSettings].http get:url block:^(id json) {
         if ([[AppSettings sharedSettings] isSuccess:json]){

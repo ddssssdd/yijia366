@@ -169,7 +169,7 @@
         NSError *error = nil;
         id jsonResult =[NSJSONSerialization JSONObjectWithData:operation.responseData options:NSJSONReadingMutableContainers error:&error];
         NSLog(@"get Result=%@",jsonResult);
-        [UPPayPlugin startPay:jsonResult[@"tn"] mode:@"01" viewController:self delegate:self];
+        [UPPayPlugin startPay:jsonResult[@"tn"] mode:@"00" viewController:self delegate:self];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Access server error:%@,because %@",error,operation.request);
@@ -187,9 +187,9 @@
     }
 }
 -(void)wx_pay{
-    NSString *url = [NSString stringWithFormat:@"pay_wechat/get_prepay?userid=%d&orderid=%@&total=0.01",
+    NSString *url = [NSString stringWithFormat:@"pay_wechat/get_prepay?userid=%d&orderid=%@&total=%f",
                      [AppSettings sharedSettings].userid,
-                     self.order_data[@"order_id"]
+                     self.order_data[@"order_id"],_amount
                      ];
     [[AppSettings sharedSettings].http get:url block:^(id json) {
         if ([[AppSettings sharedSettings] isSuccess:json]){
