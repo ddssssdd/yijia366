@@ -187,9 +187,9 @@
     }
 }
 -(void)wx_pay{
-    NSString *url = [NSString stringWithFormat:@"pay_wechat/get_prepay?userid=%d&orderid=%@&total=%f",
+    NSString *url = [NSString stringWithFormat:@"pay_wechat/get_prepay?userid=%d&orderid=%@&total=%f&name=%@",
                      [AppSettings sharedSettings].userid,
-                     self.order_data[@"order_id"],_amount
+                     self.order_data[@"order_id"],_amount,@"在线购买保险"
                      ];
     [[AppSettings sharedSettings].http get:url block:^(id json) {
         if ([[AppSettings sharedSettings] isSuccess:json]){
