@@ -27,6 +27,13 @@
 #import "ProviderDetailController.h"
 #import "GoodsDetailController.h"
 
+//main tab
+#import "RecommentsController.h"
+#import "GoodsCategoryController.h"
+#import "MineController.h"
+#import "MoreSettingsController.h"
+
+
 #define TAG_HOMEPAGE 0
 #define TAG_INSURANCE 1
 #define TAG_PROVIDER 2
@@ -102,8 +109,50 @@
     }
     return YES;
 }
-
 -(void)createControllers{
+    RecommentsController *vcHome =[[RecommentsController alloc] initWithStyle:UITableViewStyleGrouped];
+    
+    //ProviderListController *vcProvider =[[ProviderListController alloc] initWithStyle:UITableViewStylePlain];
+    MineController *vcProvider =[[MineController alloc] initWithStyle:UITableViewStyleGrouped];
+    
+    
+    ArticleListController *vcArticle=[[ArticleListController alloc] initWithStyle:UITableViewStylePlain];
+    //SettingsViewController *vcUser = [[SettingsViewController alloc] initWithStyle:UITableViewStyleGrouped];
+    MoreSettingsController *vcUser = [[MoreSettingsController alloc] initWithStyle:UITableViewStyleGrouped];
+    //GoodsListController *vcGoods = [[GoodsListController alloc] initWithStyle:UITableViewStylePlain];
+    GoodsCategoryController *vcGoods = [[GoodsCategoryController alloc] initWithStyle:UITableViewStylePlain];
+    vcGoods.type=@"goods";
+    
+    
+    UITabBarItem *item0=[[UITabBarItem alloc] initWithTitle:@"推荐" image:[UIImage imageNamed:@"toolbar/tuijian.png"] tag:TAG_HOMEPAGE];
+    UITabBarItem *item1=[[UITabBarItem alloc] initWithTitle:@"搜索" image:[UIImage imageNamed:@"toolbar/fenlei.png"] tag:TAG_INSURANCE];
+    UITabBarItem *item2 =[[UITabBarItem alloc] initWithTitle:@"我的" image:[UIImage imageNamed:@"toolbar/wode.png"] tag:TAG_PROVIDER];
+    UITabBarItem *item3 = [[UITabBarItem alloc] initWithTitle:@"百科" image:[UIImage imageNamed:@"toolbar/baike.png"] tag:TAG_ARTICLE];
+    
+    UITabBarItem *item4 = [[UITabBarItem alloc] initWithTitle:@"更多" image:[UIImage imageNamed:@"toolbar/gengduo.png"] tag:TAG_SETTINGS];
+    
+    menu0 = [[UINavigationController alloc] initWithRootViewController:vcHome];
+    menu0.tabBarItem  = item0;
+    
+    //UINavigationController *menu1 = [[UINavigationController alloc] initWithRootViewController:vcMap];
+    menu1 = [[UINavigationController alloc] initWithRootViewController:vcGoods];
+    menu1.tabBarItem  = item1;
+    
+    menu2 = [[UINavigationController alloc] initWithRootViewController:vcProvider];
+    menu2.tabBarItem  = item2;
+    
+    menu3 = [[UINavigationController alloc] initWithRootViewController:vcArticle];
+    menu3.tabBarItem  = item3;
+    
+    menu4 = [[UINavigationController alloc] initWithRootViewController:vcUser];
+    menu4.tabBarItem  = item4;
+    
+    _tabbarController.viewControllers =@[menu0,menu1,menu2,menu3,menu4];
+    _tabbarController.delegate = self;
+    
+}
+
+-(void)createControllers_old{
     ViewController *vcHome =[[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];
     ShowLocationViewController *vcMap = [[ShowLocationViewController alloc] initWithNibName:@"ShowLocationViewController" bundle:nil];
     vcMap.isFull = YES;

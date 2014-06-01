@@ -41,7 +41,7 @@
     _searchBar.delegate = self;
     [[self tableView] setTableHeaderView:_searchBar];
     if ([self.type isEqualToString:@"goods"]){
-        self.title = @"商品分类";
+        self.title = @"搜索";
     }else if ([self.type isEqualToString:@"provider"]){
         self.title = @"商户分类";
     }else{

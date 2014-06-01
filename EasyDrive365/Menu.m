@@ -32,6 +32,7 @@
 #import "AddCardStep1ControllerViewController.h"
 #import "InsuranceListController.h"
 #import "NeedPayController.h"
+#import "UserProfileController.h"
 
 @implementation Menu
 @synthesize list = _list;
@@ -54,16 +55,19 @@
     if (self){
         NSString *defaultInfo = @"";
         NSString *defaultPhone=@"";
-        _list=[NSArray arrayWithObjects:[[MenuItem alloc] initWithName:@"01" title:@"最新信息" description:defaultInfo imagePath:@"main_menu/m.png" phone:defaultPhone],
+        _list=[NSArray arrayWithObjects:[
+            [MenuItem alloc] initWithName:@"14" title:@"我的订单" description:defaultInfo imagePath:@"dingdan.png" phone:defaultPhone],
+               
+            [[MenuItem alloc] initWithName:@"01" title:@"最新信息" description:defaultInfo imagePath:@"xinxi.png" phone:defaultPhone],
             //[[MenuItem alloc] initWithName:@"02" title:@"紧急救助" description:defaultInfo imagePath:@"main_menu/n.png" phone:defaultPhone],
             /*[[MenuItem alloc] initWithName:@"03" title:@"事故救援" description:defaultInfo imagePath:@"0003.png" phone:defaultPhone],*/
-            [[MenuItem alloc] initWithName:@"04" title:@"保养建议" description:defaultInfo imagePath:@"main_menu/g.png" phone:defaultPhone],
+            [[MenuItem alloc] initWithName:@"04" title:@"保养建议" description:defaultInfo imagePath:@"baoyang.png" phone:defaultPhone],
             //[[MenuItem alloc] initWithName:@"12" title:@"车务服务" description:defaultInfo imagePath:@"main_menu/o.png" phone:defaultPhone],
                
-               [[MenuItem alloc] initWithName:@"06" title:@"我的车辆" description:defaultInfo imagePath:@"main_menu/e.png" phone:defaultPhone],
-               [[MenuItem alloc] initWithName:@"05" title:@"驾驶证" description:defaultInfo imagePath:@"main_menu/f.png" phone:defaultPhone],
-               [[MenuItem alloc] initWithName:@"03" title:@"我的保险" description:defaultInfo imagePath:@"p.png" phone:defaultPhone],
-            
+               [[MenuItem alloc] initWithName:@"06" title:@"我的车辆" description:defaultInfo imagePath:@"cheliang.png" phone:defaultPhone],
+               [[MenuItem alloc] initWithName:@"05" title:@"驾驶证" description:defaultInfo imagePath:@"jiashizheng.png" phone:defaultPhone],
+               [[MenuItem alloc] initWithName:@"03" title:@"我的保险" description:defaultInfo imagePath:@"baoxian.png" phone:defaultPhone],
+               [[MenuItem alloc] initWithName:@"15" title:@"我的资料" description:defaultInfo imagePath:@"ziliao.png" phone:defaultPhone],
             //[[MenuItem alloc] initWithName:@"11" title:@"维修记录" description:defaultInfo imagePath:@"0011.png" phone:defaultPhone],
             nil];
         _insurance_list=@[[[MenuItem alloc] initWithName:@"07" title:@"车船税" description:defaultInfo imagePath:@"main_menu/q.png" phone:defaultPhone],
@@ -193,6 +197,17 @@
         vc.status = @"finished&type=ins";
         [controller pushViewController:vc animated:YES];
         
+    }
+    
+    if ([key isEqualToString:@"14"]){
+        NeedPayController *vc = [[NeedPayController alloc] initWithStyle:UITableViewStylePlain];
+        vc.status = @"finished";
+        [controller pushViewController:vc animated:YES];
+    }
+    if ([key isEqualToString:@"15"])
+    {
+        UserProfileController *vc = [[UserProfileController alloc] initWithStyle:UITableViewStyleGrouped];
+        [controller pushViewController:vc animated:YES];
     }
 }
 

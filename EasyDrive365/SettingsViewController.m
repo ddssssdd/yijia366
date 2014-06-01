@@ -503,7 +503,7 @@
     if (section==0){
         if (!_headerView){
             _headerView =[[UserProfileView alloc] initWithController:self.navigationController taskid:self.taskid];
-        }
+        } 
         return _headerView;
     }else
         return nil;
