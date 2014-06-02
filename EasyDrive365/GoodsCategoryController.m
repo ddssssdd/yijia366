@@ -67,7 +67,7 @@
         }
     }
     NSLog(@"%@",types);
-    
+    [_refreshHelper endRefresh:self.tableView];
     /*
     SearchResultController *vc =[[SearchResultController alloc] initWithStyle:UITableViewStyleGrouped];
     vc.key = key;
@@ -127,6 +127,7 @@
         
         [self.tableView reloadData];
     }
+    [_refreshHelper endRefresh:self.tableView];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

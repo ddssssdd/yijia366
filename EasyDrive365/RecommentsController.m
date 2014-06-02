@@ -27,6 +27,7 @@
     UIImageView *_imageView;
     UIPageControl *_pager;
     int _index;
+    UIRefreshControl *_refreshControl;
 }
 
 @end
@@ -55,6 +56,9 @@
     UISwipeGestureRecognizer *swipeRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(goRight)];
     swipeRight.direction = UISwipeGestureRecognizerDirectionRight;
     [self.tableView addGestureRecognizer:swipeRight];
+    _refreshControl= [[UIRefreshControl alloc] init];
+    self.refreshControl = _refreshControl;
+    [_refreshControl addTarget:self action:@selector(load_data) forControlEvents:UIControlEventValueChanged];
     [self load_data];
 }
 -(void)viewDidUnload{
@@ -77,6 +81,7 @@
         if ([[AppSettings sharedSettings] isSuccess:json]){
             _list = json[@"result"];
             [self.tableView reloadData];
+            [_refreshControl endRefreshing];
         }
     }];
 }
