@@ -34,7 +34,7 @@
 
 #define AppTitle @"易驾366"
 #define APP_SCHEMA @"EasyDrive366"
-#define AppVersion @"2.1.1"
+#define AppVersion @"2.1.2"
 #define APPLATEST_COUNT 12
 #define MESSAGE_SHOW_TIME 10
 #define DELETE_INFORMATION @"delete information"
@@ -45,6 +45,7 @@
 #define UPDATE_USER_PROFILE @"Update_user_profile"
 #define ALIPAY_SUCCESS @"Alipay_success"
 #define OPEN_GOODS @"Open_goods"
+//登陆成功通知
 #define LOGIN_SUCCESS @"Login_success"
 #define SELECTED_JOBITEM @"Selected_job_item"
 #define SELECTED_BRAND @"selected_brand"
