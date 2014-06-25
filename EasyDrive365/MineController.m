@@ -1,7 +1,7 @@
 //
 //  MineController.m
 //  EasyDrive366
-//
+//  我的页面
 //  Created by Steven Fu on 6/1/14.
 //  Copyright (c) 2014 Fu Steven. All rights reserved.
 //
@@ -35,11 +35,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     self.title = @"我的";
+    
     [[HttpClient sharedHttp] online];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(load_data) name:@"logout" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(load_data) name:LOGIN_SUCCESS object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(update_user_profile) name:UPDATE_USER_PROFILE object:nil];
+    
     _refreshControl= [[UIRefreshControl alloc] init];
     self.refreshControl = _refreshControl;
     [_refreshControl addTarget:self action:@selector(load_data) forControlEvents:UIControlEventValueChanged];

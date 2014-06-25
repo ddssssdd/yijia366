@@ -13,6 +13,11 @@
 @property (strong, nonatomic) UIWindow *window;
 
 @property (strong, nonatomic) UINavigationController *navigationController;
+
 @property (strong, nonatomic) UITabBarController *tabbarController;
+
+/**
+ *  初始化tab条
+ */
 -(void)createControllers;
 @end

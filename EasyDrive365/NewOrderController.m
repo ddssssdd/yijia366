@@ -1,7 +1,7 @@
 //
 //  NewOrderController.m
 //  EasyDrive366
-//
+//  产品购买页面
 //  Created by Steven Fu on 1/7/14.
 //  Copyright (c) 2014 Fu Steven. All rights reserved.
 //
@@ -48,6 +48,8 @@
 
 -(void)load_data{
     NSString *url;
+    
+    //若商品id不为空 则表示新增订单   若订单id不为空 则表示修改订单
     if (self.product_id){
         url = [NSString stringWithFormat:@"order/order_new?userid=%d&goodsid=%d",[AppSettings sharedSettings].userid,self.product_id];
     }else if (self.order_id){
@@ -199,6 +201,13 @@
     }
     return nil;
 }
+
+/**
+ *  点击购买按钮   保持订单信息   跳转到支付页面
+ *
+ *  @param sender <#sender description#>
+ *  @param data   <#data description#>
+ */
 -(void)buyButtonPressed:(BuyButtonView *)sender data:(id)data{
 
     if ([_list count]==0)
@@ -206,6 +215,8 @@
     OrderItem *item = [_list objectAtIndex:0];
     NSString *url = [NSString stringWithFormat:@"order/order_save?userid=%d&goodsid=%d&quantity=%d&orderid=%@",
                      [AppSettings sharedSettings].userid,item.orderitem_id,item.quantity,_order_id];
+    
+    //保存订单成功后 跳转到支付页面
     [[AppSettings sharedSettings].http get:url block:^(id json) {
         if ([[AppSettings sharedSettings] isSuccess:json]){
             OrderPayController *vc =[[OrderPayController alloc] initWithStyle:UITableViewStyleGrouped];

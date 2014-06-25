@@ -1,7 +1,7 @@
 //
 //  Menu.m
 //  EasyDrive365
-//
+//  我的页面中的菜单项
 //  Created by Fu Steven on 2/6/13.
 //  Copyright (c) 2013 Fu Steven. All rights reserved.
 //

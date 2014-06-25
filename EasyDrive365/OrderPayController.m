@@ -1,7 +1,7 @@
 //
 //  OrderPayController.m
 //  EasyDrive366
-//
+//  订单支付页面
 //  Created by Steven Fu on 1/7/14.
 //  Copyright (c) 2014 Fu Steven. All rights reserved.
 //
@@ -76,13 +76,13 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-
+    
     return [_list count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-
+    
     return [[_list objectAtIndex:section] count];
 }
 
@@ -146,7 +146,7 @@
                 return;
             }
             [[AppSettings sharedSettings] pay:_name description:_description amount:_amount order_no:self.data[@"order_id"]];
-
+            
         }else if ([item[@"item"][@"bank_id"] isEqualToString:@"62000"]){
             //up pay
             [self up_pay];
@@ -158,6 +158,9 @@
     }
 }
 
+/**
+ *  加载支付信息
+ */
 -(void)load_data{
     if (self.data){
         NSLog(@"%@",self.data);
@@ -166,9 +169,9 @@
         //productions
         for (id good in self.data[@"goods"]) {
             /*
-            [_list addObject:@[@{@"title":@"单价",@"detail":good[@"price"]},@{@"title":@"数量",@"detail":[NSString stringWithFormat:@"%@",good[@"quantity"]]}]];
-            [_sectionlist addObject:good[@"name"]];
-            */
+             [_list addObject:@[@{@"title":@"单价",@"detail":good[@"price"]},@{@"title":@"数量",@"detail":[NSString stringWithFormat:@"%@",good[@"quantity"]]}]];
+             [_sectionlist addObject:good[@"name"]];
+             */
             _name = good[@"name"];
             _description = good[@"name"];//missing description for good's description
             _price = good[@"price"];
@@ -197,6 +200,12 @@
         self.title = [NSString stringWithFormat:@"Order[%@]",self.data[@"order_id"]];
     }
 }
+
+/**
+ *  支付成功后的处理
+ *
+ *  @param notification <#notification description#>
+ */
 -(void)handleAfterPay:(NSNotification *)notification{
     NSLog(@"%@",notification);
     NSString *bounds = _payItem.useDiscount?self.data[@"bounds_num"]:@"0";
@@ -210,6 +219,10 @@
     }];
     
 }
+
+/**
+ *  银联支付
+ */
 -(void)up_pay{
     NSString *path= [NSString stringWithFormat:@"UnionPay/PayNewOrder/%@/%f",self.data[@"order_id"],_amount];
     NSURL *url = [NSURL URLWithString:@"http://payment.yijia366.cn/"];
@@ -227,28 +240,39 @@
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Access server error:%@,because %@",error,operation.request);
-       
+        
         
     }];
     NSOperationQueue *queue=[[NSOperationQueue alloc] init];
     [queue addOperation:operation];
 }
 
+/**
+ *  支付结果处理
+ *
+ *  @param result <#result description#>
+ */
 -(void)UPPayPluginResult:(NSString *)result{
     NSLog(@"%@",result);
     if ([result isEqualToString:@"success"]){
+        //支付成功
         [self handleAfterPay:nil];
     }else{
+        //支付失败
         [[[UIAlertView alloc] initWithTitle:AppTitle message:@"支付失败！" delegate:Nil cancelButtonTitle:@"关闭" otherButtonTitles: nil] show];
     }
 }
+
+/**
+ *  微信支付
+ */
 -(void)wx_pay{
     NSString *url = [NSString stringWithFormat:@"pay_wechat/get_prepay?userid=%d&orderid=%@&total=%f&name=%@",
                      [AppSettings sharedSettings].userid,
                      self.data[@"order_id"],
                      _amount,
                      _name
-                   
+                     
                      ];
     [[AppSettings sharedSettings].http get:url block:^(id json) {
         if ([[AppSettings sharedSettings] isSuccess:json]){
@@ -257,12 +281,12 @@
             request.prepayId = json[@"result"][@"prepayid"];
             request.package = @"Sign=WXPay";
             request.nonceStr = json[@"result"][@"noncestr"];
-
+            
             
             request.timeStamp = [json[@"result"][@"timestamp"] intValue];
             request.sign = json[@"result"][@"sign"];
             [WXApi safeSendReq:request];
-
+            
         }
     }];
 }

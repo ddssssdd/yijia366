@@ -56,7 +56,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     //[[AppSettings sharedSettings] get_latest];
-    
+    //百度地图相关
     _mapManager = [[BMKMapManager alloc] init];  //old:1680f38dadab9089d45bedcca6080876
     BOOL ret = [_mapManager start:@"P1C8dnBtHzd9DL2bGiEOidtl" generalDelegate:nil];
     if (!ret){
@@ -65,6 +65,8 @@
     
     [[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge|UIRemoteNotificationTypeSound|UIRemoteNotificationTypeAlert)];
+   
+    //若app由远程通知启动 则做一些处理
     if (launchOptions!=nil){
         NSDictionary *dictionary = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
         if (dictionary !=nil){
@@ -74,6 +76,7 @@
     }
     
     //[self setup_display];
+    //带有状态栏
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     /*
@@ -82,18 +85,26 @@
     self.window.rootViewController = self.navigationController;
      */
     _tabbarController =[[UITabBarController alloc] init];
-    
     self.window.rootViewController = _tabbarController;
     [self.window makeKeyAndVisible];
+    
+    //注册 用户退出的通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(logout) name:@"logout" object:nil];
+    //注册 用户购买成功 返回首页的通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openGoods) name:OPEN_GOODS object:nil];
     
+    //微信分享
     [WXApi registerApp:WEIXIN_APPID];
     
+    //微博分享
     [WeiboSDK enableDebugMode:YES];
     [WeiboSDK registerApp:SINAWEIBO_APPKEY];
+    
+    //存储用户是否第一次登录
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     id first_run = [defaults objectForKey:[NSString stringWithFormat:@"First_Run_On_%@",AppVersion]];
+    
+    //若是第一次启动app 则跳转到引导画面
     if (!first_run){
     //if ([AppSettings sharedSettings].isFirst){
     //    [AppSettings sharedSettings].isFirst=false;
@@ -109,26 +120,37 @@
     }
     return YES;
 }
+
+/**
+ *  初始化tab条
+ */
 -(void)createControllers{
+    //推荐
     RecommentsController *vcHome =[[RecommentsController alloc] initWithStyle:UITableViewStyleGrouped];
     
     //ProviderListController *vcProvider =[[ProviderListController alloc] initWithStyle:UITableViewStylePlain];
+    
+    //我的
     MineController *vcProvider =[[MineController alloc] initWithStyle:UITableViewStyleGrouped];
     
-    
+    //百科
     ArticleListController *vcArticle=[[ArticleListController alloc] initWithStyle:UITableViewStylePlain];
+    
     //SettingsViewController *vcUser = [[SettingsViewController alloc] initWithStyle:UITableViewStyleGrouped];
+    
+    //更多
     MoreSettingsController *vcUser = [[MoreSettingsController alloc] initWithStyle:UITableViewStyleGrouped];
+    
     //GoodsListController *vcGoods = [[GoodsListController alloc] initWithStyle:UITableViewStylePlain];
+   
+    //搜索
     GoodsCategoryController *vcGoods = [[GoodsCategoryController alloc] initWithStyle:UITableViewStylePlain];
     vcGoods.type=@"goods";
-    
     
     UITabBarItem *item0=[[UITabBarItem alloc] initWithTitle:@"推荐" image:[UIImage imageNamed:@"toolbar/tuijian.png"] tag:TAG_HOMEPAGE];
     UITabBarItem *item1=[[UITabBarItem alloc] initWithTitle:@"搜索" image:[UIImage imageNamed:@"toolbar/fenlei.png"] tag:TAG_INSURANCE];
     UITabBarItem *item2 =[[UITabBarItem alloc] initWithTitle:@"我的" image:[UIImage imageNamed:@"toolbar/wode.png"] tag:TAG_PROVIDER];
     UITabBarItem *item3 = [[UITabBarItem alloc] initWithTitle:@"百科" image:[UIImage imageNamed:@"toolbar/baike.png"] tag:TAG_ARTICLE];
-    
     UITabBarItem *item4 = [[UITabBarItem alloc] initWithTitle:@"更多" image:[UIImage imageNamed:@"toolbar/gengduo.png"] tag:TAG_SETTINGS];
     
     menu0 = [[UINavigationController alloc] initWithRootViewController:vcHome];
@@ -189,8 +211,16 @@
     _tabbarController.delegate = self;
     
 }
+
+/**
+ *  点击tab条触发    如果用户没有登录则不可以跳转到“我的”页面
+ *
+ *  @param tabBarController <#tabBarController description#>
+ *  @param viewController   <#viewController description#>
+ *
+ *  @return <#return value description#>
+ */
 -(BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController{
-    NSLog(@"%@",viewController);
     if (![AppSettings sharedSettings].isLogin){
         if (viewController == menu4){
              _tabbarController.selectedIndex =0;
@@ -200,9 +230,17 @@
     }
     return YES;
 }
+
+/**
+ *  返回推荐首页
+ */
 -(void)openGoods{
     _tabbarController.selectedIndex =1;
 }
+
+/**
+ *  退出登录
+ */
 -(void)logout{
     _tabbarController.selectedIndex =0;
     [menu0 popToRootViewControllerAnimated:YES];
@@ -210,6 +248,7 @@
     [menu2 popToRootViewControllerAnimated:YES];
     [menu3 popToRootViewControllerAnimated:YES];
 }
+
 -(void)setup_display{
     UIImage *gradientImage44 = [[UIImage imageNamed:@"surf_gradient_textured_44"]
                                 resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
@@ -245,6 +284,7 @@
 {
     
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    //清除推送角标
     [UIApplication sharedApplication].applicationIconBadgeNumber=0;
     [[AppSettings sharedSettings] check_update:NO];
 }
@@ -253,27 +293,58 @@
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+
+
+#pragma mark - 推送
+
+/**
+ *  注册token
+ *
+ *  @param application <#application description#>
+ *  @param deviceToken <#deviceToken description#>
+ */
 -(void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken{
     [AppSettings sharedSettings].deviceToken=[deviceToken description];
-    
 }
+
+/**
+ *  注册token失败
+ *
+ *  @param application <#application description#>
+ *  @param error       <#error description#>
+ */
 -(void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error{
     NSLog(@"Failed to get token,error:%@",error);
 }
 
+/**
+ *  接收到通知
+ *
+ *  @param application <#application description#>
+ *  @param userInfo    <#userInfo description#>
+ */
 -(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo{
     
     [self addMessageFromRemoteNotification:userInfo];
 }
+
+/**
+ *  处理接收到的通知
+ *
+ *  @param payload <#payload description#>
+ */
 -(void)addMessageFromRemoteNotification:(NSDictionary *)payload{
     NSLog(@"received notificaiton:%@",payload);
     
 }
+
 -(BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url{
     NSLog(@"%@",url);
     [self parse:url application:application];
 	return YES;
 }
+
 -(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation{
     NSLog(@"%@",[url scheme]);
     NSString *scheme = [[url scheme] lowercaseString];
@@ -292,6 +363,7 @@
     
     return YES;
 }
+
 - (void)parse:(NSURL *)url application:(UIApplication *)application {
     
     //结果处理
@@ -363,6 +435,7 @@
 -(void)onReq:(BaseReq *)req{
     NSLog(@"%@",req);
 }
+
 -(void)onResp:(BaseResp *)resp{
     NSLog(@"%@",resp);
     
@@ -385,6 +458,7 @@
 -(void)didReceiveWeiboRequest:(WBBaseRequest *)request{
     NSLog(@"%@",request);
 }
+
 -(void)didReceiveWeiboResponse:(WBBaseResponse *)response{
     NSLog(@"%@",response);
 }
